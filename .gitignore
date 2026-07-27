@@ -169,3 +169,9 @@ graphify-out/.graph.tmp.json
 .mcp.json
 .firecrawl
 .claude/worktrees
+
+# Local scrape of the scouting.org adventure pages, kept for reference while writing
+# src/data/adventures.ts. It holds the full requirement text, which is Scouting America
+# publication content and must not be committed here - cite the scouting.org URLs instead.
+docs/cub-scout-adventures-markdown/
+docs/cub-scout-adventures-markdown.zip
