@@ -21,7 +21,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <!-- viewport-fit=cover lets the blue header and gold strip run under a notch instead of
+         sitting in a letterbox; the safe-area insets in global.css keep content clear of it. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#003f87" />
     <link rel="canonical" href={canonical} />

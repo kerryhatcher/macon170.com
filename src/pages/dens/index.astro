@@ -85,9 +85,13 @@ import { denSlug } from '../../lib/den-slug';
       transform 0.15s ease,
       color 0.15s ease;
   }
-  .den-link:hover,
   .den-link:focus-visible {
     transform: translate(-3px, -3px);
+  }
+  @media (hover: hover) {
+    .den-link:hover {
+      transform: translate(-3px, -3px);
+    }
   }
   .den-link strong {
     text-decoration: underline;
