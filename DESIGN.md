@@ -87,7 +87,7 @@ The system is energetic but never babyish, nostalgic but never archival, and han
 - Cub blue and gold at page scale, with warm paper and sparse local accents
 - Bold geometric headings paired with open, readable body copy
 - Original illustrated scenes, school-supply details, tabs, labels, and trail marks
-- Equal visual authority for Join and Calendar
+- One unmistakable Gold priority action, Join, with Calendar always one tap away beside it
 
 ## Colors
 
@@ -136,7 +136,7 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 
 Pages behave like chapters in one handbook. Wide screens use an intentionally asymmetric grid with room for tabs and annotations; phones collapse to one direct reading column without changing the order. A broad cover establishes orientation, then clean reading sheets, illustrated fields, tabbed indexes, and practical notices alternate to pace the page.
 
-The container tops out at 1160px with one-rem minimum side gutters. Major sections use a fluid 4.5–8rem vertical interval. Join and Calendar retain equal prominence in navigation, the Pack essentials strip, and the homepage opening. Dense planner views prioritize date, state, and logistics over decoration.
+The container tops out at 1160px with one-rem minimum side gutters. Major sections use a fluid 4.5–8rem vertical interval. Join is the single Gold priority action in navigation; Calendar sits with the other chapter tabs and keeps its own button in the Pack essentials strip. Both stay one tap away on every route, but only one of them is highlighted. Dense planner views prioritize date, state, and logistics over decoration.
 
 ## Elevation & Depth
 
@@ -172,7 +172,7 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 
 ### Navigation
 
--The Midnight Blue header uses high-contrast text and two Gold priority tabs for Join and Calendar. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and the same two audience handoffs.
+-The Midnight Blue header uses high-contrast text and exactly one Gold priority tab: Join. Every other destination, Calendar included, is a plain high-contrast chapter tab. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and both audience handoffs — New here and Calendar — so the returning family's most-used route is still one tap away without competing with Join for emphasis.
 
 ### Chapter Tab
 
@@ -188,7 +188,7 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 
 - **Do** make every decorative object carry navigation, state, sequence, or place.
 - **Do** use original school, trail, pine, river, and cherry-blossom illustration language.
-- **Do** keep Join and Calendar equally easy to find on every route.
+- **Do** keep Join and Calendar reachable in one tap from every route, while letting Join alone carry the Gold priority treatment.
 - **Do** let missing imagery and data appear as honest, art-directed replacement states.
 - **Do** preserve clear reading order, visible focus, reduced-motion behavior, and strong contrast.
 
