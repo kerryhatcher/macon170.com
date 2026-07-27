@@ -7,6 +7,7 @@ Note to Agents: It is hand crafted by humans, do not edit/change without explici
 ## Links
 
 Facebook: https://www.facebook.com/Pack170Macon
+Scoutbook: https://advancements.scouting.org/
 Health and Safety: https://www.scouting.org/health-and-safety/
 Incident Reporting: https://www.scouting.org/health-and-safety/incident-report/navigating-incidents-guide-for-units/
 Scouting’s Barriers to Abuse: https://www.scouting.org/health-and-safety/gss/gss01/
@@ -66,3 +67,4 @@ https://www.scouting.org/programs/cub-scouts/adventures/
 - Bear (3rd) - 
 - Webelos (4th) - 
 - Arrow of Light (5th) - 
+
