@@ -86,6 +86,35 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Archery Lion - `assets/offical/lion_Archery.webp`
     - Slingshot - `assets/offical/lion_Slingshot.webp`
 - Tiger (1st) - https://www.scouting.org/programs/cub-scouts/adventures/tiger/
+  - Required
+    - Bobcat Tiger - https://www.scouting.org/cub-scout-adventures/bobcat-tiger/ - `assets/offical/tiger_Tiger-Bobcat.webp`
+    - Tiger Bites - https://www.scouting.org/cub-scout-adventures/tiger-bites/ - `assets/offical/tiger_Tiger_Bites.webp`
+    - Tiger’s Roar - https://www.scouting.org/cub-scout-adventures/tigers-roar/ - `assets/offical/tiger_Tigers-Roar.webp`
+    - Tiger Circles - https://www.scouting.org/cub-scout-adventures/tiger-circles/ - `assets/offical/tiger_Tiger_Circles.webp`
+    - Team Tiger - https://www.scouting.org/cub-scout-adventures/team-tiger/ - `assets/offical/tiger_Team_Tiger.webp`
+    - Tigers in the Wild - https://www.scouting.org/cub-scout-adventures/tigers-in-the-wild/ - `assets/offical/tiger_Tigers_in_the_Wild.webp`
+  - Elective
+    - Champions for Nature Tiger - https://www.scouting.org/cub-scout-adventures/champions-for-nature-tiger/ - `assets/offical/tiger_Champions_of_Nature.webp`
+    - Curiosity, Intrigue, and Magical Mysteries - https://www.scouting.org/cub-scout-adventures/curiosity-intrigue-and-magical-mysteries/ - `assets/offical/tiger_Curiosity_Intrigue_and_Magical_Mysteries.webp`
+    - Designed by Tiger - https://www.scouting.org/cub-scout-adventures/designed-by-tiger/ - `assets/offical/tiger_Designed_by_Tiger.webp`
+    - Fish On - https://www.scouting.org/cub-scout-adventures/fish-on/ - `assets/offical/tiger_Fish_On.webp`
+    - Floats and Boats - https://www.scouting.org/cub-scout-adventures/floats-and-boats/ - `assets/offical/tiger_Floats_and_Boats.webp`
+    - Good Knights - https://www.scouting.org/cub-scout-adventures/good-knights/ - `assets/offical/tiger_Good_Knights.webp`
+    - Let’s Camp Tiger - https://www.scouting.org/cub-scout-adventures/lets-camp-tiger/ - `assets/offical/tiger_Lets_Camp.webp`
+    - Race Time Tiger - https://www.scouting.org/cub-scout-adventures/race-time-tiger/ - `assets/offical/tiger_Race_Time.webp`
+    - Rolling Tigers - https://www.scouting.org/cub-scout-adventures/rolling-tigers/ - `assets/offical/tiger_Rolling_Tigers.webp`
+    - Safe and Smart - https://www.scouting.org/cub-scout-adventures/safe-and-smart/ - `assets/offical/tiger_Tiger_Safe_and_Smart.webp`
+    - Sky is the Limit - https://www.scouting.org/cub-scout-adventures/sky-is-the-limit/ - `assets/offical/tiger_Sky_is_the_Limit.webp`
+    - Stories in Shapes - https://www.scouting.org/cub-scout-adventures/stories-in-shapes/ - `assets/offical/tiger_Stories_in_Shapes.webp`
+    - Summertime Fun Tiger - https://www.scouting.org/cub-scout-adventures/summertime-fun-tiger/ - `assets/offical/tiger_Summertime_Fun.webp`
+    - Tech All Around - https://www.scouting.org/cub-scout-adventures/tech-all-around/ - `assets/offical/tiger_Tech_All_Around.webp`
+    - Tiger Tag - https://www.scouting.org/cub-scout-adventures/tiger-tag/ - `assets/offical/tiger_Tigers_Tag.webp`
+    - Tiger-iffic! - https://www.scouting.org/cub-scout-adventures/tiger-iffic/ - `assets/offical/tiger_Tiger_rrrrific.webp`
+    - Tigers in the Water - https://www.scouting.org/cub-scout-adventures/tigers-in-the-water/ - `assets/offical/tiger_Tigers_in_the_Water.webp`
+  - Special Elective (approved events with qualified instructors only)
+    - Archery Tiger - `assets/offical/tiger_Archery.webp`
+    - Slingshot - `assets/offical/tiger_Slingshot.webp`
+    - BB Guns - `assets/offical/tiger_BB_Guns.webp`
 - Wolf (2nd) - https://www.scouting.org/programs/cub-scouts/adventures/wolf/
 - Bear (3rd) - https://www.scouting.org/programs/cub-scouts/adventures/bear/
 - Webelos (4th) - https://www.scouting.org/programs/cub-scouts/adventures/webelos/
