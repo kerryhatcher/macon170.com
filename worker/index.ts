@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
 import { EventRouteError, handleEventRoute } from './event-routes';
+import { LeadershipRouteError, handleLeadershipRoute } from './leadership-routes';
 import { renderCalendarAdmin } from './calendar-admin';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
@@ -82,6 +83,18 @@ export default {
       });
       if (eventResponse) return eventResponse;
 
+      const leadershipResponse = await handleLeadershipRoute({
+        request,
+        env,
+        url,
+        requireAccess,
+        enforceSameOrigin,
+        json,
+        publicHeaders,
+        adminHeaders,
+      });
+      if (leadershipResponse) return leadershipResponse;
+
       if (url.pathname === '/api/admin/submissions' && request.method === 'GET') {
         const identity = await requireAccess(request, env);
         return await listSubmissions(request, env, identity);
@@ -107,7 +120,7 @@ export default {
 
       return env.ASSETS.fetch(request);
     } catch (error) {
-      if (error instanceof HttpError || error instanceof EventRouteError) {
+      if (error instanceof HttpError || error instanceof EventRouteError || error instanceof LeadershipRouteError) {
         return json({ ok: false, error: error.message }, error.status, securityHeaders());
       }
       if (error instanceof Error && error.message.includes('UNIQUE constraint failed: calendar_events.slug')) {
