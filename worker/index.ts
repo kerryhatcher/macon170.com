@@ -119,9 +119,24 @@ export default {
         return renderAdminShell(identity.email ?? 'Authorized volunteer', env);
       }
 
-      const assetResponse = await env.ASSETS.fetch(request);
-      if (ROSTER_PATHS.has(url.pathname)) return injectRoster(assetResponse, env);
-      return assetResponse;
+      if (ROSTER_PATHS.has(url.pathname)) {
+        // Workers Assets answers If-None-Match/If-Modified-Since with a 304 *inside*
+        // this fetch, before injection ever runs — so a returning visitor's cached
+        // copy would keep showing a stale roster forever. Strip the conditional
+        // headers so Assets always returns a full 200 body, then mark the injected
+        // response uncacheable: its etag describes the un-injected static file, not
+        // what we're actually returning.
+        const headers = new Headers(request.headers);
+        headers.delete('if-none-match');
+        headers.delete('if-modified-since');
+        const assetResponse = await env.ASSETS.fetch(new Request(request, { headers }));
+        const injected = injectRoster(assetResponse, env);
+        const responseHeaders = new Headers(injected.headers);
+        responseHeaders.delete('etag');
+        responseHeaders.set('cache-control', 'no-store');
+        return new Response(injected.body, { status: injected.status, statusText: injected.statusText, headers: responseHeaders });
+      }
+      return env.ASSETS.fetch(request);
     } catch (error) {
       if (error instanceof HttpError || error instanceof EventRouteError || error instanceof LeadershipRouteError) {
         return json({ ok: false, error: error.message }, error.status, securityHeaders());

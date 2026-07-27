@@ -54,6 +54,7 @@ describe('rosterMarkup', () => {
       'vacant',
     );
     expect(html).toContain('Treasurer');
+    expect(html).toContain('This role is open');
   });
 });
 
