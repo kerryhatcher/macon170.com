@@ -448,45 +448,9 @@ p {
   position: relative;
   text-align: center;
 }
-.rank__mark {
-  width: 100%;
-  aspect-ratio: 1;
-  max-width: 118px;
-  margin: 0 auto 0.75rem;
-  display: grid;
-  place-items: center;
-  border: 4px solid var(--page);
-  outline: 3px solid currentColor;
-  border-radius: 48% 52% 46% 54%;
-  font-family: var(--font-display);
-  font-weight: 900;
-  color: var(--blue-deep);
-  background: var(--gold);
-  transform: rotate(-2deg);
-}
-.rank:nth-child(even) .rank__mark {
-  transform: rotate(2deg);
-}
-.rank--orange .rank__mark {
-  background: var(--orange);
-  color: white;
-}
-.rank--red .rank__mark {
-  background: #ce2027;
-  color: white;
-}
-.rank--blue .rank__mark {
-  background: var(--blue);
-  color: white;
-}
-.rank--green .rank__mark {
-  background: #378b5c;
-  color: white;
-}
-.rank--tan .rank__mark {
-  background: var(--tan);
-  color: white;
-}
+/* The letter-in-a-blob mark these rules styled is gone — RankEmblem.astro renders the official
+   badge of rank instead, and each badge carries its own colors. `rank--<color>` stays on the
+   wrapper as a styling hook. */
 .rank strong,
 .rank small {
   display: block;

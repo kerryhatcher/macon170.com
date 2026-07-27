@@ -43,8 +43,10 @@ export const pack = {
   },
   links: {
     join: 'https://beascout.scouting.org/list/?zip=31201&program%5B%5D=pack&unitID=234351',
-    facebook: null,
-    scoutbook: null,
+    facebook: 'https://www.facebook.com/Pack170Macon',
+    // Scouting America's advancement portal, not a Pack 170-specific URL. Parents sign in
+    // with their my.scouting account to see their own Scout.
+    scoutbook: 'https://advancements.scouting.org/',
     // ponytail: no `payment` link — there are no pack or council dues to collect.
     parentHandbook: null,
   },
@@ -73,13 +75,15 @@ export const pack = {
   // active. Per-den schedules are set after the first pack meeting, so they are not site data.
 } as const;
 
+// `emblem` is the official badge of rank in assets/offical/, rendered by RankEmblem.astro.
+// It replaced a `mark` letter ('L', 'T', …) that stood in before the official art was on hand.
 export const ranks = [
-  { name: 'Lion', grade: 'Kindergarten', color: 'sun', mark: 'L' },
-  { name: 'Tiger', grade: '1st grade', color: 'orange', mark: 'T' },
-  { name: 'Wolf', grade: '2nd grade', color: 'red', mark: 'W' },
-  { name: 'Bear', grade: '3rd grade', color: 'blue', mark: 'B' },
-  { name: 'Webelos', grade: '4th grade', color: 'green', mark: 'Web' },
-  { name: 'Arrow of Light', grade: '5th grade', color: 'tan', mark: 'AOL' },
+  { name: 'Lion', grade: 'Kindergarten', color: 'sun', emblem: 'Lion1.webp' },
+  { name: 'Tiger', grade: '1st grade', color: 'orange', emblem: 'Tiger1.webp' },
+  { name: 'Wolf', grade: '2nd grade', color: 'red', emblem: 'Wolf1.webp' },
+  { name: 'Bear', grade: '3rd grade', color: 'blue', emblem: 'Bear1.webp' },
+  { name: 'Webelos', grade: '4th grade', color: 'green', emblem: 'Webelos1.webp' },
+  { name: 'Arrow of Light', grade: '5th grade', color: 'tan', emblem: 'Arrows-of-Ligth-1.webp' },
 ] as const;
 
 export const annualProgram = [

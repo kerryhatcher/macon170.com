@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, ranks } from '../../data/pack';
 import { adventures } from '../../data/adventures';
 import { denSlug } from '../../lib/den-slug';
+import { officialImage } from '../../lib/official-image';
 
 export function getStaticPaths() {
   return ranks.map((rank, index) => ({
@@ -44,12 +46,18 @@ const program = adventures.find((entry) => entry.rank === rank.name);
             </p>
           </div>
           <ol class="adventure-list">
-            {program.required.map((name, index) => (
+            {program.required.map((adventure) => (
               <li>
-                <span class="adventure-list__num" aria-hidden="true">
-                  {index + 1}
-                </span>
-                <strong>{name}</strong>
+                <Image
+                  class="adventure-list__loop"
+                  src={officialImage(adventure.icon)}
+                  alt={`${adventure.name} adventure loop`}
+                  width={54}
+                  height={72}
+                  densities={[1, 2]}
+                  loading="lazy"
+                />
+                <strong>{adventure.name}</strong>
               </li>
             ))}
           </ol>
@@ -79,22 +87,31 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   }
 
   {
-    program && program.electiveExamples.length > 0 && (
+    program && program.electives.length > 0 && (
       <section class="section elective-section">
         <div class="container elective-grid">
           <div>
             <span class="chapter-tab">Electives</span>
             <h2>Then two the den picks.</h2>
             <p class="lead">
-              {program.electiveCount
-                ? `${rank.name} Scouts choose their last two adventures from ${program.electiveCount} electives.`
-                : `${rank.name} Scouts choose their last two adventures from a list of electives.`}{' '}
-              Dens usually pick together, based on what the Scouts are curious about and what the season allows.
+              {`${rank.name} Scouts choose their last two adventures from ${program.electives.length} electives.`} Dens usually pick
+              together, based on what the Scouts are curious about and what the season allows.
             </p>
             <p>A few of the {rank.name} electives:</p>
             <ul class="elective-chips">
-              {program.electiveExamples.map((name) => (
-                <li>{name}</li>
+              {program.electives.slice(0, 5).map((adventure) => (
+                <li>
+                  <Image
+                    class="elective-chips__loop"
+                    src={officialImage(adventure.icon)}
+                    alt=""
+                    width={30}
+                    height={40}
+                    densities={[1, 2]}
+                    loading="lazy"
+                  />
+                  {adventure.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -156,14 +173,8 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   {
     program?.verified && (
       <p class="container source-note">
-        Adventure names checked against <a href={program.source}>{new URL(program.source).hostname}</a>
-        {program.source2 && (
-          <>
-            {' and '}
-            <a href={program.source2}>{new URL(program.source2).hostname}</a>
-          </>
-        )}
-        , July 2026. Scouting America updated the Cub Scout adventure program on June 1, 2024.
+        Adventure names, links, and loop images taken from <a href={program.source}>{new URL(program.source).hostname}</a>, July 2026.
+        Scouting America updated the Cub Scout adventure program on June 1, 2024.
       </p>
     )
   }
@@ -186,18 +197,10 @@ const program = adventures.find((entry) => entry.rank === rank.name);
     border-left: 5px solid var(--blue);
     box-shadow: 3px 5px 0 var(--rule);
   }
-  .adventure-list__num {
+  .adventure-list__loop {
     flex: 0 0 auto;
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 3px solid var(--blue);
-    color: var(--blue-deep);
-    font-family: var(--font-display);
-    font-weight: 900;
+    width: 54px;
+    height: auto;
   }
   .adventure-list strong {
     font-family: var(--font-display);
@@ -223,6 +226,9 @@ const program = adventures.find((entry) => entry.rank === rank.name);
     gap: 0.6rem;
   }
   .elective-chips li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.4rem 0.8rem;
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -230,6 +236,10 @@ const program = adventures.find((entry) => entry.rank === rank.name);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 0.95rem;
+  }
+  .elective-chips__loop {
+    width: 30px;
+    height: auto;
   }
   .den-footer {
     display: grid;

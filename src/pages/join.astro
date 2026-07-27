@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
+import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
 const faq = [
   [
@@ -92,9 +93,7 @@ const faq = [
           ranks.map((rank) => (
             <div class:list={['rank', `rank--${rank.color}`]}>
               <>
-                <div class="rank__mark" aria-hidden="true">
-                  {rank.mark}
-                </div>
+                <RankEmblem emblem={rank.emblem} name={rank.name} />
                 <strong>{rank.name}</strong>
                 <small>{rank.grade}</small>
               </>
