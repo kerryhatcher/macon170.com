@@ -43,8 +43,10 @@ export const pack = {
   },
   links: {
     join: 'https://beascout.scouting.org/list/?zip=31201&program%5B%5D=pack&unitID=234351',
-    facebook: null,
-    scoutbook: null,
+    facebook: 'https://www.facebook.com/Pack170Macon',
+    // Scouting America's advancement portal, not a Pack 170-specific URL. Parents sign in
+    // with their my.scouting account to see their own Scout.
+    scoutbook: 'https://advancements.scouting.org/',
     // ponytail: no `payment` link — there are no pack or council dues to collect.
     parentHandbook: null,
   },

@@ -11,8 +11,8 @@ or an empty array. Fill those in and the placeholders disappear — do not patch
 | `src/data/pack.ts`           | Value       | Placeholders it causes                                                                                                                                                                                                                                                                                                                                |
 | ---------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ~~`meeting.room`~~           | **removed** | Resolved 2026-07-27 — the room varies per meeting, so it is not static pack data. Put it in the calendar event's `location_name` (e.g. "Highland Hills Baptist Church — Fellowship Hall").                                                                                                                                                            |
-| `links.facebook` (L46)       | `null`      | resources: "Pack link pending"                                                                                                                                                                                                                                                                                                                        |
-| `links.scoutbook` (L47)      | `null`      | resources: "Scoutbook destination has not been supplied yet"                                                                                                                                                                                                                                                                                          |
+| ~~`links.facebook`~~         | **set**     | Resolved 2026-07-27 — `https://www.facebook.com/Pack170Macon`, from `docs/Offical-info.md`. Note the field was referenced **nowhere** before this, so setting it alone rendered nothing; `/resources/` gained a "Day-to-day pack news" card to surface it.                                                                                            |
+| ~~`links.scoutbook`~~        | **set**     | Resolved 2026-07-27 — `https://advancements.scouting.org/`, from `docs/Offical-info.md`. This is Scouting America's advancement portal, not a Pack 170-specific URL; the card text says so and tells parents to sign in with my.scouting.                                                                                                             |
 | ~~`links.payment`~~          | **removed** | Resolved 2026-07-27 — there are no pack or council dues, so there is nothing to collect. The resources card now explains registration fees and links to `/join/`.                                                                                                                                                                                     |
 | `links.parentHandbook` (L49) | `null`      | resources: "Pack link pending"                                                                                                                                                                                                                                                                                                                        |
 | ~~`dues.*`~~                 | **removed** | Resolved 2026-07-27 — replaced by `cost`. There are no pack or council dues; the only cost is Scouting America's national registration fee ($87.55 youth / $66.95 adult, verified against a real my.scouting.org checkout) plus the Military Family Fee Waiver. `/join/` states all of it and the "Pack editor: cost details needed" callout is gone. |
@@ -40,9 +40,12 @@ a placeholder.
 
 ### `/resources/` — src/pages/resources.astro
 
-- `:32` "The Pack 170 Scoutbook destination has not been supplied yet."
-- `:71` "Pack link pending" — link-text fallback, currently hit by Facebook and parent handbook.
-- The payments card became a "Registration fees" card on 2026-07-27 and is no longer a placeholder.
+- Scoutbook and Facebook cards resolved 2026-07-27; the payments card became "Registration fees".
+- `:79` "Pack link pending" — the link-text fallback for a card whose `link` is null. **Currently
+  unreachable**: every card now has a link. An earlier version of this audit claimed Facebook and
+  parent handbook triggered it; that was wrong, since neither field was ever referenced by a page.
+- `links.parentHandbook` in `src/data/pack.ts` is still `null` **and still referenced nowhere**.
+  Setting it will not display anything without also adding a card.
 
 ### `/privacy/` — src/pages/privacy.astro
 
