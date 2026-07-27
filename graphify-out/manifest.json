@@ -1,7 +1,7 @@
 {
   ".claude/settings.json": {
-    "mtime": 1785180598.370038,
-    "ast_hash": "dcfb24665bd5cf03a5fc35762977dc8d",
+    "mtime": 1785181024.5528471,
+    "ast_hash": "7c77df1e6c5cefb8b8f03d2c0d68d6d1",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -245,8 +245,8 @@
     "semantic_hash": "8ec6d8b858053b977068bf40f3550b26"
   },
   "docs/Offical-info.md": {
-    "mtime": 1785180598.381795,
-    "ast_hash": "dbc74eeebf2c654ab2e77c372e9fc52a",
+    "mtime": 1785181291.6500072,
+    "ast_hash": "822743718b9a82c2939f200e3aa2db5f",
     "semantic_hash": ""
   },
   "docs/calendar.md": {
@@ -315,8 +315,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1785180874.602412,
-    "ast_hash": "efc6b2dc387dd5d6fdcb57f74e87aea3",
+    "mtime": 1785181413.7647433,
+    "ast_hash": "0da4e090339f06c0289a537e7770b5ef",
     "semantic_hash": ""
   },
   "src/data/leadership.md": {
@@ -392,6 +392,21 @@
   "assets/offical/Wolf1.webp": {
     "mtime": 1785180598.380058,
     "ast_hash": "78f38813a5dc90172b92251d35d69358",
+    "semantic_hash": ""
+  },
+  ".claude/hooks/no-branch-switch.py": {
+    "mtime": 1785181014.3531597,
+    "ast_hash": "5ba1dad0291a18c63705cdd4d8a9aa9b",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md": {
+    "mtime": 1785181061.4607759,
+    "ast_hash": "a10d1f10bc62a8519603cba40050db88",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md": {
+    "mtime": 1785181723.7147253,
+    "ast_hash": "85b973fa74abdd9f0b2eb98258f42e49",
     "semantic_hash": ""
   }
 }

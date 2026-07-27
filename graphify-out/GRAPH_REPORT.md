@@ -1,16 +1,16 @@
 # Graph Report - macon170.com  (2026-07-27)
 
 ## Corpus Check
-- 66 files · ~120,594 words
+- 69 files · ~128,419 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2343 nodes · 2389 edges · 312 communities (52 shown, 260 thin omitted)
+- 2381 nodes · 2428 edges · 315 communities (56 shown, 259 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `268166a4`
+- Built from commit: `1a86ad72`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,7 +60,10 @@
 - [[_COMMUNITY_Readablestream|Readablestream]]
 - [[_COMMUNITY_Socket|Socket]]
 - [[_COMMUNITY_Writablestreamdefaultwriter|Writablestreamdefaultwriter]]
+- [[_COMMUNITY_check|check]]
+- [[_COMMUNITY_Leadership roster admin — design|Leadership roster admin — design]]
 - [[_COMMUNITY_Macon Place & Culture|Macon Place & Culture]]
+- [[_COMMUNITY_File Structure|File Structure]]
 - [[_COMMUNITY_Aisearchinstance|Aisearchinstance]]
 - [[_COMMUNITY_Durableobjectnamespace|Durableobjectnamespace]]
 - [[_COMMUNITY_R2Bucket|R2Bucket]]
@@ -364,7 +367,7 @@
 - **Pack 170 header visual identity: badge, wordmark, paper and trail motifs sharing one scouting palette** — assets_header_badge_medallion, assets_header_wordmark, assets_header_notebook_paper_motif, assets_header_trail_motif, assets_header_scouting_palette [INFERRED 0.85]
 - **Pack 170 Visual Identity System (mark, palette, type, trademark-safe artwork)** — assets_logo_pack170_logo, assets_logo_trail_marker_compass_badge, assets_logo_brand_palette, assets_logo_montserrat_type_stack, assets_logo_original_artwork_no_official_emblems [INFERRED 0.85]
 
-## Communities (312 total, 260 thin omitted)
+## Communities (315 total, 259 thin omitted)
 
 ### Community 0 - "Generated Workers Type Surface"
 Cohesion: 0.00
@@ -446,9 +449,21 @@ Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError
 Cohesion: 0.22
 Nodes (3): ByteLengthQueuingStrategy, CountQueuingStrategy, QueuingStrategy
 
+### Community 46 - "check"
+Cohesion: 0.48
+Nodes (6): check(), git_subcommand(), main(), Split a shell segment into (git subcommand, its args), or None if it is not a gi, Return a denial reason for a banned command, or None if it is allowed., selftest()
+
+### Community 47 - "Leadership roster admin — design"
+Cohesion: 0.13
+Nodes (14): 1. Schema — `migrations/0003_create_leadership.sql`, 2. API — `worker/leadership-routes.ts`, 3. Admin page — `worker/leadership-admin.ts`, 4. Public render — `HTMLRewriter` injection in the worker, Architecture, Error handling, Facts still unconfirmed — and why they no longer block, Goal (+6 more)
+
 ### Community 48 - "Macon Place & Culture"
 Cohesion: 0.10
 Nodes (20): Additional Outdoor Resources, Basic Facts About Macon, Central Georgia Council, BSA, Cherry Blossom Capital of the World, Color & Mood Palette Suggestions, Culture, Heritage & Family Attractions, Downtown Macon & Historic Architecture, Family Attractions (+12 more)
+
+### Community 49 - "File Structure"
+Cohesion: 0.14
+Nodes (13): Deviation from the spec, already decided, File Structure, Global Constraints, Leadership Roster Admin Implementation Plan, Self-review notes, Task 1: Schema and seed, Task 2: Public read endpoint, Task 3: Admin CRUD endpoints (+5 more)
 
 ### Community 56 - "Placeholder Audit"
 Cohesion: 0.15
@@ -507,8 +522,8 @@ Cohesion: 0.25
 Nodes (7): Authentication and base URLs, Create a draft, Field rules, Pack 170 Calendar API, Public read-only endpoints, Read events first, Update, publish, archive, or restore
 
 ### Community 204 - "800 Css"
-Cohesion: 0.18
-Nodes (10): Adventures, Chartered Organization, Council, Cub Scout Pack, Dens, Links, Lion (Kindergarten), Meeting Info (+2 more)
+Cohesion: 0.17
+Nodes (11): Adventures, Chartered Organization, Contacts, Council, Cub Scout Pack, Dens, Links, Lion (Kindergarten) (+3 more)
 
 ### Community 205 - "900 Css"
 Cohesion: 0.29
@@ -538,28 +553,32 @@ Nodes (5): 1.1 The 1916 Congressional Charter, 1.2 Why This Matters More Than Or
 Cohesion: 0.50
 Nodes (4): 7. Recommended Policy for Pack 170, Ask, If It Matters, Do, Don't
 
+### Community 232 - "CLAUDE.md"
+Cohesion: 0.50
+Nodes (3): Commit often, in Conventional Commits format, graphify, NEVER switch branches in this directory
+
 ## Ambiguous Edges - Review These
 - `Original Artwork Only, No Official Scouting Emblems` → `Brand Palette (navy #003F87/#002B5C, gold #FCD116, cream #F7F1E3, pink accent #E8A3C6, slate #59636B)`  [AMBIGUOUS]
   assets/logo.svg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **1218 isolated node(s):** `NEVER switch branches in this directory`, `graphify`, `plugins`, `singleQuote`, `printWidth` (+1213 more)
+- **1243 isolated node(s):** `Global Constraints`, `Deviation from the spec, already decided`, `Test harness facts you need`, `Task 1: Schema and seed`, `Task 2: Public read endpoint` (+1238 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **260 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **259 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Original Artwork Only, No Official Scouting Emblems` and `Brand Palette (navy #003F87/#002B5C, gold #FCD116, cream #F7F1E3, pink accent #E8A3C6, slate #59636B)`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `SubtleCrypto` connect `Subtlecrypto` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `Flagship` connect `Flagship` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `URL` connect `Url` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `NEVER switch branches in this directory`, `graphify`, `plugins` to the rest of the system?**
-  _1257 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Event` connect `Event` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `SqlStorageCursor` connect `Sqlstoragecursor` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `Container` connect `Container` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **What connects `Global Constraints`, `Deviation from the spec, already decided`, `Test harness facts you need` to the rest of the system?**
+  _1284 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Generated Workers Type Surface` be split into smaller, more focused modules?**
   _Cohesion score 0.0023952095808383233 - nodes in this community are weakly interconnected._
 - **Should `Serviceworkerglobalscope` be split into smaller, more focused modules?**

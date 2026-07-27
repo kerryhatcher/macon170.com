@@ -253,14 +253,274 @@
   },
   "nodes": [
     {
+      "label": "2026-07-27-leadership-roster-admin.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin",
+      "community": 49,
+      "norm_label": "2026-07-27-leadership-roster-admin.md"
+    },
+    {
+      "label": "Leadership Roster Admin Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "community": 49,
+      "norm_label": "leadership roster admin implementation plan"
+    },
+    {
+      "label": "Global Constraints",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_global_constraints",
+      "community": 49,
+      "norm_label": "global constraints"
+    },
+    {
+      "label": "Deviation from the spec, already decided",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_deviation_from_the_spec_already_decided",
+      "community": 49,
+      "norm_label": "deviation from the spec, already decided"
+    },
+    {
+      "label": "Test harness facts you need",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_test_harness_facts_you_need",
+      "community": 49,
+      "norm_label": "test harness facts you need"
+    },
+    {
+      "label": "File Structure",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "community": 49,
+      "norm_label": "file structure"
+    },
+    {
+      "label": "Task 1: Schema and seed",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_1_schema_and_seed",
+      "community": 49,
+      "norm_label": "task 1: schema and seed"
+    },
+    {
+      "label": "Task 2: Public read endpoint",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L192",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_2_public_read_endpoint",
+      "community": 49,
+      "norm_label": "task 2: public read endpoint"
+    },
+    {
+      "label": "Task 3: Admin CRUD endpoints",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L349",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_3_admin_crud_endpoints",
+      "community": 49,
+      "norm_label": "task 3: admin crud endpoints"
+    },
+    {
+      "label": "Task 4: Server-side injection with HTMLRewriter",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L587",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_4_server_side_injection_with_htmlrewriter",
+      "community": 49,
+      "norm_label": "task 4: server-side injection with htmlrewriter"
+    },
+    {
+      "label": "Task 5: Admin editor page",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L817",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_5_admin_editor_page",
+      "community": 49,
+      "norm_label": "task 5: admin editor page"
+    },
+    {
+      "label": "Task 6: Switch the public page over and delete the Markdown",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L952",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_6_switch_the_public_page_over_and_delete_the_markdown",
+      "community": 49,
+      "norm_label": "task 6: switch the public page over and delete the markdown"
+    },
+    {
+      "label": "Task 7: Full verification",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1054",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_7_full_verification",
+      "community": 49,
+      "norm_label": "task 7: full verification"
+    },
+    {
+      "label": "Self-review notes",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1104",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_self_review_notes",
+      "community": 49,
+      "norm_label": "self-review notes"
+    },
+    {
+      "label": "Offical-info.md",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "offical-info.md",
+      "id": "docs_offical_info"
+    },
+    {
+      "label": "SA 170 Official Info",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "sa 170 official info",
+      "id": "docs_offical_info_sa_170_official_info"
+    },
+    {
+      "label": "Links",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "links",
+      "id": "docs_offical_info_links"
+    },
+    {
+      "label": "Contacts",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "contacts",
+      "id": "docs_offical_info_contacts"
+    },
+    {
+      "label": "Council",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "council",
+      "id": "docs_offical_info_council"
+    },
+    {
+      "label": "Chartered Organization",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "chartered organization",
+      "id": "docs_offical_info_chartered_organization"
+    },
+    {
+      "label": "Sister Units",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "sister units",
+      "id": "docs_offical_info_sister_units"
+    },
+    {
+      "label": "Cub Scout Pack",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "cub scout pack",
+      "id": "docs_offical_info_cub_scout_pack"
+    },
+    {
+      "label": "Meeting Info",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "meeting info",
+      "id": "docs_offical_info_meeting_info"
+    },
+    {
+      "label": "Dens",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L48",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "dens",
+      "id": "docs_offical_info_dens"
+    },
+    {
+      "label": "Lion (Kindergarten)",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "lion (kindergarten)",
+      "id": "docs_offical_info_lion_kindergarten"
+    },
+    {
+      "label": "Adventures",
+      "file_type": "document",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "community": 204,
+      "norm_label": "adventures",
+      "id": "docs_offical_info_adventures"
+    },
+    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "claude",
       "community": 232,
-      "norm_label": "claude.md"
+      "norm_label": "claude.md",
+      "id": "claude"
     },
     {
       "label": "NEVER switch branches in this directory",
@@ -268,19 +528,249 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "claude_never_switch_branches_in_this_directory",
       "community": 232,
-      "norm_label": "never switch branches in this directory"
+      "norm_label": "never switch branches in this directory",
+      "id": "claude_never_switch_branches_in_this_directory"
+    },
+    {
+      "label": "Commit often, in Conventional Commits format",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 232,
+      "norm_label": "commit often, in conventional commits format",
+      "id": "claude_commit_often_in_conventional_commits_format"
     },
     {
       "label": "graphify",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L30",
+      "source_location": "L81",
       "_origin": "ast",
-      "id": "claude_graphify",
       "community": 232,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "claude_graphify"
+    },
+    {
+      "label": "2026-07-27-leadership-roster-admin-design.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "2026-07-27-leadership-roster-admin-design.md",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design"
+    },
+    {
+      "label": "Leadership roster admin \u2014 design",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "leadership roster admin \u2014 design",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design"
+    },
+    {
+      "label": "Problem",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "problem",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_problem"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "goal",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_goal"
+    },
+    {
+      "label": "Non-goals",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "non-goals",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_non_goals"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "architecture",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture"
+    },
+    {
+      "label": "1. Schema \u2014 `migrations/0003_create_leadership.sql`",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "1. schema \u2014 `migrations/0003_create_leadership.sql`",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_1_schema_migrations_0003_create_leadership_sql"
+    },
+    {
+      "label": "2. API \u2014 `worker/leadership-routes.ts`",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L65",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "2. api \u2014 `worker/leadership-routes.ts`",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_2_api_worker_leadership_routes_ts"
+    },
+    {
+      "label": "3. Admin page \u2014 `worker/leadership-admin.ts`",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L87",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "3. admin page \u2014 `worker/leadership-admin.ts`",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_3_admin_page_worker_leadership_admin_ts"
+    },
+    {
+      "label": "4. Public render \u2014 `HTMLRewriter` injection in the worker",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L101",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "4. public render \u2014 `htmlrewriter` injection in the worker",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_4_public_render_htmlrewriter_injection_in_the_worker"
+    },
+    {
+      "label": "Error handling",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L144",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "error handling",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_error_handling"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L153",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "testing",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_testing"
+    },
+    {
+      "label": "Migration and rollout",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L164",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "migration and rollout",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_migration_and_rollout"
+    },
+    {
+      "label": "Facts still unconfirmed \u2014 and why they no longer block",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L171",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "facts still unconfirmed \u2014 and why they no longer block",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_facts_still_unconfirmed_and_why_they_no_longer_block"
+    },
+    {
+      "label": "Styling note",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L182",
+      "_origin": "ast",
+      "community": 47,
+      "norm_label": "styling note",
+      "id": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_styling_note"
+    },
+    {
+      "label": "no-branch-switch.py",
+      "file_type": "code",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "no-branch-switch.py",
+      "id": "claude_hooks_no_branch_switch"
+    },
+    {
+      "label": "git_subcommand()",
+      "file_type": "code",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "git_subcommand()",
+      "id": "claude_hooks_no_branch_switch_git_subcommand"
+    },
+    {
+      "label": "check()",
+      "file_type": "code",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L55",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "check()",
+      "id": "claude_hooks_no_branch_switch_check"
+    },
+    {
+      "label": "selftest()",
+      "file_type": "code",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "selftest()",
+      "id": "claude_hooks_no_branch_switch_selftest"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L121",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "main()",
+      "id": "claude_hooks_no_branch_switch_main"
+    },
+    {
+      "label": "Split a shell segment into (git subcommand, its args), or None if it is not a gi",
+      "file_type": "rationale",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L28",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "split a shell segment into (git subcommand, its args), or none if it is not a gi",
+      "id": "claude_hooks_no_branch_switch_rationale_28"
+    },
+    {
+      "label": "Return a denial reason for a banned command, or None if it is allowed.",
+      "file_type": "rationale",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 46,
+      "norm_label": "return a denial reason for a banned command, or none if it is allowed.",
+      "id": "claude_hooks_no_branch_switch_rationale_56"
     },
     {
       "label": ".prettierrc.json",
@@ -20691,116 +21181,6 @@
       "id": "docs_handoff_suggested_resume_order"
     },
     {
-      "label": "Offical-info.md",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "offical-info.md",
-      "id": "docs_offical_info"
-    },
-    {
-      "label": "SA 170 Official Info",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "sa 170 official info",
-      "id": "docs_offical_info_sa_170_official_info"
-    },
-    {
-      "label": "Links",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "links",
-      "id": "docs_offical_info_links"
-    },
-    {
-      "label": "Council",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "council",
-      "id": "docs_offical_info_council"
-    },
-    {
-      "label": "Chartered Organization",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "chartered organization",
-      "id": "docs_offical_info_chartered_organization"
-    },
-    {
-      "label": "Sister Units",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "sister units",
-      "id": "docs_offical_info_sister_units"
-    },
-    {
-      "label": "Cub Scout Pack",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "cub scout pack",
-      "id": "docs_offical_info_cub_scout_pack"
-    },
-    {
-      "label": "Meeting Info",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "meeting info",
-      "id": "docs_offical_info_meeting_info"
-    },
-    {
-      "label": "Dens",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L41",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "dens",
-      "id": "docs_offical_info_dens"
-    },
-    {
-      "label": "Lion (Kindergarten)",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L45",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "lion (kindergarten)",
-      "id": "docs_offical_info_lion_kindergarten"
-    },
-    {
-      "label": "Adventures",
-      "file_type": "document",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L47",
-      "_origin": "ast",
-      "community": 204,
-      "norm_label": "adventures",
-      "id": "docs_offical_info_adventures"
-    },
-    {
       "label": "calendar.md",
       "file_type": "document",
       "source_file": "docs/calendar.md",
@@ -24106,12 +24486,262 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_deviation_from_the_spec_already_decided",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_global_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1104",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_self_review_notes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
       "source_location": "L30",
       "weight": 1.0,
-      "source": "claude",
-      "target": "claude_graphify",
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_leadership_roster_admin_implementation_plan",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_test_harness_facts_you_need",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_1_schema_and_seed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L192",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_2_public_read_endpoint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L349",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_3_admin_crud_endpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L587",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_4_server_side_injection_with_htmlrewriter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L817",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_5_admin_editor_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L952",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_6_switch_the_public_page_over_and_delete_the_markdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md",
+      "source_location": "L1054",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_file_structure",
+      "target": "docs_superpowers_plans_2026_07_27_leadership_roster_admin_task_7_full_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info",
+      "target": "docs_offical_info_sa_170_official_info"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_adventures"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_chartered_organization"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_contacts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_council"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_cub_scout_pack"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_links"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_sa_170_official_info",
+      "target": "docs_offical_info_sister_units"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_cub_scout_pack",
+      "target": "docs_offical_info_dens"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_cub_scout_pack",
+      "target": "docs_offical_info_meeting_info"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/Offical-info.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_offical_info_dens",
+      "target": "docs_offical_info_lion_kindergarten"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude",
+      "target": "claude_commit_often_in_conventional_commits_format"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude",
+      "target": "claude_graphify"
     },
     {
       "relation": "contains",
@@ -24119,9 +24749,253 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_never_switch_branches_in_this_directory",
-      "confidence_score": 1.0
+      "target": "claude_never_switch_branches_in_this_directory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_error_handling"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L171",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_facts_still_unconfirmed_and_why_they_no_longer_block"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_goal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L164",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_migration_and_rollout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_non_goals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_problem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L182",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_styling_note"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L153",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_leadership_roster_admin_design",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_testing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_1_schema_migrations_0003_create_leadership_sql"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_2_api_worker_leadership_routes_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_3_admin_page_worker_leadership_admin_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_architecture",
+      "target": "docs_superpowers_specs_2026_07_27_leadership_roster_admin_design_4_public_render_htmlrewriter_injection_in_the_worker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch",
+      "target": "claude_hooks_no_branch_switch_check"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch",
+      "target": "claude_hooks_no_branch_switch_git_subcommand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch",
+      "target": "claude_hooks_no_branch_switch_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch",
+      "target": "claude_hooks_no_branch_switch_selftest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_check",
+      "target": "claude_hooks_no_branch_switch_git_subcommand"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_rationale_28",
+      "target": "claude_hooks_no_branch_switch_git_subcommand"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_main",
+      "target": "claude_hooks_no_branch_switch_check"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_rationale_56",
+      "target": "claude_hooks_no_branch_switch_check"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_selftest",
+      "target": "claude_hooks_no_branch_switch_check"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/hooks/no-branch-switch.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_hooks_no_branch_switch_main",
+      "target": "claude_hooks_no_branch_switch_selftest"
     },
     {
       "relation": "contains",
@@ -46284,106 +47158,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info",
-      "target": "docs_offical_info_sa_170_official_info"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_adventures"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_chartered_organization"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_council"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_cub_scout_pack"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_links"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_sa_170_official_info",
-      "target": "docs_offical_info_sister_units"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L41",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_cub_scout_pack",
-      "target": "docs_offical_info_dens"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_cub_scout_pack",
-      "target": "docs_offical_info_meeting_info"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/Offical-info.md",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_offical_info_dens",
-      "target": "docs_offical_info_lion_kindergarten"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "docs/placeholders.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -48360,5 +49134,5 @@
       "source_file": "assets/logo.svg"
     }
   ],
-  "built_at_commit": "268166a443279c780174104c0f6a5aece8bfda1e"
+  "built_at_commit": "1a86ad722a2d74a7a9d3a2fa55995fde45cbaa86"
 }
