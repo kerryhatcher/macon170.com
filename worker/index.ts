@@ -63,7 +63,10 @@ export default {
 
       const adminHostname = new URL(env.ADMIN_ORIGIN).hostname;
       const localAdmin = String(env.ENVIRONMENT) === 'development' && (url.hostname === 'localhost' || url.hostname === '127.0.0.1');
-      if (url.pathname.startsWith('/api/admin/') && url.hostname !== adminHostname && !localAdmin) {
+      const isAdminApiPath = url.pathname.startsWith('/api/admin/');
+      const isApiHostname = url.hostname === adminHostname || url.hostname === 'api.macon170.com';
+      const hasApiAuth = (request.headers.get('authorization') ?? '').toLowerCase().startsWith('bearer ');
+      if (isAdminApiPath && !isApiHostname && !localAdmin && !hasApiAuth) {
         throw new HttpError(404, 'Not found.');
       }
 

@@ -107,7 +107,8 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
 
   if (!url.pathname.startsWith('/api/admin/events')) return null;
 
-  const apiKey = request.headers.get('x-api-key');
+  const authHeader = (request.headers.get('authorization') ?? '').trim();
+  const apiKey = authHeader.toLowerCase().startsWith('bearer ') ? authHeader.slice(7).trim() : null;
   const isApiKeyAuth = typeof apiKey === 'string' && apiKey.length > 0 && apiKey === env.CALENDAR_API_KEY;
   let actor: string;
   if (isApiKeyAuth) {
