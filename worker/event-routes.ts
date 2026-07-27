@@ -115,7 +115,6 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
     requireJsonRequest(request);
     const input = parseEventInput(await readJson(request), 'create');
     const id = crypto.randomUUID();
-    const now = new Date().toISOString();
     await env.DB.batch([
       env.DB.prepare(`
         INSERT INTO calendar_events (
