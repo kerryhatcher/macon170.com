@@ -3,9 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
 import { pack } from '../data/pack';
-// Leadership content lives entirely in Markdown — headings, sections, and prose included — so pack
-// editors control it without touching code. Do not mirror any of it back into this file.
-import { Content as Roster } from '../data/leadership.md';
 ---
 
 <BaseLayout
@@ -63,7 +60,19 @@ import { Content as Roster } from '../data/leadership.md';
   <section class="section roster-section">
     <div class="container">
       <span class="chapter-tab">Pack leadership</span>
-      <div class="roster"><Roster /></div>
+      <h2>Who leads Pack 170</h2>
+      <p class="lead">Pack 170 is run by registered adult volunteers who are Youth Protection trained and background-checked.</p>
+      {
+        /* Filled in server-side by the worker from D1 (worker/roster-inject.ts). The text below is
+        the fallback a visitor sees only if the database is unreachable, or in `astro dev`, which
+        bypasses the worker — use `bun run dev:worker` to see the real roster locally. */
+      }
+      <div class="roster" data-roster="filled">
+        <p>The current roster loads from the pack database. Ask a pack adult if it does not appear.</p>
+      </div>
+      <p class="roster-note">
+        Reaching a leader goes through <a href="/contact/">the contact form</a>, the pack does not publish adult email addresses.
+      </p>
     </div>
   </section>
   <section class="section council-section">
@@ -153,6 +162,17 @@ import { Content as Roster } from '../data/leadership.md';
   .roster :global(strong) {
     display: block;
     font-family: var(--font-display);
+  }
+  .roster :global(li p) {
+    margin: 0.4rem 0 0;
+    font-weight: 400;
+  }
+  .roster :global(em) {
+    color: var(--muted, #59636b);
+  }
+  .roster-note {
+    margin-top: 2rem;
+    max-width: 65ch;
   }
   .council-section {
     background: var(--blue-deep);

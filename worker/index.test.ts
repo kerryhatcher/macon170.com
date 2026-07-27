@@ -163,3 +163,20 @@ describe('volunteer desk', () => {
     expect(body.submissions.length).toBeGreaterThan(0);
   });
 });
+
+describe('public roster', () => {
+  // Proves the real /about wiring end to end: the built page carries the [data-roster]
+  // placeholder from src/pages/about.astro, and ROSTER_PATHS + injectRoster (worker/index.ts)
+  // actually fill it from D1. A typo in ROSTER_PATHS would leave the fallback text in place
+  // and fail this test without touching any other suite.
+  it('fills the About page roster with real seeded leadership data', async () => {
+    const response = await exports.default.fetch('http://localhost/about');
+    expect(response.status).toBe(200);
+    const html = await response.text();
+    expect(html).toContain('Kerry Hatcher');
+    expect(html).toContain('Cubmaster');
+    // The filled view excludes vacant roles, so a typo in ROSTER_PATHS (which would leave the
+    // authored fallback text in place instead of injecting real names) is the failure this guards.
+    expect(html).not.toContain('The current roster loads from the pack database');
+  });
+});

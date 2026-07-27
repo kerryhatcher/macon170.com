@@ -71,7 +71,7 @@ export const pack = {
   contact: {
     formEndpoint: '/api/contact',
   },
-  // ponytail: roster lives in src/data/leadership.md so pack editors can edit prose, not TypeScript.
+  // ponytail: roster lives in D1 (`leadership_roles`), edited at admin.macon170.com/leadership.
   // ponytail: no `dens` array — `ranks` below already encodes one den per grade, and all six are
   // active. Per-den schedules are set after the first pack meeting, so they are not site data.
 } as const;
