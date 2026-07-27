@@ -1,6 +1,7 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
 import { EventRouteError, handleEventRoute } from './event-routes';
 import { LeadershipRouteError, handleLeadershipRoute } from './leadership-routes';
+import { ROSTER_PATHS, injectRoster } from './roster-inject';
 import { renderCalendarAdmin } from './calendar-admin';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
@@ -118,7 +119,9 @@ export default {
         return renderAdminShell(identity.email ?? 'Authorized volunteer', env);
       }
 
-      return env.ASSETS.fetch(request);
+      const assetResponse = await env.ASSETS.fetch(request);
+      if (ROSTER_PATHS.has(url.pathname)) return injectRoster(assetResponse, env);
+      return assetResponse;
     } catch (error) {
       if (error instanceof HttpError || error instanceof EventRouteError || error instanceof LeadershipRouteError) {
         return json({ ok: false, error: error.message }, error.status, securityHeaders());
