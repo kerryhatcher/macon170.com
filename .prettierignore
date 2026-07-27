@@ -1,0 +1,9 @@
+dist
+.astro
+node_modules
+.wrangler
+graphify-out
+worker-configuration.d.ts
+package-lock.json
+test-results
+playwright-report

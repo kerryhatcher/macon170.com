@@ -10,10 +10,16 @@
     "build": "astro check && astro build",
     "check": "astro check && tsc --noEmit --project tsconfig.worker.json && wrangler types --check worker-configuration.d.ts",
     "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "astro preview",
     "cf:types": "wrangler types worker-configuration.d.ts",
     "db:migrate:local": "wrangler d1 migrations apply macon170-submissions --local",
     "db:migrate:remote": "wrangler d1 migrations apply macon170-submissions --remote",
+    "e2e:server": "npm run build && wrangler d1 migrations apply macon170-submissions-e2e --local --config wrangler.e2e.jsonc && wrangler dev --config wrangler.e2e.jsonc --env-file .dev.vars.e2e --port 8790",
     "deploy:dry": "npm run build && wrangler deploy --dry-run",
     "deploy": "npm run build && wrangler deploy"
   },
@@ -28,7 +34,15 @@
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.18.8",
     "@cloudflare/workers-types": "^5.20260727.1",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
+    "acorn": "^8.17.0",
+    "eslint": "^10.8.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.65.0",
     "vitest": "^4.1.10",
     "wrangler": "^4.114.0"
   }
