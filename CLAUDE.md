@@ -1,3 +1,32 @@
+## NEVER switch branches in this directory
+
+**Multiple agents and developers work in this working directory at the same time.** Any branch
+switch here changes files out from under them and destroys uncommitted work. This is a hard rule,
+not a preference.
+
+**Never run any of these in this directory:**
+
+- `git checkout <branch>` / `git checkout -b <branch>`
+- `git switch <branch>` / `git switch -c <branch>`
+- `git checkout <ref> -- <path>` (silently overwrites another session's file)
+- `git reset --hard`, `git stash`, `git clean -fd`, `git rebase`, `git merge` of a divergent branch
+
+**If work needs its own branch, use a separate worktree instead.** A worktree is a second checkout
+of the same repo in its own directory, so this directory never moves:
+
+```bash
+git worktree add ../macon170-<short-topic> -b <branch-name>
+cd ../macon170-<short-topic>        # do all the work here
+# when finished and merged:
+git worktree remove ../macon170-<short-topic>
+```
+
+Claude Code's `EnterWorktree` tool does this for you — prefer it when available.
+
+**Committing on the current branch is fine** — commit early and often, and always stage explicit
+paths (`git add <path>`, never `git add -A` / `git add .`) so you never commit another session's
+in-progress files. If a task seems to require a branch switch here, stop and ask the human instead.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
