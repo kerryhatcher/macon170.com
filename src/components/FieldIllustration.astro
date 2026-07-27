@@ -1,0 +1,12 @@
+---
+type Props = { label?: string };
+const { label = 'A Macon adventure, waiting close to home' } = Astro.props;
+---
+<div class="field-illustration" role="img" aria-label="Illustrated Georgia hills, river, pines, and morning sun">
+  <span class="field-illustration__sun"></span>
+  <span class="field-illustration__hill field-illustration__hill--back"></span>
+  <span class="field-illustration__hill"></span>
+  <span class="field-illustration__river"></span>
+  <span class="field-illustration__pines" aria-hidden="true">▲ ▲ ▲</span>
+  <span class="field-illustration__label">{label}</span>
+</div>

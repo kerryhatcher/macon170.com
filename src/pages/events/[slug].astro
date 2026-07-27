@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterHero from '../../components/ChapterHero.astro';
+import { events, type PackEvent } from '../../data/pack';
+export function getStaticPaths() { return events.map(event => ({ params: { slug: event.slug }, props: { event } })); }
+const { event } = Astro.props as { event: PackEvent };
+---
+<BaseLayout title={event.title} description={event.summary}>
+  <ChapterHero chapter={`${event.category} event`} title={event.title} intro={event.summary} noteTitle={event.dateLabel} noteBody={`${event.time ?? 'Time being confirmed'} · ${event.location ?? 'Location being confirmed'}`} />
+  <section class="section"><div class="container event-grid"><article class="paper-sheet event-sheet"><h2>Family field notes</h2><p class="lead">{event.details}</p><dl><div><dt>Who</dt><dd>{event.audience}</dd></div><div><dt>Status</dt><dd>{event.status}</dd></div><div><dt>Registration</dt><dd>{event.registrationUrl ? <a href={event.registrationUrl}>Open registration</a> : 'No registration link supplied'}</dd></div></dl></article><aside class="notice"><span class="notice__pin">?</span><div><h3>Need a detail?</h3><p>Contact pack adults before relying on incomplete logistics.</p><a href="/contact/">Ask the pack</a></div></aside></div></section>
+</BaseLayout>
+<style>.event-grid{display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:start}.event-sheet{padding:clamp(2rem,5vw,4rem)}dl div{display:grid;grid-template-columns:130px 1fr;border-top:1px solid var(--rule);padding:1rem 0}dt{font-family:var(--font-display);font-weight:800;color:var(--blue)}dd{margin:0}@media(max-width:760px){.event-grid{grid-template-columns:1fr}}</style>

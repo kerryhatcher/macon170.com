@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import PackStrip from '../components/PackStrip.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+type Props = { title: string; description: string; showStrip?: boolean };
+const { title, description, showStrip = true } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#003f87" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title} | Cub Scout Pack 170</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    {showStrip && <PackStrip />}
+    <main id="main"><slot /></main>
+    <SiteFooter />
+  </body>
+</html>
