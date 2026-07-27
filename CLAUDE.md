@@ -31,6 +31,53 @@ This is enforced, not just documented: the `PreToolUse` hook `.claude/hooks/no-b
 (wired up in `.claude/settings.json`) denies these commands before they run. Verify it with
 `python3 .claude/hooks/no-branch-switch.py --selftest`. Do not weaken or bypass it.
 
+## Commit often, in Conventional Commits format
+
+**Commit often.** Do not batch a session's work into one large commit at the end. Commit each
+coherent unit as soon as it works — a page added, a bug fixed, a doc updated. Small commits are
+how concurrent work in this shared directory stays reviewable and recoverable, and a long-running
+session that never commits is one crash away from losing everything. Every commit should build and
+pass tests on its own (`bun run build && bun run test`).
+
+Stage explicit paths (`git add <path>`), never `git add -A` or `git add .` — other sessions have
+in-progress files in this directory and they must not ride along in your commit. Separate unrelated
+changes into separate commits rather than one mixed one.
+
+**Every commit message follows [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/):**
+
+```
+<type>(<optional scope>): <subject>
+
+<optional body — what and why, not how>
+
+<optional footer>
+```
+
+- **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`.
+- **Subject:** imperative mood ("add", not "added"/"adds"), lowercase start, **no trailing period**.
+- **Scope** is optional and names the area touched — `feat(pages):`, `fix(worker):`, `docs(claude):`.
+- **Breaking changes:** a `!` before the colon (`feat(api)!:`) and/or a `BREAKING CHANGE:` footer.
+- Explain _why_ in the body when the reason is not obvious from the diff. Reference the source you
+  verified a fact against when the commit publishes a fact (see the placeholder policy in
+  `PRODUCT.md`).
+
+Examples from this repo's history:
+
+```
+feat(pages): add den pages, what-is-cub-scouts, and youth protection detail
+chore(tooling): consolidate on bun, refresh docs and CI
+docs(claude): forbid branch switching in the shared working directory
+```
+
+**Writing multi-line messages:** pass a file with `git commit -F <path>`. Do not build the message
+with a `$(cat <<'EOF' ...)` command substitution — the commit-message validator sees the literal
+shell text as the subject and rejects it.
+
+Conventional Commits is currently enforced by a machine-local Claude Code hook
+(`~/.claude/hooks/validate-commit.py`), which means it is **not** enforced for other developers or
+for a plain `git commit` outside the agent harness. Follow it regardless; it is the project's
+standard, not just this workstation's.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
