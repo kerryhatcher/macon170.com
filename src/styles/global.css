@@ -747,8 +747,24 @@ p {
   .chapter-hero {
     padding-block: 2.25rem 2.5rem;
   }
+  /* The width queries stacked these into one column, which is what made the hero two
+     screens deep. Landscape has width to spare, so the columns come back. */
   .chapter-hero__grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(230px, 0.7fr);
     gap: 1.75rem;
+  }
+  /* Header plus a stacked strip was 242px of chrome on a 390px screen. Back to one row. */
+  .pack-strip__inner {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr auto;
+    min-height: 0;
+  }
+  .pack-strip__actions {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .pack-strip__item + .pack-strip__item {
+    margin-top: 0;
   }
   .section {
     padding: 2.75rem 0;
