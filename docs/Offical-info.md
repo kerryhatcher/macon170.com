@@ -206,3 +206,28 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Slingshot - `assets/offical/webelos_Slingshot.webp`
     - BB Guns - `assets/offical/webelos_BB_Guns.webp`
 - Arrow of Light (5th) - https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/
+  - Required
+    - Bobcat Arrow of Light - https://www.scouting.org/cub-scout-adventures/bobcat-arrow-of-light/ - `assets/offical/arrow-of-light_AOL_Bobcat.webp`
+    - Personal Fitness - https://www.scouting.org/cub-scout-adventures/personal-fitness/ - `assets/offical/arrow-of-light_Personal_Fitness.webp`
+    - First Aid - https://www.scouting.org/cub-scout-adventures/first-aid/ - `assets/offical/arrow-of-light_First_Aid.webp`
+    - Duty to God - https://www.scouting.org/cub-scout-adventures/duty-to-god/ - `assets/offical/arrow-of-light_AOL_Duty_to_God.webp`
+    - Citizenship - https://www.scouting.org/cub-scout-adventures/citizenship/ - `assets/offical/arrow-of-light_Citizenship.webp`
+    - Outdoor Adventurer - https://www.scouting.org/cub-scout-adventures/outdoor-adventurer/ - `assets/offical/arrow-of-light_AOL_Outdoor_Adventurer.webp`
+  - Elective
+    - Champions for Nature AOL - https://www.scouting.org/cub-scout-adventures/champions-for-nature-aol/ - `assets/offical/arrow-of-light_Champions_of_Nature.webp`
+    - Cycling - https://www.scouting.org/cub-scout-adventures/cycling/ - `assets/offical/arrow-of-light_Cycling.webp`
+    - Engineer - https://www.scouting.org/cub-scout-adventures/engineer/ - `assets/offical/arrow-of-light_Engineering.webp`
+    - Estimations - https://www.scouting.org/cub-scout-adventures/estimations/ - `assets/offical/arrow-of-light_Estimations.webp`
+    - Fishing - https://www.scouting.org/cub-scout-adventures/fishing/ - `assets/offical/arrow-of-light_Fishing.webp`
+    - High Tech Outdoors - https://www.scouting.org/cub-scout-adventures/high-tech-outdoors/ - `assets/offical/arrow-of-light_High_Tech_Outdoors.webp`
+    - Into the Wild - https://www.scouting.org/cub-scout-adventures/into-the-wild/ - `assets/offical/arrow-of-light_Into_the_Wild.webp`
+    - Into the Woods - https://www.scouting.org/cub-scout-adventures/into-the-woods/ - `assets/offical/arrow-of-light_Into_the_Woods.webp`
+    - Knife Safety - https://www.scouting.org/cub-scout-adventures/knife-safety/ - `assets/offical/arrow-of-light_Knife_Safety.webp`
+    - Paddle Craft - https://www.scouting.org/cub-scout-adventures/paddle-craft/ - `assets/offical/arrow-of-light_Paddle_Craft.webp`
+    - Race Time AOL - https://www.scouting.org/cub-scout-adventures/race-time-aol/ - `assets/offical/arrow-of-light_Race_Time.webp`
+    - Summertime Fun AOL - https://www.scouting.org/cub-scout-adventures/summertime-fun-aol/ - `assets/offical/arrow-of-light_Summertime_Fun.webp`
+    - Swimming - https://www.scouting.org/cub-scout-adventures/swimming/ - `assets/offical/arrow-of-light_Swimming.webp`
+  - Special Elective (approved events with qualified instructors only)
+    - Archery Arrow of Light - `assets/offical/arrow-of-light_Archery.webp`
+    - Slingshot - `assets/offical/arrow-of-light_Slingshot.webp`
+    - BB Guns - `assets/offical/arrow-of-light_BB_Guns.webp`
