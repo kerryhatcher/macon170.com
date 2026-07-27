@@ -146,5 +146,34 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Slingshot - `assets/offical/wolf_Slingshot.webp`
     - BB Guns - `assets/offical/wolf_BB_Guns.webp`
 - Bear (3rd) - https://www.scouting.org/programs/cub-scouts/adventures/bear/
+  - Required
+    - Bobcat Bear - https://www.scouting.org/cub-scout-adventures/bobcat-bear/ - `assets/offical/bear_Bear_Bobcat.webp`
+    - Bear Strong - https://www.scouting.org/cub-scout-adventures/bear-strong/ - `assets/offical/bear_Bear_Strong.webp`
+    - Standing Tall - https://www.scouting.org/cub-scout-adventures/standing-tall/ - `assets/offical/bear_Standing_Tall.webp`
+    - Bear Habitat - https://www.scouting.org/cub-scout-adventures/bear-habitat/ - `assets/offical/bear_Bear_Habitat.webp`
+    - Paws for Action - https://www.scouting.org/cub-scout-adventures/paws-for-action/ - `assets/offical/bear_Paws_For_Action.webp`
+    - Fellowship - https://www.scouting.org/cub-scout-adventures/fellowship/ - `assets/offical/bear_Fellowship.webp`
+  - Elective
+    - A Bear Goes Fishing - https://www.scouting.org/cub-scout-adventures/a-bear-goes-fishing/ - `assets/offical/bear_A_Bear_Goes_Fishing.webp`
+    - Balancing Bears - https://www.scouting.org/cub-scout-adventures/balancing-bears/ - `assets/offical/bear_Balancing_Bears.webp`
+    - Baloo the Builder - https://www.scouting.org/cub-scout-adventures/baloo-the-builder/ - `assets/offical/bear_Baloo_the_Builder.webp`
+    - Bears Afloat - https://www.scouting.org/cub-scout-adventures/bears-afloat/ - `assets/offical/bear_Bears_Afloat.webp`
+    - Bears on Bikes - https://www.scouting.org/cub-scout-adventures/bears-on-bikes/ - `assets/offical/bear_Bears_on_Bikes.webp`
+    - Champions for Nature Bear - https://www.scouting.org/cub-scout-adventures/champions-for-nature-bear/ - `assets/offical/bear_Champions_of_Nature.webp`
+    - Chef Tech - https://www.scouting.org/cub-scout-adventures/chef-tech/ - `assets/offical/bear_Chef_Tech.webp`
+    - Critter Care - https://www.scouting.org/cub-scout-adventures/critter-care/ - `assets/offical/bear_Critter_Care.webp`
+    - Forensics - https://www.scouting.org/cub-scout-adventures/forensics/ - `assets/offical/bear_Forensics.webp`
+    - Let’s Camp Bear - https://www.scouting.org/cub-scout-adventures/lets-camp-bear/ - `assets/offical/bear_Lets_Camp.webp`
+    - Marble Madness - https://www.scouting.org/cub-scout-adventures/marble-madness/ - `assets/offical/bear_Marble_Madness.webp`
+    - Race Time Bear - https://www.scouting.org/cub-scout-adventures/race-time-bear/ - `assets/offical/bear_Race_Time.webp`
+    - Roaring Laughter - https://www.scouting.org/cub-scout-adventures/roaring-laughter/ - `assets/offical/bear_Roaring_Laughter.webp`
+    - Salmon Run - https://www.scouting.org/cub-scout-adventures/salmon-run/ - `assets/offical/bear_Salmon_Run.webp`
+    - Summertime Fun Bear - https://www.scouting.org/cub-scout-adventures/summertime-fun-bear/ - `assets/offical/bear_Summertime_Fun.webp`
+    - Super Science - https://www.scouting.org/cub-scout-adventures/super-science/ - `assets/offical/bear_Super_Science.webp`
+    - Whittling - https://www.scouting.org/cub-scout-adventures/whittling/ - `assets/offical/bear_Whittling.webp`
+  - Special Elective (approved events with qualified instructors only)
+    - Archery Bear - `assets/offical/bear_Archery.webp`
+    - Slingshot - `assets/offical/bear_Slingshot.webp`
+    - BB Guns - `assets/offical/bear_BB_Guns.webp`
 - Webelos (4th) - https://www.scouting.org/programs/cub-scouts/adventures/webelos/
 - Arrow of Light (5th) - https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/
