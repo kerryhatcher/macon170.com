@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2477 nodes · 2389 edges · 437 communities (54 shown, 383 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.78)
+- 2345 nodes · 2366 edges · 317 communities (56 shown, 261 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9070fa71`
+- Built from commit: `76d1ae68`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -29,14 +29,14 @@
 - [[_COMMUNITY_Session Handoff & Fact Hygiene|Session Handoff & Fact Hygiene]]
 - [[_COMMUNITY_Header Banner Artwork|Header Banner Artwork]]
 - [[_COMMUNITY_Urlsearchparams|Urlsearchparams]]
-- [[_COMMUNITY_Charter & Chartered Organization|Charter & Chartered Organization]]
+- [[_COMMUNITY_event-routes.ts|event-routes.ts]]
 - [[_COMMUNITY_Durableobjectstorage|Durableobjectstorage]]
-- [[_COMMUNITY_Deploy Pipeline & CI Gate|Deploy Pipeline & CI Gate]]
+- [[_COMMUNITY_..layoutsBaseLayout.astro|../layouts/BaseLayout.astro]]
 - [[_COMMUNITY_Container|Container]]
 - [[_COMMUNITY_Element|Element]]
 - [[_COMMUNITY_Headers|Headers]]
 - [[_COMMUNITY_Subtlecrypto|Subtlecrypto]]
-- [[_COMMUNITY_Cloudflare Access Zero Trust|Cloudflare Access Zero Trust]]
+- [[_COMMUNITY_den.astro|[den].astro]]
 - [[_COMMUNITY_Blob|Blob]]
 - [[_COMMUNITY_Body|Body]]
 - [[_COMMUNITY_Formdata|Formdata]]
@@ -60,20 +60,21 @@
 - [[_COMMUNITY_Readablestream|Readablestream]]
 - [[_COMMUNITY_Socket|Socket]]
 - [[_COMMUNITY_Writablestreamdefaultwriter|Writablestreamdefaultwriter]]
-- [[_COMMUNITY_2026-2027 Pack Calendar|2026-2027 Pack Calendar]]
-- [[_COMMUNITY_Deployment & D1 Operations|Deployment & D1 Operations]]
-- [[_COMMUNITY_Research Synthesis|Research Synthesis]]
+- [[_COMMUNITY_..layoutsBaseLayout.astro|../layouts/BaseLayout.astro]]
+- [[_COMMUNITY_..datapack|../data/pack]]
+- [[_COMMUNITY_index.astro|index.astro]]
 - [[_COMMUNITY_Macon Place & Culture|Macon Place & Culture]]
+- [[_COMMUNITY_calendar-admin.ts|calendar-admin.ts]]
 - [[_COMMUNITY_Aisearchinstance|Aisearchinstance]]
 - [[_COMMUNITY_Durableobjectnamespace|Durableobjectnamespace]]
 - [[_COMMUNITY_R2Bucket|R2Bucket]]
 - [[_COMMUNITY_Sqlstoragecursor|Sqlstoragecursor]]
 - [[_COMMUNITY_Vectorize|Vectorize]]
-- [[_COMMUNITY_2026-2027 Pack Calendar|2026-2027 Pack Calendar]]
+- [[_COMMUNITY_index.astro|index.astro]]
 - [[_COMMUNITY_Placeholder Audit|Placeholder Audit]]
 - [[_COMMUNITY_Cub Scout Program|Cub Scout Program]]
 - [[_COMMUNITY_Macon Place & Culture|Macon Place & Culture]]
-- [[_COMMUNITY_Trademark & Brand Policy|Trademark & Brand Policy]]
+- [[_COMMUNITY_..componentsFieldIllustration.astro|../components/FieldIllustration.astro]]
 - [[_COMMUNITY_Ai|Ai]]
 - [[_COMMUNITY_Aisearchnamespace|Aisearchnamespace]]
 - [[_COMMUNITY_Readablestreambyobreader|Readablestreambyobreader]]
@@ -81,10 +82,6 @@
 - [[_COMMUNITY_Workflowinstance|Workflowinstance]]
 - [[_COMMUNITY_Retention Cron Tests|Retention Cron Tests]]
 - [[_COMMUNITY_Pack 170 Logo & Identity|Pack 170 Logo & Identity]]
-- [[_COMMUNITY_Canonical Pack Facts|Canonical Pack Facts]]
-- [[_COMMUNITY_Deployment & D1 Operations|Deployment & D1 Operations]]
-- [[_COMMUNITY_Highland Hills Baptist Church|Highland Hills Baptist Church]]
-- [[_COMMUNITY_Research Synthesis|Research Synthesis]]
 - [[_COMMUNITY_Aisearchitem|Aisearchitem]]
 - [[_COMMUNITY_Aisearchitems|Aisearchitems]]
 - [[_COMMUNITY_Artifacts|Artifacts]]
@@ -172,7 +169,6 @@
 - [[_COMMUNITY_Workerstub|Workerstub]]
 - [[_COMMUNITY_Workflowstep|Workflowstep]]
 - [[_COMMUNITY_Writablestreamdefaultcontroller|Writablestreamdefaultcontroller]]
-- [[_COMMUNITY_Contributing Conventions|Contributing Conventions]]
 - [[_COMMUNITY_Cub Scout Program|Cub Scout Program]]
 - [[_COMMUNITY_Astro Pages|Astro Pages]]
 - [[_COMMUNITY_Analyticsenginedataset|Analyticsenginedataset]]
@@ -213,7 +209,6 @@
 - [[_COMMUNITY_400 Css|400 Css]]
 - [[_COMMUNITY_500 Css|500 Css]]
 - [[_COMMUNITY_600 Css|600 Css]]
-- [[_COMMUNITY_700 Css|700 Css]]
 - [[_COMMUNITY_800 Css|800 Css]]
 - [[_COMMUNITY_900 Css|900 Css]]
 - [[_COMMUNITY_Design System Rules|Design System Rules]]
@@ -226,32 +221,17 @@
 - [[_COMMUNITY_Product Doc|Product Doc]]
 - [[_COMMUNITY_Product Operating Context|Product Operating Context]]
 - [[_COMMUNITY_Product Product Principles|Product Product Principles]]
-- [[_COMMUNITY_Product Product Purpose|Product Product Purpose]]
 - [[_COMMUNITY_Product Two Audiences|Product Two Audiences]]
 - [[_COMMUNITY_Product Youth Protection Rules|Product Youth Protection Rules]]
 - [[_COMMUNITY_Public Favicon Icon|Public Favicon Icon]]
-- [[_COMMUNITY_Users Kerry Hatcher Projects Macon170 Com Src Styles Global Css|Users Kerry Hatcher Projects Macon170 Com Src Styles Global Css]]
 - [[_COMMUNITY_1. The Legal Foundation — Federal Statute|1. The Legal Foundation — Federal Statute]]
 - [[_COMMUNITY_7. Recommended Policy for Pack 170|7. Recommended Policy for Pack 170]]
 - [[_COMMUNITY_0001_create_contact_submissions.sql|0001_create_contact_submissions.sql]]
 - [[_COMMUNITY_0002_create_calendar_events.sql|0002_create_calendar_events.sql]]
 - [[_COMMUNITY_CLAUDE|CLAUDE.md]]
-- [[_COMMUNITY_Admin Events REST API (apiadminevents)|Admin Events REST API (/api/admin/events)]]
-- [[_COMMUNITY_CALENDAR_API_KEY Bearer Token Auth|CALENDAR_API_KEY Bearer Token Auth]]
-- [[_COMMUNITY_calendar-api Skill|calendar-api Skill]]
-- [[_COMMUNITY_camelCase Request  snake_case Response Asymmetry|camelCase Request / snake_case Response Asymmetry]]
-- [[_COMMUNITY_Draft to Published to Archived Event Lifecycle|Draft to Published to Archived Event Lifecycle]]
-- [[_COMMUNITY_Event Audit History|Event Audit History]]
-- [[_COMMUNITY_Calendar Event Field Validation Rules|Calendar Event Field Validation Rules]]
-- [[_COMMUNITY_Public Read-Only Events API (apievents)|Public Read-Only Events API (/api/events)]]
 - [[_COMMUNITY_Contributor Covenant Code of Conduct v2.1|Contributor Covenant Code of Conduct v2.1]]
 - [[_COMMUNITY_Community Impact Enforcement Ladder|Community Impact Enforcement Ladder]]
 - [[_COMMUNITY_Scout-Appropriate Communication Standard|Scout-Appropriate Communication Standard]]
-- [[_COMMUNITY_bun run devworker full-Worker local mode|bun run dev:worker full-Worker local mode]]
-- [[_COMMUNITY_Pack Facts Live in srcdatapack.ts Only|Pack Facts Live in src/data/pack.ts Only]]
-- [[_COMMUNITY_Test the Layer You Changed|Test the Layer You Changed]]
-- [[_COMMUNITY_WorkerEnv typing convention|WorkerEnv typing convention]]
-- [[_COMMUNITY_Youth Protection and Brand Constraints|Youth Protection and Brand Constraints]]
 - [[_COMMUNITY_Cub Blue  Gold  Warm Paper Color Palette|Cub Blue / Gold / Warm Paper Color Palette]]
 - [[_COMMUNITY_Pack 170 Elementary Adventure Handbook Design System|Pack 170 Elementary Adventure Handbook Design System]]
 - [[_COMMUNITY_The Gold Is a Marker Rule|The Gold Is a Marker Rule]]
@@ -262,35 +242,6 @@
 - [[_COMMUNITY_The Paper, Not Glass Rule|The Paper, Not Glass Rule]]
 - [[_COMMUNITY_The Parent Can Read It in the Parking Lot Rule|The Parent Can Read It in the Parking Lot Rule]]
 - [[_COMMUNITY_Montserrat  Source Sans 3 Typography Hierarchy|Montserrat / Source Sans 3 Typography Hierarchy]]
-- [[_COMMUNITY_Fall Campout at Chehaw Park and Zoo (Oct 24-25 2026)|Fall Campout at Chehaw Park and Zoo (Oct 24-25 2026)]]
-- [[_COMMUNITY_September Group Den Meeting — Bobcat Basics at 1606 Lawton Ave|September Group Den Meeting — Bobcat Basics at 1606 Lawton Ave]]
-- [[_COMMUNITY_Lego Pinewood Derby & Cookout (Aug 23 2026, recruiting event)|Lego Pinewood Derby & Cookout (Aug 23 2026, recruiting event)]]
-- [[_COMMUNITY_Monthly pack meetings Sept 2026 through Feb 2027 at 1370 Briarcliff Rd|Monthly pack meetings Sept 2026 through Feb 2027 at 1370 Briarcliff Rd]]
-- [[_COMMUNITY_Pack Hike at Dausset Trails (Nov 15 2026)|Pack Hike at Dausset Trails (Nov 15 2026)]]
-- [[_COMMUNITY_Pack 170 2026-2027 program calendar|Pack 170 2026-2027 program calendar]]
-- [[_COMMUNITY_Pinewood Derby program prep, Scout Sunday race, Okmulgee District derby|Pinewood Derby program: prep, Scout Sunday race, Okmulgee District derby]]
-- [[_COMMUNITY_Scouts 170 Service Day at Highland Hills Church (TBD, ~927)|Scouts 170 Service Day at Highland Hills Church (TBD, ~9/27)]]
-- [[_COMMUNITY_Spring Campout (date and location TBD)|Spring Campout (date and location TBD)]]
-- [[_COMMUNITY_Worker-side Access JWT verification via rotating JWKS, issuer, and AUD|Worker-side Access JWT verification via rotating JWKS, issuer, and AUD]]
-- [[_COMMUNITY_Calendar event lifecycle draft, publish, archive instead of delete|Calendar event lifecycle: draft, publish, archive instead of delete]]
-- [[_COMMUNITY_Cloudflare Access self-hosted application for admin.macon170.com|Cloudflare Access self-hosted application for admin.macon170.com]]
-- [[_COMMUNITY_D1 database macon170-submissions (30e2d4be-5f6d-4f52-827d-c050c2ade104)|D1 database macon170-submissions (30e2d4be-5f6d-4f52-827d-c050c2ade104)]]
-- [[_COMMUNITY_Data and safety model for submissions and calendar|Data and safety model for submissions and calendar]]
-- [[_COMMUNITY_Deny-by-default volunteer Allow policy with one-time PIN and 8-hour sessions|Deny-by-default volunteer Allow policy with one-time PIN and 8-hour sessions]]
-- [[_COMMUNITY_Development admin identity bypass gated on ENVIRONMENT|Development admin identity bypass gated on ENVIRONMENT]]
-- [[_COMMUNITY_First production deployment procedure and smoke test|First production deployment procedure and smoke test]]
-- [[_COMMUNITY_GitHub production environment secrets (account id, scoped API token, Turnstile secret)|GitHub production environment secrets (account id, scoped API token, Turnstile secret)]]
-- [[_COMMUNITY_Hostname routing www public, apex 301 to www, admin behind Access|Hostname routing: www public, apex 301 to www, admin behind Access]]
-- [[_COMMUNITY_Local development with .dev.vars and devworker|Local development with .dev.vars and dev:worker]]
-- [[_COMMUNITY_main-branch CICD pipeline (checks, tests, dry run, D1 migrations, deploy)|main-branch CI/CD pipeline (checks, tests, dry run, D1 migrations, deploy)]]
-- [[_COMMUNITY_Public calendar API exposing only upcoming published family logistics|Public calendar API exposing only upcoming published family logistics]]
-- [[_COMMUNITY_Daily Worker cron purging submissions and audit logs after 365 days|Daily Worker cron purging submissions and audit logs after 365 days]]
-- [[_COMMUNITY_Least-privilege Cloudflare API deployment token|Least-privilege Cloudflare API deployment token]]
-- [[_COMMUNITY_Cloudflare test widget keys for local development|Cloudflare test widget keys for local development]]
-- [[_COMMUNITY_Turnstile widget for contact form (site key 0x4AAAAAAD-sr-Bk7AntxyZ7)|Turnstile widget for contact form (site key 0x4AAAAAAD-sr-Bk7AntxyZ7)]]
-- [[_COMMUNITY_Single Cloudflare Worker deployment (Astro assets + D1 API + volunteer desk)|Single Cloudflare Worker deployment (Astro assets + D1 API + volunteer desk)]]
-- [[_COMMUNITY_wrangler.jsonc placeholders ACCESS_TEAM_DOMAIN and ACCESS_AUD|wrangler.jsonc placeholders ACCESS_TEAM_DOMAIN and ACCESS_AUD]]
-- [[_COMMUNITY_Youth-protection data minimization (no child names, no IP storage, shared mailbox replies)|Youth-protection data minimization (no child names, no IP storage, shared mailbox replies)]]
 - [[_COMMUNITY_Non-negotiable brand and trademark design constraints|Non-negotiable brand and trademark design constraints]]
 - [[_COMMUNITY_Highland Hills is Cooperative Baptist Fellowship, not Southern Baptist|Highland Hills is Cooperative Baptist Fellowship, not Southern Baptist]]
 - [[_COMMUNITY_Interrupted fact-check pass over research docs|Interrupted fact-check pass over research docs]]
@@ -306,24 +257,6 @@
 - [[_COMMUNITY_Session Handoff — macon170.com (2026-07-26)|Session Handoff — macon170.com (2026-07-26)]]
 - [[_COMMUNITY_User-confirmed product decisions (do not re-ask)|User-confirmed product decisions (do not re-ask)]]
 - [[_COMMUNITY_Youth privacy constraints (first name + last initial, no members-only area)|Youth privacy constraints (first name + last initial, no members-only area)]]
-- [[_COMMUNITY_SA 170 Official Info — canonical human-maintained source of truth|SA 170 Official Info — canonical human-maintained source of truth]]
-- [[_COMMUNITY_Central Georgia Council, BSA|Central Georgia Council, BSA]]
-- [[_COMMUNITY_Cub Scout Pack 170 (beascout unitID 234351)|Cub Scout Pack 170 (beascout unitID 234351)]]
-- [[_COMMUNITY_Den autonomy each den sets its own meeting time and location|Den autonomy: each den sets its own meeting time and location]]
-- [[_COMMUNITY_Highland Hills Baptist Church (chartered organization)|Highland Hills Baptist Church (chartered organization)]]
-- [[_COMMUNITY_Pack meeting cadence monthly, Tuesdays 630 PM at Highland Hills|Pack meeting cadence: monthly, Tuesdays 6:30 PM at Highland Hills]]
-- [[_COMMUNITY_170 family sister units Pack 170, Troop 170, Venturing Crew 170|170 family sister units: Pack 170, Troop 170, Venturing Crew 170]]
-- [[_COMMUNITY_Annual program entries with Date to be added placeholder state|Annual program entries with "Date to be added" placeholder state]]
-- [[_COMMUNITY_Location being confirmed per-event fallback for null location_name|"Location being confirmed" per-event fallback for null location_name]]
-- [[_COMMUNITY_Pack editor cost details needed (dues amountincludesdueDate null)|Pack editor: cost details needed (dues amount/includes/dueDate null)]]
-- [[_COMMUNITY_notice--editor editor callout boxes rendered to the public|notice--editor editor callout boxes rendered to the public]]
-- [[_COMMUNITY_Empty dens array — den rosters still being confirmed|Empty dens array — den rosters "still being confirmed"]]
-- [[_COMMUNITY_Missing resource links (facebook, scoutbook, payment, parentHandbook)|Missing resource links (facebook, scoutbook, payment, parentHandbook)]]
-- [[_COMMUNITY_Never publish guessed or national estimates as Pack 170 facts|Never publish guessed or national estimates as Pack 170 facts]]
-- [[_COMMUNITY_No published adult email addresses; all contact funnels through contact|No published adult email addresses; all contact funnels through /contact/]]
-- [[_COMMUNITY_Root cause nullempty fields in srcdatapack.ts drive every placeholder|Root cause: null/empty fields in src/data/pack.ts drive every placeholder]]
-- [[_COMMUNITY_Placeholder content audit (2026-07-27)|Placeholder content audit (2026-07-27)]]
-- [[_COMMUNITY_Transient loading states hydrated from the events API|Transient loading states hydrated from the events API]]
 - [[_COMMUNITY_Bobcat (now a required Adventure at every rank)|Bobcat (now a required Adventure at every rank)]]
 - [[_COMMUNITY_Crossover Ceremony|Crossover Ceremony]]
 - [[_COMMUNITY_Cub Scouting Program (K-5th grade)|Cub Scouting Program (K-5th grade)]]
@@ -344,25 +277,6 @@
 - [[_COMMUNITY_Scout Oath and Scout Law|Scout Oath and Scout Law]]
 - [[_COMMUNITY_Stale Central Georgia Council Fee Page|Stale Central Georgia Council Fee Page]]
 - [[_COMMUNITY_Webelos (4th grade only)|Webelos (4th grade only)]]
-- [[_COMMUNITY_HHBC Campus & Grounds (17+ acres, trail, amphitheater)|HHBC Campus & Grounds (17+ acres, trail, amphitheater)]]
-- [[_COMMUNITY_Charter Relationship HHBC charters Pack 170, Troop 170, Crew 170|Charter Relationship: HHBC charters Pack 170, Troop 170, Crew 170]]
-- [[_COMMUNITY_Chartered Organization Role (partnership model)|Chartered Organization Role (partnership model)]]
-- [[_COMMUNITY_HHBC Founding (1953, charter Sunday April 12, 1953)|HHBC Founding (1953, charter Sunday April 12, 1953)]]
-- [[_COMMUNITY_Cooperative Baptist Fellowship (CBF) Affiliation|Cooperative Baptist Fellowship (CBF) Affiliation]]
-- [[_COMMUNITY_Pack 170 Existing Web Presence (square.site, Facebook, TroopWebHost)|Pack 170 Existing Web Presence (square.site, Facebook, TroopWebHost)]]
-- [[_COMMUNITY_Highland Hills Baptist Church (HHBC)|Highland Hills Baptist Church (HHBC)]]
-- [[_COMMUNITY_Jackson Springs Park and Bird Sanctuary|Jackson Springs Park and Bird Sanctuary]]
-- [[_COMMUNITY_Pack 170 Meeting Pattern (Tuesdays 630 p.m. at HHBC)|Pack 170 Meeting Pattern (Tuesdays 6:30 p.m. at HHBC)]]
-- [[_COMMUNITY_National Register Designation (Aug 17, 1989; 275 acres)|National Register Designation (Aug 17, 1989; 275 acres)]]
-- [[_COMMUNITY_docsOffical-info.md (canonical packcouncil record)|docs/Offical-info.md (canonical pack/council record)]]
-- [[_COMMUNITY_Olmsted-Firm Landscape Design  Leon Hoffman|Olmsted-Firm Landscape Design / Leon Hoffman]]
-- [[_COMMUNITY_HHBC Pastoral History and Co-Pastors|HHBC Pastoral History and Co-Pastors]]
-- [[_COMMUNITY_Primary-Source Precedence Rule (official site over aggregators)|Primary-Source Precedence Rule (official site over aggregators)]]
-- [[_COMMUNITY_HHBC Projects & Partners (names BSA Troop 170)|HHBC Projects & Partners (names BSA Troop 170)]]
-- [[_COMMUNITY_Shirley Hills Historic District|Shirley Hills Historic District]]
-- [[_COMMUNITY_Sister Units (Pack 170  Troop 170  Crew 170)|Sister Units (Pack 170 / Troop 170 / Crew 170)]]
-- [[_COMMUNITY_Stale Aggregator Listings (FaithStreet, Yelp) — do not cite|Stale Aggregator Listings (FaithStreet, Yelp) — do not cite]]
-- [[_COMMUNITY_Corrected  Unverified Historical Claims|Corrected / Unverified Historical Claims]]
 - [[_COMMUNITY_Camp Benjamin Hawkins (under contract for sale, 2024)|Camp Benjamin Hawkins (under contract for sale, 2024)]]
 - [[_COMMUNITY_Central Georgia Council, BSA (96)|Central Georgia Council, BSA (#96)]]
 - [[_COMMUNITY_International Cherry Blossom Festival|International Cherry Blossom Festival]]
@@ -373,34 +287,6 @@
 - [[_COMMUNITY_Ocmulgee District|Ocmulgee District]]
 - [[_COMMUNITY_Ocmulgee River, Heritage Trail, and Amerson River Park|Ocmulgee River, Heritage Trail, and Amerson River Park]]
 - [[_COMMUNITY_Macon-Derived Color Palette Suggestions|Macon-Derived Color Palette Suggestions]]
-- [[_COMMUNITY_BALOO Training Requirement for Pack Overnighters|BALOO Training Requirement for Pack Overnighters]]
-- [[_COMMUNITY_Camp Benjamin Hawkins|Camp Benjamin Hawkins]]
-- [[_COMMUNITY_Central Georgia Council|Central Georgia Council]]
-- [[_COMMUNITY_Chartered-Organization Acknowledgment Wording|Chartered-Organization Acknowledgment Wording]]
-- [[_COMMUNITY_International Cherry Blossom Festival  Cherry Blossom Motif|International Cherry Blossom Festival / Cherry Blossom Motif]]
-- [[_COMMUNITY_Content Architecture (page priority order)|Content Architecture (page priority order)]]
-- [[_COMMUNITY_WCAG AA Contrast Rules (gold is never a text color)|WCAG AA Contrast Rules (gold is never a text color)]]
-- [[_COMMUNITY_COPPA (no child-facing forms)|COPPA (no child-facing forms)]]
-- [[_COMMUNITY_Cub Scout Pack 170 (Macon, Georgia)|Cub Scout Pack 170 (Macon, Georgia)]]
-- [[_COMMUNITY_Highland Hills Baptist Church (chartered organization)|Highland Hills Baptist Church (chartered organization)]]
-- [[_COMMUNITY_Join  New Families Page (conversion page)|Join / New Families Page (conversion page)]]
-- [[_COMMUNITY_Lake Tobesofkee|Lake Tobesofkee]]
-- [[_COMMUNITY_Macon Local Hooks|Macon Local Hooks]]
-- [[_COMMUNITY_Naming Rules (Scouting America, no acronym, no BSA)|Naming Rules (Scouting America, no acronym, no BSA)]]
-- [[_COMMUNITY_Ocmulgee Mounds National Historical Park|Ocmulgee Mounds National Historical Park]]
-- [[_COMMUNITY_Open Questions for Pack Leadership (launch blockers)|Open Questions for Pack Leadership (launch blockers)]]
-- [[_COMMUNITY_Patch Aesthetic Motif|Patch Aesthetic Motif]]
-- [[_COMMUNITY_Photo Consent & Opt-Out Policy|Photo Consent & Opt-Out Policy]]
-- [[_COMMUNITY_Pack-Specific Privacy Policy Page|Pack-Specific Privacy Policy Page]]
-- [[_COMMUNITY_Prohibited Activities in Event Copy|Prohibited Activities in Event Copy]]
-- [[_COMMUNITY_Rank Color Secondary System  Den Chart|Rank Color Secondary System / Den Chart]]
-- [[_COMMUNITY_Cub Scout Rank Progression (Lion to Arrow of Light)|Cub Scout Rank Progression (Lion to Arrow of Light)]]
-- [[_COMMUNITY_Real Photos Over Stock Photography|Real Photos Over Stock Photography]]
-- [[_COMMUNITY_Pack 170 Website Research Synthesis|Pack 170 Website Research Synthesis]]
-- [[_COMMUNITY_Scouting America|Scouting America]]
-- [[_COMMUNITY_Trademark and Official Artwork Constraints|Trademark and Official Artwork Constraints]]
-- [[_COMMUNITY_Two-Audience Priority Model (prospective vs current families)|Two-Audience Priority Model (prospective vs current families)]]
-- [[_COMMUNITY_Youth Protection & Privacy Requirements|Youth Protection & Privacy Requirements]]
 - [[_COMMUNITY_1916 Congressional Charter|1916 Congressional Charter]]
 - [[_COMMUNITY_36 U.S.C. § 30905|36 U.S.C. § 30905]]
 - [[_COMMUNITY_Annual Unit Charter Agreement|Annual Unit Charter Agreement]]
@@ -434,11 +320,6 @@
 - [[_COMMUNITY_Wrenn v. Boy Scouts of America (2008)|Wrenn v. Boy Scouts of America (2008)]]
 - [[_COMMUNITY_Naming Convention Rule|Naming Convention Rule]]
 - [[_COMMUNITY_Placeholder Policy|Placeholder Policy]]
-- [[_COMMUNITY_Environment Variables Reference|Environment Variables Reference]]
-- [[_COMMUNITY_macon170.com — Cub Scout Pack 170 Site|macon170.com — Cub Scout Pack 170 Site]]
-- [[_COMMUNITY_Real Workers-Runtime Test Strategy|Real Workers-Runtime Test Strategy]]
-- [[_COMMUNITY_One Worker Serves Static Site and API|One Worker Serves Static Site and API]]
-- [[_COMMUNITY_Zero-Trust Access-Gated Admin Desk|Zero-Trust Access-Gated Admin Desk]]
 - [[_COMMUNITY_main Is Continuously Deployed (No Released Versions)|main Is Continuously Deployed (No Released Versions)]]
 - [[_COMMUNITY_Existing Safeguards (Turnstile, JWKS, Audit Log, 365-Day Purge)|Existing Safeguards (Turnstile, JWKS, Audit Log, 365-Day Purge)]]
 - [[_COMMUNITY_Private Email Disclosure Process|Private Email Disclosure Process]]
@@ -446,26 +327,24 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `Event` - 25 edges
-2. `../layouts/BaseLayout.astro` - 21 edges
-3. `Console` - 21 edges
-4. `URL` - 20 edges
-5. `scripts` - 19 edges
-6. `URLSearchParams` - 16 edges
-7. `DurableObjectStorage` - 15 edges
-8. `fetch()` - 15 edges
-9. `../data/pack.ts` - 14 edges
-10. `SubtleCrypto` - 14 edges
+2. `Console` - 21 edges
+3. `URL` - 20 edges
+4. `scripts` - 19 edges
+5. `URLSearchParams` - 16 edges
+6. `DurableObjectStorage` - 15 edges
+7. `SubtleCrypto` - 14 edges
+8. `Element` - 14 edges
+9. `Headers` - 14 edges
+10. `Container` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `deploy job` --shares_data_with--> `Turnstile-Verified Contact Form (POST /api/contact)`  [INFERRED]
-  .github/workflows/deploy.yml → README.md
-- `Apply D1 migrations step` --shares_data_with--> `Repository Architecture Layout`  [INFERRED]
-  .github/workflows/deploy.yml → README.md
-- `validate job` --references--> `just ci — Local/CI Parity Battery`  [EXTRACTED]
-  .github/workflows/deploy.yml → CONTRIBUTING.md
 - `Pack 170 Wordmark and Tagline Stack` --implements--> `Scouting Brand Palette (BSA blue #003F87, gold #FCD116, dark navy #0A1830)`  [INFERRED]
   assets/header.svg → assets/header-dark.svg
 - `Pack 170 Wordmark and Tagline Stack` --references--> `Astro + Cloudflare Workers Stack (stated in header subtitle)`  [EXTRACTED]
+  assets/header.svg → assets/header-dark.svg
+- `Pack 170 Dark Header Banner (SVG)` --references--> `Pack 170 Wordmark and Tagline Stack`  [EXTRACTED]
+  assets/header-dark.svg → assets/header.svg
+- `Pack 170 Wordmark and Tagline Stack` --references--> `Pack 170 — Cub Scouts of Macon, Georgia`  [EXTRACTED]
   assets/header.svg → assets/header-dark.svg
 
 ## Import Cycles
@@ -489,7 +368,7 @@
 - **Pack 170 header visual identity: badge, wordmark, paper and trail motifs sharing one scouting palette** — assets_header_badge_medallion, assets_header_wordmark, assets_header_notebook_paper_motif, assets_header_trail_motif, assets_header_scouting_palette [INFERRED 0.85]
 - **Pack 170 Visual Identity System (mark, palette, type, trademark-safe artwork)** — assets_logo_pack170_logo, assets_logo_trail_marker_compass_badge, assets_logo_brand_palette, assets_logo_montserrat_type_stack, assets_logo_original_artwork_no_official_emblems [INFERRED 0.85]
 
-## Communities (437 total, 383 thin omitted)
+## Communities (317 total, 261 thin omitted)
 
 ### Community 0 - "Generated Workers Type Surface"
 Cohesion: 0.00
@@ -508,16 +387,16 @@ Cohesion: 0.05
 Nodes (43): dependencies, astro, @astrojs/check, @fontsource/montserrat, @fontsource/source-sans-3, jose, typescript, devDependencies (+35 more)
 
 ### Community 4 - "Contact API & Admin Worker"
-Cohesion: 0.06
-Nodes (60): css(), escapeHtml(), renderCalendarAdmin(), script(), categories, enumValue(), EventCategory, EventInput (+52 more)
+Cohesion: 0.11
+Nodes (35): AccessIdentity, adminCss(), adminHeaders(), adminScript(), ALLOWED_GRADES, ALLOWED_STATUSES, ALLOWED_TOPICS, clean() (+27 more)
 
 ### Community 5 - "Astro Pages"
-Cohesion: 0.05
-Nodes (49): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, ../components/ChapterHero.astro, ../components/FieldIllustration.astro (+41 more)
+Cohesion: 0.18
+Nodes (12): ../data/leadership.md, Den Leaders, Who leads Pack 170, annualProgram, editorChecklist, events, pack, PackEvent (+4 more)
 
 ### Community 6 - "Misc"
-Cohesion: 0.15
-Nodes (12): 🙏 Acknowledgements, 📖 API Reference, 🏗️ Architecture, 🤝 Contributing, ✨ Features, 📦 Installation, License, 🚀 Quick Start (+4 more)
+Cohesion: 0.05
+Nodes (35): Before you open a PR, Code of Conduct, Code standards, Contributing, Development setup, Finding something to work on, Pull request process, Reporting security issues (+27 more)
 
 ### Community 7 - "Calendar Event Routes"
 Cohesion: 0.09
@@ -535,13 +414,17 @@ Nodes (9): ✅ Done and committed, ⚠️ INTERRUPTED MID-TASK: fact-check pass,
 Cohesion: 0.19
 Nodes (16): Accessible SVG Labeling (role=img + aria-labelledby title), Scout Badge Medallion (navy circle, gold ring, pine tree, neckerchief), Accessible SVG Labeling (role=img + aria-labelledby + title), Astro + Cloudflare Workers Stack (stated in header subtitle), Dark Notebook-Paper Motif, Dashed Trail with Pine Trees, Pack 170 Dark Header Banner (SVG), Pack 170 — Cub Scouts of Macon, Georgia (+8 more)
 
-### Community 16 - "Deploy Pipeline & CI Gate"
-Cohesion: 0.22
-Nodes (9): Apply D1 migrations step, deploy job, Deploy to Cloudflare Workers Workflow, SHA-Pinned GitHub Actions, Reject incomplete production configuration guard, validate job, just ci — Local/CI Parity Battery, Repository Architecture Layout (+1 more)
+### Community 14 - "event-routes.ts"
+Cohesion: 0.13
+Nodes (21): categories, enumValue(), EventCategory, EventInput, EventRouteContext, EventRouteError, EventRow, EventStatus (+13 more)
 
-### Community 21 - "Cloudflare Access Zero Trust"
-Cohesion: 0.22
-Nodes (9): 1. Finish Cloudflare Access, 2. GitHub Actions secrets, 3. Local development, 4. First deployment, Access validation checklist, Cloudflare deployment and volunteer access, Data and safety model, Operations (+1 more)
+### Community 16 - "../layouts/BaseLayout.astro"
+Cohesion: 0.17
+Nodes (10): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, links, ../layouts/BaseLayout.astro (+2 more)
+
+### Community 21 - "[den].astro"
+Cohesion: 0.25
+Nodes (6): adventures, RankAdventures, denSlug(), program, ../../data/adventures, ../../lib/den-slug
 
 ### Community 23 - "Body"
 Cohesion: 0.15
@@ -567,9 +450,29 @@ Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError
 Cohesion: 0.22
 Nodes (3): ByteLengthQueuingStrategy, CountQueuingStrategy, QueuingStrategy
 
+### Community 45 - "../layouts/BaseLayout.astro"
+Cohesion: 0.25
+Nodes (6): resources, roles, aims, asks, ../components/ChapterHero.astro, ../layouts/BaseLayout.astro
+
+### Community 46 - "../data/pack"
+Cohesion: 0.29
+Nodes (5): ../components/ChapterHero.astro, year, activities, string, ../data/pack
+
+### Community 47 - "index.astro"
+Cohesion: 0.38
+Nodes (5): esc(), fmt(), load(), slug, ../lib/api-base
+
 ### Community 48 - "Macon Place & Culture"
 Cohesion: 0.10
 Nodes (20): Additional Outdoor Resources, Basic Facts About Macon, Central Georgia Council, BSA, Cherry Blossom Capital of the World, Color & Mood Palette Suggestions, Culture, Heritage & Family Attractions, Downtown Macon & Historic Architecture, Family Attractions (+12 more)
+
+### Community 49 - "calendar-admin.ts"
+Cohesion: 0.70
+Nodes (4): css(), escapeHtml(), renderCalendarAdmin(), script()
+
+### Community 55 - "index.astro"
+Cohesion: 0.83
+Nodes (3): date(), escapeHtml(), loadCalendar()
 
 ### Community 56 - "Placeholder Audit"
 Cohesion: 0.15
@@ -627,17 +530,13 @@ Nodes (9): 5.1 Does National Policy Apply to Unit Websites?, 5.2 The Council Web
 Cohesion: 0.25
 Nodes (7): Authentication and base URLs, Create a draft, Field rules, Pack 170 Calendar API, Public read-only endpoints, Read events first, Update, publish, archive, or restore
 
-### Community 203 - "700 Css"
-Cohesion: 0.25
-Nodes (8): Before you open a PR, Code of Conduct, Code standards, Contributing, Development setup, Finding something to work on, Pull request process, Reporting security issues
-
 ### Community 204 - "800 Css"
 Cohesion: 0.18
 Nodes (10): Adventures, Chartered Organization, Council, Cub Scout Pack, Dens, Links, Lion (Kindergarten), Meeting Info (+2 more)
 
 ### Community 205 - "900 Css"
-Cohesion: 0.29
-Nodes (7): Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Responsibilities, Our Pledge, Our Standards, Scope
+Cohesion: 0.15
+Nodes (12): 1. Correction, 2. Warning, 3. Temporary Ban, 4. Permanent Ban, Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Guidelines (+4 more)
 
 ### Community 214 - "Product Accessibility Inclusion"
 Cohesion: 0.17
@@ -655,14 +554,6 @@ Nodes (7): Appendix — Complete Source List, Council — Central Georgia and Co
 Cohesion: 0.33
 Nodes (6): 4.1 The Finding: There Is No Council-Level Guidance, 4.2 Council Facts Relevant to Pack 170, 4.3 Who to Ask at the Council, 4.4 What Pack 170 Is Missing — and What Other Councils Provide, 4.5 The Chartered Organization and the COR, 4. Council Level — Central Georgia Council
 
-### Community 220 - "Product Product Purpose"
-Cohesion: 0.33
-Nodes (6): Disclosure Process, Related Safeguards Already In Place, Reporting a Vulnerability, Scope, Security Policy, Supported Versions
-
-### Community 225 - "Users Kerry Hatcher Projects Macon170 Com Src Styles Global Css"
-Cohesion: 0.40
-Nodes (5): 1. Correction, 2. Warning, 3. Temporary Ban, 4. Permanent Ban, Enforcement Guidelines
-
 ### Community 227 - "1. The Legal Foundation — Federal Statute"
 Cohesion: 0.40
 Nodes (5): 1.1 The 1916 Congressional Charter, 1.2 Why This Matters More Than Ordinary Trademark Law, 1.3 Enforcement Posture — Is This Theoretical?, 1.4 The Contractual Hook — Why Brand Guidelines Bind Pack 170, 1. The Legal Foundation — Federal Statute
@@ -676,23 +567,23 @@ Nodes (4): 7. Recommended Policy for Pack 170, Ask, If It Matters, Do, Don't
   assets/logo.svg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **1306 isolated node(s):** `1. History and the 2024/2025 Rebrand`, `Where the authoritative source lives`, `Colors`, `Typography`, `Logo usage / trademark restrictions relevant to a pack site` (+1301 more)
+- **1219 isolated node(s):** `graphify`, `Who leads Pack 170`, `Den Leaders`, `PackEvent`, `events` (+1214 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **383 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **261 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Original Artwork Only, No Official Scouting Emblems` and `Brand Palette (navy #003F87/#002B5C, gold #FCD116, cream #F7F1E3, pink accent #E8A3C6, slate #59636B)`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `Container` connect `Container` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `URL` connect `Url` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `Console` connect `Console` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `ReadableStream` connect `Readablestream` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `1. History and the 2024/2025 Rebrand`, `Where the authoritative source lives`, `Colors` to the rest of the system?**
-  _1384 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `DurableObjectStorage` connect `Durableobjectstorage` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `graphify`, `Who leads Pack 170`, `Den Leaders` to the rest of the system?**
+  _1258 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Generated Workers Type Surface` be split into smaller, more focused modules?**
   _Cohesion score 0.0023952095808383233 - nodes in this community are weakly interconnected._
 - **Should `Serviceworkerglobalscope` be split into smaller, more focused modules?**
