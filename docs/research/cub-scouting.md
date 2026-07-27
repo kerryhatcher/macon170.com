@@ -4,7 +4,7 @@ Research compiled for the Pack 170 (Macon, GA) website project. Covers program s
 
 > **Fact-check note (July 2026):** All claims below were re-verified against official Scouting America pages (via Internet Archive where scouting.org blocks automated fetches) and council sources. Corrections are folded in. Items that could not be confirmed against an official source are labeled *unverified*.
 >
-> Several official domains (`scouting.org`, `scoutshop.org`, `capitolareascouting.org`) return HTTP 403 to automated fetchers but load normally in a browser — these are **not** dead links. No cited URL in this document is actually dead.
+> Several official domains (`scouting.org`, `scoutshop.org`, `capitolareascouting.org`) return HTTP 403 to automated fetchers but load normally in a browser — these are **not** dead links. Every cited `scouting.org` URL was confirmed to exist via Internet Archive snapshots. **No cited URL in this document is dead.** One caveat: all `blog.scoutingmagazine.org` links now **redirect to `onscouting.org`** (the blog was renamed); they still work, but prefer the `onscouting.org` form in new citations.
 >
 > Anything here describing *typical* pack practice is a national norm, not Pack 170's schedule. Pack 170's actual meeting cadence and locations live in `docs/Offical-info.md`, which is authoritative.
 
@@ -91,40 +91,51 @@ Source: [Scouting America — Prohibited Activities](https://www.scouting.org/he
 ## 4. Terminology & Mottos
 
 - **Cub Scout Motto:** *"Do Your Best."* This has remained unchanged even through program revisions. Source: [Scouting Wire — Do Your Best](https://scoutingwire.org/wp-content/uploads/2016/03/310-887C16_SPREAD-1.pdf)
-- **Scout Oath** (adopted for Cub Scouts June 1, 2015, replacing the old "Cub Scout Promise"):
+- **Scout Oath** (adopted for Cub Scouts June 1, 2015, when the **Cub Scout Promise and the Law of the Pack were both retired** so that every Scouting program shares one Oath and one Law):
   > "On my honor I will do my best to do my duty to God and my country and to obey the Scout Law; to help other people at all times; to keep myself physically strong, mentally awake, and morally straight."
 - **Scout Law:** *A Scout is trustworthy, loyal, helpful, friendly, courteous, kind, obedient, cheerful, thrifty, brave, clean, and reverent.*
-- **Scout Sign:** Two raised fingers (representing the Oath and Law), used to call for quiet/attention.
-- **Scout Salute:** Two fingers to the cap or eyebrow during flag ceremonies.
-- **Scout Handshake:** First two fingers along the inside of the wrist.
+- **Cub Scout Sign:** two separated fingers held up (like a peace sign), used to call for quiet/attention. Traditionally explained as the ears of the wolf from *The Jungle Book*; the "represents the Oath and Law" gloss is common in pack materials but is not the official explanation — *unverified*.
+- **Cub Scout Salute:** two fingers held together above the brow, used during flag ceremonies.
+- **Cub Scout Handshake:** right-hand shake with the first two fingers extended along the inside of the other person's wrist.
+  (These three are the *Cub Scout* sign/salute/handshake specifically — Scouts BSA uses a three-finger sign and a left-handed handshake. Scouting America confirmed in 2014 that the Cub Scout motto, sign, salute, and handshake would **not** change when the Scout Oath and Law were adopted.)
 - **Akela:** Term for "a good leader" (from *The Jungle Book*) — applied to whichever adult (den leader/Cubmaster) is leading at the moment.
 - **"Webelos"** is a backronym for **"We'll Be Loyal Scouts."**
-- **Seven Methods of Cub Scouting:** living the ideals, belonging to a den, advancement, family involvement, activities, service to others, wearing the uniform (and earning badges).
+- **Seven Methods of Cub Scouting:** living the ideals, belonging to a den, using advancement, involving family and home, participating in activities, serving home and neighborhood, wearing the uniform.
 - **Four Aims:** character development, citizenship training, personal fitness, leadership development.
 
-Sources: [Wikipedia](https://en.wikipedia.org/wiki/Cub_Scouting_(Boy_Scouts_of_America)), [Murdock Pack 815 — The Scout Motto](https://www.murdockpack815.org/scouting-101/the-cub-promise-law-and-motto), [Aaron on Scouting](https://blog.scoutingmagazine.org/2014/12/05/cub-scout-motto-sign-salute-handshake-wont-change/)
+Sources: [Wikipedia — Cub Scouts (Scouting America)](https://en.wikipedia.org/wiki/Cub_Scouts_(Scouting_America)), [Scouting America — Aims and Methods](https://www.scouting.org/programs/cub-scouts/aims-and-methods/), [Murdock Pack 815 — The Scout Motto](https://www.murdockpack815.org/scouting-101/the-cub-promise-law-and-motto), [Aaron on Scouting](https://blog.scoutingmagazine.org/2014/12/05/cub-scout-motto-sign-salute-handshake-wont-change/)
 
 ---
 
 ## 5. What Families Joining Want to Know
 
 ### Costs
-- **National annual registration fee:** $85/year (effective since May 2024), plus historically a one-time joining fee for brand-new members (varies; older sources cite ~$25).
-- **Local pack dues:** charged on top of the national fee to cover den supplies, awards, neckerchiefs, books, etc. — varies pack to pack (some example packs charge in the range of tens to a low hundred dollars annually).
-- **Total typical all-in cost:** roughly **$150–$200+/year** once dues, basic uniform, and incidental costs are included (before optional camp fees or a Pinewood Derby car).
+*Fee figures below were re-verified July 2026 against Scouting America's own "Cost of Cub Scouting" page.*
+
+- **National annual registration fee: $85/year for youth.** Scouting America's page states the amount plainly: "The annual fee is $85… Effective May 1, 2024." Councils announcing the same change generally cite **April 1, 2024** as the date the restructured fee schedule took effect. **$85 is still the current amount as of July 2026** — it has not changed since.
+- **The $25 one-time joining fee no longer exists.** It was **eliminated April 1, 2024** because councils reported it was a barrier for new families. Any site copy mentioning a joining fee is out of date.
+- **Adult volunteer registration:** $65/year national (relevant because most packs need parents registered as leaders or committee members).
+- **Council fees:** many councils add their own program fee on top of the national $85, and amounts vary widely by council. ⚠️ The **Central Georgia Council's published fee page** (`centralgeorgiacouncil.org/fees`) is **stale** — it still lists the pre-2024 schedule ($80 youth, $60 adult, $25 joining fee, "effective August 1, 2023") and states the council adds nothing of its own. **Confirm current Central Georgia Council figures by phone before publishing any dollar amount on the Pack 170 site.**
+- **Local pack dues:** charged on top of the national fee to cover den supplies, awards, neckerchiefs, books, etc. Scouting America's guidance is that "dues are established by the families in the pack through the pack committee" — varies pack to pack.
+- **Handbook:** about **$24**, one per grade level, per Scouting America.
+- **Optional add-on:** *Scout Life* magazine subscription, **$15/year** (official figure).
+- **Total typical all-in cost:** roughly **$150–$200+/year** once dues, basic uniform, and incidental costs are included (before optional camp fees or a Pinewood Derby car). *Unverified* — this is a secondary-source estimate, not a Scouting America figure. Scouting America publishes no all-in total.
 - **Uniform:** the Cub Scout uniform (shirt, neckerchief, belt, cap; blue pants/shorts optional depending on pack) — packs vary on how strictly pants/hats are required. Uniforms are less expensive than the tan Scouts BSA uniform Arrow of Light Scouts transition into.
 - **Fundraising:** the popcorn fundraiser is the main annual fundraiser and often offsets much of a family's out-of-pocket cost for pack activities.
-- **Optional add-on:** *Scout Life* magazine subscription (~$15/year).
+- **Fee relief:** effective **June 1, 2026**, Scouting America waives the $85 national youth registration fee for eligible military families (active duty, Reserve, or National Guard). Worth mentioning on a Middle Georgia pack site given Robins AFB.
 
-Sources: [ScoutSmarts — Scouting Costs 2025](https://scoutsmarts.com/scouting-costs-registration-gear-uniforms-fees/), [Scouting America — Cost of Cub Scouting](https://www.scouting.org/programs/cub-scouts/cost-of-cub-scouting/) *(blocked direct fetch; summarized via search)*, various council fee pages (e.g. [Capitol Area Council](https://www.capitolareascouting.org/resources/membership/membership-fees/), [Scouting Iowa](https://scoutingiowa.org/membershipfees/))
+Sources: [Scouting America — Cost of Cub Scouting](https://www.scouting.org/programs/cub-scouts/cost-of-cub-scouting/) *(live; 403s to automated fetchers — verified via Feb 2026 Internet Archive snapshot)*, [Atlanta Area Council — National Membership Fee FAQ](https://www.scoutingatl.org/membershipfeeFAQ) *(confirms joining-fee elimination and $65 adult fee)*, [onscouting.org — military family fee waiver (May 2026)](https://onscouting.org/2026/05/26/new-program-eases-financial-burden-for-military-families/), [Central Georgia Council — fees](https://www.centralgeorgiacouncil.org/fees) ⚠️ *outdated*, [ScoutSmarts — Scouting Costs](https://scoutsmarts.com/scouting-costs-registration-gear-uniforms-fees/), [Scouting Iowa](https://scoutingiowa.org/membershipfees/)
 
 ### Time commitment
-- Dens typically meet **2–3 times per month**.
+
+These are **national norms, not Pack 170's schedule** — see `docs/Offical-info.md` for the pack's actual cadence, which is lighter than the generic figures below. Never publish these numbers as if they described Pack 170.
+
+- Dens commonly meet **2–3 times per month**, though den meeting frequency is set by each den leader and many packs run monthly.
 - One **pack meeting per month** brings all dens together.
 - **1–2 additional optional pack events per month** (campouts, service projects, derbies, etc.).
 
 ### How to join
-- Families search **BeAScout.org** by ZIP code and program type to find local packs, see meeting info/websites/contacts, and in many cases **register and pay online directly** from the listing.
+- Families search **BeAScout** (canonical URL: <https://beascout.scouting.org/>; the shorter `beascout.org` also resolves) by ZIP code and program type to find local packs, see meeting info/websites/contacts, and in many cases **register and pay online directly** from the listing.
 - A pack website should make it easy to (a) confirm meeting night/location/frequency, (b) show upcoming recruitment events ("Join Night"), and (c) link to registration (BeAScout or a pack-specific signup form).
 
 Source: [Scouting America council join pages](https://www.scoutingatl.org/cub-scouts), [Woodlands Cub Scouts — Joining FAQ](https://www.woodlandscubscouts.com/joining-faqs.html)
@@ -154,9 +165,9 @@ Sources: [Pack 1776 site structure](https://pack1776.com/join/activities/), [Sco
 
 - Program serves **K–5th grade**, ages roughly **5–11**.
 - Six ranks in order: **Lion (K) → Tiger (1st) → Wolf (2nd) → Bear (3rd) → Webelos (4th) → Arrow of Light (5th)**.
-- Rank colors for design/iconography: **Lion = yellow, Tiger = orange, Wolf = red, Bear = blue, Webelos = plaid (red/gold/navy/green), Arrow of Light = olive green/tan.**
+- Rank colors for design/iconography (neckerchief colors — the officially attested cue): **Lion = yellow, Tiger = orange, Wolf = red, Bear = light blue, Webelos = plaid, Arrow of Light = tan (no dedicated neckerchief; wears the Scouts BSA uniform with blue shoulder loops).**
 - Motto: **"Do Your Best."**
-- Meets in **dens** (small, same-grade groups, 2–3x/month) within a **pack** (all dens together, 1x/month pack meeting).
-- Signature annual events: **Pinewood Derby (Jan), Blue and Gold Banquet (Feb, around the Feb 8 BSA anniversary), Raingutter Regatta, popcorn fundraiser (fall), summer camp/day camp, crossover ceremony (spring).**
-- To join: **BeAScout.org**, ~$85 national fee + local pack dues (~$150–200/year all-in), blue uniform.
+- Meets in **dens** (small, same-grade groups; frequency set locally, nationally 2–3x/month) within a **pack** (all dens together, typically 1x/month pack meeting). *Use Pack 170's own schedule on the site, not these norms.*
+- Signature annual events: **Pinewood Derby (Jan), Blue and Gold Banquet (Feb, around the Feb 8 BSA anniversary), Raingutter Regatta, popcorn fundraiser (fall), summer camp/day camp, crossover ceremony (Jan–Mar).**
+- To join: **BeAScout** (<https://beascout.scouting.org/>), **$85 national fee** (no joining fee — eliminated April 2024) + local pack dues; roughly $150–200/year all-in (*unverified estimate*), blue uniform.
 - Girls and boys both welcome (Family Scouting); dens are single-gender or co-ed "family dens" (K–4), packs can mix den types.

@@ -250,9 +250,15 @@ The palette evokes:
 
 ## Research Sources
 
+All links below were checked and returned HTTP 200 on 2026-07-26 unless noted.
+
 - [Visit Macon official tourism site](https://visitmacon.org/)
-- [Explore Georgia - Macon guide](https://exploregeorgia.org/article/guide-to-macon)
-- [Central Georgia Council Scouting America](https://www.centralgeorgiacouncil.org/)
-- [Ocmulgee Mounds National Historical Park](https://www.nps.gov/ocmu/)
-- [Lake Tobesofkee Recreation Area](https://visitmacon.org/directory/lake-tobesofkee-recreation-area/)
+- [Explore Georgia - Macon guide](https://exploregeorgia.org/article/guide-to-macon) — loads in a normal browser; blocks scripted requests with HTTP 403
+- [Central Georgia Council, BSA](https://www.centralgeorgiacouncil.org/)
+- [Ocmulgee Mounds National Historical Park (NPS)](https://www.nps.gov/ocmu/)
+- [Lake Tobesofkee Recreation Area (official)](https://laketobo.maconbibb.us/)
+- [Amerson River Park (official)](https://amerson.maconbibb.us/)
 - [International Cherry Blossom Festival](https://cherryblossom.com/)
+- [Macon - New Georgia Encyclopedia](https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/macon/)
+
+**Removed as unreliable:** the original draft cited two SEO content-farm listicles (luxwisp.com and facts.net) for Macon's core demographic facts. Both URLs still resolve, but they are not authoritative and several figures traced to them were wrong. They have been replaced with Census and New Georgia Encyclopedia sources.
