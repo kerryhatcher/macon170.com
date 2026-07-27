@@ -154,7 +154,13 @@ vite.config.ts.timestamp-*
 docs/Notes.md
 .playwright-mcp
 screenshots
-.impeccable
+# Impeccable: config.json holds shared design-detector decisions and is tracked, so
+# design waivers travel with the repo and get reviewed. Everything else in here is
+# per-developer or per-session state. The un-ignore is explicit because a global
+# excludes file (~/.config/git/ignore) may drop the whole directory.
+!.impeccable/
+.impeccable/*
+!.impeccable/config.json
 .pi-subagents/
 
 
