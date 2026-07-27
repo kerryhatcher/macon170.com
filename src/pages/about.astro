@@ -73,6 +73,17 @@ import { pack } from '../data/pack';
       <p class="roster-note">
         Reaching a leader goes through <a href="/contact/">the contact form</a>, the pack does not publish adult email addresses.
       </p>
+      <h3>Open den leader roles</h3>
+      <p class="lead">
+        Every den needs a leader. Open dens still meet, just without a named leader yet — if your child's grade is listed below, that den is
+        looking for a volunteer.
+      </p>
+      <div class="roster" data-roster="vacant">
+        <p>Open role information loads from the pack database. Ask a pack adult if it does not appear.</p>
+      </div>
+      <p class="roster-note">
+        Want to lead a den? <a href="/contact/">Reach out through the contact form</a> — no experience required, training is provided.
+      </p>
     </div>
   </section>
   <section class="section council-section">
@@ -129,15 +140,10 @@ import { pack } from '../data/pack';
     background: var(--page);
     border-block: 1px solid var(--rule);
   }
-  /* Styles any structure the Markdown grows: h2 sections, prose, and role lists. */
-  .roster :global(h2) {
+  /* Styles what rosterMarkup (worker/roster-inject.ts) emits: ul/li/strong/em/p role
+     lists, plus the h3 sub-heading this page authors above the vacant block. */
+  .roster-section h3 {
     margin-top: 2.5rem;
-  }
-  .roster :global(h2:first-child) {
-    margin-top: 0.5rem;
-  }
-  .roster :global(h3) {
-    margin-top: 2rem;
   }
   .roster :global(p) {
     max-width: 65ch;

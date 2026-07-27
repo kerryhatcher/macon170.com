@@ -34,6 +34,7 @@ describe('leadership_roles schema', () => {
       'cubmaster',
       'committee-chair',
       'chartered-organization-representative',
+      'lion-den-leader',
       'webelos-den-leader',
     ]);
   });
@@ -167,6 +168,25 @@ describe('admin leadership routes', () => {
 
   it('rejects a missing role label', async () => {
     const response = await exports.default.fetch(localAdmin, jsonInit('POST', { name: 'Nobody' }));
+    expect(response.status).toBe(400);
+  });
+
+  it('rejects an email address typed into the name field', async () => {
+    const response = await exports.default.fetch(
+      localAdmin,
+      jsonInit('POST', { role: 'Assistant Treasurer', name: 'reach me at a@b.com' }),
+    );
+    expect(response.status).toBe(400);
+    const body = (await response.json()) as { error: string };
+    expect(body.error).toContain('/contact/');
+  });
+
+  it('rejects an email address typed into the bio field', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'cubmaster'").first<{ id: string }>();
+    const response = await exports.default.fetch(
+      `${localAdmin}/${row!.id}`,
+      jsonInit('PUT', { role: 'Cubmaster', bio: 'Email me at leader@example.com with questions.' }),
+    );
     expect(response.status).toBe(400);
   });
 

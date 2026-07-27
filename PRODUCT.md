@@ -54,7 +54,7 @@ The neighborhood pack, plainly local: Macon's own Pack 170, meeting in the histo
 
 - Five research documents in `docs/research/` with primary-source citations.
 - Verified pack and council facts: `docs/Offical-info.md` (canonical, human-written, never edited by agents).
-- Partial real leadership roster in the `leadership_roles` D1 table, edited at `/admin/leadership` — Cubmaster, Committee Chair, Chartered Organization Representative, and two den leaders are real and named; the remaining den leader rows are deliberately empty and must stay empty until filled by leadership.
+- Partial real leadership roster in the `leadership_roles` D1 table, edited at `/admin/leadership` — Cubmaster, Committee Chair, Chartered Organization Representative, and the Lion and Webelos den leaders are real and named; the remaining den leader rows are deliberately empty and must stay empty until filled by leadership.
 - Still absent and never to be fabricated: pack photos, testimonials, dues amounts, and dated calendar events. Real assets (Brand Center artwork/photos, pack facts) come from the user later.
 
 ## Product Principles
