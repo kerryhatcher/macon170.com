@@ -67,6 +67,24 @@ Six entries whose `state` is a placeholder string, surfaced on the homepage time
 Join Scouting Night, Popcorn fundraiser, Pinewood Derby, Blue & Gold Banquet, Crossover,
 Summer camp — all "Date to be added" / "Dates to be added".
 
+## Placeholder graphics
+
+Resolved 2026-07-27. The rank grids on `/`, `/join/`, and `/dens/` showed a letter in a hand-drawn
+blob (`L`, `T`, `W`, `B`, `Web`, `AOL`), and each den page numbered its six required adventures
+`1`–`6`. Both are now the official Scouting America art from `assets/offical/`, resolved through
+`src/lib/official-image.ts` and rendered by `src/components/RankEmblem.astro` and Astro's `<Image>`.
+The dead `.rank__mark` rules and the `mark` field in `ranks[]` are gone.
+
+Still hand-drawn on purpose, with no official equivalent:
+
+- `src/components/FieldIllustration.astro` — CSS Georgia-hills scene on `/` and `/about/`.
+- `src/pages/activities.astro:5` — `→ ▲ ★ ✦` symbols per activity. Generic, but no official
+  Scouting America graphic maps to "pinewood derby" or "blue & gold banquet".
+- `src/components/SiteHeader.astro:18` — the `170` brand mark. `assets/logo.svg`,
+  `assets/header.svg`, and `assets/header-dark.svg` are this pack's own artwork (not official
+  Scouting America art) and are still referenced by no page.
+- `public/favicon.svg` — hand-rolled blue square with "170".
+
 ## Checked and clean
 
 - `src/pages/about.astro`, `src/pages/activities.astro`, `src/pages/events/index.astro`,

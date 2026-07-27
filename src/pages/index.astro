@@ -8,6 +8,7 @@ FORM: Handbook-cover index fused with children’s chapter-book warmth; selected
 */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
+import RankEmblem from '../components/RankEmblem.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
 ---
 
@@ -80,9 +81,7 @@ import { annualProgram, pack, ranks } from '../data/pack';
         {
           ranks.map((rank) => (
             <div class:list={['rank', `rank--${rank.color}`]}>
-              <div class="rank__mark" aria-hidden="true">
-                {rank.mark}
-              </div>
+              <RankEmblem emblem={rank.emblem} name={rank.name} />
               <>
                 <strong>{rank.name}</strong>
                 <small>{rank.grade}</small>
