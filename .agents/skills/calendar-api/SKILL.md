@@ -109,20 +109,20 @@ unintended URL change.
 
 ## Field rules
 
-| Field | Rules |
-| --- | --- |
-| `title` | 3–160 characters |
-| `slug` | Optional; 2–80 lowercase URL-safe characters after normalization |
-| `summary` | 10–500 characters |
-| `description` | 10–8,000 characters |
-| `startsAt`, `endsAt` | ISO 8601; `endsAt` is optional but must be after `startsAt` |
-| `audience` | 2–300 characters |
-| `category` | `pack`, `den`, or `family` |
-| `status` | `scheduled`, `tentative`, or `cancelled` |
-| `visibility` | Update only: `draft`, `published`, or `archived` |
-| `timezone` | Optional, but if supplied must be `America/New_York` |
-| `locationName`, `address`, `whatToBring`, `cost` | Optional text fields |
-| `registrationUrl` | Optional `http` or `https` URL |
+| Field                                            | Rules                                                            |
+| ------------------------------------------------ | ---------------------------------------------------------------- |
+| `title`                                          | 3–160 characters                                                 |
+| `slug`                                           | Optional; 2–80 lowercase URL-safe characters after normalization |
+| `summary`                                        | 10–500 characters                                                |
+| `description`                                    | 10–8,000 characters                                              |
+| `startsAt`, `endsAt`                             | ISO 8601; `endsAt` is optional but must be after `startsAt`      |
+| `audience`                                       | 2–300 characters                                                 |
+| `category`                                       | `pack`, `den`, or `family`                                       |
+| `status`                                         | `scheduled`, `tentative`, or `cancelled`                         |
+| `visibility`                                     | Update only: `draft`, `published`, or `archived`                 |
+| `timezone`                                       | Optional, but if supplied must be `America/New_York`             |
+| `locationName`, `address`, `whatToBring`, `cost` | Optional text fields                                             |
+| `registrationUrl`                                | Optional `http` or `https` URL                                   |
 
 API responses use database-style names such as `starts_at` and
 `location_name`; request bodies use camelCase such as `startsAt` and

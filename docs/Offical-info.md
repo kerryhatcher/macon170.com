@@ -4,6 +4,10 @@ This is the canonical source of truth for details regarding the pack/troop.
 
 Note to Agents: It is hand crafted by humans, do not edit/change without explicit instructions to do so.
 
+## Links
+
+Facebook: https://www.facebook.com/Pack170Macon
+
 ## Council
 
 **Central Georgia Council, BSA**  
@@ -14,6 +18,17 @@ F: (478) 745-2686
 centralgeorgiacouncil@scouting.org
 
 https://www.centralgeorgiacouncil.org/
+
+## Chartered Organization
+
+**Highland Hills Baptist Church** charters all three Scouting America units in the 170 family.
+
+## Sister Units
+
+Cub Scout Pack 170, BSA Troop 170, and Venturing Crew 170 are sister organizations. All three are
+chartered by Highland Hills Baptist Church and are part of Scouting America.
+
+Source: Kerry Hatcher, 2026-07-27.
 
 ## Cub Scout Pack
 
@@ -26,3 +41,21 @@ Pack Meetings occur roughly once a month at Highland Hills Baptist Church at 6:3
 ### Dens
 
 Each Den sets its own meeting times/locations, however, many meet at the church for an hour before the Pack meeting.
+
+#### Lion (Kindergarten)
+
+## Adventures 
+
+https://www.scouting.org/programs/cub-scouts/adventures/
+
+- Lion (K) - https://www.scouting.org/programs/cub-scouts/adventures/lion/
+  - REQUIRED
+    - Bobcat Lion - https://www.scouting.org/cub-scout-adventures/bobcat-lion/
+    - Fun on the run - https://www.scouting.org/cub-scout-adventures/fun-on-the-run/
+  - Elective
+    - Build It Up, Knock It Down - https://www.scouting.org/cub-scout-adventures/build-it-up-knock-it-down/
+- Tiger (1st) - 
+- Wolf (2nd) -
+- Bear (3rd) - 
+- Webelos (4th) - 
+- Arrow of Light (5th) - 

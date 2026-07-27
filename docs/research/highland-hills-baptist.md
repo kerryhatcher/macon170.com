@@ -122,15 +122,17 @@ Two pages on the church's official site independently document a long-standing S
 1. **Projects & Partners** lists **"BSA Troop 170"** among the organizations with which the church has "meaningful ongoing partnerships," alongside an image captioned "Boy Scouts from Troop 170."
 2. **Our Campus & Grounds** describes the wooded walking trail that circles the campus as wandering "past the amphitheater, the **Boy Scout Hut**, and beautiful foliage" — a dedicated Scout building on church property.
 
-Neither page names Cub Scout Pack 170 or Venturing Crew 170 specifically, and no page on the official site uses the words "charter" or "chartered organization."
+Neither page names Cub Scout Pack 170 or Venturing Crew 170 specifically, and no page on the official site uses the words "charter" or "chartered organization." The charter relationship for all three units is confirmed by pack leadership instead — see below.
 
 ### Pack 170's Connection — Confirmed by Pack Leadership
 
 **Confirmed:** Cub Scout Pack 170 **meets at Highland Hills Baptist Church**. Pack meetings occur roughly once a month on **Tuesdays at 6:30 p.m.**, and many dens meet at the church for an hour before the pack meeting. Source: `docs/Offical-info.md`, the hand-maintained canonical pack record.
 
-**Still open — the formal charter paperwork.** No public source states in writing that Highland Hills Baptist Church is the _chartered organization of record_ for Pack 170. The church hosts the pack, houses a Boy Scout Hut, and publicly partners with Troop 170, so this is very likely, but the charter document itself should be confirmed with the Central Georgia Council or the pack's charter organization representative before the website asserts it as a legal relationship.
+**Confirmed — the charter relationship.** Highland Hills Baptist Church is the chartered organization for **Cub Scout Pack 170, BSA Troop 170, and Venturing Crew 170**. All three are sister units and all three are part of Scouting America. Source: Kerry Hatcher, 2026-07-27. The website is cleared to state this relationship.
 
-⚠️ **Correction to earlier research.** An earlier draft stated that HHBC is the "confirmed" chartered organization for **Venturing Crew 170** while Pack 170's status was unknown. That has the evidence backwards. The Crew 170 claim traced only to a search-engine summary, not to any primary source, and the official church site never mentions a Venturing crew. Treat "Crew 170 is chartered by HHBC" as **unverified**. The unit the church actually names in its own materials is **Troop 170**.
+This is leadership testimony, not a copy of the charter paperwork. It outranks the search-engine summaries this document previously relied on (per the project's primary-source-precedence rule), but if you ever need the executed charter agreement itself — for a legal or council filing rather than for the website — request it from the Central Georgia Council or the pack's charter organization representative.
+
+**Correction history.** An earlier draft called HHBC the "confirmed" chartered organization for Venturing Crew 170 while treating Pack 170's status as unknown; a later revision flipped that and marked the Crew 170 claim unverified, because it traced only to a search-engine summary. Pack leadership has now confirmed all three units share the same chartered organization, so both earlier framings were incomplete. The church's own public materials still name only **Troop 170**, which is why no primary web source corroborates the Pack or Crew charter.
 
 **Typical Chartering Organization Role:**
 A chartered organization is a community-based group whose objectives, mission, and methodologies are compatible with Scouting America that agrees to use the Scouting program to further its mission to serve young people. Churches are among the most common chartered organizations, providing meeting facilities, leadership support, and organizational oversight.
@@ -214,9 +216,11 @@ When a website acknowledges its chartered organization, standard language in Sco
 
 > "Pack 170 is chartered by [Chartered Organization Name], in partnership with [Local Council Name]. We are grateful for the support and facilities provided by our chartered organization, which makes our program possible."
 
-⚠️ **Until the charter paperwork is confirmed, the website should not claim HHBC is Pack 170's chartered organization.** Wording that is fully supported by current evidence:
+**Cleared for use (2026-07-27).** Pack leadership has confirmed the charter relationship, so the site may state it directly:
 
-> "Pack 170 meets at Highland Hills Baptist Church in Macon's Shirley Hills neighborhood. We're grateful to Highland Hills for the space and support that make our program possible."
+> "Pack 170 is chartered by Highland Hills Baptist Church, in partnership with Central Georgia Council. We are grateful for the support and facilities provided by our chartered organization, which makes our program possible."
+
+Pack 170, Troop 170, and Crew 170 are sister units under the same charter, so the site may also describe them that way when it's useful to a family deciding where an older sibling goes next.
 
 **Key Elements to Consider for Pack 170's Website:**
 
@@ -247,8 +251,9 @@ When a website acknowledges its chartered organization, standard language in Sco
 | **Boy Scout Hut on campus**       | Confirmed                                                                                                    | Official site (Campus & Grounds)         |
 | **Troop 170 partnership**         | Confirmed — listed as an ongoing partner                                                                     | Official site (Projects & Partners)      |
 | **Pack 170 meets at the church**  | Confirmed — Tuesdays 6:30 PM, roughly monthly                                                                | `docs/Offical-info.md` (pack leadership) |
-| **Pack 170 charter of record**    | ⚠️ Unverified — no public document names HHBC as chartered organization                                      | —                                        |
-| **Crew 170 Charter**              | ⚠️ Unverified — traced only to a search-engine summary; not on the official site                             | —                                        |
+| **Pack 170 charter of record**    | Confirmed — HHBC is the chartered organization                                                               | Kerry Hatcher, 2026-07-27                |
+| **Crew 170 Charter**              | Confirmed — HHBC charters Crew 170 as well                                                                   | Kerry Hatcher, 2026-07-27                |
+| **Pack / Troop / Crew 170**       | Confirmed — sister units, same charter, all Scouting America                                                 | Kerry Hatcher, 2026-07-27                |
 | **Shirley Hills Built**           | Starting 1922                                                                                                | Wikipedia / NRHP                         |
 | **Shirley Hills Historic Status** | National Register Aug 17, 1989 (275 acres); boundary increase May 28, 2014; 401 contributing buildings today | Wikipedia, Historic Macon Foundation     |
 
@@ -258,13 +263,13 @@ When a website acknowledges its chartered organization, standard language in Sco
 
 **[These items could not be independently verified and should be confirmed with Pack 170 leadership or Highland Hills Baptist Church:]**
 
-1. **Pack 170's chartered organization of record:** The pack meets at the church (confirmed) and the church publicly partners with Troop 170 (confirmed), but no document reviewed names Highland Hills Baptist Church as Pack 170's chartered organization. **Confirm via the pack's charter paperwork or the Central Georgia Council** before the website states it as a formal charter relationship.
+1. ~~**Pack 170's chartered organization of record**~~ — **Resolved.** Highland Hills Baptist Church charters Pack 170, Troop 170, and Crew 170; the three are sister units under one charter (Kerry Hatcher, 2026-07-27). The website is cleared to state this.
 
 2. ~~**Pack 170 Meeting Location**~~ — **Resolved.** Pack meetings are held at Highland Hills Baptist Church, Tuesdays at 6:30 p.m., roughly monthly; many dens meet at the church for an hour beforehand (`docs/Offical-info.md`).
 
 3. **Pack 170 founding date and history:** The date Pack 170 was chartered and the origin of its relationship to the church are still undocumented. **Check pack records or ask leadership.**
 
-4. **Which Scouting units the church supports:** The official site names only Troop 170 as a partner and references a Boy Scout Hut. Whether a Venturing crew exists, and how Pack 170 is described in the church's own records, is unknown. **Contact the church office directly.**
+4. ~~**Which Scouting units the church supports**~~ — **Resolved.** Highland Hills charters Pack 170, Troop 170, and Venturing Crew 170 (Kerry Hatcher, 2026-07-27). The church's own site still names only Troop 170 publicly, so there is no web source to cite for the Pack and Crew.
 
 5. **The Boy Scout Hut:** The church's site confirms one exists on the walking trail but gives no history, age, or usage details, and does not say whether Pack 170 uses it. **Worth asking about — it is the most concrete physical link between the church and Scouting.**
 

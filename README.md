@@ -10,7 +10,7 @@
   <a href="https://github.com/kerryhatcher/macon170.com/actions/workflows/deploy.yml"><img src="https://github.com/kerryhatcher/macon170.com/actions/workflows/deploy.yml/badge.svg" alt="Deploy status"></a>
   <img src="https://img.shields.io/badge/built%20with-Astro-FF5D01?logo=astro&logoColor=white" alt="Built with Astro">
   <img src="https://img.shields.io/badge/deployed%20on-Cloudflare%20Workers-F38020?logo=cloudflare&logoColor=white" alt="Deployed on Cloudflare Workers">
-  <img src="https://img.shields.io/badge/node-24-339933?logo=node.js&logoColor=white" alt="Node 24">
+  <img src="https://img.shields.io/badge/runtime-Bun-000000?logo=bun&logoColor=white" alt="Bun">
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-6366F1" alt="Version 0.1.0">
@@ -50,15 +50,15 @@ official website of Cub Scout Pack 170 in Macon, Georgia, built with
 ## 🚀 Quick Start
 
 ```bash
-npm ci
+bun install --frozen-lockfile
 cp .dev.vars.example .dev.vars
-npm run db:migrate:local
-npm run dev:worker
+bun run db:migrate:local
+bun run dev:worker
 ```
 
 Open **http://localhost:8787** — this runs the full Worker (contact API,
 admin desk, D1) in front of the built site. For frontend-only iteration
-without the API, `npm run dev` starts just the Astro dev server.
+without the API, `bun run dev` starts just the Astro dev server.
 
 ## Table of Contents
 
@@ -101,17 +101,17 @@ submission and event change.
 
 ## 📦 Installation
 
-**Prerequisites:** [Node 24](https://nodejs.org), npm, and a
+**Prerequisites:** [Bun](https://bun.sh) and a
 [Cloudflare account](https://dash.cloudflare.com) with
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
-authenticated (`npx wrangler login`).
+authenticated (`bunx wrangler login`).
 
 ```bash
 git clone https://github.com/kerryhatcher/macon170.com.git
 cd macon170.com
-npm ci
+bun install --frozen-lockfile
 cp .dev.vars.example .dev.vars
-npm run db:migrate:local
+bun run db:migrate:local
 ```
 
 `.dev.vars` holds `TURNSTILE_SECRET`, set by default to Cloudflare's
@@ -121,13 +121,13 @@ used in production.
 <details>
 <summary><strong>Environment variables reference</strong></summary>
 
-| Variable                       | Where                | Purpose                                             |
-| ------------------------------- | --------------------- | ----------------------------------------------------- |
-| `TURNSTILE_SECRET`               | `.dev.vars` (Worker secret in prod) | Server-side [Turnstile](https://developers.cloudflare.com/turnstile/) verification |
-| `TURNSTILE_SITE_KEY`            | `wrangler.jsonc` vars | Client-side Turnstile widget key                    |
-| `ACCESS_TEAM_DOMAIN`            | `wrangler.jsonc` vars | Your `https://TEAM.cloudflareaccess.com` domain     |
-| `ACCESS_AUD`                    | `wrangler.jsonc` vars | [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/) application audience tag |
-| `ADMIN_ORIGIN` / `PUBLIC_SITE_ORIGIN` | `wrangler.jsonc` vars | Expected origins for CORS and redirects       |
+| Variable                              | Where                               | Purpose                                                                                                         |
+| ------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `TURNSTILE_SECRET`                    | `.dev.vars` (Worker secret in prod) | Server-side [Turnstile](https://developers.cloudflare.com/turnstile/) verification                              |
+| `TURNSTILE_SITE_KEY`                  | `wrangler.jsonc` vars               | Client-side Turnstile widget key                                                                                |
+| `ACCESS_TEAM_DOMAIN`                  | `wrangler.jsonc` vars               | Your `https://TEAM.cloudflareaccess.com` domain                                                                 |
+| `ACCESS_AUD`                          | `wrangler.jsonc` vars               | [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/) application audience tag |
+| `ADMIN_ORIGIN` / `PUBLIC_SITE_ORIGIN` | `wrangler.jsonc` vars               | Expected origins for CORS and redirects                                                                         |
 
 Full production setup, including Access policy configuration and GitHub
 Actions secrets, is documented in
@@ -137,15 +137,15 @@ Actions secrets, is documented in
 
 ## 🔧 Usage
 
-| Command                   | What it does                                    |
-| -------------------------- | -------------------------------------------------- |
-| `npm run dev`              | Astro dev server only (no API, no D1)             |
-| `npm run dev:worker`       | Full Worker + static site + local D1, at `:8787`  |
-| `npm run build`            | Type-checks and builds to `dist/`                 |
-| `npm test`                 | [Vitest](https://vitest.dev) unit + integration   |
-| `npm run test:e2e`         | [Playwright](https://playwright.dev) e2e coverage |
-| `npm run lint` / `format`  | [ESLint](https://eslint.org) and [Prettier](https://prettier.io) |
-| `just ci`                  | The full local battery, same as CI                |
+| Command                   | What it does                                                     |
+| ------------------------- | ---------------------------------------------------------------- |
+| `bun run dev`             | Astro dev server only (no API, no D1)                            |
+| `bun run dev:worker`      | Full Worker + static site + local D1, at `:8787`                 |
+| `bun run build`           | Type-checks and builds to `dist/`                                |
+| `bun run test`            | [Vitest](https://vitest.dev) unit + integration                  |
+| `bun run test:e2e`        | [Playwright](https://playwright.dev) e2e coverage                |
+| `bun run lint` / `format` | [ESLint](https://eslint.org) and [Prettier](https://prettier.io) |
+| `just ci`                 | The full local battery, same as CI                               |
 
 Run `just ci` before every commit — it's the same battery
 [GitHub Actions](https://docs.github.com/actions) runs before it will

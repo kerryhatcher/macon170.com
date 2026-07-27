@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "dev:worker": "npm run build && wrangler dev --env-file .dev.vars",
+    "dev:worker": "bun run build && wrangler dev --env-file .dev.vars",
     "start": "astro dev",
     "build": "astro check && astro build",
     "check": "astro check && tsc --noEmit --project tsconfig.worker.json",
@@ -19,9 +19,9 @@
     "cf:types": "wrangler types worker-configuration.d.ts",
     "db:migrate:local": "wrangler d1 migrations apply macon170-submissions --local",
     "db:migrate:remote": "wrangler d1 migrations apply macon170-submissions --remote",
-    "e2e:server": "npm run build && wrangler d1 migrations apply macon170-submissions-e2e --local --config wrangler.e2e.jsonc && wrangler dev --config wrangler.e2e.jsonc --env-file .dev.vars.e2e --port 8790",
-    "deploy:dry": "npm run build && wrangler deploy --dry-run",
-    "deploy": "npm run build && wrangler deploy"
+    "e2e:server": "bun run build && wrangler d1 migrations apply macon170-submissions-e2e --local --config wrangler.e2e.jsonc && wrangler dev --config wrangler.e2e.jsonc --env-file .dev.vars.e2e --port 8790",
+    "deploy:dry": "bun run build && wrangler deploy --dry-run",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/check": "latest",
@@ -43,7 +43,6 @@
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript-eslint": "^8.65.0",
-    "vitest": "^4.1.10",
-    "wrangler": "^4.114.0"
+    "vitest": "^4.1.10"
   }
 }

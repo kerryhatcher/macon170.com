@@ -27,7 +27,7 @@ In **Zero Trust → Access controls → Applications**:
 8. Replace the two placeholders in `wrangler.jsonc`:
    - `ACCESS_TEAM_DOMAIN`
    - `ACCESS_AUD`
-9. Run `npm run cf:types` and commit the regenerated `worker-configuration.d.ts`.
+9. Run `bun run cf:types` and commit the regenerated `worker-configuration.d.ts`.
 
 The Worker verifies every Access JWT using Cloudflare’s rotating JWKS, issuer, and application audience. Cloudflare Access in front of the hostname is necessary but not the only check.
 
@@ -73,9 +73,9 @@ TURNSTILE_SECRET=1x0000000000000000000000000000000AA
 For predictable local browser testing, temporarily use Cloudflare’s always-pass test site key `1x00000000000000000000AA` in the rendered form or expose the configured key at build time. The committed production form uses the production site key.
 
 ```bash
-npm ci
-npm run db:migrate:local
-npm run dev:worker
+bun install --frozen-lockfile
+bun run db:migrate:local
+bun run dev:worker
 ```
 
 The local Worker accepts the development admin identity instead of requiring a real Access JWT. Production never uses that bypass because `ENVIRONMENT` is `production` in `wrangler.jsonc`.
@@ -93,7 +93,7 @@ Before the first production deploy:
 7. Confirm the D1 row and audit log:
 
 ```bash
-npx wrangler d1 execute macon170-submissions --remote \
+bunx wrangler d1 execute macon170-submissions --remote \
   --command "SELECT id, created_at, status, parent_name, topic FROM contact_submissions ORDER BY created_at DESC LIMIT 10"
 ```
 

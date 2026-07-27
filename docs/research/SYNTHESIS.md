@@ -14,8 +14,8 @@ Cub Scouting unit of **Scouting America** operating under the **Central Georgia 
 
 **Chartered organization:** **Highland Hills Baptist Church**, 1370 Briarcliff Road, Macon, GA 31211
 — a 1953-founded Cooperative Baptist Fellowship congregation in the historic Shirley Hills neighborhood of East
-Macon. Note the charter relationship is _confirmed_ for Venturing Crew 170 but **not yet
-independently confirmed for Pack 170** (see Open Questions).
+Macon. The church charters **Cub Scout Pack 170, BSA Troop 170, and Venturing Crew 170** — three sister
+units, one chartered organization, all part of Scouting America (Kerry Hatcher, 2026-07-27).
 
 **Who the program serves:** kids in **kindergarten through 5th grade** (ages ~5–11), boys and girls.
 Six ranks in order: **Lion (K) → Tiger (1) → Wolf (2) → Bear (3) → Webelos (4) → Arrow of Light (5)**.
@@ -183,7 +183,7 @@ Recommended pages, ordered by how much they matter:
 ### Chartered-organization acknowledgment
 
 Give Highland Hills Baptist Church a genuine mention on About and a line in the global footer.
-Suggested pattern, pending confirmation of the charter:
+Charter confirmed, so this wording is cleared for use:
 
 > Cub Scout Pack 170 is chartered by Highland Hills Baptist Church of Macon, Georgia, in partnership
 > with the Central Georgia Council, Scouting America. We're grateful for the space, support, and
@@ -229,12 +229,15 @@ leadership or Highland Hills Baptist Church before launch.
 
 **Blocking — the site cannot launch without these:**
 
-1. **Meeting day, time, and frequency** for pack meetings, and the den meeting pattern.
-2. **Meeting location** — does the pack meet at Highland Hills Baptist Church, and in which
-   building/room? No public source confirms this.
-3. **Charter confirmation** — is Cub Scout Pack 170 actually chartered by Highland Hills Baptist
-   Church? Only Venturing Crew 170's charter is publicly confirmed. Verify with the pack, the
-   church, or the Central Georgia Council before printing the acknowledgment.
+1. ~~**Meeting day, time, and frequency**~~ — **Resolved.** Pack meetings run roughly monthly on
+   Tuesdays at 6:30 p.m. Each den sets its own time and place, though many meet at the church for an
+   hour beforehand. See `docs/Offical-info.md`.
+2. ~~**Meeting location**~~ — **Mostly resolved.** The pack meets at Highland Hills Baptist Church
+   (`docs/Offical-info.md`). **Still open: which building or room** — `src/data/pack.ts` carries
+   `meeting.room: null`, so the site shows its fallback instead of naming a room.
+3. ~~**Charter confirmation**~~ — **Resolved.** Highland Hills Baptist Church charters Pack 170,
+   Troop 170, and Crew 170 as sister units (Kerry Hatcher, 2026-07-27). The acknowledgment is cleared
+   to print; see `highland-hills-baptist.md`.
 4. **Contact email(s)** — ideally role-based (Cubmaster, Committee Chair, membership/join inquiries).
 5. **Local pack dues** — amount, what they cover, when they're due, and how families pay.
 6. **Leadership roster** — Cubmaster, Committee Chair, Den Leaders, with the names and role emails

@@ -4,20 +4,20 @@ Thanks for helping with the Pack 170 website. This is a small, volunteer-maintai
 
 ## Development setup
 
-**Prerequisites:** Node 24, npm, and a [Cloudflare account](https://dash.cloudflare.com) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/) authenticated locally (`npx wrangler login`) if you need the full Worker.
+**Prerequisites:** [Bun](https://bun.sh) and a [Cloudflare account](https://dash.cloudflare.com) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/) authenticated locally (`bunx wrangler login`) if you need the full Worker.
 
 ```bash
 git clone https://github.com/kerryhatcher/macon170.com.git
 cd macon170.com
-npm ci
+bun install --frozen-lockfile
 cp .dev.vars.example .dev.vars
-npm run db:migrate:local
+bun run db:migrate:local
 ```
 
 Two ways to run it locally:
 
-- `npm run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1.
-- `npm run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `localhost:8787`. Use this for anything touching `worker/`.
+- `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1.
+- `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `localhost:8787`. Use this for anything touching `worker/`.
 
 `.dev.vars` provides `TURNSTILE_SECRET` set to Cloudflare's documented always-pass test secret — safe for local use, never used in production. Never commit a real Turnstile or Cloudflare secret.
 
@@ -29,15 +29,15 @@ Run the full local CI battery — it's the same set of checks GitHub Actions run
 just ci
 ```
 
-Which runs, in order: `npm run lint`, `npm run check` (Astro + Worker type-checking), `npm run format:check`, `npm test` (unit + integration, against the real Cloudflare Workers runtime and applied D1 migrations), and `npm run test:e2e` (Playwright, contact-to-admin flow).
+Which runs, in order: `bun run lint`, `bun run check` (Astro + Worker type-checking), `bun run format:check`, `bun run test` (unit + integration, against the real Cloudflare Workers runtime and applied D1 migrations), and `bun run test:e2e` (Playwright, contact-to-admin flow).
 
-Don't have `just`? Run the individual `npm run` scripts listed in [README.md](README.md#-usage) in the same order.
+Don't have `just`? Run the individual `bun run` scripts listed in [README.md](README.md#-usage) in the same order.
 
 ## Code standards
 
 - **TypeScript everywhere in `worker/`.** No `any` where a real type is available; the Worker environment is typed via `WorkerEnv = Env & { TURNSTILE_SECRET: string }` in `worker/index.ts`, not by widening the generated `worker-configuration.d.ts`.
-- **Formatting is enforced, not debated.** Run `npm run format` (Prettier, including `.astro` files) before committing; `format:check` in CI will fail otherwise.
-- **Lint clean.** `npm run lint:fix` handles most ESLint issues automatically.
+- **Formatting is enforced, not debated.** Run `bun run format` (Prettier, including `.astro` files) before committing; `format:check` in CI will fail otherwise.
+- **Lint clean.** `bun run lint:fix` handles most ESLint issues automatically.
 - **Test the layer you changed.** Worker logic changes need a unit or integration test in `worker/*.test.ts`; anything touching the contact-to-admin user flow needs e2e coverage in `e2e/`.
 - **Pack facts live in one place.** Pack-specific details (dues, contacts, event dates) belong in `src/data/pack.ts`, never hardcoded into a page. Unknown facts are marked as clear placeholders, never invented.
 - **`docs/Offical-info.md` is human-authored.** It's the canonical source of truth for pack and council facts and should not be edited by an agent or contributor without explicit sign-off from pack leadership — it overrides the research docs in `docs/research/` if they ever disagree.

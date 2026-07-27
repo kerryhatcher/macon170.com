@@ -4,6 +4,6 @@ node_modules
 .wrangler
 graphify-out
 worker-configuration.d.ts
-package-lock.json
+bun.lock
 test-results
 playwright-report
