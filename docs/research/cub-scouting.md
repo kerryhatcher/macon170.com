@@ -2,25 +2,36 @@
 
 Research compiled for the Pack 170 (Macon, GA) website project. Covers program structure, ranks/colors, activities, terminology, joining logistics, and website content patterns.
 
+> **Fact-check note (July 2026):** All claims below were re-verified against official Scouting America pages (via Internet Archive where scouting.org blocks automated fetches) and council sources. Corrections are folded in. Items that could not be confirmed against an official source are labeled *unverified*.
+>
+> Several official domains (`scouting.org`, `scoutshop.org`, `capitolareascouting.org`) return HTTP 403 to automated fetchers but load normally in a browser — these are **not** dead links. No cited URL in this document is actually dead.
+>
+> Anything here describing *typical* pack practice is a national norm, not Pack 170's schedule. Pack 170's actual meeting cadence and locations live in `docs/Offical-info.md`, which is authoritative.
+
 ---
 
 ## 1. Program Structure
 
-- Cub Scouting serves children from **kindergarten through 5th grade** (roughly ages 5–11). It is the largest of Scouting America's program divisions — approximately 589,000 youth in about 16,300 packs nationally.
+- Cub Scouting serves children from **kindergarten through 5th grade** (roughly ages 5–11). It is the largest of Scouting America's program divisions — **589,253 youth (2025 figure)** in about **16,295 packs (2023 figure)**.
 - **Den vs. Pack:**
-  - A **den** is a small group (ideally 6–8 kids) of the same rank/grade, led by a **Den Leader**. Dens typically meet 2–3 times per month.
-  - A **pack** is the larger unit made up of all the dens (Lion through Arrow of Light), sponsored by a chartering organization (school, church, civic group, etc.). The pack holds one **monthly pack meeting** that brings all dens together, plus periodic pack-wide events.
-- **Family Scouting (girls + boys):** Since October 2017/June 2018, girls have been welcomed into Cub Scouts. Cub Scouting is **not co-ed at the den level** — dens are single-gender (all-boy or all-girl) — but a pack can include any mix of boy dens and girl dens. As of June 1, 2023, packs may also form co-ed **"family dens"** for grades K–4 (Arrow of Light dens remain single-gender to prepare for single-gender Scouts BSA patrols).
-  Source: [Family Scouting FAQ (PDF)](https://www.scouting.org/wp-content/uploads/2019/02/UPDATED-Family-Scouting-FAQ-2-11-191.pdf), [onscouting.org — family dens](https://onscouting.org/2023/06/22/cub-scout-family-dens-what-they-are-and-how-they-could-work-for-your-pack/), [Wikipedia](https://en.wikipedia.org/wiki/Cub_Scouting_(Boy_Scouts_of_America))
+  - A **den** is a small group (ideally 6–8 kids) of the same rank/grade, led by a **Den Leader**. Den meeting frequency is set locally; national program materials assume roughly 2–3 den meetings per month, but plenty of packs run fewer. Always state the pack's own schedule rather than the national assumption.
+  - A **pack** is the larger unit made up of all the dens (Lion through Arrow of Light), sponsored by a chartering organization (school, church, civic group, etc.). The pack typically holds one **monthly pack meeting** that brings all dens together, plus periodic pack-wide events.
+- **Family Scouting (girls + boys):** Scouting America's board voted on **October 11, 2017** to welcome girls; early-adopter packs began enrolling girls in **January 2018**, and **all** packs could form girl dens as of **June 1, 2018**. Cub Scouting is **not co-ed at the den level** by default — dens are single-gender (all-boy or all-girl) — but a pack can include any mix of boy dens and girl dens. As of June 1, 2023, packs may also form co-ed **"family dens"** for grades K–4 (Arrow of Light dens remain single-gender to prepare for single-gender Scouts BSA patrols). Scouting America's own wording: "family packs that serve both girls and boys may now form dens with both girls and boys in kindergarten (Lion), first grade (Tiger), second grade (Wolf), third grade (Bear) and fourth-grade Webelos dens."
+  Source: [Family Scouting FAQ (PDF)](https://www.scouting.org/wp-content/uploads/2019/02/UPDATED-Family-Scouting-FAQ-2-11-191.pdf), [onscouting.org — family dens](https://onscouting.org/2023/06/22/cub-scout-family-dens-what-they-are-and-how-they-could-work-for-your-pack/), [Aaron on Scouting — BSA welcomes girls (2017)](https://blog.scoutingmagazine.org/2017/10/11/bsa-welcomes-girls/), [Wikipedia — Cub Scouts (Scouting America)](https://en.wikipedia.org/wiki/Cub_Scouts_(Scouting_America))
 - **Adult leadership roles:**
   - **Cubmaster** — runs the overall pack program and monthly pack meetings (assisted by Assistant Cubmasters).
   - **Den Leader** — runs weekly/biweekly den meetings for a single rank group.
   - **Den Chief** — an older youth (Scouts BSA member or Venturer) who helps lead a den.
   - **Pack Committee Chair / Pack Committee** — handles program planning, finances, and administration behind the scenes.
   - **Akela** — not a title/office but a traditional term (from Kipling's *The Jungle Book*) meaning "a good leader"; at any given moment the den leader or Cubmaster running the activity is "Akela."
-  Source: [Wikipedia](https://en.wikipedia.org/wiki/Cub_Scouting_(Boy_Scouts_of_America)), [Murdock Pack 815 — Scouting 101](https://www.murdockpack815.org/scouting-101/the-cub-promise-law-and-motto)
-- **Note on 2024 program change:** Effective June 1, 2024, **Arrow of Light became a standalone, separate program/den for 5th graders**, no longer bundled with Webelos (4th grade). Advancement was also restructured pack-wide: each rank now requires **6 required Adventures + 2 elective Adventures** (previously varied by rank).
-  Source: [Scouting America — Cub Scout Program Updates FAQ](https://www.scouting.org/program-updates/cub-scout-program-updates-faq-1-3-24/), [Webelos and Arrow of Light At A Glance](https://www.scouting.org/program-updates/webelos-and-arrow-of-light-at-a-glance/)
+  Source: [Wikipedia — Cub Scouts (Scouting America)](https://en.wikipedia.org/wiki/Cub_Scouts_(Scouting_America)), [Murdock Pack 815 — Scouting 101](https://www.murdockpack815.org/scouting-101/the-cub-promise-law-and-motto)
+- **Note on the June 2024 program change** (verified against the official FAQ and the "At A Glance" page): Effective **June 1, 2024**:
+  - **Arrow of Light became a standalone program for 5th graders**, no longer associated with Webelos. Webelos is now **4th grade only**, and 4th graders "may NOT start working on Arrow of Light until they have completed the 4th grade."
+  - Advancement was restructured pack-wide: **every** badge of rank now requires **6 required Adventures + 2 elective Adventures**. The six required Adventures at each rank map to Character & Leadership, Outdoors, Personal Fitness, Citizenship, Safety, and Family & Reverence.
+  - **Bobcat is no longer a one-time badge.** It became a required Adventure earned *every year* at each rank, with age-appropriate requirements, and is designed to be the first Adventure of the program year.
+  - Webelos wear the **blue** Cub Scout uniform; Arrow of Light Scouts wear the **Scouts BSA (tan) uniform with blue shoulder loops** and are introduced to the patrol method. Arrow of Light is designed so Scouts join a Scouts BSA troop **between January and March** of their 5th-grade year.
+  - Elective Adventures roughly doubled; Webelos has 20 electives and Arrow of Light has 16, and the two no longer share electives.
+  Source: [Scouting America — Cub Scout Program Updates FAQ](https://www.scouting.org/program-updates/cub-scout-program-updates-faq-1-3-24/), [Webelos and Arrow of Light At A Glance](https://www.scouting.org/program-updates/webelos-and-arrow-of-light-at-a-glance/) *(both live; scouting.org blocks automated fetches — verified via Internet Archive snapshots from Feb/Apr 2026)*
 
 ---
 
@@ -28,20 +39,20 @@ Research compiled for the Pack 170 (Macon, GA) website project. Covers program s
 
 | Rank | Grade | Typical Age | Neckerchief Color | Rank Badge / Emblem Colors | Notes |
 |---|---|---|---|---|---|
-| **Lion** | Kindergarten | 5–6 | Yellow (blue trim/piping is also seen) | Yellow and blue | Newest rank, added 2018. Uses simpler "belt loop"-style recognition; more family-partnered activities. |
-| **Tiger** | 1st grade | 6–7 | Orange | Orange and blue | First rank in the "diamond" badge sequence worn on the pocket. |
-| **Wolf** | 2nd grade | 7–8 | Red | Red with blue border | |
-| **Bear** | 3rd grade | 8–9 | Blue | Light blue with dark blue border (also described as light blue/yellow) | Famous for the "Whittling Chip" (pocketknife safety) earned via the Bear Claws adventure. |
-| **Webelos** ("**We'll Be Loyal Scouts**") | 4th grade | 9–10 | Plaid (red, gold, navy, green) | Plaid combining Cub blue/gold with Scouts BSA red/green | As of the 2024 update, Webelos is its own single-grade program (no longer spans two years). |
-| **Arrow of Light** | 5th grade | 10–11 | No dedicated neckerchief/hat as of 2024 (wears Scouts BSA tan uniform with **blue shoulder loops**) | Olive green with tan border | Standalone program since June 2024, entirely focused on preparing for the crossover to Scouts BSA. It's the only Cub Scout badge that can be worn on the Scouts BSA uniform, placed just below the left pocket. |
+| **Lion** | Kindergarten | 5–6 | Yellow | Yellow and blue *(unverified against an official spec)* | Newest rank; introduced as a full program in 2018. Requires an adult partner at every meeting. Since June 2024 Lions earn **adventure loops on the Cub Scout belt** like every other rank (handbook stickers were kept as an extra). |
+| **Tiger** | 1st grade | 6–7 | Orange | Orange and blue *(unverified)* | First rank in the "diamond" badge sequence worn on the pocket. |
+| **Wolf** | 2nd grade | 7–8 | Red | Red with blue border *(unverified)* | |
+| **Bear** | 3rd grade | 8–9 | Light blue | Light blue with dark blue border *(unverified)* | Knife safety lives here, but the specifics changed: the **Bear Claws adventure and the Whittling Chip card were both retired June 1, 2024** and replaced by the Bear **"Whittling"** adventure. Don't use "Whittling Chip" in current-facing website copy. |
+| **Webelos** ("**We'll Be Loyal Scouts**") | 4th grade | 9–10 | Webelos plaid | Plaid *(the exact tartan colors — commonly described as green/gold/navy/red — are not specified in official product copy; treat as unverified)* | As of the June 2024 update, Webelos is its own single-grade program (no longer spans two years) and wears the **blue** Cub Scout uniform with the Webelos neckerchief, slide, and hat. 20 elective Adventures. |
+| **Arrow of Light** | 5th grade | 10–11 | No dedicated neckerchief, slide, or hat as of 2024 (wears the Scouts BSA tan uniform with **blue shoulder loops**; any official neckerchief may be worn if the den chooses) | **Tan background, blue border, gold arrow beneath a gold sun with seven rays** | Standalone program since June 2024, focused on preparing for the crossover to Scouts BSA. It's the only Cub Scout badge that can be worn on the Scouts BSA uniform, placed just below the left pocket. 16 elective Adventures. |
 
-**Badge placement (for graphics/photo reference):** Lion, Tiger, Wolf, and Bear rank badges are worn on the left pocket in a **diamond arrangement** — positioned like a clock at 12:00, 9:00, 3:00, and 6:00 as each is earned. Webelos doesn't complete the diamond; it's centered on the pocket. Arrow of Light sits directly below the pocket.
+**Badge placement (for graphics/photo reference):** Lion, Tiger, Wolf, and Bear rank badges are worn on the left pocket in a **diamond arrangement** — positioned like a clock at 12:00, 9:00, 3:00, and 6:00 as each is earned. Webelos doesn't complete the diamond; it's sewn centered on the left pocket (on the blue shirt, since the June 2024 change). Arrow of Light sits directly below the left pocket, and is the only Cub Scout badge that may be worn on the Scouts BSA uniform.
 
 **Uniform overview:** Lion through Webelos wear the **blue Cub Scout uniform** (shirt, belt, neckerchief, cap in rank color, blue pants/shorts/skorts). Arrow of Light Scouts wear the **tan Scouts BSA field uniform** with blue shoulder loops signaling their "on the way to Scouts BSA" status.
 
-Sources: [Scoutshop.org — Uniform Insignia Guide](https://www.scoutshop.org/blog/the_beginners_guide_to_cub_scout_uniform_insignia.html), [ScoutSmarts — Rank & Advancement Guide](https://scoutsmarts.com/cub-scout-ranks-and-advancement-guide/), [ScoutSmarts — Uniform Guide](https://scoutsmarts.com/cub-scout-uniform-guide/), [Cub Scout Ideas — Patch Placement 2026](https://cubscoutideas.com/1276/cub-scout-uniform-patch-placement/), [Wikipedia](https://en.wikipedia.org/wiki/Cub_Scouting_(Boy_Scouts_of_America)), [Arrow of Light — Wikipedia](https://en.wikipedia.org/wiki/Arrow_of_Light)
+Sources: [Scoutshop.org — Uniform Insignia Guide](https://www.scoutshop.org/blog/the_beginners_guide_to_cub_scout_uniform_insignia.html), [ScoutSmarts — Rank & Advancement Guide](https://scoutsmarts.com/cub-scout-ranks-and-advancement-guide/), [ScoutSmarts — Uniform Guide](https://scoutsmarts.com/cub-scout-uniform-guide/), [Cub Scout Ideas — Patch Placement 2026](https://cubscoutideas.com/1276/cub-scout-uniform-patch-placement/), [Wikipedia — Cub Scouts (Scouting America)](https://en.wikipedia.org/wiki/Cub_Scouts_(Scouting_America)), [Arrow of Light — Wikipedia](https://en.wikipedia.org/wiki/Arrow_of_Light)
 
-**Graphics/website design implication:** Because each rank has a signature, well-recognized color, a "rank ladder" or timeline graphic (yellow → orange → red → blue → plaid → olive/tan) works well as a visual device on a pack website — e.g., a progress bar, den-page color coding, or badge icons next to each grade level in a "which den is my child in" chart.
+**Graphics/website design implication:** Each rank has a signature, well-recognized color, so a "rank ladder" or timeline graphic (yellow → orange → red → light blue → plaid → tan) works well as a visual device on a pack website — e.g., a progress bar, den-page color coding, or badge icons next to each grade level in a "which den is my child in" chart. The **neckerchief color** is the reliable, officially attested cue for each rank; the rank-badge color descriptions above are secondhand and should be checked against actual badge artwork before being used in design work.
 
 ---
 
@@ -56,7 +67,7 @@ Common annual rhythm for a Cub Scout pack (exact timing varies by pack/council):
 - **Blue and Gold Banquet** — annual celebration of Scouting America's founding anniversary (**February 8, 1910**); usually replaces the February pack meeting; a dinner/ceremony recognizing advancement and honoring den leaders.
 - **Raingutter Regatta** — Scouts build and race small sailboats down rain gutters filled with water; popular spring/summer event.
 - **Space Derby** — similar build-and-race concept using rubber-band-powered balsa wood rockets on a wire track.
-- **Crossover Ceremony** — a ceremony (often at or near the Blue and Gold Banquet or in spring) where Arrow of Light Scouts formally graduate from Cub Scouts into a Scouts BSA troop, ideally with the receiving troop's youth leaders present.
+- **Crossover Ceremony** — a ceremony where Arrow of Light Scouts formally graduate from Cub Scouts into a Scouts BSA troop, ideally with the receiving troop's youth leaders present. Since the 2024 update, the Arrow of Light program is explicitly designed for Scouts to join a troop **between January and March**, so crossover commonly lands at or near the Blue and Gold Banquet rather than late spring.
 - **Day Camp / Resident Camp (summer)** — day camps run during daytime hours with no overnight stay; resident camps are 3–5 day overnight camps at a council-owned facility with a different theme each year. Webelos/AOL scouts may also attend week-long Webelos-specific camp.
 - **Pack overnighters / family campouts** — pack-organized overnight camping (parent/guardian accompanies each Scout); requires at least one adult with **BALOO** (Basic Adult Leader Outdoor Orientation) training present.
 - **Service projects** — food drives, flag placement/retirement ceremonies, community cleanups.
@@ -64,7 +75,16 @@ Common annual rhythm for a Cub Scout pack (exact timing varies by pack/council):
 
 Sources: [Scouting America — Special Pack Events](https://www.scouting.org/programs/cub-scouts/activities/pack-events/), [Scouting America — Camping and Outdoor Adventures](https://www.scouting.org/programs/cub-scouts/activities/cub-scout-camping/), [Pack 1776 — Activities](https://pack1776.com/join/activities/), [Aaron on Scouting — Blue and Gold](https://blog.scoutingmagazine.org/)
 
-**Prohibited/banned activities (for any liability language on the site):** alcohol at all Scouting events; paintball, laser tag, hunting, rodeo, fireworks, and bungee jumping are prohibited program-wide.
+**Prohibited/restricted activities (for any liability language on the site):** the official list is more nuanced than "these six things are banned," so quote it carefully:
+
+- **Alcohol and drugs** — prohibited at any Scouting activity involving youth.
+- **Shooting or throwing things at each other** — paintball, laser or archery tag, rock throwing, sock fights, and dodgeball are prohibited. The rule is about aiming at *people*; shooting at inanimate targets under council-approved range supervision is a separate, permitted activity.
+- **Bungee/shock-cord jumping** — prohibited.
+- **Hunting** — not an authorized unit activity for Cub Scouts or Scouts BSA.
+- **Fireworks** — Scouts may not be involved in selling or discharging fireworks; attending a display run by a certified/licensed operator is the stated exception.
+- **Rodeo** — participation in amateur or professional rodeo events and use of mechanical bulls are prohibited; *bicycle safety rodeos* are explicitly excepted.
+
+Source: [Scouting America — Prohibited Activities](https://www.scouting.org/health-and-safety/safety-moments/unauthorized-restricted-activities/), [Guide to Safe Scouting](https://www.scouting.org/health-and-safety/gss/gss07/)
 
 ---
 

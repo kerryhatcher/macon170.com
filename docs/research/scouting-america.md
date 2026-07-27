@@ -22,68 +22,114 @@
 ## 2. Official Brand Identity: Colors, Typography, Logo
 
 ### Where the authoritative source lives
-The full, current brand system lives behind the **BSA/Scouting America Brand Center** (an account-gated DAM at `scouting.webdamdb.com`), which is not publicly browsable without registration. Public secondary sources (council sites, the official Brand Identity Guide PDF, and third-party brand-color trackers) mirror parts of it. Given some inconsistency between sources of different vintage (see caveat below), **a pack website should treat any hex codes here as a strong starting point, not gospel** — verify exact current values via your local council's marketing/commissioner staff or the Brand Center if pixel-perfect brand compliance matters.
 
-- Official guide PDF (older but stable reference): [BSA Brand Guidelines (filestore.scouting.org/pdf/310-0231.pdf)](https://filestore.scouting.org/filestore/pdf/310-0231.pdf)
-- Official overview page: [Scouting Wire — BSA Brand Center / Brand Identity](https://scoutingwire.org/bsa-brand-center/brand-identity/) (links to the downloadable Brand Identity Guide and Brand Center login)
-- Post-rebrand color/typeface sheet (council-hosted copy): [Scouting America Official Brand Colors and Typefaces](https://tidewaterbsa.com/wp-content/uploads/2023/04/BSA-Brand-Colors-and-Fonts-033124.pdf)
-- Council-hosted rebrand guidelines: [Pathway to Adventure Council — Scouting America Brand Guidelines 2024](https://pathwaytoadventure.org/wp-content/uploads/2024/05/Scouting-America-Brand-Guidelines-2024-BC.pdf)
+> ⚠️ **This subsection was rewritten during fact-checking.** The original said the palette could not be verified without council help and hedged every hex code. That hedge was unnecessary: **the official 2024 Scouting America Brand Guidelines PDF is publicly reachable and machine-readable**, and both it and a Dec 2025 official color sheet were parsed directly. Every color and typeface below is now quoted from official documents, not from third-party brand-color aggregator sites. Treat the values below as **settled**.
+
+The full asset library lives behind the account-gated **Brand Center** DAM at `scouting.webdamdb.com`, but the *rules* documents are public via council mirrors:
+
+- **[Scouting America Brand Guidelines, 2024 (36 pp., post-rebrand)](https://pathwaytoadventure.org/wp-content/uploads/2024/05/Scouting-America-Brand-Guidelines-2024-BC.pdf)** — Pathway to Adventure Council's rehost of the national document. **This is the authoritative current source** and was parsed in full for this doc. ✅ *live, verified*
+- **[Scouting America Official Brand Colors and Typefaces](https://tidewaterbsa.com/wp-content/uploads/2023/04/BSA-Brand-Colors-and-Fonts-033124.pdf)** — one-page official summary sheet. ⚠️ *Note: the URL filename says `033124` (Mar 2024) but the file has been replaced in place; the document itself is headed* **"…121725"** *(Dec 17, 2025) and cites Brand Guidelines Rev. May 2024. It is the newest color source found.* ✅ *live, verified*
+- [BSA Brand Guidelines, legacy edition (~90 pp.)](https://filestore.scouting.org/filestore/pdf/310-0231.pdf) — superseded on naming, but still the **only** edition containing the Web Policies, Icons, and Layout chapters. ✅ *live*
+- [Scouting Wire — Brand Center / Brand Identity](https://scoutingwire.org/bsa-brand-center/brand-identity/) — links to the guide PDF and the Brand Center registration/login. ✅ *live*
 
 ### Colors
 
-**Cub Scout program colors (highest confidence — consistent across multiple independent sources, long-standing identity that the rebrand did not change):**
+**Cub Scouts program colors** — quoted from the 2024 Brand Guidelines, p.22 (the Cub Scouts trademark "Screen Usage" reproduction) and p.23 (the Cub Scouts color page):
+
+| Color | Hex | RGB | Pantone | CMYK |
+|---|---|---|---|---|
+| Cub Scouts Blue | `#003F87` | 0, 63, 135 | PMS 294 | 100, 48, 0, 44 |
+| Cub Scouts Gold | `#FCD116` | 252, 209, 22 | PMS 116 | 0, 10, 100, 0 |
+
+**[DEFINITIVE — primary source].** Guidelines p.23: *"Carried over from the uniform, Blue and Gold set the stage for everything related to the Cub Scouts brand. They are iconic and should be used heavily on anything designed for the brand."*
+
+> ⚠️ **Typo in the official PDF, worth knowing so it doesn't propagate.** The 2024 Guidelines p.23 prints Cub Scouts Gold as `#FDC116` while giving RGB `252, 209, 22` on the same line. RGB 252,209,22 is `#FCD116`, which is also what p.22 (Screen Usage), the Dec 2025 color sheet, and PMS 116 all give. **`#FCD116` is correct; `#FDC116` is a transposition error in one place in the national document.**
+
+**Scouting America primary (corporate) colors** — 2024 Guidelines p.14. These are also the colors of the corporate trademark and signature (p.10–11):
 
 | Color | Hex | RGB | Pantone |
 |---|---|---|---|
-| Cub Scout Blue | `#003F87` | 0, 63, 135 | PMS 294 |
-| Cub Scout Gold/Yellow | `#FCD116` | 252, 209, 22 | PMS 116 |
+| Scouting America Red | `#CE1126` | 206, 17, 38 | PMS 186 |
+| Scouting America Blue | `#003F87` | 0, 63, 135 | PMS 294 |
+| Scouting America Tan | `#D6CEBD` | 214, 206, 189 | PMS 400 |
+| Scouting America Gray | `#515354` | 81, 83, 84 | PMS 411 |
+| Scouting America White | `#FFFFFF` | 255, 255, 255 | Pantone White |
 
-Sources: [BrandColorCode.com — Cub Scouts](https://www.brandcolorcode.com/cub-scouts), corroborated by an independent council brand page ([onscouting.org](https://onscouting.org/2013/06/07/brand-id/)) listing identical Cub Scouting values.
+*"White is an important component of the color palette, serving as a fifth 'color.'"* The color sheet also states plainly: **Scouting America Blue = Cub Scouts Blue**, and Scouting America Red = Scouts BSA Red. One further rule from p.14: *"Do not create shades or tints of Scouting America Red."*
 
-**Corporate/national trademark colors** (used for the organization-wide logo, letterhead, etc. — two overlapping data points found, likely reflecting the palette before vs. immediately after the 2024 refresh; treat as directional):
+> ⚠️ **A whole table was deleted here.** The original doc carried a speculative "newer set (lower confidence)" corporate palette of `#E31837` red / `#213164` blue / `#F1B51C` gold / `#1E6432` green, described as the "likely current corporate palette post-rebrand." **That table was wrong and has been removed.** Parsing the actual 2024 Guidelines and the Dec 2025 color sheet: `#213164`, `#F1B51C`, and `#1E6432` **appear nowhere in any official Scouting America document** and could not be traced to any source. `#E31837` is real but is **Order of the Arrow Red (PMS 185)** — a separate sub-brand, not a corporate color. The so-called "legacy" set (`#CE1126` / `#003F87` / `#FFFFFF`) is in fact **the current, post-rebrand corporate palette**, unchanged by the 2024 refresh.
 
-| Color | Hex (older/legacy set) | Hex (newer set, lower confidence) |
+**Scouting America secondary colors** (2024 Guidelines p.15 — *"derived from the primary palette… can be used with their parent colors to create layered effects in layout"*). Useful for a site that needs more than two colors without inventing any:
+
+| Color | Hex | Parent |
 |---|---|---|
-| Scouting Red | `#CE1126` | `#E31837` |
-| Scouting Blue | `#003F87` | `#213164` |
-| Gold | — | `#F1B51C` |
-| Green | — | `#1E6432` |
-| White | `#FFFFFF` | — |
+| Pale Blue | `#9AB3D5` | Blue |
+| Dark Blue | `#003366` | Blue |
+| Light Tan | `#E9E9E4` | Tan |
+| Dark Tan | `#AD9D7B` | Tan |
+| Pale Gray | `#858787` | Gray |
+| Dark Gray | `#232528` | Gray |
 
-The legacy set is corroborated across two independent public sources ([BrandColorCode.com](https://www.brandcolorcode.com/boy-scouts-of-america), [onscouting.org](https://onscouting.org/2013/06/07/brand-id/)). The newer set surfaced from a council-branded copy of what appears to be the 2024 rebrand color sheet but I could not independently re-verify the exact hex values by directly parsing that PDF (it's a compressed/encoded file). **Recommendation: don't hard-commit to the newer red/blue/gold/green four-color set without confirming through your council** — but it's worth flagging as the likely *current* corporate palette post-rebrand.
+**Other program colors** — corrected against the Dec 2025 official sheet and the 2024 Guidelines. ⚠️ *The original doc's list came from a 2013 council blog post and mislabeled two of three entries.*
 
-**Other program colors** (useful if the site ever needs to differentiate sections, e.g. a "Webelos" callout or cross-linking to a troop): Boy Scouting yellow `#FFCC00` / brown `#996633`; Venturing green `#006B3F` / yellow `#FCD116`; Sea Scouting navy `#003366` / black / red `#990000`. (Same onscouting.org source.)
+| Program | Colors |
+|---|---|
+| **Scouts BSA** (the original list called this "Boy Scouting") | Yellow `#FFCC00` (PMS 116) · Brown `#996633` (PMS 463) · Blue `#003F87` · Red `#CE1126` — these are the four trademark reproduction colors, p.25. Program palette (p.26): Tan `#D6CEBD`, Red `#CE1126`, Olive `#243E2C` |
+| **Venturing** | Green `#006B3F` (PMS 349) · Yellow `#FCD116` (PMS 116) ✅ *original was correct* |
+| **Sea Scouts** | Light Brown `#B39475` · Dark Brown `#330000` · Dark Yellow `#FFCC00` · Gold `#CC9900` · Light Blue `#9AB3D5` · Dark Blue `#003366` |
+| **Order of the Arrow** | Red `#E31837` (PMS 185) · Gray `#36454F` (PMS 518) |
+| **World Scouting (WOSM)** | Purple `#622599` (PMS 527) — ❗ **do not use**; see [`trademark-brand-guidance.md`](./trademark-brand-guidance.md) §2.3 |
 
-**Practical recommendation for macon170.com**: Anchor the palette on **Cub Scout Blue (`#003F87`) and Gold (`#FCD116`)** — these are unambiguous, well-documented, and instantly recognizable as "Cub Scouts" rather than generic. Use Scouting Red sparingly as an accent (legacy `#CE1126` is the safer bet) if a third color is needed. Avoid presenting the site as an official/national Scouting America property — it should read as a **locally-run pack site**, so exact corporate hex precision matters less than the general blue/gold Cub Scout identity being recognizable.
+⚠️ **Removed as unverifiable:** the original listed "Sea Scouting … red `#990000`" and a Sea Scouting "black." Neither appears in any current official source; `#330000` (Sea Scouts Dark Brown) is the nearest real value.
+
+**Practical recommendation for macon170.com**: Anchor the palette on **Cub Scouts Blue (`#003F87`) and Cub Scouts Gold (`#FCD116`)** — now confirmed as the official Screen Usage values, so you can commit to them without hedging. Guidelines p.23 explicitly permits accents: *"Scouting America colors may be used as accent colors, as well as outdoor colors of greens, blues and browns."* That makes **Tan `#D6CEBD`**, the secondary neutrals, and **Red `#CE1126`** (sparingly, and never tinted) legitimate supporting colors. Still avoid presenting the site as an official national or council property — it should read as a **locally-run pack site**.
 
 ### Typography
 
-Typefaces referenced across the official guide/typeface sheets ([tidewaterbsa.com PDF](https://tidewaterbsa.com/wp-content/uploads/2023/04/BSA-Brand-Colors-and-Fonts-033124.pdf)):
+> ⚠️ **This subsection was wrong and has been rewritten.** The original presented a single flat list of eight-plus typefaces as "the BSA fonts." The source sheet actually lists **three separate brand systems side by side**, and the original list merged them, then guessed that the system fonts were "likely fallback/legacy." Both moves were mistakes. Corrected below from the 2024 Brand Guidelines p.16 and the Dec 2025 color/typeface sheet.
 
-- Proxima Nova (Extrabold) — appears to be a primary display/headline face
-- Futura Std (Heavy)
-- Museo Slab (700)
-- Montserrat
-- Gill Sans Nova (Light)
-- Rockwell
-- Helvetica / Helvetica Neue LT Std (Bold Condensed)
-- Arial Narrow, Verdana, Calibri, Times — likely fallback/legacy system fonts for documents rather than brand display faces
+**The Scouting America approved typefaces are exactly four.** Guidelines p.16: *"The fonts below are approved for use by Scouting America. They are widely available typefaces. For consistency across the organization, please use this suite of fonts as your foundation for any branded communication. Although additional fonts may be used as design elements, the foundation of any piece must be rooted in the fonts below."*
 
-None of these (Proxima Nova, Futura, Museo Slab, Montserrat, Gill Sans) are free/open fonts except **Montserrat**, which is Google-Fonts-available and a reasonable free substitute if you want a brand-adjacent geometric sans for headlines on the pack site without a paid license.
+| Typeface | Role | Availability |
+|---|---|---|
+| **Proxima Nova Extra Bold** | Display / headline | Licensed — Adobe Creative Cloud or other vendors |
+| **Helvetica Neue LT Std 77 Bold Condensed** | Display / condensed | Licensed |
+| **Arial** | Universal / body | System font |
+| **Times New Roman** | Universal / body | System font |
+
+⚠️ **Arial and Times New Roman are first-class approved brand fonts, not "fallbacks."** The original doc demoted them to "legacy system fonts for documents"; the guidelines list them alongside Proxima Nova with equal standing. *(Trebuchet also appears, but only in the email-signature spec on p.17 — not a general brand font.)*
+
+**Montserrat is the officially designated free substitute — not merely "a reasonable one."** Guidelines p.16, verbatim: *"The Proxima Nova type family is a licensed font family available with an Adobe Creative Cloud subscription or through other vendors. **An approved alternate from Google fonts is Montserrat.**"* This is the single most useful typography finding for the pack site: **Montserrat for headlines is officially sanctioned, free, and self-hostable.** No license to buy, no compromise.
+
+**Fonts that are NOT Scouting America fonts** — these appear on the same summary sheet but belong to other brand systems, and using them will make the site look like the wrong organization:
+
+| Typeface | Actually belongs to |
+|---|---|
+| Museo Slab 700/300, Museo Sans 700/300, Rockwell, Gill Sans Light | **Order of the Arrow** |
+| Futura Bold / Futura, Verdana / Verdana Bold | **World Scouting (WOSM)** |
+
+⚠️ **Removed as unverifiable:** the original list included **Gill Sans Nova** and **Calibri**. Neither appears on any official sheet — the OA system uses plain Gill Sans Light, and Calibri appears nowhere at all.
 
 ### Logo usage / trademark restrictions relevant to a pack site
 
-- All BSA/Scouting America emblems, rank insignia, logos, and trademarks are the **exclusive property of Scouting America** and are protected by a **1916 Act of Congress** plus USPTO registrations — one of the strongest trademark protections of any US nonprofit. ([scoutinsignia.com summary](http://www.scoutinsignia.com/copyrite.htm), corroborated by the official Brand Identity Guide)
-- Official art/logotypes obtained from National Council **must be used exactly as shown** in official artwork/manuals; a chartered unit doesn't get to redraw, recolor, distort, or otherwise modify the fleur-de-lis or Cub Scout logo.
-- Councils and the Brand Identity Guide explicitly call out **websites, social media, and photography** as covered use-cases and provide "proper vs. improper" examples — meaning Scouting America does anticipate/permit units having their own web presence, but expects the official marks to appear unmodified.
-- **Practical implication for macon170.com**: It's fine (and expected) to reference "Cub Scout Pack 170" and use Cub Scout blue/gold as a color scheme and general Scouting-style badge/emblem imagery *inspired by* the aesthetic. For the **actual official fleur-de-lis / Cub Scout logo artwork**, either (a) source it from the Brand Center / council through your Chartered Organization Representative rather than recreating it from scratch, or (b) use generic/decorative scouting-style iconography (compass rose, trail markers, wood-badge aesthetics) that evokes the theme without reproducing the protected mark pixel-for-pixel, especially since a pack site is not "official" Scouting America national/council content.
-- No public source found granting blanket permission for units to freely reproduce the logo without going through official channels — treat logo acquisition as "ask your council" rather than "download and use."
+> 🔁 **SUPERSEDED — read [`trademark-brand-guidance.md`](./trademark-brand-guidance.md) instead.** That document answers this question from primary sources and **reverses two recommendations made here.** This subsection is kept only as a pointer; do not act on the original text, which is retained nowhere below. The corrected summary:
+
+- All Scouting America emblems, rank insignia, logos, and trademarks are the **exclusive property of Scouting America**, protected by the **1916 congressional charter plus USPTO registrations**. ⚠️ **Cite correction:** the current codification is **36 U.S.C. § 30905**, not the "36 U.S.C. 27" printed in the brand guidelines themselves (that is the pre-1998 cite). ⚠️ **Overstatement corrected:** this is *not* uniquely "one of the strongest trademark protections of any US nonprofit" — roughly **115 Title 36 federally chartered organizations** hold comparable rights. It is unusually strong, but not singular.
+- Official art obtained from the National Council **must be used exactly as shown**. The prohibition is on **modification, not on use**.
+- ⚠️ **REVERSED:** the original recommended using *"generic/decorative scouting-style iconography (compass rose, trail markers)"* as the "legally safer" path. National brand policy says the opposite — legacy Guidelines p.59: *"As a rule, avoid creating original icons. Instead, use approved Boy Scouts of America icons (e.g., the fleur-de-lis as an app icon)."* **Using the real, unmodified fleur-de-lis is the recommended route, not the risky one.**
+- ⚠️ **REVERSED:** the original said *"treat logo acquisition as 'ask your council' rather than 'download and use.'"* The **Brand Center exists specifically so units can download and use official artwork** — *"search, download, and customize materials for your pack, troop, or post."* Register and download; you do not need to ask permission first. (Separately, the Central Georgia Council publishes **no** brand guidance at all, so "ask your council" was a dead end regardless.)
+- **The rule that actually bites** is on physical goods, not the website: anything printed on a product (T-shirts, patches, banners) bearing a Scouting mark **must be made by a licensed vendor**. See `trademark-brand-guidance.md` §6.
 
 ## 3. Visual Identity Themes
 
-- **The fleur-de-lis**: Scouting's founder Robert Baden-Powell adopted it because of its resemblance to a compass rose's north point — "it shows the true way to go." In the American Scouting adaptation, its three lobes represent **duty to God and country, duty to others, and duty to self**. The two five-pointed stars on the emblem represent *truth* and *knowledge*; the ten points across the emblem echo the ten points of the Scout Law. ([ScoutSmarts history](https://scoutsmarts.com/fleur-de-lis-scouts-history/), [Scouting Magazine blog](https://blog.scoutingmagazine.org/2021/01/13/sports-history-scouting-and-beyond-three-points-to-know-about-the-fleur-de-lis/))
-- **Cub Scout blue and gold**: the defining color pair for the Cub Scout program specifically (distinct from the broader Scouts BSA red/khaki uniform palette). This is *the* motif to lean on for a Cub Scout pack site — it's literally why the annual Cub Scout fundraising/recognition dinner is called the "**Blue and Gold Banquet**."
-- **Rank insignia aesthetics**: Cub Scout ranks (Lion, Tiger, Wolf, Bear, Webelos, Arrow of Light) use bold, simple, high-contrast badge/shield shapes with embroidered-patch styling — thick borders, saturated single-color fields, iconic animal silhouettes. This "patch" aesthetic (rounded shield or circular badge, bold outline, flat color fill) is a strong, legally-safer design motif to borrow for section dividers, icons, or achievement-style visual flourishes on the site, without directly copying any specific official rank badge artwork.
+- **The fleur-de-lis**: Scouting's founder Robert Baden-Powell adopted it for its use on maps and compasses to indicate north. ⚠️ **Quote correction:** *"it shows the true way to go"* is a paraphrase, not B-P's words, and was presented as a quotation in the original. What B-P actually wrote is that the badge *"points in the right direction (and upwards), turning neither to the right nor left, since these lead backward again,"* and in *Scouting for Boys* (1908), *"The Scout's badge is the arrow head, which shows the north on a map or on the compass."*
+  - In the American adaptation the three points stand for **the three parts of the Scout Oath** — duty to God and country, duty to others, and duty to self. ✅ *verified* (B-P's original 1908 gloss referred to the three points of the Scout **Promise**: duty to God and the king, helpfulness to others, obedience to the Scout Law.)
+  - The two five-pointed stars represent **truth and knowledge**, and their **ten points** echo the ten points of the Scout Law. ✅ *verified* — ⚠️ but note the stars are **not** part of the bare fleur-de-lis. Per the 2024 Guidelines, they belong to the composite emblems: the corporate trademark *"consist[s] of a fleur-de-lis with eagle, shield with 13 stars and stripes, and two five-pointed stars"* (p.10), as does the Scouts BSA trademark (p.25). The **Cub Scouts** trademark is different again — *"the wolf, the words 'Cub Scouts,' and a fleur-de-lis"* — and has no stars.
+  - ([ScoutSmarts history](https://scoutsmarts.com/fleur-de-lis-scouts-history/), [Scouting Magazine — three points to know about the fleur-de-lis](https://onscouting.org/2021/01/13/sports-history-scouting-and-beyond-three-points-to-know-about-the-fleur-de-lis/) — ⚠️ *URL updated; the old `blog.scoutingmagazine.org` address now 301-redirects to `onscouting.org`*)
+- **Cub Scout blue and gold**: the defining color pair for the Cub Scout program specifically (distinct from the Scouts BSA tan/olive/red palette). This is *the* motif to lean on for a Cub Scout pack site — it's why the pack's big annual dinner is called the "**Blue and Gold Banquet**." ⚠️ **Correction:** the original called this a *"fundraising/recognition dinner."* It is not a fundraiser. It is the **February celebration of Scouting's birthday** (Feb 8, 1910), normally replacing the regular February pack meeting, and is named after the Cub Scout colors. The name entered BSA literature in **1943**.
+- **Rank insignia aesthetics**: Cub Scout ranks use bold, simple, high-contrast badge/shield shapes with embroidered-patch styling — thick borders, saturated single-color fields, iconic animal silhouettes. This "patch" aesthetic is a strong motif to borrow for section dividers and achievement-style flourishes.
+  - ⚠️ **Rank list updated for the June 1, 2024 Cub Scout program overhaul.** Current ranks are **Lion** (K), **Tiger** (1st), **Wolf** (2nd), **Bear** (3rd), **Webelos** (4th), **Arrow of Light** (5th). Two changes the site's copy must reflect: **Arrow of Light is now a stand-alone 5th-grade rank**, no longer part of Webelos; and **Bobcat is no longer a rank** — it is now the first required adventure within *every* rank. A site that describes "Webelos/Arrow of Light" as one thing, or lists Bobcat as a joining rank, is describing the pre-2024 program.
+  - On *displaying* official rank badge artwork versus inventing lookalikes: see [`trademark-brand-guidance.md`](./trademark-brand-guidance.md) §5.5. Short version — displaying official artwork is fine and near-universal; **manufacturing** anything resembling rank insignia is definitively banned.
 - General Scouting visual vocabulary: khaki/olive textures, trail/compass iconography, wood-badge/camp aesthetic, embroidered patch borders — useful as supporting texture rather than primary brand carriers.
 
 ## 4. Official Web Resources
@@ -91,8 +137,9 @@ None of these (Proxima Nova, Futura, Museo Slab, Montserrat, Gill Sans) are free
 - **scouting.org** — the national public-facing site (news, program info, Guide to Safe Scouting, Youth Protection resources, legal/privacy policy).
 - **scoutingwire.org** — the internal-facing "council/unit leader" resource hub, hosting the **BSA Brand Center** overview and links into the gated Brand Center DAM (`scouting.webdamdb.com`) where official logo files, templates, and the full Brand Identity Guide PDF live. Registration/login required for full access.
 - **scoutingnewsroom.org** — press releases (rebrand announcement, etc.).
-- Local councils generally mirror brand assets on their own sites (e.g., Capitol Area Council, Tidewater Council, Pathway to Adventure Council) — useful fallback if the national Brand Center is inaccessible, since they often re-host the same PDFs publicly.
-- No dedicated, universally-linked "unit website builder" or official template system was found in this search; guidance for units is folded into the general Brand Identity Guide plus the **Social Media Guidelines** doc (see below), which explicitly covers websites and social media together rather than as separate policies.
+- Local councils generally mirror brand assets on their own sites (e.g., Capitol Area Council, Tidewater Council, Pathway to Adventure Council) — useful fallback if the national Brand Center is inaccessible, since they often re-host the same PDFs publicly. ⚠️ *Note: the **Central Georgia Council** — Pack 170's own council — publishes none of this. See [`trademark-brand-guidance.md`](./trademark-brand-guidance.md) §4.1.*
+- **[beascout.scouting.org](https://beascout.scouting.org/)** — ⚠️ *added during fact-check; missing from the original.* Every unit has a **BeAScout "unit pin"**, an official, national, public-facing listing with the pack's meeting location, contact, and a join link. This is the closest thing to an official pack web presence, it is the front door families actually arrive through, and **it is maintained by unit Key 3 leaders via my.scouting.org**. macon170.com should link to it and the pack should keep the pin's details in sync with the site.
+- **No official "unit website builder" or hosted template system exists** — confirmed. Units build their own or use third-party services. Guidance is folded into the legacy Brand Guidelines' **Web Policies** chapter (p.43) plus the **Social Media Guidelines**. ✅ *verified; note that national has run features showcasing the best pack/troop/crew websites, so unit-run sites are plainly normal and encouraged rather than merely tolerated.*
 
 ## 5. Youth Protection / Privacy Considerations for Unit Websites
 

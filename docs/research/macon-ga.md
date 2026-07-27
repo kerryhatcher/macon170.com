@@ -40,17 +40,18 @@ The **International Cherry Blossom Festival** was founded by Crayton and first h
 
 ### Ocmulgee Mounds National Historical Park
 
-Perched on the northeastern edge of Macon along the Ocmulgee River, this 3,336-acre park is home to some of the most significant Native American archaeological sites in the Southeast. The park features:
+Sitting on the **east bank of the Ocmulgee River** just east of downtown Macon (1207 Emery Highway), this **3,336-acre** park is home to some of the most significant Native American archaeological sites in the Southeast. Originally established as Ocmulgee National Monument in 1936 on about 700 acres, it was **redesignated a national historical park in 2019** under the John D. Dingell, Jr. Conservation, Management, and Recreation Act, and the boundary has since grown through land transfers and donations. The park features:
 
 - **Eight miles of trails** through lush forests, wetlands, and wildlife habitat
-- **The Great Temple Mound**—visitors can walk on top to see downtown Macon and the surrounding landscape
-- **An Earth Lodge**—a restored ceremonial structure where tribal councils once convened
-- **Mississippian Period ruins** dating back to 800 A.D., including defensive structures and meeting chambers
-- **The Spiral Mound**—the only known spiral mound in the United States
+- **The Great Temple Mound**—at 55 feet the tallest mound in the park; visitors can walk to the top for views of downtown Macon and the surrounding landscape
+- **The Earth Lodge**—a reconstructed council chamber built over an **original clay floor carbon-dated to about 1015 A.D.**, with molded seats for the leaders who met there
+- **Mississippian Period earthworks**—the Macon Plateau's main mound-building occupation runs roughly **900–1150 A.D.** (Mississippian culture at the site spans ca. 900–1600), including a defensive trench and council chambers
+- **The Spiral Mound**—widely described as the only known spiral (spiral-ramp/staircase) mound in North America, built during the later Lamar Period (ca. 1350–1600). ⚠️ Note: it is at the park's separate **Lamar Mounds Unit**, a few miles downriver in wetlands, which is **not open for general visitation**—access is by occasional ranger-led tour only. Do not plan a Pack outing around it.
 
-The park is the ancestral homeland of the Muscogee (Creek) Nation and represents deep historical and cultural significance. It's ideal for educational outdoor experiences, trail hiking, kayaking, canoeing, fishing, and wildlife observation.
+The park is the ancestral homeland of the **Muscogee (Creek) Nation**, whose citizens today live primarily in Oklahoma; the connection is stated explicitly by the NPS. It's ideal for educational outdoor experiences, trail hiking, and wildlife observation. *(Kayaking, canoeing, and fishing happen on the adjacent Ocmulgee River and along the Ocmulgee Heritage Trail rather than as in-park NPS programs—verify put-in points separately before planning.)*
 
 **Sources:**
+- [Ocmulgee Mounds National Historical Park | National Park Service](https://www.nps.gov/ocmu/index.htm)
 - [Ocmulgee Mounds National Historical Park | Macon, GA (Visit Macon)](https://visitmacon.org/directory/ocmulgee-mounds-national-historical-park/)
 - [Ocmulgee Mounds - New Georgia Encyclopedia](https://www.georgiaencyclopedia.org/articles/history-archaeology/ocmulgee-mounds/)
 - [Everything you need to know about Ocmulgee Mounds National Historical Park | National Geographic](https://www.nationalgeographic.com/travel/article/ocmulgee-mounds-national-historical-park)
@@ -59,35 +60,42 @@ The park is the ancestral homeland of the Muscogee (Creek) Nation and represents
 
 Macon's downtown features beautifully preserved historic architecture reflecting the city's antebellum and post-war heritage:
 
-- **Hay House** (1859)—an expansive Italian Renaissance Revival mansion with a secret room, wine cellar, and Widow's Walk offering behind-the-scenes tours
+- **Hay House** (built 1855–1859; formally the Johnston-Felton-Hay House)—an expansive Italian Renaissance Revival mansion nicknamed the "Palace of the South," with 24 rooms across four levels, a three-story cupola, a secret room, wine cellar, and Widow's Walk offering behind-the-scenes tours
 - Wide tree-lined avenues with art galleries, boutiques, and period architecture
 - Brick buildings and streetscapes typical of 19th-century Georgia market towns
 
 ### The Ocmulgee River
 
-The Ocmulgee River runs through Macon and defines much of the region's character and outdoor recreation opportunities. The river is home to iconic landmarks like:
+The Ocmulgee River runs through Macon and defines much of the region's character and outdoor recreation opportunities. Along and near the river you'll find:
 
-- **Otis Redding Memorial & statue** on "the dock of the bay" overlooking the river
+- **Amerson River Park**—a 180-acre riverside park with paved and unpaved trails, river access, and open lawns; the flagship family outdoor space in town
+- **The Ocmulgee Heritage Trail**—13+ miles of trail along both sides of the river (Amerson River Park is part of the system but is not yet physically connected to the southern segments)
 - Opportunities for kayaking, canoeing, and tubing
-- Scenic parks and recreation areas along its banks
+- **Otis Redding statue**—⚠️ **Updated:** the bronze statue depicting Redding "sittin' on the dock of the bay" stood in riverfront Gateway Park from 2002, but it was **relocated in 2025** to the Otis Redding Center for the Arts at Cotton Avenue and Cherry Street downtown. It is no longer a riverfront landmark.
 
 **Sources:**
-- [Museum of Arts and Sciences | Macon, GA](https://visitmacon.org/directory/museum-of-arts-and-sciences/)
+- [Amerson River Park | Macon-Bibb County](https://amerson.maconbibb.us/)
+- [Ocmulgee Heritage Trail | NewTown Macon](https://newtownmacon.com/oht/)
+- [Otis Redding Statue | Visit Macon](https://visitmacon.org/directory/otis-redding-statue/)
 - [Brush Up on History in Macon | Explore Georgia](https://exploregeorgia.org/things-to-do/article/brush-up-on-history-in-macon)
 
 ---
 
 ## Outdoors, Nature & Scouting Opportunities
 
-### Central Georgia Council, Scouting America
+### Central Georgia Council, BSA
 
-Macon is home to the **Central Georgia Council** headquarters (4335 Confederate Way, Macon, GA 31217), which serves 24 counties of middle Georgia with over 3,700 youth and adult participants annually.
+Macon is home to the **Central Georgia Council, BSA** (Council 96) headquarters at **4335 Confederate Way, Macon, GA 31217-4719**, which serves **24 counties** of middle Georgia with **over 3,700 youth and adult participants** served each year in programs from kindergarten through high school. (The council's own website still brands itself "Boy Scouts of America — Central Georgia Council," matching `docs/Offical-info.md`, even though the national organization now operates as Scouting America.)
 
 **Contact Information:**
 - Phone: **(478) 743-9386**
+- Fax: (478) 745-2686
 - Email: **centralgeorgiacouncil@scouting.org**
-- Hours: Monday–Friday, 10:00 am – 5:00 pm
+- Council office hours: **Monday–Friday, 8:30 am – 5:00 pm** (closed Saturday)
+- Scout Shop hours: **Monday–Friday, 10:00 am – 5:00 pm**
 - Website: [centralgeorgiacouncil.org](https://www.centralgeorgiacouncil.org/)
+
+**Districts:** Ocmulgee (Bibb, Crawford, Jones, Monroe, Peach, Twiggs), Oconee (Baldwin, Hancock, Jasper, Putnam, Washington, Wilkinson), Robert L. Scott (Bleckley, Houston, Macon, Pulaski, Taylor), and Pine Forest (Dodge, Laurens, Johnson, Montgomery, Telfair, Treutlen, Wheeler), plus a council-wide ScoutReach program. Pack 170 should therefore sit in the **Ocmulgee District**, since Highland Hills Baptist Church is in Bibb County — *inferred from the district map, not confirmed with the council.*
 
 **Youth Programs:**
 - Cub Scouts
@@ -95,42 +103,51 @@ Macon is home to the **Central Georgia Council** headquarters (4335 Confederate 
 - Exploring
 - Venturing
 
-**Activities & Resources:**
-- Camp Benjamin Hawkins—a 550-acre property near Byron with established BSA programming since 1927
+**Activities & Resources (per the council's Camping & Activities page):**
+- Cub/Webelos Summer Camp
 - Merit badge opportunities
-- C.O.P.E. (Challenging Outdoor Personal Experience) courses
-- Camporees and seasonal camping events
+- Fall Camporee
+- Spring Cub Carnival and Cub/Webelos Spook-O-Ree
+- Shooting sports activities
 - Leader training (BALOO, First Aid)
 
+> ⚠️ **Important correction — Camp Benjamin Hawkins is no longer a council property.** The 550-acre camp near Byron, GA (2251 Boy Scout Rd), which had operated since **1927** as the oldest Scout camp in Georgia, was **put under contract for sale in July 2024** and sold, citing financial pressure from COVID-era membership decline and the national BSA bankruptcy. It no longer appears anywhere on the council's website or activities page. The council's Cub/Webelos summer camp has since been held at **Camp Christian**. Any reference to Camp Benjamin Hawkins—or to C.O.P.E. courses, which were located there—should **not** appear on the Pack 170 site as a current resource. Confirm the council's present camping arrangements directly at (478) 743-9386 before publishing anything about camp locations.
+
 **Sources:**
-- [Central Georgia Council | Scouting America](https://www.centralgeorgiacouncil.org/)
+- [Central Georgia Council, BSA](https://www.centralgeorgiacouncil.org/)
+- [About Central Georgia Council, BSA](https://www.centralgeorgiacouncil.org/about)
+- [Council Office & Scout Shop Hours](https://www.centralgeorgiacouncil.org/hours)
 - [Camping & Activities | Central Georgia Council](https://www.centralgeorgiacouncil.org/activities)
+- [Camp Benjamin Hawkins under contract for sale, nearing 100 years | 13WMAZ](https://www.13wmaz.com/article/news/local/camp-benjamin-hawkins-contract-sold-nearing-100-year-legacy/93-e49907a0-d0a6-4c52-8f81-644cb5a5bf5f)
 
 ### Lake Tobesofkee Recreation Area
 
-Located just outside Macon (6600 Moseley Dixon Road, Macon GA 31220), Lake Tobesofkee is a 1,800-acre recreation area with 35 miles of shoreline built in the 1960s.
+Located just west of Macon (6600 Moseley Dixon Road, Macon GA 31220), Lake Tobesofkee is a **county-owned** recreation area of nearly **1,800 acres with 35 miles of shoreline**. The dam on Tobesofkee Creek was completed in December 1964 and the lake filled by 1969. *(Note: it is a Macon-Bibb County facility, not a Georgia state park.)*
 
-**Three Public Parks:**
-- **Claystone Park** – camping, fishing, boating
-- **Sandy Beach Park** – white sand beaches and swimming
-- **Arrowhead Park** – multi-use trails, mountain biking (singletrack approved for hiking), camping, water sports
+**Three Public Parks — all with white sand beaches:**
+- **Claystone Park** – camping with modern conveniences, beach, fishing, boating
+- **Sandy Beach Park** – seasonal day-use beach and swimming
+- **Arrowhead Park** – camping, beach access, and roughly **10+ miles of purpose-built singletrack mountain bike trail** (also walkable), including a 5-mile beginner loop and a 9-mile main loop
 
 **Activities:**
 - Tent and RV camping with modern amenities
 - Swimming and water sports (water skiing, sailing, boating)
-- Fishing (heavily stocked, popular state lake)
+- Fishing
 - Mountain biking and hiking trails
-- Picnicking and group pavilions
+- Picnicking, group pavilions, and pickleball courts
 
-Phone: **(478) 474-8770**
+Phone: **(478) 474-8770** (an alternate office line, (478) 803-4556, is also published). Official site: [laketobo.maconbibb.us](https://laketobo.maconbibb.us/). There is a per-person day-use entry fee.
 
 **Sources:**
 - [Lake Tobesofkee Recreation Area | Macon, GA (Visit Macon)](https://visitmacon.org/directory/lake-tobesofkee-recreation-area/)
-- [Lake Tobesofkee Recreation Area in Macon, GA – Camping.org](https://www.camping.org/campgrounds/georgia/macon/lake-tobesofkee-recreation-area)
+- [Lake Tobesofkee | Visit Macon](https://visitmacon.org/things-to-do/lake-tobesofkee/)
+- [Arrowhead Park Mountain Bike Trail | Singletracks](https://www.singletracks.com/bike-trails/arrowhead-park/)
 
 ### Additional Outdoor Resources
 
-The Ocmulgee River Park system offers kayaking, canoeing, and scenic trails. The combination of state parks, national historical sites, and council-operated facilities provides extensive options for Scout outings, campouts, merit badge activities, and outdoor skills development.
+There is no entity called the "Ocmulgee River Park system." The relevant assets are the **Ocmulgee Heritage Trail** (13+ miles along both banks of the river, maintained with NewTown Macon) and **Amerson River Park** (180 acres, county-owned), which together offer kayaking, canoeing, and scenic trails. Combined with the national historical park and county recreation areas, this provides extensive options for Scout outings, day hikes, and outdoor skills development.
+
+⚠️ Note that **council-operated camp facilities are currently in flux** following the sale of Camp Benjamin Hawkins (see the council section above) — do not describe council camp properties on the Pack site without checking with the council first.
 
 ---
 
@@ -140,20 +157,22 @@ The Ocmulgee River Park system offers kayaking, canoeing, and scenic trails. The
 
 Macon has an extraordinary legacy as a birthplace of American music genres:
 
-- **Otis Redding**—"Soul Music" pioneer; statue at riverside "Dock of the Bay"
-- **Little Richard**—Rock 'n' roll pioneer
-- **James Brown**—Recorded early demos in Macon
-- **The Allman Brothers Band**—Southern rock icons, formed from Capricorn Records (founded 1969)
-- **Marshall Tucker Band & Wet Willie**—Additional Capricorn Records artists
+- **Otis Redding**—soul pioneer; born in Dawson, GA in 1941 but raised in Macon, which he made his home base. His statue moved from riverfront Gateway Park to the Otis Redding Center for the Arts downtown in 2025.
+- **Little Richard**—rock 'n' roll pioneer, **born in Macon on December 5, 1932**
+- **James Brown**—cut the original demo of "Please, Please, Please" with the Famous Flames at Macon radio station **WIBB in November 1955**; the recording got him signed to King Records
+- **The Allman Brothers Band**—Southern rock icons. The band **formed in Jacksonville, Florida in 1969**, then moved to Macon that April at the urging of manager **Phil Walden**, who was launching Capricorn Records there. *(The band was not "formed from" the label — the label was built around them.)*
+- **Capricorn Records**—founded in Macon in **1969** by **Phil Walden and Frank Fenter**
+- **Marshall Tucker Band & Wet Willie**—additional Capricorn Records artists (from Spartanburg, SC and Mobile, AL respectively)
 
 **Music-Related Attractions:**
 - **The Big House Museum**—Allman Brothers Band Museum
 - **Capricorn Sound Studios & Museum**—Historic recording studio and label hub
-- **Otis Redding Museum**—Family-curated tribute to the legend
-- **The Little Richard House**
-- **Douglass Theatre**—Venue where legends performed; James Brown and Otis Redding connections
-- **Rock Candy Tours**—Weekly walking tours of music history landmarks
-- **Self-Guided Music Tour**—43 recommended spots including H&H Restaurant and Rose Hill Cemetery
+- **Otis Redding Museum** (339 Cotton Ave)—family-curated tribute to the legend
+- **Otis Redding Center for the Arts (ORCA)** (436 Cotton Ave)—a 15,000 sq ft youth arts facility with creative labs, lesson rooms, a recording studio, and the Zelma Redding Amphitheater; the relocated Otis Redding statue now stands out front
+- **The Little Richard House**—his childhood home, now a museum and neighborhood resource center
+- **Douglass Theatre**—historic Black-owned venue (opened 1921) where Little Richard, Otis Redding, and James Brown all performed
+- **Rock Candy Tours**—weekly walking tours of music history landmarks
+- **Self-Guided Music Tour**—43 spots recommended by Visit Macon, including H&H Restaurant and Rose Hill Cemetery
 
 Music represents Macon's cultural pride and creative spirit—themes of talent, celebration, and community.
 
@@ -161,26 +180,31 @@ Music represents Macon's cultural pride and creative spirit—themes of talent, 
 - [Macon, Georgia Travel Guide: Allman Brothers, Otis Redding, Live Music | Rolling Stone](https://www.rollingstone.com/music/music-features/macon-georgia-must-visit-spots-allman-brothers-1235595943/)
 - [Discovering the Music Trail in Macon, GA | Good Grit](https://goodgritmag.com/discovering-the-music-trail-in-macon-ga/)
 - [Macon Music | Recording Studios, Venues, Tours & Museums | Visit Macon](https://visitmacon.org/music/)
+- [Allman Brothers Band - New Georgia Encyclopedia](https://www.georgiaencyclopedia.org/articles/arts-culture/allman-brothers-band/)
+- [Capricorn Records - New Georgia Encyclopedia](https://www.georgiaencyclopedia.org/articles/arts-culture/capricorn-records/)
+- [Little Richard in Macon | Visit Macon](https://visitmacon.org/music/little-richard/)
+- [About Douglass Theatre](https://www.douglasstheatre.org/about-douglass-theatre/)
+- [Otis Redding Center for the Arts Grand Opening | Billboard](https://www.billboard.com/music/music-news/otis-redding-center-for-the-arts-grand-opening-date-1235920960/)
 
 ### Family Attractions
 
 **Museum of Arts and Sciences**
 
-A 55,000 sq-ft facility on 14 acres offering:
+A 55,000 sq-ft facility on 14 acres at 4182 Forsyth Road, founded in 1956 and billed as Georgia's largest general-purpose museum. It offers:
 - Multiple art and science exhibitions
-- Full-dome planetarium
+- Full-dome **Mark Smith Planetarium**
 - Mini-Zoo with 70+ live animals
 - Interactive Discovery House
 - Scientist's Workshop with hands-on exhibits
-- Nature trails
+- Nature trails (including the Sweet Gum Trail)
 - 200+ seat auditorium
 - Museum store
 
-Ideal for youth education, STEM activities, and family outings.
+Open Tuesday–Saturday, 10 am–5 pm; phone (478) 477-3232. Ideal for youth education, STEM activities, and family outings.
 
 **Sources:**
-- [Museum of Arts and Sciences | Macon, GA](https://visitmacon.org/directory/museum-of-arts-and-sciences/)
-- [Museum of Arts and Sciences | Macon, GA (Family Days Out)](https://www.familydaysout.com/attractions/museum-of-arts-and-sciences-macon)
+- [Museum of Arts and Sciences (official site)](https://www.masmacon.org/)
+- [Museum of Arts and Sciences | Macon, GA (Visit Macon)](https://visitmacon.org/directory/museum-of-arts-and-sciences/)
 
 ---
 
@@ -200,7 +224,7 @@ Based on Macon's distinctive visual identity and natural landscape, the followin
 
 ### Mood & Application
 The palette evokes:
-- **Heritage & History** – Brick red and slate blue reference Macon's 150+ years of recorded history
+- **Heritage & History** – Brick red and slate blue reference Macon's 200+ years as a city (founded 1823) and the far deeper Indigenous history at Ocmulgee
 - **Outdoor Adventure** – River green and natural earth tones suggest trails, camping, and scouting
 - **Community & Celebration** – Cherry blossom pink (used as accent only) references the joy of the festival season and community gatherings
 - **Youth & Growth** – Spring blooms and fresh greens suggest renewal and youth development
