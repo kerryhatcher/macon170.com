@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
-import { annualProgram, pack } from '../../data/pack';
+import { pack } from '../../data/pack';
 ---
 
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
@@ -35,35 +35,6 @@ import { annualProgram, pack } from '../../data/pack';
           </div>
         </div></noscript
       >
-    </div>
-  </section>
-
-  <section class="section planner-section" id="program-year">
-    <div class="container">
-      <div class="section-heading">
-        <span class="chapter-tab">Fall to summer</span><h2>The usual Pack 170 rhythm.</h2><p>
-          These annual anchors help families understand the shape of a Cub Scout year. Only the volunteer-published events above are
-          confirmed Pack 170 dates.
-        </p>
-      </div><ol class="planner">
-        {
-          annualProgram.map((item, index) => (
-            <li>
-              <>
-                <span class="planner__month">{item.season}</span>
-                <span class="planner__number">{String(index + 1).padStart(2, '0')}</span>
-                <div>
-                  <>
-                    <h3>{item.title}</h3>
-                    <p>{item.state}</p>
-                  </>
-                </div>
-                <span class="planner__status">Typical season</span>
-              </>
-            </li>
-          ))
-        }
-      </ol>
     </div>
   </section>
 
@@ -214,47 +185,6 @@ import { annualProgram, pack } from '../../data/pack';
     font-weight: 800;
     margin-bottom: 0.7rem;
   }
-  .planner-section {
-    background: var(--page);
-    border-block: 1px solid var(--rule);
-  }
-  .planner {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 4px solid var(--blue);
-  }
-  .planner li {
-    display: grid;
-    grid-template-columns: 120px 60px 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding: 1.25rem 0.5rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .planner__month {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: var(--blue);
-  }
-  .planner__number {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #a6b4bf;
-  }
-  .planner h3,
-  .planner p {
-    margin: 0;
-  }
-  .planner__status {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--green-deep);
-    background: #e6f4ea;
-    padding: 0.35rem 0.65rem;
-    border-radius: 4px 9px 4px 4px;
-  }
   .calendar-help {
     background: var(--green-deep);
     color: white;
@@ -286,15 +216,6 @@ import { annualProgram, pack } from '../../data/pack';
     }
     .event-cards {
       grid-template-columns: 1fr;
-    }
-    .planner li {
-      grid-template-columns: 90px 1fr;
-    }
-    .planner__number {
-      display: none;
-    }
-    .planner__status {
-      grid-column: 2;
     }
     .calendar-help ul {
       columns: 1;

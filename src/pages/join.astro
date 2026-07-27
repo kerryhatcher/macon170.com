@@ -32,7 +32,7 @@ const faq = [
     accent="Pack 170 visit"
     intro="No uniform. No experience. No pressure. Come meet the adults who run the pack, see what Cub Scouts are working on, and decide together whether it feels right."
     noteTitle="Write this down"
-    noteBody={`Roughly monthly · ${pack.meeting.day}s · ${pack.meeting.time}`}
+    noteBody="Loading the next scheduled Pack 170 meeting…"
   >
     <div slot="actions" class="hero-actions">
       <a class="button button--gold" href={pack.links.join}>Start with BeAScout</a><a class="button button--paper" href="/contact/"
@@ -150,6 +150,43 @@ const faq = [
     </div>
   </section>
 </BaseLayout>
+<script>
+  type PublicEvent = {
+    title: string;
+    status: string;
+    category: string;
+    starts_at: string;
+    ends_at: string | null;
+  };
+  const note = document.querySelector<HTMLElement>('.hero-note > p');
+  const fallback = 'Roughly monthly · Tuesdays · 6:30 PM';
+  const date = (value: string) =>
+    new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
+  const time = (value: string) =>
+    new Intl.DateTimeFormat(undefined, { timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
+
+  async function loadNextPackMeeting() {
+    if (!note) return;
+    try {
+      const response = await fetch('/api/events');
+      if (!response.ok) throw new Error();
+      const body = (await response.json()) as { events?: PublicEvent[] };
+      const meeting = body.events?.find(
+        (event) => event.category === 'pack' && event.status === 'scheduled' && event.title.toLowerCase().includes('pack meeting'),
+      );
+      if (!meeting) {
+        note.textContent = fallback;
+        return;
+      }
+      const end = meeting.ends_at ? `–${time(meeting.ends_at)}` : '';
+      note.textContent = `${date(meeting.starts_at)}${end}`;
+    } catch {
+      note.textContent = fallback;
+    }
+  }
+
+  loadNextPackMeeting();
+</script>
 <style>
   .hero-actions,
   .join-close__sheet div {

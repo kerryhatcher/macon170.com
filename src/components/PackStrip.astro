@@ -1,10 +1,5 @@
 ---
-import { events, pack } from '../data/pack';
-const today = new Date().toISOString().slice(0, 10);
-const scheduled = events
-  .filter((event) => event.status === 'scheduled' && event.date && event.date >= today)
-  .sort((a, b) => String(a.date).localeCompare(String(b.date)));
-const nextEvent = scheduled[0];
+import { pack } from '../data/pack';
 ---
 
 <aside class="pack-strip" aria-label="Pack essentials">
@@ -15,7 +10,12 @@ const nextEvent = scheduled[0];
     </div>
     <div class="pack-strip__item">
       <span class="pack-strip__label">Next up</span>
-      <strong class="pack-strip__value">{nextEvent ? `${nextEvent.title} · ${nextEvent.dateLabel}` : 'The next date is being added'}</strong
+      <a
+        class="pack-strip__value pack-strip__next-link"
+        id="pack-strip-next-event"
+        href="/calendar/"
+        aria-label="Open the Pack calendar"
+        >The next date is being added</a
       >
     </div>
     <div class="pack-strip__actions">
@@ -24,3 +24,26 @@ const nextEvent = scheduled[0];
     </div>
   </div>
 </aside>
+<script>
+  type PublicEvent = { slug: string; title: string };
+  const nextEventLink = document.querySelector<HTMLAnchorElement>('#pack-strip-next-event');
+  const compactTitle = (title: string) => (title.length > 44 ? `${title.slice(0, 41).trimEnd()}…` : title);
+
+  async function loadNextEvent() {
+    if (!nextEventLink) return;
+    try {
+      const response = await fetch('/api/events');
+      if (!response.ok) return;
+      const body = (await response.json()) as { events?: PublicEvent[] };
+      const event = body.events?.[0];
+      if (!event) return;
+      nextEventLink.textContent = compactTitle(event.title);
+      nextEventLink.href = `/events/?event=${encodeURIComponent(event.slug)}`;
+      nextEventLink.setAttribute('aria-label', `Open details for ${event.title}`);
+    } catch {
+      // Keep the honest fallback copy when the public calendar is unavailable.
+    }
+  }
+
+  loadNextEvent();
+</script>

@@ -248,6 +248,16 @@ p {
   font-weight: 700;
   line-height: 1.3;
 }
+.pack-strip__next-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  text-wrap: balance;
+}
+.pack-strip__next-link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
 .pack-strip__actions {
   display: flex;
   gap: 0.55rem;
