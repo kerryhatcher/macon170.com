@@ -116,6 +116,35 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Slingshot - `assets/offical/tiger_Slingshot.webp`
     - BB Guns - `assets/offical/tiger_BB_Guns.webp`
 - Wolf (2nd) - https://www.scouting.org/programs/cub-scouts/adventures/wolf/
+  - Required
+    - Bobcat Wolf - https://www.scouting.org/cub-scout-adventures/bobcat-wolf/ - `assets/offical/wolf_Wolf_Bobcat.webp`
+    - Running With the Pack - https://www.scouting.org/cub-scout-adventures/running-with-the-pack/ - `assets/offical/wolf_Running_With_the_Pack.webp`
+    - Safety in Numbers - https://www.scouting.org/cub-scout-adventures/safety-in-numbers/ - `assets/offical/wolf_Safety_in_Numbers.webp`
+    - Footsteps - https://www.scouting.org/cub-scout-adventures/footsteps/ - `assets/offical/wolf_Footsteps.webp`
+    - Council Fire - https://www.scouting.org/cub-scout-adventures/council-fire/ - `assets/offical/wolf_Council_Fire.webp`
+    - Paws on the Path - https://www.scouting.org/cub-scout-adventures/paws-on-the-path/ - `assets/offical/wolf_Paws_on_the_Path.webp`
+  - Elective
+    - A Wolf Goes Fishing - https://www.scouting.org/cub-scout-adventures/a-wolf-goes-fishing/ - `assets/offical/wolf_A_Wolf_Goes_Fishing.webp`
+    - Adventures in Coins - https://www.scouting.org/cub-scout-adventures/adventures-in-coins/ - `assets/offical/wolf_Adventures_in_Coins.webp`
+    - Air of the Wolf - https://www.scouting.org/cub-scout-adventures/air-of-the-wolf/ - `assets/offical/wolf_Air_of_the_Wolf.webp`
+    - Champions for Nature Wolf - https://www.scouting.org/cub-scout-adventures/champions-for-nature-wolf/ - `assets/offical/wolf_Champions_of_Nature.webp`
+    - Code of the Wolf - https://www.scouting.org/cub-scout-adventures/code-of-the-wolf/ - `assets/offical/wolf_Code_of_the_Wolf.webp`
+    - Computing Wolves - https://www.scouting.org/cub-scout-adventures/computing-wolves/ - `assets/offical/wolf_Computing_Wolves.webp`
+    - Cubs Who Care - https://www.scouting.org/cub-scout-adventures/cubs-who-care/ - `assets/offical/wolf_Cubs_Who_Care.webp`
+    - Digging in the Past - https://www.scouting.org/cub-scout-adventures/digging-in-the-past/ - `assets/offical/wolf_Digging_Into_the_Past.webp`
+    - Finding Your Way - https://www.scouting.org/cub-scout-adventures/finding-your-way/ - `assets/offical/wolf_Finding_Your_Way.webp`
+    - Germs Alive! - https://www.scouting.org/cub-scout-adventures/germs-alive/ - `assets/offical/wolf_Germs_Alive.webp`
+    - Let’s Camp Wolf - https://www.scouting.org/cub-scout-adventures/lets-camp-wolf/ - `assets/offical/wolf_Lets_Camp.webp`
+    - Paws for Water - https://www.scouting.org/cub-scout-adventures/paws-for-water/ - `assets/offical/wolf_Paws_For_Water.webp`
+    - Paws of Skill - https://www.scouting.org/cub-scout-adventures/paws-of-skill/ - `assets/offical/wolf_Paws_of_Skill.webp`
+    - Pedal With the Pack - https://www.scouting.org/cub-scout-adventures/pedal-with-the-pack/ - `assets/offical/wolf_Pedal_With_the_Pack.webp`
+    - Race Time Wolf - https://www.scouting.org/cub-scout-adventures/race-time-wolf/ - `assets/offical/wolf_Race_Time.webp`
+    - Spirit of the Water - https://www.scouting.org/cub-scout-adventures/spirit-of-the-water/ - `assets/offical/wolf_Spirit_of_the_Water.webp`
+    - Summertime Fun Wolf - https://www.scouting.org/cub-scout-adventures/summertime-fun-wolf/ - `assets/offical/wolf_Summertime_Fun.webp`
+  - Special Elective (approved events with qualified instructors only)
+    - Archery Wolf - `assets/offical/wolf_Archery.webp`
+    - Slingshot - `assets/offical/wolf_Slingshot.webp`
+    - BB Guns - `assets/offical/wolf_BB_Guns.webp`
 - Bear (3rd) - https://www.scouting.org/programs/cub-scouts/adventures/bear/
 - Webelos (4th) - https://www.scouting.org/programs/cub-scouts/adventures/webelos/
 - Arrow of Light (5th) - https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/
