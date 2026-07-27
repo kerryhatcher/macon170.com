@@ -864,7 +864,35 @@ the volunteer desk, so `Leadership editor` is absent and `Read parent questions`
 
 - [ ] **Step 3: Create the admin page**
 
-Create `worker/leadership-admin.ts`. Keep the CSS import-free by reusing the same class names the calendar editor uses, so copy its `css()` function verbatim into this file's `css()` — the two pages are independently rendered documents and the repo already duplicates this.
+**Amended 2026-07-27 by human ruling during pre-flight.** The original plan said to copy `css()` and
+`escapeHtml()` verbatim from `calendar-admin.ts`. Instead, extract shared chrome first:
+
+Create `worker/admin-chrome.ts` exporting three functions used by all three admin pages:
+
+```ts
+export function adminCss(): string; // moved verbatim from calendar-admin.ts's css()
+export function escapeHtml(value: string): string; // moved from calendar-admin.ts
+export function adminNav(current: 'desk' | 'calendar' | 'leadership'): string;
+```
+
+`adminNav` returns the shared `<nav>` with `aria-current="page"` on `current`, so a fourth admin
+page later means editing one function instead of three files:
+
+```ts
+export function adminNav(current: 'desk' | 'calendar' | 'leadership'): string {
+  const link = (href: string, key: string, label: string) =>
+    `<a${key === current ? ' aria-current="page"' : ''} href="${href}">${label}</a>`;
+  return `${link('/', 'desk', 'Parent inquiries')}${link('/calendar', 'calendar', 'Calendar editor')}${link('/leadership', 'leadership', 'Leadership editor')}`;
+}
+```
+
+Then have `worker/calendar-admin.ts` and `renderAdminShell` in `worker/index.ts` import
+`adminCss`/`escapeHtml`/`adminNav` from it and delete their local copies. `renderAdminShell` keeps
+its `class="admin-nav"` wrapper: `<nav class="admin-nav">${adminNav('desk')}</nav>`. Verify
+`bun run test` still passes after the extraction and before adding the new page — this refactor must
+not change any rendered output except the added nav link.
+
+Then create `worker/leadership-admin.ts` importing from `./admin-chrome`.
 
 ```ts
 export function renderLeadershipAdmin(email: string, env: Env, headers: Record<string, string>): Response {
@@ -894,7 +922,9 @@ load();`;
 }
 ```
 
-Copy `css()` and `escapeHtml()` from `worker/calendar-admin.ts`, then append these rules to the end of the `css()` template string before the closing backtick:
+Append these rules to the end of `adminCss()`'s template string in `worker/admin-chrome.ts`, before
+the closing backtick. They are additive and affect no existing page, since no current page uses
+these class names:
 
 ```
 .roster-list{display:grid;gap:.6rem}.role{background:var(--page);border:1px solid var(--rule);border-radius:8px}.role summary{display:flex;justify-content:space-between;gap:1rem;padding:1rem;cursor:pointer;font-weight:700}.role .form-grid{padding:0 1rem}.role .actions{display:flex;justify-content:flex-end;gap:.6rem;padding:1rem}
@@ -916,9 +946,13 @@ if (url.pathname === '/leadership' || url.pathname === '/admin/leadership') {
 }
 ```
 
-- [ ] **Step 5: Add the third nav link to the other two shells**
+- [ ] **Step 5: Confirm the nav is shared, not copied**
 
-In `worker/calendar-admin.ts:3`, change the `<nav>` to:
+Superseded by the `adminNav()` extraction in Step 3. Verify all three pages call `adminNav()` and
+that no `<nav>` markup with these links remains hand-written anywhere:
+`grep -rn 'Parent inquiries' worker/` should match `admin-chrome.ts` only.
+
+For reference, the markup `adminNav()` replaces — do **not** paste these back in:
 
 ```html
 <nav>
