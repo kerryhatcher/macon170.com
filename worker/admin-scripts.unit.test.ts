@@ -21,9 +21,18 @@ async function extractInlineScript(path: string): Promise<string> {
 }
 
 describe('admin inline scripts', () => {
+  it('serves a leadership editor distinct from the volunteer desk', async () => {
+    const response = await exports.default.fetch('http://localhost/admin/leadership');
+    expect(response.status).toBe(200);
+    const html = await response.text();
+    expect(html).toContain('Leadership editor');
+    expect(html).not.toContain('Read parent questions');
+  });
+
   it.each([
     ['/admin', 'volunteer desk'],
     ['/admin/calendar', 'calendar editor'],
+    ['/admin/leadership', 'leadership editor'],
   ])('renders syntactically valid JavaScript for %s (%s)', async (path) => {
     const script = await extractInlineScript(path);
     expect(() => parse(script, { ecmaVersion: 'latest' })).not.toThrow();

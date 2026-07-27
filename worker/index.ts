@@ -3,6 +3,8 @@ import { EventRouteError, handleEventRoute } from './event-routes';
 import { LeadershipRouteError, handleLeadershipRoute } from './leadership-routes';
 import { ROSTER_PATHS, injectRoster } from './roster-inject';
 import { renderCalendarAdmin } from './calendar-admin';
+import { renderLeadershipAdmin } from './leadership-admin';
+import { adminNav, escapeHtml } from './admin-chrome';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
 type SubmissionStatus = 'new' | 'in_progress' | 'resolved' | 'spam';
@@ -115,6 +117,9 @@ export default {
         const identity = await requireAccess(request, env);
         if (url.pathname === '/calendar' || url.pathname === '/admin/calendar') {
           return renderCalendarAdmin(identity.email ?? 'Authorized volunteer', env, adminHeaders(env));
+        }
+        if (url.pathname === '/leadership' || url.pathname === '/admin/leadership') {
+          return renderLeadershipAdmin(identity.email ?? 'Authorized volunteer', env, adminHeaders(env));
         }
         return renderAdminShell(identity.email ?? 'Authorized volunteer', env);
       }
@@ -369,7 +374,7 @@ function renderAdminShell(email: string, env: Env): Response {
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>Pack 170 volunteer desk</title><style>${adminCss()}</style></head>
-<body><a class="skip" href="#main">Skip to submissions</a><header><div class="brand"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></div><nav class="admin-nav"><a aria-current="page" href="/">Parent inquiries</a><a href="/calendar">Calendar editor</a></nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>
+<body><a class="skip" href="#main">Skip to submissions</a><header><div class="brand"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></div><nav class="admin-nav">${adminNav('desk')}</nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>
 <main id="main"><section class="intro"><div><p class="tab">Parent inquiries</p><h1>Volunteer desk</h1><p>Read parent questions, follow up through approved adult channels, and keep the queue current.</p></div><div class="safety"><b>Youth safety</b><span>These are parent-to-adult messages. Do not move a conversation into a private adult–youth channel.</span></div></section>
 <nav class="filters" aria-label="Submission status"><button data-status="" aria-pressed="true">All</button><button data-status="new">New</button><button data-status="in_progress">In progress</button><button data-status="resolved">Resolved</button><button data-status="spam">Spam</button></nav>
 <div id="status" class="status" role="status">Loading submissions…</div><section class="desk"><div id="list" class="list" aria-label="Submissions"></div><article id="detail" class="detail"><div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div></article></section></main>
@@ -505,18 +510,4 @@ function adminHeaders(env: Env): Record<string, string> {
     'cdn-cache-control': 'no-cache, no-store, must-revalidate',
     'content-security-policy': `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' ${env.ADMIN_ORIGIN}; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`,
   };
-}
-
-function escapeHtml(value: string): string {
-  return value.replace(
-    /[&<>"']/g,
-    (character) =>
-      ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;',
-      })[character] ?? character,
-  );
 }
