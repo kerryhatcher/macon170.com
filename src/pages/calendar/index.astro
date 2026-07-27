@@ -140,7 +140,7 @@ import { pack } from '../../data/pack';
     gap: clamp(2rem, 6vw, 6rem);
     align-items: start;
   }
-  .date-sheet {
+  .next-grid :global(.date-sheet) {
     display: grid;
     gap: 0.7rem;
     padding: clamp(1.5rem, 4vw, 3rem);
@@ -150,15 +150,15 @@ import { pack } from '../../data/pack';
     box-shadow: var(--shadow-paper);
     transform: rotate(1deg);
   }
-  .date-sheet span {
+  .next-grid :global(.date-sheet span) {
     font-family: var(--font-display);
     font-size: 1.2rem;
     font-weight: 900;
   }
-  .date-sheet strong {
+  .next-grid :global(.date-sheet strong) {
     font-size: 1.15rem;
   }
-  .date-sheet small {
+  .next-grid :global(.date-sheet small) {
     text-transform: capitalize;
   }
   .event-cards {
@@ -168,7 +168,7 @@ import { pack } from '../../data/pack';
     margin-top: 3rem;
   }
   /* Category drives the accent: the Local Accent Rule wants colour to explain something. */
-  .event-cards article {
+  .event-cards :global(article) {
     --cat: var(--blue);
     --cat-ink: var(--page);
     position: relative;
@@ -178,15 +178,15 @@ import { pack } from '../../data/pack';
     border-radius: 6px 16px 8px 6px;
     box-shadow: var(--shadow-paper);
   }
-  .event-cards article[data-category='den'] {
+  .event-cards :global(article[data-category='den']) {
     --cat: var(--green);
     --cat-ink: var(--page);
   }
-  .event-cards article[data-category='family'] {
+  .event-cards :global(article[data-category='family']) {
     --cat: var(--orange);
     --cat-ink: var(--ink);
   }
-  .event-cards article::before {
+  .event-cards :global(article)::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -195,7 +195,7 @@ import { pack } from '../../data/pack';
     border-radius: 6px 16px 0 0;
     opacity: 0.77;
   }
-  .event-cat {
+  .event-cards :global(.event-cat) {
     display: inline-block;
     font-family: var(--font-display);
     font-size: 0.68rem;
@@ -208,7 +208,7 @@ import { pack } from '../../data/pack';
     color: var(--cat-ink);
     margin-bottom: 0.9rem;
   }
-  .event-status {
+  .event-cards :global(.event-status) {
     display: inline-block;
     margin: 0 0 0.9rem 0.4rem;
     padding: 0.3rem 0.6rem;
@@ -221,21 +221,21 @@ import { pack } from '../../data/pack';
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .event-cards h3 {
+  .event-cards :global(h3) {
     font-size: 1.15rem;
     margin: 0 0 0.35rem;
   }
-  .event-cards article p {
+  .event-cards :global(article p) {
     margin: 0 0 0.8rem;
     color: var(--muted);
     font-size: 0.95rem;
   }
-  .event-cards article a {
+  .event-cards :global(article a) {
     font-family: var(--font-display);
     font-size: 0.82rem;
     font-weight: 800;
   }
-  .event-date {
+  .event-cards :global(.event-date) {
     display: block;
     color: var(--blue);
     font-family: var(--font-display);
