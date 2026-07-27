@@ -34,5 +34,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {showStrip && <PackStrip />}
     <main id="main"><slot /></main>
     <SiteFooter />
+    <!-- impeccable-live-start -->
+    <script is:inline src="http://localhost:8400/live.js?token=5cd83bf0-b796-4f43-861e-9bc48b75c14e"></script>
+    <!-- impeccable-live-end -->
   </body>
 </html>

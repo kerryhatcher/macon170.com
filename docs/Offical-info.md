@@ -52,7 +52,7 @@ Each Den sets its own meeting times/locations, however, many meet at the church 
 
 #### Lion (Kindergarten)
 
-## Adventures 
+## Adventures
 
 https://www.scouting.org/programs/cub-scouts/adventures/
 
@@ -62,9 +62,8 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Fun on the run - https://www.scouting.org/cub-scout-adventures/fun-on-the-run/
   - Elective
     - Build It Up, Knock It Down - https://www.scouting.org/cub-scout-adventures/build-it-up-knock-it-down/
-- Tiger (1st) - 
+- Tiger (1st) -
 - Wolf (2nd) -
-- Bear (3rd) - 
-- Webelos (4th) - 
-- Arrow of Light (5th) - 
-
+- Bear (3rd) -
+- Webelos (4th) -
+- Arrow of Light (5th) -
