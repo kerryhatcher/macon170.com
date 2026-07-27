@@ -10,7 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
 ---
-<BaseLayout title="Macon’s neighborhood Cub Scout pack" description="Cub Scout Pack 170 welcomes boys and girls in kindergarten through 5th grade. We meet Tuesdays at 6:30 PM at Highland Hills Baptist Church in Macon.">
+
+<BaseLayout
+  title="Macon’s neighborhood Cub Scout pack"
+  description="Cub Scout Pack 170 welcomes boys and girls in kindergarten through 5th grade. We meet Tuesdays at 6:30 PM at Highland Hills Baptist Church in Macon."
+>
   <section class="cover">
     <div class="container cover__grid">
       <div class="cover__copy">
@@ -48,8 +52,14 @@ import { annualProgram, pack, ranks } from '../data/pack';
       <div>
         <span class="chapter-tab">Start here</span>
         <h2>One pack. Six grades. A lot to discover.</h2>
-        <p class="lead">Pack 170 is a volunteer-run Cub Scout pack in Macon’s Shirley Hills neighborhood. Kids learn by building, exploring, helping, and trying things that once felt hard—with their families beside them.</p>
-        <p>We welcome boys and girls in kindergarten through 5th grade, from every background. You do not need to attend Highland Hills Baptist Church to join us.</p>
+        <p class="lead">
+          Pack 170 is a volunteer-run Cub Scout pack in Macon’s Shirley Hills neighborhood. Kids learn by building, exploring, helping, and
+          trying things that once felt hard—with their families beside them.
+        </p>
+        <p>
+          We welcome boys and girls in kindergarten through 5th grade, from every background. You do not need to attend Highland Hills
+          Baptist Church to join us.
+        </p>
         <a class="button button--blue" href="/about/">Meet our pack</a>
       </div>
       <FieldIllustration />
@@ -61,17 +71,29 @@ import { annualProgram, pack, ranks } from '../data/pack';
       <div class="section-heading">
         <span class="chapter-tab">Find your place</span>
         <h2>There’s a den for every elementary grade.</h2>
-        <p>Each rank meets children where they are. The names change by grade; the goal stays the same: grow through age-appropriate adventures.</p>
+        <p>
+          Each rank meets children where they are. The names change by grade; the goal stays the same: grow through age-appropriate
+          adventures.
+        </p>
       </div>
       <div class="rank-path">
-        {ranks.map((rank) => (
-          <div class:list={['rank', `rank--${rank.color}`]}>
-            <div class="rank__mark" aria-hidden="true">{rank.mark}</div>
-            <strong>{rank.name}</strong><small>{rank.grade}</small>
-          </div>
-        ))}
+        {
+          ranks.map((rank) => (
+            <div class:list={['rank', `rank--${rank.color}`]}>
+              <div class="rank__mark" aria-hidden="true">
+                {rank.mark}
+              </div>
+              <>
+                <strong>{rank.name}</strong>
+                <small>{rank.grade}</small>
+              </>
+            </div>
+          ))
+        }
       </div>
-      <p class="grade-note">Current den names and schedules will appear once pack leadership supplies them. <a href="/join/#grades">See how grades work</a>.</p>
+      <p class="grade-note">
+        Current den names and schedules will appear once pack leadership supplies them. <a href="/join/#grades">See how grades work</a>.
+      </p>
     </div>
   </section>
 
@@ -84,7 +106,10 @@ import { annualProgram, pack, ranks } from '../data/pack';
       <div class="adventure-copy">
         <span class="chapter-tab">What we do</span>
         <h2>Small hands. Big adventures.</h2>
-        <p class="lead">Race a Pinewood Derby car. Spend a night under Georgia pines. Celebrate at Blue & Gold. Help the neighborhood. Every chapter gives kids a new way to say, “I did it.”</p>
+        <p class="lead">
+          Race a Pinewood Derby car. Spend a night under Georgia pines. Celebrate at Blue & Gold. Help the neighborhood. Every chapter gives
+          kids a new way to say, “I did it.”
+        </p>
         <a class="button button--gold" href="/activities/">Open the adventure chapters</a>
       </div>
     </div>
@@ -95,12 +120,23 @@ import { annualProgram, pack, ranks } from '../data/pack';
       <div class="section-heading">
         <span class="chapter-tab">The pack year</span>
         <h2>See the whole adventure at a glance.</h2>
-        <p>Our program generally runs from fall through spring, with summer opportunities too. Exact Pack 170 dates are being gathered from leadership.</p>
+        <p>
+          Our program generally runs from fall through spring, with summer opportunities too. Exact Pack 170 dates are being gathered from
+          leadership.
+        </p>
       </div>
       <ol class="year-line">
-        {annualProgram.map((item) => (
-          <li><span>{item.season}</span><strong>{item.title}</strong><small>{item.state}</small></li>
-        ))}
+        {
+          annualProgram.map((item) => (
+            <li>
+              <>
+                <span>{item.season}</span>
+                <strong>{item.title}</strong>
+                <small>{item.state}</small>
+              </>
+            </li>
+          ))
+        }
       </ol>
       <div class="year-actions">
         <a class="button button--blue" href="/calendar/">Open family calendar</a>
@@ -114,7 +150,9 @@ import { annualProgram, pack, ranks } from '../data/pack';
       <div>
         <span class="chapter-tab">Your next page</span>
         <h2>Come see Pack 170 for yourself.</h2>
-        <p class="lead">A first visit is simply a chance for your family to look around, meet pack adults, and decide whether Cub Scouting feels right.</p>
+        <p class="lead">
+          A first visit is simply a chance for your family to look around, meet pack adults, and decide whether Cub Scouting feels right.
+        </p>
       </div>
       <div class="closing__actions">
         <a class="button button--gold" href="/join/">Plan a first visit</a>
@@ -125,53 +163,357 @@ import { annualProgram, pack, ranks } from '../data/pack';
 </BaseLayout>
 
 <style>
-.cover { position: relative; overflow: hidden; min-height: min(760px, calc(100vh - 158px)); display: grid; align-items: center; background: var(--blue); color: white; border-bottom: 10px solid var(--gold); }
-.cover::before { content: ''; position: absolute; inset: 1.25rem; border: 2px solid rgba(252,209,22,.42); border-radius: 4px 30px 14px 8px; pointer-events: none; }
-.cover__grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; padding-block: clamp(5rem, 11vw, 9rem); position: relative; z-index: 1; }
-.cover__copy { max-width: 660px; }
-.cover__edition { position: absolute; top: 2.1rem; left: 0; font-family: var(--font-display); font-size: .73rem; text-transform: uppercase; letter-spacing: .12em; color: #cfe4fb; }
-.cover__overline { color: var(--gold); font-family: var(--font-display); font-weight: 800; margin: 0 0 1rem; }
-.cover h1 span { color: var(--gold); }
-.cover__promise { font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 700; max-width: 34ch; }
-.cover__facts { margin: 2rem 0 0; display: grid; gap: .55rem; }
-.cover__facts div { display: grid; grid-template-columns: 68px 1fr; border-bottom: 1px solid rgba(255,255,255,.22); padding: .55rem 0; }
-.cover__facts dt { color: var(--gold); font-family: var(--font-display); font-size: .78rem; font-weight: 800; text-transform: uppercase; }
-.cover__facts dd { margin: 0; font-weight: 600; }
-.audience-index { display: grid; gap: 1rem; }
-.bookmark { position: relative; display: block; color: var(--blue-deep); padding: 1.25rem 1.5rem 1.45rem; text-decoration: none; border-radius: 7px 18px 6px 7px; box-shadow: 7px 8px 0 rgba(0,43,92,.72), 0 18px 35px rgba(0,0,0,.22); transition: transform .28s var(--ease); }
-.bookmark:hover { color: var(--blue-deep); transform: translate(-5px, -4px) rotate(-.5deg); }
-.bookmark::after { content: ''; position: absolute; right: -1px; bottom: -1px; width: 28px; height: 28px; background: linear-gradient(135deg, transparent 50%, rgba(0,43,92,.2) 51%); }
-.bookmark--join { background: var(--gold); transform: rotate(-1deg); }
-.bookmark--calendar { background: var(--page); transform: rotate(1deg); }
-.bookmark__label { display: block; font-family: var(--font-display); font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; }
-.bookmark strong { display: block; font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2rem); margin: .2rem 0; }
-.bookmark span:last-child { display: block; line-height: 1.4; }
-.pencil-note { color: #d8e9fb; font-size: .95rem; padding: .7rem 1.2rem; transform: rotate(-1deg); border-bottom: 1px dashed #84acd5; }
-.cover__binding { position: absolute; width: 22px; top: 0; bottom: 0; left: 50%; opacity: .25; background: repeating-linear-gradient(0deg, transparent 0 26px, var(--gold) 27px 32px, transparent 33px 48px); }
-.welcome__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
-.grade-section { background: var(--page); border-block: 1px solid var(--rule); }
-.grade-note { margin-top: 2rem; color: var(--muted); text-align: center; }
-.adventure-spread { background: var(--green-deep); color: white; overflow: hidden; }
-.adventure-spread__grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-.adventure-copy .lead { color: #e8f4ec; }
-.adventure-art { min-height: 430px; position: relative; border: 4px solid var(--page); background: #bfe0ec; overflow: hidden; border-radius: 50% 50% 10% 10% / 22% 22% 8% 8%; }
-.adventure-art__sun { position: absolute; width: 80px; aspect-ratio: 1; border-radius: 50%; background: var(--gold); top: 45px; right: 16%; }
-.adventure-art__pine { position: absolute; color: var(--green); font-size: 12rem; bottom: 18%; line-height: 1; }
-.pine-1 { left: 4%; } .pine-2 { right: 2%; transform: scale(.78); }
-.adventure-art__track { position: absolute; height: 110px; left: -10%; right: -10%; bottom: 5%; background: #a06b3f; transform: rotate(-4deg); border-block: 8px solid #82502b; }
-.adventure-art__car { position: absolute; left: 32%; bottom: 22%; width: 150px; height: 65px; border-radius: 55px 20px 14px 14px; display: grid; place-items: center; background: var(--red); border: 5px solid var(--blue-deep); color: white; font-family: var(--font-display); font-weight: 900; font-size: 1.4rem; transform: rotate(-4deg); box-shadow: -25px 42px 0 -17px var(--blue-deep), 54px 42px 0 -17px var(--blue-deep); }
-.adventure-art__flag { position: absolute; right: 17%; bottom: 35%; color: var(--ink); font-size: 2rem; line-height: .8; transform: rotate(10deg); }
-.year-line { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 5px solid var(--blue); }
-.year-line li { position: relative; padding: 1.5rem .75rem 1rem; border-right: 1px dashed var(--rule); }
-.year-line li::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); border: 4px solid var(--blue); top: -12px; left: .75rem; }
-.year-line span, .year-line strong, .year-line small { display: block; }
-.year-line span { color: var(--blue); font-family: var(--font-display); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
-.year-line strong { line-height: 1.25; margin: .35rem 0; }
-.year-line small { color: var(--red); line-height: 1.25; }
-.year-actions { display: flex; gap: 1rem; margin-top: 2.5rem; }
-.closing { background: var(--blue-soft); }
-.closing__sheet { padding: clamp(2rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-.closing__actions { display: grid; gap: .8rem; }
-@media (max-width: 900px) { .cover__grid, .welcome__grid, .adventure-spread__grid { grid-template-columns: 1fr; } .cover__binding { display: none; } .year-line { grid-template-columns: repeat(3, 1fr); row-gap: 2rem; } .closing__sheet { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .cover { min-height: auto; } .cover::before { inset: .6rem; } .cover__edition { top: 1rem; left: .5rem; } .cover__grid { padding-block: 4.5rem 3.5rem; } .year-line { grid-template-columns: repeat(2, 1fr); } .year-actions { display: grid; } .adventure-art { min-height: 330px; } .adventure-art__car { left: 22%; } }
+  .cover {
+    position: relative;
+    overflow: hidden;
+    min-height: min(760px, calc(100vh - 158px));
+    display: grid;
+    align-items: center;
+    background: var(--blue);
+    color: white;
+    border-bottom: 10px solid var(--gold);
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 1.25rem;
+    border: 2px solid rgba(252, 209, 22, 0.42);
+    border-radius: 4px 30px 14px 8px;
+    pointer-events: none;
+  }
+  .cover__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: center;
+    padding-block: clamp(5rem, 11vw, 9rem);
+    position: relative;
+    z-index: 1;
+  }
+  .cover__copy {
+    max-width: 660px;
+  }
+  .cover__edition {
+    position: absolute;
+    top: 2.1rem;
+    left: 0;
+    font-family: var(--font-display);
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #cfe4fb;
+  }
+  .cover__overline {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-weight: 800;
+    margin: 0 0 1rem;
+  }
+  .cover h1 span {
+    color: var(--gold);
+  }
+  .cover__promise {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 700;
+    max-width: 34ch;
+  }
+  .cover__facts {
+    margin: 2rem 0 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .cover__facts div {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 0.55rem 0;
+  }
+  .cover__facts dt {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .cover__facts dd {
+    margin: 0;
+    font-weight: 600;
+  }
+  .audience-index {
+    display: grid;
+    gap: 1rem;
+  }
+  .bookmark {
+    position: relative;
+    display: block;
+    color: var(--blue-deep);
+    padding: 1.25rem 1.5rem 1.45rem;
+    text-decoration: none;
+    border-radius: 7px 18px 6px 7px;
+    box-shadow:
+      7px 8px 0 rgba(0, 43, 92, 0.72),
+      0 18px 35px rgba(0, 0, 0, 0.22);
+    transition: transform 0.28s var(--ease);
+  }
+  .bookmark:hover {
+    color: var(--blue-deep);
+    transform: translate(-5px, -4px) rotate(-0.5deg);
+  }
+  .bookmark::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 43, 92, 0.2) 51%);
+  }
+  .bookmark--join {
+    background: var(--gold);
+    transform: rotate(-1deg);
+  }
+  .bookmark--calendar {
+    background: var(--page);
+    transform: rotate(1deg);
+  }
+  .bookmark__label {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .bookmark strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    margin: 0.2rem 0;
+  }
+  .bookmark span:last-child {
+    display: block;
+    line-height: 1.4;
+  }
+  .pencil-note {
+    color: #d8e9fb;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+    transform: rotate(-1deg);
+    border-bottom: 1px dashed #84acd5;
+  }
+  .cover__binding {
+    position: absolute;
+    width: 22px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    opacity: 0.25;
+    background: repeating-linear-gradient(0deg, transparent 0 26px, var(--gold) 27px 32px, transparent 33px 48px);
+  }
+  .welcome__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: center;
+  }
+  .grade-section {
+    background: var(--page);
+    border-block: 1px solid var(--rule);
+  }
+  .grade-note {
+    margin-top: 2rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  .adventure-spread {
+    background: var(--green-deep);
+    color: white;
+    overflow: hidden;
+  }
+  .adventure-spread__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .adventure-copy .lead {
+    color: #e8f4ec;
+  }
+  .adventure-art {
+    min-height: 430px;
+    position: relative;
+    border: 4px solid var(--page);
+    background: #bfe0ec;
+    overflow: hidden;
+    border-radius: 50% 50% 10% 10% / 22% 22% 8% 8%;
+  }
+  .adventure-art__sun {
+    position: absolute;
+    width: 80px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--gold);
+    top: 45px;
+    right: 16%;
+  }
+  .adventure-art__pine {
+    position: absolute;
+    color: var(--green);
+    font-size: 12rem;
+    bottom: 18%;
+    line-height: 1;
+  }
+  .pine-1 {
+    left: 4%;
+  }
+  .pine-2 {
+    right: 2%;
+    transform: scale(0.78);
+  }
+  .adventure-art__track {
+    position: absolute;
+    height: 110px;
+    left: -10%;
+    right: -10%;
+    bottom: 5%;
+    background: #a06b3f;
+    transform: rotate(-4deg);
+    border-block: 8px solid #82502b;
+  }
+  .adventure-art__car {
+    position: absolute;
+    left: 32%;
+    bottom: 22%;
+    width: 150px;
+    height: 65px;
+    border-radius: 55px 20px 14px 14px;
+    display: grid;
+    place-items: center;
+    background: var(--red);
+    border: 5px solid var(--blue-deep);
+    color: white;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.4rem;
+    transform: rotate(-4deg);
+    box-shadow:
+      -25px 42px 0 -17px var(--blue-deep),
+      54px 42px 0 -17px var(--blue-deep);
+  }
+  .adventure-art__flag {
+    position: absolute;
+    right: 17%;
+    bottom: 35%;
+    color: var(--ink);
+    font-size: 2rem;
+    line-height: 0.8;
+    transform: rotate(10deg);
+  }
+  .year-line {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-top: 5px solid var(--blue);
+  }
+  .year-line li {
+    position: relative;
+    padding: 1.5rem 0.75rem 1rem;
+    border-right: 1px dashed var(--rule);
+  }
+  .year-line li::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 4px solid var(--blue);
+    top: -12px;
+    left: 0.75rem;
+  }
+  .year-line span,
+  .year-line strong,
+  .year-line small {
+    display: block;
+  }
+  .year-line span {
+    color: var(--blue);
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .year-line strong {
+    line-height: 1.25;
+    margin: 0.35rem 0;
+  }
+  .year-line small {
+    color: var(--red);
+    line-height: 1.25;
+  }
+  .year-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .closing {
+    background: var(--blue-soft);
+  }
+  .closing__sheet {
+    padding: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .closing__actions {
+    display: grid;
+    gap: 0.8rem;
+  }
+  @media (max-width: 900px) {
+    .cover__grid,
+    .welcome__grid,
+    .adventure-spread__grid {
+      grid-template-columns: 1fr;
+    }
+    .cover__binding {
+      display: none;
+    }
+    .year-line {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 2rem;
+    }
+    .closing__sheet {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .cover {
+      min-height: auto;
+    }
+    .cover::before {
+      inset: 0.6rem;
+    }
+    .cover__edition {
+      top: 1rem;
+      left: 0.5rem;
+    }
+    .cover__grid {
+      padding-block: 4.5rem 3.5rem;
+    }
+    .year-line {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .year-actions {
+      display: grid;
+    }
+    .adventure-art {
+      min-height: 330px;
+    }
+    .adventure-art__car {
+      left: 22%;
+    }
+  }
 </style>

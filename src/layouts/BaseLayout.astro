@@ -16,6 +16,7 @@ type Props = { title: string; description: string; showStrip?: boolean };
 const { title, description, showStrip = true } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!doctype html>
 <html lang="en">
   <head>

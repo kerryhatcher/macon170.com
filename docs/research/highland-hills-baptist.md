@@ -19,6 +19,7 @@ Cub Scout Pack 170's host church in Macon, Georgia
 **Location:** Shirley Hills neighborhood of East Macon, in Bibb County
 
 **Contact Information:**
+
 - Phone: 478-746-4846
 - Email: churchoffice@highlandhillsbaptist.org
 - Website: [www.highlandhillsbaptist.org](https://www.highlandhillsbaptist.org/)
@@ -26,6 +27,7 @@ Cub Scout Pack 170's host church in Macon, Georgia
 **Campus:** "Over seventeen acres" in the heart of Shirley Hills, including a sanctuary, courtyard, hillside amphitheater, wooded walking trail, meditation chapel, and a **Boy Scout Hut**
 
 **Weekly Schedule** (per the church's homepage):
+
 - Sunday School: 9:45 a.m.
 - Morning Worship: 11:00 a.m.
 - Tuesday Lectionary Breakfast: 8:00 a.m.
@@ -34,6 +36,7 @@ Cub Scout Pack 170's host church in Macon, Georgia
 **Current Pastors:** Rev. Caitlin Childers Brown (Pastor and Minister of Service & Community) and Rev. Ethan Brown (Pastor and Minister of Care & Discipleship). The congregation voted to call them as co-pastors in **May 2023**; the staff page lists Ethan Brown's start as **July 2023**.
 
 **Sources** (official site is authoritative):
+
 - [Official Website – Home](https://www.highlandhillsbaptist.org/)
 - [Official Website – Contact](https://www.highlandhillsbaptist.org/contact-us)
 - [Official Website – Our Staff](https://www.highlandhillsbaptist.org/our-staff)
@@ -51,12 +54,14 @@ Cub Scout Pack 170's host church in Macon, Georgia
 Per the church's own history page: **five couples** in the Shirley Hills and North Highland neighborhoods founded Highland Hills Baptist Church in 1953 "to provide a place of spiritual enrichment for the community." The congregation met initially at the **Little Theater Building**, where Dr. Lewis Batts preached to **179 charter members** on charter Sunday, April 12, 1953. The name "Highland Hills" combines the two neighborhoods it was formed to serve.
 
 **Early growth** (church history page):
+
 - Luke Smith became the first pastor "several months later," and the church acquired property on Briarcliff Road
 - The chapel was completed by May 1955, with its first service on Mother's Day
 - Phase two construction began in 1957, adding an education building completed within a year
 - Dr. Maurice Trimmer succeeded Luke Smith in 1960; the new sanctuary was dedicated September 8, 1967
 
 **Later pastoral history** (church history page):
+
 - Rev. James C. Bruner (1970s–1987) — membership reached nearly 1,000 by the 1980s
 - Dr. C. Welton Gaddy (1987–1990)
 - Dr. David J. Hailey (1990–1996)
@@ -65,6 +70,7 @@ Per the church's own history page: **five couples** in the Shirley Hills and Nor
 - Rev. Caitlin Childers Brown and Rev. Ethan Brown, called May 2023
 
 ⚠️ **Corrected/unverified claims from earlier research:**
+
 - "179 members representing **90 families**" — the official history says 179 charter members and does not mention 90 families. **Unverified.**
 - "Following a survey of these neighborhoods, the residents determined they wanted a Baptist church" — not supported by the official history, which credits five founding couples. **Unverified; likely inaccurate.**
 - "Luke Smith was called as pastor on **July 12, 1953**" — the official history says only "several months later." **Unverified.**
@@ -73,6 +79,7 @@ Per the church's own history page: **five couples** in the Shirley Hills and Nor
 - An organizational meeting on **February 16, 1953 at the Baconsfield Club House** appears in cached search results for the church's old history page but is not on the current site. **Unverified.**
 
 **Sources:**
+
 - [Official Website – Our History](https://www.highlandhillsbaptist.org/our-history) ← **primary source; replaces the dead Squarespace page**
 - [Highland Hills Baptist Church History Page (old Squarespace site)](http://hhbcmacon.squarespace.com/history/) ⚠️ Dead link (404), and no Wayback Machine snapshot exists. Claims sourced only to this page cannot be re-verified.
 - [Kenan Research Center Finding Aid](https://aspace-atlantahistorycenter.galileo.usg.edu/repositories/2/archival_objects/57240) — ⚠️ Note: this record is "Highland Hills Baptist Church, 1370 Briarcliff Road, Macon, Georgia, **1982**," a landscape-architecture project file in the Edward L. Daugherty papers. It documents 1982 grounds work, **not** the church's 1953 founding. It was mis-cited in earlier drafts.
@@ -88,6 +95,7 @@ On its About page the church describes itself as "a thoughtful and growing inter
 The Who We Are page adds that being Baptist, for this congregation, "is grounded in the freedom we find in God" — freedom of individual conscience and scriptural interpretation, freedom of each local church, and religious liberty for all faiths. The church ordains women; it amended its bylaws in 2000 to let all members over 21 serve as deacons and elected Mary Brown as its first woman deacon.
 
 **Community Involvement:**
+
 - The church hosted the **CBF Georgia State Gathering** on November 10–11, 2024 (theme: "Being Like Jesus")
 - The **Cooperative Baptist Fellowship of Georgia leases classrooms behind the church chapel** as its office space (per a church announcement post) — worth confirming this is still current
 - Ongoing community partnerships listed on the church's Projects & Partners page: Dr. Martin Luther King, Jr. Elementary School, LifeSpring, Brookdale Resource Center, DayBreak, **BSA Troop 170**, Loaves and Fishes, and McAfee School of Theology
@@ -95,6 +103,7 @@ The Who We Are page adds that being Baptist, for this congregation, "is grounded
 - Children's, youth (grades 6–12), and adult Sunday School; the family ministry page notes "a long history of supporting and engaging families with children along the spectrum of neurodiversity"
 
 **Sources:**
+
 - [Official Website – Who We Are](https://www.highlandhillsbaptist.org/who-we-are) ← states the CBF affiliation explicitly
 - [Official Website – Welcome](https://www.highlandhillsbaptist.org/welcome)
 - [Official Website – About](https://www.highlandhillsbaptist.org/about)
@@ -119,7 +128,7 @@ Neither page names Cub Scout Pack 170 or Venturing Crew 170 specifically, and no
 
 **Confirmed:** Cub Scout Pack 170 **meets at Highland Hills Baptist Church**. Pack meetings occur roughly once a month on **Tuesdays at 6:30 p.m.**, and many dens meet at the church for an hour before the pack meeting. Source: `docs/Offical-info.md`, the hand-maintained canonical pack record.
 
-**Still open — the formal charter paperwork.** No public source states in writing that Highland Hills Baptist Church is the *chartered organization of record* for Pack 170. The church hosts the pack, houses a Boy Scout Hut, and publicly partners with Troop 170, so this is very likely, but the charter document itself should be confirmed with the Central Georgia Council or the pack's charter organization representative before the website asserts it as a legal relationship.
+**Still open — the formal charter paperwork.** No public source states in writing that Highland Hills Baptist Church is the _chartered organization of record_ for Pack 170. The church hosts the pack, houses a Boy Scout Hut, and publicly partners with Troop 170, so this is very likely, but the charter document itself should be confirmed with the Central Georgia Council or the pack's charter organization representative before the website asserts it as a legal relationship.
 
 ⚠️ **Correction to earlier research.** An earlier draft stated that HHBC is the "confirmed" chartered organization for **Venturing Crew 170** while Pack 170's status was unknown. That has the evidence backwards. The Crew 170 claim traced only to a search-engine summary, not to any primary source, and the official church site never mentions a Venturing crew. Treat "Crew 170 is chartered by HHBC" as **unverified**. The unit the church actually names in its own materials is **Troop 170**.
 
@@ -129,6 +138,7 @@ A chartered organization is a community-based group whose objectives, mission, a
 **Local Council:** Pack 170 and affiliated units operate under the **Central Georgia Council, BSA**, 4335 Confederate Way, Macon, Georgia 31217-4719; phone (478) 743-9386; centralgeorgiacouncil@scouting.org (per `docs/Offical-info.md`).
 
 **Sources:**
+
 - `docs/Offical-info.md` — canonical pack/council record maintained by pack leadership
 - [Official Website – Projects & Partners](https://www.highlandhillsbaptist.org/projects-partners) (names BSA Troop 170)
 - [Official Website – Our Campus & Grounds](https://www.highlandhillsbaptist.org/campus-grounds) (Boy Scout Hut)
@@ -150,6 +160,7 @@ A chartered organization is a community-based group whose objectives, mission, a
 The **Shirley Hills Historic District** is a large, planned residential neighborhood on the east bank of the Ocmulgee River north of downtown Macon, bounded roughly by Senate Place, Parkview Drive, Curry Drive, Briarcliff Road, Nottingham Drive, and the river. Local-history sources say the neighborhood was named for a granddaughter of Augustus Octavius Bacon (1839–1914), a Georgia legislator and U.S. Senator. ⚠️ The granddaughter's given name as "Shirley" and the claim that the Bacon estate provided the land are repeated in secondary sources but are **not confirmed** by the National Register listing or Wikipedia.
 
 **Landscape Design:**
+
 - The original section was laid out by the office of **Frederick Law Olmsted**; landscape architect **Leon Hoffman**, an Olmsted protégé who had supervised work at Biltmore and Druid Hills, designed the subdivision to follow the natural terrain. (Per local-history sources; the Wikipedia article does not name a designer.)
 - The layout follows the dramatic natural topography with meandering streets
 - Service lanes run behind homes for utilities and trash collection—an innovative design feature
@@ -157,6 +168,7 @@ The **Shirley Hills Historic District** is a large, planned residential neighbor
 
 **Architecture:**
 Homes in Shirley Hills represent diverse early 20th-century architectural styles, including:
+
 - Colonial Revival, Classical Revival, and Georgian Revival
 - Tudor Revival, Italian Renaissance, and French Renaissance
 - Mission and Spanish Colonial Revival
@@ -166,6 +178,7 @@ Homes in Shirley Hills represent diverse early 20th-century architectural styles
 ⚠️ The style list above, along with the service-lane and topography details, comes from secondary local-history write-ups rather than the National Register nomination itself. Directionally sound, but check the NRHP nomination document before quoting specifics on the website.
 
 **Notable Landmarks:**
+
 - **Jackson Springs Park** with a bird sanctuary
 - Historic stone bridges, benches, a mossy brook, and landscaping
 - ⚠️ The claim that the park is named after General Andrew Jackson, who camped in the area with Tennessee Volunteers, appears only in secondary local sources. **Unverified.**
@@ -173,6 +186,7 @@ Homes in Shirley Hills represent diverse early 20th-century architectural styles
 - Notable architects represented: W. Elliott Dunwody IV (10 houses), Ellamae Ellis League (7), and Dennis & Dennis (2)
 
 **Historic Designation:**
+
 - Listed on the National Register of Historic Places: **August 17, 1989**, covering **275 acres**
 - Boundary increase: **May 28, 2014**, adding 271 contributing buildings and 24 contributing sites
 - Current totals: **401 contributing buildings**, 68 non-contributing buildings, 27 contributing sites, and 1 contributing structure
@@ -183,6 +197,7 @@ Homes in Shirley Hills represent diverse early 20th-century architectural styles
 The church's own site places it unambiguously: the campus is "nestled in the heart of the Shirley Hills neighborhood," and the About page says "We're located in the Shirley Hills neighborhood of East Macon, with easy access from I-16 and downtown Macon." Whether the church parcel falls inside the National Register district boundary specifically has not been verified against the NRHP boundary map.
 
 **Sources:**
+
 - [Shirley Hills Historic District – Wikipedia](https://en.wikipedia.org/wiki/Shirley_Hills_Historic_District)
 - [The Village of Macon – Shirley Hills Blog Post](https://thevillageofmacon.blogspot.com/2011/11/shirley-hills.html) (secondary; source of the Leon Hoffman and Bacon-granddaughter details)
 - [Living Places – Shirley Hills Historic District](https://livingplaces.com/GA/Bibb_County/Macon_City/Shirley_Hills_Historic_District.html)
@@ -204,6 +219,7 @@ When a website acknowledges its chartered organization, standard language in Sco
 > "Pack 170 meets at Highland Hills Baptist Church in Macon's Shirley Hills neighborhood. We're grateful to Highland Hills for the space and support that make our program possible."
 
 **Key Elements to Consider for Pack 170's Website:**
+
 - Acknowledge the church's role in providing meeting space and organizational support
 - The church already publicly names BSA Troop 170 as a community partner and keeps a Boy Scout Hut on its grounds — Scouting is part of how it describes itself
 - The setting is genuinely distinctive: a 17-acre wooded campus with a walking trail and amphitheater in a National Register historic neighborhood
@@ -211,29 +227,30 @@ When a website acknowledges its chartered organization, standard language in Sco
 - Get the church's name and affiliation right — Highland Hills is a **Cooperative Baptist Fellowship** congregation, not Southern Baptist
 
 **Source:**
+
 - [Scouting Magazine – Chartered Organizations FAQ](https://scoutingmagazine.org/2021/04/scouting-faq-chartered-organizations/)
 
 ---
 
 ## Summary of Confirmed Information
 
-| Fact | Status | Source |
-|------|--------|--------|
-| **Address** | 1370 Briarcliff Rd, Macon, GA 31211 | Official site (Contact) |
-| **Founded** | 1953; charter Sunday April 12, 1953 | Official site (Our History) |
-| **Location** | Shirley Hills neighborhood, East Macon | Official site (About, Campus & Grounds) |
-| **Campus size** | Over 17 acres | Official site (Campus & Grounds) |
-| **Denomination** | Cooperative Baptist Fellowship (CBF) | Official site (Who We Are, Welcome) |
-| **Service Times** | Sun 9:45 AM (Sunday School), 11:00 AM (Worship) | Official site (Home) |
-| **Contact** | 478-746-4846; churchoffice@highlandhillsbaptist.org | Official site (Contact) |
-| **Co-pastors** | Rev. Caitlin Childers Brown & Rev. Ethan Brown, called May 2023 | Official site (Our History, Our Staff) |
-| **Boy Scout Hut on campus** | Confirmed | Official site (Campus & Grounds) |
-| **Troop 170 partnership** | Confirmed — listed as an ongoing partner | Official site (Projects & Partners) |
-| **Pack 170 meets at the church** | Confirmed — Tuesdays 6:30 PM, roughly monthly | `docs/Offical-info.md` (pack leadership) |
-| **Pack 170 charter of record** | ⚠️ Unverified — no public document names HHBC as chartered organization | — |
-| **Crew 170 Charter** | ⚠️ Unverified — traced only to a search-engine summary; not on the official site | — |
-| **Shirley Hills Built** | Starting 1922 | Wikipedia / NRHP |
-| **Shirley Hills Historic Status** | National Register Aug 17, 1989 (275 acres); boundary increase May 28, 2014; 401 contributing buildings today | Wikipedia, Historic Macon Foundation |
+| Fact                              | Status                                                                                                       | Source                                   |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| **Address**                       | 1370 Briarcliff Rd, Macon, GA 31211                                                                          | Official site (Contact)                  |
+| **Founded**                       | 1953; charter Sunday April 12, 1953                                                                          | Official site (Our History)              |
+| **Location**                      | Shirley Hills neighborhood, East Macon                                                                       | Official site (About, Campus & Grounds)  |
+| **Campus size**                   | Over 17 acres                                                                                                | Official site (Campus & Grounds)         |
+| **Denomination**                  | Cooperative Baptist Fellowship (CBF)                                                                         | Official site (Who We Are, Welcome)      |
+| **Service Times**                 | Sun 9:45 AM (Sunday School), 11:00 AM (Worship)                                                              | Official site (Home)                     |
+| **Contact**                       | 478-746-4846; churchoffice@highlandhillsbaptist.org                                                          | Official site (Contact)                  |
+| **Co-pastors**                    | Rev. Caitlin Childers Brown & Rev. Ethan Brown, called May 2023                                              | Official site (Our History, Our Staff)   |
+| **Boy Scout Hut on campus**       | Confirmed                                                                                                    | Official site (Campus & Grounds)         |
+| **Troop 170 partnership**         | Confirmed — listed as an ongoing partner                                                                     | Official site (Projects & Partners)      |
+| **Pack 170 meets at the church**  | Confirmed — Tuesdays 6:30 PM, roughly monthly                                                                | `docs/Offical-info.md` (pack leadership) |
+| **Pack 170 charter of record**    | ⚠️ Unverified — no public document names HHBC as chartered organization                                      | —                                        |
+| **Crew 170 Charter**              | ⚠️ Unverified — traced only to a search-engine summary; not on the official site                             | —                                        |
+| **Shirley Hills Built**           | Starting 1922                                                                                                | Wikipedia / NRHP                         |
+| **Shirley Hills Historic Status** | National Register Aug 17, 1989 (275 acres); boundary increase May 28, 2014; 401 contributing buildings today | Wikipedia, Historic Macon Foundation     |
 
 ---
 
@@ -274,4 +291,3 @@ When a website acknowledges its chartered organization, standard language in Sco
    - Document any visible scouting-related signage or materials
 
 4. **Review Local Scouting Records** via Central Georgia Council to confirm charter status and unit agreements.
-

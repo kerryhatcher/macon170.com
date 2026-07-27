@@ -3,17 +3,146 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { pack } from '../data/pack';
 const resources = [
-  {title:'Join or register',body:'Start with Scouting America’s unit finder and registration path.',link:pack.links.join,label:'Open BeAScout'},
-  {title:'Council programs & training',body:'Find council camps, training, program information, and Scout Shop details.',link:pack.council.url,label:'Central Georgia Council'},
-  {title:'Pack calendar',body:'Check the next confirmed Pack 170 date and the annual program overview.',link:'/calendar/',label:'Open calendar'},
-  {title:'Uniform & handbook',body:'Ask pack adults what your family actually needs before purchasing.',link:'/contact/',label:'Ask the pack'},
-  {title:'Scoutbook',body:'The Pack 170 Scoutbook destination has not been supplied yet.',link:pack.links.scoutbook,label:'Open Scoutbook'},
-  {title:'Pack payments',body:'Pack dues and payment instructions have not been supplied yet.',link:pack.links.payment,label:'Open payment page'},
+  {
+    title: 'Join or register',
+    body: 'Start with Scouting America’s unit finder and registration path.',
+    link: pack.links.join,
+    label: 'Open BeAScout',
+  },
+  {
+    title: 'Council programs & training',
+    body: 'Find council camps, training, program information, and Scout Shop details.',
+    link: pack.council.url,
+    label: 'Central Georgia Council',
+  },
+  {
+    title: 'Pack calendar',
+    body: 'Check the next confirmed Pack 170 date and the annual program overview.',
+    link: '/calendar/',
+    label: 'Open calendar',
+  },
+  {
+    title: 'Uniform & handbook',
+    body: 'Ask pack adults what your family actually needs before purchasing.',
+    link: '/contact/',
+    label: 'Ask the pack',
+  },
+  {
+    title: 'Scoutbook',
+    body: 'The Pack 170 Scoutbook destination has not been supplied yet.',
+    link: pack.links.scoutbook,
+    label: 'Open Scoutbook',
+  },
+  {
+    title: 'Pack payments',
+    body: 'Pack dues and payment instructions have not been supplied yet.',
+    link: pack.links.payment,
+    label: 'Open payment page',
+  },
 ];
 ---
+
 <BaseLayout title="Parent resources" description="Pack 170 parent links grouped by the task your family needs to complete.">
-  <ChapterHero chapter="Parent backpack" title="The right link," accent="without the link pile" intro="Resources are grouped by the job a family needs to do. Unknown Pack 170 destinations stay visibly unavailable instead of sending you to a guess." noteTitle="Before you buy" noteBody="Ask the pack what your den actually uses"><p slot="note">Uniform and handbook expectations can vary. A first visit does not require special gear.</p></ChapterHero>
-  <section class="section"><div class="container resource-list">{resources.map((item,index)=><article><span class="resource-number">{String(index+1).padStart(2,'0')}</span><div><h2>{item.title}</h2><p>{item.body}</p></div>{item.link?<a class="button button--paper" href={item.link}>{item.label}</a>:<span class="pending">Pack link pending</span>}</article>)}</div></section>
-  <section class="section shop-note"><div class="container shop-note__grid"><div><span class="chapter-tab">Nearby help</span><h2>Central Georgia Scout Shop</h2><p>The council’s Scout Shop is at 4335 Confederate Way in Macon. Use the council website or call before visiting to confirm current hours and inventory.</p></div><a class="button button--gold" href={pack.council.url}>Check council details</a></div></section>
+  <ChapterHero
+    chapter="Parent backpack"
+    title="The right link,"
+    accent="without the link pile"
+    intro="Resources are grouped by the job a family needs to do. Unknown Pack 170 destinations stay visibly unavailable instead of sending you to a guess."
+    noteTitle="Before you buy"
+    noteBody="Ask the pack what your den actually uses"
+    ><p slot="note">Uniform and handbook expectations can vary. A first visit does not require special gear.</p></ChapterHero
+  >
+  <section class="section">
+    <div class="container resource-list">
+      {
+        resources.map((item) => (
+          <article>
+            <div>
+              <>
+                <h2>{item.title}</h2>
+                <p>{item.body}</p>
+              </>
+            </div>
+            {item.link ? (
+              <a class="button button--paper" href={item.link}>
+                {item.label}
+              </a>
+            ) : (
+              <span class="pending">Pack link pending</span>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section shop-note">
+    <div class="container shop-note__grid">
+      <div>
+        <span class="chapter-tab">Nearby help</span><h2>Central Georgia Scout Shop</h2><p>
+          The council’s Scout Shop is at 4335 Confederate Way in Macon. Use the council website or call before visiting to confirm current
+          hours and inventory.
+        </p>
+      </div><a class="button button--gold" href={pack.council.url}>Check council details</a>
+    </div>
+  </section>
 </BaseLayout>
-<style>.resource-list{border-top:4px solid var(--blue)}.resource-list article{display:grid;grid-template-columns:70px 1fr auto;gap:1.25rem;align-items:center;padding:1.5rem .5rem;border-bottom:1px solid var(--rule)}.resource-number{font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:#9aa8b2}.resource-list h2{font-size:1.45rem;margin-bottom:.3rem}.resource-list p{margin:0;color:var(--muted)}.pending{color:var(--red);font-weight:700;background:#fbe9e7;padding:.5rem .75rem;border-radius:4px}.shop-note{background:var(--green-deep);color:white}.shop-note__grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}.shop-note p{max-width:65ch}@media(max-width:700px){.resource-list article{grid-template-columns:50px 1fr}.resource-list article>.button,.pending{grid-column:2;justify-self:start}.shop-note__grid{grid-template-columns:1fr}}</style>
+<style>
+  .resource-list {
+    border-top: 4px solid var(--blue);
+  }
+  .resource-list article {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 1.5rem 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .resource-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #9aa8b2;
+  }
+  .resource-list h2 {
+    font-size: 1.45rem;
+    margin-bottom: 0.3rem;
+  }
+  .resource-list p {
+    margin: 0;
+    color: var(--muted);
+  }
+  .pending {
+    color: var(--red);
+    font-weight: 700;
+    background: #fbe9e7;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+  }
+  .shop-note {
+    background: var(--green-deep);
+    color: white;
+  }
+  .shop-note__grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .shop-note p {
+    max-width: 65ch;
+  }
+  @media (max-width: 700px) {
+    .resource-list article {
+      grid-template-columns: 50px 1fr;
+    }
+    .resource-list article > .button,
+    .pending {
+      grid-column: 2;
+      justify-self: start;
+    }
+    .shop-note__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

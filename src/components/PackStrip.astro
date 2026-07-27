@@ -6,6 +6,7 @@ const scheduled = events
   .sort((a, b) => String(a.date).localeCompare(String(b.date)));
 const nextEvent = scheduled[0];
 ---
+
 <aside class="pack-strip" aria-label="Pack essentials">
   <div class="pack-strip__inner">
     <div class="pack-strip__item">
@@ -14,7 +15,8 @@ const nextEvent = scheduled[0];
     </div>
     <div class="pack-strip__item">
       <span class="pack-strip__label">Next up</span>
-      <strong class="pack-strip__value">{nextEvent ? `${nextEvent.title} · ${nextEvent.dateLabel}` : 'The next date is being added'}</strong>
+      <strong class="pack-strip__value">{nextEvent ? `${nextEvent.title} · ${nextEvent.dateLabel}` : 'The next date is being added'}</strong
+      >
     </div>
     <div class="pack-strip__actions">
       <a class="button button--paper" href="/join/">New here</a>

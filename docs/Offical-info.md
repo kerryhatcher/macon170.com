@@ -11,11 +11,9 @@ Note to Agents: It is hand crafted by humans, do not edit/change without explici
 Macon, Georgia 31217-4719  
 P: (478) 743-9386  
 F: (478) 745-2686  
-centralgeorgiacouncil@scouting.org  
-
+centralgeorgiacouncil@scouting.org
 
 https://www.centralgeorgiacouncil.org/
-
 
 ## Cub Scout Pack
 

@@ -3,34 +3,122 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { annualProgram, pack } from '../../data/pack';
 ---
+
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
-  <ChapterHero chapter="Family planner" title="What’s next for" accent="Pack 170?" intro="This page answers one question fast: where does our family need to be, and when? Published event details are maintained by Pack 170 volunteers." noteTitle="Regular pack gathering" noteBody={`${pack.meeting.cadence} · ${pack.meeting.day}s at ${pack.meeting.time}`}>
-    <div slot="actions" class="hero-actions"><a class="button button--gold" href="#published-events">See upcoming events</a><a class="button button--paper" href="/contact/">Ask about a date</a></div>
+  <ChapterHero
+    chapter="Family planner"
+    title="What’s next for"
+    accent="Pack 170?"
+    intro="This page answers one question fast: where does our family need to be, and when? Published event details are maintained by Pack 170 volunteers."
+    noteTitle="Regular pack gathering"
+    noteBody={`${pack.meeting.cadence} · ${pack.meeting.day}s at ${pack.meeting.time}`}
+  >
+    <div slot="actions" class="hero-actions">
+      <a class="button button--gold" href="#published-events">See upcoming events</a><a class="button button--paper" href="/contact/"
+        >Ask about a date</a
+      >
+    </div>
     <p slot="note">At {pack.meeting.location}. Den schedules vary.</p>
   </ChapterHero>
 
-  <section class="section next-section" id="published-events"><div class="container"><div id="calendar-status" class="calendar-status" role="status">Loading the Pack 170 calendar…</div><div id="next-event" class="next-grid" hidden></div><div id="event-list" class="event-cards"></div><noscript><div class="notice"><span class="notice__pin">!</span><div><h3>JavaScript is needed for live dates</h3><p>Please contact Pack 170 adults for the next confirmed event.</p></div></div></noscript></div></section>
+  <section class="section next-section" id="published-events">
+    <div class="container">
+      <div id="calendar-status" class="calendar-status" role="status">Loading the Pack 170 calendar…</div><div
+        id="next-event"
+        class="next-grid"
+        hidden
+      >
+      </div><div id="event-list" class="event-cards"></div><noscript
+        ><div class="notice">
+          <span class="notice__pin">!</span><div>
+            <h3>JavaScript is needed for live dates</h3><p>Please contact Pack 170 adults for the next confirmed event.</p>
+          </div>
+        </div></noscript
+      >
+    </div>
+  </section>
 
-  <section class="section planner-section" id="program-year"><div class="container"><div class="section-heading"><span class="chapter-tab">Fall to summer</span><h2>The usual Pack 170 rhythm.</h2><p>These annual anchors help families understand the shape of a Cub Scout year. Only the volunteer-published events above are confirmed Pack 170 dates.</p></div><ol class="planner">{annualProgram.map((item,index)=><li><span class="planner__month">{item.season}</span><span class="planner__number">{String(index+1).padStart(2,'0')}</span><div><h3>{item.title}</h3><p>{item.state}</p></div><span class="planner__status">Typical season</span></li>)}</ol></div></section>
+  <section class="section planner-section" id="program-year">
+    <div class="container">
+      <div class="section-heading">
+        <span class="chapter-tab">Fall to summer</span><h2>The usual Pack 170 rhythm.</h2><p>
+          These annual anchors help families understand the shape of a Cub Scout year. Only the volunteer-published events above are
+          confirmed Pack 170 dates.
+        </p>
+      </div><ol class="planner">
+        {
+          annualProgram.map((item, index) => (
+            <li>
+              <>
+                <span class="planner__month">{item.season}</span>
+                <span class="planner__number">{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <>
+                    <h3>{item.title}</h3>
+                    <p>{item.state}</p>
+                  </>
+                </div>
+                <span class="planner__status">Typical season</span>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
 
-  <section class="section calendar-help"><div class="container calendar-help__grid"><div><span class="chapter-tab">Family logistics</span><h2>Every published event carries the details parents need.</h2></div><ul><li>Date, start and end time</li><li>Exact location and arrival notes</li><li>Who the event is for</li><li>What to bring or wear</li><li>Registration and cost, when applicable</li><li>Cancellation or location-change status</li></ul></div></section>
+  <section class="section calendar-help">
+    <div class="container calendar-help__grid">
+      <div><span class="chapter-tab">Family logistics</span><h2>Every published event carries the details parents need.</h2></div><ul>
+        <li>Date, start and end time</li><li>Exact location and arrival notes</li><li>Who the event is for</li><li>
+          What to bring or wear
+        </li><li>Registration and cost, when applicable</li><li>Cancellation or location-change status</li>
+      </ul>
+    </div>
+  </section>
 
-  <section class="section"><div class="container den-note paper-sheet"><div><span class="chapter-tab">Den schedules</span><h2>Small groups choose their own rhythm.</h2><p>Dens set their own meeting times and locations. Many meet at the church for an hour before the pack meeting, but your den leader will confirm your family’s actual schedule.</p></div><a class="button button--blue" href="/contact/">Find the right adult</a></div></section>
+  <section class="section">
+    <div class="container den-note paper-sheet">
+      <div>
+        <span class="chapter-tab">Den schedules</span><h2>Small groups choose their own rhythm.</h2><p>
+          Dens set their own meeting times and locations. Many meet at the church for an hour before the pack meeting, but your den leader
+          will confirm your family’s actual schedule.
+        </p>
+      </div><a class="button button--blue" href="/contact/">Find the right adult</a>
+    </div>
+  </section>
 </BaseLayout>
 <script>
-  type PublicEvent = { slug:string; title:string; summary:string; starts_at:string; ends_at:string|null; status:string; category:string; location_name:string|null; audience:string };
+  type PublicEvent = {
+    slug: string;
+    title: string;
+    summary: string;
+    starts_at: string;
+    ends_at: string | null;
+    status: string;
+    category: string;
+    location_name: string | null;
+    audience: string;
+  };
   const status = document.querySelector<HTMLElement>('#calendar-status');
   const next = document.querySelector<HTMLElement>('#next-event');
   const list = document.querySelector<HTMLElement>('#event-list');
-  const escapeHtml = (value:string) => value.replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[character] ?? character));
-  const date = (value:string) => new Intl.DateTimeFormat(undefined,{dateStyle:'full',timeStyle:'short',timeZone:'America/New_York'}).format(new Date(value));
+  const escapeHtml = (value: string) =>
+    value.replace(
+      /[&<>"']/g,
+      (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character] ?? character,
+    );
+  const date = (value: string) =>
+    new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
   async function loadCalendar() {
     try {
       const response = await fetch('/api/events');
       if (!response.ok) throw new Error();
-      const body = await response.json() as {events:PublicEvent[]};
+      const body = (await response.json()) as { events: PublicEvent[] };
       if (!body.events.length) {
-        if (status) status.innerHTML = '<div class="notice"><span class="notice__pin">i</span><div><h3>No published dates yet</h3><p>Pack volunteers are preparing the calendar. Use the annual overview below and contact the pack before making a special trip.</p></div></div>';
+        if (status)
+          status.innerHTML =
+            '<div class="notice"><span class="notice__pin">i</span><div><h3>No published dates yet</h3><p>Pack volunteers are preparing the calendar. Use the annual overview below and contact the pack before making a special trip.</p></div></div>';
         return;
       }
       if (status) status.textContent = `${body.events.length} upcoming event${body.events.length === 1 ? '' : 's'}`;
@@ -39,13 +127,183 @@ import { annualProgram, pack } from '../../data/pack';
         next.hidden = false;
         next.innerHTML = `<div><span class="chapter-tab">Next up</span><h2>${escapeHtml(first.title)}</h2><p class="lead">${escapeHtml(first.summary)}</p><a class="button button--blue" href="/events/?event=${encodeURIComponent(first.slug)}">Open event details</a></div><div class="date-sheet"><span>${date(first.starts_at)}</span><strong>${escapeHtml(first.location_name || 'Location being confirmed')}</strong><small>${escapeHtml(first.status)}</small></div>`;
       }
-      if (list) list.innerHTML = body.events.slice(1).map(event => `<article><span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><div><span>${escapeHtml(event.category)}</span><span>${escapeHtml(event.status)}</span></div><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`).join('');
+      if (list)
+        list.innerHTML = body.events
+          .slice(1)
+          .map(
+            (event) =>
+              `<article><span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><div><span>${escapeHtml(event.category)}</span><span>${escapeHtml(event.status)}</span></div><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`,
+          )
+          .join('');
     } catch {
-      if (status) status.innerHTML = '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>Calendar unavailable</h3><p>We could not load live event data. Please try again or contact Pack 170 adults.</p></div></div>';
+      if (status)
+        status.innerHTML =
+          '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>Calendar unavailable</h3><p>We could not load live event data. Please try again or contact Pack 170 adults.</p></div></div>';
     }
   }
   loadCalendar();
 </script>
 <style>
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}.calendar-status{margin-bottom:2rem;color:var(--muted)}.next-grid,.calendar-help__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}.date-sheet{display:grid;gap:.7rem;padding:clamp(1.5rem,4vw,3rem);background:var(--gold);color:var(--blue-deep);border-radius:7px 20px 8px 7px;box-shadow:var(--shadow-paper);transform:rotate(1deg)}.date-sheet span{font-family:var(--font-display);font-size:1.25rem;font-weight:900}.date-sheet strong{font-size:1.15rem}.date-sheet small{text-transform:capitalize}.event-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}.event-cards article{padding:1.5rem;background:var(--page);border:1px solid var(--rule);border-radius:6px 16px 8px 6px}.event-cards article>div{display:flex;gap:.5rem;margin:1rem 0}.event-cards article>div span{padding:.25rem .5rem;background:var(--blue-soft);border-radius:4px;font-size:.8rem;text-transform:capitalize}.event-date{display:block;color:var(--blue);font-family:var(--font-display);font-size:.82rem;font-weight:800;margin-bottom:.7rem}.planner-section{background:var(--page);border-block:1px solid var(--rule)}.planner{list-style:none;padding:0;margin:0;border-top:4px solid var(--blue)}.planner li{display:grid;grid-template-columns:120px 60px 1fr auto;gap:1rem;align-items:center;padding:1.25rem .5rem;border-bottom:1px solid var(--rule)}.planner__month{font-family:var(--font-display);font-weight:800;color:var(--blue)}.planner__number{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#a6b4bf}.planner h3,.planner p{margin:0}.planner__status{font-size:.88rem;font-weight:700;color:var(--green-deep);background:#e6f4ea;padding:.35rem .65rem;border-radius:4px 9px 4px 4px}.calendar-help{background:var(--green-deep);color:white}.calendar-help .chapter-tab{color:var(--blue-deep)}.calendar-help ul{columns:2;column-gap:2.5rem;margin:0;padding-left:1.2rem}.calendar-help li{break-inside:avoid;margin-bottom:.7rem}.den-note{padding:clamp(2rem,5vw,4rem);display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}@media(max-width:760px){.next-grid,.calendar-help__grid{grid-template-columns:1fr}.event-cards{grid-template-columns:1fr}.planner li{grid-template-columns:90px 1fr}.planner__number{display:none}.planner__status{grid-column:2}.calendar-help ul{columns:1}.den-note{grid-template-columns:1fr}.hero-actions .button{flex:1}}
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .calendar-status {
+    margin-bottom: 2rem;
+    color: var(--muted);
+  }
+  .next-grid,
+  .calendar-help__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .date-sheet {
+    display: grid;
+    gap: 0.7rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: var(--gold);
+    color: var(--blue-deep);
+    border-radius: 7px 20px 8px 7px;
+    box-shadow: var(--shadow-paper);
+    transform: rotate(1deg);
+  }
+  .date-sheet span {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 900;
+  }
+  .date-sheet strong {
+    font-size: 1.15rem;
+  }
+  .date-sheet small {
+    text-transform: capitalize;
+  }
+  .event-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .event-cards article {
+    padding: 1.5rem;
+    background: var(--page);
+    border: 1px solid var(--rule);
+    border-radius: 6px 16px 8px 6px;
+  }
+  .event-cards article > div {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .event-cards article > div span {
+    padding: 0.25rem 0.5rem;
+    background: var(--blue-soft);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+  .event-date {
+    display: block;
+    color: var(--blue);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-bottom: 0.7rem;
+  }
+  .planner-section {
+    background: var(--page);
+    border-block: 1px solid var(--rule);
+  }
+  .planner {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 4px solid var(--blue);
+  }
+  .planner li {
+    display: grid;
+    grid-template-columns: 120px 60px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .planner__month {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .planner__number {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #a6b4bf;
+  }
+  .planner h3,
+  .planner p {
+    margin: 0;
+  }
+  .planner__status {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    background: #e6f4ea;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px 9px 4px 4px;
+  }
+  .calendar-help {
+    background: var(--green-deep);
+    color: white;
+  }
+  .calendar-help .chapter-tab {
+    color: var(--blue-deep);
+  }
+  .calendar-help ul {
+    columns: 2;
+    column-gap: 2.5rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .calendar-help li {
+    break-inside: avoid;
+    margin-bottom: 0.7rem;
+  }
+  .den-note {
+    padding: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (max-width: 760px) {
+    .next-grid,
+    .calendar-help__grid {
+      grid-template-columns: 1fr;
+    }
+    .event-cards {
+      grid-template-columns: 1fr;
+    }
+    .planner li {
+      grid-template-columns: 90px 1fr;
+    }
+    .planner__number {
+      display: none;
+    }
+    .planner__status {
+      grid-column: 2;
+    }
+    .calendar-help ul {
+      columns: 1;
+    }
+    .den-note {
+      grid-template-columns: 1fr;
+    }
+    .hero-actions .button {
+      flex: 1;
+    }
+  }
 </style>

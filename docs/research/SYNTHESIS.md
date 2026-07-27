@@ -1,8 +1,8 @@
 # Pack 170 Website — Research Synthesis
 
-*The single brief a designer or developer should read before building macon170.com. Distilled from
+_The single brief a designer or developer should read before building macon170.com. Distilled from
 `scouting-america.md`, `cub-scouting.md`, `highland-hills-baptist.md`, and `macon-ga.md` in this
-directory — consult those for sourcing and detail.*
+directory — consult those for sourcing and detail._
 
 ---
 
@@ -14,7 +14,7 @@ Cub Scouting unit of **Scouting America** operating under the **Central Georgia 
 
 **Chartered organization:** **Highland Hills Baptist Church**, 1370 Briarcliff Road, Macon, GA 31211
 — a 1953-founded Cooperative Baptist Fellowship congregation in the historic Shirley Hills neighborhood of East
-Macon. Note the charter relationship is *confirmed* for Venturing Crew 170 but **not yet
+Macon. Note the charter relationship is _confirmed_ for Venturing Crew 170 but **not yet
 independently confirmed for Pack 170** (see Open Questions).
 
 **Who the program serves:** kids in **kindergarten through 5th grade** (ages ~5–11), boys and girls.
@@ -45,8 +45,8 @@ These are the hard rules. Getting them wrong is a policy problem, not a style ni
   Feb 8, 2025. There is **no acronym**; never write "SA," and avoid "BSA" or "Boy Scouts" in new
   copy (BSA persists only in legacy systems like myscouting.org).
 - Program names did **not** change: it is still **Cub Scouting**, still **Cub Scout Pack 170**.
-  Never "Boy Scout Pack 170." Preferred long form: *"Cub Scout Pack 170, Macon, Georgia"* or
-  *"Pack 170, Scouting America."*
+  Never "Boy Scout Pack 170." Preferred long form: _"Cub Scout Pack 170, Macon, Georgia"_ or
+  _"Pack 170, Scouting America."_
 
 ### Trademarks and official artwork
 
@@ -56,7 +56,7 @@ These are the hard rules. Getting them wrong is a policy problem, not a style ni
   or restyle the fleur-de-lis, the Cub Scout logo, or any rank badge.
 - **Practical rule:** either obtain official artwork through the Chartered Organization Rep /
   Central Georgia Council / the Brand Center, or don't use it. For everything else, use
-  *Scouting-adjacent* original iconography — compass, trail marker, tent, pine, embroidered-patch
+  _Scouting-adjacent_ original iconography — compass, trail marker, tent, pine, embroidered-patch
   shapes — which is unencumbered and, honestly, more distinctive.
 - The site must not present itself as an official national or council property. It's a local unit
   site; say so in the footer.
@@ -98,16 +98,16 @@ These are the hard rules. Getting them wrong is a policy problem, not a style ni
 Anchor hard on Cub Scout blue and gold — they're unambiguous, well-documented, and instantly read
 "Cub Scouts" rather than "generic youth org." Layer Macon in as accents only.
 
-| Role | Name | Hex | Use |
-|---|---|---|---|
-| Primary | Cub Scout Blue | `#003F87` | Headers, nav, primary buttons, body links (PMS 294) |
-| Primary deep | Midnight Blue | `#002B5C` | Hover states, footer, large dark fields |
-| Secondary | Cub Scout Gold | `#FCD116` | CTA fills, badges, rules, highlights (PMS 116) |
-| Accent | Cherry Blossom | `#E8A3C6` | Sparingly — seasonal banners, tags, decorative bloom motifs |
-| Accent | River Green | `#6B8E7F` | Outdoors/camping sections, secondary buttons |
-| Accent | Brick Red | `#A0473D` | Rare emphasis, history/heritage sections |
-| Neutral bg | Warm Cream | `#F5F1E8` | Page and card backgrounds — warmer and friendlier than white |
-| Neutral text | Charcoal | `#2E2E2E` | Body copy |
+| Role         | Name           | Hex       | Use                                                          |
+| ------------ | -------------- | --------- | ------------------------------------------------------------ |
+| Primary      | Cub Scout Blue | `#003F87` | Headers, nav, primary buttons, body links (PMS 294)          |
+| Primary deep | Midnight Blue  | `#002B5C` | Hover states, footer, large dark fields                      |
+| Secondary    | Cub Scout Gold | `#FCD116` | CTA fills, badges, rules, highlights (PMS 116)               |
+| Accent       | Cherry Blossom | `#E8A3C6` | Sparingly — seasonal banners, tags, decorative bloom motifs  |
+| Accent       | River Green    | `#6B8E7F` | Outdoors/camping sections, secondary buttons                 |
+| Accent       | Brick Red      | `#A0473D` | Rare emphasis, history/heritage sections                     |
+| Neutral bg   | Warm Cream     | `#F5F1E8` | Page and card backgrounds — warmer and friendlier than white |
+| Neutral text | Charcoal       | `#2E2E2E` | Body copy                                                    |
 
 **Contrast rules that matter:** `#003F87` on cream or white is comfortably AA/AAA. **Gold is never a
 text color** — it's a fill, and text sitting on gold must be charcoal or midnight blue. Cherry
@@ -138,7 +138,7 @@ except **Montserrat**, which is on Google Fonts and reads as a close, brand-adja
   event markers. It evokes rank insignia without reproducing any protected badge.
 - **Fleur-de-lis:** use only official artwork obtained through the council, unmodified, and only if
   actually needed. A compass rose is a legitimate stand-in — Baden-Powell chose the fleur-de-lis
-  precisely *because* it resembles a compass point, "it shows the true way to go."
+  precisely _because_ it resembles a compass point, "it shows the true way to go."
 - **Local motifs:** cherry blossom branches as seasonal decoration (spring pages, festival tie-ins),
   the Ocmulgee River and treeline as a silhouette/divider, and rolling pine-and-hill textures for
   outdoor sections. Landmark photography (Ocmulgee Mounds, Lake Tobesofkee, Jackson Springs Park)

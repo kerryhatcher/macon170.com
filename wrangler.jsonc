@@ -9,28 +9,28 @@
   "routes": [
     { "pattern": "www.macon170.com", "custom_domain": true },
     { "pattern": "macon170.com", "custom_domain": true },
-    { "pattern": "admin.macon170.com", "custom_domain": true }
+    { "pattern": "admin.macon170.com", "custom_domain": true },
   ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "run_worker_first": true
+    "run_worker_first": true,
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "macon170-submissions",
       "database_id": "30e2d4be-5f6d-4f52-827d-c050c2ade104",
-      "migrations_dir": "migrations"
-    }
+      "migrations_dir": "migrations",
+    },
   ],
   "ratelimits": [
     {
       "name": "CONTACT_RATE_LIMITER",
       "namespace_id": "17001",
-      "simple": { "limit": 6, "period": 60 }
-    }
+      "simple": { "limit": 6, "period": 60 },
+    },
   ],
   "vars": {
     "ENVIRONMENT": "production",
@@ -39,13 +39,13 @@
     "TURNSTILE_SITE_KEY": "0x4AAAAAAD-sr-Bk7AntxyZ7",
     "TURNSTILE_EXPECTED_HOSTNAMES": "macon170.com,www.macon170.com",
     "ACCESS_TEAM_DOMAIN": "https://kerryhatcher.cloudflareaccess.com",
-    "ACCESS_AUD": "9f0a0872435ccde628fc33d38f47f7f36ab2b8fe9860a8b5e671a12bb5782cc5"
+    "ACCESS_AUD": "9f0a0872435ccde628fc33d38f47f7f36ab2b8fe9860a8b5e671a12bb5782cc5",
   },
   // TURNSTILE_SECRET is a Worker secret. Set it with Wrangler or GitHub Actions; never add it here.
   "triggers": { "crons": ["17 3 * * *"] },
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
-    "logs": { "enabled": true, "invocation_logs": true }
-  }
+    "logs": { "enabled": true, "invocation_logs": true },
+  },
 }

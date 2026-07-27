@@ -1,12 +1,132 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
-const roles=[['One helpful hour','Set up chairs, welcome families, help with check-in, or clean up after an event.'],['One event','Join a planning team for Pinewood Derby, Blue & Gold, a campout, service, or another confirmed pack activity.'],['One useful skill','Share practical know-how—woodworking, food planning, organization, communication, or another skill the pack needs.'],['A continuing role','Explore trained adult leadership when your availability and the pack’s current needs align.']];
+const roles = [
+  ['One helpful hour', 'Set up chairs, welcome families, help with check-in, or clean up after an event.'],
+  ['One event', 'Join a planning team for Pinewood Derby, Blue & Gold, a campout, service, or another confirmed pack activity.'],
+  [
+    'One useful skill',
+    'Share practical know-how—woodworking, food planning, organization, communication, or another skill the pack needs.',
+  ],
+  ['A continuing role', 'Explore trained adult leadership when your availability and the pack’s current needs align.'],
+];
 ---
-<BaseLayout title="Volunteer with Pack 170" description="See practical, time-bounded ways parents and guardians can help Cub Scout Pack 170.">
-  <ChapterHero chapter="Lend a hand" title="The pack works because" accent="families pitch in" intro="You do not need Scouting experience to be useful. Start with a clear, manageable job; pack adults and required training support the rest." noteTitle="The best first answer" noteBody="Tell us what time you actually have"><p slot="note">An honest one-hour yes is more useful than an overwhelmed maybe.</p></ChapterHero>
-  <section class="section"><div class="container"><div class="section-heading"><span class="chapter-tab">Choose your size</span><h2>Help can fit the season you’re in.</h2></div><div class="role-scale">{roles.map(([title,body],index)=><article><span>{index+1}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
-  <section class="section safety-section"><div class="container safety-grid"><div><span class="chapter-tab">Adult responsibility</span><h2>Safety and training are part of the job.</h2><p class="lead">Registered roles follow Scouting America requirements, Youth Protection practices, and activity-specific training. Pack leadership—not this website—determines role eligibility and current needs.</p></div><div class="notice"><span class="notice__pin">✓</span><div><h3>Two-deep culture</h3><p>Pack communication and activities should protect youth and adults. No volunteer role creates a private one-to-one channel with a child.</p></div></div></div></section>
-  <section class="section"><div class="container volunteer-close paper-sheet"><div><h2>What could you make easier?</h2><p>Tell pack adults your availability and the kind of work you enjoy. Leadership details are still being gathered, so the contact form will activate once a role-based address is supplied.</p></div><a class="button button--blue" href="/contact/">Contact pack adults</a></div></section>
+
+<BaseLayout
+  title="Volunteer with Pack 170"
+  description="See practical, time-bounded ways parents and guardians can help Cub Scout Pack 170."
+>
+  <ChapterHero
+    chapter="Lend a hand"
+    title="The pack works because"
+    accent="families pitch in"
+    intro="You do not need Scouting experience to be useful. Start with a clear, manageable job; pack adults and required training support the rest."
+    noteTitle="The best first answer"
+    noteBody="Tell us what time you actually have"
+    ><p slot="note">An honest one-hour yes is more useful than an overwhelmed maybe.</p></ChapterHero
+  >
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><span class="chapter-tab">Choose your size</span><h2>Help can fit the season you’re in.</h2></div><div
+        class="role-scale"
+      >
+        {
+          roles.map(([title, body], index) => (
+            <article>
+              <>
+                <span>{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section safety-section">
+    <div class="container safety-grid">
+      <div>
+        <span class="chapter-tab">Adult responsibility</span><h2>Safety and training are part of the job.</h2><p class="lead">
+          Registered roles follow Scouting America requirements, Youth Protection practices, and activity-specific training. Pack
+          leadership—not this website—determines role eligibility and current needs.
+        </p>
+      </div><div class="notice">
+        <span class="notice__pin">✓</span><div>
+          <h3>Two-deep culture</h3><p>
+            Pack communication and activities should protect youth and adults. No volunteer role creates a private one-to-one channel with a
+            child.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container volunteer-close paper-sheet">
+      <div>
+        <h2>What could you make easier?</h2><p>
+          Tell pack adults your availability and the kind of work you enjoy. Leadership details are still being gathered, so the contact
+          form will activate once a role-based address is supplied.
+        </p>
+      </div><a class="button button--blue" href="/contact/">Contact pack adults</a>
+    </div>
+  </section>
 </BaseLayout>
-<style>.role-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.role-scale article{padding:1.5rem;background:var(--page);border-top:5px solid var(--blue);box-shadow:3px 5px 0 var(--rule)}.role-scale span{display:grid;place-items:center;width:40px;height:40px;margin-top:-2.8rem;margin-bottom:1rem;border-radius:50%;background:var(--gold);border:3px solid var(--blue);font-family:var(--font-display);font-weight:900}.safety-section{background:var(--green-deep);color:white}.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}.volunteer-close{padding:clamp(2rem,5vw,4rem);display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}@media(max-width:800px){.role-scale{grid-template-columns:1fr 1fr;row-gap:3rem}.safety-grid,.volunteer-close{grid-template-columns:1fr}}@media(max-width:520px){.role-scale{grid-template-columns:1fr}}</style>
+<style>
+  .role-scale {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .role-scale article {
+    padding: 1.5rem;
+    background: var(--page);
+    border-top: 5px solid var(--blue);
+    box-shadow: 3px 5px 0 var(--rule);
+  }
+  .role-scale span {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-top: -2.8rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--blue);
+    font-family: var(--font-display);
+    font-weight: 900;
+  }
+  .safety-section {
+    background: var(--green-deep);
+    color: white;
+  }
+  .safety-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .volunteer-close {
+    padding: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .role-scale {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 3rem;
+    }
+    .safety-grid,
+    .volunteer-close {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .role-scale {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

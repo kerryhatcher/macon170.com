@@ -110,7 +110,9 @@ export default {
       if (error instanceof Error && error.message.includes('UNIQUE constraint failed: calendar_events.slug')) {
         return json({ ok: false, error: 'Another event already uses that URL slug.' }, 409, securityHeaders());
       }
-      console.error(JSON.stringify({ event: 'request_failed', path: url.pathname, error: error instanceof Error ? error.message : 'Unknown error' }));
+      console.error(
+        JSON.stringify({ event: 'request_failed', path: url.pathname, error: error instanceof Error ? error.message : 'Unknown error' }),
+      );
       return json({ ok: false, error: 'Something went wrong. Please try again.' }, 500, securityHeaders());
     }
   },
@@ -118,17 +120,18 @@ export default {
   async scheduled(_controller: ScheduledController, env: Env): Promise<void> {
     const retentionDays = 365;
     await env.DB.batch([
-      env.DB.prepare(`DELETE FROM submission_audit_log WHERE created_at < datetime('now', ?)`)
-        .bind(`-${retentionDays} days`),
-      env.DB.prepare(`DELETE FROM contact_submissions WHERE created_at < datetime('now', ?)`)
-        .bind(`-${retentionDays} days`),
+      env.DB.prepare(`DELETE FROM submission_audit_log WHERE created_at < datetime('now', ?)`).bind(`-${retentionDays} days`),
+      env.DB.prepare(`DELETE FROM contact_submissions WHERE created_at < datetime('now', ?)`).bind(`-${retentionDays} days`),
     ]);
     console.log(JSON.stringify({ event: 'retention_cleanup', retentionDays }));
   },
 } satisfies ExportedHandler<Env>;
 
 class HttpError extends Error {
-  constructor(public status: number, message: string) {
+  constructor(
+    public status: number,
+    message: string,
+  ) {
     super(message);
   }
 }
@@ -179,25 +182,29 @@ async function handleContactSubmission(request: Request, env: WorkerEnv): Promis
   }
 
   const id = crypto.randomUUID();
-  await env.DB.prepare(`
+  await env.DB.prepare(
+    `
     INSERT INTO contact_submissions (
       id, parent_name, email, phone, child_grade, topic, message,
       source_path, user_agent, country_code, turnstile_hostname, turnstile_challenge_ts
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).bind(
-    id,
-    parentName,
-    email,
-    phone,
-    childGrade,
-    topic,
-    message,
-    '/contact/',
-    truncate(request.headers.get('user-agent'), 500),
-    truncate(request.headers.get('cf-ipcountry'), 2),
-    verification.hostname ?? null,
-    verification.challenge_ts ?? null,
-  ).run();
+  `,
+  )
+    .bind(
+      id,
+      parentName,
+      email,
+      phone,
+      childGrade,
+      topic,
+      message,
+      '/contact/',
+      truncate(request.headers.get('user-agent'), 500),
+      truncate(request.headers.get('cf-ipcountry'), 2),
+      verification.hostname ?? null,
+      verification.challenge_ts ?? null,
+    )
+    .run();
 
   console.log(JSON.stringify({ event: 'contact_created', id, topic, country: request.headers.get('cf-ipcountry') ?? null }));
   return redirectToContact('success');
@@ -206,7 +213,7 @@ async function handleContactSubmission(request: Request, env: WorkerEnv): Promis
 async function listSubmissions(request: Request, env: Env, identity: AccessIdentity): Promise<Response> {
   const url = new URL(request.url);
   const rawStatus = url.searchParams.get('status') ?? '';
-  const status = ALLOWED_STATUSES.has(rawStatus as SubmissionStatus) ? rawStatus as SubmissionStatus : null;
+  const status = ALLOWED_STATUSES.has(rawStatus as SubmissionStatus) ? (rawStatus as SubmissionStatus) : null;
   const page = Math.max(1, Math.min(1_000, Number.parseInt(url.searchParams.get('page') ?? '1', 10) || 1));
   const limit = 25;
   const offset = (page - 1) * limit;
@@ -227,11 +234,15 @@ async function listSubmissions(request: Request, env: Env, identity: AccessIdent
 }
 
 async function getSubmission(id: string, env: Env, identity: AccessIdentity): Promise<Response> {
-  const submission = await env.DB.prepare(`
+  const submission = await env.DB.prepare(
+    `
     SELECT id, created_at, updated_at, status, parent_name, email, phone, child_grade,
            topic, message, source_path, country_code, assigned_to, resolved_at, last_viewed_at
     FROM contact_submissions WHERE id = ?
-  `).bind(id).first<SubmissionRow>();
+  `,
+  )
+    .bind(id)
+    .first<SubmissionRow>();
   if (!submission) throw new HttpError(404, 'Submission not found.');
 
   const actor = identity.email ?? 'unknown';
@@ -252,21 +263,27 @@ async function updateSubmission(request: Request, id: string, env: Env, identity
     throw new HttpError(400, 'Choose a valid submission status.');
   }
 
-  const existing = await env.DB.prepare('SELECT status FROM contact_submissions WHERE id = ?').bind(id).first<{ status: SubmissionStatus }>();
+  const existing = await env.DB.prepare('SELECT status FROM contact_submissions WHERE id = ?')
+    .bind(id)
+    .first<{ status: SubmissionStatus }>();
   if (!existing) throw new HttpError(404, 'Submission not found.');
 
   const actor = identity.email ?? 'unknown';
   const resolvedAt = body.status === 'resolved' ? new Date().toISOString() : null;
   await env.DB.batch([
-    env.DB.prepare(`
+    env.DB.prepare(
+      `
       UPDATE contact_submissions
       SET status = ?, updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now'), resolved_at = ?
       WHERE id = ?
-    `).bind(body.status, resolvedAt, id),
-    env.DB.prepare(`
+    `,
+    ).bind(body.status, resolvedAt, id),
+    env.DB.prepare(
+      `
       INSERT INTO submission_audit_log (submission_id, actor_email, action, detail)
       VALUES (?, ?, 'status_changed', ?)
-    `).bind(id, actor, `${existing.status} -> ${body.status}`),
+    `,
+    ).bind(id, actor, `${existing.status} -> ${body.status}`),
   ]);
 
   console.log(JSON.stringify({ event: 'admin_status_changed', actor, id, from: existing.status, to: body.status }));
@@ -449,11 +466,15 @@ function adminHeaders(env: Env): Record<string, string> {
 }
 
 function escapeHtml(value: string): string {
-  return value.replace(/[&<>"']/g, (character) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  })[character] ?? character);
+  return value.replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;',
+      })[character] ?? character,
+  );
 }

@@ -3,8 +3,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { pack } from '../data/pack';
 ---
-<BaseLayout title="Privacy policy" description="How Cub Scout Pack 170’s local unit website handles parent inquiries, youth information, photographs, and third-party links.">
-  <ChapterHero chapter="Site policy" title="Privacy for" accent="Pack 170 families" intro="This policy applies to macon170.com, a local unit website. It is separate from Scouting America’s and the Central Georgia Council’s privacy policies." noteTitle="Policy status" noteBody="Draft awaiting pack webmaster details"><p slot="note">Last reviewed: July 2026. A responsible adult webmaster contact must be added before launch.</p></ChapterHero>
-  <section class="section"><article class="container paper-sheet policy"><div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>Pack editor: webmaster contact required</h3><p>No webmaster address has been supplied. Add a role-based address in <code>src/data/pack.ts</code> before launch.</p></div></div><h2>Who this site serves</h2><p>This website shares public information with parents, guardians, and community members. It is not directed to children for the purpose of collecting personal information. A parent or guardian should submit every inquiry.</p><h2>Information a parent provides</h2><p>The contact form collects a parent or guardian’s name, email address, selected topic, and message. A parent may optionally provide their phone number and their child’s grade. Do not submit a child’s name, home address, school, phone number, medical information, or other sensitive details.</p><h2>How inquiries are handled</h2><p>Parent inquiries should route to multiple authorized adult pack volunteers. The site does not create direct or private adult–youth messaging. Information is used to respond to the inquiry and support the family’s participation in the pack.</p><h2>Youth names and photographs</h2><p>If youth are identified publicly, the site will use first name and last initial at most. Pack photographs will only be published when the pack has the required permission and has checked current opt-outs. Event-level captions are preferred over naming individual youth.</p><h2>Public site</h2><p>Everything on this website is public. The site does not provide a members-only area, private group, direct messaging, or youth account.</p><h2>Storage, security, and service providers</h2><p>Contact submissions are stored in Cloudflare D1. Cloudflare Turnstile checks whether a submission appears automated, and Cloudflare Access authenticates allowlisted volunteers before they can open the volunteer desk. Basic security metadata may include submission time, browser user-agent, country code, and Turnstile verification details. The pack does not intentionally store the visitor’s IP address in D1.</p><h2>Third-party links</h2><p>The site may link to BeAScout, the Central Georgia Council, Highland Hills Baptist Church, and other services selected by Pack 170 adults. Those services have their own privacy practices. No analytics service is currently configured; this policy must be updated before one is enabled.</p><h2>Retention and deletion</h2><p>Contact submissions and their volunteer audit records are automatically deleted after 365 days. Pack leadership may delete information sooner when it is no longer needed for the inquiry, pack administration, safety, or applicable recordkeeping. A parent may request review or deletion by contacting the pack webmaster once that role-based address is published.</p><h2>Changes</h2><p>The effective or review date shown above will change when this policy materially changes. Pack 170 adults should review this policy whenever forms, analytics, photography practices, or administrators change.</p><h2>Contact</h2><p>{pack.contact.webmasterEmail ? <a href={`mailto:${pack.contact.webmasterEmail}`}>{pack.contact.webmasterEmail}</a> : 'Webmaster role address pending. For now, contact information is not published.'}</p></article></section>
+
+<BaseLayout
+  title="Privacy policy"
+  description="How Cub Scout Pack 170’s local unit website handles parent inquiries, youth information, photographs, and third-party links."
+>
+  <ChapterHero
+    chapter="Site policy"
+    title="Privacy for"
+    accent="Pack 170 families"
+    intro="This policy applies to macon170.com, a local unit website. It is separate from Scouting America’s and the Central Georgia Council’s privacy policies."
+    noteTitle="Policy status"
+    noteBody="Draft awaiting pack webmaster details"
+    ><p slot="note">Last reviewed: July 2026. A responsible adult webmaster contact must be added before launch.</p></ChapterHero
+  >
+  <section class="section">
+    <article class="container paper-sheet policy">
+      <div class="notice notice--editor">
+        <span class="notice__pin">!</span><div>
+          <h3>Pack editor: webmaster contact required</h3><p>
+            No webmaster address has been supplied. Add a role-based address in <code>src/data/pack.ts</code> before launch.
+          </p>
+        </div>
+      </div><h2>Who this site serves</h2><p>
+        This website shares public information with parents, guardians, and community members. It is not directed to children for the
+        purpose of collecting personal information. A parent or guardian should submit every inquiry.
+      </p><h2>Information a parent provides</h2><p>
+        The contact form collects a parent or guardian’s name, email address, selected topic, and message. A parent may optionally provide
+        their phone number and their child’s grade. Do not submit a child’s name, home address, school, phone number, medical information,
+        or other sensitive details.
+      </p><h2>How inquiries are handled</h2><p>
+        Parent inquiries should route to multiple authorized adult pack volunteers. The site does not create direct or private adult–youth
+        messaging. Information is used to respond to the inquiry and support the family’s participation in the pack.
+      </p><h2>Youth names and photographs</h2><p>
+        If youth are identified publicly, the site will use first name and last initial at most. Pack photographs will only be published
+        when the pack has the required permission and has checked current opt-outs. Event-level captions are preferred over naming
+        individual youth.
+      </p><h2>Public site</h2><p>
+        Everything on this website is public. The site does not provide a members-only area, private group, direct messaging, or youth
+        account.
+      </p><h2>Storage, security, and service providers</h2><p>
+        Contact submissions are stored in Cloudflare D1. Cloudflare Turnstile checks whether a submission appears automated, and Cloudflare
+        Access authenticates allowlisted volunteers before they can open the volunteer desk. Basic security metadata may include submission
+        time, browser user-agent, country code, and Turnstile verification details. The pack does not intentionally store the visitor’s IP
+        address in D1.
+      </p><h2>Third-party links</h2><p>
+        The site may link to BeAScout, the Central Georgia Council, Highland Hills Baptist Church, and other services selected by Pack 170
+        adults. Those services have their own privacy practices. No analytics service is currently configured; this policy must be updated
+        before one is enabled.
+      </p><h2>Retention and deletion</h2><p>
+        Contact submissions and their volunteer audit records are automatically deleted after 365 days. Pack leadership may delete
+        information sooner when it is no longer needed for the inquiry, pack administration, safety, or applicable recordkeeping. A parent
+        may request review or deletion by contacting the pack webmaster once that role-based address is published.
+      </p><h2>Changes</h2><p>
+        The effective or review date shown above will change when this policy materially changes. Pack 170 adults should review this policy
+        whenever forms, analytics, photography practices, or administrators change.
+      </p><h2>Contact</h2><p>
+        {
+          pack.contact.webmasterEmail ? (
+            <a href={`mailto:${pack.contact.webmasterEmail}`}>{pack.contact.webmasterEmail}</a>
+          ) : (
+            'Webmaster role address pending. For now, contact information is not published.'
+          )
+        }
+      </p>
+    </article>
+  </section>
 </BaseLayout>
-<style>.policy{padding:clamp(1.5rem,6vw,5rem);max-width:82ch}.policy h2{font-size:1.55rem;color:var(--blue);margin-top:2.8rem}.policy .notice{margin-bottom:3rem}code{font-size:.85em}</style>
+<style>
+  .policy {
+    padding: clamp(1.5rem, 6vw, 5rem);
+    max-width: 82ch;
+  }
+  .policy h2 {
+    font-size: 1.55rem;
+    color: var(--blue);
+    margin-top: 2.8rem;
+  }
+  .policy .notice {
+    margin-bottom: 3rem;
+  }
+  code {
+    font-size: 0.85em;
+  }
+</style>

@@ -43,11 +43,11 @@ The Worker verifies every Access JWT using Cloudflare’s rotating JWKS, issuer,
 
 Create a GitHub **production** environment and add these repository or environment secrets:
 
-| Secret | Purpose |
-| --- | --- |
-| `CLOUDFLARE_ACCOUNT_ID` | `6d837580a4d0641139ecada9e74076b8` |
-| `CLOUDFLARE_API_TOKEN` | A narrowly scoped deployment token |
-| `TURNSTILE_SECRET` | Secret for the `macon170.com contact form` widget |
+| Secret                  | Purpose                                           |
+| ----------------------- | ------------------------------------------------- |
+| `CLOUDFLARE_ACCOUNT_ID` | `6d837580a4d0641139ecada9e74076b8`                |
+| `CLOUDFLARE_API_TOKEN`  | A narrowly scoped deployment token                |
+| `TURNSTILE_SECRET`      | Secret for the `macon170.com contact form` widget |
 
 Create a custom Cloudflare API token restricted to the Kerry Personal account and the macon170.com zone. It needs the minimum permissions required to deploy Workers, edit Workers routes, and edit D1. Do not reuse a Global API Key.
 

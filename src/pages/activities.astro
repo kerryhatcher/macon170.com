@@ -2,14 +2,207 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { activities } from '../data/pack';
-const symbols: Record<string,string> = { car:'→', tent:'▲', banner:'★', hands:'✦' };
+const symbols: Record<string, string> = { car: '→', tent: '▲', banner: '★', hands: '✦' };
 ---
-<BaseLayout title="Cub Scout adventures" description="Explore the kinds of family adventures Cub Scout Pack 170 shares throughout the year.">
-  <ChapterHero chapter="Adventure chapters" title="Try something new." accent="Then try again." intro="Cub Scouting gives elementary-age kids a safe, family-supported way to build, explore, serve, celebrate, and discover what they can do." noteTitle="Our motto" noteBody="Do Your Best">
+
+<BaseLayout
+  title="Cub Scout adventures"
+  description="Explore the kinds of family adventures Cub Scout Pack 170 shares throughout the year."
+>
+  <ChapterHero
+    chapter="Adventure chapters"
+    title="Try something new."
+    accent="Then try again."
+    intro="Cub Scouting gives elementary-age kids a safe, family-supported way to build, explore, serve, celebrate, and discover what they can do."
+    noteTitle="Our motto"
+    noteBody="Do Your Best"
+  >
     <p slot="note">The goal is not to be the best in the room. It is to practice courage, skill, kindness, and persistence.</p>
   </ChapterHero>
-  <section class="section"><div class="container activity-book">{activities.map((activity,index)=><article class:list={['activity-chapter',index%2&&'activity-chapter--reverse']}><div class:list={['activity-picture',`activity-picture--${activity.illustration}`]} aria-hidden="true"><span>{symbols[activity.illustration]}</span><small>{activity.season}</small></div><div><span class="chapter-tab">{activity.shortTitle}</span><h2>{activity.title}</h2><p class="lead">{activity.description}</p><p>Pack 170’s exact date, logistics, and current-year participation details will appear on the Calendar after leadership confirms them.</p><a href="/calendar/">Look for it in the program year →</a></div></article>)}</div></section>
-  <section class="section local-field"><div class="container local-field__grid"><div><span class="chapter-tab">Close to home</span><h2>Macon is part of the adventure.</h2><p class="lead">Our neighborhood sits near parks, trails, waterways, history, and a community worth serving. Pack-specific destinations will only be named when they are confirmed for a real event.</p></div><div class="local-map" role="img" aria-label="Abstract illustrated map showing Macon, a river, pines, and a trail"><span class="river"></span><span class="map-dot">170</span><span class="trail">· · · · · ·</span><span class="trees">▲ ▲ ▲</span></div></div></section>
+  <section class="section">
+    <div class="container activity-book">
+      {
+        activities.map((activity, index) => (
+          <article class:list={['activity-chapter', index % 2 && 'activity-chapter--reverse']}>
+            <>
+              <div class:list={['activity-picture', `activity-picture--${activity.illustration}`]} aria-hidden="true">
+                <>
+                  <span>{symbols[activity.illustration]}</span>
+                  <small>{activity.season}</small>
+                </>
+              </div>
+              <div>
+                <>
+                  <span class="chapter-tab">{activity.shortTitle}</span>
+                  <h2>{activity.title}</h2>
+                  <p class="lead">{activity.description}</p>
+                  <p>
+                    Pack 170’s exact date, logistics, and current-year participation details will appear on the Calendar after leadership
+                    confirms them.
+                  </p>
+                  <a href="/calendar/">Look for it in the program year →</a>
+                </>
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section local-field">
+    <div class="container local-field__grid">
+      <div>
+        <span class="chapter-tab">Close to home</span><h2>Macon is part of the adventure.</h2><p class="lead">
+          Our neighborhood sits near parks, trails, waterways, history, and a community worth serving. Pack-specific destinations will only
+          be named when they are confirmed for a real event.
+        </p>
+      </div><div class="local-map" role="img" aria-label="Abstract illustrated map showing Macon, a river, pines, and a trail">
+        <span class="river"></span><span class="map-dot">170</span><span class="trail">· · · · · ·</span><span class="trees">▲ ▲ ▲</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
-<style>.activity-book{display:grid;gap:clamp(4rem,9vw,8rem)}.activity-chapter{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:center}.activity-chapter--reverse .activity-picture{order:2}.activity-picture{min-height:350px;display:grid;place-items:center;position:relative;border:4px solid var(--blue-deep);border-radius:46% 54% 13% 11%;background:var(--gold);box-shadow:var(--shadow-paper);overflow:hidden}.activity-picture::before,.activity-picture::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.35)}.activity-picture::before{width:220px;height:220px;left:-50px;top:-80px}.activity-picture::after{width:160px;height:160px;right:-30px;bottom:-60px}.activity-picture span{font-family:var(--font-display);font-weight:900;font-size:8rem;color:var(--blue);position:relative;z-index:1}.activity-picture small{position:absolute;bottom:1rem;left:1rem;background:var(--page);padding:.4rem .7rem;font-family:var(--font-display);font-weight:800;color:var(--blue-deep);transform:rotate(-2deg)}.activity-picture--tent{background:#9bc8a8}.activity-picture--banner{background:#f0b4d1}.activity-picture--hands{background:#bcd9ec}.local-field{background:var(--green-deep);color:white}.local-field__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;align-items:center}.local-map{position:relative;min-height:360px;background:#d8e8cc;border:4px solid white;border-radius:8px 30px 10px 22px;overflow:hidden}.river{position:absolute;left:30%;top:-10%;width:140px;height:130%;background:#8ac8e7;transform:rotate(19deg);border-inline:5px solid rgba(255,255,255,.6)}.map-dot{position:absolute;left:44%;top:44%;width:64px;height:64px;display:grid;place-items:center;background:var(--gold);border:5px solid var(--blue);border-radius:50%;color:var(--blue-deep);font-family:var(--font-display);font-weight:900}.trail{position:absolute;left:8%;top:25%;color:var(--red);font-size:2rem;transform:rotate(18deg)}.trees{position:absolute;right:8%;bottom:10%;color:var(--green-deep);font-size:3rem;letter-spacing:-.2em}@media(max-width:760px){.activity-chapter,.local-field__grid{grid-template-columns:1fr}.activity-chapter--reverse .activity-picture{order:0}.activity-picture{min-height:280px}}
+<style>
+  .activity-book {
+    display: grid;
+    gap: clamp(4rem, 9vw, 8rem);
+  }
+  .activity-chapter {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .activity-chapter--reverse .activity-picture {
+    order: 2;
+  }
+  .activity-picture {
+    min-height: 350px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border: 4px solid var(--blue-deep);
+    border-radius: 46% 54% 13% 11%;
+    background: var(--gold);
+    box-shadow: var(--shadow-paper);
+    overflow: hidden;
+  }
+  .activity-picture::before,
+  .activity-picture::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+  }
+  .activity-picture::before {
+    width: 220px;
+    height: 220px;
+    left: -50px;
+    top: -80px;
+  }
+  .activity-picture::after {
+    width: 160px;
+    height: 160px;
+    right: -30px;
+    bottom: -60px;
+  }
+  .activity-picture span {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 8rem;
+    color: var(--blue);
+    position: relative;
+    z-index: 1;
+  }
+  .activity-picture small {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--page);
+    padding: 0.4rem 0.7rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue-deep);
+    transform: rotate(-2deg);
+  }
+  .activity-picture--tent {
+    background: #9bc8a8;
+  }
+  .activity-picture--banner {
+    background: #f0b4d1;
+  }
+  .activity-picture--hands {
+    background: #bcd9ec;
+  }
+  .local-field {
+    background: var(--green-deep);
+    color: white;
+  }
+  .local-field__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .local-map {
+    position: relative;
+    min-height: 360px;
+    background: #d8e8cc;
+    border: 4px solid white;
+    border-radius: 8px 30px 10px 22px;
+    overflow: hidden;
+  }
+  .river {
+    position: absolute;
+    left: 30%;
+    top: -10%;
+    width: 140px;
+    height: 130%;
+    background: #8ac8e7;
+    transform: rotate(19deg);
+    border-inline: 5px solid rgba(255, 255, 255, 0.6);
+  }
+  .map-dot {
+    position: absolute;
+    left: 44%;
+    top: 44%;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    background: var(--gold);
+    border: 5px solid var(--blue);
+    border-radius: 50%;
+    color: var(--blue-deep);
+    font-family: var(--font-display);
+    font-weight: 900;
+  }
+  .trail {
+    position: absolute;
+    left: 8%;
+    top: 25%;
+    color: var(--red);
+    font-size: 2rem;
+    transform: rotate(18deg);
+  }
+  .trees {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+    color: var(--green-deep);
+    font-size: 3rem;
+    letter-spacing: -0.2em;
+  }
+  @media (max-width: 760px) {
+    .activity-chapter,
+    .local-field__grid {
+      grid-template-columns: 1fr;
+    }
+    .activity-chapter--reverse .activity-picture {
+      order: 0;
+    }
+    .activity-picture {
+      min-height: 280px;
+    }
+  }
 </style>

@@ -4,11 +4,137 @@ import ChapterHero from '../components/ChapterHero.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
 import { pack } from '../data/pack';
 ---
-<BaseLayout title="Our neighborhood pack" description="Learn about Cub Scout Pack 170, our Shirley Hills meeting home, family welcome, and volunteer-led program.">
-  <ChapterHero chapter="Our pack" title="Rooted in" accent="Macon" intro="Pack 170 is a volunteer-run Cub Scout pack serving elementary-age children and their families from our meeting home in historic Shirley Hills." noteTitle="The plain facts" noteBody={`${pack.grades} · ${pack.welcome}`}><p slot="note">Pack meetings happen roughly monthly on Tuesdays at 6:30 PM.</p></ChapterHero>
-  <section class="section"><div class="container story-grid"><div><span class="chapter-tab">The neighborhood chapter</span><h2>A local pack with a wide-open welcome.</h2><p class="lead">Our pack is chartered by Highland Hills Baptist Church, where we meet and where many dens gather before the pack meeting.</p><p>The church charters the pack and supports its meeting home. Parents and registered adult volunteers deliver the Cub Scouting program. Families do not need to belong to the church, and Pack 170 welcomes boys and girls from every background.</p></div><FieldIllustration label="Shirley Hills · Macon, Georgia" /></div></section>
-  <section class="section how-section"><div class="container"><div class="section-heading"><span class="chapter-tab">How the pack works</span><h2>Small dens. One whole pack.</h2></div><div class="how-flow"><div><span>1</span><h3>Children join by grade</h3><p>A den is a small, same-grade Cub Scout group.</p></div><div><span>2</span><h3>Dens choose a schedule</h3><p>Each den sets its own time and place; many meet before the pack gathering.</p></div><div><span>3</span><h3>Families gather as a pack</h3><p>Roughly once a month, everyone comes together at Highland Hills.</p></div></div></div></section>
-  <section class="section promise-section"><div class="container promise-grid"><div class="paper-sheet promise"><span class="chapter-tab">Our approach</span><h2>Do your best.</h2><p class="lead">Cub Scouting meets children where they are. Adults make space to practice; kids build confidence by trying.</p></div><div><h2>Volunteer-powered, family-supported.</h2><p>Pack adults provide program, training, planning, and safety. Families bring encouragement, participation, and the willingness to help when they can.</p><a class="button button--blue" href="/volunteer/">See ways to help</a></div></div></section>
-  <section class="section council-section"><div class="container council-grid"><div><span class="chapter-tab">Our Scouting home</span><h2>Part of something larger.</h2><p>Pack 170 is a unit of the Central Georgia Council, Scouting America. The council supports local units with training, program resources, camps, and the Macon Scout Shop.</p></div><a class="button button--paper" href={pack.council.url}>Visit the council website</a></div></section>
+
+<BaseLayout
+  title="Our neighborhood pack"
+  description="Learn about Cub Scout Pack 170, our Shirley Hills meeting home, family welcome, and volunteer-led program."
+>
+  <ChapterHero
+    chapter="Our pack"
+    title="Rooted in"
+    accent="Macon"
+    intro="Pack 170 is a volunteer-run Cub Scout pack serving elementary-age children and their families from our meeting home in historic Shirley Hills."
+    noteTitle="The plain facts"
+    noteBody={`${pack.grades} · ${pack.welcome}`}
+    ><p slot="note">Pack meetings happen roughly monthly on Tuesdays at 6:30 PM.</p></ChapterHero
+  >
+  <section class="section">
+    <div class="container story-grid">
+      <div>
+        <span class="chapter-tab">The neighborhood chapter</span><h2>A local pack with a wide-open welcome.</h2><p class="lead">
+          Our pack is chartered by Highland Hills Baptist Church, where we meet and where many dens gather before the pack meeting.
+        </p><p>
+          The church charters the pack and supports its meeting home. Parents and registered adult volunteers deliver the Cub Scouting
+          program. Families do not need to belong to the church, and Pack 170 welcomes boys and girls from every background.
+        </p>
+      </div><FieldIllustration label="Shirley Hills · Macon, Georgia" />
+    </div>
+  </section>
+  <section class="section how-section">
+    <div class="container">
+      <div class="section-heading"><span class="chapter-tab">How the pack works</span><h2>Small dens. One whole pack.</h2></div><div
+        class="how-flow"
+      >
+        <div><span>1</span><h3>Children join by grade</h3><p>A den is a small, same-grade Cub Scout group.</p></div><div>
+          <span>2</span><h3>Dens choose a schedule</h3><p>Each den sets its own time and place; many meet before the pack gathering.</p>
+        </div><div>
+          <span>3</span><h3>Families gather as a pack</h3><p>Roughly once a month, everyone comes together at Highland Hills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section promise-section">
+    <div class="container promise-grid">
+      <div class="paper-sheet promise">
+        <span class="chapter-tab">Our approach</span><h2>Do your best.</h2><p class="lead">
+          Cub Scouting meets children where they are. Adults make space to practice; kids build confidence by trying.
+        </p>
+      </div><div>
+        <h2>Volunteer-powered, family-supported.</h2><p>
+          Pack adults provide program, training, planning, and safety. Families bring encouragement, participation, and the willingness to
+          help when they can.
+        </p><a class="button button--blue" href="/volunteer/">See ways to help</a>
+      </div>
+    </div>
+  </section>
+  <section class="section council-section">
+    <div class="container council-grid">
+      <div>
+        <span class="chapter-tab">Our Scouting home</span><h2>Part of something larger.</h2><p>
+          Pack 170 is a unit of the Central Georgia Council, Scouting America. The council supports local units with training, program
+          resources, camps, and the Macon Scout Shop.
+        </p>
+      </div><a class="button button--paper" href={pack.council.url}>Visit the council website</a>
+    </div>
+  </section>
 </BaseLayout>
-<style>.story-grid,.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}.how-section{background:var(--page);border-block:1px solid var(--rule)}.how-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0}.how-flow div{padding:2rem;border-top:4px solid var(--blue);border-right:1px dashed var(--rule)}.how-flow span{display:grid;place-items:center;width:48px;height:48px;margin-top:-3.7rem;margin-bottom:1rem;border-radius:50%;background:var(--gold);border:4px solid var(--blue);font-family:var(--font-display);font-weight:900}.promise{padding:clamp(2rem,5vw,4rem);transform:rotate(-1deg)}.council-section{background:var(--blue-deep);color:white}.council-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}.council-grid p{max-width:65ch}@media(max-width:760px){.story-grid,.promise-grid,.council-grid{grid-template-columns:1fr}.how-flow{grid-template-columns:1fr;gap:2.5rem}.how-flow div{border-right:0}.promise{transform:none}}</style>
+<style>
+  .story-grid,
+  .promise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .how-section {
+    background: var(--page);
+    border-block: 1px solid var(--rule);
+  }
+  .how-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .how-flow div {
+    padding: 2rem;
+    border-top: 4px solid var(--blue);
+    border-right: 1px dashed var(--rule);
+  }
+  .how-flow span {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-top: -3.7rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 4px solid var(--blue);
+    font-family: var(--font-display);
+    font-weight: 900;
+  }
+  .promise {
+    padding: clamp(2rem, 5vw, 4rem);
+    transform: rotate(-1deg);
+  }
+  .council-section {
+    background: var(--blue-deep);
+    color: white;
+  }
+  .council-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .council-grid p {
+    max-width: 65ch;
+  }
+  @media (max-width: 760px) {
+    .story-grid,
+    .promise-grid,
+    .council-grid {
+      grid-template-columns: 1fr;
+    }
+    .how-flow {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .how-flow div {
+      border-right: 0;
+    }
+    .promise {
+      transform: none;
+    }
+  }
+</style>

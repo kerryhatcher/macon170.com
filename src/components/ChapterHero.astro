@@ -9,6 +9,7 @@ type Props = {
 };
 const { chapter, title, accent, intro, noteTitle, noteBody } = Astro.props;
 ---
+
 <section class="chapter-hero">
   <div class="container chapter-hero__grid">
     <div>
@@ -17,12 +18,14 @@ const { chapter, title, accent, intro, noteTitle, noteBody } = Astro.props;
       <p class="lead">{intro}</p>
       <slot name="actions" />
     </div>
-    {noteTitle && (
-      <aside class="hero-note">
-        <h2>{noteTitle}</h2>
-        <p>{noteBody}</p>
-        <slot name="note" />
-      </aside>
-    )}
+    {
+      noteTitle && (
+        <aside class="hero-note">
+          <h2>{noteTitle}</h2>
+          <p>{noteBody}</p>
+          <slot name="note" />
+        </aside>
+      )
+    }
   </div>
 </section>

@@ -1,17 +1,150 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
+
 <BaseLayout title="Event details" description="Published logistics for an upcoming Cub Scout Pack 170 event.">
-  <section class="event-hero"><div class="container"><span class="chapter-tab">Pack 170 event</span><h1 id="event-title">Loading event…</h1><p class="lead" id="event-summary">Retrieving the volunteer-published family logistics.</p></div></section>
-  <section class="section"><div class="container event-grid"><article class="paper-sheet event-sheet" id="event-detail"><div class="loading" role="status">Loading event details…</div></article><aside class="notice"><span class="notice__pin">?</span><div><h3>Need a detail?</h3><p>Contact Pack 170 adults before relying on incomplete logistics.</p><a href="/contact/">Ask the pack</a></div></aside></div></section>
+  <section class="event-hero">
+    <div class="container">
+      <span class="chapter-tab">Pack 170 event</span><h1 id="event-title">Loading event…</h1><p class="lead" id="event-summary">
+        Retrieving the volunteer-published family logistics.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container event-grid">
+      <article class="paper-sheet event-sheet" id="event-detail">
+        <div class="loading" role="status">Loading event details…</div>
+      </article><aside class="notice">
+        <span class="notice__pin">?</span><div>
+          <h3>Need a detail?</h3><p>Contact Pack 170 adults before relying on incomplete logistics.</p><a href="/contact/">Ask the pack</a>
+        </div>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>
 <script>
-  type PublicEvent = { title:string; summary:string; description:string; starts_at:string; ends_at:string|null; status:string; category:string; location_name:string|null; address:string|null; audience:string; what_to_bring:string|null; cost:string|null; registration_url:string|null };
-  const esc=(value:string)=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]??c));
-  const fmt=(value:string)=>new Intl.DateTimeFormat(undefined,{dateStyle:'full',timeStyle:'short',timeZone:'America/New_York'}).format(new Date(value));
-  const slug=new URLSearchParams(location.search).get('event');
-  const detail=document.querySelector<HTMLElement>('#event-detail');
-  async function load(){if(!slug||!/^[a-z0-9-]{2,80}$/.test(slug)){if(detail)detail.innerHTML='<h2>Event not found</h2><p>Return to the <a href="/calendar/">Pack calendar</a>.</p>';return;}const response=await fetch('/api/events/'+encodeURIComponent(slug));if(!response.ok){if(detail)detail.innerHTML='<h2>Event not found</h2><p>This event may be a draft, archived, or no longer available. Return to the <a href="/calendar/">Pack calendar</a>.</p>';return;}const {event:e}=await response.json() as {event:PublicEvent};document.title=e.title+' | Cub Scout Pack 170';const title=document.querySelector('#event-title'),summary=document.querySelector('#event-summary');if(title)title.textContent=e.title;if(summary)summary.textContent=e.summary;if(detail)detail.innerHTML='<div class="status-line"><span>'+esc(e.category)+' event</span><strong>'+esc(e.status)+'</strong></div><h2>Family field notes</h2><p class="lead">'+esc(e.description).replace(/\n/g,'<br>')+'</p><dl><div><dt>Starts</dt><dd>'+fmt(e.starts_at)+'</dd></div><div><dt>Ends</dt><dd>'+(e.ends_at?fmt(e.ends_at):'No end time supplied')+'</dd></div><div><dt>Location</dt><dd>'+esc(e.location_name||'Being confirmed')+(e.address?'<br>'+esc(e.address):'')+'</dd></div><div><dt>Who</dt><dd>'+esc(e.audience)+'</dd></div><div><dt>Bring</dt><dd>'+esc(e.what_to_bring||'No special items listed')+'</dd></div><div><dt>Cost</dt><dd>'+esc(e.cost||'No cost information supplied')+'</dd></div><div><dt>Registration</dt><dd>'+(e.registration_url?'<a class="button button--blue" href="'+esc(e.registration_url)+'">Open registration</a>':'No registration link supplied')+'</dd></div></dl>';}
+  type PublicEvent = {
+    title: string;
+    summary: string;
+    description: string;
+    starts_at: string;
+    ends_at: string | null;
+    status: string;
+    category: string;
+    location_name: string | null;
+    address: string | null;
+    audience: string;
+    what_to_bring: string | null;
+    cost: string | null;
+    registration_url: string | null;
+  };
+  const esc = (value: string) =>
+    value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
+  const fmt = (value: string) =>
+    new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
+  const slug = new URLSearchParams(location.search).get('event');
+  const detail = document.querySelector<HTMLElement>('#event-detail');
+  async function load() {
+    if (!slug || !/^[a-z0-9-]{2,80}$/.test(slug)) {
+      if (detail) detail.innerHTML = '<h2>Event not found</h2><p>Return to the <a href="/calendar/">Pack calendar</a>.</p>';
+      return;
+    }
+    const response = await fetch('/api/events/' + encodeURIComponent(slug));
+    if (!response.ok) {
+      if (detail)
+        detail.innerHTML =
+          '<h2>Event not found</h2><p>This event may be a draft, archived, or no longer available. Return to the <a href="/calendar/">Pack calendar</a>.</p>';
+      return;
+    }
+    const { event: e } = (await response.json()) as { event: PublicEvent };
+    document.title = e.title + ' | Cub Scout Pack 170';
+    const title = document.querySelector('#event-title'),
+      summary = document.querySelector('#event-summary');
+    if (title) title.textContent = e.title;
+    if (summary) summary.textContent = e.summary;
+    if (detail)
+      detail.innerHTML =
+        '<div class="status-line"><span>' +
+        esc(e.category) +
+        ' event</span><strong>' +
+        esc(e.status) +
+        '</strong></div><h2>Family field notes</h2><p class="lead">' +
+        esc(e.description).replace(/\n/g, '<br>') +
+        '</p><dl><div><dt>Starts</dt><dd>' +
+        fmt(e.starts_at) +
+        '</dd></div><div><dt>Ends</dt><dd>' +
+        (e.ends_at ? fmt(e.ends_at) : 'No end time supplied') +
+        '</dd></div><div><dt>Location</dt><dd>' +
+        esc(e.location_name || 'Being confirmed') +
+        (e.address ? '<br>' + esc(e.address) : '') +
+        '</dd></div><div><dt>Who</dt><dd>' +
+        esc(e.audience) +
+        '</dd></div><div><dt>Bring</dt><dd>' +
+        esc(e.what_to_bring || 'No special items listed') +
+        '</dd></div><div><dt>Cost</dt><dd>' +
+        esc(e.cost || 'No cost information supplied') +
+        '</dd></div><div><dt>Registration</dt><dd>' +
+        (e.registration_url
+          ? '<a class="button button--blue" href="' + esc(e.registration_url) + '">Open registration</a>'
+          : 'No registration link supplied') +
+        '</dd></div></dl>';
+  }
   load();
 </script>
-<style>.event-hero{padding:clamp(4rem,9vw,7rem) 0;background:var(--blue);color:white;border-bottom:8px solid var(--gold)}.event-hero h1{font-size:clamp(2.6rem,7vw,5rem)}.event-hero .lead{color:#e6f1fd}.event-grid{display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:start}.event-sheet{padding:clamp(2rem,5vw,4rem);min-height:450px}.loading{color:var(--muted)}.status-line{display:flex;justify-content:space-between;gap:1rem;text-transform:capitalize;color:var(--blue);font-weight:800}.event-sheet dl div{display:grid;grid-template-columns:130px 1fr;border-top:1px solid var(--rule);padding:1rem 0}.event-sheet dt{font-family:var(--font-display);font-weight:800;color:var(--blue)}.event-sheet dd{margin:0}@media(max-width:760px){.event-grid{grid-template-columns:1fr}.event-sheet dl div{grid-template-columns:1fr}}</style>
+<style>
+  .event-hero {
+    padding: clamp(4rem, 9vw, 7rem) 0;
+    background: var(--blue);
+    color: white;
+    border-bottom: 8px solid var(--gold);
+  }
+  .event-hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5rem);
+  }
+  .event-hero .lead {
+    color: #e6f1fd;
+  }
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+  }
+  .event-sheet {
+    padding: clamp(2rem, 5vw, 4rem);
+    min-height: 450px;
+  }
+  .loading {
+    color: var(--muted);
+  }
+  .status-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    text-transform: capitalize;
+    color: var(--blue);
+    font-weight: 800;
+  }
+  .event-sheet dl div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-top: 1px solid var(--rule);
+    padding: 1rem 0;
+  }
+  .event-sheet dt {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .event-sheet dd {
+    margin: 0;
+  }
+  @media (max-width: 760px) {
+    .event-grid {
+      grid-template-columns: 1fr;
+    }
+    .event-sheet dl div {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

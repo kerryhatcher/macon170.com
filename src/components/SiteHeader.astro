@@ -8,8 +8,9 @@ const links = [
   { href: '/resources/', label: 'Resources' },
   { href: '/contact/', label: 'Contact' },
 ];
-const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+const isCurrent = (href: string) => (href === '/' ? currentPath === '/' : currentPath.startsWith(href));
 ---
+
 <header class="site-header">
   <div class="nav-shell">
     <a class="brand" href="/" aria-label="Pack 170 home">
@@ -18,13 +19,13 @@ const isCurrent = (href: string) => href === '/' ? currentPath === '/' : current
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class:list={{ 'nav-priority': link.priority }}
-          aria-current={isCurrent(link.href) ? 'page' : undefined}
-        >{link.label}</a>
-      ))}
+      {
+        links.map((link) => (
+          <a href={link.href} class:list={{ 'nav-priority': link.priority }} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
   </div>
 </header>

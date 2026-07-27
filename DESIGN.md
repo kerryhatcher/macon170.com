@@ -2,73 +2,73 @@
 name: Pack 170 Elementary Adventure Handbook
 description: A practical family handbook with the warmth and wonder of an elementary-school adventure book.
 colors:
-  cub-blue: "#003F87"
-  midnight-blue: "#002B5C"
-  cub-gold: "#FCD116"
-  notebook-paper: "#F7F1E3"
-  clean-page: "#FFFDF7"
-  pencil-charcoal: "#272B2E"
-  pencil-muted: "#59636B"
-  rule-line: "#D7CDB8"
-  river-green: "#42765C"
-  river-green-deep: "#28543F"
-  cherry-blossom: "#E8A3C6"
-  brick-red: "#A33C34"
+  cub-blue: '#003F87'
+  midnight-blue: '#002B5C'
+  cub-gold: '#FCD116'
+  notebook-paper: '#F7F1E3'
+  clean-page: '#FFFDF7'
+  pencil-charcoal: '#272B2E'
+  pencil-muted: '#59636B'
+  rule-line: '#D7CDB8'
+  river-green: '#42765C'
+  river-green-deep: '#28543F'
+  cherry-blossom: '#E8A3C6'
+  brick-red: '#A33C34'
 typography:
   display:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "clamp(2.9rem, 8vw, 5.7rem)"
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.9rem, 8vw, 5.7rem)'
     fontWeight: 900
     lineHeight: 1.08
-    letterSpacing: "-0.025em"
+    letterSpacing: '-0.025em'
   headline:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "clamp(2.05rem, 5vw, 3.5rem)"
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.05rem, 5vw, 3.5rem)'
     fontWeight: 800
     lineHeight: 1.08
-    letterSpacing: "-0.025em"
+    letterSpacing: '-0.025em'
   body:
-    fontFamily: "Source Sans 3, Segoe UI, sans-serif"
-    fontSize: "1.1rem"
+    fontFamily: 'Source Sans 3, Segoe UI, sans-serif'
+    fontSize: '1.1rem'
     fontWeight: 400
     lineHeight: 1.65
   label:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "0.76rem"
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '0.76rem'
     fontWeight: 800
     lineHeight: 1.2
-    letterSpacing: "0.06em"
+    letterSpacing: '0.06em'
 rounded:
-  control: "9px 9px 3px 9px"
-  sheet: "6px 18px 12px 8px"
-  tab: "4px 12px 12px 4px"
+  control: '9px 9px 3px 9px'
+  sheet: '6px 18px 12px 8px'
+  tab: '4px 12px 12px 4px'
 spacing:
-  xs: "0.5rem"
-  sm: "0.75rem"
-  md: "1rem"
-  lg: "1.5rem"
-  xl: "2rem"
-  section: "clamp(4.5rem, 9vw, 8rem)"
+  xs: '0.5rem'
+  sm: '0.75rem'
+  md: '1rem'
+  lg: '1.5rem'
+  xl: '2rem'
+  section: 'clamp(4.5rem, 9vw, 8rem)'
 components:
   button-primary:
-    backgroundColor: "{colors.cub-blue}"
-    textColor: "{colors.clean-page}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.75rem 1.25rem"
-    height: "50px"
+    backgroundColor: '{colors.cub-blue}'
+    textColor: '{colors.clean-page}'
+    typography: '{typography.label}'
+    rounded: '{rounded.control}'
+    padding: '0.75rem 1.25rem'
+    height: '50px'
   button-highlight:
-    backgroundColor: "{colors.cub-gold}"
-    textColor: "{colors.midnight-blue}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.75rem 1.25rem"
-    height: "50px"
+    backgroundColor: '{colors.cub-gold}'
+    textColor: '{colors.midnight-blue}'
+    typography: '{typography.label}'
+    rounded: '{rounded.control}'
+    padding: '0.75rem 1.25rem'
+    height: '50px'
   paper-sheet:
-    backgroundColor: "{colors.clean-page}"
-    textColor: "{colors.pencil-charcoal}"
-    rounded: "{rounded.sheet}"
-    padding: "2rem"
+    backgroundColor: '{colors.clean-page}'
+    textColor: '{colors.pencil-charcoal}'
+    rounded: '{rounded.sheet}'
+    padding: '2rem'
 ---
 
 # Design System: Pack 170 Elementary Adventure Handbook
@@ -82,6 +82,7 @@ Pack 170 feels like the unusually beautiful handbook a child brings home and a p
 The system is energetic but never babyish, nostalgic but never archival, and handmade without becoming scrapbook-like. Original illustrations show Macon, Georgia terrain and family adventure objects rather than invented Scouts, protected insignia, or fake pack photography. Motion borrows from lifting paper and moving bookmarks and never hides content.
 
 **Key Characteristics:**
+
 - Practical parent information framed as welcoming handbook chapters
 - Cub blue and gold at page scale, with warm paper and sparse local accents
 - Bold geometric headings paired with open, readable body copy
@@ -93,15 +94,18 @@ The system is energetic but never babyish, nostalgic but never archival, and han
 Cub Blue and Gold establish unmistakable program recognition; warm paper keeps long-form guidance approachable, while local accents appear only when they carry meaning.
 
 ### Primary
+
 - **Cub Scout Blue:** Navigation, chapter covers, important headings, links, and primary actions.
 - **Cub Scout Gold:** The next action, bookmark, rule, or earned moment of emphasis. Never small or body text.
 
 ### Secondary
+
 - **River Green:** Outdoor chapters, practical guidance, and calm supporting fields.
 - **Cherry Blossom:** Sparse spring and Macon annotation, never a generic feminine cue.
 - **Brick Red:** Cancellation, editor warning, and rare heritage emphasis.
 
 ### Neutral
+
 - **Notebook Paper:** Warm, ruled site ground.
 - **Clean Page:** Reading sheets, controls, and raised notices.
 - **Pencil Charcoal:** Primary copy and drawn marks.
@@ -119,6 +123,7 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 **Character:** Montserrat connects chapter titles to school signage and established Cub Scouting materials. Source Sans 3 keeps parent guidance warm, open, and readable on small outdoor-viewed screens.
 
 ### Hierarchy
+
 - **Display:** Heavy and compact; cover titles and route openings only.
 - **Headline:** Bold chapter naming with short, balanced lines.
 - **Title:** Clear event, card, and subsection labels.
@@ -146,34 +151,41 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 ## Components
 
 ### Buttons
+
 - **Shape:** Sturdy asymmetric corners; controls remain at least 50px high and 44px wide.
 - **Primary:** Cub Blue on a visible Midnight Blue offset shadow.
 - **Highlight:** Cub Gold with Midnight Blue text for the most important next action.
 - **Hover / Focus:** Move slightly up-left; focus uses a thick Gold outline with clear separation.
 
 ### Cards / Containers
+
 - **Corner Style:** Sheet geometry with one more open corner and one clipped corner.
 - **Background:** Clean Page over Notebook Paper or colored chapter fields.
 - **Shadow Strategy:** Offset print shadow plus soft ambient depth; never a zero-offset glow.
 - **Border:** Rules explain a printed edge or notice state rather than decorating every box.
 
 ### Inputs / Fields
+
 - **Style:** White paper, two-pixel gray-blue stroke, asymmetric seven-to-twelve-pixel corners.
 - **Focus:** Cub Blue stroke and translucent Gold outline.
 - **Error / Disabled:** Brick Red explanatory copy; disabled actions remain visible and name the missing connection.
 
 ### Navigation
+
 -The Midnight Blue header uses high-contrast text and two Gold priority tabs for Join and Calendar. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and the same two audience handoffs.
 
 ### Chapter Tab
+
 -A small Gold paper tab names the current chapter or local section. It is the system’s one repeated uppercase label and must not appear above every minor heading.
 
 ### Notice
+
 -A dashed pinned sheet communicates pending data, a parent safety note, or an editor task. It names both the missing information and the recovery path.
 
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** make every decorative object carry navigation, state, sequence, or place.
 - **Do** use original school, trail, pine, river, and cherry-blossom illustration language.
 - **Do** keep Join and Calendar equally easy to find on every route.
@@ -181,6 +193,7 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 - **Do** preserve clear reading order, visible focus, reduced-motion behavior, and strong contrast.
 
 ### Don't:
+
 - **Don't** make the interface babyish, gamified, scrapbook-like, or dependent on emoji.
 - **Don't** redraw, recolor, extract, or imitate official Scouting marks or rank badges.
 - **Don't** use the Wolf element outside the approved trademark or use the WOSM emblem.

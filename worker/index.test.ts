@@ -85,7 +85,9 @@ describe('calendar events', () => {
     });
     expect(created.status).toBe(201);
     const { id } = await created.json<{ id: string }>();
-    const storedDraft = await env.DB.prepare('SELECT visibility FROM calendar_events WHERE id = ?').bind(id).first<{ visibility: string }>();
+    const storedDraft = await env.DB.prepare('SELECT visibility FROM calendar_events WHERE id = ?')
+      .bind(id)
+      .first<{ visibility: string }>();
     expect(storedDraft?.visibility).toBe('draft');
 
     let publicList = await exports.default.fetch('https://www.macon170.com/api/events');
