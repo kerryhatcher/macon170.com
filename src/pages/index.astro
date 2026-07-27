@@ -10,6 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
+import { API_BASE } from '../lib/api-base';
 ---
 
 <BaseLayout
@@ -119,25 +120,24 @@ import { annualProgram, pack, ranks } from '../data/pack';
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">The pack year</span>
-        <h2>See the whole adventure at a glance.</h2>
+        <h2>Six milestones, one program year.</h2>
         <p>
-          Our program generally runs from fall through spring, with summer opportunities too. Exact Pack 170 dates are being gathered from
-          leadership.
+          Each card is a milestone in the order it arrives. A solid, lifted card means the date is published on the pack calendar; a dashed
+          one is still being scheduled.
         </p>
       </div>
-      <ol class="year-line">
+      <ol class="pm-strip" data-pm-list>
         {
           annualProgram.map((item) => (
-            <li>
-              <>
-                <span>{item.season}</span>
-                <strong>{item.title}</strong>
-                <small>{item.state}</small>
-              </>
+            <li class="pm-cell" data-pm-row={item.title}>
+              <span class="pm-month">{item.season}</span>
+              <strong>{item.title}</strong>
+              <small data-pm-when>{item.state}</small>
             </li>
           ))
         }
       </ol>
+      <p class="pm-note" data-pm-note>Checking the pack calendar for confirmed dates…</p>
       <div class="year-actions">
         <a class="button button--blue" href="/calendar/">Open family calendar</a>
         <a class="button button--plain" href="/volunteer/">Lend a hand this year</a>
@@ -161,6 +161,70 @@ import { annualProgram, pack, ranks } from '../data/pack';
     </div>
   </section>
 </BaseLayout>
+
+<script is:inline define:vars={{ pmProgram: annualProgram, pmApiBase: API_BASE }}>
+  (function () {
+    const root = document.querySelector('.year-section');
+    if (!root) return;
+    const fmt = (iso) =>
+      new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'America/New_York' }).format(new Date(iso));
+
+    // Keywords alone would let an August "Lego Pinewood Derby" fill the late-January
+    // Derby milestone, so a match must also land in a plausible month.
+    function matchFor(milestone, events) {
+      return (
+        events.find(function (event) {
+          const title = String(event.title || '').toLowerCase();
+          const month = new Date(event.starts_at).getMonth();
+          return milestone.match.keywords.some((word) => title.includes(word)) && milestone.match.months.indexOf(month) !== -1;
+        }) || null
+      );
+    }
+
+    function paint(events) {
+      let confirmed = 0;
+      pmProgram.forEach(function (milestone) {
+        const hit = matchFor(milestone, events);
+        if (hit) confirmed += 1;
+        root.querySelectorAll('[data-pm-row="' + CSS.escape(milestone.title) + '"]').forEach(function (cell) {
+          const when = cell.querySelector('[data-pm-when]');
+          if (!when) return;
+          if (hit) {
+            cell.setAttribute('data-confirmed', '');
+            when.textContent = fmt(hit.starts_at);
+          } else {
+            cell.removeAttribute('data-confirmed');
+            when.textContent = milestone.state;
+          }
+        });
+      });
+      const note = root.querySelector('[data-pm-note]');
+      if (!note) return;
+      note.textContent = confirmed
+        ? confirmed +
+          ' of ' +
+          pmProgram.length +
+          ' milestones have a published date. The other ' +
+          (pmProgram.length - confirmed) +
+          ' are still being scheduled by pack volunteers.'
+        : 'No milestone dates are published yet. Pack volunteers are still scheduling the year.';
+    }
+
+    fetch(pmApiBase + '/api/events')
+      .then(function (response) {
+        if (!response.ok) throw new Error('events unavailable');
+        return response.json();
+      })
+      .then(function (body) {
+        paint(Array.isArray(body.events) ? body.events : []);
+      })
+      .catch(function () {
+        // Leave the server-rendered placeholders untouched; never invent a date.
+        const note = root.querySelector('[data-pm-note]');
+        if (note) note.textContent = 'Live dates could not be loaded. The pack calendar has the confirmed schedule.';
+      });
+  })();
+</script>
 
 <style>
   .cover {
@@ -514,6 +578,68 @@ import { annualProgram, pack, ranks } from '../data/pack';
     }
     .adventure-art__car {
       left: 22%;
+    }
+  }
+  /* Pack-year milestones. State is carried by stroke style and depth rather than a
+     coloured side-tab: a published date reads as a real lifted sheet, a pending one as
+     a provisional dashed note. */
+  .pm-strip {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+  }
+  .pm-cell {
+    padding: 0.9rem 0.7rem;
+    background: var(--page);
+    border: 1px dashed var(--rule);
+    border-radius: 6px 16px 8px 6px;
+    min-height: 7.5rem;
+  }
+  .pm-cell[data-confirmed] {
+    border-style: solid;
+    box-shadow: var(--shadow-paper);
+  }
+  .pm-month {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .pm-cell[data-confirmed] .pm-month {
+    color: var(--blue);
+  }
+  .pm-cell strong {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 800;
+    display: block;
+  }
+  .pm-cell small {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .pm-cell[data-confirmed] small {
+    color: var(--blue);
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+  .pm-note {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 760px) {
+    .pm-strip {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
