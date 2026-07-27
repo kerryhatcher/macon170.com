@@ -1,3 +1,8 @@
+# Human-written canonical source for pack/council facts. Never reformatted, never
+# edited by tooling or agents — PRODUCT.md treats it as the authority that overrides
+# every research doc. Prettier stripped trailing whitespace here on 2026-07-27.
+docs/Offical-info.md
+
 dist
 .astro
 node_modules
