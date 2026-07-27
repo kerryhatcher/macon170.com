@@ -17,16 +17,22 @@ Cub Scout Pack 170's Chartered Organization in Macon, Georgia
 - Email: churchoffice@highlandhillsbaptist.org
 - Website: [www.highlandhillsbaptist.org](https://www.highlandhillsbaptist.org/)
 
-**Service Times:**
+**Campus:** "Over seventeen acres" in the heart of Shirley Hills, including a sanctuary, courtyard, hillside amphitheater, wooded walking trail, meditation chapel, and a **Boy Scout Hut**
+
+**Weekly Schedule** (per the church's homepage):
 - Sunday School: 9:45 a.m.
 - Morning Worship: 11:00 a.m.
+- Tuesday Lectionary Breakfast: 8:00 a.m.
+- Wednesday Family Night Supper: 5:45 p.m.; Prayer Service: 6:30 p.m.; Sanctuary Choir Rehearsal: 7:30 p.m.
 
-**Current Pastors:** Rev. Caitlin Childers Brown (Pastor and Minister of Service & Community) and Rev. Ethan Brown (Pastor and Minister of Care & Discipleship), co-pastoring since July 2023
+**Current Pastors:** Rev. Caitlin Childers Brown (Pastor and Minister of Service & Community) and Rev. Ethan Brown (Pastor and Minister of Care & Discipleship). The congregation voted to call them as co-pastors in **May 2023**; the staff page lists Ethan Brown's start as **July 2023**.
 
-**Sources:**
-- [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
-- [Yelp – Highland Hills Baptist Church](https://www.yelp.com/biz/highland-hills-baptist-church-macon)
-- [Official Website](https://www.highlandhillsbaptist.org/)
+**Sources** (official site is authoritative):
+- [Official Website – Home](https://www.highlandhillsbaptist.org/)
+- [Official Website – Contact](https://www.highlandhillsbaptist.org/contact-us)
+- [Official Website – Our Staff](https://www.highlandhillsbaptist.org/our-staff)
+- [Official Website – Our Campus & Grounds](https://www.highlandhillsbaptist.org/campus-grounds)
+- Aggregator listings ([FaithStreet](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga), [Yelp](https://www.yelp.com/biz/highland-hills-baptist-church-macon)) ⚠️ Stale and unreliable — the FaithStreet listing labels the church "Southern Baptist," which is wrong. Do not cite these.
 
 ---
 
@@ -34,35 +40,61 @@ Cub Scout Pack 170's Chartered Organization in Macon, Georgia
 
 ### Founding and Early Development
 
-**Founded:** April 12, 1953
+**Founded:** 1953; charter Sunday April 12, 1953
 
-Highland Hills Baptist Church was chartered on April 12, 1953, with Dr. Lewis Batts preaching to **179 members representing 90 families** on charter Sunday. The church name "Highland Hills" was chosen as a combination of the two neighborhoods it would serve: Shirley Hills and North Highland. Following a survey of these neighborhoods, the residents determined they wanted a Baptist church.
+Per the church's own history page: **five couples** in the Shirley Hills and North Highland neighborhoods founded Highland Hills Baptist Church in 1953 "to provide a place of spiritual enrichment for the community." The congregation met initially at the **Little Theater Building**, where Dr. Lewis Batts preached to **179 charter members** on charter Sunday, April 12, 1953. The name "Highland Hills" combines the two neighborhoods it was formed to serve.
 
-**Growth:**
-- Luke Smith was called as pastor on July 12, 1953
-- In July 1954, the church purchased **27.3 acres from the estate of Senator A. O. Bacon** for $31,500
-- Phase one construction (1954) included the chapel, nursery, parlor, and several classrooms
+**Early growth** (church history page):
+- Luke Smith became the first pastor "several months later," and the church acquired property on Briarcliff Road
+- The chapel was completed by May 1955, with its first service on Mother's Day
+- Phase two construction began in 1957, adding an education building completed within a year
+- Dr. Maurice Trimmer succeeded Luke Smith in 1960; the new sanctuary was dedicated September 8, 1967
+
+**Later pastoral history** (church history page):
+- Rev. James C. Bruner (1970s–1987) — membership reached nearly 1,000 by the 1980s
+- Dr. C. Welton Gaddy (1987–1990)
+- Dr. David J. Hailey (1990–1996)
+- Dr. James C. Dant (1997–2013)
+- Dr. Jake Hall (2013–2021), followed by interim leadership
+- Rev. Caitlin Childers Brown and Rev. Ethan Brown, called May 2023
+
+⚠️ **Corrected/unverified claims from earlier research:**
+- "179 members representing **90 families**" — the official history says 179 charter members and does not mention 90 families. **Unverified.**
+- "Following a survey of these neighborhoods, the residents determined they wanted a Baptist church" — not supported by the official history, which credits five founding couples. **Unverified; likely inaccurate.**
+- "Luke Smith was called as pastor on **July 12, 1953**" — the official history says only "several months later." **Unverified.**
+- "In July 1954, the church purchased **27.3 acres from the estate of Senator A. O. Bacon for $31,500**" — no supporting source found anywhere. The church currently describes its campus as "over seventeen acres." **Unverified.**
+- "Phase one construction (1954) included the chapel, nursery, parlor, and several classrooms" — the official history dates chapel completion to May 1955 and does not itemize phase one. **Unverified.**
+- An organizational meeting on **February 16, 1953 at the Baconsfield Club House** appears in cached search results for the church's old history page but is not on the current site. **Unverified.**
 
 **Sources:**
-- [Highland Hills Baptist Church History Page](http://hhbcmacon.squarespace.com/history/) ⚠️ Dead link (404) — the church's Squarespace history site is no longer available
-- [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
-- [Kenan Research Center Finding Aids](https://aspace-atlantahistorycenter.galileo.usg.edu/repositories/2/archival_objects/57240)
+- [Official Website – Our History](https://www.highlandhillsbaptist.org/our-history) ← **primary source; replaces the dead Squarespace page**
+- [Highland Hills Baptist Church History Page (old Squarespace site)](http://hhbcmacon.squarespace.com/history/) ⚠️ Dead link (404), and no Wayback Machine snapshot exists. Claims sourced only to this page cannot be re-verified.
+- [Kenan Research Center Finding Aid](https://aspace-atlantahistorycenter.galileo.usg.edu/repositories/2/archival_objects/57240) — ⚠️ Note: this record is "Highland Hills Baptist Church, 1370 Briarcliff Road, Macon, Georgia, **1982**," a landscape-architecture project file in the Edward L. Daugherty papers. It documents 1982 grounds work, **not** the church's 1953 founding. It was mis-cited in earlier drafts.
 
 ### Denomination and Community Identity
 
 **Denomination:** Cooperative Baptist Fellowship (CBF)
 
-Highland Hills Baptist Church is affiliated with the **Cooperative Baptist Fellowship (CBF)**, not the Southern Baptist Convention. The church's mission emphasizes being "a thoughtful and growing intergenerational community of believers" that offers "a space for holy wrestling" where "everyone is welcomed to come and be transformed." The church identifies as a **diverse fellowship** that values inclusion and transformation.
+Highland Hills Baptist Church is affiliated with the **Cooperative Baptist Fellowship (CBF)**, not the Southern Baptist Convention. This is stated directly on the church's own site: "Highland Hills is affiliated with the Cooperative Baptist Fellowship, a network of churches who partner together in ministry and witness to God's goodness and love" (Who We Are). The Welcome page likewise says, "We are part of the Cooperative Baptist Fellowship."
+
+On its About page the church describes itself as "a thoughtful and growing intergenerational community of believers," "a diverse fellowship," offering "a space for holy wrestling" where "everyone is welcomed to come and be transformed."
+
+The Who We Are page adds that being Baptist, for this congregation, "is grounded in the freedom we find in God" — freedom of individual conscience and scriptural interpretation, freedom of each local church, and religious liberty for all faiths. The church ordains women; it amended its bylaws in 2000 to let all members over 21 serve as deacons and elected Mary Brown as its first woman deacon.
 
 **Community Involvement:**
-- The church hosted the **Cooperative Baptist Fellowship (CBF) Georgia State Gathering** in November 2024
-- Active in serving youth through multiple programs (youth group, Sunday School)
-- Emphasizes adult education and faith formation
+- The church hosted the **CBF Georgia State Gathering** on November 10–11, 2024 (theme: "Being Like Jesus")
+- The **Cooperative Baptist Fellowship of Georgia leases classrooms behind the church chapel** as its office space (per a church announcement post) — worth confirming this is still current
+- Ongoing community partnerships listed on the church's Projects & Partners page: Dr. Martin Luther King, Jr. Elementary School, LifeSpring, Brookdale Resource Center, DayBreak, **BSA Troop 170**, Loaves and Fishes, and McAfee School of Theology
+- Regular East Macon neighborhood events: Back to School Bash, Fall Festival, blood drives
+- Children's, youth (grades 6–12), and adult Sunday School; the family ministry page notes "a long history of supporting and engaging families with children along the spectrum of neurodiversity"
 
 **Sources:**
-- [Highland Hills Baptist Church – About Page](https://www.highlandhillsbaptist.org/about)
-- [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
-- [CBFGA Event – State Gathering at HHBC](https://cbfga.org/event/cbfga-state-gathering-highland-hills-baptist-church-registration/)
+- [Official Website – Who We Are](https://www.highlandhillsbaptist.org/who-we-are) ← states the CBF affiliation explicitly
+- [Official Website – Welcome](https://www.highlandhillsbaptist.org/welcome)
+- [Official Website – About](https://www.highlandhillsbaptist.org/about)
+- [Official Website – Projects & Partners](https://www.highlandhillsbaptist.org/projects-partners)
+- [Official Website – Family Ministry](https://www.highlandhillsbaptist.org/family-ministry)
+- [CBFGA Event – State Gathering at HHBC, Nov 10–11, 2024](https://cbfga.org/event/cbfga-state-gathering-highland-hills-baptist-church-registration/)
 
 ---
 

@@ -1,16 +1,24 @@
 # Macon, Georgia Research
 
+> **Fact-checked 2026-07-26.** Claims below were re-verified against primary sources (U.S. Census, NPS, official city/county and council sites). Council contact details reconcile with `docs/Offical-info.md`.
+
 ## Basic Facts About Macon
 
 **Geographic & Demographic Overview**
 
-Macon is the county seat of Bibb County in Middle Georgia, positioned at the geographic center of the state—earning it the affectionate nickname **"The Heart of Georgia."** The city proper has a population of approximately 157,000 residents, with the broader Macon metropolitan area reaching nearly 235,000 people.
+Macon has been a consolidated city-county government with Bibb County since 2014 (officially "Macon-Bibb County"); it was historically the county seat of Bibb County in Middle Georgia. It sits **near**—but not exactly at—the geographic center of Georgia, which is actually located in neighboring Twiggs County. The proximity nonetheless earned Macon the long-standing nickname **"The Heart of Georgia."**
 
-The region is known for its accessibility: Macon sits roughly equidistant from Atlanta and Savannah, making it a natural hub for central Georgia.
+Macon-Bibb County has a population of roughly **157,000** (157,346 at the 2020 Census; recent Census estimates hover just under 157,000). The five-county Macon-Bibb County Metropolitan Statistical Area (Bibb, Crawford, Jones, Monroe, and Twiggs) had about **237,600** residents as of 2024 estimates.
+
+Macon was founded in **1823** on the banks of the Ocmulgee River and celebrated its bicentennial in 2023.
+
+Macon is well connected by interstate but is *not* equidistant from Atlanta and Savannah: it lies roughly **85 miles** southeast of Atlanta and roughly **160 miles** northwest of Savannah. It is still a natural hub for central Georgia.
 
 **Sources:**
-- [10 Facts About Macon, Georgia | Luxwisp](https://www.luxwisp.com/facts-about-macon-georgia/)
-- [40 Facts About Macon Georgia - Facts.net](https://facts.net/history/40-facts-about-macon-georgia/)
+- [Macon - New Georgia Encyclopedia](https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/macon/)
+- [Macon-Bibb County, GA - Census Reporter](http://censusreporter.org/profiles/16000US1349008-macon-bibb-county-ga/)
+- [Macon-Bibb County, GA Metro Area - Census Reporter](http://censusreporter.org/profiles/31000US31420-macon-bibb-county-ga-metro-area/)
+- [Twiggs County — Geographic Center of Georgia](https://www.twiggscounty.us/)
 
 ---
 
@@ -18,14 +26,17 @@ The region is known for its accessibility: Macon sits roughly equidistant from A
 
 ### Cherry Blossom Capital of the World
 
-Macon's most distinctive and recognizable symbol is its extraordinary collection of over **350,000 Yoshino cherry trees**—more than double the city's population and substantially more than Washington D.C.'s famous 3,000 trees. Every spring, these trees create a stunning pink and white canopy across the city.
+Macon's most distinctive and recognizable symbol is its extraordinary collection of over **350,000 cherry trees**, of which **more than 100,000 are Yoshino cherries** (Visit Macon counts 13 cherry species citywide). That is more than double the city's population and far more than the roughly **3,800** cherry trees the National Park Service maintains around Washington, D.C.'s Tidal Basin. Every spring, these trees create a stunning pink and white canopy across the city.
 
-The **International Cherry Blossom Festival** has been celebrated annually since 1982, typically lasting ten days during peak bloom season. The festival features events for all ages and draws visitors from across the region. The cherry blossoms represent renewal, beauty, and community celebration—powerful visual and emotional themes for a family-focused organization.
+The tree population traces to **William A. Fickling Sr.**, a Macon realtor who identified a Yoshino cherry on his property in 1949 and propagated and gave away thousands of trees; the first volunteer community planting was organized by **Carolyn Crayton** of the Keep Macon-Bibb Beautiful Commission in 1973.
+
+The **International Cherry Blossom Festival** was founded by Crayton and first held **March 23, 1982** (chosen to fall on Fickling's birthday and near peak bloom). It has been celebrated annually since, running **ten days** in late March during peak bloom. The 2027 festival is scheduled for March 19–28, 2027. The festival features events for all ages and draws visitors from across the region. The cherry blossoms represent renewal, beauty, and community celebration—powerful visual and emotional themes for a family-focused organization.
 
 **Sources:**
-- [How Macon, Georgia, Became the Cherry Blossom Capital of the World | Matador Network](https://matadornetwork.com/read/macon-georgia-cherry-blossom-festival/)
+- [History of the Cherry Blossom Trees | Visit Macon](https://visitmacon.org/blog/history-of-the-cherry-blossom-trees/)
 - [International Cherry Blossom Festival | Macon, Georgia](https://cherryblossom.com/)
-- [This small town in Georgia is the "Cherry Blossom Capital of the World" with 350000 cherry trees | Yahoo](https://creators.yahoo.com/lifestyle/story/this-small-town-in-georgia-is-the-cherry-blossom-capital-of-the-world-with-350000-cherry-trees-200915806.html)
+- [History of the Cherry Trees | National Park Service](https://www.nps.gov/subjects/cherryblossom/history-of-the-cherry-trees.htm)
+- [How Macon, Georgia, Became the Cherry Blossom Capital of the World | Matador Network](https://matadornetwork.com/read/macon-georgia-cherry-blossom-festival/)
 
 ### Ocmulgee Mounds National Historical Park
 
