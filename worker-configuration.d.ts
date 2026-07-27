@@ -12,6 +12,7 @@ interface __BaseEnv_Env {
 	TURNSTILE_EXPECTED_HOSTNAMES: "macon170.com,www.macon170.com";
 	ACCESS_TEAM_DOMAIN: "https://kerryhatcher.cloudflareaccess.com";
 	ACCESS_AUD: "9f0a0872435ccde628fc33d38f47f7f36ab2b8fe9860a8b5e671a12bb5782cc5";
+	CALENDAR_API_KEY?: string;
 }
 declare namespace Cloudflare {
 	interface GlobalProps {

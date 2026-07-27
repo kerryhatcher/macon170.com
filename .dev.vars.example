@@ -1,3 +1,7 @@
 # Cloudflare Turnstile's documented always-pass secret for local automated testing only.
 # Never use this value in production.
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+
+# API key for calendar admin curl/agent access. Set to a long random string.
+# Generate: openssl rand -hex 32
+CALENDAR_API_KEY=dev-key-change-me-in-production

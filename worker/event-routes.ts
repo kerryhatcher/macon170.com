@@ -106,9 +106,17 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
   }
 
   if (!url.pathname.startsWith('/api/admin/events')) return null;
-  const identity = await context.requireAccess(request, env);
-  const actor = identity.email;
-  if (!actor) return context.json({ ok: false, error: 'Authenticated email required.' }, 403, context.adminHeaders(env));
+
+  const apiKey = request.headers.get('x-api-key');
+  const isApiKeyAuth = typeof apiKey === 'string' && apiKey.length > 0 && apiKey === env.CALENDAR_API_KEY;
+  let actor: string;
+  if (isApiKeyAuth) {
+    actor = 'api-key';
+  } else {
+    const identity = await context.requireAccess(request, env);
+    actor = identity.email ?? '';
+    if (!actor) return context.json({ ok: false, error: 'Authenticated email required.' }, 403, context.adminHeaders(env));
+  }
 
   if (url.pathname === '/api/admin/events' && request.method === 'GET') {
     const rawVisibility = url.searchParams.get('visibility');
@@ -123,7 +131,7 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
   }
 
   if (url.pathname === '/api/admin/events' && request.method === 'POST') {
-    context.enforceSameOrigin(request, env.ADMIN_ORIGIN);
+    if (!isApiKeyAuth) context.enforceSameOrigin(request, env.ADMIN_ORIGIN);
     requireJsonRequest(request);
     const input = parseEventInput(await readJson(request), 'create');
     const id = crypto.randomUUID();
@@ -183,7 +191,7 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
   }
 
   if (request.method === 'PUT') {
-    context.enforceSameOrigin(request, env.ADMIN_ORIGIN);
+    if (!isApiKeyAuth) context.enforceSameOrigin(request, env.ADMIN_ORIGIN);
     requireJsonRequest(request);
     const existing = await env.DB.prepare('SELECT visibility FROM calendar_events WHERE id = ?')
       .bind(id)
