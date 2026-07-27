@@ -179,4 +179,17 @@ describe('public roster', () => {
     // authored fallback text in place instead of injecting real names) is the failure this guards.
     expect(html).not.toContain('The current roster loads from the pack database');
   });
+
+  // Guards worker/index.ts's ROSTER_PATHS branch: it strips if-none-match/if-modified-since
+  // before ASSETS.fetch and marks the injected response uncacheable, because the response's
+  // etag describes the un-injected static file, not the roster actually returned. Without
+  // that stripping, Workers Assets would answer the conditional request with a 304 and a
+  // returning visitor would keep seeing a stale roster from browser cache after an edit.
+  it('always returns a fresh, uncacheable body on a roster path even with conditional headers', async () => {
+    const response = await exports.default.fetch('http://localhost/about', { headers: { 'if-none-match': '*' } });
+    expect(response.status).toBe(200);
+    expect(response.headers.get('cache-control')).toBe('no-store');
+    expect(response.headers.get('etag')).toBeNull();
+    expect(await response.text()).toContain('Kerry Hatcher');
+  });
 });

@@ -43,23 +43,23 @@ export class LeadershipRouteError extends Error {
   }
 }
 
-// Shared by the public endpoint and the HTMLRewriter injection so both agree on
-// what "vacant" means.
-export async function readRoster(db: D1Database): Promise<PublicRole[]> {
-  const result = await db.prepare(`SELECT ${fields} FROM leadership_roles ORDER BY sort_order ASC`).run<LeadershipRow>();
-  // updated_by is destructured off deliberately: it holds the editing volunteer's
-  // Cloudflare Access email, which must never reach a public response.
-  return result.results.map(({ updated_by: _updated_by, ...row }) => ({
-    ...row,
-    vacant: !row.name || row.name.trim() === '',
-  }));
+// Admin-only: same rows the public endpoint sees, but keeps updated_by so the admin
+// panel can show who last touched a role. `role ASC` is a tiebreaker so two roles
+// sharing a sort_order (e.g. both freshly created at the 500 default) get a stable,
+// deterministic order instead of swapping between requests.
+async function readAdminRoster(db: D1Database): Promise<AdminRole[]> {
+  const result = await db.prepare(`SELECT ${fields} FROM leadership_roles ORDER BY sort_order ASC, role ASC`).run<LeadershipRow>();
+  return result.results.map((row) => ({ ...row, vacant: !row.name || row.name.trim() === '' }));
 }
 
-// Admin-only counterpart to readRoster: same rows, but keeps updated_by so the
-// admin panel can show who last touched a role.
-async function readAdminRoster(db: D1Database): Promise<AdminRole[]> {
-  const result = await db.prepare(`SELECT ${fields} FROM leadership_roles ORDER BY sort_order ASC`).run<LeadershipRow>();
-  return result.results.map((row) => ({ ...row, vacant: !row.name || row.name.trim() === '' }));
+// Shared by the public endpoint and the HTMLRewriter injection so both agree on
+// what "vacant" means. Derived from readAdminRoster so the two views can never
+// disagree on ordering or vacancy — updated_by is stripped here, deliberately: it
+// holds the editing volunteer's Cloudflare Access email, which must never reach a
+// public response.
+export async function readRoster(db: D1Database): Promise<PublicRole[]> {
+  const roles = await readAdminRoster(db);
+  return roles.map(({ updated_by: _updated_by, ...row }) => row);
 }
 
 export async function handleLeadershipRoute(context: LeadershipRouteContext): Promise<Response | null> {
@@ -167,6 +167,11 @@ function parseLeadershipInput(input: LeadershipInput) {
   };
 }
 
+// The pack policy is no adult email addresses in any public output. name/bio are
+// free text a volunteer types and both publish verbatim to /about, so reject
+// anything email-shaped rather than let it slip through as prose.
+const EMAIL_SHAPED = /\S+@\S+\.\S/;
+
 function parseSortOrder(value: unknown): number | null {
   if (value === undefined || value === null) return null;
   if (typeof value !== 'number' || !Number.isInteger(value)) {
@@ -179,6 +184,12 @@ function optionalText(value: unknown, maximum: number, label: string): string | 
   if (typeof value !== 'string' || !value.trim()) return null;
   const result = value.trim();
   if (result.length > maximum) throw new LeadershipRouteError(400, `That ${label} is too long.`);
+  if (EMAIL_SHAPED.test(result)) {
+    throw new LeadershipRouteError(
+      400,
+      `The pack site doesn't publish email addresses — leave the ${label} out and point folks to /contact/ instead.`,
+    );
+  }
   return result;
 }
 
