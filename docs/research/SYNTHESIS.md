@@ -13,7 +13,7 @@ Cub Scouting unit of **Scouting America** operating under the **Central Georgia 
 (headquartered in Macon, 24 counties of middle Georgia).
 
 **Chartered organization:** **Highland Hills Baptist Church**, 1370 Briarcliff Road, Macon, GA 31211
-— a 1953-founded Southern Baptist congregation in the historic Shirley Hills neighborhood of East
+— a 1953-founded Cooperative Baptist Fellowship congregation in the historic Shirley Hills neighborhood of East
 Macon. Note the charter relationship is *confirmed* for Venturing Crew 170 but **not yet
 independently confirmed for Pack 170** (see Open Questions).
 

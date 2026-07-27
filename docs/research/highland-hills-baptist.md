@@ -21,7 +21,7 @@ Cub Scout Pack 170's Chartered Organization in Macon, Georgia
 - Sunday School: 9:45 a.m.
 - Morning Worship: 11:00 a.m.
 
-**Senior Pastor:** Dr. James C. Dant
+**Current Pastors:** Rev. Caitlin Childers Brown (Pastor and Minister of Service & Community) and Rev. Ethan Brown (Pastor and Minister of Care & Discipleship), co-pastoring since July 2023
 
 **Sources:**
 - [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
@@ -44,7 +44,7 @@ Highland Hills Baptist Church was chartered on April 12, 1953, with Dr. Lewis Ba
 - Phase one construction (1954) included the chapel, nursery, parlor, and several classrooms
 
 **Sources:**
-- [Highland Hills Baptist Church History Page](http://hhbcmacon.squarespace.com/history/)
+- [Highland Hills Baptist Church History Page](http://hhbcmacon.squarespace.com/history/) ⚠️ Dead link (404) — the church's Squarespace history site is no longer available
 - [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
 - [Kenan Research Center Finding Aids](https://aspace-atlantahistorycenter.galileo.usg.edu/repositories/2/archival_objects/57240)
 
