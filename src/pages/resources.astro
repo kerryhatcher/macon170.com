@@ -55,13 +55,14 @@ const resources = [
   <section class="section">
     <div class="container resource-list">
       {
-        resources.map((item) => (
+        resources.map((item, index) => (
           <article>
+            <span class="resource-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             <div>
-              <>
-                <h2>{item.title}</h2>
-                <p>{item.body}</p>
-              </>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
             </div>
             {item.link ? (
               <a class="button button--paper" href={item.link}>
@@ -100,9 +101,9 @@ const resources = [
   }
   .resource-number {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 900;
-    color: #9aa8b2;
+    color: var(--muted);
   }
   .resource-list h2 {
     font-size: 1.45rem;
