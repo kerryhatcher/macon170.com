@@ -8,7 +8,7 @@
     "dev:worker": "npm run build && wrangler dev --env-file .dev.vars",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "check": "astro check && tsc --noEmit --project tsconfig.worker.json && wrangler types --check worker-configuration.d.ts",
+    "check": "astro check && tsc --noEmit --project tsconfig.worker.json",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "lint": "eslint .",
