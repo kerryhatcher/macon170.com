@@ -13,6 +13,8 @@ Two primary audiences, weighted equally (user-confirmed):
 1. **Prospective families** — a Macon-area parent of a K–5 child who just heard about Cub Scouts (from a friend, school flyer, or BeAScout) and needs to answer in under two minutes: what is this, does my kid qualify, when/where do you meet, what does it cost, how do I join. Mostly on phones.
 2. **Current pack families** — returning for the calendar (the most-used page), event details, leader contacts, and resources.
 
+Secondary, internal (user-confirmed as an ops surface, not a third design priority): **adult pack volunteers** working the private desk at `admin.macon170.com` — answering parent inquiries, publishing calendar events, and maintaining the leadership roster. Design attention belongs on the public site; the desk must be correct, clear, and functional rather than expressive.
+
 ## Product Purpose
 
 The official website for Cub Scout Pack 170 of Macon, Georgia (macon170.com) — a Cub Scouting unit of Scouting America under the Central Georgia Council, chartered by Highland Hills Baptist Church. The site replaces the pack's existing `cubscoutpack170.square.site` as the primary web presence (user-confirmed); the pack's Facebook page remains and is linked. Success = new-family signups initiated (BeAScout/contact) and current families reliably finding event info.
@@ -32,10 +34,11 @@ The neighborhood pack, plainly local: Macon's own Pack 170, meeting in the histo
 
 ## Capabilities and Constraints
 
-- Astro static site.
-- **Placeholder policy (user-confirmed):** pack-specific facts not in `docs/Offical-info.md` (dues, leadership roster, den structure, contact emails, event dates) are UNKNOWN and must live as clearly-marked placeholders in a single easy-to-edit data file — never invented as real. Meeting info IS known (see Operating Context).
+- Astro, deployed as a single Cloudflare Worker serving static assets plus a small API. Not a purely static site: D1 (`macon170-submissions`) backs the contact inbox and the calendar; Turnstile guards the public form; a daily cron prunes submissions after 365 days. Public traffic on `www.macon170.com` (apex redirects); `admin.macon170.com` is the volunteer desk. See `docs/CLOUDFLARE-DEPLOYMENT.md`.
+- **Volunteer desk access:** Cloudflare Access, deny-by-default allowlist of approved adult volunteer emails, one-time PIN, short sessions. The Worker independently verifies every Access JWT (issuer, JWKS, audience) — the hostname gate is not the only check. Every detail view and status change writes an audit row tied to the verified Access email.
+- **Placeholder policy (user-confirmed, evolving):** pack-specific facts not in `docs/Offical-info.md` are never invented. Facts a volunteer can maintain (leadership roster, calendar events) move to D1 and are edited in the desk — no git, no deploy. The clearly-marked single-file placeholder pattern (`src/data/`) remains for facts that have no editor yet (dues, den structure, contact emails). Meeting info IS known (see Operating Context).
 - **Brand/trademark rules (binding, see trademark-brand-guidance.md):** official Scouting artwork used unmodified only, from the Brand Center; fleur-de-lis affirmatively recommended as icon/favicon; never extract the Wolf element; never use the WOSM World Scout Emblem; no recoloring/effects on marks; footer attribution + non-endorsement block required; no ads or merchandise sales; don't reproduce Supply Group publications.
-- **Youth protection (binding):** youth identified by first name + last initial only; no youth photos without consent; site needs its own privacy policy page naming a webmaster contact; all contact channels reach multiple adults, parent-framed; everything public, nothing members-only.
+- **Youth protection (binding):** youth identified by first name + last initial only; no youth photos without consent; site needs its own privacy policy page naming a webmaster contact; all contact channels reach multiple adults, parent-framed. **All family-facing content is public — there is no members-only site.** The single gated surface is adult-volunteer administration, which holds no youth data: the contact form tells parents not to submit a child's name, the roster schema has no adult email column, and the public calendar API exposes only published family logistics, never volunteer identities or audit metadata. Volunteers reply from an approved shared pack mailbox, never a private one-to-one youth channel.
 - Naming: "Cub Scout Pack 170" / "Pack 170, Scouting America" — never "Boy Scout Pack" or bare "BSA" in fresh copy.
 - Charter relationship to Highland Hills Baptist Church is confirmed by pack leadership (`docs/Offical-info.md`); the pack meets there. Acknowledgment copy should still be easy to update.
 
@@ -50,13 +53,15 @@ The neighborhood pack, plainly local: Macon's own Pack 170, meeting in the histo
 ## Evidence on Hand
 
 - Five research documents in `docs/research/` with primary-source citations.
-- No pack photos, no testimonials, no roster, no calendar dates yet — must not be fabricated. Real assets (Brand Center artwork/photos, pack facts) come from the user later.
+- Verified pack and council facts: `docs/Offical-info.md` (canonical, human-written, never edited by agents).
+- Partial real leadership roster in `src/data/leadership.md` — Cubmaster, Committee Chair, Chartered Organization Representative, and two den leaders are real and named; the remaining den leader rows are deliberately empty and must stay empty until filled by leadership.
+- Still absent and never to be fabricated: pack photos, testimonials, dues amounts, and dated calendar events. Real assets (Brand Center artwork/photos, pack facts) come from the user later.
 
 ## Product Principles
 
 1. **A parent on a phone decides in 90 seconds** — meeting time, place, cost, and a Join path must never be more than one tap away.
 2. **Compliance is a feature, not a footnote** — youth-protection and trademark rules are hard constraints baked into structure, not retrofitted.
-3. **Placeholders are loud, real facts are easy** — anything unknown is visibly placeholder and editable in one file; nothing unknown is ever presented as fact.
+3. **Placeholders are loud, real facts are easy** — anything unknown is visibly placeholder; anything a volunteer owns is editable without a developer, in the desk or in one marked file. Nothing unknown is ever presented as fact.
 4. **Local beats generic** — Macon and Shirley Hills specificity is the differentiator over any template pack site.
 5. **Warm, plainspoken, welcoming to every family** — girls and boys, all backgrounds; explicitly counter the assumption that a church-chartered unit is members-only.
 
