@@ -168,3 +168,4 @@ graphify-out/20*/
 graphify-out/.graph.tmp.json
 .mcp.json
 .firecrawl
+.claude/worktrees
