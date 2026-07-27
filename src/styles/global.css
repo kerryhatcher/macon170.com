@@ -738,11 +738,13 @@ p {
    ran to roughly twice the screen and a parent who turned the phone sideways saw only a
    blue field. Cap the vertical spend so the first real content is on screen. */
 @media (orientation: landscape) and (max-height: 500px) {
+  /* h1 steps down to the documented headline step and .lead to the body step, rather than
+     inventing a landscape-only size pair off the ramp. */
   h1 {
-    font-size: clamp(1.85rem, 5.5vw, 2.6rem);
+    font-size: clamp(2.05rem, 5vw, 3.5rem);
   }
   .lead {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
   .chapter-hero {
     padding-block: 2.25rem 2.5rem;
@@ -786,15 +788,21 @@ p {
   @page {
     margin: 14mm;
   }
+  /* The DESIGN.md print ink ramp. Declared once here, so every rule below reads a token
+     and the four paper values stay in one reviewable place. */
   :root {
-    --paper: #fff;
-    --page: #fff;
-    --ink: #000;
-    --muted: #333;
-    --rule: #999;
+    --print-page: #ffffff;
+    --print-ink: #000000;
+    --print-ink-muted: #333333;
+    --print-rule: #999999;
+    --paper: var(--print-page);
+    --page: var(--print-page);
+    --ink: var(--print-ink);
+    --muted: var(--print-ink-muted);
+    --rule: var(--print-rule);
   }
   body {
-    background: #fff;
+    background: var(--print-page);
     font-size: 10.5pt;
     line-height: 1.45;
   }
@@ -839,9 +847,9 @@ p {
   .local-field,
   .shop-note,
   .safety-section {
-    background: #fff !important;
-    color: #000 !important;
-    border-color: #999 !important;
+    background: var(--print-page) !important;
+    color: var(--print-ink) !important;
+    border-color: var(--print-rule) !important;
   }
   .site-header *,
   .site-footer *,
@@ -856,32 +864,32 @@ p {
   .local-field *,
   .shop-note *,
   .safety-section * {
-    color: #000 !important;
+    color: var(--print-ink) !important;
   }
   .site-header {
-    border-bottom: 2px solid #000 !important;
+    border-bottom: 2px solid var(--print-ink) !important;
   }
   .brand-mark {
-    border-color: #000 !important;
+    border-color: var(--print-ink) !important;
   }
   /* The strip carries meeting time and place — the two facts a handout exists for. */
   .pack-strip {
-    border-bottom: 1px solid #999 !important;
+    border-bottom: 1px solid var(--print-rule) !important;
   }
   .chapter-tab,
   .date-sheet,
   .event-cat,
   .event-status {
-    background: #fff !important;
-    color: #000 !important;
-    border: 1px solid #000 !important;
+    background: var(--print-page) !important;
+    color: var(--print-ink) !important;
+    border: 1px solid var(--print-ink) !important;
   }
   .paper-sheet,
   .notice,
   .hero-note,
   .success-message {
     box-shadow: none !important;
-    border: 1px solid #999 !important;
+    border: 1px solid var(--print-rule) !important;
   }
   /* The offset shadows and hand-placed rotations are a screen motif; on paper they read as
      a printing fault. */
@@ -891,7 +899,7 @@ p {
     transform: none !important;
   }
   a {
-    color: #000 !important;
+    color: var(--print-ink) !important;
     text-decoration: underline;
   }
   /* A printed link is a dead end unless the address comes with it. Internal links are
@@ -1016,7 +1024,7 @@ p {
     padding: 0 0 0.9rem !important;
   }
   .footer-small {
-    border-top: 1px solid #999 !important;
+    border-top: 1px solid var(--print-rule) !important;
     margin-top: 1rem;
     padding-top: 0.6rem;
     font-size: 8.5pt;
