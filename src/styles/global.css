@@ -77,6 +77,17 @@ a {
   a:hover {
     color: var(--blue-deep);
   }
+  /* The two links that sit ON --blue-deep — the header wordmark and the footer list — would
+     be painted onto their own background by the rule above and vanish. The wordmark is a
+     display-weight mark, so it may go Gold; footer links are body text, so they keep white
+     and a Gold rule carries the hover instead. */
+  .brand:hover {
+    color: var(--gold);
+  }
+  .site-footer a:hover {
+    color: white;
+    text-decoration-color: var(--gold);
+  }
 }
 img,
 svg {
