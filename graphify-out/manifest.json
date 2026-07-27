@@ -85,8 +85,8 @@
     "semantic_hash": "442116963e15d263e8aab25158b01b47"
   },
   "src/pages/about.astro": {
-    "mtime": 1785193317.6053743,
-    "ast_hash": "b00f4a403ff3c76a167c40ffb1efa038",
+    "mtime": 1785195106.0421042,
+    "ast_hash": "3d34653937c3118567234df28c88a446",
     "semantic_hash": ""
   },
   "src/pages/activities.astro": {
@@ -170,12 +170,12 @@
     "semantic_hash": "db50420bfd83e09c16c87b3564aa470a"
   },
   "worker/index.test.ts": {
-    "mtime": 1785193255.564693,
-    "ast_hash": "e57942d0bec50b2e8a4d3d639ed6463d",
+    "mtime": 1785195080.3519042,
+    "ast_hash": "1e872ae82e4a59a1e3552631131c71c9",
     "semantic_hash": ""
   },
   "worker/index.ts": {
-    "mtime": 1785192015.032856,
+    "mtime": 1785195177.7282033,
     "ast_hash": "0b69e364ef8a639da5aa0520af453a1f",
     "semantic_hash": ""
   },
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "PRODUCT.md": {
-    "mtime": 1785193999.9886758,
-    "ast_hash": "bac0fd232ef2a337b27ac8e8eef7dc8d",
+    "mtime": 1785195095.7725537,
+    "ast_hash": "b48fc4940111cb165a4bd6b5414f543b",
     "semantic_hash": ""
   },
   "README.md": {
@@ -2400,13 +2400,13 @@
     "semantic_hash": ""
   },
   "migrations/0003_create_leadership.sql": {
-    "mtime": 1785188813.807115,
-    "ast_hash": "73e912dc7b38170e593f7e8f2c412b3a",
+    "mtime": 1785194962.6387594,
+    "ast_hash": "69539833894d35f08d27f0c4a3b21cc2",
     "semantic_hash": ""
   },
   "worker/admin-chrome.ts": {
-    "mtime": 1785191593.3543875,
-    "ast_hash": "47446307057df3c20a9a526b33e9a72f",
+    "mtime": 1785195023.4094536,
+    "ast_hash": "ffc900340accbd2f4c59d924e86cda2f",
     "semantic_hash": ""
   },
   "worker/leadership-admin.ts": {
@@ -2415,13 +2415,13 @@
     "semantic_hash": ""
   },
   "worker/leadership-routes.test.ts": {
-    "mtime": 1785190115.361086,
-    "ast_hash": "54b07fe92f5a664438512004afa30730",
+    "mtime": 1785195105.9048443,
+    "ast_hash": "ad99f0936901e96a418da106fd23818c",
     "semantic_hash": ""
   },
   "worker/leadership-routes.ts": {
-    "mtime": 1785192110.3991158,
-    "ast_hash": "4a6e5101c690a29c335bae0d627c0527",
+    "mtime": 1785195105.8738997,
+    "ast_hash": "dcd9eb929a22d29376e0dbea98ff0459",
     "semantic_hash": ""
   },
   "worker/roster-inject.test.ts": {
@@ -2430,8 +2430,13 @@
     "semantic_hash": ""
   },
   "worker/roster-inject.ts": {
-    "mtime": 1785190463.251148,
-    "ast_hash": "f006ed751246209219f3cb9ad5dec0e0",
+    "mtime": 1785195105.91509,
+    "ast_hash": "de630d104c5557850bcb9f296e20252d",
+    "semantic_hash": ""
+  },
+  "worker/html.ts": {
+    "mtime": 1785195006.9717236,
+    "ast_hash": "959c1e9b837514bcdf73d3b6257f496d",
     "semantic_hash": ""
   }
 }

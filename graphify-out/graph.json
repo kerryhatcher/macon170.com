@@ -3269,7 +3269,7 @@
       "source_location": "L949",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_design_system_mergedesignsystemfindings",
-      "community": 264,
+      "community": 225,
       "norm_label": "mergedesignsystemfindings()"
     },
     {
@@ -5819,7 +5819,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_extfromfilepath",
-      "community": 264,
+      "community": 267,
       "norm_label": "extfromfilepath()"
     },
     {
@@ -5829,7 +5829,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_shouldrunpageanalyzers",
-      "community": 264,
+      "community": 267,
       "norm_label": "shouldrunpageanalyzers()"
     },
     {
@@ -5969,7 +5969,7 @@
       "source_location": "L664",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_extractstyleblocks",
-      "community": 282,
+      "community": 267,
       "norm_label": "extractstyleblocks()"
     },
     {
@@ -5989,7 +5989,7 @@
       "source_location": "L684",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_extractcssinjs",
-      "community": 282,
+      "community": 267,
       "norm_label": "extractcssinjs()"
     },
     {
@@ -6019,7 +6019,7 @@
       "source_location": "L757",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_runtextcontentanalyzers",
-      "community": 264,
+      "community": 267,
       "norm_label": "runtextcontentanalyzers()"
     },
     {
@@ -6029,7 +6029,7 @@
       "source_location": "L781",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_regex_detect_text_detecttext",
-      "community": 264,
+      "community": 267,
       "norm_label": "detecttext()"
     },
     {
@@ -6449,7 +6449,7 @@
       "source_location": "L893",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument",
-      "community": 357,
+      "community": 319,
       "norm_label": "staticdocument"
     },
     {
@@ -6459,7 +6459,7 @@
       "source_location": "L894",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_constructor",
-      "community": 357,
+      "community": 319,
       "norm_label": ".constructor()"
     },
     {
@@ -6469,7 +6469,7 @@
       "source_location": "L910",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_wrap",
-      "community": 357,
+      "community": 319,
       "norm_label": ".wrap()"
     },
     {
@@ -6489,7 +6489,7 @@
       "source_location": "L925",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_queryselector",
-      "community": 357,
+      "community": 319,
       "norm_label": ".queryselector()"
     },
     {
@@ -6499,7 +6499,7 @@
       "source_location": "L933",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_documentelement",
-      "community": 357,
+      "community": 319,
       "norm_label": ".documentelement()"
     },
     {
@@ -6509,7 +6509,7 @@
       "source_location": "L936",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_body",
-      "community": 357,
+      "community": 319,
       "norm_label": ".body()"
     },
     {
@@ -6519,7 +6519,7 @@
       "source_location": "L939",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_setstyle",
-      "community": 357,
+      "community": 319,
       "norm_label": ".setstyle()"
     },
     {
@@ -6539,7 +6539,7 @@
       "source_location": "L945",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_sethoverstyle",
-      "community": 357,
+      "community": 319,
       "norm_label": ".sethoverstyle()"
     },
     {
@@ -6549,7 +6549,7 @@
       "source_location": "L948",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_gethoverstyle",
-      "community": 357,
+      "community": 319,
       "norm_label": ".gethoverstyle()"
     },
     {
@@ -6559,7 +6559,7 @@
       "source_location": "L951",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_setaccentdashpseudo",
-      "community": 357,
+      "community": 319,
       "norm_label": ".setaccentdashpseudo()"
     },
     {
@@ -6569,7 +6569,7 @@
       "source_location": "L954",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_hasaccentdashpseudo",
-      "community": 357,
+      "community": 319,
       "norm_label": ".hasaccentdashpseudo()"
     },
     {
@@ -6579,7 +6579,7 @@
       "source_location": "L957",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_setpseudosurface",
-      "community": 357,
+      "community": 319,
       "norm_label": ".setpseudosurface()"
     },
     {
@@ -6589,7 +6589,7 @@
       "source_location": "L960",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_staticdocument_getpseudosurface",
-      "community": 357,
+      "community": 319,
       "norm_label": ".getpseudosurface()"
     },
     {
@@ -6609,7 +6609,7 @@
       "source_location": "L974",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_buildstaticwindow",
-      "community": 264,
+      "community": 319,
       "norm_label": "buildstaticwindow()"
     },
     {
@@ -6619,7 +6619,7 @@
       "source_location": "L984",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_collectstaticcsstext",
-      "community": 264,
+      "community": 406,
       "norm_label": "collectstaticcsstext()"
     },
     {
@@ -6629,7 +6629,7 @@
       "source_location": "L1015",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_css_cascade_buildstaticstylemap",
-      "community": 264,
+      "community": 358,
       "norm_label": "buildstaticstylemap()"
     },
     {
@@ -6639,7 +6639,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_detect_html",
-      "community": 264,
+      "community": 267,
       "norm_label": "detect-html.mjs"
     },
     {
@@ -6649,7 +6649,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_detect_html_checkstaticpagetypography",
-      "community": 264,
+      "community": 267,
       "norm_label": "checkstaticpagetypography()"
     },
     {
@@ -6659,7 +6659,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_detect_html_checkelementbrokenimage",
-      "community": 264,
+      "community": 267,
       "norm_label": "checkelementbrokenimage()"
     },
     {
@@ -6669,7 +6669,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_detect_html_static_element_rules",
-      "community": 264,
+      "community": 267,
       "norm_label": "static_element_rules"
     },
     {
@@ -6679,7 +6679,7 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_engines_static_html_detect_html_detecthtml",
-      "community": 264,
+      "community": 267,
       "norm_label": "detecthtml()"
     },
     {
@@ -7219,7 +7219,7 @@
       "source_location": "L536",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkmotion",
-      "community": 55,
+      "community": 267,
       "norm_label": "checkmotion()"
     },
     {
@@ -7289,7 +7289,7 @@
       "source_location": "L734",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_scancsstextforgridbackground",
-      "community": 358,
+      "community": 282,
       "norm_label": "scancsstextforgridbackground()"
     },
     {
@@ -7889,7 +7889,7 @@
       "source_location": "L2739",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checknumberedsectionlabelsfromdoc",
-      "community": 264,
+      "community": 357,
       "norm_label": "checknumberedsectionlabelsfromdoc()"
     },
     {
@@ -7929,7 +7929,7 @@
       "source_location": "L2782",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkelementmotiondom",
-      "community": 55,
+      "community": 267,
       "norm_label": "checkelementmotiondom()"
     },
     {
@@ -8089,7 +8089,7 @@
       "source_location": "L3522",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkpagequalityfromdoc",
-      "community": 264,
+      "community": 267,
       "norm_label": "checkpagequalityfromdoc()"
     },
     {
@@ -8099,7 +8099,7 @@
       "source_location": "L3543",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkpagequalitydom",
-      "community": 264,
+      "community": 267,
       "norm_label": "checkpagequalitydom()"
     },
     {
@@ -8179,7 +8179,7 @@
       "source_location": "L3807",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkrepeatedsectionkickersfromdoc",
-      "community": 264,
+      "community": 357,
       "norm_label": "checkrepeatedsectionkickersfromdoc()"
     },
     {
@@ -8189,7 +8189,7 @@
       "source_location": "L3816",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkelementmotion",
-      "community": 55,
+      "community": 267,
       "norm_label": "checkelementmotion()"
     },
     {
@@ -8199,7 +8199,7 @@
       "source_location": "L3826",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkelementglow",
-      "community": 267,
+      "community": 55,
       "norm_label": "checkelementglow()"
     },
     {
@@ -8209,7 +8209,7 @@
       "source_location": "L3837",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checktypography",
-      "community": 55,
+      "community": 267,
       "norm_label": "checktypography()"
     },
     {
@@ -8269,7 +8269,7 @@
       "source_location": "L4218",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkpagelayout",
-      "community": 264,
+      "community": 267,
       "norm_label": "checkpagelayout()"
     },
     {
@@ -8319,7 +8319,7 @@
       "source_location": "L4382",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkrepeatedcontainertextfromdoc",
-      "community": 264,
+      "community": 55,
       "norm_label": "checkrepeatedcontainertextfromdoc()"
     },
     {
@@ -8409,7 +8409,7 @@
       "source_location": "L4514",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_shadowlayeralpha",
-      "community": 516,
+      "community": 55,
       "norm_label": "shadowlayeralpha()"
     },
     {
@@ -8419,7 +8419,7 @@
       "source_location": "L4523",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_shadowmaxblurpx",
-      "community": 516,
+      "community": 55,
       "norm_label": "shadowmaxblurpx()"
     },
     {
@@ -8439,7 +8439,7 @@
       "source_location": "L4546",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkgptthinborderwideshadow",
-      "community": 516,
+      "community": 55,
       "norm_label": "checkgptthinborderwideshadow()"
     },
     {
@@ -8449,7 +8449,7 @@
       "source_location": "L4558",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_borderwidthsfromstyle",
-      "community": 516,
+      "community": 55,
       "norm_label": "borderwidthsfromstyle()"
     },
     {
@@ -8459,7 +8459,7 @@
       "source_location": "L4567",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_bordercolorsfromstyle",
-      "community": 516,
+      "community": 55,
       "norm_label": "bordercolorsfromstyle()"
     },
     {
@@ -8469,7 +8469,7 @@
       "source_location": "L4571",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkelementgptbordershadow",
-      "community": 516,
+      "community": 55,
       "norm_label": "checkelementgptbordershadow()"
     },
     {
@@ -8479,7 +8479,7 @@
       "source_location": "L4579",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_rules_checks_checkelementgptbordershadowdom",
-      "community": 516,
+      "community": 55,
       "norm_label": "checkelementgptbordershadowdom()"
     },
     {
@@ -8989,7 +8989,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_shared_constants_isbrandfontonowndomain",
-      "community": 55,
+      "community": 267,
       "norm_label": "isbrandfontonowndomain()"
     },
     {
@@ -9149,7 +9149,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_shared_page",
-      "community": 264,
+      "community": 267,
       "norm_label": "page.mjs"
     },
     {
@@ -9159,7 +9159,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_detector_shared_page_isfullpage",
-      "community": 264,
+      "community": 267,
       "norm_label": "isfullpage()"
     },
     {
@@ -13369,7 +13369,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_lib_template_extensions_resolvelivetemplateextensions",
-      "community": 276,
+      "community": 269,
       "norm_label": "resolvelivetemplateextensions()"
     },
     {
@@ -13899,7 +13899,7 @@
       "source_location": "L239",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_clearscrolly",
-      "community": 71,
+      "community": 5,
       "norm_label": "clearscrolly()"
     },
     {
@@ -13919,7 +13919,7 @@
       "source_location": "L390",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_shouldshowhighlighttagtooltip",
-      "community": 5,
+      "community": 60,
       "norm_label": "shouldshowhighlighttagtooltip()"
     },
     {
@@ -13929,7 +13929,7 @@
       "source_location": "L395",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_hidehighlighttagtooltip",
-      "community": 5,
+      "community": 60,
       "norm_label": "hidehighlighttagtooltip()"
     },
     {
@@ -13939,7 +13939,7 @@
       "source_location": "L401",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showhighlight",
-      "community": 5,
+      "community": 60,
       "norm_label": "showhighlight()"
     },
     {
@@ -14059,7 +14059,7 @@
       "source_location": "L797",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_pointstopath",
-      "community": 60,
+      "community": 383,
       "norm_label": "pointstopath()"
     },
     {
@@ -14089,7 +14089,7 @@
       "source_location": "L863",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_buildpinelement",
-      "community": 60,
+      "community": 383,
       "norm_label": "buildpinelement()"
     },
     {
@@ -14139,7 +14139,7 @@
       "source_location": "L994",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_buildannotationsforcapture",
-      "community": 60,
+      "community": 383,
       "norm_label": "buildannotationsforcapture()"
     },
     {
@@ -14189,7 +14189,7 @@
       "source_location": "L1153",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_isusefulmanualeditcontext",
-      "community": 60,
+      "community": 380,
       "norm_label": "isusefulmanualeditcontext()"
     },
     {
@@ -14199,7 +14199,7 @@
       "source_location": "L1159",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_collectmanualcontextpieces",
-      "community": 60,
+      "community": 380,
       "norm_label": "collectmanualcontextpieces()"
     },
     {
@@ -14249,7 +14249,7 @@
       "source_location": "L1239",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_positionbar",
-      "community": 373,
+      "community": 383,
       "norm_label": "positionbar()"
     },
     {
@@ -14559,7 +14559,7 @@
       "source_location": "L1863",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_detectinsertaxisfromstyle",
-      "community": 5,
+      "community": 60,
       "norm_label": "detectinsertaxisfromstyle()"
     },
     {
@@ -14569,7 +14569,7 @@
       "source_location": "L1882",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_detectinsertaxis",
-      "community": 5,
+      "community": 60,
       "norm_label": "detectinsertaxis()"
     },
     {
@@ -14579,7 +14579,7 @@
       "source_location": "L1893",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_layoutflowchildren",
-      "community": 5,
+      "community": 60,
       "norm_label": "layoutflowchildren()"
     },
     {
@@ -14649,7 +14649,7 @@
       "source_location": "L2008",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_cursorforinsertaxis",
-      "community": 5,
+      "community": 285,
       "norm_label": "cursorforinsertaxis()"
     },
     {
@@ -14659,7 +14659,7 @@
       "source_location": "L2012",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_placeholdersizing",
-      "community": 5,
+      "community": 60,
       "norm_label": "placeholdersizing()"
     },
     {
@@ -14669,7 +14669,7 @@
       "source_location": "L2029",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_placeholderwidthisimplicit",
-      "community": 60,
+      "community": 383,
       "norm_label": "placeholderwidthisimplicit()"
     },
     {
@@ -14679,7 +14679,7 @@
       "source_location": "L2033",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_applyplaceholdersizingstyles",
-      "community": 5,
+      "community": 60,
       "norm_label": "applyplaceholdersizingstyles()"
     },
     {
@@ -14689,7 +14689,7 @@
       "source_location": "L2050",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_materializeplaceholderwidth",
-      "community": 60,
+      "community": 383,
       "norm_label": "materializeplaceholderwidth()"
     },
     {
@@ -14749,7 +14749,7 @@
       "source_location": "L2115",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_ensureinsertline",
-      "community": 5,
+      "community": 60,
       "norm_label": "ensureinsertline()"
     },
     {
@@ -14759,7 +14759,7 @@
       "source_location": "L2133",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showinsertline",
-      "community": 5,
+      "community": 60,
       "norm_label": "showinsertline()"
     },
     {
@@ -14779,7 +14779,7 @@
       "source_location": "L2183",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_setpageinteractioncursor",
-      "community": 5,
+      "community": 285,
       "norm_label": "setpageinteractioncursor()"
     },
     {
@@ -14789,7 +14789,7 @@
       "source_location": "L2209",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_syncpageinteractioncursor",
-      "community": 5,
+      "community": 285,
       "norm_label": "syncpageinteractioncursor()"
     },
     {
@@ -14799,7 +14799,7 @@
       "source_location": "L2224",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_setlivestate",
-      "community": 71,
+      "community": 5,
       "norm_label": "setlivestate()"
     },
     {
@@ -14809,7 +14809,7 @@
       "source_location": "L2231",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_resolvebaranchor",
-      "community": 373,
+      "community": 383,
       "norm_label": "resolvebaranchor()"
     },
     {
@@ -14849,7 +14849,7 @@
       "source_location": "L2289",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_findinsertanchorindom",
-      "community": 373,
+      "community": 383,
       "norm_label": "findinsertanchorindom()"
     },
     {
@@ -14859,7 +14859,7 @@
       "source_location": "L2306",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_isinsertgeneratingsession",
-      "community": 373,
+      "community": 383,
       "norm_label": "isinsertgeneratingsession()"
     },
     {
@@ -14869,7 +14869,7 @@
       "source_location": "L2313",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_ensureinsertplaceholder",
-      "community": 373,
+      "community": 383,
       "norm_label": "ensureinsertplaceholder()"
     },
     {
@@ -14879,7 +14879,7 @@
       "source_location": "L2341",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_applyplaceholderdimensions",
-      "community": 373,
+      "community": 383,
       "norm_label": "applyplaceholderdimensions()"
     },
     {
@@ -14919,7 +14919,7 @@
       "source_location": "L2399",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_startplaceholderedgeresize",
-      "community": 60,
+      "community": 383,
       "norm_label": "startplaceholderedgeresize()"
     },
     {
@@ -14929,7 +14929,7 @@
       "source_location": "L2423",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_createinsertplaceholder",
-      "community": 5,
+      "community": 60,
       "norm_label": "createinsertplaceholder()"
     },
     {
@@ -15069,7 +15069,7 @@
       "source_location": "L3086",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_buildsavingrow",
-      "community": 285,
+      "community": 277,
       "norm_label": "buildsavingrow()"
     },
     {
@@ -15169,7 +15169,7 @@
       "source_location": "L3368",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_recoveremptycycling",
-      "community": 71,
+      "community": 5,
       "norm_label": "recoveremptycycling()"
     },
     {
@@ -15189,7 +15189,7 @@
       "source_location": "L3470",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_getmountedsveltecomponentanchor",
-      "community": 373,
+      "community": 372,
       "norm_label": "getmountedsveltecomponentanchor()"
     },
     {
@@ -15199,7 +15199,7 @@
       "source_location": "L3476",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_resolvesveltecomponentanchor",
-      "community": 373,
+      "community": 71,
       "norm_label": "resolvesveltecomponentanchor()"
     },
     {
@@ -15209,7 +15209,7 @@
       "source_location": "L3480",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_getvisiblevariantel",
-      "community": 373,
+      "community": 71,
       "norm_label": "getvisiblevariantel()"
     },
     {
@@ -15219,7 +15219,7 @@
       "source_location": "L3490",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_parsevariantparams",
-      "community": 373,
+      "community": 71,
       "norm_label": "parsevariantparams()"
     },
     {
@@ -15229,7 +15229,7 @@
       "source_location": "L3512",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_applyparamvalue",
-      "community": 373,
+      "community": 71,
       "norm_label": "applyparamvalue()"
     },
     {
@@ -15239,7 +15239,7 @@
       "source_location": "L3537",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_applyparamdefaults",
-      "community": 373,
+      "community": 71,
       "norm_label": "applyparamdefaults()"
     },
     {
@@ -15409,7 +15409,7 @@
       "source_location": "L3961",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_sourcehintforelement",
-      "community": 60,
+      "community": 380,
       "norm_label": "sourcehintforelement()"
     },
     {
@@ -15419,7 +15419,7 @@
       "source_location": "L3977",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_parsesourceloc",
-      "community": 60,
+      "community": 380,
       "norm_label": "parsesourceloc()"
     },
     {
@@ -16059,7 +16059,7 @@
       "source_location": "L5200",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_popoverdirection",
-      "community": 373,
+      "community": 71,
       "norm_label": "popoverdirection()"
     },
     {
@@ -16069,7 +16069,7 @@
       "source_location": "L5216",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_closedclippath",
-      "community": 373,
+      "community": 71,
       "norm_label": "closedclippath()"
     },
     {
@@ -16079,7 +16079,7 @@
       "source_location": "L5220",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_setclippath",
-      "community": 373,
+      "community": 71,
       "norm_label": "setclippath()"
     },
     {
@@ -16089,7 +16089,7 @@
       "source_location": "L5230",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_positionparamspanel",
-      "community": 373,
+      "community": 71,
       "norm_label": "positionparamspanel()"
     },
     {
@@ -16099,7 +16099,7 @@
       "source_location": "L5262",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showparamspanel",
-      "community": 373,
+      "community": 71,
       "norm_label": "showparamspanel()"
     },
     {
@@ -16109,7 +16109,7 @@
       "source_location": "L5272",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_hideparamspanel",
-      "community": 373,
+      "community": 71,
       "norm_label": "hideparamspanel()"
     },
     {
@@ -16119,7 +16119,7 @@
       "source_location": "L5282",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_refreshparamspanel",
-      "community": 373,
+      "community": 71,
       "norm_label": "refreshparamspanel()"
     },
     {
@@ -16159,7 +16159,7 @@
       "source_location": "L5353",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_opentunepopover",
-      "community": 373,
+      "community": 71,
       "norm_label": "opentunepopover()"
     },
     {
@@ -16189,7 +16189,7 @@
       "source_location": "L5391",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_schedulecyclingbarsync",
-      "community": 373,
+      "community": 71,
       "norm_label": "schedulecyclingbarsync()"
     },
     {
@@ -16209,7 +16209,7 @@
       "source_location": "L5416",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showvariantindom",
-      "community": 373,
+      "community": 71,
       "norm_label": "showvariantindom()"
     },
     {
@@ -16389,7 +16389,7 @@
       "source_location": "L5676",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_loadsveltecomponentvariantsource",
-      "community": 60,
+      "community": 372,
       "norm_label": "loadsveltecomponentvariantsource()"
     },
     {
@@ -16399,7 +16399,7 @@
       "source_location": "L5691",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_extractsveltecomponentstyle",
-      "community": 60,
+      "community": 372,
       "norm_label": "extractsveltecomponentstyle()"
     },
     {
@@ -16409,7 +16409,7 @@
       "source_location": "L5696",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_applysveltecomponentvariantstyle",
-      "community": 60,
+      "community": 372,
       "norm_label": "applysveltecomponentvariantstyle()"
     },
     {
@@ -16419,7 +16419,7 @@
       "source_location": "L5713",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_removesveltecomponentvariantstyle",
-      "community": 60,
+      "community": 372,
       "norm_label": "removesveltecomponentvariantstyle()"
     },
     {
@@ -16519,7 +16519,7 @@
       "source_location": "L5897",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_teardownsveltecomponentsession",
-      "community": 71,
+      "community": 5,
       "norm_label": "teardownsveltecomponentsession()"
     },
     {
@@ -16569,7 +16569,7 @@
       "source_location": "L6108",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_abortsveltecomponentinjection",
-      "community": 71,
+      "community": 5,
       "norm_label": "abortsveltecomponentinjection()"
     },
     {
@@ -16689,7 +16689,7 @@
       "source_location": "L6457",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_updateselectedelement",
-      "community": 373,
+      "community": 71,
       "norm_label": "updateselectedelement()"
     },
     {
@@ -16709,7 +16709,7 @@
       "source_location": "L6491",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_pickvariantcontent",
-      "community": 373,
+      "community": 71,
       "norm_label": "pickvariantcontent()"
     },
     {
@@ -16719,7 +16719,7 @@
       "source_location": "L6519",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_variantstateselector",
-      "community": 373,
+      "community": 71,
       "norm_label": "variantstateselector()"
     },
     {
@@ -16729,7 +16729,7 @@
       "source_location": "L6528",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_variantparamdecls",
-      "community": 373,
+      "community": 71,
       "norm_label": "variantparamdecls()"
     },
     {
@@ -16739,7 +16739,7 @@
       "source_location": "L6538",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_updatevariantstatestylesheet",
-      "community": 373,
+      "community": 71,
       "norm_label": "updatevariantstatestylesheet()"
     },
     {
@@ -16749,7 +16749,7 @@
       "source_location": "L6558",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_removevariantstatestylesheet",
-      "community": 71,
+      "community": 5,
       "norm_label": "removevariantstatestylesheet()"
     },
     {
@@ -16759,7 +16759,7 @@
       "source_location": "L6562",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showoriginalduringdiscard",
-      "community": 71,
+      "community": 5,
       "norm_label": "showoriginalduringdiscard()"
     },
     {
@@ -16769,7 +16769,7 @@
       "source_location": "L6578",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_resolvescrolllockanchortop",
-      "community": 373,
+      "community": 383,
       "norm_label": "resolvescrolllockanchortop()"
     },
     {
@@ -16789,7 +16789,7 @@
       "source_location": "L6724",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_stopscrolllock",
-      "community": 71,
+      "community": 5,
       "norm_label": "stopscrolllock()"
     },
     {
@@ -16839,7 +16839,7 @@
       "source_location": "L7079",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_handleserverlost",
-      "community": 71,
+      "community": 5,
       "norm_label": "handleserverlost()"
     },
     {
@@ -16849,7 +16849,7 @@
       "source_location": "L7104",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_sendevent",
-      "community": 71,
+      "community": 412,
       "norm_label": "sendevent()"
     },
     {
@@ -16879,7 +16879,7 @@
       "source_location": "L7152",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_sendsteercheckpoint",
-      "community": 261,
+      "community": 412,
       "norm_label": "sendsteercheckpoint()"
     },
     {
@@ -16899,7 +16899,7 @@
       "source_location": "L7180",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_handlemousemove",
-      "community": 5,
+      "community": 60,
       "norm_label": "handlemousemove()"
     },
     {
@@ -16929,7 +16929,7 @@
       "source_location": "L7352",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_maybeprefetchpage",
-      "community": 71,
+      "community": 412,
       "norm_label": "maybeprefetchpage()"
     },
     {
@@ -17199,7 +17199,7 @@
       "source_location": "L8253",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_compileshader",
-      "community": 60,
+      "community": 71,
       "norm_label": "compileshader()"
     },
     {
@@ -17209,7 +17209,7 @@
       "source_location": "L8265",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_positionshaderoverlay",
-      "community": 373,
+      "community": 383,
       "norm_label": "positionshaderoverlay()"
     },
     {
@@ -17229,7 +17229,7 @@
       "source_location": "L8290",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showshaderbitmapfallback",
-      "community": 60,
+      "community": 71,
       "norm_label": "showshaderbitmapfallback()"
     },
     {
@@ -17239,7 +17239,7 @@
       "source_location": "L8309",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_showshaderoverlay",
-      "community": 60,
+      "community": 71,
       "norm_label": "showshaderoverlay()"
     },
     {
@@ -17249,7 +17249,7 @@
       "source_location": "L8422",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_handleaccept",
-      "community": 71,
+      "community": 5,
       "norm_label": "handleaccept()"
     },
     {
@@ -17349,7 +17349,7 @@
       "source_location": "L8628",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_cleanupacceptedsession",
-      "community": 71,
+      "community": 5,
       "norm_label": "cleanupacceptedsession()"
     },
     {
@@ -17389,7 +17389,7 @@
       "source_location": "L8700",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_resetsessionfilemeta",
-      "community": 71,
+      "community": 5,
       "norm_label": "resetsessionfilemeta()"
     },
     {
@@ -17519,7 +17519,7 @@
       "source_location": "L8890",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_clearsession",
-      "community": 71,
+      "community": 5,
       "norm_label": "clearsession()"
     },
     {
@@ -17559,7 +17559,7 @@
       "source_location": "L8910",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_cleanup",
-      "community": 71,
+      "community": 5,
       "norm_label": "cleanup()"
     },
     {
@@ -17659,7 +17659,7 @@
       "source_location": "L9378",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_pagechatpalette",
-      "community": 285,
+      "community": 261,
       "norm_label": "pagechatpalette()"
     },
     {
@@ -17859,7 +17859,7 @@
       "source_location": "L9580",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_steerfocusdebugenabled",
-      "community": 285,
+      "community": 261,
       "norm_label": "steerfocusdebugenabled()"
     },
     {
@@ -17879,7 +17879,7 @@
       "source_location": "L9601",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_attachsteerfocusdebug",
-      "community": 285,
+      "community": 261,
       "norm_label": "attachsteerfocusdebug()"
     },
     {
@@ -17929,7 +17929,7 @@
       "source_location": "L9718",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_buildsteerprocessingdots",
-      "community": 285,
+      "community": 261,
       "norm_label": "buildsteerprocessingdots()"
     },
     {
@@ -17939,7 +17939,7 @@
       "source_location": "L9748",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_keepsteerpointerinside",
-      "community": 285,
+      "community": 261,
       "norm_label": "keepsteerpointerinside()"
     },
     {
@@ -17979,7 +17979,7 @@
       "source_location": "L9799",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_clearsteerawaittimer",
-      "community": 261,
+      "community": 412,
       "norm_label": "clearsteerawaittimer()"
     },
     {
@@ -17989,7 +17989,7 @@
       "source_location": "L9806",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_schedulesteerawaittimeout",
-      "community": 261,
+      "community": 412,
       "norm_label": "schedulesteerawaittimeout()"
     },
     {
@@ -18019,7 +18019,7 @@
       "source_location": "L9897",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_steerspeechrecognitionctor",
-      "community": 261,
+      "community": 412,
       "norm_label": "steerspeechrecognitionctor()"
     },
     {
@@ -18029,7 +18029,7 @@
       "source_location": "L9901",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_isembeddedpreviewbrowser",
-      "community": 261,
+      "community": 412,
       "norm_label": "isembeddedpreviewbrowser()"
     },
     {
@@ -18039,7 +18039,7 @@
       "source_location": "L9912",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_steervoiceunavailablemessage",
-      "community": 261,
+      "community": 412,
       "norm_label": "steervoiceunavailablemessage()"
     },
     {
@@ -18049,7 +18049,7 @@
       "source_location": "L9916",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_steervoiceerrormessage",
-      "community": 261,
+      "community": 412,
       "norm_label": "steervoiceerrormessage()"
     },
     {
@@ -18059,7 +18059,7 @@
       "source_location": "L9938",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_syncvoiceui",
-      "community": 261,
+      "community": 412,
       "norm_label": "syncvoiceui()"
     },
     {
@@ -18069,7 +18069,7 @@
       "source_location": "L9963",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_releasevoiceengine",
-      "community": 261,
+      "community": 412,
       "norm_label": "releasevoiceengine()"
     },
     {
@@ -18079,7 +18079,7 @@
       "source_location": "L9980",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_stopvoice",
-      "community": 261,
+      "community": 412,
       "norm_label": "stopvoice()"
     },
     {
@@ -18089,7 +18089,7 @@
       "source_location": "L9987",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_finishvoicesession",
-      "community": 261,
+      "community": 412,
       "norm_label": "finishvoicesession()"
     },
     {
@@ -18099,7 +18099,7 @@
       "source_location": "L10001",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_startvoice",
-      "community": 261,
+      "community": 412,
       "norm_label": "startvoice()"
     },
     {
@@ -18109,7 +18109,7 @@
       "source_location": "L10071",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_steervoicecontext",
-      "community": 261,
+      "community": 412,
       "norm_label": "steervoicecontext()"
     },
     {
@@ -18119,7 +18119,7 @@
       "source_location": "L10082",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_configurevoicecontext",
-      "community": 261,
+      "community": 412,
       "norm_label": "configurevoicecontext()"
     },
     {
@@ -18129,7 +18129,7 @@
       "source_location": "L10094",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_togglesteervoice",
-      "community": 261,
+      "community": 412,
       "norm_label": "togglesteervoice()"
     },
     {
@@ -18139,7 +18139,7 @@
       "source_location": "L10103",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_toggleconfigurevoice",
-      "community": 261,
+      "community": 412,
       "norm_label": "toggleconfigurevoice()"
     },
     {
@@ -18149,7 +18149,7 @@
       "source_location": "L10112",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_submitsteermessage",
-      "community": 261,
+      "community": 412,
       "norm_label": "submitsteermessage()"
     },
     {
@@ -18189,7 +18189,7 @@
       "source_location": "L10187",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_initpagechat",
-      "community": 285,
+      "community": 261,
       "norm_label": "initpagechat()"
     },
     {
@@ -18269,7 +18269,7 @@
       "source_location": "L10497",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_stopagentstatuspoll",
-      "community": 60,
+      "community": 407,
       "norm_label": "stopagentstatuspoll()"
     },
     {
@@ -18279,7 +18279,7 @@
       "source_location": "L10504",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_fetchagentpollingstatus",
-      "community": 60,
+      "community": 407,
       "norm_label": "fetchagentpollingstatus()"
     },
     {
@@ -18289,7 +18289,7 @@
       "source_location": "L10517",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_startagentstatuspoll",
-      "community": 60,
+      "community": 407,
       "norm_label": "startagentstatuspoll()"
     },
     {
@@ -18309,7 +18309,7 @@
       "source_location": "L11054",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_updateglobalbarstate",
-      "community": 5,
+      "community": 285,
       "norm_label": "updateglobalbarstate()"
     },
     {
@@ -18319,7 +18319,7 @@
       "source_location": "L11105",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_requestdetectscan",
-      "community": 5,
+      "community": 285,
       "norm_label": "requestdetectscan()"
     },
     {
@@ -18329,7 +18329,7 @@
       "source_location": "L11119",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_toggledetect",
-      "community": 5,
+      "community": 285,
       "norm_label": "toggledetect()"
     },
     {
@@ -18359,7 +18359,7 @@
       "source_location": "L11200",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_loaddetectscript",
-      "community": 5,
+      "community": 285,
       "norm_label": "loaddetectscript()"
     },
     {
@@ -18369,7 +18369,7 @@
       "source_location": "L11209",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_ondetectmessage",
-      "community": 5,
+      "community": 285,
       "norm_label": "ondetectmessage()"
     },
     {
@@ -18429,7 +18429,7 @@
       "source_location": "L11718",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_renderdesignchrome",
-      "community": 60,
+      "community": 285,
       "norm_label": "renderdesignchrome()"
     },
     {
@@ -18439,7 +18439,7 @@
       "source_location": "L11737",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_builddesignheader",
-      "community": 60,
+      "community": 285,
       "norm_label": "builddesignheader()"
     },
     {
@@ -18449,7 +18449,7 @@
       "source_location": "L11779",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_toggledesignpanel",
-      "community": 60,
+      "community": 285,
       "norm_label": "toggledesignpanel()"
     },
     {
@@ -18459,7 +18459,7 @@
       "source_location": "L11792",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_browser_fetchdesignsystem",
-      "community": 60,
+      "community": 285,
       "norm_label": "fetchdesignsystem()"
     },
     {
@@ -22619,7 +22619,7 @@
       "source_location": "L729",
       "_origin": "ast",
       "id": "agents_skills_impeccable_scripts_live_manual_apply_writemanualapplytransaction",
-      "community": 112,
+      "community": 274,
       "norm_label": "writemanualapplytransaction()"
     },
     {
@@ -26079,7 +26079,7 @@
       "source_location": "L882",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_context_escaperegexp",
-      "community": 70,
+      "community": 397,
       "norm_label": "escaperegexp()"
     },
     {
@@ -26089,7 +26089,7 @@
       "source_location": "L892",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_context_extractsectionvalue",
-      "community": 70,
+      "community": 397,
       "norm_label": "extractsectionvalue()"
     },
     {
@@ -26199,7 +26199,7 @@
       "source_location": "L1181",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_context_parseclioptions",
-      "community": 70,
+      "community": 384,
       "norm_label": "parseclioptions()"
     },
     {
@@ -26519,7 +26519,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp",
-      "community": 384,
+      "community": 502,
       "norm_label": "detect-csp.mjs"
     },
     {
@@ -26529,7 +26529,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_skip_dirs",
-      "community": 384,
+      "community": 502,
       "norm_label": "skip_dirs"
     },
     {
@@ -26539,7 +26539,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_scan_exts",
-      "community": 384,
+      "community": 502,
       "norm_label": "scan_exts"
     },
     {
@@ -26549,7 +26549,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_layout_exts",
-      "community": 384,
+      "community": 502,
       "norm_label": "layout_exts"
     },
     {
@@ -26559,7 +26559,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_monorepo_helper_signals",
-      "community": 384,
+      "community": 502,
       "norm_label": "monorepo_helper_signals"
     },
     {
@@ -26569,7 +26569,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_sveltekit_csp_signals",
-      "community": 384,
+      "community": 502,
       "norm_label": "sveltekit_csp_signals"
     },
     {
@@ -26579,7 +26579,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_nuxt_security_signals",
-      "community": 384,
+      "community": 502,
       "norm_label": "nuxt_security_signals"
     },
     {
@@ -26589,7 +26589,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_inline_header_signals",
-      "community": 384,
+      "community": 502,
       "norm_label": "inline_header_signals"
     },
     {
@@ -26599,7 +26599,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_nuxt_route_rules_signals",
-      "community": 384,
+      "community": 502,
       "norm_label": "nuxt_route_rules_signals"
     },
     {
@@ -26609,7 +26609,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_detectcsp",
-      "community": 384,
+      "community": 502,
       "norm_label": "detectcsp()"
     },
     {
@@ -26619,7 +26619,7 @@
       "source_location": "L137",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_detect_csp_walk",
-      "community": 384,
+      "community": 502,
       "norm_label": "walk()"
     },
     {
@@ -37329,7 +37329,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_getlivedir",
-      "community": 247,
+      "community": 385,
       "norm_label": "getlivedir()"
     },
     {
@@ -37389,7 +37389,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_readliveserverinfo",
-      "community": 389,
+      "community": 385,
       "norm_label": "readliveserverinfo()"
     },
     {
@@ -37399,7 +37399,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_isliveserverpidreachable",
-      "community": 247,
+      "community": 385,
       "norm_label": "isliveserverpidreachable()"
     },
     {
@@ -37439,7 +37439,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_getlivesessionsdir",
-      "community": 389,
+      "community": 385,
       "norm_label": "getlivesessionsdir()"
     },
     {
@@ -37449,7 +37449,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_getlegacylivesessionsdir",
-      "community": 389,
+      "community": 385,
       "norm_label": "getlegacylivesessionsdir()"
     },
     {
@@ -37459,7 +37459,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_impeccable_paths_getliveannotationsdir",
-      "community": 247,
+      "community": 385,
       "norm_label": "getliveannotationsdir()"
     },
     {
@@ -37499,7 +37499,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_is_generated",
-      "community": 279,
+      "community": 355,
       "norm_label": "is-generated.mjs"
     },
     {
@@ -37509,7 +37509,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_is_generated_header_markers",
-      "community": 279,
+      "community": 355,
       "norm_label": "header_markers"
     },
     {
@@ -37519,7 +37519,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_is_generated_isgeneratedfile",
-      "community": 279,
+      "community": 355,
       "norm_label": "isgeneratedfile()"
     },
     {
@@ -37529,7 +37529,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_is_generated_isgitignored",
-      "community": 279,
+      "community": 355,
       "norm_label": "isgitignored()"
     },
     {
@@ -37539,7 +37539,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_is_generated_hasgeneratedheader",
-      "community": 279,
+      "community": 355,
       "norm_label": "hasgeneratedheader()"
     },
     {
@@ -37899,7 +37899,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_staleness_designsidecarcandidatesfor",
-      "community": 385,
+      "community": 480,
       "norm_label": "designsidecarcandidatesfor()"
     },
     {
@@ -38109,7 +38109,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_target_args",
-      "community": 385,
+      "community": 384,
       "norm_label": "target-args.mjs"
     },
     {
@@ -38119,7 +38119,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_target_args_targetargerror",
-      "community": 385,
+      "community": 384,
       "norm_label": "targetargerror"
     },
     {
@@ -38129,7 +38129,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_target_args_targetargerror_constructor",
-      "community": 385,
+      "community": 384,
       "norm_label": ".constructor()"
     },
     {
@@ -38139,7 +38139,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_target_args_parsetargetpath",
-      "community": 385,
+      "community": 384,
       "norm_label": "parsetargetpath()"
     },
     {
@@ -38149,7 +38149,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_lib_target_args_parsetargetoptions",
-      "community": 385,
+      "community": 384,
       "norm_label": "parsetargetoptions()"
     },
     {
@@ -38339,7 +38339,7 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_accept_scrubmanualeditsagainstoriginalblock",
-      "community": 375,
+      "community": 247,
       "norm_label": "scrubmanualeditsagainstoriginalblock()"
     },
     {
@@ -38389,7 +38389,7 @@
       "source_location": "L365",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_accept_scrubmanualeditsagainstfile",
-      "community": 375,
+      "community": 247,
       "norm_label": "scrubmanualeditsagainstfile()"
     },
     {
@@ -38779,7 +38779,7 @@
       "source_location": "L239",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_clearscrolly",
-      "community": 73,
+      "community": 308,
       "norm_label": "clearscrolly()"
     },
     {
@@ -39029,7 +39029,7 @@
       "source_location": "L1042",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_stripmanualeditruntimestate",
-      "community": 306,
+      "community": 279,
       "norm_label": "stripmanualeditruntimestate()"
     },
     {
@@ -39039,7 +39039,7 @@
       "source_location": "L1067",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_sanitizedcontextouterhtml",
-      "community": 306,
+      "community": 279,
       "norm_label": "sanitizedcontextouterhtml()"
     },
     {
@@ -39049,7 +39049,7 @@
       "source_location": "L1074",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_extractcontext",
-      "community": 306,
+      "community": 279,
       "norm_label": "extractcontext()"
     },
     {
@@ -39059,7 +39059,7 @@
       "source_location": "L1130",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_contextelementformanualedit",
-      "community": 61,
+      "community": 279,
       "norm_label": "contextelementformanualedit()"
     },
     {
@@ -39069,7 +39069,7 @@
       "source_location": "L1153",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_isusefulmanualeditcontext",
-      "community": 61,
+      "community": 279,
       "norm_label": "isusefulmanualeditcontext()"
     },
     {
@@ -39079,7 +39079,7 @@
       "source_location": "L1159",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_collectmanualcontextpieces",
-      "community": 61,
+      "community": 279,
       "norm_label": "collectmanualcontextpieces()"
     },
     {
@@ -39089,7 +39089,7 @@
       "source_location": "L1178",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_addmanualcontexttext",
-      "community": 61,
+      "community": 279,
       "norm_label": "addmanualcontexttext()"
     },
     {
@@ -39109,7 +39109,7 @@
       "source_location": "L1189",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_normalizemanualcontexttext",
-      "community": 61,
+      "community": 279,
       "norm_label": "normalizemanualcontexttext()"
     },
     {
@@ -39129,7 +39129,7 @@
       "source_location": "L1239",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_positionbar",
-      "community": 308,
+      "community": 411,
       "norm_label": "positionbar()"
     },
     {
@@ -39549,7 +39549,7 @@
       "source_location": "L2029",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_placeholderwidthisimplicit",
-      "community": 61,
+      "community": 411,
       "norm_label": "placeholderwidthisimplicit()"
     },
     {
@@ -39569,7 +39569,7 @@
       "source_location": "L2050",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_materializeplaceholderwidth",
-      "community": 61,
+      "community": 411,
       "norm_label": "materializeplaceholderwidth()"
     },
     {
@@ -39679,7 +39679,7 @@
       "source_location": "L2224",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_setlivestate",
-      "community": 73,
+      "community": 308,
       "norm_label": "setlivestate()"
     },
     {
@@ -39689,7 +39689,7 @@
       "source_location": "L2231",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_resolvebaranchor",
-      "community": 308,
+      "community": 411,
       "norm_label": "resolvebaranchor()"
     },
     {
@@ -39729,7 +39729,7 @@
       "source_location": "L2289",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_findinsertanchorindom",
-      "community": 308,
+      "community": 411,
       "norm_label": "findinsertanchorindom()"
     },
     {
@@ -39739,7 +39739,7 @@
       "source_location": "L2306",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_isinsertgeneratingsession",
-      "community": 308,
+      "community": 411,
       "norm_label": "isinsertgeneratingsession()"
     },
     {
@@ -39749,7 +39749,7 @@
       "source_location": "L2313",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_ensureinsertplaceholder",
-      "community": 308,
+      "community": 411,
       "norm_label": "ensureinsertplaceholder()"
     },
     {
@@ -39759,7 +39759,7 @@
       "source_location": "L2341",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_applyplaceholderdimensions",
-      "community": 308,
+      "community": 411,
       "norm_label": "applyplaceholderdimensions()"
     },
     {
@@ -39769,7 +39769,7 @@
       "source_location": "L2353",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_showorupdatecyclingbar",
-      "community": 308,
+      "community": 281,
       "norm_label": "showorupdatecyclingbar()"
     },
     {
@@ -39799,7 +39799,7 @@
       "source_location": "L2399",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_startplaceholderedgeresize",
-      "community": 61,
+      "community": 411,
       "norm_label": "startplaceholderedgeresize()"
     },
     {
@@ -39949,7 +39949,7 @@
       "source_location": "L3086",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_buildsavingrow",
-      "community": 281,
+      "community": 283,
       "norm_label": "buildsavingrow()"
     },
     {
@@ -40049,7 +40049,7 @@
       "source_location": "L3368",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_recoveremptycycling",
-      "community": 73,
+      "community": 308,
       "norm_label": "recoveremptycycling()"
     },
     {
@@ -40069,7 +40069,7 @@
       "source_location": "L3470",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_getmountedsveltecomponentanchor",
-      "community": 308,
+      "community": 371,
       "norm_label": "getmountedsveltecomponentanchor()"
     },
     {
@@ -40079,7 +40079,7 @@
       "source_location": "L3476",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_resolvesveltecomponentanchor",
-      "community": 308,
+      "community": 373,
       "norm_label": "resolvesveltecomponentanchor()"
     },
     {
@@ -40089,7 +40089,7 @@
       "source_location": "L3480",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_getvisiblevariantel",
-      "community": 308,
+      "community": 373,
       "norm_label": "getvisiblevariantel()"
     },
     {
@@ -40099,7 +40099,7 @@
       "source_location": "L3490",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_parsevariantparams",
-      "community": 308,
+      "community": 373,
       "norm_label": "parsevariantparams()"
     },
     {
@@ -40109,7 +40109,7 @@
       "source_location": "L3512",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_applyparamvalue",
-      "community": 308,
+      "community": 373,
       "norm_label": "applyparamvalue()"
     },
     {
@@ -40119,7 +40119,7 @@
       "source_location": "L3537",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_applyparamdefaults",
-      "community": 308,
+      "community": 373,
       "norm_label": "applyparamdefaults()"
     },
     {
@@ -40169,7 +40169,7 @@
       "source_location": "L3774",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_unwrapmixedcontenttextnodes",
-      "community": 306,
+      "community": 279,
       "norm_label": "unwrapmixedcontenttextnodes()"
     },
     {
@@ -40279,7 +40279,7 @@
       "source_location": "L3935",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_buildlocatorforleaf",
-      "community": 306,
+      "community": 279,
       "norm_label": "buildlocatorforleaf()"
     },
     {
@@ -40289,7 +40289,7 @@
       "source_location": "L3961",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_sourcehintforelement",
-      "community": 306,
+      "community": 279,
       "norm_label": "sourcehintforelement()"
     },
     {
@@ -40299,7 +40299,7 @@
       "source_location": "L3977",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_parsesourceloc",
-      "community": 306,
+      "community": 279,
       "norm_label": "parsesourceloc()"
     },
     {
@@ -40309,7 +40309,7 @@
       "source_location": "L3985",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_documentrefforelement",
-      "community": 306,
+      "community": 279,
       "norm_label": "documentrefforelement()"
     },
     {
@@ -40319,7 +40319,7 @@
       "source_location": "L4002",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_documentrefsegment",
-      "community": 61,
+      "community": 279,
       "norm_label": "documentrefsegment()"
     },
     {
@@ -40329,7 +40329,7 @@
       "source_location": "L4007",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_documentrefidsuffix",
-      "community": 61,
+      "community": 279,
       "norm_label": "documentrefidsuffix()"
     },
     {
@@ -40339,7 +40339,7 @@
       "source_location": "L4011",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_documentrefclasssuffix",
-      "community": 61,
+      "community": 279,
       "norm_label": "documentrefclasssuffix()"
     },
     {
@@ -40349,7 +40349,7 @@
       "source_location": "L4022",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_normalizedocumentreftoken",
-      "community": 61,
+      "community": 279,
       "norm_label": "normalizedocumentreftoken()"
     },
     {
@@ -40359,7 +40359,7 @@
       "source_location": "L4026",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_indexamongsametag",
-      "community": 61,
+      "community": 279,
       "norm_label": "indexamongsametag()"
     },
     {
@@ -40369,7 +40369,7 @@
       "source_location": "L4040",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_copyeditleafcontext",
-      "community": 306,
+      "community": 279,
       "norm_label": "copyeditleafcontext()"
     },
     {
@@ -40379,7 +40379,7 @@
       "source_location": "L4054",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_nearbyeditabletextsformanualedit",
-      "community": 61,
+      "community": 279,
       "norm_label": "nearbyeditabletextsformanualedit()"
     },
     {
@@ -40389,7 +40389,7 @@
       "source_location": "L4074",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_copyeditcontainercontext",
-      "community": 306,
+      "community": 279,
       "norm_label": "copyeditcontainercontext()"
     },
     {
@@ -40399,7 +40399,7 @@
       "source_location": "L4086",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_forbiddenmanualtextchars",
-      "community": 306,
+      "community": 279,
       "norm_label": "forbiddenmanualtextchars()"
     },
     {
@@ -40409,7 +40409,7 @@
       "source_location": "L4094",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_applyediting",
-      "community": 306,
+      "community": 279,
       "norm_label": "applyediting()"
     },
     {
@@ -40419,7 +40419,7 @@
       "source_location": "L4177",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_schedulependingdockposition",
-      "community": 283,
+      "community": 306,
       "norm_label": "schedulependingdockposition()"
     },
     {
@@ -40429,7 +40429,7 @@
       "source_location": "L4182",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_positionpendingdock",
-      "community": 283,
+      "community": 306,
       "norm_label": "positionpendingdock()"
     },
     {
@@ -40729,7 +40729,7 @@
       "source_location": "L4747",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_restorediscardedmanualedits",
-      "community": 61,
+      "community": 279,
       "norm_label": "restorediscardedmanualedits()"
     },
     {
@@ -40739,7 +40739,7 @@
       "source_location": "L4766",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_canrestoremanualeditelement",
-      "community": 61,
+      "community": 279,
       "norm_label": "canrestoremanualeditelement()"
     },
     {
@@ -40749,7 +40749,7 @@
       "source_location": "L4772",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_mixedtextwraprestorehint",
-      "community": 61,
+      "community": 279,
       "norm_label": "mixedtextwraprestorehint()"
     },
     {
@@ -40759,7 +40759,7 @@
       "source_location": "L4783",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_restoremixedtextnodemanualedit",
-      "community": 61,
+      "community": 279,
       "norm_label": "restoremixedtextnodemanualedit()"
     },
     {
@@ -40769,7 +40769,7 @@
       "source_location": "L4801",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_directmixedtextrestorenodes",
-      "community": 61,
+      "community": 279,
       "norm_label": "directmixedtextrestorenodes()"
     },
     {
@@ -40779,7 +40779,7 @@
       "source_location": "L4808",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_findmanualeditrestoreelement",
-      "community": 61,
+      "community": 279,
       "norm_label": "findmanualeditrestoreelement()"
     },
     {
@@ -40789,7 +40789,7 @@
       "source_location": "L4827",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_querymanualeditref",
-      "community": 61,
+      "community": 279,
       "norm_label": "querymanualeditref()"
     },
     {
@@ -40799,7 +40799,7 @@
       "source_location": "L4850",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_parsemanualeditrefsegment",
-      "community": 61,
+      "community": 279,
       "norm_label": "parsemanualeditrefsegment()"
     },
     {
@@ -40809,7 +40809,7 @@
       "source_location": "L4866",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_elementmatchesmanualrefsegment",
-      "community": 61,
+      "community": 279,
       "norm_label": "elementmatchesmanualrefsegment()"
     },
     {
@@ -40939,7 +40939,7 @@
       "source_location": "L5200",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_popoverdirection",
-      "community": 308,
+      "community": 373,
       "norm_label": "popoverdirection()"
     },
     {
@@ -40949,7 +40949,7 @@
       "source_location": "L5216",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_closedclippath",
-      "community": 308,
+      "community": 373,
       "norm_label": "closedclippath()"
     },
     {
@@ -40959,7 +40959,7 @@
       "source_location": "L5220",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_setclippath",
-      "community": 308,
+      "community": 373,
       "norm_label": "setclippath()"
     },
     {
@@ -40969,7 +40969,7 @@
       "source_location": "L5230",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_positionparamspanel",
-      "community": 308,
+      "community": 373,
       "norm_label": "positionparamspanel()"
     },
     {
@@ -40979,7 +40979,7 @@
       "source_location": "L5262",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_showparamspanel",
-      "community": 308,
+      "community": 373,
       "norm_label": "showparamspanel()"
     },
     {
@@ -40989,7 +40989,7 @@
       "source_location": "L5272",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_hideparamspanel",
-      "community": 308,
+      "community": 373,
       "norm_label": "hideparamspanel()"
     },
     {
@@ -40999,7 +40999,7 @@
       "source_location": "L5282",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_refreshparamspanel",
-      "community": 308,
+      "community": 373,
       "norm_label": "refreshparamspanel()"
     },
     {
@@ -41039,7 +41039,7 @@
       "source_location": "L5353",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_opentunepopover",
-      "community": 308,
+      "community": 373,
       "norm_label": "opentunepopover()"
     },
     {
@@ -41069,7 +41069,7 @@
       "source_location": "L5391",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_schedulecyclingbarsync",
-      "community": 308,
+      "community": 373,
       "norm_label": "schedulecyclingbarsync()"
     },
     {
@@ -41079,7 +41079,7 @@
       "source_location": "L5402",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_synccyclingcontrols",
-      "community": 61,
+      "community": 371,
       "norm_label": "synccyclingcontrols()"
     },
     {
@@ -41089,7 +41089,7 @@
       "source_location": "L5416",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_showvariantindom",
-      "community": 308,
+      "community": 373,
       "norm_label": "showvariantindom()"
     },
     {
@@ -41139,7 +41139,7 @@
       "source_location": "L5462",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_buildpickedanchorsnapshot",
-      "community": 73,
+      "community": 308,
       "norm_label": "buildpickedanchorsnapshot()"
     },
     {
@@ -41199,7 +41199,7 @@
       "source_location": "L5589",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_issvelteinsertmanifest",
-      "community": 308,
+      "community": 371,
       "norm_label": "issvelteinsertmanifest()"
     },
     {
@@ -41209,7 +41209,7 @@
       "source_location": "L5593",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_findliveelementforsveltemanifest",
-      "community": 308,
+      "community": 371,
       "norm_label": "findliveelementforsveltemanifest()"
     },
     {
@@ -41239,7 +41239,7 @@
       "source_location": "L5639",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_resolvecomponentmoduleurl",
-      "community": 61,
+      "community": 371,
       "norm_label": "resolvecomponentmoduleurl()"
     },
     {
@@ -41249,7 +41249,7 @@
       "source_location": "L5643",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_loadsvelteruntime",
-      "community": 61,
+      "community": 371,
       "norm_label": "loadsvelteruntime()"
     },
     {
@@ -41379,7 +41379,7 @@
       "source_location": "L5828",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_buildsveltepropvaluesfromliveelement",
-      "community": 371,
+      "community": 61,
       "norm_label": "buildsveltepropvaluesfromliveelement()"
     },
     {
@@ -41389,7 +41389,7 @@
       "source_location": "L5842",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_mountsveltecomponentvariant",
-      "community": 61,
+      "community": 371,
       "norm_label": "mountsveltecomponentvariant()"
     },
     {
@@ -41399,7 +41399,7 @@
       "source_location": "L5897",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_teardownsveltecomponentsession",
-      "community": 73,
+      "community": 308,
       "norm_label": "teardownsveltecomponentsession()"
     },
     {
@@ -41409,7 +41409,7 @@
       "source_location": "L5917",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_applyoriginalattrstosvelteanchor",
-      "community": 61,
+      "community": 371,
       "norm_label": "applyoriginalattrstosvelteanchor()"
     },
     {
@@ -41419,7 +41419,7 @@
       "source_location": "L5932",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_commitacceptedsveltecomponenttodom",
-      "community": 61,
+      "community": 371,
       "norm_label": "commitacceptedsveltecomponenttodom()"
     },
     {
@@ -41449,7 +41449,7 @@
       "source_location": "L6108",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_abortsveltecomponentinjection",
-      "community": 73,
+      "community": 308,
       "norm_label": "abortsveltecomponentinjection()"
     },
     {
@@ -41499,7 +41499,7 @@
       "source_location": "L6337",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_buildsvelteexpressiontextmap",
-      "community": 371,
+      "community": 61,
       "norm_label": "buildsvelteexpressiontextmap()"
     },
     {
@@ -41509,7 +41509,7 @@
       "source_location": "L6379",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_expressiontextmatcher",
-      "community": 371,
+      "community": 61,
       "norm_label": "expressiontextmatcher()"
     },
     {
@@ -41519,7 +41519,7 @@
       "source_location": "L6393",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_collecttextnodes",
-      "community": 371,
+      "community": 61,
       "norm_label": "collecttextnodes()"
     },
     {
@@ -41529,7 +41529,7 @@
       "source_location": "L6405",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_normalizepreviewtext",
-      "community": 371,
+      "community": 61,
       "norm_label": "normalizepreviewtext()"
     },
     {
@@ -41539,7 +41539,7 @@
       "source_location": "L6411",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_escaperegexp",
-      "community": 371,
+      "community": 61,
       "norm_label": "escaperegexp()"
     },
     {
@@ -41569,7 +41569,7 @@
       "source_location": "L6457",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_updateselectedelement",
-      "community": 308,
+      "community": 373,
       "norm_label": "updateselectedelement()"
     },
     {
@@ -41589,7 +41589,7 @@
       "source_location": "L6491",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_pickvariantcontent",
-      "community": 308,
+      "community": 373,
       "norm_label": "pickvariantcontent()"
     },
     {
@@ -41599,7 +41599,7 @@
       "source_location": "L6519",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_variantstateselector",
-      "community": 308,
+      "community": 373,
       "norm_label": "variantstateselector()"
     },
     {
@@ -41609,7 +41609,7 @@
       "source_location": "L6528",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_variantparamdecls",
-      "community": 308,
+      "community": 373,
       "norm_label": "variantparamdecls()"
     },
     {
@@ -41619,7 +41619,7 @@
       "source_location": "L6538",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_updatevariantstatestylesheet",
-      "community": 308,
+      "community": 373,
       "norm_label": "updatevariantstatestylesheet()"
     },
     {
@@ -41629,7 +41629,7 @@
       "source_location": "L6558",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_removevariantstatestylesheet",
-      "community": 73,
+      "community": 308,
       "norm_label": "removevariantstatestylesheet()"
     },
     {
@@ -41639,7 +41639,7 @@
       "source_location": "L6562",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_showoriginalduringdiscard",
-      "community": 73,
+      "community": 308,
       "norm_label": "showoriginalduringdiscard()"
     },
     {
@@ -41649,7 +41649,7 @@
       "source_location": "L6578",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_resolvescrolllockanchortop",
-      "community": 308,
+      "community": 411,
       "norm_label": "resolvescrolllockanchortop()"
     },
     {
@@ -41669,7 +41669,7 @@
       "source_location": "L6724",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_stopscrolllock",
-      "community": 73,
+      "community": 308,
       "norm_label": "stopscrolllock()"
     },
     {
@@ -41719,7 +41719,7 @@
       "source_location": "L7079",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_handleserverlost",
-      "community": 73,
+      "community": 308,
       "norm_label": "handleserverlost()"
     },
     {
@@ -41729,7 +41729,7 @@
       "source_location": "L7104",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_sendevent",
-      "community": 262,
+      "community": 308,
       "norm_label": "sendevent()"
     },
     {
@@ -41809,7 +41809,7 @@
       "source_location": "L7352",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_maybeprefetchpage",
-      "community": 262,
+      "community": 308,
       "norm_label": "maybeprefetchpage()"
     },
     {
@@ -41839,7 +41839,7 @@
       "source_location": "L7509",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_handlego",
-      "community": 73,
+      "community": 308,
       "norm_label": "handlego()"
     },
     {
@@ -41949,7 +41949,7 @@
       "source_location": "L7838",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_shoulduseancestorcropshaderproxy",
-      "community": 308,
+      "community": 61,
       "norm_label": "shoulduseancestorcropshaderproxy()"
     },
     {
@@ -41999,7 +41999,7 @@
       "source_location": "L7976",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_captureandemit",
-      "community": 61,
+      "community": 308,
       "norm_label": "captureandemit()"
     },
     {
@@ -42089,7 +42089,7 @@
       "source_location": "L8265",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_positionshaderoverlay",
-      "community": 308,
+      "community": 411,
       "norm_label": "positionshaderoverlay()"
     },
     {
@@ -42099,7 +42099,7 @@
       "source_location": "L8278",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_hideshaderoverlay",
-      "community": 73,
+      "community": 308,
       "norm_label": "hideshaderoverlay()"
     },
     {
@@ -42129,7 +42129,7 @@
       "source_location": "L8422",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_handleaccept",
-      "community": 73,
+      "community": 308,
       "norm_label": "handleaccept()"
     },
     {
@@ -42229,7 +42229,7 @@
       "source_location": "L8628",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_cleanupacceptedsession",
-      "community": 73,
+      "community": 308,
       "norm_label": "cleanupacceptedsession()"
     },
     {
@@ -42269,7 +42269,7 @@
       "source_location": "L8700",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_resetsessionfilemeta",
-      "community": 73,
+      "community": 308,
       "norm_label": "resetsessionfilemeta()"
     },
     {
@@ -42399,7 +42399,7 @@
       "source_location": "L8890",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_clearsession",
-      "community": 73,
+      "community": 308,
       "norm_label": "clearsession()"
     },
     {
@@ -42439,7 +42439,7 @@
       "source_location": "L8910",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_cleanup",
-      "community": 73,
+      "community": 308,
       "norm_label": "cleanup()"
     },
     {
@@ -42689,7 +42689,7 @@
       "source_location": "L9486",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_clearsteerfocusrecovertimer",
-      "community": 262,
+      "community": 61,
       "norm_label": "clearsteerfocusrecovertimer()"
     },
     {
@@ -42699,7 +42699,7 @@
       "source_location": "L9493",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_schedulesteerfocusrecover",
-      "community": 262,
+      "community": 61,
       "norm_label": "schedulesteerfocusrecover()"
     },
     {
@@ -42799,7 +42799,7 @@
       "source_location": "L9712",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_syncpagechatfocus",
-      "community": 73,
+      "community": 262,
       "norm_label": "syncpagechatfocus()"
     },
     {
@@ -43149,7 +43149,7 @@
       "source_location": "L10497",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_stopagentstatuspoll",
-      "community": 407,
+      "community": 61,
       "norm_label": "stopagentstatuspoll()"
     },
     {
@@ -43159,7 +43159,7 @@
       "source_location": "L10504",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_fetchagentpollingstatus",
-      "community": 407,
+      "community": 61,
       "norm_label": "fetchagentpollingstatus()"
     },
     {
@@ -43169,7 +43169,7 @@
       "source_location": "L10517",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_startagentstatuspoll",
-      "community": 407,
+      "community": 61,
       "norm_label": "startagentstatuspoll()"
     },
     {
@@ -44299,7 +44299,7 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_copy_edit_agent_runcopyeditpostapplychecks",
-      "community": 260,
+      "community": 310,
       "norm_label": "runcopyeditpostapplychecks()"
     },
     {
@@ -44949,7 +44949,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert",
-      "community": 279,
+      "community": 270,
       "norm_label": "live-insert.mjs"
     },
     {
@@ -44959,7 +44959,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_insert_positions",
-      "community": 279,
+      "community": 270,
       "norm_label": "insert_positions"
     },
     {
@@ -44969,7 +44969,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_isinsertposition",
-      "community": 279,
+      "community": 270,
       "norm_label": "isinsertposition()"
     },
     {
@@ -44979,7 +44979,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_computeinsertline",
-      "community": 279,
+      "community": 270,
       "norm_label": "computeinsertline()"
     },
     {
@@ -44989,7 +44989,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_buildinsertwrapperlines",
-      "community": 279,
+      "community": 270,
       "norm_label": "buildinsertwrapperlines()"
     },
     {
@@ -44999,7 +44999,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_argval",
-      "community": 279,
+      "community": 270,
       "norm_label": "argval()"
     },
     {
@@ -45009,7 +45009,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_resolveelementmatch",
-      "community": 279,
+      "community": 270,
       "norm_label": "resolveelementmatch()"
     },
     {
@@ -45019,7 +45019,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_insert_insertcli",
-      "community": 279,
+      "community": 270,
       "norm_label": "insertcli()"
     },
     {
@@ -45769,7 +45769,7 @@
       "source_location": "L191",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_server_preparegenerateeventforlease",
-      "community": 234,
+      "community": 462,
       "norm_label": "preparegenerateeventforlease()"
     },
     {
@@ -46009,7 +46009,7 @@
       "source_location": "L580",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_server_loadbrowserscripts",
-      "community": 502,
+      "community": 234,
       "norm_label": "loadbrowserscripts()"
     },
     {
@@ -46049,7 +46049,7 @@
       "source_location": "L648",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_server_createrequesthandler",
-      "community": 502,
+      "community": 234,
       "norm_label": "createrequesthandler()"
     },
     {
@@ -46249,7 +46249,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_target",
-      "community": 385,
+      "community": 384,
       "norm_label": "live-target.mjs"
     },
     {
@@ -46259,7 +46259,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_target_resolvelivetarget",
-      "community": 385,
+      "community": 384,
       "norm_label": "resolvelivetarget()"
     },
     {
@@ -46269,7 +46269,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap",
-      "community": 279,
+      "community": 270,
       "norm_label": "live-wrap.mjs"
     },
     {
@@ -46279,7 +46279,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_wrapcli",
-      "community": 279,
+      "community": 270,
       "norm_label": "wrapcli()"
     },
     {
@@ -46289,7 +46289,7 @@
       "source_location": "L465",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_argval",
-      "community": 279,
+      "community": 270,
       "norm_label": "argval()"
     },
     {
@@ -46299,7 +46299,7 @@
       "source_location": "L474",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_pendingentriesthatmayaffectwrap",
-      "community": 279,
+      "community": 270,
       "norm_label": "pendingentriesthatmayaffectwrap()"
     },
     {
@@ -46309,7 +46309,7 @@
       "source_location": "L483",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_manualeditmayaffectwrap",
-      "community": 279,
+      "community": 270,
       "norm_label": "manualeditmayaffectwrap()"
     },
     {
@@ -46319,7 +46319,7 @@
       "source_location": "L493",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_manualedithintfallsinsideselection",
-      "community": 279,
+      "community": 270,
       "norm_label": "manualedithintfallsinsideselection()"
     },
     {
@@ -46329,7 +46329,7 @@
       "source_location": "L508",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_manualeditlocatormatchesselection",
-      "community": 279,
+      "community": 270,
       "norm_label": "manualeditlocatormatchesselection()"
     },
     {
@@ -46339,7 +46339,7 @@
       "source_location": "L513",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_applybufferedmanualedittolines",
-      "community": 279,
+      "community": 270,
       "norm_label": "applybufferedmanualedittolines()"
     },
     {
@@ -46349,7 +46349,7 @@
       "source_location": "L551",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_linematchesmanualeditlocator",
-      "community": 279,
+      "community": 270,
       "norm_label": "linematchesmanualeditlocator()"
     },
     {
@@ -46359,7 +46359,7 @@
       "source_location": "L571",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_replaceonce",
-      "community": 279,
+      "community": 270,
       "norm_label": "replaceonce()"
     },
     {
@@ -46369,7 +46369,7 @@
       "source_location": "L577",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_countoccurrences",
-      "community": 279,
+      "community": 270,
       "norm_label": "countoccurrences()"
     },
     {
@@ -46379,7 +46379,7 @@
       "source_location": "L589",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_escaperegexp",
-      "community": 279,
+      "community": 270,
       "norm_label": "escaperegexp()"
     },
     {
@@ -46389,7 +46389,7 @@
       "source_location": "L597",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_buildsearchqueries",
-      "community": 279,
+      "community": 270,
       "norm_label": "buildsearchqueries()"
     },
     {
@@ -46399,7 +46399,7 @@
       "source_location": "L639",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_splitclasslist",
-      "community": 279,
+      "community": 270,
       "norm_label": "splitclasslist()"
     },
     {
@@ -46409,7 +46409,7 @@
       "source_location": "L646",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_attrescapedouble",
-      "community": 279,
+      "community": 270,
       "norm_label": "attrescapedouble()"
     },
     {
@@ -46419,7 +46419,7 @@
       "source_location": "L650",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_detectcommentsyntax",
-      "community": 279,
+      "community": 270,
       "norm_label": "detectcommentsyntax()"
     },
     {
@@ -46429,7 +46429,7 @@
       "source_location": "L659",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_detectstylemode",
-      "community": 279,
+      "community": 270,
       "norm_label": "detectstylemode()"
     },
     {
@@ -46439,7 +46439,7 @@
       "source_location": "L673",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_buildcssselectorprefixexamples",
-      "community": 279,
+      "community": 270,
       "norm_label": "buildcssselectorprefixexamples()"
     },
     {
@@ -46449,7 +46449,7 @@
       "source_location": "L678",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_buildcssauthoring",
-      "community": 279,
+      "community": 270,
       "norm_label": "buildcssauthoring()"
     },
     {
@@ -46459,7 +46459,7 @@
       "source_location": "L727",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_findfilewithquery",
-      "community": 279,
+      "community": 270,
       "norm_label": "findfilewithquery()"
     },
     {
@@ -46469,7 +46469,7 @@
       "source_location": "L759",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_minleadingspaces",
-      "community": 279,
+      "community": 270,
       "norm_label": "minleadingspaces()"
     },
     {
@@ -46479,7 +46479,7 @@
       "source_location": "L769",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_findelement",
-      "community": 279,
+      "community": 270,
       "norm_label": "findelement()"
     },
     {
@@ -46489,7 +46489,7 @@
       "source_location": "L796",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_findallelements",
-      "community": 279,
+      "community": 270,
       "norm_label": "findallelements()"
     },
     {
@@ -46499,7 +46499,7 @@
       "source_location": "L829",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_filterbytext",
-      "community": 279,
+      "community": 270,
       "norm_label": "filterbytext()"
     },
     {
@@ -46509,7 +46509,7 @@
       "source_location": "L861",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_findopenerline",
-      "community": 279,
+      "community": 270,
       "norm_label": "findopenerline()"
     },
     {
@@ -46519,7 +46519,7 @@
       "source_location": "L882",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_wrap_findclosingline",
-      "community": 279,
+      "community": 270,
       "norm_label": "findclosingline()"
     },
     {
@@ -46619,7 +46619,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts",
-      "community": 502,
+      "community": 234,
       "norm_label": "browser-script-parts.mjs"
     },
     {
@@ -46629,7 +46629,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts_live_browser_script_parts",
-      "community": 502,
+      "community": 234,
       "norm_label": "live_browser_script_parts"
     },
     {
@@ -46639,7 +46639,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts_resolvelivebrowserscriptparts",
-      "community": 502,
+      "community": 234,
       "norm_label": "resolvelivebrowserscriptparts()"
     },
     {
@@ -46649,7 +46649,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts_assertlivebrowserscriptparts",
-      "community": 502,
+      "community": 234,
       "norm_label": "assertlivebrowserscriptparts()"
     },
     {
@@ -46659,7 +46659,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts_readlivebrowserscriptparts",
-      "community": 502,
+      "community": 234,
       "norm_label": "readlivebrowserscriptparts()"
     },
     {
@@ -46669,7 +46669,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_browser_script_parts_assemblelivebrowserscript",
-      "community": 502,
+      "community": 234,
       "norm_label": "assemblelivebrowserscript()"
     },
     {
@@ -46719,7 +46719,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation",
-      "community": 412,
+      "community": 376,
       "norm_label": "event-validation.mjs"
     },
     {
@@ -46729,7 +46729,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_insert_positions",
-      "community": 412,
+      "community": 376,
       "norm_label": "insert_positions"
     },
     {
@@ -46739,7 +46739,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_forbidden_manual_edit_text_chars",
-      "community": 412,
+      "community": 376,
       "norm_label": "forbidden_manual_edit_text_chars"
     },
     {
@@ -46749,7 +46749,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_isvalidid",
-      "community": 412,
+      "community": 376,
       "norm_label": "isvalidid()"
     },
     {
@@ -46759,7 +46759,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_isvalidvariantid",
-      "community": 412,
+      "community": 376,
       "norm_label": "isvalidvariantid()"
     },
     {
@@ -46769,7 +46769,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validatemanualedittext",
-      "community": 412,
+      "community": 376,
       "norm_label": "validatemanualedittext()"
     },
     {
@@ -46779,7 +46779,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validateannotationfields",
-      "community": 412,
+      "community": 376,
       "norm_label": "validateannotationfields()"
     },
     {
@@ -46789,7 +46789,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validateinsertgenerate",
-      "community": 412,
+      "community": 376,
       "norm_label": "validateinsertgenerate()"
     },
     {
@@ -46799,7 +46799,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validatereplacegenerate",
-      "community": 412,
+      "community": 376,
       "norm_label": "validatereplacegenerate()"
     },
     {
@@ -46809,7 +46809,7 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validatemanualeditevent",
-      "community": 412,
+      "community": 376,
       "norm_label": "validatemanualeditevent()"
     },
     {
@@ -46819,7 +46819,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_event_validation_validateevent",
-      "community": 412,
+      "community": 376,
       "norm_label": "validateevent()"
     },
     {
@@ -47929,7 +47929,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock",
-      "community": 247,
+      "community": 385,
       "norm_label": "source-lock.mjs"
     },
     {
@@ -47939,7 +47939,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_sourcelockpath",
-      "community": 247,
+      "community": 385,
       "norm_label": "sourcelockpath()"
     },
     {
@@ -47949,7 +47949,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_withsourcelocksync",
-      "community": 247,
+      "community": 385,
       "norm_label": "withsourcelocksync()"
     },
     {
@@ -47959,7 +47959,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_sleepsync",
-      "community": 247,
+      "community": 385,
       "norm_label": "sleepsync()"
     },
     {
@@ -47969,7 +47969,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_readlock",
-      "community": 247,
+      "community": 385,
       "norm_label": "readlock()"
     },
     {
@@ -47979,7 +47979,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_releaseownlock",
-      "community": 247,
+      "community": 385,
       "norm_label": "releaseownlock()"
     },
     {
@@ -47989,7 +47989,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_source_lock_clearstalelock",
-      "community": 247,
+      "community": 385,
       "norm_label": "clearstalelock()"
     },
     {
@@ -48059,7 +48059,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_svelte_component_shouldusesveltecomponentinjection",
-      "community": 279,
+      "community": 270,
       "norm_label": "shouldusesveltecomponentinjection()"
     },
     {
@@ -48509,7 +48509,7 @@
       "source_location": "L774",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_svelte_component_buildsveltecomponentcssauthoring",
-      "community": 279,
+      "community": 270,
       "norm_label": "buildsveltecomponentcssauthoring()"
     },
     {
@@ -48929,7 +48929,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_vocabulary",
-      "community": 412,
+      "community": 376,
       "norm_label": "vocabulary.mjs"
     },
     {
@@ -48939,7 +48939,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_vocabulary_live_commands",
-      "community": 412,
+      "community": 376,
       "norm_label": "live_commands"
     },
     {
@@ -48949,7 +48949,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "claude_skills_impeccable_scripts_live_vocabulary_visual_actions",
-      "community": 412,
+      "community": 376,
       "norm_label": "visual_actions"
     },
     {
@@ -52207,7 +52207,7 @@
       "source_location": "L311",
       "_origin": "ast",
       "id": "worker_configuration_d_serviceworkerglobalscope_settimeout",
-      "community": 262,
+      "community": 281,
       "norm_label": ".settimeout()"
     },
     {
@@ -52237,7 +52237,7 @@
       "source_location": "L316",
       "_origin": "ast",
       "id": "worker_configuration_d_serviceworkerglobalscope_clearinterval",
-      "community": 60,
+      "community": 407,
       "norm_label": ".clearinterval()"
     },
     {
@@ -54087,7 +54087,7 @@
       "source_location": "L1051",
       "_origin": "ast",
       "id": "worker_configuration_d_crypto",
-      "community": 507,
+      "community": 274,
       "norm_label": "crypto"
     },
     {
@@ -54097,7 +54097,7 @@
       "source_location": "L1058",
       "_origin": "ast",
       "id": "worker_configuration_d_crypto_subtle",
-      "community": 507,
+      "community": 274,
       "norm_label": ".subtle()"
     },
     {
@@ -54107,7 +54107,7 @@
       "source_location": "L1064",
       "_origin": "ast",
       "id": "worker_configuration_d_crypto_getrandomvalues",
-      "community": 507,
+      "community": 274,
       "norm_label": ".getrandomvalues()"
     },
     {
@@ -54117,7 +54117,7 @@
       "source_location": "L1071",
       "_origin": "ast",
       "id": "worker_configuration_d_crypto_randomuuid",
-      "community": 507,
+      "community": 274,
       "norm_label": ".randomuuid()"
     },
     {
@@ -68604,21 +68604,11 @@
       "label": "adminNav()",
       "file_type": "code",
       "source_file": "worker/admin-chrome.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "worker_admin_chrome_adminnav",
       "community": 404,
       "norm_label": "adminnav()"
-    },
-    {
-      "label": "escapeHtml()",
-      "file_type": "code",
-      "source_file": "worker/admin-chrome.ts",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "worker_admin_chrome_escapehtml",
-      "community": 404,
-      "norm_label": "escapehtml()"
     },
     {
       "label": "admin-scripts.unit.test.ts",
@@ -68911,6 +68901,26 @@
       "norm_label": "optionalurl()"
     },
     {
+      "label": "html.ts",
+      "file_type": "code",
+      "source_file": "worker/html.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "worker_html",
+      "community": 404,
+      "norm_label": "html.ts"
+    },
+    {
+      "label": "escapeHtml()",
+      "file_type": "code",
+      "source_file": "worker/html.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "worker_html_escapehtml",
+      "community": 404,
+      "norm_label": "escapehtml()"
+    },
+    {
       "label": "index.test.ts",
       "file_type": "code",
       "source_file": "worker/index.test.ts",
@@ -69127,7 +69137,7 @@
       "source_location": "L373",
       "_origin": "ast",
       "id": "worker_index_renderadminshell",
-      "community": 404,
+      "community": 4,
       "norm_label": "renderadminshell()"
     },
     {
@@ -69137,7 +69147,7 @@
       "source_location": "L385",
       "_origin": "ast",
       "id": "worker_index_adminscript",
-      "community": 404,
+      "community": 4,
       "norm_label": "adminscript()"
     },
     {
@@ -69147,7 +69157,7 @@
       "source_location": "L401",
       "_origin": "ast",
       "id": "worker_index_admincss",
-      "community": 404,
+      "community": 4,
       "norm_label": "admincss()"
     },
     {
@@ -69364,7 +69374,7 @@
       "label": "jsonInit()",
       "file_type": "code",
       "source_file": "worker/leadership-routes.test.ts",
-      "source_location": "L81",
+      "source_location": "L82",
       "_origin": "ast",
       "id": "worker_leadership_routes_test_jsoninit",
       "community": 524,
@@ -69451,24 +69461,24 @@
       "norm_label": ".constructor()"
     },
     {
-      "label": "readRoster()",
-      "file_type": "code",
-      "source_file": "worker/leadership-routes.ts",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "worker_leadership_routes_readroster",
-      "community": 344,
-      "norm_label": "readroster()"
-    },
-    {
       "label": "readAdminRoster()",
       "file_type": "code",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L60",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "worker_leadership_routes_readadminroster",
       "community": 344,
       "norm_label": "readadminroster()"
+    },
+    {
+      "label": "readRoster()",
+      "file_type": "code",
+      "source_file": "worker/leadership-routes.ts",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "worker_leadership_routes_readroster",
+      "community": 344,
+      "norm_label": "readroster()"
     },
     {
       "label": "handleLeadershipRoute()",
@@ -69514,7 +69524,7 @@
       "label": "parseSortOrder()",
       "file_type": "code",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L170",
+      "source_location": "L175",
       "_origin": "ast",
       "id": "worker_leadership_routes_parsesortorder",
       "community": 344,
@@ -69524,7 +69534,7 @@
       "label": "optionalText()",
       "file_type": "code",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L178",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "worker_leadership_routes_optionaltext",
       "community": 344,
@@ -69534,7 +69544,7 @@
       "label": "slugValue()",
       "file_type": "code",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L185",
+      "source_location": "L196",
       "_origin": "ast",
       "id": "worker_leadership_routes_slugvalue",
       "community": 344,
@@ -69654,7 +69664,7 @@
       "label": "ROSTER_PATHS",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L5",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "worker_roster_inject_roster_paths",
       "community": 417,
@@ -69664,7 +69674,7 @@
       "label": "rosterMarkup()",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L7",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "worker_roster_inject_rostermarkup",
       "community": 417,
@@ -69674,7 +69684,7 @@
       "label": "RosterInjector",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L25",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "worker_roster_inject_rosterinjector",
       "community": 417,
@@ -69684,7 +69694,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L26",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "worker_roster_inject_rosterinjector_constructor",
       "community": 417,
@@ -69694,7 +69704,7 @@
       "label": ".element()",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L28",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "worker_roster_inject_rosterinjector_element",
       "community": 417,
@@ -69704,21 +69714,11 @@
       "label": "injectRoster()",
       "file_type": "code",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L46",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "worker_roster_inject_injectroster",
       "community": 417,
       "norm_label": "injectroster()"
-    },
-    {
-      "label": "escapeHtml()",
-      "file_type": "code",
-      "source_file": "worker/roster-inject.ts",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "worker_roster_inject_escapehtml",
-      "community": 417,
-      "norm_label": "escapehtml()"
     },
     {
       "label": "submission-flow.integration.test.ts",
@@ -236834,20 +236834,32 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/admin-chrome.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "worker_admin_chrome",
       "target": "worker_admin_chrome_adminnav",
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "re_exports",
+      "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "worker/admin-chrome.ts",
-      "source_location": "L13",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "worker_admin_chrome",
-      "target": "worker_admin_chrome_escapehtml",
+      "target": "worker_html",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/admin-chrome.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "worker_admin_chrome",
+      "target": "worker_html_escapehtml",
       "confidence_score": 1.0
     },
     {
@@ -236948,72 +236960,6 @@
       "weight": 1.0,
       "source": "worker_leadership_admin_renderleadershipadmin",
       "target": "worker_admin_chrome_adminnav"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/calendar-admin.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "worker_calendar_admin",
-      "target": "worker_admin_chrome_escapehtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "worker/calendar-admin.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "worker_calendar_admin_rendercalendaradmin",
-      "target": "worker_admin_chrome_escapehtml"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/index.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "worker_index",
-      "target": "worker_admin_chrome_escapehtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/index.ts",
-      "source_location": "L377",
-      "weight": 1.0,
-      "source": "worker_index_renderadminshell",
-      "target": "worker_admin_chrome_escapehtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/leadership-admin.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "worker_leadership_admin",
-      "target": "worker_admin_chrome_escapehtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "worker/leadership-admin.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "worker_leadership_admin_renderleadershipadmin",
-      "target": "worker_admin_chrome_escapehtml"
     },
     {
       "relation": "contains",
@@ -237056,6 +237002,17 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/calendar-admin.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "worker_calendar_admin",
+      "target": "worker_html_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -237087,6 +237044,17 @@
       "source": "worker_calendar_admin_rendercalendaradmin",
       "target": "worker_calendar_admin_script",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "worker/calendar-admin.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "worker_calendar_admin_rendercalendaradmin",
+      "target": "worker_html_escapehtml"
     },
     {
       "relation": "imports",
@@ -237504,6 +237472,82 @@
       "weight": 1.0,
       "source": "worker_event_routes_optionalisodate",
       "target": "worker_event_routes_isodate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/html.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "worker_html",
+      "target": "worker_html_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/roster-inject.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "worker_roster_inject",
+      "target": "worker_html",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "worker_index",
+      "target": "worker_html_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/index.ts",
+      "source_location": "L377",
+      "weight": 1.0,
+      "source": "worker_index_renderadminshell",
+      "target": "worker_html_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/leadership-admin.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "worker_leadership_admin",
+      "target": "worker_html_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "worker/leadership-admin.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "worker_leadership_admin_renderleadershipadmin",
+      "target": "worker_html_escapehtml"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/roster-inject.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "worker_roster_inject",
+      "target": "worker_html_escapehtml",
       "confidence_score": 1.0
     },
     {
@@ -238570,7 +238614,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.test.ts",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "source": "worker_leadership_routes_test",
       "target": "worker_leadership_routes_test_jsoninit",
@@ -238650,7 +238694,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L178",
+      "source_location": "L183",
       "weight": 1.0,
       "source": "worker_leadership_routes",
       "target": "worker_leadership_routes_optionaltext",
@@ -238670,7 +238714,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L170",
+      "source_location": "L175",
       "weight": 1.0,
       "source": "worker_leadership_routes",
       "target": "worker_leadership_routes_parsesortorder",
@@ -238690,7 +238734,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L60",
+      "source_location": "L50",
       "weight": 1.0,
       "source": "worker_leadership_routes",
       "target": "worker_leadership_routes_readadminroster",
@@ -238710,7 +238754,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L48",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "worker_leadership_routes",
       "target": "worker_leadership_routes_readroster",
@@ -238730,7 +238774,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
-      "source_location": "L185",
+      "source_location": "L196",
       "weight": 1.0,
       "source": "worker_leadership_routes",
       "target": "worker_leadership_routes_slugvalue",
@@ -238773,6 +238817,28 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "worker/leadership-routes.ts",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "worker_leadership_routes_handleleadershiproute",
+      "target": "worker_leadership_routes_readadminroster",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/leadership-routes.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "worker_leadership_routes_readroster",
+      "target": "worker_leadership_routes_readadminroster",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/leadership-routes.ts",
       "source_location": "L69",
       "weight": 1.0,
       "source": "worker_leadership_routes_handleleadershiproute",
@@ -238796,21 +238862,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0,
       "source": "worker_roster_inject_rosterinjector_element",
       "target": "worker_leadership_routes_readroster"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/leadership-routes.ts",
-      "source_location": "L80",
-      "weight": 1.0,
-      "source": "worker_leadership_routes_handleleadershiproute",
-      "target": "worker_leadership_routes_readadminroster",
-      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -238995,17 +239050,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L51",
-      "weight": 1.0,
-      "source": "worker_roster_inject",
-      "target": "worker_roster_inject_escapehtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "worker/roster-inject.ts",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0,
       "source": "worker_roster_inject",
       "target": "worker_roster_inject_injectroster",
@@ -239015,7 +239060,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L5",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "worker_roster_inject",
       "target": "worker_roster_inject_roster_paths",
@@ -239025,7 +239070,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L25",
+      "source_location": "L28",
       "weight": 1.0,
       "source": "worker_roster_inject",
       "target": "worker_roster_inject_rosterinjector",
@@ -239035,7 +239080,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L7",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "worker_roster_inject",
       "target": "worker_roster_inject_rostermarkup",
@@ -239046,7 +239091,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "source": "worker_roster_inject_rosterinjector_element",
       "target": "worker_roster_inject_rostermarkup",
@@ -239056,7 +239101,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L26",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "worker_roster_inject_rosterinjector",
       "target": "worker_roster_inject_rosterinjector_constructor",
@@ -239066,7 +239111,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "worker/roster-inject.ts",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0,
       "source": "worker_roster_inject_rosterinjector",
       "target": "worker_roster_inject_rosterinjector_element",
@@ -252161,5 +252206,5 @@
       "source_file": "assets/logo.svg"
     }
   ],
-  "built_at_commit": "3fcb09490f5711b2154de53e5affdb4f49af1eb1"
+  "built_at_commit": "a1e47414d82e2f289920647534019bca2b8f9e1e"
 }
