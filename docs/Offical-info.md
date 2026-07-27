@@ -176,4 +176,33 @@ https://www.scouting.org/programs/cub-scouts/adventures/
     - Slingshot - `assets/offical/bear_Slingshot.webp`
     - BB Guns - `assets/offical/bear_BB_Guns.webp`
 - Webelos (4th) - https://www.scouting.org/programs/cub-scouts/adventures/webelos/
+  - Required
+    - Bobcat Webelos - https://www.scouting.org/cub-scout-adventures/bobcat-webelos/ - `assets/offical/webelos_Webelos_Bobcat_edit.webp`
+    - Stronger, Faster, Higher - https://www.scouting.org/cub-scout-adventures/stronger-faster-higher/ - `assets/offical/webelos_Stronger_Faster_Higher.webp`
+    - My Safety - https://www.scouting.org/cub-scout-adventures/my-safety/ - `assets/offical/webelos_My_Safety.webp`
+    - My Family - https://www.scouting.org/cub-scout-adventures/my-family/ - `assets/offical/webelos_My_Family.webp`
+    - My Community - https://www.scouting.org/cub-scout-adventures/my-community/ - `assets/offical/webelos_My_Community.webp`
+    - Webelos Walkabout - https://www.scouting.org/cub-scout-adventures/webelos-walkabout/ - `assets/offical/webelos_Webelos_Walkabout.webp`
+  - Elective
+    - Aquanaut - https://www.scouting.org/cub-scout-adventures/aquanaut/ - `assets/offical/webelos_Aquanaut.webp`
+    - Art Explosion - https://www.scouting.org/cub-scout-adventures/art-explosion/ - `assets/offical/webelos_Art_Explosion.webp`
+    - Aware and Care - https://www.scouting.org/cub-scout-adventures/aware-and-care/ - `assets/offical/webelos_Aware_and_Care.webp`
+    - Build It - https://www.scouting.org/cub-scout-adventures/build-it/ - `assets/offical/webelos_Build_It.webp`
+    - Catch the Big One - https://www.scouting.org/cub-scout-adventures/catch-the-big-one/ - `assets/offical/webelos_Catch_the_Big_One.webp`
+    - Champions for Nature Webelos - https://www.scouting.org/cub-scout-adventures/champions-for-nature-webelos/ - `assets/offical/webelos_Champions_of_Nature.webp`
+    - Chef’s Knife - https://www.scouting.org/cub-scout-adventures/chefs-knife/ - `assets/offical/webelos_ChefsKnife.webp`
+    - Earth Rocks - https://www.scouting.org/cub-scout-adventures/earth-rocks/ - `assets/offical/webelos_Earth_Rocks.webp`
+    - Let’s Camp Webelos - https://www.scouting.org/cub-scout-adventures/lets-camp-webelos/ - `assets/offical/webelos_Lets_Camp.webp`
+    - Math on the Trail - https://www.scouting.org/cub-scout-adventures/math-on-the-trail/ - `assets/offical/webelos_Math_on_the_Trail.webp`
+    - Modular Design - https://www.scouting.org/cub-scout-adventures/modular-design/ - `assets/offical/webelos_Modular_Design.webp`
+    - Paddle Onward - https://www.scouting.org/cub-scout-adventures/paddle-onward/ - `assets/offical/webelos_Paddle_Onward.webp`
+    - Pedal Away - https://www.scouting.org/cub-scout-adventures/pedal-away/ - `assets/offical/webelos_Pedal_Away.webp`
+    - Race Time Webelos - https://www.scouting.org/cub-scout-adventures/race-time-webelos/ - `assets/offical/webelos_Race_Time.webp`
+    - Summertime Fun Webelos - https://www.scouting.org/cub-scout-adventures/summertime-fun-webelos/ - `assets/offical/webelos_Summertime_Fun.webp`
+    - Tech on the Trail - https://www.scouting.org/cub-scout-adventures/tech-on-the-trail/ - `assets/offical/webelos_Tech_on_the_Trail.webp`
+    - Yo-yo - https://www.scouting.org/cub-scout-adventures/yo-yo/ - `assets/offical/webelos_Yo_Yo.webp`
+  - Special Elective (approved events with qualified instructors only)
+    - Archery Webelos - `assets/offical/webelos_Archery.webp`
+    - Slingshot - `assets/offical/webelos_Slingshot.webp`
+    - BB Guns - `assets/offical/webelos_BB_Guns.webp`
 - Arrow of Light (5th) - https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/
