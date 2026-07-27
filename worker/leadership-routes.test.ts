@@ -71,3 +71,76 @@ describe('GET /api/leadership', () => {
     expect(await response.text()).not.toContain('email');
   });
 });
+
+const localAdmin = 'http://localhost/api/admin/leadership';
+const jsonInit = (method: string, body: unknown) => ({
+  method,
+  headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+  body: JSON.stringify(body),
+});
+
+describe('admin leadership routes', () => {
+  it('updates a name and bio', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'treasurer'").first<{ id: string }>();
+    const response = await exports.default.fetch(
+      `${localAdmin}/${row!.id}`,
+      jsonInit('PUT', { role: 'Treasurer', name: 'Dana Coin', bio: 'Keeps the books.' }),
+    );
+    expect(response.status).toBe(200);
+    const updated = await env.DB.prepare("SELECT name, bio, updated_by FROM leadership_roles WHERE slug = 'treasurer'").first();
+    expect(updated).toMatchObject({ name: 'Dana Coin', bio: 'Keeps the books.', updated_by: 'local-volunteer@example.invalid' });
+  });
+
+  it('clears a name back to vacant when given an empty string', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'treasurer'").first<{ id: string }>();
+    await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Treasurer', name: '', bio: '' }));
+    const updated = await env.DB.prepare("SELECT name, bio FROM leadership_roles WHERE slug = 'treasurer'").first();
+    expect(updated).toMatchObject({ name: null, bio: null });
+  });
+
+  it('does not change the slug when the role label is renamed', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'advancement-chair'").first<{ id: string }>();
+    await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Advancement Coordinator' }));
+    const updated = await env.DB.prepare('SELECT slug, role FROM leadership_roles WHERE id = ?').bind(row!.id).first();
+    expect(updated).toMatchObject({ slug: 'advancement-chair', role: 'Advancement Coordinator' });
+  });
+
+  it('creates a role and derives its slug', async () => {
+    const response = await exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Assistant Cubmaster', sortOrder: 15 }));
+    expect(response.status).toBe(201);
+    const body = (await response.json()) as { slug: string; id: string };
+    expect(body.slug).toBe('assistant-cubmaster');
+  });
+
+  it('rejects a duplicate role slug with 409', async () => {
+    const response = await exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Assistant Cubmaster' }));
+    expect(response.status).toBe(409);
+  });
+
+  it('deletes a role', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'assistant-cubmaster'").first<{ id: string }>();
+    const response = await exports.default.fetch(`${localAdmin}/${row!.id}`, {
+      method: 'DELETE',
+      headers: { origin: 'https://admin.macon170.com' },
+    });
+    expect(response.status).toBe(200);
+    const gone = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'assistant-cubmaster'").first();
+    expect(gone).toBeNull();
+  });
+
+  it('rejects a bio longer than 600 characters', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'cubmaster'").first<{ id: string }>();
+    const response = await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Cubmaster', bio: 'x'.repeat(601) }));
+    expect(response.status).toBe(400);
+  });
+
+  it('rejects a missing role label', async () => {
+    const response = await exports.default.fetch(localAdmin, jsonInit('POST', { name: 'Nobody' }));
+    expect(response.status).toBe(400);
+  });
+
+  it('requires authentication from the public hostname', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/api/admin/leadership');
+    expect(response.status).toBe(404);
+  });
+});
