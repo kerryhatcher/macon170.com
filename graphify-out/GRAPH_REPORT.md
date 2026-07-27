@@ -1,16 +1,16 @@
 # Graph Report - macon170.com  (2026-07-27)
 
 ## Corpus Check
-- 66 files · ~120,378 words
+- 66 files · ~120,594 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2345 nodes · 2366 edges · 317 communities (56 shown, 261 thin omitted)
+- 2343 nodes · 2389 edges · 312 communities (52 shown, 260 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `76d1ae68`
+- Built from commit: `268166a4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,21 +60,15 @@
 - [[_COMMUNITY_Readablestream|Readablestream]]
 - [[_COMMUNITY_Socket|Socket]]
 - [[_COMMUNITY_Writablestreamdefaultwriter|Writablestreamdefaultwriter]]
-- [[_COMMUNITY_..layoutsBaseLayout.astro|../layouts/BaseLayout.astro]]
-- [[_COMMUNITY_..datapack|../data/pack]]
-- [[_COMMUNITY_index.astro|index.astro]]
 - [[_COMMUNITY_Macon Place & Culture|Macon Place & Culture]]
-- [[_COMMUNITY_calendar-admin.ts|calendar-admin.ts]]
 - [[_COMMUNITY_Aisearchinstance|Aisearchinstance]]
 - [[_COMMUNITY_Durableobjectnamespace|Durableobjectnamespace]]
 - [[_COMMUNITY_R2Bucket|R2Bucket]]
 - [[_COMMUNITY_Sqlstoragecursor|Sqlstoragecursor]]
 - [[_COMMUNITY_Vectorize|Vectorize]]
-- [[_COMMUNITY_index.astro|index.astro]]
 - [[_COMMUNITY_Placeholder Audit|Placeholder Audit]]
 - [[_COMMUNITY_Cub Scout Program|Cub Scout Program]]
 - [[_COMMUNITY_Macon Place & Culture|Macon Place & Culture]]
-- [[_COMMUNITY_..componentsFieldIllustration.astro|../components/FieldIllustration.astro]]
 - [[_COMMUNITY_Ai|Ai]]
 - [[_COMMUNITY_Aisearchnamespace|Aisearchnamespace]]
 - [[_COMMUNITY_Readablestreambyobreader|Readablestreambyobreader]]
@@ -326,26 +320,28 @@
 - [[_COMMUNITY_Scheduled 365-Day Submission Purge Worker Job|Scheduled 365-Day Submission Purge Worker Job]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Event` - 25 edges
-2. `Console` - 21 edges
-3. `URL` - 20 edges
-4. `scripts` - 19 edges
-5. `URLSearchParams` - 16 edges
-6. `DurableObjectStorage` - 15 edges
-7. `SubtleCrypto` - 14 edges
-8. `Element` - 14 edges
-9. `Headers` - 14 edges
-10. `Container` - 14 edges
+1. `../layouts/BaseLayout.astro` - 25 edges
+2. `Event` - 25 edges
+3. `Console` - 21 edges
+4. `URL` - 20 edges
+5. `scripts` - 19 edges
+6. `../data/pack.ts` - 18 edges
+7. `URLSearchParams` - 16 edges
+8. `DurableObjectStorage` - 15 edges
+9. `fetch()` - 15 edges
+10. `SubtleCrypto` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Pack 170 Wordmark and Tagline Stack` --implements--> `Scouting Brand Palette (BSA blue #003F87, gold #FCD116, dark navy #0A1830)`  [INFERRED]
   assets/header.svg → assets/header-dark.svg
 - `Pack 170 Wordmark and Tagline Stack` --references--> `Astro + Cloudflare Workers Stack (stated in header subtitle)`  [EXTRACTED]
   assets/header.svg → assets/header-dark.svg
+- `fetch()` --calls--> `renderCalendarAdmin()`  [EXTRACTED]
+  worker/index.ts → worker/calendar-admin.ts
+- `fetch()` --calls--> `handleEventRoute()`  [EXTRACTED]
+  worker/index.ts → worker/event-routes.ts
 - `Pack 170 Dark Header Banner (SVG)` --references--> `Pack 170 Wordmark and Tagline Stack`  [EXTRACTED]
   assets/header-dark.svg → assets/header.svg
-- `Pack 170 Wordmark and Tagline Stack` --references--> `Pack 170 — Cub Scouts of Macon, Georgia`  [EXTRACTED]
-  assets/header.svg → assets/header-dark.svg
 
 ## Import Cycles
 - None detected.
@@ -368,7 +364,7 @@
 - **Pack 170 header visual identity: badge, wordmark, paper and trail motifs sharing one scouting palette** — assets_header_badge_medallion, assets_header_wordmark, assets_header_notebook_paper_motif, assets_header_trail_motif, assets_header_scouting_palette [INFERRED 0.85]
 - **Pack 170 Visual Identity System (mark, palette, type, trademark-safe artwork)** — assets_logo_pack170_logo, assets_logo_trail_marker_compass_badge, assets_logo_brand_palette, assets_logo_montserrat_type_stack, assets_logo_original_artwork_no_official_emblems [INFERRED 0.85]
 
-## Communities (317 total, 261 thin omitted)
+## Communities (312 total, 260 thin omitted)
 
 ### Community 0 - "Generated Workers Type Surface"
 Cohesion: 0.00
@@ -387,16 +383,16 @@ Cohesion: 0.05
 Nodes (43): dependencies, astro, @astrojs/check, @fontsource/montserrat, @fontsource/source-sans-3, jose, typescript, devDependencies (+35 more)
 
 ### Community 4 - "Contact API & Admin Worker"
-Cohesion: 0.11
-Nodes (35): AccessIdentity, adminCss(), adminHeaders(), adminScript(), ALLOWED_GRADES, ALLOWED_STATUSES, ALLOWED_TOPICS, clean() (+27 more)
+Cohesion: 0.06
+Nodes (60): css(), escapeHtml(), renderCalendarAdmin(), script(), categories, enumValue(), EventCategory, EventInput (+52 more)
 
 ### Community 5 - "Astro Pages"
-Cohesion: 0.18
-Nodes (12): ../data/leadership.md, Den Leaders, Who leads Pack 170, annualProgram, editorChecklist, events, pack, PackEvent (+4 more)
+Cohesion: 0.06
+Nodes (48): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, ../components/ChapterHero.astro, ../components/FieldIllustration.astro (+40 more)
 
 ### Community 6 - "Misc"
-Cohesion: 0.05
-Nodes (35): Before you open a PR, Code of Conduct, Code standards, Contributing, Development setup, Finding something to work on, Pull request process, Reporting security issues (+27 more)
+Cohesion: 0.15
+Nodes (12): 🙏 Acknowledgements, 📖 API Reference, 🏗️ Architecture, 🤝 Contributing, ✨ Features, 📦 Installation, License, 🚀 Quick Start (+4 more)
 
 ### Community 7 - "Calendar Event Routes"
 Cohesion: 0.09
@@ -415,16 +411,16 @@ Cohesion: 0.19
 Nodes (16): Accessible SVG Labeling (role=img + aria-labelledby title), Scout Badge Medallion (navy circle, gold ring, pine tree, neckerchief), Accessible SVG Labeling (role=img + aria-labelledby + title), Astro + Cloudflare Workers Stack (stated in header subtitle), Dark Notebook-Paper Motif, Dashed Trail with Pine Trees, Pack 170 Dark Header Banner (SVG), Pack 170 — Cub Scouts of Macon, Georgia (+8 more)
 
 ### Community 14 - "event-routes.ts"
-Cohesion: 0.13
-Nodes (21): categories, enumValue(), EventCategory, EventInput, EventRouteContext, EventRouteError, EventRow, EventStatus (+13 more)
+Cohesion: 0.22
+Nodes (9): 1. Finish Cloudflare Access, 2. GitHub Actions secrets, 3. Local development, 4. First deployment, Access validation checklist, Cloudflare deployment and volunteer access, Data and safety model, Operations (+1 more)
 
 ### Community 16 - "../layouts/BaseLayout.astro"
-Cohesion: 0.17
-Nodes (10): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, links, ../layouts/BaseLayout.astro (+2 more)
+Cohesion: 0.25
+Nodes (8): Before you open a PR, Code of Conduct, Code standards, Contributing, Development setup, Finding something to work on, Pull request process, Reporting security issues
 
 ### Community 21 - "[den].astro"
-Cohesion: 0.25
-Nodes (6): adventures, RankAdventures, denSlug(), program, ../../data/adventures, ../../lib/den-slug
+Cohesion: 0.33
+Nodes (6): Disclosure Process, Related Safeguards Already In Place, Reporting a Vulnerability, Scope, Security Policy, Supported Versions
 
 ### Community 23 - "Body"
 Cohesion: 0.15
@@ -439,8 +435,8 @@ Cohesion: 0.12
 Nodes (15): 1. Project snapshot, 2. Brand & compliance constraints, 3. Visual identity direction, 4. Content architecture, 5. Local hooks, 6. Open questions for pack leadership, Chartered-organization acknowledgment, Content constraints worth knowing (+7 more)
 
 ### Community 30 - "Trademark & Brand Policy"
-Cohesion: 0.50
-Nodes (4): ✅ CAN DO, Executive Summary — What Pack 170 CAN Do / MUST NOT Do / GRAY AREAS, ⚠️ GRAY AREAS, ❌ MUST NOT DO
+Cohesion: 0.40
+Nodes (5): 1. Correction, 2. Warning, 3. Temporary Ban, 4. Permanent Ban, Enforcement Guidelines
 
 ### Community 31 - "Alreadyuploadederror"
 Cohesion: 0.18
@@ -450,29 +446,9 @@ Nodes (11): AlreadyUploadedError, BadRequestError, ForbiddenError, InternalError
 Cohesion: 0.22
 Nodes (3): ByteLengthQueuingStrategy, CountQueuingStrategy, QueuingStrategy
 
-### Community 45 - "../layouts/BaseLayout.astro"
-Cohesion: 0.25
-Nodes (6): resources, roles, aims, asks, ../components/ChapterHero.astro, ../layouts/BaseLayout.astro
-
-### Community 46 - "../data/pack"
-Cohesion: 0.29
-Nodes (5): ../components/ChapterHero.astro, year, activities, string, ../data/pack
-
-### Community 47 - "index.astro"
-Cohesion: 0.38
-Nodes (5): esc(), fmt(), load(), slug, ../lib/api-base
-
 ### Community 48 - "Macon Place & Culture"
 Cohesion: 0.10
 Nodes (20): Additional Outdoor Resources, Basic Facts About Macon, Central Georgia Council, BSA, Cherry Blossom Capital of the World, Color & Mood Palette Suggestions, Culture, Heritage & Family Attractions, Downtown Macon & Historic Architecture, Family Attractions (+12 more)
-
-### Community 49 - "calendar-admin.ts"
-Cohesion: 0.70
-Nodes (4): css(), escapeHtml(), renderCalendarAdmin(), script()
-
-### Community 55 - "index.astro"
-Cohesion: 0.83
-Nodes (3): date(), escapeHtml(), loadCalendar()
 
 ### Community 56 - "Placeholder Audit"
 Cohesion: 0.15
@@ -499,7 +475,7 @@ Cohesion: 0.50
 Nodes (3): exclude, extends, include
 
 ### Community 133 - "Astro Components & Pack Data"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (12): 1. History and the 2024/2025 Rebrand, 2. Official Brand Identity: Colors, Typography, Logo, 3. Visual Identity Themes, 4. Official Web Resources, 5. Youth Protection / Privacy Considerations for Unit Websites, Colors, Design/compliance checklist this implies for macon170.com, Logo usage / trademark restrictions relevant to a pack site (+4 more)
 
 ### Community 134 - "Users"
@@ -515,8 +491,8 @@ Cohesion: 0.67
 Nodes (3): RequestInitCfPropertiesVaryAcceptHeader, RequestInitCfPropertiesVaryAcceptLanguageHeader, RequestInitCfPropertiesVaryHeader
 
 ### Community 163 - "Astro Pages"
-Cohesion: 0.29
-Nodes (6): 2.1 What the World Scout Emblem Is, 2.2 How WOSM Rights Flow Down — Scouting America's Own Answer, 2.3 What This Means for Pack 170, 2. International Level — WOSM and the World Scout Emblem, 8. Confidence Summary — One-Line Verdicts, Trademark & Brand Guidance for Cub Scout Pack 170
+Cohesion: 0.20
+Nodes (10): 2.1 What the World Scout Emblem Is, 2.2 How WOSM Rights Flow Down — Scouting America's Own Answer, 2.3 What This Means for Pack 170, 2. International Level — WOSM and the World Scout Emblem, 8. Confidence Summary — One-Line Verdicts, ✅ CAN DO, Executive Summary — What Pack 170 CAN Do / MUST NOT Do / GRAY AREAS, ⚠️ GRAY AREAS (+2 more)
 
 ### Community 200 - "400 Css"
 Cohesion: 0.22
@@ -535,8 +511,8 @@ Cohesion: 0.18
 Nodes (10): Adventures, Chartered Organization, Council, Cub Scout Pack, Dens, Links, Lion (Kindergarten), Meeting Info (+2 more)
 
 ### Community 205 - "900 Css"
-Cohesion: 0.15
-Nodes (12): 1. Correction, 2. Warning, 3. Temporary Ban, 4. Permanent Ban, Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Guidelines (+4 more)
+Cohesion: 0.29
+Nodes (7): Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Responsibilities, Our Pledge, Our Standards, Scope
 
 ### Community 214 - "Product Accessibility Inclusion"
 Cohesion: 0.17
@@ -567,23 +543,23 @@ Nodes (4): 7. Recommended Policy for Pack 170, Ask, If It Matters, Do, Don't
   assets/logo.svg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **1219 isolated node(s):** `graphify`, `Who leads Pack 170`, `Den Leaders`, `PackEvent`, `events` (+1214 more)
+- **1218 isolated node(s):** `NEVER switch branches in this directory`, `graphify`, `plugins`, `singleQuote`, `printWidth` (+1213 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **261 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **260 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Original Artwork Only, No Official Scouting Emblems` and `Brand Palette (navy #003F87/#002B5C, gold #FCD116, cream #F7F1E3, pink accent #E8A3C6, slate #59636B)`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
+- **Why does `SubtleCrypto` connect `Subtlecrypto` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `Flagship` connect `Flagship` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `URL` connect `Url` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `Console` connect `Console` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `DurableObjectStorage` connect `Durableobjectstorage` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `graphify`, `Who leads Pack 170`, `Den Leaders` to the rest of the system?**
-  _1258 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **What connects `NEVER switch branches in this directory`, `graphify`, `plugins` to the rest of the system?**
+  _1257 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Generated Workers Type Surface` be split into smaller, more focused modules?**
   _Cohesion score 0.0023952095808383233 - nodes in this community are weakly interconnected._
 - **Should `Serviceworkerglobalscope` be split into smaller, more focused modules?**

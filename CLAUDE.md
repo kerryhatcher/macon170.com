@@ -27,6 +27,10 @@ Claude Code's `EnterWorktree` tool does this for you — prefer it when availabl
 paths (`git add <path>`, never `git add -A` / `git add .`) so you never commit another session's
 in-progress files. If a task seems to require a branch switch here, stop and ask the human instead.
 
+This is enforced, not just documented: the `PreToolUse` hook `.claude/hooks/no-branch-switch.py`
+(wired up in `.claude/settings.json`) denies these commands before they run. Verify it with
+`python3 .claude/hooks/no-branch-switch.py --selftest`. Do not weaken or bypass it.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.

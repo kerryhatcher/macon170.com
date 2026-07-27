@@ -1,6 +1,6 @@
 {
   ".claude/settings.json": {
-    "mtime": 1785179719.714834,
+    "mtime": 1785180598.370038,
     "ast_hash": "dcfb24665bd5cf03a5fc35762977dc8d",
     "semantic_hash": ""
   },
@@ -40,12 +40,12 @@
     "semantic_hash": "e1fd14574c3287e26ee0159ebcb202ea"
   },
   "package.json": {
-    "mtime": 1785170012.4717298,
+    "mtime": 1785180598.3989089,
     "ast_hash": "ec71e4db7c9bb560c4df2ba9892f8b39",
     "semantic_hash": "ec71e4db7c9bb560c4df2ba9892f8b39"
   },
   "playwright.config.ts": {
-    "mtime": 1785170017.951743,
+    "mtime": 1785180598.4009893,
     "ast_hash": "8993886057a61825c32c1332fc9534ba",
     "semantic_hash": "8993886057a61825c32c1332fc9534ba"
   },
@@ -60,22 +60,22 @@
     "semantic_hash": "4497d96f1e25909a12d7015411beaf4a"
   },
   "src/components/PackStrip.astro": {
-    "mtime": 1785170749.843681,
+    "mtime": 1785180598.4024928,
     "ast_hash": "a365cf87f6d8a0641517063b42ce5de9",
     "semantic_hash": "a365cf87f6d8a0641517063b42ce5de9"
   },
   "src/components/SiteFooter.astro": {
-    "mtime": 1785179684.0710413,
+    "mtime": 1785180598.4032185,
     "ast_hash": "0e0ece25063dedbeab1ae89da81e2f84",
     "semantic_hash": ""
   },
   "src/components/SiteHeader.astro": {
-    "mtime": 1785179679.1358037,
+    "mtime": 1785180598.4039955,
     "ast_hash": "d9b64baff239a10d575d9eaf17bdb149",
     "semantic_hash": ""
   },
   "src/data/pack.ts": {
-    "mtime": 1785178453.8725996,
+    "mtime": 1785180598.4060256,
     "ast_hash": "6a465e2eef82a87b8978b17a19b20c1b",
     "semantic_hash": ""
   },
@@ -90,7 +90,7 @@
     "semantic_hash": "442116963e15d263e8aab25158b01b47"
   },
   "src/pages/about.astro": {
-    "mtime": 1785178103.7600627,
+    "mtime": 1785180598.4073846,
     "ast_hash": "20b2ad40dfae22904a6253b396690080",
     "semantic_hash": ""
   },
@@ -100,42 +100,42 @@
     "semantic_hash": "72fd6073042ab28bc94e77cd997d27d6"
   },
   "src/pages/calendar/index.astro": {
-    "mtime": 1785168227.9998171,
+    "mtime": 1785180598.4082656,
     "ast_hash": "bd71d39abaab64654419076cb9087954",
     "semantic_hash": "bd71d39abaab64654419076cb9087954"
   },
   "src/pages/contact.astro": {
-    "mtime": 1785169788.6441526,
+    "mtime": 1785180598.409244,
     "ast_hash": "6a051f357bc0215bd68330cb0ac16946",
     "semantic_hash": "6a051f357bc0215bd68330cb0ac16946"
   },
   "src/pages/events/index.astro": {
-    "mtime": 1785168236.6911998,
+    "mtime": 1785180598.4131362,
     "ast_hash": "a46bc5df3e4d9213aa2435a8c92e7fac",
     "semantic_hash": "a46bc5df3e4d9213aa2435a8c92e7fac"
   },
   "src/pages/index.astro": {
-    "mtime": 1785179692.326208,
+    "mtime": 1785180598.4139702,
     "ast_hash": "c8890168985a59907e89b1a03fd6a151",
     "semantic_hash": ""
   },
   "src/pages/join.astro": {
-    "mtime": 1785179713.6996918,
+    "mtime": 1785180598.4148111,
     "ast_hash": "f752521f93620db6d6fbdab985e8784f",
     "semantic_hash": ""
   },
   "src/pages/privacy.astro": {
-    "mtime": 1785170102.3353593,
+    "mtime": 1785180598.4159229,
     "ast_hash": "ee363d8bc552fc00ed4f4e9e834f2de6",
     "semantic_hash": "ee363d8bc552fc00ed4f4e9e834f2de6"
   },
   "src/pages/resources.astro": {
-    "mtime": 1785173277.1334987,
+    "mtime": 1785180598.4166965,
     "ast_hash": "de2422759a2822ea62e88f7ad379d405",
     "semantic_hash": ""
   },
   "src/pages/volunteer.astro": {
-    "mtime": 1785179690.5094588,
+    "mtime": 1785180598.4174395,
     "ast_hash": "fbe746275f515ff882308e010bfe7601",
     "semantic_hash": ""
   },
@@ -180,7 +180,7 @@
     "semantic_hash": "e3cc7c4ff147285eebccba5836805f45"
   },
   "worker/index.ts": {
-    "mtime": 1785170926.8981934,
+    "mtime": 1785180598.4201365,
     "ast_hash": "758a329c47758029e8fd220cb3c5c94b",
     "semantic_hash": "758a329c47758029e8fd220cb3c5c94b"
   },
@@ -195,12 +195,12 @@
     "semantic_hash": "e838d408f85c4ea8c8705282bde38ebc"
   },
   ".agents/skills/calendar-api/SKILL.md": {
-    "mtime": 1785170749.7533526,
+    "mtime": 1785180598.369135,
     "ast_hash": "4c143c608d91c045e4fff79215fdcec6",
     "semantic_hash": "4c143c608d91c045e4fff79215fdcec6"
   },
   ".github/workflows/deploy.yml": {
-    "mtime": 1785170064.842955,
+    "mtime": 1785180598.370855,
     "ast_hash": "0734fefb190f0e1551e27cea97288cdf",
     "semantic_hash": "0734fefb190f0e1551e27cea97288cdf"
   },
@@ -210,7 +210,7 @@
     "semantic_hash": "8ab16bb6f95c64abd02391866d763435"
   },
   "CONTRIBUTING.md": {
-    "mtime": 1785170039.2251284,
+    "mtime": 1785180598.3742242,
     "ast_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4",
     "semantic_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4"
   },
@@ -225,7 +225,7 @@
     "semantic_hash": "cbee4dabb12f2c3a58a73a7c88ad18c3"
   },
   "README.md": {
-    "mtime": 1785170108.6825864,
+    "mtime": 1785180598.375793,
     "ast_hash": "7be27d3cf1c34b52618a4db630ce33e1",
     "semantic_hash": "7be27d3cf1c34b52618a4db630ce33e1"
   },
@@ -235,7 +235,7 @@
     "semantic_hash": "5aa007aafb836df1ac6af5c0cbe3d1a3"
   },
   "docs/CLOUDFLARE-DEPLOYMENT.md": {
-    "mtime": 1785170017.948023,
+    "mtime": 1785180598.3810127,
     "ast_hash": "8393f1a74bc0ade67fcfba0033ba2d02",
     "semantic_hash": "8393f1a74bc0ade67fcfba0033ba2d02"
   },
@@ -245,17 +245,17 @@
     "semantic_hash": "8ec6d8b858053b977068bf40f3550b26"
   },
   "docs/Offical-info.md": {
-    "mtime": 1785180189.8347578,
+    "mtime": 1785180598.381795,
     "ast_hash": "dbc74eeebf2c654ab2e77c372e9fc52a",
     "semantic_hash": ""
   },
   "docs/calendar.md": {
-    "mtime": 1785170749.777679,
+    "mtime": 1785180598.3834875,
     "ast_hash": "15528143bd302ca8975061ca0efce81e",
     "semantic_hash": "15528143bd302ca8975061ca0efce81e"
   },
   "docs/research/SYNTHESIS.md": {
-    "mtime": 1785171468.5636797,
+    "mtime": 1785180598.384819,
     "ast_hash": "cc414f3705a0a0238d7062cb89fb9ee6",
     "semantic_hash": ""
   },
@@ -265,7 +265,7 @@
     "semantic_hash": "092775278f4f335ea1121f7a0db7aa42"
   },
   "docs/research/highland-hills-baptist.md": {
-    "mtime": 1785170576.3737068,
+    "mtime": 1785180598.3858886,
     "ast_hash": "ede5306a3bb7e77e05a019b982437dc4",
     "semantic_hash": "ede5306a3bb7e77e05a019b982437dc4"
   },
@@ -275,7 +275,7 @@
     "semantic_hash": "0f54c3be28dde0def70a5ac20cd800aa"
   },
   "docs/research/scouting-america.md": {
-    "mtime": 1785180034.5761402,
+    "mtime": 1785180598.386754,
     "ast_hash": "a9eb8bffa6cca71a09b00551b38c7881",
     "semantic_hash": ""
   },
@@ -305,92 +305,92 @@
     "semantic_hash": "a42fab04a1d054942419b145355cc0bc"
   },
   "worker/retention.test.ts": {
-    "mtime": 1785170935.3470268,
+    "mtime": 1785180598.4207933,
     "ast_hash": "5457725db532107c0ea3317463f996a9",
     "semantic_hash": "5457725db532107c0ea3317463f996a9"
   },
   "docs/placeholders.md": {
-    "mtime": 1785178544.197188,
+    "mtime": 1785180598.3839896,
     "ast_hash": "d5e1d29a251a4e2f0287c6adc0f0c5c1",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1785179719.7790318,
-    "ast_hash": "b98d3f7e9adec687148385aed8f6a3ed",
+    "mtime": 1785180874.602412,
+    "ast_hash": "efc6b2dc387dd5d6fdcb57f74e87aea3",
     "semantic_hash": ""
   },
   "src/data/leadership.md": {
-    "mtime": 1785178271.6307142,
+    "mtime": 1785180598.405175,
     "ast_hash": "c648188f1893bcea237ff5b322691e6c",
     "semantic_hash": ""
   },
   "src/data/adventures.ts": {
-    "mtime": 1785180020.1312022,
+    "mtime": 1785180598.4047081,
     "ast_hash": "bc0a9882ea9139d12f177224a6034571",
     "semantic_hash": ""
   },
   "src/lib/den-slug.ts": {
-    "mtime": 1785179632.855293,
+    "mtime": 1785180598.4065464,
     "ast_hash": "236e11bd729cd4b923812c28c24754bb",
     "semantic_hash": ""
   },
   "src/pages/dens/[den].astro": {
-    "mtime": 1785179720.6868427,
+    "mtime": 1785180598.4099169,
     "ast_hash": "9db95b1e4c90811c5b589fcebc7ff515",
     "semantic_hash": ""
   },
   "src/pages/dens/index.astro": {
-    "mtime": 1785179720.7124858,
+    "mtime": 1785180598.4122286,
     "ast_hash": "20871d7dcd02f43c961f45416b525ee6",
     "semantic_hash": ""
   },
   "src/pages/what-is-cub-scouts.astro": {
-    "mtime": 1785179720.8793745,
+    "mtime": 1785180598.4184577,
     "ast_hash": "28ca2978d3942008e2dc13539e51b258",
     "semantic_hash": ""
   },
   "src/pages/youth-protection.astro": {
-    "mtime": 1785179720.8961537,
+    "mtime": 1785180598.4191344,
     "ast_hash": "d037042396ca2126ba0df3427129e095",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Fun_On_The_Run.webp": {
-    "mtime": 1785179769.6984308,
+    "mtime": 1785180598.376309,
     "ast_hash": "36814b55ee96fdeb08e9e1c211af3d26",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Lion_Bobcat.webp": {
-    "mtime": 1785179757.0859706,
+    "mtime": 1785180598.376956,
     "ast_hash": "1a51fb6ddfd174a1ad8d331db5ad69c2",
     "semantic_hash": ""
   },
   "assets/offical/Arrows-of-Ligth-1.webp": {
-    "mtime": 1785179719.5580292,
+    "mtime": 1785180598.3775532,
     "ast_hash": "b69f9029e0d996897b959b1858ce04fb",
     "semantic_hash": ""
   },
   "assets/offical/Bear1.webp": {
-    "mtime": 1785179709.4972794,
+    "mtime": 1785180598.3784118,
     "ast_hash": "ceeb0f4ab66a4a2c81072dd81ad771b6",
     "semantic_hash": ""
   },
   "assets/offical/Lion1.webp": {
-    "mtime": 1785179690.9588058,
+    "mtime": 1785180598.3788643,
     "ast_hash": "67eadbcc22c5af6187592ade685c390e",
     "semantic_hash": ""
   },
   "assets/offical/Tiger1.webp": {
-    "mtime": 1785179697.8995042,
+    "mtime": 1785180598.3792408,
     "ast_hash": "c5834320ac3ddb51169f5ffb4f3aa57d",
     "semantic_hash": ""
   },
   "assets/offical/Webelos1.webp": {
-    "mtime": 1785179715.0765388,
+    "mtime": 1785180598.3796494,
     "ast_hash": "46728ee90a1ef698f6d103abdc3b03d8",
     "semantic_hash": ""
   },
   "assets/offical/Wolf1.webp": {
-    "mtime": 1785179702.9590988,
+    "mtime": 1785180598.380058,
     "ast_hash": "78f38813a5dc90172b92251d35d69358",
     "semantic_hash": ""
   }
