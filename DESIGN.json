@@ -1,0 +1,101 @@
+{
+  "$comment": [
+    "Design-system sidecar for DESIGN.md. Read by the impeccable design detector.",
+    "",
+    "Why this file exists: the detector validates border-radius one CORNER at a time,",
+    "while this design system's unit of design is a four-corner asymmetric cut. A token",
+    "like chip ('3px 9px 5px 3px') is resolved to its first corner only, so its 5px and",
+    "9px corners read as undocumented drift, and 'pin' ('50%') is discarded outright",
+    "because percentage values are skipped. Both shape tokens in DESIGN.md frontmatter",
+    "are therefore inert on their own.",
+    "",
+    "roundedMeta below declares the individual corner lengths the system actually uses,",
+    "grouped by the role each band plays, so the check compares like with like. This is",
+    "documentation of the Hand-Cut Sheet Rule in DESIGN.md, not a blanket waiver: values",
+    "outside these bands still surface. 55px is deliberately excluded — it is a one-off",
+    "in the codebase and should be reviewed rather than blessed.",
+    "",
+    "Kept at the project root on purpose: .impeccable/ is gitignored, so a sidecar there",
+    "would silence findings on one machine and nowhere else."
+  ],
+  "extensions": {
+    "colorMeta": {
+      "illustrationSky": {
+        "canonical": "#8ec7df",
+        "role": "Paint for original illustrated scenes only — sky, river, and water fills in FieldIllustration, adventure art, and activity pictures. DESIGN.md calls for original school, trail, pine, river, and cherry-blossom illustration language, which needs more range than the 16 UI tokens. Never valid for UI chrome, text, or borders.",
+        "tonalRamp": ["#cfe8f5", "#bcd9ec", "#bfe0ec", "#8ec7df", "#8ac8e7"]
+      },
+      "illustrationFoliage": {
+        "canonical": "#76a982",
+        "role": "Paint for pines, hills, and leaf masses in illustrated scenes. Derived from river-green; illustration only.",
+        "tonalRamp": ["#d8e8cc", "#9bc8a8", "#76a982"]
+      },
+      "illustrationBloom": {
+        "canonical": "#f0b4d1",
+        "role": "Cherry-blossom paint in illustrated scenes, one step lighter than the cherry-blossom token. Illustration only.",
+        "tonalRamp": ["#f0b4d1"]
+      },
+      "illustrationEarth": {
+        "canonical": "#a06b3f",
+        "role": "Trunk, track, and soil paint in illustrated scenes. Illustration only.",
+        "tonalRamp": ["#a06b3f"]
+      },
+      "veilOnDark": {
+        "canonical": "rgba(255, 255, 255, 0.2)",
+        "role": "White at low alpha for hairline rules, inset separators, and quiet fills laid over the blue and green fields. An alpha veil rather than a new hue, so it tracks whatever field it sits on.",
+        "tonalRamp": [
+          "rgba(255, 255, 255, 0.1)",
+          "rgba(255, 255, 255, 0.15)",
+          "rgba(255, 255, 255, 0.2)",
+          "rgba(255, 255, 255, 0.22)",
+          "rgba(255, 255, 255, 0.35)",
+          "rgba(255, 255, 255, 0.5)",
+          "rgba(255, 255, 255, 0.65)",
+          "rgba(255, 255, 255, 0.7)"
+        ]
+      },
+      "shadowAmbient": {
+        "canonical": "rgba(0, 0, 0, 0.18)",
+        "role": "Black at low alpha for the soft ambient half of a paper shadow, distinct from the blue offset half carried by --shadow-paper.",
+        "tonalRamp": ["rgba(0, 0, 0, 0.18)", "rgba(0, 0, 0, 0.25)"]
+      }
+    },
+    "roundedMeta": {
+      "control": {
+        "canonical": "9px 9px 3px 9px",
+        "role": "Buttons and inputs. Exact, does not vary.",
+        "values": ["3px", "9px"]
+      },
+      "tab": {
+        "canonical": "4px 12px 12px 4px",
+        "role": "Chapter tabs and month tabs. Exact, does not vary.",
+        "values": ["4px", "12px"]
+      },
+      "chip": {
+        "canonical": "3px 9px 5px 3px",
+        "role": "Category and status marks. Exact, does not vary.",
+        "values": ["3px", "5px", "9px"]
+      },
+      "pin": {
+        "canonical": "50%",
+        "role": "full",
+        "note": "Dates, compass points, rank markers, pins, and organic illustration blobs."
+      },
+      "sheetTopLeft": {
+        "canonical": "6px",
+        "role": "Paper sheets: the quiet corner. Hand-varied 4-8px.",
+        "values": ["4px", "5px", "6px", "7px", "8px"]
+      },
+      "sheetTopRight": {
+        "canonical": "18px",
+        "role": "Paper sheets: the open corner that carries the hand-cut read. Varied 12-30px.",
+        "values": ["12px", "14px", "16px", "18px", "20px", "22px", "24px", "30px"]
+      },
+      "sheetBottom": {
+        "canonical": "12px",
+        "role": "Paper sheets: the clipped bottom pair. Varied 6-14px, or 0 where a sheet butts flush against an edge.",
+        "values": ["0", "6px", "7px", "8px", "10px", "12px", "14px"]
+      }
+    }
+  }
+}

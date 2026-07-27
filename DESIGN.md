@@ -27,21 +27,81 @@ typography:
     fontWeight: 800
     lineHeight: 1.08
     letterSpacing: '-0.025em'
+  title:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '1.45rem'
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: '-0.015em'
+  subtitle:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '1.2rem'
+    fontWeight: 900
+    lineHeight: 1.25
+  cardTitle:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '1.15rem'
+    fontWeight: 800
+    lineHeight: 1.25
+  subheading:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(1.25rem, 2vw, 1.65rem)'
+    fontWeight: 800
+    lineHeight: 1.3
+  pageTitle:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.6rem, 7vw, 5rem)'
+    fontWeight: 900
+    lineHeight: 1.08
+    letterSpacing: '-0.025em'
+  glyphFluid:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.5rem, 6vw, 5.5rem)'
+    fontWeight: 900
+    lineHeight: 1
   body:
     fontFamily: 'Source Sans 3, Segoe UI, sans-serif'
     fontSize: '1.1rem'
     fontWeight: 400
     lineHeight: 1.65
+  bodySmall:
+    fontFamily: 'Source Sans 3, Segoe UI, sans-serif'
+    fontSize: '0.95rem'
+    fontWeight: 400
+    lineHeight: 1.55
+  meta:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '0.82rem'
+    fontWeight: 800
+    lineHeight: 1.3
   label:
     fontFamily: 'Montserrat, Arial, sans-serif'
     fontSize: '0.76rem'
     fontWeight: 800
     lineHeight: 1.2
     letterSpacing: '0.06em'
+  labelSmall:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: '0.68rem'
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: '0.1em'
+  # Drawn marks, not type: characters used as illustration (pines, flags, race cars) and
+  # numerals inside a badge or mark. Sized to the drawing, never to the reading order, and
+  # never valid for prose. Kept apart from the ten-step ramp above on purpose.
+  scale:
+    glyphMark: '1rem'
+    glyphBadge: '1.4rem'
+    glyphSmall: '2rem'
+    glyphMedium: '3rem'
+    glyphLarge: '8rem'
+    glyphHuge: '12rem'
 rounded:
   control: '9px 9px 3px 9px'
   sheet: '6px 18px 12px 8px'
   tab: '4px 12px 12px 4px'
+  chip: '3px 9px 5px 3px'
+  pin: '50%'
 spacing:
   xs: '0.5rem'
   sm: '0.75rem'
@@ -87,7 +147,7 @@ The system is energetic but never babyish, nostalgic but never archival, and han
 - Cub blue and gold at page scale, with warm paper and sparse local accents
 - Bold geometric headings paired with open, readable body copy
 - Original illustrated scenes, school-supply details, tabs, labels, and trail marks
-- Equal visual authority for Join and Calendar
+- One unmistakable Gold priority action, Join, with Calendar always one tap away beside it
 
 ## Colors
 
@@ -126,9 +186,20 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 
 - **Display:** Heavy and compact; cover titles and route openings only.
 - **Headline:** Bold chapter naming with short, balanced lines.
-- **Title:** Clear event, card, and subsection labels.
+- **Title:** Section and list headings inside a chapter.
+- **Subtitle:** Emphasis inside a coloured sheet — the date on a gold date sheet, a sub-heading on a field.
+- **Card Title:** The heading on a single event, resource, or den card.
 - **Body:** Generous leading with a 65–72 character measure on reading pages.
+- **Body Small:** Supporting copy inside cards and rows, where full body measure would crowd.
+- **Meta:** Dates, times, and logistics in display weight — small but never timid.
 - **Label:** Short and sturdy; uppercase is reserved for edition marks and chapter tabs.
+- **Label Small:** Category and status chips only. The smallest type the system permits.
+
+**The Ramp Is The Whole Ramp Rule.** Ten steps is already generous for a site this size; a
+composition that "needs" an eleventh needs different spacing instead. Reach for the nearest
+documented step rather than inventing a value 0.02rem away from one — the codebase currently
+carries several such near-duplicates (`0.73`, `0.74`, `0.75`, `0.78`) that should snap to
+`label` as their files are next touched.
 
 **The Parent Can Read It in the Parking Lot Rule.** Body copy never shrinks to make a composition fit; the composition adapts around readable type.
 
@@ -136,7 +207,7 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 
 Pages behave like chapters in one handbook. Wide screens use an intentionally asymmetric grid with room for tabs and annotations; phones collapse to one direct reading column without changing the order. A broad cover establishes orientation, then clean reading sheets, illustrated fields, tabbed indexes, and practical notices alternate to pace the page.
 
-The container tops out at 1160px with one-rem minimum side gutters. Major sections use a fluid 4.5–8rem vertical interval. Join and Calendar retain equal prominence in navigation, the Pack essentials strip, and the homepage opening. Dense planner views prioritize date, state, and logistics over decoration.
+The container tops out at 1160px with one-rem minimum side gutters. Major sections use a fluid 4.5–8rem vertical interval. Join is the single Gold priority action in navigation; Calendar sits with the other chapter tabs and keeps its own button in the Pack essentials strip. Both stay one tap away on every route, but only one of them is highlighted. Dense planner views prioritize date, state, and logistics over decoration.
 
 ## Elevation & Depth
 
@@ -147,6 +218,16 @@ Depth comes from paper overlap, visible offset shadows, folded corners, inset ru
 ## Shapes
 
 Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cut without looking damaged. Chapter tabs round only the exposed edge. Notices use taped, pinned, or folded geometry. Original badge-like labels remain abstract and never mimic rank insignia. Circles are reserved for dates, compass points, rank-color markers, and pins—not generic icon bubbles.
+
+Five named shapes carry the system: **control** for buttons and inputs, **sheet** for paper surfaces, **tab** for chapter tabs, **chip** for category and status marks, and **pin** for the circular date, marker, and pin family.
+
+**The Hand-Cut Sheet Rule.** `sheet` is a reference cut, not a locked token. Paper surfaces are
+_expected_ to vary their corners within roughly 4–8px on the top-left, 12–30px on the top-right,
+and 6–14px on the bottom pair, because identical corners on every sheet would read as machine-
+stamped and kill the handmade premise. **Consequence:** an automated check that matches radius
+literals will always flag this world, and that flagging is noise rather than drift. Scope the
+radius rule off for sheet geometry instead of flattening the sheets to satisfy it. The other four
+shapes are exact: `control`, `tab`, `chip`, and `pin` do not vary.
 
 ## Components
 
@@ -172,7 +253,7 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 
 ### Navigation
 
--The Midnight Blue header uses high-contrast text and two Gold priority tabs for Join and Calendar. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and the same two audience handoffs.
+-The Midnight Blue header uses high-contrast text and exactly one Gold priority tab: Join. Every other destination, Calendar included, is a plain high-contrast chapter tab. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and both audience handoffs — New here and Calendar — so the returning family's most-used route is still one tap away without competing with Join for emphasis.
 
 ### Chapter Tab
 
@@ -188,7 +269,7 @@ Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cu
 
 - **Do** make every decorative object carry navigation, state, sequence, or place.
 - **Do** use original school, trail, pine, river, and cherry-blossom illustration language.
-- **Do** keep Join and Calendar equally easy to find on every route.
+- **Do** keep Join and Calendar reachable in one tap from every route, while letting Join alone carry the Gold priority treatment.
 - **Do** let missing imagery and data appear as honest, art-directed replacement states.
 - **Do** preserve clear reading order, visible focus, reduced-motion behavior, and strong contrast.
 

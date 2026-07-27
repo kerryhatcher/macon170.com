@@ -29,9 +29,15 @@ const resources = [
   },
   {
     title: 'Scoutbook',
-    body: 'The Pack 170 Scoutbook destination has not been supplied yet.',
+    body: 'Track your own Scout’s advancement in Scouting America’s portal. Sign in with the my.scouting account you used to register.',
     link: pack.links.scoutbook,
     label: 'Open Scoutbook',
+  },
+  {
+    title: 'Day-to-day pack news',
+    body: 'Reminders, photos, and short-notice updates are posted to the Pack 170 Facebook page. Confirmed dates still live on the calendar here.',
+    link: pack.links.facebook,
+    label: 'Open the Facebook page',
   },
   {
     title: 'Registration fees',
@@ -55,13 +61,14 @@ const resources = [
   <section class="section">
     <div class="container resource-list">
       {
-        resources.map((item) => (
+        resources.map((item, index) => (
           <article>
+            <span class="resource-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             <div>
-              <>
-                <h2>{item.title}</h2>
-                <p>{item.body}</p>
-              </>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
             </div>
             {item.link ? (
               <a class="button button--paper" href={item.link}>
@@ -100,9 +107,9 @@ const resources = [
   }
   .resource-number {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 900;
-    color: #9aa8b2;
+    color: var(--muted);
   }
   .resource-list h2 {
     font-size: 1.45rem;
@@ -115,7 +122,8 @@ const resources = [
   .pending {
     color: var(--red);
     font-weight: 700;
-    background: #fbe9e7;
+    /* Tint derived from the palette rather than a hand-picked pink. */
+    background: color-mix(in srgb, var(--red) 12%, var(--page));
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
   }

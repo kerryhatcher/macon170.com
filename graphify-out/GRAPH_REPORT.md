@@ -1,16 +1,16 @@
 # Graph Report - macon170.com  (2026-07-27)
 
 ## Corpus Check
-- 69 files · ~128,419 words
+- 72 files · ~169,487 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2381 nodes · 2428 edges · 315 communities (56 shown, 259 thin omitted)
+- 2392 nodes · 2449 edges · 315 communities (56 shown, 259 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1a86ad72`
+- Built from commit: `fcf1f472`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -328,7 +328,7 @@
 3. `Console` - 21 edges
 4. `URL` - 20 edges
 5. `scripts` - 19 edges
-6. `../data/pack.ts` - 18 edges
+6. `../data/pack.ts` - 19 edges
 7. `URLSearchParams` - 16 edges
 8. `DurableObjectStorage` - 15 edges
 9. `fetch()` - 15 edges
@@ -390,8 +390,8 @@ Cohesion: 0.06
 Nodes (60): css(), escapeHtml(), renderCalendarAdmin(), script(), categories, enumValue(), EventCategory, EventInput (+52 more)
 
 ### Community 5 - "Astro Pages"
-Cohesion: 0.06
-Nodes (48): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, ../components/ChapterHero.astro, ../components/FieldIllustration.astro (+40 more)
+Cohesion: 0.05
+Nodes (54): @fontsource/source-sans-3/400.css, @fontsource/source-sans-3/500.css, @fontsource/montserrat/600.css, @fontsource/montserrat/700.css, @fontsource/montserrat/800.css, @fontsource/montserrat/900.css, ../components/ChapterHero.astro, ../components/FieldIllustration.astro (+46 more)
 
 ### Community 6 - "Misc"
 Cohesion: 0.15
@@ -466,8 +466,8 @@ Cohesion: 0.14
 Nodes (13): Deviation from the spec, already decided, File Structure, Global Constraints, Leadership Roster Admin Implementation Plan, Self-review notes, Task 1: Schema and seed, Task 2: Public read endpoint, Task 3: Admin CRUD endpoints (+5 more)
 
 ### Community 56 - "Placeholder Audit"
-Cohesion: 0.15
-Nodes (12): `/calendar/` — src/pages/calendar/index.astro, Checked and clean, Components — src/components/PackStrip.astro, Editor callout boxes (`notice notice--editor`) — rendered to the public, `/join/` — src/pages/join.astro, Per-page findings, Placeholder content audit, `/privacy/` — src/pages/privacy.astro (+4 more)
+Cohesion: 0.14
+Nodes (13): `/calendar/` — src/pages/calendar/index.astro, Checked and clean, Components — src/components/PackStrip.astro, Editor callout boxes (`notice notice--editor`) — rendered to the public, `/join/` — src/pages/join.astro, Per-page findings, Placeholder content audit, Placeholder graphics (+5 more)
 
 ### Community 69 - "Pack 170 Logo & Identity"
 Cohesion: 0.47
@@ -562,7 +562,7 @@ Nodes (3): Commit often, in Conventional Commits format, graphify, NEVER switch 
   assets/logo.svg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **1243 isolated node(s):** `Global Constraints`, `Deviation from the spec, already decided`, `Test harness facts you need`, `Task 1: Schema and seed`, `Task 2: Public read endpoint` (+1238 more)
+- **1247 isolated node(s):** `plugins`, `singleQuote`, `printWidth`, `overrides`, `name` (+1242 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **259 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -571,14 +571,14 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Original Artwork Only, No Official Scouting Emblems` and `Brand Palette (navy #003F87/#002B5C, gold #FCD116, cream #F7F1E3, pink accent #E8A3C6, slate #59636B)`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `Event` connect `Event` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Why does `SqlStorageCursor` connect `Sqlstoragecursor` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **Why does `Container` connect `Container` to `Generated Workers Type Surface`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **What connects `Global Constraints`, `Deviation from the spec, already decided`, `Test harness facts you need` to the rest of the system?**
-  _1284 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `Console` connect `Console` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `Span` connect `Span` to `Generated Workers Type Surface`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **What connects `Split a shell segment into (git subcommand, its args), or None if it is not a gi`, `Return a denial reason for a banned command, or None if it is allowed.`, `plugins` to the rest of the system?**
+  _1288 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Generated Workers Type Surface` be split into smaller, more focused modules?**
   _Cohesion score 0.0023952095808383233 - nodes in this community are weakly interconnected._
 - **Should `Serviceworkerglobalscope` be split into smaller, more focused modules?**

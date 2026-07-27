@@ -1,3 +1,8 @@
+# Human-written canonical source for pack/council facts. Never reformatted, never
+# edited by tooling or agents — PRODUCT.md treats it as the authority that overrides
+# every research doc. Prettier stripped trailing whitespace here on 2026-07-27.
+docs/Offical-info.md
+
 dist
 .astro
 node_modules
@@ -7,3 +12,12 @@ worker-configuration.d.ts
 bun.lock
 test-results
 playwright-report
+# Git worktrees live inside the repo; formatting them would touch a second copy of src/.
+.claude/worktrees
+# Vendored agent-skill scripts: third-party files we do not author or format.
+.claude/skills
+.agents/skills
+.github/skills
+.codex
+# Machine-local settings, gitignored globally; prettier does not read git ignores.
+.claude/settings.local.json

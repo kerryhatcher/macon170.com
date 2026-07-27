@@ -93,7 +93,8 @@ import { pack } from '../../data/pack';
             '<div class="notice"><span class="notice__pin">i</span><div><h3>No published dates yet</h3><p>Pack volunteers are preparing the calendar. Use the annual overview below and contact the pack before making a special trip.</p></div></div>';
         return;
       }
-      if (status) status.textContent = `${body.events.length} upcoming event${body.events.length === 1 ? '' : 's'}`;
+      if (status)
+        status.textContent = `${body.events.length} upcoming event${body.events.length === 1 ? '' : 's'} · color-coded by who each event is for`;
       const first = body.events[0];
       if (next) {
         next.hidden = false;
@@ -102,10 +103,11 @@ import { pack } from '../../data/pack';
       if (list)
         list.innerHTML = body.events
           .slice(1)
-          .map(
-            (event) =>
-              `<article><span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><div><span>${escapeHtml(event.category)}</span><span>${escapeHtml(event.status)}</span></div><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`,
-          )
+          .map((event) => {
+            // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
+            const flag = event.status.toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status)}</span>`;
+            return `<article data-category="${escapeHtml(event.category)}"><span class="event-cat">${escapeHtml(event.category)}</span>${flag}<span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`;
+          })
           .join('');
     } catch {
       if (status)
@@ -125,6 +127,11 @@ import { pack } from '../../data/pack';
   .calendar-status {
     margin-bottom: 2rem;
     color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
   .next-grid,
   .calendar-help__grid {
@@ -133,7 +140,7 @@ import { pack } from '../../data/pack';
     gap: clamp(2rem, 6vw, 6rem);
     align-items: start;
   }
-  .date-sheet {
+  .next-grid :global(.date-sheet) {
     display: grid;
     gap: 0.7rem;
     padding: clamp(1.5rem, 4vw, 3rem);
@@ -143,42 +150,92 @@ import { pack } from '../../data/pack';
     box-shadow: var(--shadow-paper);
     transform: rotate(1deg);
   }
-  .date-sheet span {
+  .next-grid :global(.date-sheet span) {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 900;
   }
-  .date-sheet strong {
+  .next-grid :global(.date-sheet strong) {
     font-size: 1.15rem;
   }
-  .date-sheet small {
+  .next-grid :global(.date-sheet small) {
     text-transform: capitalize;
   }
   .event-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1.15rem;
     margin-top: 3rem;
   }
-  .event-cards article {
+  /* Category drives the accent: the Local Accent Rule wants colour to explain something. */
+  .event-cards :global(article) {
+    --cat: var(--blue);
+    --cat-ink: var(--page);
+    position: relative;
     padding: 1.5rem;
     background: var(--page);
     border: 1px solid var(--rule);
     border-radius: 6px 16px 8px 6px;
+    box-shadow: var(--shadow-paper);
   }
-  .event-cards article > div {
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0;
+  .event-cards :global(article[data-category='den']) {
+    --cat: var(--green);
+    --cat-ink: var(--page);
   }
-  .event-cards article > div span {
-    padding: 0.25rem 0.5rem;
-    background: var(--blue-soft);
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: capitalize;
+  .event-cards :global(article[data-category='family']) {
+    --cat: var(--orange);
+    --cat-ink: var(--ink);
   }
-  .event-date {
+  .event-cards :global(article)::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 8px;
+    background: var(--cat);
+    border-radius: 6px 16px 0 0;
+    opacity: 0.77;
+  }
+  .event-cards :global(.event-cat) {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px 9px 5px 3px;
+    background: var(--cat);
+    color: var(--cat-ink);
+    margin-bottom: 0.9rem;
+  }
+  .event-cards :global(.event-status) {
+    display: inline-block;
+    margin: 0 0 0.9rem 0.4rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px 9px 5px 3px;
+    background: var(--red);
+    color: var(--page);
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .event-cards :global(h3) {
+    font-size: 1.15rem;
+    margin: 0 0 0.35rem;
+  }
+  .event-cards :global(article p) {
+    margin: 0 0 0.8rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .event-cards :global(article a) {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+  .event-cards :global(.event-date) {
     display: block;
     color: var(--blue);
     font-family: var(--font-display);

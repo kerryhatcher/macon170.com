@@ -47,7 +47,9 @@ export class LeadershipRouteError extends Error {
 // what "vacant" means.
 export async function readRoster(db: D1Database): Promise<PublicRole[]> {
   const result = await db.prepare(`SELECT ${fields} FROM leadership_roles ORDER BY sort_order ASC`).run<LeadershipRow>();
-  return result.results.map(({ updated_by, ...row }) => ({
+  // updated_by is destructured off deliberately: it holds the editing volunteer's
+  // Cloudflare Access email, which must never reach a public response.
+  return result.results.map(({ updated_by: _updated_by, ...row }) => ({
     ...row,
     vacant: !row.name || row.name.trim() === '',
   }));

@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, ranks } from '../../data/pack';
 import { adventures } from '../../data/adventures';
 import { denSlug } from '../../lib/den-slug';
+import { officialImage } from '../../lib/official-image';
 
 export function getStaticPaths() {
   return ranks.map((rank, index) => ({
@@ -44,12 +46,23 @@ const program = adventures.find((entry) => entry.rank === rank.name);
             </p>
           </div>
           <ol class="adventure-list">
-            {program.required.map((name, index) => (
+            {program.required.map((adventure) => (
               <li>
-                <span class="adventure-list__num" aria-hidden="true">
-                  {index + 1}
-                </span>
-                <strong>{name}</strong>
+                <Image
+                  class="adventure-list__loop"
+                  src={officialImage(adventure.icon)}
+                  alt={`${adventure.name} adventure loop`}
+                  width={54}
+                  height={72}
+                  densities={[1, 2]}
+                  loading="lazy"
+                />
+                <div>
+                  <strong>
+                    <a href={adventure.url}>{adventure.name}</a>
+                  </strong>
+                  <p>{adventure.summary}</p>
+                </div>
               </li>
             ))}
           </ol>
@@ -79,24 +92,16 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   }
 
   {
-    program && program.electiveExamples.length > 0 && (
+    program && program.electives.length > 0 && (
       <section class="section elective-section">
         <div class="container elective-grid">
           <div>
             <span class="chapter-tab">Electives</span>
             <h2>Then two the den picks.</h2>
             <p class="lead">
-              {program.electiveCount
-                ? `${rank.name} Scouts choose their last two adventures from ${program.electiveCount} electives.`
-                : `${rank.name} Scouts choose their last two adventures from a list of electives.`}{' '}
-              Dens usually pick together, based on what the Scouts are curious about and what the season allows.
+              {`${rank.name} Scouts choose their last two adventures from the ${program.electives.length} electives below.`} Dens usually
+              pick together, based on what the Scouts are curious about and what the season allows.
             </p>
-            <p>A few of the {rank.name} electives:</p>
-            <ul class="elective-chips">
-              {program.electiveExamples.map((name) => (
-                <li>{name}</li>
-              ))}
-            </ul>
           </div>
           <div class="notice">
             <span class="notice__pin">?</span>
@@ -111,6 +116,46 @@ const program = adventures.find((entry) => entry.rank === rank.name);
               </p>
             </div>
           </div>
+        </div>
+        <div class="container">
+          <ul class="adventure-list adventure-list--electives">
+            {program.electives.map((adventure) => (
+              <li>
+                <Image
+                  class="adventure-list__loop"
+                  src={officialImage(adventure.icon)}
+                  alt={`${adventure.name} adventure loop`}
+                  width={54}
+                  height={72}
+                  densities={[1, 2]}
+                  loading="lazy"
+                />
+                <div>
+                  <strong>
+                    <a href={adventure.url}>{adventure.name}</a>
+                  </strong>
+                  <p>{adventure.summary}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          {program.specialElectives.length > 0 && (
+            <div class="special-electives">
+              <h3>Special elective adventures</h3>
+              <p>
+                Scouting America lists these on their own because they need a certified instructor and an approved range, so they happen at
+                council and district events such as day camp rather than at a den meeting, and there is no adventure page for them. Ask a
+                den leader whether one of these counts toward a Scout’s two electives.
+              </p>
+              <ul>
+                {program.specialElectives.map((adventure) => (
+                  <li>
+                    <strong>{adventure.name}</strong> — {adventure.summary}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     )
@@ -156,14 +201,9 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   {
     program?.verified && (
       <p class="container source-note">
-        Adventure names checked against <a href={program.source}>{new URL(program.source).hostname}</a>
-        {program.source2 && (
-          <>
-            {' and '}
-            <a href={program.source2}>{new URL(program.source2).hostname}</a>
-          </>
-        )}
-        , July 2026. Scouting America updated the Cub Scout adventure program on June 1, 2024.
+        Adventure names, links, and loop images taken from <a href={program.source}>{new URL(program.source).hostname}</a>, July 2026. The
+        one-line descriptions are Pack 170’s own summaries of each linked page, not Scouting America’s wording — follow a link for the
+        actual requirements. Scouting America updated the Cub Scout adventure program on June 1, 2024.
       </p>
     )
   }
@@ -179,30 +219,47 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   }
   .adventure-list li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem;
     background: var(--page);
     border-left: 5px solid var(--blue);
     box-shadow: 3px 5px 0 var(--rule);
   }
-  .adventure-list__num {
+  .adventure-list__loop {
     flex: 0 0 auto;
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 3px solid var(--blue);
-    color: var(--blue-deep);
-    font-family: var(--font-display);
-    font-weight: 900;
+    width: 54px;
+    height: auto;
   }
   .adventure-list strong {
     font-family: var(--font-display);
     font-weight: 800;
     line-height: 1.2;
+  }
+  .adventure-list p {
+    margin: 0.4rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    /* the elective list sits on the green section, so pin the card text to the body colour */
+    color: var(--ink);
+  }
+  .adventure-list--electives {
+    margin-top: 2.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.35);
+    padding-top: 2.5rem;
+  }
+  .adventure-list--electives li {
+    border-left-color: var(--green-deep);
+  }
+  .special-electives {
+    margin-top: 2.5rem;
+  }
+  .special-electives ul {
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.95rem;
   }
   .elective-section {
     background: var(--green-deep);
@@ -213,23 +270,6 @@ const program = adventures.find((entry) => entry.rank === rank.name);
     grid-template-columns: 1.15fr 0.85fr;
     gap: 4rem;
     align-items: start;
-  }
-  .elective-chips {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-  .elective-chips li {
-    padding: 0.4rem 0.8rem;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 4px 12px 12px 4px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.95rem;
   }
   .den-footer {
     display: grid;

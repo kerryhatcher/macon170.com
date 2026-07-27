@@ -31,6 +31,7 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
           class="success-message"
           id="submission-success"
           role="status"
+          tabindex="-1"
           hidden
         >
           <strong>Your note is in the volunteer desk.</strong><span
@@ -133,7 +134,7 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   select,
   textarea {
     width: 100%;
-    border: 2px solid #8794a0;
+    border: 2px solid var(--field-stroke);
     border-radius: 7px 12px 6px 7px;
     background: white;
     color: var(--ink);
@@ -142,18 +143,19 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   textarea {
     resize: vertical;
   }
-  input:focus,
-  select:focus,
-  textarea:focus {
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
     border-color: var(--blue);
-    outline: 4px solid rgba(252, 209, 22, 0.55);
-    outline-offset: 2px;
+    outline: 3px solid var(--blue-deep);
+    outline-offset: 0;
+    box-shadow: var(--ring-focus);
   }
   .field-row small {
     color: var(--muted);
   }
   .form-status {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--red);
     margin-top: 1rem;
   }
@@ -185,7 +187,7 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     gap: 0.25rem;
     margin: 1rem 0 1.5rem;
     padding: 1rem;
-    background: #e6f4ea;
+    background: var(--notice-green);
     border: 2px solid var(--green);
     border-radius: 6px 14px 7px 6px;
     color: var(--green-deep);

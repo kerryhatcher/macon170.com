@@ -15,6 +15,19 @@
   --red: #a33c34;
   --orange: #e87722;
   --tan: #88745c;
+  /* Text and rules on blue fields. Six near-identical pale blues were doing this one
+     job; --blue-soft carries it, --blue-dim keeps the quieter footer/legal step. */
+  --blue-dim: #b8cce0;
+  /* Text on the green adventure field, the green counterpart of --blue-soft. */
+  --green-soft: #e8f4ec;
+  /* DESIGN.md Inputs specifies a "two-pixel gray-blue stroke" but never gave it a value. */
+  --field-stroke: #8794a0;
+  /* Notice states (DESIGN.md Notice component): pending/editor, success, cancellation. */
+  --notice-gold: #fff8cd;
+  --notice-gold-ink: #b18d00;
+  --notice-green: #e6f4ea;
+  --notice-red: #fbe9e7;
+  --ring-focus: 0 0 0 7px var(--gold);
   --shadow-paper: 8px 10px 0 rgba(0, 43, 92, 0.12), 0 18px 42px rgba(39, 43, 46, 0.12);
   --shadow-lift: 5px 7px 0 rgba(0, 43, 92, 0.16), 0 14px 24px rgba(39, 43, 46, 0.11);
   --font-display: 'Montserrat', Arial, sans-serif;
@@ -72,9 +85,14 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+/* Two-tone ring: a Midnight Blue core inside a Gold halo. Gold alone is 1.31:1 on
+   --paper and 1:1 on the Gold pack strip, so it cannot be the only indicator; the
+   dark core carries light fields and the halo carries the blue header and gold strip.
+   One of the pair always clears 3:1 (WCAG 1.4.11). */
 :focus-visible {
-  outline: 4px solid var(--gold);
-  outline-offset: 4px;
+  outline: 3px solid var(--blue-deep);
+  outline-offset: 0;
+  box-shadow: var(--ring-focus);
 }
 ::selection {
   background: var(--gold);
@@ -190,7 +208,7 @@ p {
   display: flex;
   align-items: center;
   padding: 0 0.85rem;
-  color: #eaf4ff;
+  color: var(--blue-soft);
   text-decoration: none;
   font-family: var(--font-display);
   font-size: 0.83rem;
@@ -293,6 +311,13 @@ p {
   background: var(--blue-deep);
   color: white;
 }
+/* The focus ring lives in box-shadow, so buttons that carry a print shadow restate it. */
+.button--blue:focus-visible {
+  box-shadow: var(--ring-focus), 3px 4px 0 var(--blue-deep);
+}
+.button--gold:focus-visible {
+  box-shadow: var(--ring-focus), 3px 4px 0 rgba(0, 0, 0, 0.18);
+}
 .button--gold {
   background: var(--gold);
   color: var(--blue-deep);
@@ -348,7 +373,7 @@ p {
   color: var(--gold);
 }
 .chapter-hero .lead {
-  color: #e6f1fd;
+  color: var(--blue-soft);
 }
 .chapter-tab {
   display: inline-flex;
@@ -388,7 +413,7 @@ p {
 }
 .hero-note h2 {
   color: var(--blue);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
 }
 
 .section-heading {
@@ -408,9 +433,12 @@ p {
   grid-template-columns: auto 1fr;
   gap: 1rem;
   padding: 1.25rem;
-  background: #fff8cd;
-  border: 2px dashed #b18d00;
+  background: var(--notice-gold);
+  border: 2px dashed var(--notice-gold-ink);
   border-radius: 5px 16px 8px 6px;
+  /* every notice variant has a light background, so pin the text to the body colour -
+     without this a notice inside a dark section inherits white and cannot be read */
+  color: var(--ink);
 }
 .notice__pin {
   width: 2.5rem;
@@ -430,7 +458,7 @@ p {
   margin-bottom: 0;
 }
 .notice--editor {
-  background: #fbe9e7;
+  background: var(--notice-red);
   border-color: var(--red);
 }
 .notice--editor .notice__pin {
@@ -448,45 +476,9 @@ p {
   position: relative;
   text-align: center;
 }
-.rank__mark {
-  width: 100%;
-  aspect-ratio: 1;
-  max-width: 118px;
-  margin: 0 auto 0.75rem;
-  display: grid;
-  place-items: center;
-  border: 4px solid var(--page);
-  outline: 3px solid currentColor;
-  border-radius: 48% 52% 46% 54%;
-  font-family: var(--font-display);
-  font-weight: 900;
-  color: var(--blue-deep);
-  background: var(--gold);
-  transform: rotate(-2deg);
-}
-.rank:nth-child(even) .rank__mark {
-  transform: rotate(2deg);
-}
-.rank--orange .rank__mark {
-  background: var(--orange);
-  color: white;
-}
-.rank--red .rank__mark {
-  background: #ce2027;
-  color: white;
-}
-.rank--blue .rank__mark {
-  background: var(--blue);
-  color: white;
-}
-.rank--green .rank__mark {
-  background: #378b5c;
-  color: white;
-}
-.rank--tan .rank__mark {
-  background: var(--tan);
-  color: white;
-}
+/* The letter-in-a-blob mark these rules styled is gone — RankEmblem.astro renders the official
+   badge of rank instead, and each badge carries its own colors. `rank--<color>` stays on the
+   wrapper as a styling hook. */
 .rank strong,
 .rank small {
   display: block;
@@ -565,7 +557,7 @@ p {
 
 .site-footer {
   background: var(--blue-deep);
-  color: #d8e7f7;
+  color: var(--blue-soft);
   border-top: 7px solid var(--gold);
   padding: 3.5rem 0 2rem;
 }
@@ -582,7 +574,7 @@ p {
   font-size: 1.45rem;
 }
 .site-footer h3 {
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 .site-footer a {
   color: white;
@@ -599,8 +591,8 @@ p {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  font-size: 0.88rem;
-  color: #b8cce0;
+  font-size: 0.95rem;
+  color: var(--blue-dim);
   max-width: 95ch;
 }
 
@@ -653,7 +645,7 @@ p {
     --container: min(100% - 1.25rem, 1160px);
   }
   body {
-    font-size: 1.03rem;
+    font-size: 1.1rem;
   }
   .nav-shell {
     min-height: 72px;
