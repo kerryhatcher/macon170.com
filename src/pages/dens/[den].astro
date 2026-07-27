@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterHero from '../../components/ChapterHero.astro';
+import { pack, ranks } from '../../data/pack';
+import { adventures } from '../../data/adventures';
+import { denSlug } from '../../lib/den-slug';
+
+export function getStaticPaths() {
+  return ranks.map((rank, index) => ({
+    params: { den: denSlug(rank.name) },
+    props: { rank, previous: ranks[index - 1] ?? null, next: ranks[index + 1] ?? null },
+  }));
+}
+
+const { rank, previous, next } = Astro.props;
+const program = adventures.find((entry) => entry.rank === rank.name);
+---
+
+<BaseLayout
+  title={`${rank.name} den`}
+  description={`What the ${rank.name} den (${rank.grade}) works on in Cub Scout Pack 170: required adventures, electives, and how the year runs.`}
+>
+  <ChapterHero
+    chapter={`${rank.name} den`}
+    title={rank.name}
+    accent={rank.grade}
+    intro={program?.focus ?? `The ${rank.name} den is Pack 170’s den for ${rank.grade}.`}
+    noteTitle="Badge of rank"
+    noteBody={`Six required adventures plus two electives earn the ${rank.name} badge.`}
+  >
+    <p slot="note">Everything is done with the den or with family. There is nothing to study alone.</p>
+  </ChapterHero>
+
+  {
+    program?.verified ? (
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="chapter-tab">Required adventures</span>
+            <h2>The six every {rank.name} works on.</h2>
+            <p>
+              One adventure for each part of the program: character and leadership, the outdoors, personal fitness, citizenship, safety, and
+              family and reverence. The den works through them together across the school year.
+            </p>
+          </div>
+          <ol class="adventure-list">
+            {program.required.map((name, index) => (
+              <li>
+                <span class="adventure-list__num" aria-hidden="true">
+                  {index + 1}
+                </span>
+                <strong>{name}</strong>
+              </li>
+            ))}
+          </ol>
+          <p class="grade-note">
+            Bobcat comes first every year. It covers the Scout Oath, the Scout Law, the Cub Scout sign and handshake, and how to be a good
+            den member, at a level written for {rank.grade}.
+          </p>
+        </div>
+      </section>
+    ) : (
+      <section class="section">
+        <div class="container">
+          <div class="notice">
+            <span class="notice__pin">!</span>
+            <div>
+              <h3>Adventure list not confirmed yet</h3>
+              <p>
+                Pack 170 will not publish an adventure list it has not checked against Scouting America's current program. Until then, ask a
+                den leader through the <a href="/contact/">contact form</a>, or look up the {rank.name} adventures on
+                <a href="https://www.scouting.org/programs/cub-scouts/">scouting.org</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    program && program.electiveExamples.length > 0 && (
+      <section class="section elective-section">
+        <div class="container elective-grid">
+          <div>
+            <span class="chapter-tab">Electives</span>
+            <h2>Then two the den picks.</h2>
+            <p class="lead">
+              {program.electiveCount
+                ? `${rank.name} Scouts choose their last two adventures from ${program.electiveCount} electives.`
+                : `${rank.name} Scouts choose their last two adventures from a list of electives.`}{' '}
+              Dens usually pick together, based on what the Scouts are curious about and what the season allows.
+            </p>
+            <p>A few of the {rank.name} electives:</p>
+            <ul class="elective-chips">
+              {program.electiveExamples.map((name) => (
+                <li>{name}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="notice">
+            <span class="notice__pin">?</span>
+            <div>
+              <h3>This den’s schedule</h3>
+              <p>
+                The {rank.name} den sets its own meeting day and time after the first pack meeting of the school year, so it is not listed
+                here yet. Pack-wide dates are on the <a href="/calendar/">Calendar</a>, and a den leader can tell you the rest.
+              </p>
+              <p>
+                <a href="/contact/">Ask about the {rank.name} den →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container den-footer">
+      <div class="paper-sheet den-footer__sheet">
+        <h2>Where the {rank.name} den meets</h2>
+        <p>
+          Pack meetings bring all six dens together {pack.meeting.cadence.toLowerCase()} on a {pack.meeting.day} at {pack.meeting.time}, at
+          {' '}{pack.meeting.location}, {pack.meeting.address}. Den meetings are scheduled by that den’s leader.
+        </p>
+        <p><a class="button button--blue" href="/join/">Join the {rank.name} den</a></p>
+      </div>
+      <nav class="den-nav" aria-label="Other dens">
+        <h2>Other dens</h2>
+        <ul>
+          {
+            previous && (
+              <li>
+                <a href={`/dens/${denSlug(previous.name)}/`}>
+                  ← {previous.name} ({previous.grade})
+                </a>
+              </li>
+            )
+          }
+          {
+            next && (
+              <li>
+                <a href={`/dens/${denSlug(next.name)}/`}>
+                  {next.name} ({next.grade}) →
+                </a>
+              </li>
+            )
+          }
+          <li><a href="/dens/">All six dens</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  {
+    program?.verified && (
+      <p class="container source-note">
+        Adventure names checked against <a href={program.source}>{new URL(program.source).hostname}</a>
+        {program.source2 && (
+          <>
+            {' and '}
+            <a href={program.source2}>{new URL(program.source2).hostname}</a>
+          </>
+        )}
+        , July 2026. Scouting America updated the Cub Scout adventure program on June 1, 2024.
+      </p>
+    )
+  }
+</BaseLayout>
+<style>
+  .adventure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .adventure-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--page);
+    border-left: 5px solid var(--blue);
+    box-shadow: 3px 5px 0 var(--rule);
+  }
+  .adventure-list__num {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--blue);
+    color: var(--blue-deep);
+    font-family: var(--font-display);
+    font-weight: 900;
+  }
+  .adventure-list strong {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .elective-section {
+    background: var(--green-deep);
+    color: white;
+  }
+  .elective-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .elective-chips {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .elective-chips li {
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px 12px 12px 4px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .den-footer {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .den-footer__sheet {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .den-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .source-note {
+    padding-bottom: 3rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 900px) {
+    .adventure-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .elective-grid,
+    .den-footer {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+  @media (max-width: 560px) {
+    .adventure-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

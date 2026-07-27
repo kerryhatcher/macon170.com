@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterHero from '../../components/ChapterHero.astro';
+import { ranks } from '../../data/pack';
+import { denSlug } from '../../lib/den-slug';
+---
+
+<BaseLayout
+  title="Our dens"
+  description="Cub Scout Pack 170 runs all six dens, Lion through Arrow of Light. See the adventures each grade works on this year."
+>
+  <ChapterHero
+    chapter="Six dens, one pack"
+    title="Every grade has"
+    accent="its own den."
+    intro="A den is a small group of Scouts in the same grade with their own leader. Pack 170 runs all six — Lion through Arrow of Light — and they come together at pack meetings."
+    noteTitle="Which den is my child in?"
+    noteBody="Whatever grade they are in this school year."
+  >
+    <p slot="note">Dens are set by grade, not by age or by how long a child has been in Scouting.</p>
+  </ChapterHero>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="chapter-tab">Pick a den</span>
+        <h2>Open a den to see its adventures.</h2>
+        <p>
+          Each den works through the same six required adventures — character, the outdoors, fitness, citizenship, safety, and family —
+          written for that grade.
+        </p>
+      </div>
+      <div class="rank-path">
+        {
+          ranks.map((rank) => (
+            <a class:list={['rank', 'den-link', `rank--${rank.color}`]} href={`/dens/${denSlug(rank.name)}/`}>
+              <div class="rank__mark" aria-hidden="true">
+                {rank.mark}
+              </div>
+              <>
+                <strong>{rank.name}</strong>
+                <small>{rank.grade}</small>
+              </>
+            </a>
+          ))
+        }
+      </div>
+      <p class="grade-note">
+        Each den sets its own meeting schedule after the first pack meeting of the school year. Pack-wide dates live on the
+        <a href="/calendar/">Calendar</a>.
+      </p>
+    </div>
+  </section>
+  <section class="section den-close">
+    <div class="container den-close__grid">
+      <div>
+        <span class="chapter-tab">How a year runs</span>
+        <h2>Adventures, not homework.</h2>
+        <p class="lead">
+          An adventure is a short set of hands-on activities a den does together — a hike, a service project, a build, a safety lesson. Six
+          required adventures plus two of the Scout’s own choosing earn the badge of rank for that grade.
+        </p>
+        <p>
+          Every den starts the year with the same adventure, Bobcat, which covers the Scout Oath, the Scout Law, and how the den works.
+          Since 2024 it is earned fresh each year at a level that fits the grade.
+        </p>
+      </div>
+      <div class="notice">
+        <span class="notice__pin">✓</span>
+        <div>
+          <h3>Nobody falls behind</h3>
+          <p>
+            A Scout who joins mid-year joins the den for their grade and works on whatever the den is doing. There is no catching up on past
+            years.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .den-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition:
+      transform 0.15s ease,
+      color 0.15s ease;
+  }
+  .den-link:hover,
+  .den-link:focus-visible {
+    transform: translate(-3px, -3px);
+  }
+  .den-link strong {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .den-close {
+    background: var(--green-deep);
+    color: white;
+  }
+  .den-close__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .den-link {
+      transition: none;
+    }
+    .den-link:hover,
+    .den-link:focus-visible {
+      transform: none;
+    }
+  }
+  @media (max-width: 800px) {
+    .den-close__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

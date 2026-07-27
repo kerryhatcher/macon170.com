@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChapterHero from '../components/ChapterHero.astro';
+import { pack } from '../data/pack.ts';
+---
+
+<BaseLayout
+  title="Youth protection"
+  description="A detailed look at the screening, training, and structural rules Scouting America requires to keep Cub Scout Pack 170 activities safe."
+>
+  <ChapterHero
+    chapter="Read this before you decide"
+    title="How Scouting America"
+    accent="keeps kids safe"
+    intro="This page is written for anyone deciding whether Pack 170 is safe for a child — a parent, a grandparent, a school or church contact. It goes deeper than reassurance: it names the specific rules, who enforces them, and where to verify them yourself."
+    noteTitle="In a hurry?"
+    noteBody="Report suspected abuse now"
+    ><p slot="note">
+      Call local law enforcement first. Then call the Scouts First Helpline, 24 hours a day: <a href="tel:18447268871">1-844-SCOUTS1</a>
+      (1-844-726-8871).
+    </p></ChapterHero
+  >
+  <section class="section">
+    <article class="container paper-sheet policy">
+      <h2>Adult screening and registration</h2>
+      <p>
+        No adult works with Pack 170's Cub Scouts by simply showing up. Every adult who wants a registered role submits an application,
+        provides personal references, and undergoes a criminal background check run by a nationally recognized third party. The background
+        check has to come back clear before the adult can serve, and it is not a one-time formality: Scouting America runs periodic rechecks
+        of registered adults' criminal backgrounds to support ongoing safety, not just a check at sign-up.
+      </p>
+      <p>
+        An adult application also has to be approved by people outside that adult's own say-so. The chartered organization — for Pack 170,
+        that is <a href={pack.charteredOrganization.url} target="_blank" rel="noopener">{pack.charteredOrganization.name}</a> — has to accept
+        the application, and <a href={pack.council.url} target="_blank" rel="noopener">{pack.council.name}</a> processes the registration. An
+        adult who has not cleared this screening, and whose background check and Safeguarding Youth Training are not current, is not registered
+        — and registration is what Scouting America and the chartered organization use to decide who is allowed to serve with youth.
+      </p>
+
+      <h2>Youth Protection Training</h2>
+      <p>
+        Every registered adult — regardless of role, whether a den leader, a committee member, or an occasional driver — must complete youth
+        protection training before serving with youth. As of 2025, Scouting America replaced the older Youth Protection Training (YPT) with
+        an updated course called <strong>Safeguarding Youth Training</strong>. Adults who had already completed YPT kept their
+        certification, but the training now has to be renewed <strong>every year</strong>, not every two years as it once was.
+      </p>
+      <p>
+        The renewal requirement has teeth: if a registered adult's Safeguarding Youth Training is not current when their annual registration
+        comes up for renewal, they are not re-registered. Lapsed training is not a paperwork gap the pack can quietly work around — it ends
+        that adult's registered role until the training is retaken.
+      </p>
+      <p>
+        This training is not locked behind registration. A parent who is not a registered leader can take it too, through
+        <a href="https://my.scouting.org/" target="_blank" rel="noopener">my.scouting.org</a>. Scouting America's own guidance is direct
+        about this: understanding the youth protection rules is described as every parent's responsibility, whether or not they hold a
+        registered role.
+      </p>
+
+      <h2>Barriers to abuse</h2>
+      <p>
+        Scouting America calls its structural safety rules "barriers to abuse." They are specific, not aspirational, and they apply at every
+        Pack 170 activity:
+      </p>
+      <ul>
+        <li>
+          <strong>Two-deep leadership.</strong> At least two registered adult leaders, both 21 or older, are required at every Scouting activity,
+          including meetings — not just campouts or trips.
+        </li>
+        <li>
+          <strong>No one-on-one contact.</strong> An adult may not be alone with a youth who is not their own child, in any form — in person,
+          online, on a video call, by phone, or by text.
+        </li>
+        <li>
+          <strong>Separate accommodations.</strong> No youth is permitted to sleep in the tent or quarters of an adult other than their own parent
+          or guardian.
+        </li>
+        <li>
+          <strong>Appropriate attire and respected privacy.</strong> Appropriate attire is required at all activities, and adults and youth must
+          respect each other's privacy, particularly when changing clothes or showering.
+        </li>
+        <li>
+          <strong>Buddy system.</strong> Youth use the buddy system so no one is isolated during an activity.
+        </li>
+        <li>
+          <strong>No secrets.</strong> All aspects of the Scouting program are open to observation by parents and leaders. Scouting America does
+          not recognize secret organizations as part of its program.
+        </li>
+      </ul>
+
+      <h2>Digital and communication safety</h2>
+      <p>
+        These same rules extend online. Two-deep leadership applies to virtual meetings, not just in-person ones. The no-one-on-one-contact
+        rule is explicit that it covers every form of digital contact — no private messages, no one-on-one texts, no one-on-one video calls
+        between an adult and a youth. Any adult–youth communication has to include another authorized adult, and inappropriate use of
+        smartphones, cameras, or other devices in situations where privacy is expected is prohibited.
+      </p>
+
+      <h2>Parents' rights</h2>
+      <p>
+        Every part of the program is open to a parent's observation, at any time, for any activity. A parent does not need permission or
+        advance notice to ask what is happening at a meeting or event, and does not need a reason beyond wanting to know.
+      </p>
+
+      <h2>Reporting</h2>
+      <p>
+        Everyone involved in Scouting is required to report any good-faith suspicion of abuse to local law enforcement first — not to pack
+        leadership, not to the council, and not internally instead of the authorities. Reporting to Scouting America is required in addition
+        to, not instead of, contacting the authorities.
+      </p>
+      <p>
+        Scouting America runs a 24-hour reporting line, the <strong>Scouts First Helpline</strong>, at
+        <a href="tel:18447268871">1-844-SCOUTS1</a> (1-844-726-8871), for known or suspected abuse or behavior that puts a youth at risk. There
+        is no version of this policy that allows a leader discretion to stay quiet or handle a suspicion informally.
+      </p>
+
+      <h2>What this looks like in Pack 170</h2>
+      <p>
+        Pack 170 has no members-only area — this website, like every part of the program, is fully public. Every contact channel on this
+        site reaches multiple registered adults; the pack does not publish individual adult email addresses, so no channel here creates a
+        private adult-to-youth or adult-to-family back door. Youth are identified on this site by first name and last initial only, and no
+        photograph of a youth is published without a parent's consent.
+      </p>
+      <p>
+        Pack 170 meets in space provided by its chartered organization, {pack.charteredOrganization.name}, in a building shared with other
+        groups — not a private setting controlled by the pack.
+      </p>
+
+      <h2>Where to read the rules yourself</h2>
+      <p>Do not take this page's word for it. The source material is public:</p>
+      <ul>
+        <li>
+          <a href="https://www.scouting.org/training/safeguarding-youth/" target="_blank" rel="noopener"
+            >Scouting America — Safeguarding Youth Training</a
+          >
+        </li>
+        <li>
+          <a href="https://www.scouting.org/health-and-safety/safety-moments/scoutings-barriers-to-abuse/" target="_blank" rel="noopener"
+            >Scouting America — Scouting's Barriers to Abuse</a
+          >
+        </li>
+        <li>
+          <a href="https://www.scouting.org/health-and-safety/gss/gss01/" target="_blank" rel="noopener"
+            >Guide to Safe Scouting — Youth Protection and Adult Leadership</a
+          >
+        </li>
+        <li>
+          <a href="https://www.scouting.org/health-and-safety/safety-moments/scouts-first-helpline/" target="_blank" rel="noopener"
+            >Scouting America — Scouts First Helpline</a
+          >
+        </li>
+      </ul>
+
+      <h2>Questions?</h2>
+      <p>
+        If anything on this page is unclear, or you want to talk through what youth protection looks like before your family gets involved,
+        use the <a href="/contact/">contact form</a>. It reaches multiple authorized adult volunteers, not one person.
+      </p>
+    </article>
+  </section>
+</BaseLayout>
+<style>
+  .policy {
+    padding: clamp(1.5rem, 6vw, 5rem);
+    max-width: 82ch;
+  }
+  .policy h2 {
+    font-size: 1.55rem;
+    color: var(--blue);
+    margin-top: 2.8rem;
+  }
+  .policy ul {
+    padding-left: 1.4rem;
+  }
+  .policy li {
+    margin-bottom: 0.75rem;
+  }
+  .policy li:last-child {
+    margin-bottom: 0;
+  }
+  @media (max-width: 640px) {
+    .policy {
+      max-width: 100%;
+    }
+  }
+</style>

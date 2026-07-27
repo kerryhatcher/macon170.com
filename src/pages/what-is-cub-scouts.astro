@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChapterHero from '../components/ChapterHero.astro';
+import { pack, ranks } from '../data/pack';
+
+const aims = [
+  ['Character development', 'Practicing honesty, respect, and responsibility in a small group with adult guidance.'],
+  ['Citizenship training', 'Learning civic habits — flag ceremonies, service projects, caring for the neighborhood.'],
+  ['Personal fitness', 'Age-appropriate physical activity built into meetings and outdoor events.'],
+  ['Leadership development', 'Kids take turns leading parts of a meeting, in a structure sized for their age.'],
+];
+
+const asks = [
+  ['A table at your event', 'A back-to-school night, open house, or community fair — one table, one hour.'],
+  ['A few minutes on the agenda', 'A short, family-friendly announcement at a PTA/PTO or civic-group meeting.'],
+  ['Permission to post a flyer', 'On a bulletin board or in a newsletter, sized however your organization prefers.'],
+  ['A meeting space', 'A room for a den or pack meeting, on a schedule that works for your facility.'],
+];
+---
+
+<BaseLayout
+  title="What is Cub Scouting?"
+  description="A plain-language overview of Cub Scouting and Pack 170 for school leaders, PTA/PTO boards, and community partners."
+>
+  <ChapterHero
+    chapter="For school & community leaders"
+    title="What is"
+    accent="Cub Scouting?"
+    intro="A quick, plain-language briefing for principals, PTA/PTO boards, librarians, and civic leaders deciding whether to open a door for Pack 170."
+    noteTitle="The short version"
+    noteBody={`${pack.grades} · ${pack.welcome}`}
+    ><p slot="note">A local, volunteer-run program of Scouting America — not a sales pitch, not a fundraiser at your door.</p></ChapterHero
+  >
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="chapter-tab">The program</span>
+        <h2>A structured after-school activity, run by trained, background-checked parent volunteers.</h2>
+      </div>
+      <p class="lead">
+        Cub Scouting is a program of Scouting America for children in {pack.grades}. {pack.welcome}. Kids meet in small, same-grade groups
+        called dens, and the whole pack gathers periodically for a larger meeting. Every adult who runs a meeting is a registered, trained
+        volunteer — usually a parent.
+      </p>
+      <p>
+        The six grade levels each carry a rank name, so a program built for kindergarten looks and feels different from one built for a
+        fifth grader:
+      </p>
+      <ul class="rank-list">
+        {
+          ranks.map((rank) => (
+            <li>
+              <strong>{rank.name}</strong> — {rank.grade}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section aims-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="chapter-tab">Why schools partner with us</span>
+        <h2>Four aims a school can get behind.</h2>
+      </div>
+      <p class="lead">
+        Cub Scouting is organized around four aims that line up with what schools already work on: character, citizenship, fitness, and
+        leadership. Kids learn by doing, families stay involved, and the program is built around consistent attendance rather than tryouts
+        or cuts.
+      </p>
+      <div class="aims-grid">
+        {
+          aims.map(([title, body]) => (
+            <article>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container who-grid">
+      <div>
+        <span class="chapter-tab">Who we are</span>
+        <h2>Pack 170, specifically.</h2>
+        <p>
+          {pack.name} is Macon's local Cub Scout pack, part of the {pack.council.name} of Scouting America. We're chartered by <a
+            href={pack.charteredOrganization.url}>{pack.charteredOrganization.name}</a
+          >, where the pack meets. The pack is entirely volunteer-run — there is no paid staff.
+        </p>
+        <p>
+          Pack meetings happen {pack.meeting.cadence.toLowerCase()} on {pack.meeting.day}s at {pack.meeting.time}, at{' '}
+          {pack.meeting.location}. Families do not need any connection to the chartering church to join.
+        </p>
+      </div>
+      <div class="paper-sheet">
+        <span class="chapter-tab">What we're usually asking for</span>
+        <h3>Small, specific, low-burden asks.</h3>
+        <ul class="ask-list">
+          {
+            asks.map(([title, body]) => (
+              <li>
+                <strong>{title}</strong>
+                <p>{body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section safety-section">
+    <div class="container">
+      <div class="notice">
+        <span class="notice__pin">✓</span>
+        <div>
+          <h3>Youth protection, at a glance</h3>
+          <p>
+            Every registered adult completes Scouting America's Safeguarding Youth Training before serving with youth, and renews it every
+            year. Every registered adult passes a criminal background check. Two-deep leadership means at least two registered adults are
+            present at every activity, and one-on-one contact between an adult and a youth is prohibited. Every part of the program is open
+            to observation by parents at any time. Suspected abuse is reported to law enforcement — this is never handled internally.
+            Nothing on this website is members-only, and every contact channel reaches multiple adults.
+          </p>
+          <p><a href="/youth-protection/">Read the full youth protection standards →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container close-grid paper-sheet">
+      <div>
+        <h2>Invite Pack 170.</h2>
+        <p>
+          If your school, church, or civic group has an opening for a table, a few minutes on the agenda, a flyer, or a meeting space, we'd
+          like to hear from you.
+        </p>
+      </div>
+      <a class="button button--blue" href="/contact/">Ask us to come speak</a>
+    </div>
+  </section>
+
+  <section class="section parent-section">
+    <div class="container parent-grid">
+      <p>Looking to enroll your own child instead?</p>
+      <a class="button button--paper" href="/join/">See how to join Pack 170</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .rank-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem 1.5rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rank-list li {
+    padding: 0.6rem 0.9rem;
+    background: var(--page);
+    border-left: 4px solid var(--blue);
+  }
+  .aims-section {
+    background: var(--page);
+    border-block: 1px solid var(--rule);
+  }
+  .aims-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .aims-grid article {
+    padding: 1.25rem;
+    background: var(--page);
+    border-top: 5px solid var(--gold);
+    box-shadow: 3px 5px 0 var(--rule);
+  }
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .ask-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ask-list li p {
+    margin: 0.25rem 0 0;
+  }
+  .safety-section {
+    background: var(--blue-deep);
+    color: white;
+  }
+  .close-grid {
+    padding: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .parent-section {
+    border-top: 1px solid var(--rule);
+  }
+  .parent-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .parent-grid p {
+    margin: 0;
+  }
+  @media (max-width: 800px) {
+    .aims-grid {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 2rem;
+    }
+    .who-grid,
+    .close-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .rank-list,
+    .aims-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
