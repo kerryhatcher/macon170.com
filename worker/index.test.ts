@@ -154,6 +154,19 @@ describe('volunteer desk', () => {
     expect(await response.text()).toContain('Calendar editor');
   });
 
+  it('emits a syntactically intact newline regex in the volunteer desk script', async () => {
+    // The admin shell's <script> body is a template literal in worker/index.ts: any
+    // \n written directly in that literal is consumed as a JS newline escape before
+    // it reaches the browser, turning `/\n/g` into a regex with a literal line break
+    // inside it - an unterminated regex literal that fails to parse in the browser
+    // and silently breaks every script on the page (not just the code path that uses
+    // the regex). The source must write `\\n` so the shipped text keeps both characters.
+    const response = await exports.default.fetch('http://localhost/admin');
+    const html = await response.text();
+    const script = html.match(/<script>([\s\S]*)<\/script>/)?.[1] ?? '';
+    expect(script).toContain("replace(/\\n/g,'<br>')");
+  });
+
   it('lists submissions in local authenticated mode', async () => {
     const response = await exports.default.fetch('http://localhost/api/admin/submissions');
     expect(response.status).toBe(200);

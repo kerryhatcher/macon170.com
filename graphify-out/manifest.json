@@ -1,0 +1,222 @@
+{
+  "/home/kwhatcher/projects/macon170.com/astro.config.mjs": {
+    "mtime": 1785127360.6462219,
+    "ast_hash": "0ab87e1a5850112853f963a8e3058981",
+    "semantic_hash": "0ab87e1a5850112853f963a8e3058981"
+  },
+  "/home/kwhatcher/projects/macon170.com/migrations/0001_create_contact_submissions.sql": {
+    "mtime": 1785121994.225121,
+    "ast_hash": "340a6c478358096086de7f34a25e7f40",
+    "semantic_hash": "340a6c478358096086de7f34a25e7f40"
+  },
+  "/home/kwhatcher/projects/macon170.com/migrations/0002_create_calendar_events.sql": {
+    "mtime": 1785128591.4469469,
+    "ast_hash": "e1fd14574c3287e26ee0159ebcb202ea",
+    "semantic_hash": "e1fd14574c3287e26ee0159ebcb202ea"
+  },
+  "/home/kwhatcher/projects/macon170.com/package.json": {
+    "mtime": 1785122695.8697996,
+    "ast_hash": "a931ba8505df9c66f849e88aa4bb01c2",
+    "semantic_hash": "a931ba8505df9c66f849e88aa4bb01c2"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/components/ChapterHero.astro": {
+    "mtime": 1785120016.8155916,
+    "ast_hash": "b961c993efa9ade7d49a3d7e2ff4fff0",
+    "semantic_hash": "b961c993efa9ade7d49a3d7e2ff4fff0"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/components/FieldIllustration.astro": {
+    "mtime": 1785120029.0367115,
+    "ast_hash": "b663711b40b3501d9b5a4922f27b4688",
+    "semantic_hash": "b663711b40b3501d9b5a4922f27b4688"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/components/PackStrip.astro": {
+    "mtime": 1785120746.8608253,
+    "ast_hash": "5478dedb4d21539e5f632454e235bc7c",
+    "semantic_hash": "5478dedb4d21539e5f632454e235bc7c"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/components/SiteFooter.astro": {
+    "mtime": 1785120009.010515,
+    "ast_hash": "bd8777a76ca99fbcc6111d72f9f7b375",
+    "semantic_hash": "bd8777a76ca99fbcc6111d72f9f7b375"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/components/SiteHeader.astro": {
+    "mtime": 1785119981.824248,
+    "ast_hash": "881e8e0b256c592a119a9fe22b043450",
+    "semantic_hash": "881e8e0b256c592a119a9fe22b043450"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/data/pack.ts": {
+    "mtime": 1785122270.9237988,
+    "ast_hash": "8a3adcf10727f95fe68cbb3b9d6752a1",
+    "semantic_hash": "8a3adcf10727f95fe68cbb3b9d6752a1"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/layouts/BaseLayout.astro": {
+    "mtime": 1785120884.175215,
+    "ast_hash": "3376632596fe616f053d6e00b607dd31",
+    "semantic_hash": "3376632596fe616f053d6e00b607dd31"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/about.astro": {
+    "mtime": 1785120206.410453,
+    "ast_hash": "f78fab4f4714e455c07be6e4014156d2",
+    "semantic_hash": "f78fab4f4714e455c07be6e4014156d2"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/activities.astro": {
+    "mtime": 1785120186.553258,
+    "ast_hash": "16df0a4271ffb2d7d3f0116129d583d1",
+    "semantic_hash": "16df0a4271ffb2d7d3f0116129d583d1"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/calendar/index.astro": {
+    "mtime": 1785128898.0198057,
+    "ast_hash": "c37caf38b0c8526a5f78a7d2e868c6ec",
+    "semantic_hash": "c37caf38b0c8526a5f78a7d2e868c6ec"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/contact.astro": {
+    "mtime": 1785123731.9147549,
+    "ast_hash": "4da9af04bf4a95459ddd097030248756",
+    "semantic_hash": "4da9af04bf4a95459ddd097030248756"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/events/index.astro": {
+    "mtime": 1785128921.3140306,
+    "ast_hash": "5a85e4fb2f3c7f4999f2a4649422a54e",
+    "semantic_hash": "5a85e4fb2f3c7f4999f2a4649422a54e"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/index.astro": {
+    "mtime": 1785120702.1503727,
+    "ast_hash": "ae6034493ea16d309aef9efad287616b",
+    "semantic_hash": "ae6034493ea16d309aef9efad287616b"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/join.astro": {
+    "mtime": 1785120728.641641,
+    "ast_hash": "d281ad760b16f4a76bd4dacda988c95a",
+    "semantic_hash": "d281ad760b16f4a76bd4dacda988c95a"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/privacy.astro": {
+    "mtime": 1785123742.728858,
+    "ast_hash": "9bb627484d23e6f1150a999e1bd6c577",
+    "semantic_hash": "9bb627484d23e6f1150a999e1bd6c577"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/resources.astro": {
+    "mtime": 1785120242.9518118,
+    "ast_hash": "d98ffaa8709af3b2f854959afbbafa71",
+    "semantic_hash": "d98ffaa8709af3b2f854959afbbafa71"
+  },
+  "/home/kwhatcher/projects/macon170.com/src/pages/volunteer.astro": {
+    "mtime": 1785120261.6719956,
+    "ast_hash": "778f54da6ccdc1a0ff8290636b557ed8",
+    "semantic_hash": "778f54da6ccdc1a0ff8290636b557ed8"
+  },
+  "/home/kwhatcher/projects/macon170.com/tsconfig.json": {
+    "mtime": 1785122541.6654296,
+    "ast_hash": "59c426bcd5ce532af0333ab02c04af3a",
+    "semantic_hash": "59c426bcd5ce532af0333ab02c04af3a"
+  },
+  "/home/kwhatcher/projects/macon170.com/tsconfig.worker.json": {
+    "mtime": 1785122706.2980058,
+    "ast_hash": "e4e833791573fcc1313de8086170a37d",
+    "semantic_hash": "e4e833791573fcc1313de8086170a37d"
+  },
+  "/home/kwhatcher/projects/macon170.com/vitest.config.ts": {
+    "mtime": 1785123752.3979504,
+    "ast_hash": "b60a59e5458bca1c02330b5674447f07",
+    "semantic_hash": "b60a59e5458bca1c02330b5674447f07"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker-configuration.d.ts": {
+    "mtime": 1785129006.5868537,
+    "ast_hash": "3a4e37bfbb663d1ecd2184c84a021342",
+    "semantic_hash": "3a4e37bfbb663d1ecd2184c84a021342"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker/calendar-admin.ts": {
+    "mtime": 1785128810.4019678,
+    "ast_hash": "107128cafd3c41e6e7f32d4ad87c659e",
+    "semantic_hash": "107128cafd3c41e6e7f32d4ad87c659e"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker/event-routes.ts": {
+    "mtime": 1785129892.8134134,
+    "ast_hash": "ef4d4adc69440d379090599bba9ca838",
+    "semantic_hash": "ef4d4adc69440d379090599bba9ca838"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker/index.test.ts": {
+    "mtime": 1785129961.095074,
+    "ast_hash": "c944554d8dfb412844d9b44d611be319",
+    "semantic_hash": "c944554d8dfb412844d9b44d611be319"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker/index.ts": {
+    "mtime": 1785131989.2202008,
+    "ast_hash": "de0dd37fecd1b091e2e2362c688fa381",
+    "semantic_hash": "de0dd37fecd1b091e2e2362c688fa381"
+  },
+  "/home/kwhatcher/projects/macon170.com/worker/tsconfig.json": {
+    "mtime": 1785122752.3704417,
+    "ast_hash": "e838d408f85c4ea8c8705282bde38ebc",
+    "semantic_hash": "e838d408f85c4ea8c8705282bde38ebc"
+  },
+  "/home/kwhatcher/projects/macon170.com/.github/workflows/deploy.yml": {
+    "mtime": 1785123879.0003788,
+    "ast_hash": "dde571a53ce92eab4ca409b7a8b588d6",
+    "semantic_hash": "dde571a53ce92eab4ca409b7a8b588d6"
+  },
+  "/home/kwhatcher/projects/macon170.com/DESIGN.md": {
+    "mtime": 1785120468.1330225,
+    "ast_hash": "3d67edc1397633b533de7ce94d762bc1",
+    "semantic_hash": "3d67edc1397633b533de7ce94d762bc1"
+  },
+  "/home/kwhatcher/projects/macon170.com/PRODUCT.md": {
+    "mtime": 1785116585.6126568,
+    "ast_hash": "cbee4dabb12f2c3a58a73a7c88ad18c3",
+    "semantic_hash": "cbee4dabb12f2c3a58a73a7c88ad18c3"
+  },
+  "/home/kwhatcher/projects/macon170.com/README.md": {
+    "mtime": 1785113609.6612332,
+    "ast_hash": "b78b462cac4b0477bbfd69ddba9978b2",
+    "semantic_hash": "b78b462cac4b0477bbfd69ddba9978b2"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/CLOUDFLARE-DEPLOYMENT.md": {
+    "mtime": 1785130012.6535728,
+    "ast_hash": "49281cac0c898d8d4f2249d84ab7b524",
+    "semantic_hash": "49281cac0c898d8d4f2249d84ab7b524"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/HANDOFF.md": {
+    "mtime": 1785116927.6741009,
+    "ast_hash": "aa641ce3245bf97966578898b60c95d1",
+    "semantic_hash": "aa641ce3245bf97966578898b60c95d1"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/Offical-info.md": {
+    "mtime": 1785120522.8955603,
+    "ast_hash": "d0c56f0a79936b1c5c1d06038207661d",
+    "semantic_hash": "d0c56f0a79936b1c5c1d06038207661d"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/SYNTHESIS.md": {
+    "mtime": 1785116129.1512237,
+    "ast_hash": "dab903e401b1998ef60f81b41b1b1d5f",
+    "semantic_hash": "dab903e401b1998ef60f81b41b1b1d5f"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/cub-scouting.md": {
+    "mtime": 1785117294.6255968,
+    "ast_hash": "45459529cc2053c887b75230796242eb",
+    "semantic_hash": "45459529cc2053c887b75230796242eb"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/highland-hills-baptist.md": {
+    "mtime": 1785117055.6603436,
+    "ast_hash": "1a8618343eaad16b57229a8cf440517e",
+    "semantic_hash": "1a8618343eaad16b57229a8cf440517e"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/macon-ga.md": {
+    "mtime": 1785117309.2067342,
+    "ast_hash": "5b209e83fef2253e1830310ce005fd96",
+    "semantic_hash": "5b209e83fef2253e1830310ce005fd96"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/scouting-america.md": {
+    "mtime": 1785117167.2543957,
+    "ast_hash": "d87a9a9c013217b0102e0dfc09d75c2b",
+    "semantic_hash": "d87a9a9c013217b0102e0dfc09d75c2b"
+  },
+  "/home/kwhatcher/projects/macon170.com/docs/research/trademark-brand-guidance.md": {
+    "mtime": 1785115615.8343759,
+    "ast_hash": "cdfcde2853e02a330e93be286e4a0381",
+    "semantic_hash": "cdfcde2853e02a330e93be286e4a0381"
+  },
+  "/home/kwhatcher/projects/macon170.com/public/favicon.svg": {
+    "mtime": 1785120045.786876,
+    "ast_hash": "a42fab04a1d054942419b145355cc0bc",
+    "semantic_hash": "a42fab04a1d054942419b145355cc0bc"
+  }
+}

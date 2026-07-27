@@ -62,7 +62,9 @@ export default {
       }
 
       const adminHostname = new URL(env.ADMIN_ORIGIN).hostname;
-      const localAdmin = String(env.ENVIRONMENT) === 'development' && (url.hostname === 'localhost' || url.hostname === '127.0.0.1');
+      const publicHostname = new URL(env.PUBLIC_SITE_ORIGIN).hostname;
+      const localDev = String(env.ENVIRONMENT) === 'development';
+      const localAdmin = localDev && (url.hostname === 'localhost' || url.hostname === '127.0.0.1' || url.hostname === publicHostname);
       if (url.pathname.startsWith('/api/admin/') && url.hostname !== adminHostname && !localAdmin) {
         throw new HttpError(404, 'Not found.');
       }
@@ -220,9 +222,9 @@ async function listSubmissions(request: Request, env: Env, identity: AccessIdent
     LIMIT ? OFFSET ?
   `);
   const bound = status ? statement.bind(status, limit, offset) : statement.bind(limit, offset);
-  const result = await bound.run<SubmissionRow>();
+  const result = await bound.all<SubmissionRow>();
 
-  console.log(JSON.stringify({ event: 'admin_list', actor: identity.email ?? 'unknown', status, page }));
+  console.log(JSON.stringify({ event: 'admin_list', actor: identity.email ?? 'unknown', status, page, count: result.results.length }));
   return json({ ok: true, submissions: result.results, page, hasMore: result.results.length === limit }, 200, adminHeaders(env));
 }
 
@@ -288,7 +290,8 @@ async function verifyTurnstile(token: string, request: Request, env: WorkerEnv):
 
 async function requireAccess(request: Request, env: Env): Promise<AccessIdentity> {
   const hostname = new URL(request.url).hostname;
-  if (String(env.ENVIRONMENT) === 'development' && (hostname === 'localhost' || hostname === '127.0.0.1')) {
+  const publicHostname = new URL(env.PUBLIC_SITE_ORIGIN).hostname;
+  if (String(env.ENVIRONMENT) === 'development' && (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === publicHostname)) {
     return { email: 'local-volunteer@example.invalid', sub: 'local-development' };
   }
   if (env.ACCESS_TEAM_DOMAIN.includes('REPLACE-ME') || env.ACCESS_AUD.includes('REPLACE_')) {
@@ -328,13 +331,13 @@ function adminScript(adminOrigin: string): string {
 const API='/api/admin/submissions';
 let currentStatus='';let selectedId=null;
 const list=document.querySelector('#list');const detail=document.querySelector('#detail');const status=document.querySelector('#status');
-const esc=(v)=>String(v??'').replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+const esc=(v)=>{const s=String(v??'');return s.replace(/[&<>"]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/'/g,'&#039;');};
 const fmt=(v)=>new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date(v));
-async function load(){status.textContent='Loading submissions…';try{const r=await fetch(API+(currentStatus?'?status='+encodeURIComponent(currentStatus):''));if(!r.ok)throw new Error('Unable to load submissions.');const data=await r.json();renderList(data.submissions);status.textContent=data.submissions.length?data.submissions.length+' message'+(data.submissions.length===1?'':'s')+' shown':'No messages in this view.';}catch(e){status.textContent=e instanceof Error?e.message:'Unable to load submissions.';}}
+async function load(){status.textContent='Loading submissions…';try{const r=await fetch(API+(currentStatus?'?status='+encodeURIComponent(currentStatus):''));if(!r.ok){const txt=await r.text();throw new Error('Unable to load submissions. ('+r.status+': '+txt.slice(0,120)+')');}const data=await r.json();renderList(data.submissions);status.textContent=data.submissions.length?data.submissions.length+' message'+(data.submissions.length===1?'':'s')+' shown':'No messages in this view.';}catch(e){status.textContent=e instanceof Error?e.message:'Unable to load submissions.';}}
 function renderList(rows){list.innerHTML=rows.map((row)=>'<button class="row '+(row.id===selectedId?'active':'')+'" data-id="'+esc(row.id)+'"><span class="dot '+esc(row.status)+'"></span><span><b>'+esc(row.parent_name)+'</b><small>'+esc(row.topic)+'</small><small>'+fmt(row.created_at)+'</small></span></button>').join('');list.querySelectorAll('[data-id]').forEach((button)=>button.addEventListener('click',()=>openOne(button.dataset.id)));}
 async function openOne(id){selectedId=id;renderListSelection();detail.innerHTML='<div class="empty">Loading message…</div>';const r=await fetch(API+'/'+encodeURIComponent(id));if(!r.ok){detail.innerHTML='<div class="empty">Unable to load this message.</div>';return;}const data=await r.json();renderDetail(data.submission);}
 function renderListSelection(){list.querySelectorAll('[data-id]').forEach((button)=>button.classList.toggle('active',button.dataset.id===selectedId));}
-function renderDetail(s){const phone=s.phone?'<a href="tel:'+esc(s.phone)+'">'+esc(s.phone)+'</a>':'Not supplied';const grade=s.child_grade?esc(s.child_grade):'Not supplied';detail.innerHTML='<div class="detail-head"><div><p class="tab">'+esc(s.topic)+'</p><h2>'+esc(s.parent_name)+'</h2><p>'+fmt(s.created_at)+'</p></div><select id="submission-status" aria-label="Submission status"><option value="new">New</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option><option value="spam">Spam</option></select></div><dl><div><dt>Email</dt><dd><a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a></dd></div><div><dt>Phone</dt><dd>'+phone+'</dd></div><div><dt>Child grade</dt><dd>'+grade+'</dd></div><div><dt>Country</dt><dd>'+esc(s.country_code||'Not available')+'</dd></div></dl><section class="message"><h3>Parent question</h3><p>'+esc(s.message).replace(/\n/g,'<br>')+'</p></section><p class="privacy">Use these details only to respond to this pack inquiry. Do not copy them into unapproved systems.</p>';const select=document.querySelector('#submission-status');select.value=s.status;select.addEventListener('change',()=>updateStatus(s.id,select.value,select));}
+function renderDetail(s){const phone=s.phone?'<a href="tel:'+esc(s.phone)+'">'+esc(s.phone)+'</a>':'Not supplied';const grade=s.child_grade?esc(s.child_grade):'Not supplied';detail.innerHTML='<div class="detail-head"><div><p class="tab">'+esc(s.topic)+'</p><h2>'+esc(s.parent_name)+'</h2><p>'+fmt(s.created_at)+'</p></div><select id="submission-status" aria-label="Submission status"><option value="new">New</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option><option value="spam">Spam</option></select></div><dl><div><dt>Email</dt><dd><a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a></dd></div><div><dt>Phone</dt><dd>'+phone+'</dd></div><div><dt>Child grade</dt><dd>'+grade+'</dd></div><div><dt>Country</dt><dd>'+esc(s.country_code||'Not available')+'</dd></div></dl><section class="message"><h3>Parent question</h3><p>'+esc(s.message).replace(/\\n/g,'<br>')+'</p></section><p class="privacy">Use these details only to respond to this pack inquiry. Do not copy them into unapproved systems.</p>';const select=document.querySelector('#submission-status');select.value=s.status;select.addEventListener('change',()=>updateStatus(s.id,select.value,select));}
 async function updateStatus(id,next,select){select.disabled=true;status.textContent='Saving status…';try{const r=await fetch(API+'/'+encodeURIComponent(id),{method:'PATCH',headers:{'content-type':'application/json','origin':ADMIN_ORIGIN},body:JSON.stringify({status:next})});if(!r.ok)throw new Error('Unable to save status.');status.textContent='Status saved.';await load();}catch(e){status.textContent=e instanceof Error?e.message:'Unable to save status.';}finally{select.disabled=false;}}
 document.querySelectorAll('[data-status]').forEach((button)=>button.addEventListener('click',()=>{currentStatus=button.dataset.status||'';selectedId=null;document.querySelectorAll('[data-status]').forEach((item)=>item.setAttribute('aria-pressed',String(item===button)));detail.innerHTML='<div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div>';load();}));load();`;
 }
@@ -442,7 +445,8 @@ function securityHeaders(): Record<string, string> {
 function adminHeaders(env: Env): Record<string, string> {
   return {
     ...securityHeaders(),
-    'cache-control': 'no-store, private',
+    'cache-control': 'no-store, private, must-revalidate',
+    'cdn-cache-control': 'no-cache, no-store, must-revalidate',
     'content-security-policy': `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' ${env.ADMIN_ORIGIN}; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`,
   };
 }
