@@ -14,6 +14,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="container event-grid">
       <article class="paper-sheet event-sheet" id="event-detail">
         <div class="loading" role="status">Loading event details…</div>
+        <noscript
+          ><style>
+            .loading {
+              display: none;
+            }
+          </style><h2>JavaScript is needed for event details</h2><p>
+            Published logistics load from the Pack 170 calendar. Please contact Pack 170 adults for this event’s confirmed details.
+          </p><a href="/contact/">Ask the pack</a></noscript
+        >
       </article><aside class="notice">
         <span class="notice__pin">?</span><div>
           <h3>Need a detail?</h3><p>Contact Pack 170 adults before relying on incomplete logistics.</p><a href="/contact/">Ask the pack</a>
@@ -45,6 +54,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
   const slug = new URLSearchParams(location.search).get('event');
   const detail = document.querySelector<HTMLElement>('#event-detail');
+  // A desk-entered registration link is editable data, so only http(s) reaches an href.
+  const webUrl = (value: string) => {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : null;
+    } catch {
+      return null;
+    }
+  };
   async function load() {
     if (!slug || !/^[a-z0-9-]{2,80}$/.test(slug)) {
       if (detail) detail.innerHTML = '<h2>Event not found</h2><p>Return to the <a href="/calendar/">Pack calendar</a>.</p>';
@@ -63,6 +81,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       summary = document.querySelector('#event-summary');
     if (title) title.textContent = e.title;
     if (summary) summary.textContent = e.summary;
+    const registration = e.registration_url ? webUrl(e.registration_url) : null;
     if (detail)
       detail.innerHTML =
         '<div class="status-line"><span>' +
@@ -85,12 +104,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         '</dd></div><div><dt>Cost</dt><dd>' +
         esc(e.cost || 'No cost information supplied') +
         '</dd></div><div><dt>Registration</dt><dd>' +
-        (e.registration_url
-          ? '<a class="button button--blue" href="' + esc(e.registration_url) + '">Open registration</a>'
-          : 'No registration link supplied') +
+        (registration
+          ? '<a class="button button--blue" href="' + esc(registration) + '">Open registration</a>'
+          : e.registration_url
+            ? 'Registration link could not be opened — ask the pack'
+            : 'No registration link supplied') +
         '</dd></div></dl>';
   }
-  load();
+  load().catch(() => {
+    const title = document.querySelector('#event-title'),
+      summary = document.querySelector('#event-summary');
+    if (title) title.textContent = 'Event details unavailable';
+    if (summary) summary.textContent = 'We could not reach the Pack 170 calendar.';
+    if (detail)
+      detail.innerHTML =
+        '<h2>We could not load this event</h2><p>The connection to the Pack 170 calendar failed. Please try again in a moment, or contact Pack 170 adults for this event’s confirmed details.</p><a class="button button--blue" href="/events/?event=' +
+        esc(encodeURIComponent(slug ?? '')) +
+        '">Try again</a>';
+  });
 </script>
 <style>
   .event-hero {

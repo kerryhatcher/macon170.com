@@ -27,6 +27,7 @@
   --notice-gold-ink: #b18d00;
   --notice-green: #e6f4ea;
   --notice-red: #fbe9e7;
+  --ring-focus: 0 0 0 7px var(--gold);
   --shadow-paper: 8px 10px 0 rgba(0, 43, 92, 0.12), 0 18px 42px rgba(39, 43, 46, 0.12);
   --shadow-lift: 5px 7px 0 rgba(0, 43, 92, 0.16), 0 14px 24px rgba(39, 43, 46, 0.11);
   --font-display: 'Montserrat', Arial, sans-serif;
@@ -84,9 +85,14 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+/* Two-tone ring: a Midnight Blue core inside a Gold halo. Gold alone is 1.31:1 on
+   --paper and 1:1 on the Gold pack strip, so it cannot be the only indicator; the
+   dark core carries light fields and the halo carries the blue header and gold strip.
+   One of the pair always clears 3:1 (WCAG 1.4.11). */
 :focus-visible {
-  outline: 4px solid var(--gold);
-  outline-offset: 4px;
+  outline: 3px solid var(--blue-deep);
+  outline-offset: 0;
+  box-shadow: var(--ring-focus);
 }
 ::selection {
   background: var(--gold);
@@ -304,6 +310,13 @@ p {
 .button--blue:hover {
   background: var(--blue-deep);
   color: white;
+}
+/* The focus ring lives in box-shadow, so buttons that carry a print shadow restate it. */
+.button--blue:focus-visible {
+  box-shadow: var(--ring-focus), 3px 4px 0 var(--blue-deep);
+}
+.button--gold:focus-visible {
+  box-shadow: var(--ring-focus), 3px 4px 0 rgba(0, 0, 0, 0.18);
 }
 .button--gold {
   background: var(--gold);
