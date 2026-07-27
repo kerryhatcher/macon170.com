@@ -62,9 +62,7 @@ export default {
       }
 
       const adminHostname = new URL(env.ADMIN_ORIGIN).hostname;
-      const publicHostname = new URL(env.PUBLIC_SITE_ORIGIN).hostname;
-      const localDev = String(env.ENVIRONMENT) === 'development';
-      const localAdmin = localDev && (url.hostname === 'localhost' || url.hostname === '127.0.0.1' || url.hostname === publicHostname);
+      const localAdmin = String(env.ENVIRONMENT) === 'development' && (url.hostname === 'localhost' || url.hostname === '127.0.0.1');
       if (url.pathname.startsWith('/api/admin/') && url.hostname !== adminHostname && !localAdmin) {
         throw new HttpError(404, 'Not found.');
       }
@@ -290,8 +288,7 @@ async function verifyTurnstile(token: string, request: Request, env: WorkerEnv):
 
 async function requireAccess(request: Request, env: Env): Promise<AccessIdentity> {
   const hostname = new URL(request.url).hostname;
-  const publicHostname = new URL(env.PUBLIC_SITE_ORIGIN).hostname;
-  if (String(env.ENVIRONMENT) === 'development' && (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === publicHostname)) {
+  if (String(env.ENVIRONMENT) === 'development' && (hostname === 'localhost' || hostname === '127.0.0.1')) {
     return { email: 'local-volunteer@example.invalid', sub: 'local-development' };
   }
   if (env.ACCESS_TEAM_DOMAIN.includes('REPLACE-ME') || env.ACCESS_AUD.includes('REPLACE_')) {
