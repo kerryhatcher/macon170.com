@@ -8,6 +8,7 @@
   "preview_urls": false,
   "routes": [
     { "pattern": "macon170.com", "custom_domain": true },
+    { "pattern": "www.macon170.com", "custom_domain": true },
     { "pattern": "admin.macon170.com", "custom_domain": true }
   ],
   "assets": {

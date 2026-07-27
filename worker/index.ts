@@ -49,6 +49,12 @@ export default {
     const url = new URL(request.url);
 
     try {
+      if (url.hostname === 'www.macon170.com') {
+        const destination = new URL(request.url);
+        destination.hostname = 'macon170.com';
+        return Response.redirect(destination.toString(), 308);
+      }
+
       if (url.pathname === '/api/contact' && request.method === 'POST') {
         return await handleContactSubmission(request, runtimeEnv);
       }
