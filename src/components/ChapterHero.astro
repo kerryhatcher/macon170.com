@@ -1,0 +1,28 @@
+---
+type Props = {
+  chapter: string;
+  title: string;
+  accent?: string;
+  intro: string;
+  noteTitle?: string;
+  noteBody?: string;
+};
+const { chapter, title, accent, intro, noteTitle, noteBody } = Astro.props;
+---
+<section class="chapter-hero">
+  <div class="container chapter-hero__grid">
+    <div>
+      <span class="chapter-tab">{chapter}</span>
+      <h1>{title} {accent && <span>{accent}</span>}</h1>
+      <p class="lead">{intro}</p>
+      <slot name="actions" />
+    </div>
+    {noteTitle && (
+      <aside class="hero-note">
+        <h2>{noteTitle}</h2>
+        <p>{noteBody}</p>
+        <slot name="note" />
+      </aside>
+    )}
+  </div>
+</section>

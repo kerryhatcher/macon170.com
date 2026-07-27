@@ -1,0 +1,37 @@
+---
+import { pack } from '../data/pack';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>Cub Scout Pack 170</h2>
+        <p>Macon’s neighborhood pack, meeting in Shirley Hills and welcoming boys and girls in kindergarten through 5th grade.</p>
+        <p><a href="/join/">Plan a first visit</a> · <a href="/calendar/">See the calendar</a></p>
+      </div>
+      <div>
+        <h3>Handbook chapters</h3>
+        <ul>
+          <li><a href="/activities/">Adventures</a></li>
+          <li><a href="/about/">Our Pack</a></li>
+          <li><a href="/resources/">Parent resources</a></li>
+          <li><a href="/volunteer/">Volunteer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Community</h3>
+        <ul>
+          <li><a href={pack.charteredOrganization.url}>{pack.charteredOrganization.name}</a></li>
+          <li><a href={pack.council.url}>{pack.council.name}</a></li>
+          <li><a href="/contact/">Contact pack adults</a></li>
+          <li><a href="/privacy/">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-small">
+      <p>© {year} Cub Scout Pack 170, Macon, Georgia. Chartered by Highland Hills Baptist Church in partnership with the Central Georgia Council, Scouting America.</p>
+      <p>This is a local unit website and is not an official Scouting America or council communication channel. Scouting America trademarks and design marks are the property of Scouting America. No endorsement of the chartered organization’s non-Scouting activities is implied.</p>
+    </div>
+  </div>
+</footer>
