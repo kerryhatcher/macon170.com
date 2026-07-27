@@ -68,7 +68,12 @@ describe('GET /api/leadership', () => {
 
   it('never exposes an email field', async () => {
     const response = await exports.default.fetch('https://www.macon170.com/api/leadership');
-    expect(await response.text()).not.toContain('email');
+    const text = await response.text();
+    expect(text).not.toContain('@');
+    const body = JSON.parse(text) as { roles: Array<Record<string, unknown>> };
+    for (const role of body.roles) {
+      expect(role).not.toHaveProperty('updated_by');
+    }
   });
 });
 
@@ -93,7 +98,10 @@ describe('admin leadership routes', () => {
 
   it('clears a name back to vacant when given an empty string', async () => {
     const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'treasurer'").first<{ id: string }>();
-    await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Treasurer', name: '', bio: '' }));
+    // Arrange a genuinely non-vacant starting state, independent of any other test's ordering.
+    await env.DB.prepare("UPDATE leadership_roles SET name = 'Interim Treasurer', bio = 'Filling in.' WHERE slug = 'treasurer'").run();
+    const response = await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Treasurer', name: '', bio: '' }));
+    expect(response.status).toBe(200);
     const updated = await env.DB.prepare("SELECT name, bio FROM leadership_roles WHERE slug = 'treasurer'").first();
     expect(updated).toMatchObject({ name: null, bio: null });
   });
@@ -115,6 +123,29 @@ describe('admin leadership routes', () => {
   it('rejects a duplicate role slug with 409', async () => {
     const response = await exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Assistant Cubmaster' }));
     expect(response.status).toBe(409);
+  });
+
+  it('returns 409 instead of 500 when two requests race to create the same slug', async () => {
+    const responses = await Promise.all([
+      exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Race Condition Chair' })),
+      exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Race Condition Chair' })),
+    ]);
+    expect(responses.map((r) => r.status).sort()).toEqual([201, 409]);
+  });
+
+  it('replaces name and bio in full on PUT, since the admin form always submits all three fields', async () => {
+    const row = await env.DB.prepare("SELECT id FROM leadership_roles WHERE slug = 'cubmaster'").first<{ id: string }>();
+    const response = await exports.default.fetch(`${localAdmin}/${row!.id}`, jsonInit('PUT', { role: 'Cubmaster' }));
+    expect(response.status).toBe(200);
+    const updated = await env.DB.prepare("SELECT name, bio FROM leadership_roles WHERE slug = 'cubmaster'").first();
+    expect(updated).toMatchObject({ name: null, bio: null });
+    // Restore the seeded holder so later tests/assertions about cubmaster's name aren't affected.
+    await env.DB.prepare("UPDATE leadership_roles SET name = 'Kerry Hatcher', bio = NULL WHERE slug = 'cubmaster'").run();
+  });
+
+  it('rejects a non-integer sort order', async () => {
+    const response = await exports.default.fetch(localAdmin, jsonInit('POST', { role: 'Assistant Den Leader', sortOrder: '5' }));
+    expect(response.status).toBe(400);
   });
 
   it('deletes a role', async () => {
