@@ -168,3 +168,5 @@ graphify-out/20*/
 graphify-out/.graph.tmp.json
 .mcp.json
 .firecrawl
+# Subagent-driven-development scratch: ledgers, briefs, review packages.
+.superpowers/
