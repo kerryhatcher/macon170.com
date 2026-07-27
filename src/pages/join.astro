@@ -10,9 +10,9 @@ const faq = [
 ];
 ---
 <BaseLayout title="Join Pack 170" description="Plan a first visit to Cub Scout Pack 170 in Macon. Learn who can join, when we meet, what to expect, and how to begin.">
-  <ChapterHero chapter="First-visit chapter" title="Your family’s first" accent="Pack 170 visit" intro="No uniform. No experience. No pressure. Come meet the adults who run the pack, see what Cub Scouts are working on, and decide together whether it feels right." noteTitle="Write this down" noteBody={`${pack.meeting.day}s · ${pack.meeting.time} · ${pack.meeting.location}`}>
+  <ChapterHero chapter="First-visit chapter" title="Your family’s first" accent="Pack 170 visit" intro="No uniform. No experience. No pressure. Come meet the adults who run the pack, see what Cub Scouts are working on, and decide together whether it feels right." noteTitle="Write this down" noteBody={`Roughly monthly · ${pack.meeting.day}s · ${pack.meeting.time}`}>
     <div slot="actions" class="hero-actions"><a class="button button--gold" href={pack.links.join}>Start with BeAScout</a><a class="button button--paper" href="/contact/">Ask a pack adult</a></div>
-    <p slot="note"><strong>Room:</strong> Pack leadership still needs to add the exact building or room.</p>
+    <p slot="note"><strong>{pack.meeting.location}</strong><br />{pack.meeting.address}<br />Confirm the next date and exact room before visiting.</p>
   </ChapterHero>
 
   <section class="section">

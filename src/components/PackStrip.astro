@@ -1,13 +1,16 @@
 ---
 import { events, pack } from '../data/pack';
-const scheduled = events.filter((event) => event.status === 'scheduled' && event.date).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+const today = new Date().toISOString().slice(0, 10);
+const scheduled = events
+  .filter((event) => event.status === 'scheduled' && event.date && event.date >= today)
+  .sort((a, b) => String(a.date).localeCompare(String(b.date)));
 const nextEvent = scheduled[0];
 ---
 <aside class="pack-strip" aria-label="Pack essentials">
   <div class="pack-strip__inner">
     <div class="pack-strip__item">
       <span class="pack-strip__label">We gather</span>
-      <strong class="pack-strip__value">{pack.meeting.day}s at {pack.meeting.time} · {pack.meeting.location}</strong>
+      <strong class="pack-strip__value">Monthly {pack.meeting.day} · {pack.meeting.time} · {pack.meeting.location}</strong>
     </div>
     <div class="pack-strip__item">
       <span class="pack-strip__label">Next up</span>

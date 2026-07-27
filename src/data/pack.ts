@@ -42,7 +42,7 @@ export const pack = {
     email: 'centralgeorgiacouncil@scouting.org',
   },
   links: {
-    join: 'https://beascout.scouting.org/',
+    join: 'https://beascout.scouting.org/list/?zip=31201&program%5B%5D=pack&unitID=234351',
     facebook: null,
     scoutbook: null,
     payment: null,
@@ -57,7 +57,7 @@ export const pack = {
     membershipEmail: null,
     leadershipEmail: null,
     webmasterEmail: null,
-    formEndpoint: null,
+    formEndpoint: '/api/contact',
   },
   leadership: [] as Array<{ role: string; name: string; email: string | null }>,
   dens: [] as Array<{ grade: string; name: string; meeting: string | null }>,
@@ -125,5 +125,5 @@ export const editorChecklist = [
   'Add the current adult leadership roster',
   'Add active dens and their meeting patterns',
   'Add approved official or consent-cleared photography',
-  'Connect the parent contact form',
+  'Add role-based recipient and webmaster emails',
 ] as const;

@@ -19,6 +19,8 @@ https://www.centralgeorgiacouncil.org/
 
 ## Cub Scout Pack
 
+Scouting America Link (to join): https://beascout.scouting.org/list/?zip=31201&program%5B%5D=pack&unitID=234351
+
 ### Meeting Info
 
 Pack Meetings occur roughly once a month at Highland Hills Baptist Church at 6:30 PM on Tuesdays

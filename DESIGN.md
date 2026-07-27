@@ -1,7 +1,74 @@
-<!-- SEED: established with the user before implementation; re-run $impeccable document once there's code to capture the actual tokens and components. -->
 ---
 name: Pack 170 Elementary Adventure Handbook
 description: A practical family handbook with the warmth and wonder of an elementary-school adventure book.
+colors:
+  cub-blue: "#003F87"
+  midnight-blue: "#002B5C"
+  cub-gold: "#FCD116"
+  notebook-paper: "#F7F1E3"
+  clean-page: "#FFFDF7"
+  pencil-charcoal: "#272B2E"
+  pencil-muted: "#59636B"
+  rule-line: "#D7CDB8"
+  river-green: "#42765C"
+  river-green-deep: "#28543F"
+  cherry-blossom: "#E8A3C6"
+  brick-red: "#A33C34"
+typography:
+  display:
+    fontFamily: "Montserrat, Arial, sans-serif"
+    fontSize: "clamp(2.9rem, 8vw, 5.7rem)"
+    fontWeight: 900
+    lineHeight: 1.08
+    letterSpacing: "-0.025em"
+  headline:
+    fontFamily: "Montserrat, Arial, sans-serif"
+    fontSize: "clamp(2.05rem, 5vw, 3.5rem)"
+    fontWeight: 800
+    lineHeight: 1.08
+    letterSpacing: "-0.025em"
+  body:
+    fontFamily: "Source Sans 3, Segoe UI, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 400
+    lineHeight: 1.65
+  label:
+    fontFamily: "Montserrat, Arial, sans-serif"
+    fontSize: "0.76rem"
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: "0.06em"
+rounded:
+  control: "9px 9px 3px 9px"
+  sheet: "6px 18px 12px 8px"
+  tab: "4px 12px 12px 4px"
+spacing:
+  xs: "0.5rem"
+  sm: "0.75rem"
+  md: "1rem"
+  lg: "1.5rem"
+  xl: "2rem"
+  section: "clamp(4.5rem, 9vw, 8rem)"
+components:
+  button-primary:
+    backgroundColor: "{colors.cub-blue}"
+    textColor: "{colors.clean-page}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "0.75rem 1.25rem"
+    height: "50px"
+  button-highlight:
+    backgroundColor: "{colors.cub-gold}"
+    textColor: "{colors.midnight-blue}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "0.75rem 1.25rem"
+    height: "50px"
+  paper-sheet:
+    backgroundColor: "{colors.clean-page}"
+    textColor: "{colors.pencil-charcoal}"
+    rounded: "{rounded.sheet}"
+    padding: "2rem"
 ---
 
 # Design System: Pack 170 Elementary Adventure Handbook
@@ -10,35 +77,35 @@ description: A practical family handbook with the warmth and wonder of an elemen
 
 **Creative North Star: "The Elementary Adventure Handbook"**
 
-Pack 170 should feel like the unusually beautiful handbook a child brings home and a parent actually keeps. Its world combines the practical organization of a family handbook with the warmth of an illustrated elementary-school adventure book: bold chapter tabs, tactile paper rhythm, original sewn-label shapes, friendly scenes, and grade-color wayfinding. Information remains adult-clear, fast to scan, and useful outdoors on a phone.
+Pack 170 feels like the unusually beautiful handbook a child brings home and a parent actually keeps. It combines the practical organization of a family handbook with the warmth of an illustrated elementary-school adventure book: bold chapter tabs, tactile paper rhythm, original sewn-label shapes, friendly scenes, and grade-color wayfinding. Information stays adult-clear, fast to scan, and useful outdoors on a phone.
 
-The system is energetic but never babyish, nostalgic but never archival, and handmade without becoming scrapbook-like. Illustration shows original Macon-and-outdoors scenes rather than invented Scouts, protected insignia, or fake pack photography. Motion borrows from bookmarks, page turns, and pencil marks, appearing only where it improves orientation.
+The system is energetic but never babyish, nostalgic but never archival, and handmade without becoming scrapbook-like. Original illustrations show Macon, Georgia terrain and family adventure objects rather than invented Scouts, protected insignia, or fake pack photography. Motion borrows from lifting paper and moving bookmarks and never hides content.
 
 **Key Characteristics:**
 - Practical parent information framed as welcoming handbook chapters
 - Cub blue and gold at page scale, with warm paper and sparse local accents
-- Bold geometric headings paired with highly readable body copy
+- Bold geometric headings paired with open, readable body copy
 - Original illustrated scenes, school-supply details, tabs, labels, and trail marks
 - Equal visual authority for Join and Calendar
 
 ## Colors
 
-The palette is committed rather than decorative: Cub Scout Blue and Gold establish unmistakable program recognition, while warm paper keeps long-form guidance approachable and Macon accents appear only when they carry meaning.
+Cub Blue and Gold establish unmistakable program recognition; warm paper keeps long-form guidance approachable, while local accents appear only when they carry meaning.
 
 ### Primary
-- **Cub Scout Blue:** The authoritative field for navigation, chapter covers, important headings, links, and primary actions.
-- **Cub Scout Gold:** The high-visibility fill for the next action, bookmarks, rules, and moments of earned emphasis. Gold never carries small or body text.
+- **Cub Scout Blue:** Navigation, chapter covers, important headings, links, and primary actions.
+- **Cub Scout Gold:** The next action, bookmark, rule, or earned moment of emphasis. Never small or body text.
 
 ### Secondary
-- **River Green:** Outdoor chapters, practical guidance, and calm supporting surfaces.
-- **Cherry Blossom:** Sparse spring and local-Macon annotation, never a generic feminine cue.
-- **Brick Red:** Rare alert, heritage, or cancellation emphasis.
+- **River Green:** Outdoor chapters, practical guidance, and calm supporting fields.
+- **Cherry Blossom:** Sparse spring and Macon annotation, never a generic feminine cue.
+- **Brick Red:** Cancellation, editor warning, and rare heritage emphasis.
 
 ### Neutral
-- **Notebook Paper:** A warm, lightly tactile reading ground.
-- **Clean Page:** Raised reading sheets and form surfaces.
-- **Pencil Charcoal:** Primary copy and dark marks.
-- **Rule Line:** Quiet dividers and notebook structure.
+- **Notebook Paper:** Warm, ruled site ground.
+- **Clean Page:** Reading sheets, controls, and raised notices.
+- **Pencil Charcoal:** Primary copy and drawn marks.
+- **Rule Line:** Notebook structure and quiet separation.
 
 **The Gold Is a Marker Rule.** Gold marks what to do or notice; it is never body copy and never scattered as confetti.
 
@@ -46,35 +113,63 @@ The palette is committed rather than decorative: Cub Scout Blue and Gold establi
 
 ## Typography
 
-**Display Font:** Montserrat with a geometric sans fallback
-**Body Font:** Source Sans 3 with a humanist sans fallback
+**Display Font:** Montserrat with Arial fallback
+**Body Font:** Source Sans 3 with Segoe UI fallback
 
-**Character:** Montserrat gives chapter titles the clear confidence of school signage and official program materials. Source Sans 3 keeps parent guidance warm, open, and readable on small outdoor-viewed screens.
+**Character:** Montserrat connects chapter titles to school signage and established Cub Scouting materials. Source Sans 3 keeps parent guidance warm, open, and readable on small outdoor-viewed screens.
 
 ### Hierarchy
-- **Display:** Heavy, compact, and reserved for cover titles and route openings.
-- **Headline:** Bold chapter naming with short lines and strong contrast.
-- **Title:** Clear card, event, and subsection labels.
-- **Body:** Generous leading, 65–72 character measure on reading pages, and no condensed treatment.
-- **Label:** Short, sturdy, and usually sentence case; uppercase is reserved for tiny edition marks and route eyebrows.
+- **Display:** Heavy and compact; cover titles and route openings only.
+- **Headline:** Bold chapter naming with short, balanced lines.
+- **Title:** Clear event, card, and subsection labels.
+- **Body:** Generous leading with a 65–72 character measure on reading pages.
+- **Label:** Short and sturdy; uppercase is reserved for edition marks and chapter tabs.
 
 **The Parent Can Read It in the Parking Lot Rule.** Body copy never shrinks to make a composition fit; the composition adapts around readable type.
 
 ## Layout
 
-Pages behave like chapters in one handbook. A broad cover or chapter opener establishes orientation, then content alternates between clean reading sheets, full-bleed illustrated bands, tabbed indexes, and practical notices. The shared grid is intentionally asymmetric on wide screens so tabs and annotations can occupy the margin; on phones it becomes one direct reading column with no loss of order.
+Pages behave like chapters in one handbook. Wide screens use an intentionally asymmetric grid with room for tabs and annotations; phones collapse to one direct reading column without changing the order. A broad cover establishes orientation, then clean reading sheets, illustrated fields, tabbed indexes, and practical notices alternate to pace the page.
 
-Spacing follows a page rhythm: tight within a thought, generous between chapters. Join and Calendar keep equal prominence in global navigation and the shared action strip. Dense planning views prioritize dates, state, and logistics over decoration. No essential content depends on a hover, drag, or page-turn effect.
+The container tops out at 1160px with one-rem minimum side gutters. Major sections use a fluid 4.5–8rem vertical interval. Join and Calendar retain equal prominence in navigation, the Pack essentials strip, and the homepage opening. Dense planner views prioritize date, state, and logistics over decoration.
 
 ## Elevation & Depth
 
-Depth comes from paper overlap, offset printed shadows, folded corners, inset rules, and tonal layering—not translucent glass or ambient app shadows. Raised sheets should feel physically stacked and stable. Interactive lift is slight and directional, like picking up a card from a desk.
+Depth comes from paper overlap, visible offset shadows, folded corners, inset rules, and tonal layering—not translucent glass. The standard paper shadow combines an 8×10px blue offset with a soft charcoal ambient shadow. Interactive lift moves two to five pixels up and left, like picking up a card from a desk.
 
 **The Paper, Not Glass Rule.** Every surface should plausibly be printed, clipped, folded, stitched, or drawn; blur and glass effects do not belong in this world.
 
 ## Shapes
 
-The form language mixes sturdy rounded rectangles with distinctive clipped or notched corners. Chapter tabs are rounded on their exposed edge; notices may use taped, pinned, or folded geometry; original badge-like labels remain abstract and never mimic official rank insignia. Circular forms are reserved for date stamps, compass points, and small wayfinding marks rather than generic icon bubbles.
+Sturdy rounded rectangles use asymmetric corners so they feel clipped or hand-cut without looking damaged. Chapter tabs round only the exposed edge. Notices use taped, pinned, or folded geometry. Original badge-like labels remain abstract and never mimic rank insignia. Circles are reserved for dates, compass points, rank-color markers, and pins—not generic icon bubbles.
+
+## Components
+
+### Buttons
+- **Shape:** Sturdy asymmetric corners; controls remain at least 50px high and 44px wide.
+- **Primary:** Cub Blue on a visible Midnight Blue offset shadow.
+- **Highlight:** Cub Gold with Midnight Blue text for the most important next action.
+- **Hover / Focus:** Move slightly up-left; focus uses a thick Gold outline with clear separation.
+
+### Cards / Containers
+- **Corner Style:** Sheet geometry with one more open corner and one clipped corner.
+- **Background:** Clean Page over Notebook Paper or colored chapter fields.
+- **Shadow Strategy:** Offset print shadow plus soft ambient depth; never a zero-offset glow.
+- **Border:** Rules explain a printed edge or notice state rather than decorating every box.
+
+### Inputs / Fields
+- **Style:** White paper, two-pixel gray-blue stroke, asymmetric seven-to-twelve-pixel corners.
+- **Focus:** Cub Blue stroke and translucent Gold outline.
+- **Error / Disabled:** Brick Red explanatory copy; disabled actions remain visible and name the missing connection.
+
+### Navigation
+-The Midnight Blue header uses high-contrast text and two Gold priority tabs for Join and Calendar. On phones, a 48px Menu control opens a simple stacked chapter index. The Gold Pack strip immediately below navigation carries verified meeting facts, next-event state, and the same two audience handoffs.
+
+### Chapter Tab
+-A small Gold paper tab names the current chapter or local section. It is the system’s one repeated uppercase label and must not appear above every minor heading.
+
+### Notice
+-A dashed pinned sheet communicates pending data, a parent safety note, or an editor task. It names both the missing information and the recovery path.
 
 ## Do's and Don'ts
 
@@ -82,7 +177,7 @@ The form language mixes sturdy rounded rectangles with distinctive clipped or no
 - **Do** make every decorative object carry navigation, state, sequence, or place.
 - **Do** use original school, trail, pine, river, and cherry-blossom illustration language.
 - **Do** keep Join and Calendar equally easy to find on every route.
-- **Do** let missing imagery appear as honest, art-directed replacement slots.
+- **Do** let missing imagery and data appear as honest, art-directed replacement states.
 - **Do** preserve clear reading order, visible focus, reduced-motion behavior, and strong contrast.
 
 ### Don't:

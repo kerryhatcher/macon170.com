@@ -2,7 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { annualProgram, events, pack } from '../../data/pack';
-const datedEvents = events.filter(event => event.date);
+const today = new Date().toISOString().slice(0, 10);
+const datedEvents = events
+  .filter(event => event.date && event.date >= today && event.status !== 'cancelled')
+  .sort((a, b) => String(a.date).localeCompare(String(b.date)));
 ---
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
   <ChapterHero chapter="Family planner" title="What’s next for" accent="Pack 170?" intro="This page is designed to answer one question fast: where does our family need to be, and when? Exact event dates will appear here as pack leadership supplies them." noteTitle="Regular pack gathering" noteBody={`${pack.meeting.cadence} · ${pack.meeting.day}s at ${pack.meeting.time}`}>

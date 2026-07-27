@@ -1,0 +1,62 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Reject incomplete production configuration
+        run: |
+          ! grep -q 'REPLACE-ME\|REPLACE_WITH_ACCESS' wrangler.jsonc
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npx wrangler deploy --dry-run
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Apply D1 migrations
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 migrations apply macon170-submissions --remote
+      - name: Deploy Worker and static site
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          secrets: |
+            TURNSTILE_SECRET
+        env:
+          TURNSTILE_SECRET: ${{ secrets.TURNSTILE_SECRET }}
