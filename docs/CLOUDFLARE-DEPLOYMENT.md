@@ -106,7 +106,9 @@ npx wrangler d1 execute macon170-submissions --remote \
 - D1 stores country code and browser user-agent for abuse and troubleshooting; it does not intentionally store IP addresses.
 - A daily Worker cron deletes submissions and their audit logs after 365 days.
 - Admin responses are private and non-cacheable.
-- Every detail view and status change creates an audit entry tied to the verified Access email.
+- Every submission detail view and status change creates an audit entry tied to the verified Access email.
+- Calendar events are stored in D1. Volunteers create drafts, publish only when ready, and archive instead of deleting; every event change records the Access email in `event_audit_log`.
+- The public calendar API exposes only upcoming published family logistics and never exposes volunteer identities or internal audit metadata.
 - Volunteers should reply through an approved shared pack mailbox reaching multiple adults, not from private one-to-one youth channels.
 
 ## Operations

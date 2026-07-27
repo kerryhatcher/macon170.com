@@ -57,12 +57,101 @@ describe('contact submissions', () => {
   });
 });
 
+describe('calendar events', () => {
+  const eventPayload = {
+    title: 'Pack Meeting',
+    slug: 'pack-meeting-january',
+    summary: 'The whole pack gathers for an evening of activities and announcements.',
+    description: 'Families gather at Highland Hills Baptist Church for the monthly pack program.',
+    category: 'pack',
+    status: 'scheduled',
+    visibility: 'draft',
+    startsAt: '2027-01-12T23:30:00.000Z',
+    endsAt: '2027-01-13T00:30:00.000Z',
+    timezone: 'America/New_York',
+    locationName: 'Highland Hills Baptist Church',
+    address: '1370 Briarcliff Rd, Macon, GA 31211',
+    audience: 'All Pack 170 families',
+    whatToBring: 'A water bottle',
+    cost: 'No cost',
+    registrationUrl: null,
+  };
+
+  it('keeps drafts private and publishes through the admin API', async () => {
+    const created = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify(eventPayload),
+    });
+    expect(created.status).toBe(201);
+    const { id } = await created.json<{ id: string }>();
+    const storedDraft = await env.DB.prepare('SELECT visibility FROM calendar_events WHERE id = ?').bind(id).first<{ visibility: string }>();
+    expect(storedDraft?.visibility).toBe('draft');
+
+    let publicList = await exports.default.fetch('https://www.macon170.com/api/events');
+    expect((await publicList.json<{ events: unknown[] }>()).events).toHaveLength(0);
+
+    const published = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, visibility: 'published' }),
+    });
+    expect(published.status).toBe(200);
+
+    publicList = await exports.default.fetch('https://www.macon170.com/api/events');
+    const body = await publicList.json<{ events: Array<Record<string, unknown> & { slug: string }> }>();
+    expect(body.events[0].slug).toBe('pack-meeting-january');
+    expect(body.events[0]).not.toHaveProperty('created_by');
+    expect(body.events[0]).not.toHaveProperty('updated_by');
+    expect(body.events[0]).not.toHaveProperty('id');
+
+    const detail = await exports.default.fetch('https://www.macon170.com/api/events/pack-meeting-january');
+    expect(detail.status).toBe(200);
+  });
+
+  it('rejects admin event APIs on the public hostname', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/api/admin/events');
+    expect(response.status).toBe(404);
+  });
+
+  it('requires the exact admin origin for mutations', async () => {
+    const response = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(eventPayload),
+    });
+    expect(response.status).toBe(403);
+  });
+
+  it('archives rather than deleting an event', async () => {
+    const row = await env.DB.prepare("SELECT id FROM calendar_events WHERE slug = 'pack-meeting-january'").first<{ id: string }>();
+    expect(row).not.toBeNull();
+    const response = await exports.default.fetch(`http://localhost/api/admin/events/${row!.id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, visibility: 'archived' }),
+    });
+    expect(response.status).toBe(200);
+    const stored = await env.DB.prepare('SELECT visibility, archived_at FROM calendar_events WHERE id = ?').bind(row!.id).first();
+    expect(stored?.visibility).toBe('archived');
+    expect(stored?.archived_at).toBeTruthy();
+    const publicDetail = await exports.default.fetch('https://www.macon170.com/api/events/pack-meeting-january');
+    expect(publicDetail.status).toBe(404);
+  });
+});
+
 describe('volunteer desk', () => {
   it('serves the authenticated local admin shell', async () => {
     const response = await exports.default.fetch('http://localhost/admin');
     expect(response.status).toBe(200);
     expect(await response.text()).toContain('Volunteer desk');
     expect(response.headers.get('cache-control')).toContain('no-store');
+  });
+
+  it('serves the calendar editor in local authenticated mode', async () => {
+    const response = await exports.default.fetch('http://localhost/admin/calendar');
+    expect(response.status).toBe(200);
+    expect(await response.text()).toContain('Calendar editor');
   });
 
   it('lists submissions in local authenticated mode', async () => {

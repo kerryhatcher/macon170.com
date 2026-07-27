@@ -1,4 +1,6 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
+import { EventRouteError, handleEventRoute } from './event-routes';
+import { renderCalendarAdmin } from './calendar-admin';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
 type SubmissionStatus = 'new' | 'in_progress' | 'resolved' | 'spam';
@@ -65,6 +67,18 @@ export default {
         throw new HttpError(404, 'Not found.');
       }
 
+      const eventResponse = await handleEventRoute({
+        request,
+        env,
+        url,
+        requireAccess,
+        enforceSameOrigin,
+        json,
+        publicHeaders,
+        adminHeaders,
+      });
+      if (eventResponse) return eventResponse;
+
       if (url.pathname === '/api/admin/submissions' && request.method === 'GET') {
         const identity = await requireAccess(request, env);
         return await listSubmissions(request, env, identity);
@@ -82,13 +96,19 @@ export default {
 
       if (url.hostname === new URL(env.ADMIN_ORIGIN).hostname || url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
         const identity = await requireAccess(request, env);
+        if (url.pathname === '/calendar' || url.pathname === '/admin/calendar') {
+          return renderCalendarAdmin(identity.email ?? 'Authorized volunteer', env, adminHeaders(env));
+        }
         return renderAdminShell(identity.email ?? 'Authorized volunteer', env);
       }
 
       return env.ASSETS.fetch(request);
     } catch (error) {
-      if (error instanceof HttpError) {
+      if (error instanceof HttpError || error instanceof EventRouteError) {
         return json({ ok: false, error: error.message }, error.status, securityHeaders());
+      }
+      if (error instanceof Error && error.message.includes('UNIQUE constraint failed: calendar_events.slug')) {
+        return json({ ok: false, error: 'Another event already uses that URL slug.' }, 409, securityHeaders());
       }
       console.error(JSON.stringify({ event: 'request_failed', path: url.pathname, error: error instanceof Error ? error.message : 'Unknown error' }));
       return json({ ok: false, error: 'Something went wrong. Please try again.' }, 500, securityHeaders());
@@ -295,7 +315,7 @@ function renderAdminShell(email: string, env: Env): Response {
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>Pack 170 volunteer desk</title><style>${adminCss()}</style></head>
-<body><a class="skip" href="#main">Skip to submissions</a><header><div class="brand"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></div><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>
+<body><a class="skip" href="#main">Skip to submissions</a><header><div class="brand"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></div><nav class="admin-nav"><a aria-current="page" href="/">Parent inquiries</a><a href="/calendar">Calendar editor</a></nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>
 <main id="main"><section class="intro"><div><p class="tab">Parent inquiries</p><h1>Volunteer desk</h1><p>Read parent questions, follow up through approved adult channels, and keep the queue current.</p></div><div class="safety"><b>Youth safety</b><span>These are parent-to-adult messages. Do not move a conversation into a private adult–youth channel.</span></div></section>
 <nav class="filters" aria-label="Submission status"><button data-status="" aria-pressed="true">All</button><button data-status="new">New</button><button data-status="in_progress">In progress</button><button data-status="resolved">Resolved</button><button data-status="spam">Spam</button></nav>
 <div id="status" class="status" role="status">Loading submissions…</div><section class="desk"><div id="list" class="list" aria-label="Submissions"></div><article id="detail" class="detail"><div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div></article></section></main>
@@ -320,7 +340,7 @@ document.querySelectorAll('[data-status]').forEach((button)=>button.addEventList
 }
 
 function adminCss(): string {
-  return `:root{--blue:#003f87;--deep:#002b5c;--gold:#fcd116;--paper:#f7f1e3;--page:#fffdf7;--ink:#272b2e;--muted:#59636b;--rule:#d7cdb8;--green:#28543f;--red:#a33c34}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}button,select{font:inherit}:focus-visible{outline:4px solid var(--gold);outline-offset:3px}.skip{position:fixed;top:-5rem;left:1rem;background:var(--gold);color:var(--deep);padding:.75rem;z-index:10}.skip:focus{top:1rem}header{min-height:76px;padding:.75rem max(1rem,calc((100% - 1200px)/2));display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--deep);color:white;border-bottom:6px solid var(--gold)}.brand,.identity{display:flex;align-items:center;gap:.75rem}.brand>span{display:grid;place-items:center;width:44px;height:44px;border:3px solid var(--gold);border-radius:50%;color:var(--gold);font-weight:900}.brand b,.brand small,.identity strong,.identity small{display:block}.identity{text-align:right}.identity small{color:#bed1e5}.tab{display:inline-block;margin:0 0 .5rem;padding:.35rem .65rem;border-radius:4px 10px 10px 4px;background:var(--gold);color:var(--deep);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}main{width:min(1200px,calc(100% - 2rem));margin:2.5rem auto}.intro{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:end}.intro h1{font-size:clamp(2.5rem,7vw,4.8rem);line-height:1;margin:0}.intro>div>p:last-child{max-width:60ch;font-size:1.1rem}.safety{display:grid;gap:.35rem;padding:1.25rem;background:var(--green);color:white;border-radius:6px 18px 8px 6px;box-shadow:5px 7px 0 rgba(0,43,92,.16)}.filters{display:flex;gap:.5rem;margin:2rem 0 1rem;overflow:auto;padding-bottom:.25rem}.filters button{min-height:44px;padding:.55rem .9rem;border:2px solid var(--deep);border-radius:7px;background:var(--page);color:var(--deep);font-weight:700;white-space:nowrap}.filters button[aria-pressed=true]{background:var(--deep);color:white}.status{min-height:1.5rem;margin-bottom:.75rem;color:var(--muted)}.desk{display:grid;grid-template-columns:370px 1fr;min-height:570px;border:1px solid var(--rule);border-radius:8px 22px 12px 8px;overflow:hidden;background:var(--page);box-shadow:8px 10px 0 rgba(0,43,92,.12),0 18px 42px rgba(39,43,46,.12)}.list{border-right:1px solid var(--rule);background:#f2ead9}.row{display:grid;grid-template-columns:auto 1fr;gap:.8rem;width:100%;padding:1rem;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}.row:hover,.row.active{background:white}.row.active{box-shadow:inset 5px 0 var(--blue)}.row b,.row small{display:block}.row small{color:var(--muted);margin-top:.15rem}.dot{width:12px;height:12px;margin-top:.35rem;border-radius:50%;background:#82909a}.dot.new{background:var(--red)}.dot.in_progress{background:#d39b00}.dot.resolved{background:#34815e}.detail{padding:clamp(1.5rem,4vw,3rem)}.empty{display:grid;place-items:center;align-content:center;gap:.4rem;min-height:400px;text-align:center;color:var(--muted)}.empty b{color:var(--deep);font-size:1.3rem}.detail-head{display:flex;justify-content:space-between;gap:2rem;align-items:start;padding-bottom:1.5rem;border-bottom:3px solid var(--blue)}.detail-head h2{font-size:2rem;margin:0}.detail-head p:last-child{margin:.35rem 0 0;color:var(--muted)}select{min-height:44px;padding:.5rem;border:2px solid var(--blue);border-radius:7px;background:white}.detail dl{margin:1.5rem 0}.detail dl div{display:grid;grid-template-columns:130px 1fr;padding:.65rem 0;border-bottom:1px solid var(--rule)}dt{font-weight:800;color:var(--deep)}dd{margin:0}.detail a{color:var(--blue)}.message{margin-top:2rem;padding:1.5rem;background:#f7f1e3;border-radius:6px 16px 8px 6px}.message h3{margin-top:0;color:var(--deep)}.privacy{margin-top:2rem;color:var(--muted);font-size:.9rem}@media(max-width:800px){header{align-items:flex-start}.identity small{display:none}.intro,.desk{grid-template-columns:1fr}.intro{gap:1rem}.desk{overflow:visible}.list{border-right:0;max-height:360px;overflow:auto}.detail{border-top:1px solid var(--rule)}.detail-head{display:grid}.detail dl div{grid-template-columns:1fr}dt{margin-bottom:.2rem}}`;
+  return `:root{--blue:#003f87;--deep:#002b5c;--gold:#fcd116;--paper:#f7f1e3;--page:#fffdf7;--ink:#272b2e;--muted:#59636b;--rule:#d7cdb8;--green:#28543f;--red:#a33c34}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}button,select{font:inherit}:focus-visible{outline:4px solid var(--gold);outline-offset:3px}.skip{position:fixed;top:-5rem;left:1rem;background:var(--gold);color:var(--deep);padding:.75rem;z-index:10}.skip:focus{top:1rem}header{min-height:76px;padding:.75rem max(1rem,calc((100% - 1200px)/2));display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--deep);color:white;border-bottom:6px solid var(--gold)}.brand,.identity{display:flex;align-items:center;gap:.75rem}.brand>span{display:grid;place-items:center;width:44px;height:44px;border:3px solid var(--gold);border-radius:50%;color:var(--gold);font-weight:900}.brand b,.brand small,.identity strong,.identity small{display:block}.admin-nav{display:flex;align-self:stretch}.admin-nav a{display:grid;place-items:center;padding:0 1rem;color:white;text-decoration:none;font-weight:700}.admin-nav a[aria-current=page]{background:var(--gold);color:var(--deep)}.identity{margin-left:auto;text-align:right}.identity small{color:#bed1e5}.tab{display:inline-block;margin:0 0 .5rem;padding:.35rem .65rem;border-radius:4px 10px 10px 4px;background:var(--gold);color:var(--deep);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}main{width:min(1200px,calc(100% - 2rem));margin:2.5rem auto}.intro{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:end}.intro h1{font-size:clamp(2.5rem,7vw,4.8rem);line-height:1;margin:0}.intro>div>p:last-child{max-width:60ch;font-size:1.1rem}.safety{display:grid;gap:.35rem;padding:1.25rem;background:var(--green);color:white;border-radius:6px 18px 8px 6px;box-shadow:5px 7px 0 rgba(0,43,92,.16)}.filters{display:flex;gap:.5rem;margin:2rem 0 1rem;overflow:auto;padding-bottom:.25rem}.filters button{min-height:44px;padding:.55rem .9rem;border:2px solid var(--deep);border-radius:7px;background:var(--page);color:var(--deep);font-weight:700;white-space:nowrap}.filters button[aria-pressed=true]{background:var(--deep);color:white}.status{min-height:1.5rem;margin-bottom:.75rem;color:var(--muted)}.desk{display:grid;grid-template-columns:370px 1fr;min-height:570px;border:1px solid var(--rule);border-radius:8px 22px 12px 8px;overflow:hidden;background:var(--page);box-shadow:8px 10px 0 rgba(0,43,92,.12),0 18px 42px rgba(39,43,46,.12)}.list{border-right:1px solid var(--rule);background:#f2ead9}.row{display:grid;grid-template-columns:auto 1fr;gap:.8rem;width:100%;padding:1rem;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}.row:hover,.row.active{background:white}.row.active{box-shadow:inset 5px 0 var(--blue)}.row b,.row small{display:block}.row small{color:var(--muted);margin-top:.15rem}.dot{width:12px;height:12px;margin-top:.35rem;border-radius:50%;background:#82909a}.dot.new{background:var(--red)}.dot.in_progress{background:#d39b00}.dot.resolved{background:#34815e}.detail{padding:clamp(1.5rem,4vw,3rem)}.empty{display:grid;place-items:center;align-content:center;gap:.4rem;min-height:400px;text-align:center;color:var(--muted)}.empty b{color:var(--deep);font-size:1.3rem}.detail-head{display:flex;justify-content:space-between;gap:2rem;align-items:start;padding-bottom:1.5rem;border-bottom:3px solid var(--blue)}.detail-head h2{font-size:2rem;margin:0}.detail-head p:last-child{margin:.35rem 0 0;color:var(--muted)}select{min-height:44px;padding:.5rem;border:2px solid var(--blue);border-radius:7px;background:white}.detail dl{margin:1.5rem 0}.detail dl div{display:grid;grid-template-columns:130px 1fr;padding:.65rem 0;border-bottom:1px solid var(--rule)}dt{font-weight:800;color:var(--deep)}dd{margin:0}.detail a{color:var(--blue)}.message{margin-top:2rem;padding:1.5rem;background:#f7f1e3;border-radius:6px 16px 8px 6px}.message h3{margin-top:0;color:var(--deep)}.privacy{margin-top:2rem;color:var(--muted);font-size:.9rem}@media(max-width:800px){header{align-items:flex-start}.identity small{display:none}.intro,.desk{grid-template-columns:1fr}.intro{gap:1rem}.desk{overflow:visible}.list{border-right:0;max-height:360px;overflow:auto}.detail{border-top:1px solid var(--rule)}.detail-head{display:grid}.detail dl div{grid-template-columns:1fr}dt{margin-bottom:.2rem}}`;
 }
 
 function enforceBodyLimit(request: Request, maximum: number): void {
@@ -361,7 +381,9 @@ async function readBoundedFormData(request: Request, maximum: number): Promise<F
 
 function enforceSameOrigin(request: Request, allowedOrigin: string): void {
   const origin = request.headers.get('origin');
-  if (origin && origin !== allowedOrigin) throw new HttpError(403, 'This request came from an unexpected website.');
+  if (origin !== allowedOrigin) throw new HttpError(403, 'This request came from an unexpected website.');
+  const fetchSite = request.headers.get('sec-fetch-site');
+  if (fetchSite && fetchSite !== 'same-origin') throw new HttpError(403, 'Cross-site changes are not allowed.');
 }
 
 function required(value: FormDataEntryValue | null, label: string, minimum: number, maximum: number): string {
@@ -399,6 +421,14 @@ function redirectToContact(state: 'success'): Response {
 
 function json(data: unknown, status = 200, headers: HeadersInit = {}): Response {
   return Response.json(data, { status, headers: { 'cache-control': 'no-store', ...headers } });
+}
+
+function publicHeaders(): Record<string, string> {
+  return {
+    ...securityHeaders(),
+    'cache-control': 'public, max-age=30, s-maxage=60',
+    'access-control-allow-origin': 'https://www.macon170.com',
+  };
 }
 
 function securityHeaders(): Record<string, string> {
