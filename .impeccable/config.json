@@ -6,9 +6,7 @@
       {
         "rule": "border-accent-on-rounded",
         "value": "*",
-        "files": [
-          "src/styles/global.css"
-        ],
+        "files": ["src/styles/global.css"],
         "createdAt": "2026-07-27T22:13:14.226Z",
         "reason": "User confirmed: the flagged rule is .field-illustration__river, an absolutely-positioned drawn ellipse inside the illustration frame — border-radius 50% is the river's shape and border-top is light on the water, not a rounded card with an accent border"
       }

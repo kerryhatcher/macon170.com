@@ -14,6 +14,15 @@ colors:
   river-green-deep: '#28543F'
   cherry-blossom: '#E8A3C6'
   brick-red: '#A33C34'
+  # Paper is a monochrome medium and a volunteer's printer is usually black-only, so on
+  # paper the palette collapses to this four-step ink ramp: the blue and green fields
+  # become type on white and a rule carries the separation the fill used to. Valid only
+  # inside @media print, never on screen. Official rank badge artwork keeps its own
+  # colors here, unmodified, per the trademark rules in PRODUCT.md.
+  print-page: '#FFFFFF'
+  print-ink: '#000000'
+  print-ink-muted: '#333333'
+  print-rule: '#999999'
 typography:
   display:
     fontFamily: 'Montserrat, Arial, sans-serif'

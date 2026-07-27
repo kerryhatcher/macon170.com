@@ -33,9 +33,24 @@ const isCurrent = (href: string) => (href === '/' ? currentPath === '/' : curren
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   const nav = document.querySelector<HTMLElement>('#site-nav');
+  const setOpen = (open: boolean) => {
+    toggle?.setAttribute('aria-expanded', String(open));
+    nav?.setAttribute('data-open', String(open));
+  };
   toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav?.setAttribute('data-open', String(!open));
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  // On a phone the drawer covers the page it is navigating, so tapping the page behind it
+  // has to dismiss it — otherwise the only way out is finding the button again.
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    if (toggle?.getAttribute('aria-expanded') !== 'true') return;
+    if (toggle.contains(target) || nav?.contains(target)) return;
+    setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || toggle?.getAttribute('aria-expanded') !== 'true') return;
+    setOpen(false);
+    toggle.focus();
   });
 </script>

@@ -32,7 +32,10 @@
   --shadow-lift: 5px 7px 0 rgba(0, 43, 92, 0.16), 0 14px 24px rgba(39, 43, 46, 0.11);
   --font-display: 'Montserrat', Arial, sans-serif;
   --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
-  --container: min(1160px, calc(100% - 2rem));
+  /* The gutter absorbs the notch cutout so a landscape phone never puts text under it.
+     env() resolves to 0px where there is no inset, so this is the plain 2rem gutter elsewhere. */
+  --gutter-safe: calc(2rem + env(safe-area-inset-left) + env(safe-area-inset-right));
+  --container: min(1160px, calc(100% - var(--gutter-safe)));
   --reading: 70ch;
   --radius: 14px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -67,8 +70,13 @@ a {
   text-underline-offset: 0.18em;
   text-decoration-thickness: 0.09em;
 }
-a:hover {
-  color: var(--blue-deep);
+/* Every hover affordance below is gated on a hover-capable pointer. On a touch screen a
+   :hover style latches after the tap and stays lit until the next tap lands elsewhere,
+   which reads as "this link is still selected" on exactly the phones most parents use. */
+@media (hover: hover) {
+  a:hover {
+    color: var(--blue-deep);
+  }
 }
 img,
 svg {
@@ -214,10 +222,15 @@ p {
   font-size: 0.83rem;
   font-weight: 700;
 }
-.site-nav a:hover,
 .site-nav a[aria-current='page'] {
   background: rgba(255, 255, 255, 0.1);
   color: white;
+}
+@media (hover: hover) {
+  .site-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
 }
 .site-nav a.nav-priority {
   color: var(--blue-deep);
@@ -272,9 +285,11 @@ p {
   text-decoration: none;
   text-wrap: balance;
 }
-.pack-strip__next-link:hover {
-  color: var(--blue);
-  text-decoration: underline;
+@media (hover: hover) {
+  .pack-strip__next-link:hover {
+    color: var(--blue);
+    text-decoration: underline;
+  }
 }
 .pack-strip__actions {
   display: flex;
@@ -299,24 +314,32 @@ p {
     box-shadow 0.25s var(--ease),
     background 0.2s ease;
 }
-.button:hover {
-  transform: translate(-2px, -2px);
+@media (hover: hover) {
+  .button:hover {
+    transform: translate(-2px, -2px);
+  }
 }
 .button--blue {
   background: var(--blue);
   color: white;
   box-shadow: 3px 4px 0 var(--blue-deep);
 }
-.button--blue:hover {
-  background: var(--blue-deep);
-  color: white;
+@media (hover: hover) {
+  .button--blue:hover {
+    background: var(--blue-deep);
+    color: white;
+  }
 }
 /* The focus ring lives in box-shadow, so buttons that carry a print shadow restate it. */
 .button--blue:focus-visible {
-  box-shadow: var(--ring-focus), 3px 4px 0 var(--blue-deep);
+  box-shadow:
+    var(--ring-focus),
+    3px 4px 0 var(--blue-deep);
 }
 .button--gold:focus-visible {
-  box-shadow: var(--ring-focus), 3px 4px 0 rgba(0, 0, 0, 0.18);
+  box-shadow:
+    var(--ring-focus),
+    3px 4px 0 rgba(0, 0, 0, 0.18);
 }
 .button--gold {
   background: var(--gold);
@@ -559,7 +582,8 @@ p {
   background: var(--blue-deep);
   color: var(--blue-soft);
   border-top: 7px solid var(--gold);
-  padding: 3.5rem 0 2rem;
+  /* The footer is the last thing above the home indicator, so it owns the bottom inset. */
+  padding: 3.5rem 0 max(2rem, env(safe-area-inset-bottom));
 }
 .footer-grid {
   display: grid;
@@ -642,7 +666,7 @@ p {
 
 @media (max-width: 640px) {
   :root {
-    --container: min(100% - 1.25rem, 1160px);
+    --gutter-safe: calc(1.25rem + env(safe-area-inset-left) + env(safe-area-inset-right));
   }
   body {
     font-size: 1.1rem;
@@ -686,6 +710,324 @@ p {
   }
   .button {
     min-height: 52px;
+  }
+}
+
+/* Touch, independent of width: a phone in a church parking lot and a touchscreen laptop
+   want the same target size, and width alone cannot tell you which input is in use.
+   The nav drawer and .button already clear 44px; these are the rows that did not. */
+@media (pointer: coarse) {
+  .site-footer li a,
+  .site-footer p > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .site-footer li {
+    margin-bottom: 0;
+  }
+  .brand {
+    min-height: 44px;
+  }
+  .pack-strip__next-link {
+    padding-block: 0.5rem;
+  }
+}
+
+/* Landscape phone. The chapter hero is sized for a tall viewport, so at 390px of height it
+   ran to roughly twice the screen and a parent who turned the phone sideways saw only a
+   blue field. Cap the vertical spend so the first real content is on screen. */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* h1 steps down to the documented headline step and .lead to the body step, rather than
+     inventing a landscape-only size pair off the ramp. */
+  h1 {
+    font-size: clamp(2.05rem, 5vw, 3.5rem);
+  }
+  .lead {
+    font-size: 1.1rem;
+  }
+  .chapter-hero {
+    padding-block: 2.25rem 2.5rem;
+  }
+  /* The width queries stacked these into one column, which is what made the hero two
+     screens deep. Landscape has width to spare, so the columns come back. */
+  .chapter-hero__grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(230px, 0.7fr);
+    gap: 1.75rem;
+  }
+  /* Header plus a stacked strip was 242px of chrome on a 390px screen. Back to one row. */
+  .pack-strip__inner {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr auto;
+    min-height: 0;
+  }
+  .pack-strip__actions {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .pack-strip__item + .pack-strip__item {
+    margin-top: 0;
+  }
+  .section {
+    padding: 2.75rem 0;
+  }
+  .section--tight {
+    padding: 2rem 0;
+  }
+  /* The drawer is taller than the viewport in landscape, so it has to scroll itself. */
+  .site-nav {
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+  }
+}
+
+/* Paper. A volunteer prints /join/, /calendar/ or a den page as a handout for a recruiting
+   night, so the printed sheet has to carry the facts — meeting time, place, dates, contacts,
+   and the URLs behind the links — without the ink-heavy fields or the drawn illustrations. */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  /* The DESIGN.md print ink ramp. Declared once here, so every rule below reads a token
+     and the four paper values stay in one reviewable place. */
+  :root {
+    --print-page: #ffffff;
+    --print-ink: #000000;
+    --print-ink-muted: #333333;
+    --print-rule: #999999;
+    --paper: var(--print-page);
+    --page: var(--print-page);
+    --ink: var(--print-ink);
+    --muted: var(--print-ink-muted);
+    --rule: var(--print-rule);
+  }
+  body {
+    background: var(--print-page);
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+  body::before,
+  .chapter-hero::after,
+  .hero-note::before,
+  .cover::before,
+  .cover__binding,
+  .bookmark::after,
+  .field-illustration,
+  .adventure-art,
+  .local-map,
+  .activity-picture,
+  .notice__pin {
+    display: none !important;
+  }
+  /* Interaction has no meaning on paper. The nav duplicates the footer index, the form
+     cannot be filled in, and a captcha is noise. */
+  .skip-link,
+  .site-nav,
+  .menu-toggle,
+  .pack-strip__actions,
+  .contact-form,
+  .cf-turnstile,
+  button,
+  .footer-grid,
+  [hidden] {
+    display: none !important;
+  }
+  /* Every dark field becomes plain type on white, separated by a rule instead of a fill. */
+  .site-header,
+  .site-footer,
+  .chapter-hero,
+  .cover,
+  .pack-strip,
+  .adventure-spread,
+  .calendar-help,
+  .event-hero,
+  .den-close,
+  .elective-section,
+  .council-section,
+  .local-field,
+  .shop-note,
+  .safety-section {
+    background: var(--print-page) !important;
+    color: var(--print-ink) !important;
+    border-color: var(--print-rule) !important;
+  }
+  .site-header *,
+  .site-footer *,
+  .chapter-hero *,
+  .cover *,
+  .adventure-spread *,
+  .calendar-help *,
+  .event-hero *,
+  .den-close *,
+  .elective-section *,
+  .council-section *,
+  .local-field *,
+  .shop-note *,
+  .safety-section * {
+    color: var(--print-ink) !important;
+  }
+  .site-header {
+    border-bottom: 2px solid var(--print-ink) !important;
+  }
+  .brand-mark {
+    border-color: var(--print-ink) !important;
+  }
+  /* The strip carries meeting time and place — the two facts a handout exists for. */
+  .pack-strip {
+    border-bottom: 1px solid var(--print-rule) !important;
+  }
+  .chapter-tab,
+  .date-sheet,
+  .event-cat,
+  .event-status {
+    background: var(--print-page) !important;
+    color: var(--print-ink) !important;
+    border: 1px solid var(--print-ink) !important;
+  }
+  .paper-sheet,
+  .notice,
+  .hero-note,
+  .success-message {
+    box-shadow: none !important;
+    border: 1px solid var(--print-rule) !important;
+  }
+  /* The offset shadows and hand-placed rotations are a screen motif; on paper they read as
+     a printing fault. */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+  }
+  a {
+    color: var(--print-ink) !important;
+    text-decoration: underline;
+  }
+  /* A printed link is a dead end unless the address comes with it. Internal links are
+     relative, so this only expands the external ones a parent would have to type. */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 8.5pt;
+    font-weight: 400;
+    word-break: break-all;
+  }
+  /* A call to action is not a control on paper, it is a place to go. Keeping the pill around
+     it just draws a stretched box around a wrapped URL, so the button becomes an ordinary
+     link and the address below carries the instruction. */
+  a.button {
+    display: inline !important;
+    background: none !important;
+    border: 0 !important;
+    min-height: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 700;
+  }
+  /* An answer collapsed behind a summary would print as a question with no answer. */
+  details:not([open]) > :not(summary) {
+    display: block;
+  }
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  /* Multi-column screen grids become one column of records; the two badge grids keep
+     enough columns to stay compact. */
+  .contact-grid,
+  .story-grid,
+  .promise-grid,
+  .council-grid,
+  .how-flow,
+  .visit-grid,
+  .cost-grid,
+  .faq-grid,
+  .event-grid,
+  .event-cards,
+  .next-grid,
+  .calendar-help__grid,
+  .den-note,
+  .den-close__grid,
+  .elective-grid,
+  .den-footer,
+  .resource-list article,
+  .shop-note__grid,
+  .safety-grid,
+  .volunteer-close,
+  .who-grid,
+  .close-grid,
+  .activity-chapter,
+  .local-field__grid,
+  .cover__grid,
+  .welcome__grid,
+  .adventure-spread__grid,
+  .closing__sheet,
+  .event-sheet dl div {
+    grid-template-columns: 1fr !important;
+  }
+  .rank-path,
+  .rank-list,
+  .aims-grid,
+  .role-scale,
+  .pm-strip {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .adventure-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Nothing that reads as one record may straddle a page break. */
+  .rank,
+  .notice,
+  .paper-sheet,
+  .event-cards article,
+  .resource-list article,
+  .adventure-list li,
+  .faq-list details,
+  .role-scale > *,
+  .aims-grid > *,
+  .rank-list > *,
+  .pm-cell,
+  .activity-chapter,
+  .event-sheet dl div,
+  figure,
+  blockquote,
+  li {
+    break-inside: avoid;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+  h1 {
+    font-size: 22pt;
+  }
+  h2 {
+    font-size: 15pt;
+  }
+  h3 {
+    font-size: 12pt;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  /* Screen section rhythm is built for scrolling; on paper it wastes most of a sheet. */
+  .section {
+    padding: 1.1rem 0 !important;
+  }
+  .section--tight {
+    padding: 0.8rem 0 !important;
+  }
+  .chapter-hero,
+  .cover,
+  .event-hero {
+    padding: 0 0 0.9rem !important;
+  }
+  .footer-small {
+    border-top: 1px solid var(--print-rule) !important;
+    margin-top: 1rem;
+    padding-top: 0.6rem;
+    font-size: 8.5pt;
   }
 }
 

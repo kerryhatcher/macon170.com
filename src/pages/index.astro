@@ -166,8 +166,7 @@ import { API_BASE } from '../lib/api-base';
   (function () {
     const root = document.querySelector('.year-section');
     if (!root) return;
-    const fmt = (iso) =>
-      new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'America/New_York' }).format(new Date(iso));
+    const fmt = (iso) => new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'America/New_York' }).format(new Date(iso));
 
     // Keywords alone would let an August "Lego Pinewood Derby" fill the late-January
     // Derby milestone, so a match must also land in a plausible month.
@@ -320,9 +319,11 @@ import { API_BASE } from '../lib/api-base';
       0 18px 35px rgba(0, 0, 0, 0.22);
     transition: transform 0.28s var(--ease);
   }
-  .bookmark:hover {
-    color: var(--blue-deep);
-    transform: translate(-5px, -4px) rotate(-0.5deg);
+  @media (hover: hover) {
+    .bookmark:hover {
+      color: var(--blue-deep);
+      transform: translate(-5px, -4px) rotate(-0.5deg);
+    }
   }
   .bookmark::after {
     content: '';
@@ -640,6 +641,28 @@ import { API_BASE } from '../lib/api-base';
   @media (max-width: 760px) {
     .pm-strip {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  /* A landscape phone is 844px wide and 390px tall, so it trips the width breakpoints above
+     and stacks the cover into a single column roughly three screens deep — the parent who
+     turned the phone sideways sees nothing but the blue field. Landscape is short on height,
+     not width, so the columns come back and the vertical padding goes away. Declared last so
+     it wins over the width queries above. */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .cover {
+      min-height: 0;
+    }
+    .cover__grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.92fr);
+      gap: 2rem;
+      padding-block: 2rem;
+    }
+    .cover__facts {
+      margin-top: 1rem;
+    }
+    .welcome__grid,
+    .adventure-spread__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
   }
 </style>

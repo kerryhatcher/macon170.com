@@ -113,7 +113,10 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
 <style>
   .contact-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    /* minmax(0, …) rather than a bare fr: an fr track floors at its content's min-content
+       width, and the form controls inside pushed that floor to 350px, so at 320px both
+       columns overflowed the 300px container instead of shrinking. */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     gap: clamp(2rem, 6vw, 5rem);
     align-items: start;
   }
@@ -134,6 +137,9 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   select,
   textarea {
     width: 100%;
+    /* Form controls carry an intrinsic minimum width from their default character size;
+       without this they refuse to shrink below it on a 320px screen. */
+    min-width: 0;
     border: 2px solid var(--field-stroke);
     border-radius: 7px 12px 6px 7px;
     background: white;
@@ -196,9 +202,23 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     margin: 1.25rem 0;
     min-height: 65px;
   }
+  /* Turnstile draws a fixed 300px-wide widget, and no amount of shrinking the sheet fits
+     300px inside a 320px screen once the container gutter, sheet padding, and border are
+     paid for. Scaling from the left edge keeps the whole challenge visible and on the
+     sheet; clipping or shrinking the padding instead would hide part of a control the
+     parent has to interact with to send the form. */
+  @media (max-width: 400px) {
+    .cf-turnstile {
+      width: 300px;
+      transform: scale(0.82);
+      transform-origin: left top;
+      min-height: 0;
+      height: 54px;
+    }
+  }
   @media (max-width: 760px) {
     .contact-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "src/components/SiteHeader.astro": {
-    "mtime": 1785192015.0106876,
-    "ast_hash": "f310d3dc02abd803280f0637bb814e96",
+    "mtime": 1785194217.297144,
+    "ast_hash": "7403e21556cfa6b39a68f1e03857ad6c",
     "semantic_hash": ""
   },
   "src/data/pack.ts": {
@@ -75,9 +75,9 @@
     "semantic_hash": ""
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1785182918.1644459,
-    "ast_hash": "beb97bd097c77a84b677fd12e317e6a6",
-    "semantic_hash": "beb97bd097c77a84b677fd12e317e6a6"
+    "mtime": 1785194217.2980413,
+    "ast_hash": "0989e8f2be8268dabc396664f9e9769e",
+    "semantic_hash": ""
   },
   "src/lib/api-base.ts": {
     "mtime": 1785182918.1651268,
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "src/pages/contact.astro": {
-    "mtime": 1785192015.0194771,
-    "ast_hash": "d962d3ef8545e9e382b38d7ad2f4e7c6",
+    "mtime": 1785194217.298962,
+    "ast_hash": "be60708a500662a057200b43101e04e4",
     "semantic_hash": ""
   },
   "src/pages/events/index.astro": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
-    "mtime": 1785192015.024029,
-    "ast_hash": "9e4bd205d246d38b5a64a7377c74ef85",
+    "mtime": 1785194217.3005292,
+    "ast_hash": "7baedbdc60d4d4139ed47e09831c5055",
     "semantic_hash": ""
   },
   "src/pages/join.astro": {
@@ -195,9 +195,9 @@
     "semantic_hash": "4c143c608d91c045e4fff79215fdcec6"
   },
   ".github/workflows/deploy.yml": {
-    "mtime": 1785182918.124396,
-    "ast_hash": "0734fefb190f0e1551e27cea97288cdf",
-    "semantic_hash": "0734fefb190f0e1551e27cea97288cdf"
+    "mtime": 1785194217.2463834,
+    "ast_hash": "a596341b10f27a4273be9ba7e9669dc9",
+    "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
     "mtime": 1785182918.12617,
@@ -210,13 +210,13 @@
     "semantic_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4"
   },
   "DESIGN.md": {
-    "mtime": 1785192014.8525047,
-    "ast_hash": "a40d469576e78d2045660213ef9ac496",
+    "mtime": 1785194217.2478464,
+    "ast_hash": "4ee26b7ddfa6b3d00919665a214a2cdf",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
-    "mtime": 1785192014.8549168,
-    "ast_hash": "747aac4f07f65af208635190220ea5b3",
+    "mtime": 1785193999.9886758,
+    "ast_hash": "bac0fd232ef2a337b27ac8e8eef7dc8d",
     "semantic_hash": ""
   },
   "README.md": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "src/pages/dens/index.astro": {
-    "mtime": 1785192015.0220935,
-    "ast_hash": "d1291850e4f83185593bb14338ba1f58",
+    "mtime": 1785194217.2996662,
+    "ast_hash": "f11de5cd57ac7f5da6216eb5c7bbafc2",
     "semantic_hash": ""
   },
   "src/pages/what-is-cub-scouts.astro": {
@@ -2035,48 +2035,13 @@
     "semantic_hash": ""
   },
   ".impeccable/config.json": {
-    "mtime": 1785192014.845536,
-    "ast_hash": "0e438df81187ae43f0401191bb056738",
+    "mtime": 1785194217.2471406,
+    "ast_hash": "e540c9dfa674dc63777f2831806138aa",
     "semantic_hash": ""
   },
   "DESIGN.json": {
     "mtime": 1785192014.8487828,
     "ast_hash": "03660476921a3ddd30d95780a3f54467",
-    "semantic_hash": ""
-  },
-  "migrations/0003_create_leadership.sql": {
-    "mtime": 1785188813.807115,
-    "ast_hash": "73e912dc7b38170e593f7e8f2c412b3a",
-    "semantic_hash": ""
-  },
-  "worker/admin-chrome.ts": {
-    "mtime": 1785191593.3543875,
-    "ast_hash": "47446307057df3c20a9a526b33e9a72f",
-    "semantic_hash": ""
-  },
-  "worker/leadership-admin.ts": {
-    "mtime": 1785193280.148472,
-    "ast_hash": "1578af349ed6662f27af383378b15d3a",
-    "semantic_hash": ""
-  },
-  "worker/leadership-routes.test.ts": {
-    "mtime": 1785190115.361086,
-    "ast_hash": "54b07fe92f5a664438512004afa30730",
-    "semantic_hash": ""
-  },
-  "worker/leadership-routes.ts": {
-    "mtime": 1785192110.3991158,
-    "ast_hash": "4a6e5101c690a29c335bae0d627c0527",
-    "semantic_hash": ""
-  },
-  "worker/roster-inject.test.ts": {
-    "mtime": 1785190821.564339,
-    "ast_hash": "e59d81452fde4f01fd1ba36f0788147a",
-    "semantic_hash": ""
-  },
-  "worker/roster-inject.ts": {
-    "mtime": 1785190463.251148,
-    "ast_hash": "f006ed751246209219f3cb9ad5dec0e0",
     "semantic_hash": ""
   },
   ".agents/skills/impeccable/SKILL.md": {
@@ -2432,6 +2397,41 @@
   ".claude/skills/impeccable/reference/visualize.md": {
     "mtime": 1785192014.7658107,
     "ast_hash": "854cdbe8a566cabe7bf87d420bfa4a83",
+    "semantic_hash": ""
+  },
+  "migrations/0003_create_leadership.sql": {
+    "mtime": 1785188813.807115,
+    "ast_hash": "73e912dc7b38170e593f7e8f2c412b3a",
+    "semantic_hash": ""
+  },
+  "worker/admin-chrome.ts": {
+    "mtime": 1785191593.3543875,
+    "ast_hash": "47446307057df3c20a9a526b33e9a72f",
+    "semantic_hash": ""
+  },
+  "worker/leadership-admin.ts": {
+    "mtime": 1785193280.148472,
+    "ast_hash": "1578af349ed6662f27af383378b15d3a",
+    "semantic_hash": ""
+  },
+  "worker/leadership-routes.test.ts": {
+    "mtime": 1785190115.361086,
+    "ast_hash": "54b07fe92f5a664438512004afa30730",
+    "semantic_hash": ""
+  },
+  "worker/leadership-routes.ts": {
+    "mtime": 1785192110.3991158,
+    "ast_hash": "4a6e5101c690a29c335bae0d627c0527",
+    "semantic_hash": ""
+  },
+  "worker/roster-inject.test.ts": {
+    "mtime": 1785190821.564339,
+    "ast_hash": "e59d81452fde4f01fd1ba36f0788147a",
+    "semantic_hash": ""
+  },
+  "worker/roster-inject.ts": {
+    "mtime": 1785190463.251148,
+    "ast_hash": "f006ed751246209219f3cb9ad5dec0e0",
     "semantic_hash": ""
   }
 }
