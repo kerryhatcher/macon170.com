@@ -33,17 +33,17 @@ Four pieces, each mirroring an existing pattern in this repo.
 One `STRICT` table, following `calendar_events` conventions (text timestamps via
 `strftime('%Y-%m-%dT%H:%M:%fZ', 'now')`, `CHECK` constraints on anything enumerable).
 
-| Column        | Type                | Notes                                                      |
-| ------------- | ------------------- | ---------------------------------------------------------- |
-| `id`          | TEXT PRIMARY KEY    | UUID                                                       |
-| `slug`        | TEXT NOT NULL UNIQUE | Stable machine key, e.g. `webelos-den-leader`              |
-| `role`        | TEXT NOT NULL       | Editable display label                                     |
-| `name`        | TEXT                | NULL or blank means vacant                                  |
-| `bio`         | TEXT                | Max 600 chars, enforced in the worker                       |
-| `sort_order`  | INTEGER NOT NULL    | Display order                                               |
-| `created_at`  | TEXT NOT NULL       | Default now                                                 |
-| `updated_at`  | TEXT NOT NULL       | Default now, set on every write                             |
-| `updated_by`  | TEXT NOT NULL       | Actor email from Cloudflare Access                          |
+| Column       | Type                 | Notes                                         |
+| ------------ | -------------------- | --------------------------------------------- |
+| `id`         | TEXT PRIMARY KEY     | UUID                                          |
+| `slug`       | TEXT NOT NULL UNIQUE | Stable machine key, e.g. `webelos-den-leader` |
+| `role`       | TEXT NOT NULL        | Editable display label                        |
+| `name`       | TEXT                 | NULL or blank means vacant                    |
+| `bio`        | TEXT                 | Max 600 chars, enforced in the worker         |
+| `sort_order` | INTEGER NOT NULL     | Display order                                 |
+| `created_at` | TEXT NOT NULL        | Default now                                   |
+| `updated_at` | TEXT NOT NULL        | Default now, set on every write               |
+| `updated_by` | TEXT NOT NULL        | Actor email from Cloudflare Access            |
 
 `slug` is separate from `role` on purpose. Role labels are editable, and a future den page will
 reference `webelos-den-leader`; renaming the label to "Webelos Den Leader (4th grade)" must not
@@ -69,13 +69,13 @@ Mirrors `event-routes.ts`: a single `handleLeadershipRoute` taking injected depe
 `worker/index.ts` next to the `handleEventRoute` call, and a `LeadershipRouteError` handled by the
 existing catch block.
 
-| Route                          | Auth              | Purpose                              |
-| ------------------------------ | ----------------- | ------------------------------------ |
-| `GET /api/leadership`          | public            | All rows, each with computed `vacant` |
-| `GET /api/admin/leadership`    | `requireAccess`   | Same rows for the editor             |
-| `POST /api/admin/leadership`   | `requireAccess`   | Add a role                           |
-| `PUT /api/admin/leadership/:id`| `requireAccess`   | Update role, name, bio, sort order   |
-| `DELETE /api/admin/leadership/:id` | `requireAccess` | Remove a role added by mistake     |
+| Route                              | Auth            | Purpose                               |
+| ---------------------------------- | --------------- | ------------------------------------- |
+| `GET /api/leadership`              | public          | All rows, each with computed `vacant` |
+| `GET /api/admin/leadership`        | `requireAccess` | Same rows for the editor              |
+| `POST /api/admin/leadership`       | `requireAccess` | Add a role                            |
+| `PUT /api/admin/leadership/:id`    | `requireAccess` | Update role, name, bio, sort order    |
+| `DELETE /api/admin/leadership/:id` | `requireAccess` | Remove a role added by mistake        |
 
 `vacant` is computed, never stored: `name IS NULL OR trim(name) = ''`. POST and DELETE exist
 because role labels are editable — a volunteer who adds "Assistan Cubmaster" needs to remove it.
@@ -120,11 +120,11 @@ Confirmed against the current Cloudflare docs (HTMLRewriter streaming content, 2
 
 The `data-roster` value selects what to render:
 
-| Value             | Renders                                        | Used by            |
-| ----------------- | ---------------------------------------------- | ------------------ |
-| `filled`          | Rows with a name, grouped as today             | `/about/`          |
-| `vacant`          | Rows without a name, as "help needed"          | `/volunteer/`      |
-| a slug            | That single role                               | future den pages   |
+| Value    | Renders                               | Used by          |
+| -------- | ------------------------------------- | ---------------- |
+| `filled` | Rows with a name, grouped as today    | `/about/`        |
+| `vacant` | Rows without a name, as "help needed" | `/volunteer/`    |
+| a slug   | That single role                      | future den pages |
 
 Consequences, accepted:
 

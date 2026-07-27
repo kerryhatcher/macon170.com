@@ -14,6 +14,13 @@ export default defineConfig([
       'worker-configuration.d.ts',
       'test-results/**',
       'playwright-report/**',
+      // Git worktrees live inside the repo, so linting them would lint a second
+      // full copy of src/ and worker/ and report every finding twice.
+      '.claude/worktrees/**',
+      // Vendored agent-skill scripts: third-party Node files we do not author or fix.
+      '.claude/skills/**',
+      '.agents/skills/**',
+      '.github/skills/**',
     ],
   },
   {
