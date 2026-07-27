@@ -43,6 +43,22 @@ typography:
     fontSize: '1.15rem'
     fontWeight: 800
     lineHeight: 1.25
+  subheading:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(1.25rem, 2vw, 1.65rem)'
+    fontWeight: 800
+    lineHeight: 1.3
+  pageTitle:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.6rem, 7vw, 5rem)'
+    fontWeight: 900
+    lineHeight: 1.08
+    letterSpacing: '-0.025em'
+  glyphFluid:
+    fontFamily: 'Montserrat, Arial, sans-serif'
+    fontSize: 'clamp(2.5rem, 6vw, 5.5rem)'
+    fontWeight: 900
+    lineHeight: 1
   body:
     fontFamily: 'Source Sans 3, Segoe UI, sans-serif'
     fontSize: '1.1rem'
@@ -70,6 +86,16 @@ typography:
     fontWeight: 800
     lineHeight: 1.2
     letterSpacing: '0.1em'
+  # Drawn marks, not type: characters used as illustration (pines, flags, race cars) and
+  # numerals inside a badge or mark. Sized to the drawing, never to the reading order, and
+  # never valid for prose. Kept apart from the ten-step ramp above on purpose.
+  scale:
+    glyphMark: '1rem'
+    glyphBadge: '1.4rem'
+    glyphSmall: '2rem'
+    glyphMedium: '3rem'
+    glyphLarge: '8rem'
+    glyphHuge: '12rem'
 rounded:
   control: '9px 9px 3px 9px'
   sheet: '6px 18px 12px 8px'

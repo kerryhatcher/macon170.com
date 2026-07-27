@@ -19,6 +19,47 @@
     "would silence findings on one machine and nowhere else."
   ],
   "extensions": {
+    "colorMeta": {
+      "illustrationSky": {
+        "canonical": "#8ec7df",
+        "role": "Paint for original illustrated scenes only — sky, river, and water fills in FieldIllustration, adventure art, and activity pictures. DESIGN.md calls for original school, trail, pine, river, and cherry-blossom illustration language, which needs more range than the 16 UI tokens. Never valid for UI chrome, text, or borders.",
+        "tonalRamp": ["#cfe8f5", "#bcd9ec", "#bfe0ec", "#8ec7df", "#8ac8e7"]
+      },
+      "illustrationFoliage": {
+        "canonical": "#76a982",
+        "role": "Paint for pines, hills, and leaf masses in illustrated scenes. Derived from river-green; illustration only.",
+        "tonalRamp": ["#d8e8cc", "#9bc8a8", "#76a982"]
+      },
+      "illustrationBloom": {
+        "canonical": "#f0b4d1",
+        "role": "Cherry-blossom paint in illustrated scenes, one step lighter than the cherry-blossom token. Illustration only.",
+        "tonalRamp": ["#f0b4d1"]
+      },
+      "illustrationEarth": {
+        "canonical": "#a06b3f",
+        "role": "Trunk, track, and soil paint in illustrated scenes. Illustration only.",
+        "tonalRamp": ["#a06b3f"]
+      },
+      "veilOnDark": {
+        "canonical": "rgba(255, 255, 255, 0.2)",
+        "role": "White at low alpha for hairline rules, inset separators, and quiet fills laid over the blue and green fields. An alpha veil rather than a new hue, so it tracks whatever field it sits on.",
+        "tonalRamp": [
+          "rgba(255, 255, 255, 0.1)",
+          "rgba(255, 255, 255, 0.15)",
+          "rgba(255, 255, 255, 0.2)",
+          "rgba(255, 255, 255, 0.22)",
+          "rgba(255, 255, 255, 0.35)",
+          "rgba(255, 255, 255, 0.5)",
+          "rgba(255, 255, 255, 0.65)",
+          "rgba(255, 255, 255, 0.7)"
+        ]
+      },
+      "shadowAmbient": {
+        "canonical": "rgba(0, 0, 0, 0.18)",
+        "role": "Black at low alpha for the soft ambient half of a paper shadow, distinct from the blue offset half carried by --shadow-paper.",
+        "tonalRamp": ["rgba(0, 0, 0, 0.18)", "rgba(0, 0, 0, 0.25)"]
+      }
+    },
     "roundedMeta": {
       "control": {
         "canonical": "9px 9px 3px 9px",
