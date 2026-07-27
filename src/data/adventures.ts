@@ -51,7 +51,7 @@ export const adventures: RankAdventures[] = [
         name: 'Lion’s Pride',
         url: 'https://www.scouting.org/cub-scout-adventures/lions-pride/',
         icon: 'lion_Lions_Pride.webp',
-        summary: 'Lions talk about their own family’s faith and traditions, mostly at home with their adult partner.',
+        summary: 'Lions talk over their family’s faith traditions with a parent and attend a service or gathering together.',
       },
       {
         name: 'King of the Jungle',
@@ -196,7 +196,7 @@ export const adventures: RankAdventures[] = [
         name: 'Tiger Circles',
         url: 'https://www.scouting.org/cub-scout-adventures/tiger-circles/',
         icon: 'tiger_Tiger_Circles.webp',
-        summary: 'Tigers look at their own family’s faith and traditions, with most of it done at home.',
+        summary: 'Tigers name their family’s faith traditions with a parent, attend a gathering, and do an act of kindness.',
       },
       {
         name: 'Team Tiger',
@@ -544,7 +544,7 @@ export const adventures: RankAdventures[] = [
         name: 'Fellowship',
         url: 'https://www.scouting.org/cub-scout-adventures/fellowship/',
         icon: 'bear_Fellowship.webp',
-        summary: 'Bears explore their family’s faith and traditions and how their own beliefs fit into Scouting.',
+        summary: 'Bears explore their family’s faith traditions and find what another faith has in common with them.',
       },
     ],
     electives: [
@@ -869,7 +869,7 @@ export const adventures: RankAdventures[] = [
         name: 'Duty to God',
         url: 'https://www.scouting.org/cub-scout-adventures/duty-to-god/',
         icon: 'arrow-of-light_AOL_Duty_to_God.webp',
-        summary: 'Scouts explore their own family’s faith and how they practice it, mostly at home.',
+        summary: 'Scouts tie a value of their faith to the Scout Law and meet someone who serves people in crisis.',
       },
       {
         name: 'Citizenship',

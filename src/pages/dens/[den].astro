@@ -99,8 +99,8 @@ const program = adventures.find((entry) => entry.rank === rank.name);
             <span class="chapter-tab">Electives</span>
             <h2>Then two the den picks.</h2>
             <p class="lead">
-              {`${rank.name} Scouts choose their last two adventures from ${program.electives.length} electives.`} Dens usually pick
-              together, based on what the Scouts are curious about and what the season allows.
+              {`${rank.name} Scouts choose their last two adventures from the ${program.electives.length} electives below.`} Dens usually
+              pick together, based on what the Scouts are curious about and what the season allows.
             </p>
           </div>
           <div class="notice">
@@ -141,10 +141,11 @@ const program = adventures.find((entry) => entry.rank === rank.name);
           </ul>
           {program.specialElectives.length > 0 && (
             <div class="special-electives">
-              <h3>Plus a few only earned at a range</h3>
+              <h3>Special elective adventures</h3>
               <p>
-                These need a certified instructor and an approved range, so they happen at council and district events such as day camp, not
-                at a den meeting. Scouting America publishes no separate page for them.
+                Scouting America lists these on their own because they need a certified instructor and an approved range, so they happen at
+                council and district events such as day camp rather than at a den meeting, and there is no adventure page for them. Ask a
+                den leader whether one of these counts toward a Scout’s two electives.
               </p>
               <ul>
                 {program.specialElectives.map((adventure) => (
