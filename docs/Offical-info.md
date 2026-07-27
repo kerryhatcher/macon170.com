@@ -7,6 +7,13 @@ Note to Agents: It is hand crafted by humans, do not edit/change without explici
 ## Links
 
 Facebook: https://www.facebook.com/Pack170Macon
+Health and Safety: https://www.scouting.org/health-and-safety/
+Incident Reporting: https://www.scouting.org/health-and-safety/incident-report/navigating-incidents-guide-for-units/
+Scouting’s Barriers to Abuse: https://www.scouting.org/health-and-safety/gss/gss01/
+
+## Contacts
+
+Scouts First Helpline: 1-844-SCOUTS1 (1-844-726-8871) - https://www.scouting.org/training/safeguarding-youth/#hotlink
 
 ## Council
 
