@@ -1,8 +1,11 @@
 import { readRoster, type PublicRole } from './leadership-routes';
+import { escapeHtml } from './html';
 
 // Only these paths are piped through HTMLRewriter. Everything else is served as a
-// plain static asset. Add den paths here when those pages exist.
-export const ROSTER_PATHS = new Set(['/about', '/about/', '/volunteer', '/volunteer/']);
+// plain static asset. Add a path here only once a page actually carries a
+// [data-roster] placeholder — otherwise it pays the etag/cache-control cost in
+// worker/index.ts for nothing.
+export const ROSTER_PATHS = new Set(['/about', '/about/']);
 
 export function rosterMarkup(roles: PublicRole[], view: string): string {
   const chosen =
@@ -46,8 +49,4 @@ class RosterInjector {
 export function injectRoster(response: Response, env: Env): Response {
   if (!(response.headers.get('content-type') ?? '').includes('text/html')) return response;
   return new HTMLRewriter().on('[data-roster]', new RosterInjector(env)).transform(response);
-}
-
-function escapeHtml(value: string): string {
-  return value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
 }
