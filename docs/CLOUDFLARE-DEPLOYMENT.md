@@ -1,6 +1,6 @@
 # Cloudflare deployment and volunteer access
 
-The site deploys as one Cloudflare Worker with Astro static assets, a D1-backed contact API, and a private volunteer desk. Public traffic uses `macon170.com`; volunteers use `admin.macon170.com` behind Cloudflare Access.
+The site deploys as one Cloudflare Worker with Astro static assets, a D1-backed contact API, and a private volunteer desk. Public traffic uses `www.macon170.com`; the apex `macon170.com` permanently redirects to `www`; volunteers use `admin.macon170.com` behind Cloudflare Access.
 
 ## Resources already created
 
@@ -88,7 +88,7 @@ Before the first production deploy:
 2. Add at least two approved adult volunteer emails to the Access Allow policy where possible.
 3. Add the GitHub secrets above.
 4. Push to `main`, or run the workflow manually.
-5. Verify `https://macon170.com/contact/` and submit a test parent inquiry.
+5. Verify `https://www.macon170.com/contact/` and submit a test parent inquiry.
 6. Sign in at `https://admin.macon170.com/`, open the message, and move it from New to Resolved.
 7. Confirm the D1 row and audit log:
 

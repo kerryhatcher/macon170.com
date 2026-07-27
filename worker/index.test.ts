@@ -23,9 +23,9 @@ describe('contact submissions', () => {
     form.set('message', 'We would like to visit the next confirmed pack meeting.');
     form.set('cf-turnstile-response', 'XXXX.DUMMY.TOKEN.XXXX');
 
-    const response = await exports.default.fetch('https://macon170.com/api/contact', {
+    const response = await exports.default.fetch('https://www.macon170.com/api/contact', {
       method: 'POST',
-      headers: { origin: 'https://macon170.com' },
+      headers: { origin: 'https://www.macon170.com' },
       body: form,
       redirect: 'manual',
     });
@@ -48,9 +48,9 @@ describe('contact submissions', () => {
     form.set('topic', 'Unknown');
     form.set('message', 'short');
     form.set('cf-turnstile-response', 'XXXX.DUMMY.TOKEN.XXXX');
-    const response = await exports.default.fetch('https://macon170.com/api/contact', {
+    const response = await exports.default.fetch('https://www.macon170.com/api/contact', {
       method: 'POST',
-      headers: { origin: 'https://macon170.com' },
+      headers: { origin: 'https://www.macon170.com' },
       body: form,
     });
     expect(response.status).toBe(400);

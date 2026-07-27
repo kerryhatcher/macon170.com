@@ -18,7 +18,7 @@
   ],
   "vars": {
     "ENVIRONMENT": "development",
-    "PUBLIC_SITE_ORIGIN": "https://macon170.com",
+    "PUBLIC_SITE_ORIGIN": "https://www.macon170.com",
     "ADMIN_ORIGIN": "https://admin.macon170.com",
     "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
     "TURNSTILE_SECRET": "1x0000000000000000000000000000000AA",

@@ -49,9 +49,9 @@ export default {
     const url = new URL(request.url);
 
     try {
-      if (url.hostname === 'www.macon170.com') {
+      if (url.hostname === 'macon170.com') {
         const destination = new URL(request.url);
-        destination.hostname = 'macon170.com';
+        destination.hostname = 'www.macon170.com';
         return Response.redirect(destination.toString(), 308);
       }
 
