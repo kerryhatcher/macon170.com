@@ -50,20 +50,19 @@ Highland Hills Baptist Church was chartered on April 12, 1953, with Dr. Lewis Ba
 
 ### Denomination and Community Identity
 
-**Denomination:** Southern Baptist Convention (SBC)
+**Denomination:** Cooperative Baptist Fellowship (CBF)
 
-Highland Hills Baptist Church is affiliated with the **Southern Baptist Convention**. The church's mission emphasizes being "a thoughtful and growing intergenerational community of believers" that offers "a space for holy wrestling" where "everyone is welcomed to come and be transformed." The church identifies as a **diverse fellowship** that values inclusion and transformation.
+Highland Hills Baptist Church is affiliated with the **Cooperative Baptist Fellowship (CBF)**, not the Southern Baptist Convention. The church's mission emphasizes being "a thoughtful and growing intergenerational community of believers" that offers "a space for holy wrestling" where "everyone is welcomed to come and be transformed." The church identifies as a **diverse fellowship** that values inclusion and transformation.
 
 **Community Involvement:**
-- The church hosted the **Cooperative Baptist Fellowship (CBF) Georgia State Gathering** in November 2024, indicating some connection to broader Baptist fellowship networks, though its primary denomination is the SBC
+- The church hosted the **Cooperative Baptist Fellowship (CBF) Georgia State Gathering** in November 2024
 - Active in serving youth through multiple programs (youth group, Sunday School)
 - Emphasizes adult education and faith formation
 
 **Sources:**
 - [Highland Hills Baptist Church – About Page](https://www.highlandhillsbaptist.org/about)
-- [FaithStreet – Highland Hills Baptist Church (SBC)](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
+- [FaithStreet – Highland Hills Baptist Church](https://www.faithstreet.com/church/highland-hills-baptist-church-macon-ga)
 - [CBFGA Event – State Gathering at HHBC](https://cbfga.org/event/cbfga-state-gathering-highland-hills-baptist-church-registration/)
-- [Scouting America Churches Directory](https://churches.sbc.net/church/highland-hills-baptist-church-2/)
 
 ---
 
@@ -160,7 +159,7 @@ When a website acknowledges its chartered organization, standard language in Sco
 | **Address** | 1370 Briarcliff Rd, Macon, GA 31211 | Multiple (FaithStreet, Yelp, Church Website) |
 | **Founded** | April 12, 1953 | Church History/Historical Records |
 | **Location** | Shirley Hills neighborhood, East Macon | Church websites, FaithStreet |
-| **Denomination** | Southern Baptist Convention (SBC) | SBC Churches Directory, FaithStreet |
+| **Denomination** | Cooperative Baptist Fellowship (CBF) | CBFGA Event, Church Website |
 | **Service Times** | Sun 9:45 AM (Sunday School), 11:00 AM (Worship) | Multiple sources |
 | **Contact** | 478-746-4846; churchoffice@highlandhillsbaptist.org | Multiple sources |
 | **Shirley Hills Built** | 1922–1960s development | National Register of Historic Places |
