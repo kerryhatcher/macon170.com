@@ -436,6 +436,9 @@ p {
   background: var(--notice-gold);
   border: 2px dashed var(--notice-gold-ink);
   border-radius: 5px 16px 8px 6px;
+  /* every notice variant has a light background, so pin the text to the body colour -
+     without this a notice inside a dark section inherits white and cannot be read */
+  color: var(--ink);
 }
 .notice__pin {
   width: 2.5rem;

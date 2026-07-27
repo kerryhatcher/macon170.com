@@ -1,2401 +1,1166 @@
 {
   ".claude/settings.json": {
-    "mtime": 1785186225.252744,
+    "mtime": 1785185526.1227837,
     "ast_hash": "7c77df1e6c5cefb8b8f03d2c0d68d6d1",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1785183798.733517,
-    "ast_hash": "d05e75c28d8696294f4ec63c5ec55f18",
+    "mtime": 1785183628.0819917,
+    "ast_hash": "2d651239148f8e37dacfd6b9db4e47ef",
     "semantic_hash": ""
   },
   ".prettierrc.json": {
-    "mtime": 1785183078.7154782,
+    "mtime": 1785165199.1061704,
     "ast_hash": "b028bb7f4d490746259e8daa21431640",
     "semantic_hash": "b028bb7f4d490746259e8daa21431640"
   },
   "astro.config.mjs": {
-    "mtime": 1785183078.731048,
+    "mtime": 1785165199.108865,
     "ast_hash": "0ab87e1a5850112853f963a8e3058981",
     "semantic_hash": "0ab87e1a5850112853f963a8e3058981"
   },
   "e2e/contact-to-admin.spec.ts": {
-    "mtime": 1785183078.7416778,
+    "mtime": 1785165199.1117303,
     "ast_hash": "959d2013f1f44c824e25990da3242d19",
     "semantic_hash": "959d2013f1f44c824e25990da3242d19"
   },
   "eslint.config.js": {
-    "mtime": 1785187211.633576,
+    "mtime": 1785185347.4351351,
     "ast_hash": "6d0555f9069e2211bcea96579fd35fca",
     "semantic_hash": ""
   },
   "migrations/0001_create_contact_submissions.sql": {
-    "mtime": 1785183078.75253,
+    "mtime": 1785165199.1290793,
     "ast_hash": "340a6c478358096086de7f34a25e7f40",
     "semantic_hash": "340a6c478358096086de7f34a25e7f40"
   },
   "migrations/0002_create_calendar_events.sql": {
-    "mtime": 1785183078.752837,
+    "mtime": 1785165199.1292713,
     "ast_hash": "e1fd14574c3287e26ee0159ebcb202ea",
     "semantic_hash": "e1fd14574c3287e26ee0159ebcb202ea"
   },
   "package.json": {
-    "mtime": 1785183078.7577205,
+    "mtime": 1785180598.3989089,
     "ast_hash": "ec71e4db7c9bb560c4df2ba9892f8b39",
     "semantic_hash": "ec71e4db7c9bb560c4df2ba9892f8b39"
   },
   "playwright.config.ts": {
-    "mtime": 1785183078.758309,
+    "mtime": 1785180598.4009893,
     "ast_hash": "8993886057a61825c32c1332fc9534ba",
     "semantic_hash": "8993886057a61825c32c1332fc9534ba"
   },
   "src/components/ChapterHero.astro": {
-    "mtime": 1785183078.759335,
+    "mtime": 1785165199.1316638,
     "ast_hash": "65afa1d5489dab4b5af0574d7c1ab556",
     "semantic_hash": "65afa1d5489dab4b5af0574d7c1ab556"
   },
   "src/components/FieldIllustration.astro": {
-    "mtime": 1785183078.7595105,
+    "mtime": 1785165199.1318533,
     "ast_hash": "4497d96f1e25909a12d7015411beaf4a",
     "semantic_hash": "4497d96f1e25909a12d7015411beaf4a"
   },
   "src/components/PackStrip.astro": {
-    "mtime": 1785183078.7599542,
+    "mtime": 1785180598.4024928,
     "ast_hash": "a365cf87f6d8a0641517063b42ce5de9",
     "semantic_hash": "a365cf87f6d8a0641517063b42ce5de9"
   },
   "src/components/SiteFooter.astro": {
-    "mtime": 1785183078.7604098,
+    "mtime": 1785180598.4032185,
     "ast_hash": "0e0ece25063dedbeab1ae89da81e2f84",
     "semantic_hash": ""
   },
   "src/components/SiteHeader.astro": {
-    "mtime": 1785183210.3013291,
-    "ast_hash": "f310d3dc02abd803280f0637bb814e96",
+    "mtime": 1785180598.4039955,
+    "ast_hash": "d9b64baff239a10d575d9eaf17bdb149",
     "semantic_hash": ""
   },
   "src/data/pack.ts": {
-    "mtime": 1785187211.6775222,
-    "ast_hash": "a26ab30f69f8444ecfdb72b67f9717e1",
+    "mtime": 1785187857.0345867,
+    "ast_hash": "61c7c3157e7bf7a67fa13e03a79722bf",
     "semantic_hash": ""
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1785186231.1378505,
-    "ast_hash": "c028c8adec86a9a907df64aaaed616d5",
-    "semantic_hash": ""
+    "mtime": 1785165199.1331763,
+    "ast_hash": "beb97bd097c77a84b677fd12e317e6a6",
+    "semantic_hash": "beb97bd097c77a84b677fd12e317e6a6"
   },
   "src/lib/api-base.ts": {
-    "mtime": 1785183078.766419,
+    "mtime": 1785168202.5783446,
     "ast_hash": "442116963e15d263e8aab25158b01b47",
     "semantic_hash": "442116963e15d263e8aab25158b01b47"
   },
   "src/pages/about.astro": {
-    "mtime": 1785183078.7681763,
+    "mtime": 1785180598.4073846,
     "ast_hash": "20b2ad40dfae22904a6253b396690080",
     "semantic_hash": ""
   },
   "src/pages/activities.astro": {
-    "mtime": 1785183078.768365,
+    "mtime": 1785165199.133769,
     "ast_hash": "72fd6073042ab28bc94e77cd997d27d6",
     "semantic_hash": "72fd6073042ab28bc94e77cd997d27d6"
   },
   "src/pages/calendar/index.astro": {
-    "mtime": 1785186987.4265857,
-    "ast_hash": "9546d401459ba914900553a152632f1a",
-    "semantic_hash": ""
+    "mtime": 1785180598.4082656,
+    "ast_hash": "bd71d39abaab64654419076cb9087954",
+    "semantic_hash": "bd71d39abaab64654419076cb9087954"
   },
   "src/pages/contact.astro": {
-    "mtime": 1785183078.7694223,
+    "mtime": 1785180598.409244,
     "ast_hash": "6a051f357bc0215bd68330cb0ac16946",
     "semantic_hash": "6a051f357bc0215bd68330cb0ac16946"
   },
   "src/pages/events/index.astro": {
-    "mtime": 1785183078.7713232,
+    "mtime": 1785180598.4131362,
     "ast_hash": "a46bc5df3e4d9213aa2435a8c92e7fac",
     "semantic_hash": "a46bc5df3e4d9213aa2435a8c92e7fac"
   },
   "src/pages/index.astro": {
-    "mtime": 1785187211.6807973,
+    "mtime": 1785185643.5610597,
     "ast_hash": "977e7842a173397a2fb22b69ac40f9dd",
     "semantic_hash": ""
   },
   "src/pages/join.astro": {
-    "mtime": 1785187211.6815727,
+    "mtime": 1785185643.562043,
     "ast_hash": "8755ffcf6e25f8cdbdeeeaf28358ae03",
     "semantic_hash": ""
   },
   "src/pages/privacy.astro": {
-    "mtime": 1785183078.7728899,
+    "mtime": 1785180598.4159229,
     "ast_hash": "ee363d8bc552fc00ed4f4e9e834f2de6",
     "semantic_hash": "ee363d8bc552fc00ed4f4e9e834f2de6"
   },
   "src/pages/resources.astro": {
-    "mtime": 1785187211.682321,
-    "ast_hash": "bdb99067fc123aca6376f1f74bb95e30",
+    "mtime": 1785184453.7420852,
+    "ast_hash": "b46d903b1a131175a66ed209ab0a321e",
     "semantic_hash": ""
   },
   "src/pages/volunteer.astro": {
-    "mtime": 1785183078.773953,
+    "mtime": 1785180598.4174395,
     "ast_hash": "fbe746275f515ff882308e010bfe7601",
     "semantic_hash": ""
   },
   "tsconfig.json": {
-    "mtime": 1785183078.7754579,
+    "mtime": 1785165199.1372364,
     "ast_hash": "59c426bcd5ce532af0333ab02c04af3a",
     "semantic_hash": "59c426bcd5ce532af0333ab02c04af3a"
   },
   "tsconfig.worker.json": {
-    "mtime": 1785183078.775856,
+    "mtime": 1785165199.1374373,
     "ast_hash": "e4e833791573fcc1313de8086170a37d",
     "semantic_hash": "e4e833791573fcc1313de8086170a37d"
   },
   "vitest.config.ts": {
-    "mtime": 1785183078.7763946,
-    "ast_hash": "7c9c07fd22c65d5e75a1c9ed74d6336c",
-    "semantic_hash": "7c9c07fd22c65d5e75a1c9ed74d6336c"
+    "mtime": 1785189349.4619143,
+    "ast_hash": "4dcf35a1996e20ae3aba5a0e92000310",
+    "semantic_hash": ""
   },
   "worker-configuration.d.ts": {
-    "mtime": 1785183078.777817,
+    "mtime": 1785165199.1385689,
     "ast_hash": "e0ab85506217dca6e0c3b9acb34f2bef",
     "semantic_hash": "e0ab85506217dca6e0c3b9acb34f2bef"
   },
   "worker/admin-scripts.unit.test.ts": {
-    "mtime": 1785183078.7782452,
+    "mtime": 1785165199.1388714,
     "ast_hash": "068d7677a0923344a5df68bcfdf7acfc",
     "semantic_hash": "068d7677a0923344a5df68bcfdf7acfc"
   },
   "worker/calendar-admin.ts": {
-    "mtime": 1785183078.778515,
+    "mtime": 1785165199.1390607,
     "ast_hash": "575e77a223dc19098907997ded526239",
     "semantic_hash": "575e77a223dc19098907997ded526239"
   },
   "worker/event-routes.ts": {
-    "mtime": 1785183078.7826414,
+    "mtime": 1785168175.7746193,
     "ast_hash": "db50420bfd83e09c16c87b3564aa470a",
     "semantic_hash": "db50420bfd83e09c16c87b3564aa470a"
   },
   "worker/index.test.ts": {
-    "mtime": 1785183078.783496,
+    "mtime": 1785165199.1394362,
     "ast_hash": "e3cc7c4ff147285eebccba5836805f45",
     "semantic_hash": "e3cc7c4ff147285eebccba5836805f45"
   },
   "worker/index.ts": {
-    "mtime": 1785183078.7851267,
+    "mtime": 1785180598.4201365,
     "ast_hash": "758a329c47758029e8fd220cb3c5c94b",
     "semantic_hash": "758a329c47758029e8fd220cb3c5c94b"
   },
   "worker/submission-flow.integration.test.ts": {
-    "mtime": 1785183078.7873535,
+    "mtime": 1785165199.1397698,
     "ast_hash": "7dcac63d2ee54ba6a040cf91a8616d58",
     "semantic_hash": "7dcac63d2ee54ba6a040cf91a8616d58"
   },
   "worker/tsconfig.json": {
-    "mtime": 1785183078.7877305,
+    "mtime": 1785165199.1399019,
     "ast_hash": "e838d408f85c4ea8c8705282bde38ebc",
     "semantic_hash": "e838d408f85c4ea8c8705282bde38ebc"
   },
   ".agents/skills/calendar-api/SKILL.md": {
-    "mtime": 1785183078.7108786,
+    "mtime": 1785180598.369135,
     "ast_hash": "4c143c608d91c045e4fff79215fdcec6",
     "semantic_hash": "4c143c608d91c045e4fff79215fdcec6"
   },
   ".github/workflows/deploy.yml": {
-    "mtime": 1785183078.7138987,
+    "mtime": 1785180598.370855,
     "ast_hash": "0734fefb190f0e1551e27cea97288cdf",
     "semantic_hash": "0734fefb190f0e1551e27cea97288cdf"
   },
   "CODE_OF_CONDUCT.md": {
-    "mtime": 1785183078.7163932,
+    "mtime": 1785165199.1063614,
     "ast_hash": "8ab16bb6f95c64abd02391866d763435",
     "semantic_hash": "8ab16bb6f95c64abd02391866d763435"
   },
   "CONTRIBUTING.md": {
-    "mtime": 1785183078.7172961,
+    "mtime": 1785180598.3742242,
     "ast_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4",
     "semantic_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4"
   },
   "DESIGN.md": {
-    "mtime": 1785186230.5601454,
-    "ast_hash": "9b69a2d12f59f5dc9959b8907642d9cc",
-    "semantic_hash": ""
+    "mtime": 1785165199.107027,
+    "ast_hash": "6f3f9ffbb15edeb9b6775bd118649bc6",
+    "semantic_hash": "6f3f9ffbb15edeb9b6775bd118649bc6"
   },
   "PRODUCT.md": {
-    "mtime": 1785184235.1243439,
-    "ast_hash": "747aac4f07f65af208635190220ea5b3",
-    "semantic_hash": ""
+    "mtime": 1785165199.1077292,
+    "ast_hash": "cbee4dabb12f2c3a58a73a7c88ad18c3",
+    "semantic_hash": "cbee4dabb12f2c3a58a73a7c88ad18c3"
   },
   "README.md": {
-    "mtime": 1785183078.7200072,
+    "mtime": 1785180598.375793,
     "ast_hash": "7be27d3cf1c34b52618a4db630ce33e1",
     "semantic_hash": "7be27d3cf1c34b52618a4db630ce33e1"
   },
   "SECURITY.md": {
-    "mtime": 1785183078.7206516,
+    "mtime": 1785165199.1081645,
     "ast_hash": "5aa007aafb836df1ac6af5c0cbe3d1a3",
     "semantic_hash": "5aa007aafb836df1ac6af5c0cbe3d1a3"
   },
   "docs/CLOUDFLARE-DEPLOYMENT.md": {
-    "mtime": 1785183078.7324982,
+    "mtime": 1785180598.3810127,
     "ast_hash": "8393f1a74bc0ade67fcfba0033ba2d02",
     "semantic_hash": "8393f1a74bc0ade67fcfba0033ba2d02"
   },
   "docs/HANDOFF.md": {
-    "mtime": 1785183078.7326844,
+    "mtime": 1785165199.1093082,
     "ast_hash": "8ec6d8b858053b977068bf40f3550b26",
     "semantic_hash": "8ec6d8b858053b977068bf40f3550b26"
   },
   "docs/Offical-info.md": {
-    "mtime": 1785187290.2563155,
+    "mtime": 1785184967.3652556,
     "ast_hash": "1dd4aed616edd20cb650b811b7b00fb9",
     "semantic_hash": ""
   },
   "docs/calendar.md": {
-    "mtime": 1785183078.7335756,
+    "mtime": 1785180598.3834875,
     "ast_hash": "15528143bd302ca8975061ca0efce81e",
     "semantic_hash": "15528143bd302ca8975061ca0efce81e"
   },
   "docs/research/SYNTHESIS.md": {
-    "mtime": 1785183078.7353513,
+    "mtime": 1785180598.384819,
     "ast_hash": "cc414f3705a0a0238d7062cb89fb9ee6",
     "semantic_hash": ""
   },
   "docs/research/cub-scouting.md": {
-    "mtime": 1785183078.736215,
+    "mtime": 1785165199.110204,
     "ast_hash": "092775278f4f335ea1121f7a0db7aa42",
     "semantic_hash": "092775278f4f335ea1121f7a0db7aa42"
   },
   "docs/research/highland-hills-baptist.md": {
-    "mtime": 1785183078.7372398,
+    "mtime": 1785180598.3858886,
     "ast_hash": "ede5306a3bb7e77e05a019b982437dc4",
     "semantic_hash": "ede5306a3bb7e77e05a019b982437dc4"
   },
   "docs/research/macon-ga.md": {
-    "mtime": 1785183078.7377503,
+    "mtime": 1785165199.1107004,
     "ast_hash": "0f54c3be28dde0def70a5ac20cd800aa",
     "semantic_hash": "0f54c3be28dde0def70a5ac20cd800aa"
   },
   "docs/research/scouting-america.md": {
-    "mtime": 1785183078.7383726,
+    "mtime": 1785180598.386754,
     "ast_hash": "a9eb8bffa6cca71a09b00551b38c7881",
     "semantic_hash": ""
   },
   "docs/research/trademark-brand-guidance.md": {
-    "mtime": 1785183078.7388544,
+    "mtime": 1785165199.1114,
     "ast_hash": "da994766c01e43241c04234043fef9a0",
     "semantic_hash": "da994766c01e43241c04234043fef9a0"
   },
   "assets/header-dark.svg": {
-    "mtime": 1785183078.7213879,
+    "mtime": 1785165199.108444,
     "ast_hash": "450df6fd80787e139ad0ee103c605da4",
     "semantic_hash": "450df6fd80787e139ad0ee103c605da4"
   },
   "assets/header.svg": {
-    "mtime": 1785183078.7217395,
+    "mtime": 1785165199.108578,
     "ast_hash": "c4bbbcd6c1c531e20b72c9a4cf537585",
     "semantic_hash": "c4bbbcd6c1c531e20b72c9a4cf537585"
   },
   "assets/logo.svg": {
-    "mtime": 1785183078.721916,
+    "mtime": 1785165199.1087234,
     "ast_hash": "1bfc7d8b673a305420be4f1c3f125fb7",
     "semantic_hash": "1bfc7d8b673a305420be4f1c3f125fb7"
   },
   "public/favicon.svg": {
-    "mtime": 1785183078.7587388,
+    "mtime": 1785165199.1311536,
     "ast_hash": "a42fab04a1d054942419b145355cc0bc",
     "semantic_hash": "a42fab04a1d054942419b145355cc0bc"
   },
   "worker/retention.test.ts": {
-    "mtime": 1785183078.7867842,
+    "mtime": 1785180598.4207933,
     "ast_hash": "5457725db532107c0ea3317463f996a9",
     "semantic_hash": "5457725db532107c0ea3317463f996a9"
   },
   "docs/placeholders.md": {
-    "mtime": 1785187211.632824,
-    "ast_hash": "9bb3939f4b62897f2aabc6da4f87aceb",
+    "mtime": 1785187903.1287766,
+    "ast_hash": "b11b661e2939f7de1df334a8760efcd3",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1785186230.5158243,
+    "mtime": 1785185483.8517478,
     "ast_hash": "0da4e090339f06c0289a537e7770b5ef",
     "semantic_hash": ""
   },
   "src/data/leadership.md": {
-    "mtime": 1785183078.764151,
+    "mtime": 1785180598.405175,
     "ast_hash": "c648188f1893bcea237ff5b322691e6c",
     "semantic_hash": ""
   },
   "src/data/adventures.ts": {
-    "mtime": 1785187211.6758757,
-    "ast_hash": "edb39d1496a458cda7c95b81ebfcd0c7",
+    "mtime": 1785189782.5940464,
+    "ast_hash": "f7eec4f1dfe9983e54e9ea6866af6af1",
     "semantic_hash": ""
   },
   "src/lib/den-slug.ts": {
-    "mtime": 1785183078.7672148,
+    "mtime": 1785180598.4065464,
     "ast_hash": "236e11bd729cd4b923812c28c24754bb",
     "semantic_hash": ""
   },
   "src/pages/dens/[den].astro": {
-    "mtime": 1785187211.6789634,
-    "ast_hash": "a2c5ad62b75866deacc6771fd18dcff7",
+    "mtime": 1785189848.2613833,
+    "ast_hash": "886ab0d74303fba84154e9c32b10cdeb",
     "semantic_hash": ""
   },
   "src/pages/dens/index.astro": {
-    "mtime": 1785187211.6797423,
+    "mtime": 1785185643.5626748,
     "ast_hash": "d1291850e4f83185593bb14338ba1f58",
     "semantic_hash": ""
   },
   "src/pages/what-is-cub-scouts.astro": {
-    "mtime": 1785183078.7743676,
+    "mtime": 1785180598.4184577,
     "ast_hash": "28ca2978d3942008e2dc13539e51b258",
     "semantic_hash": ""
   },
   "src/pages/youth-protection.astro": {
-    "mtime": 1785183078.774778,
+    "mtime": 1785180598.4191344,
     "ast_hash": "d037042396ca2126ba0df3427129e095",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Fun_On_The_Run.webp": {
-    "mtime": 1785183078.7239814,
+    "mtime": 1785180598.376309,
     "ast_hash": "36814b55ee96fdeb08e9e1c211af3d26",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Lion_Bobcat.webp": {
-    "mtime": 1785183078.7249844,
+    "mtime": 1785180598.376956,
     "ast_hash": "1a51fb6ddfd174a1ad8d331db5ad69c2",
     "semantic_hash": ""
   },
   "assets/offical/Arrows-of-Ligth-1.webp": {
-    "mtime": 1785183078.725924,
+    "mtime": 1785180598.3775532,
     "ast_hash": "b69f9029e0d996897b959b1858ce04fb",
     "semantic_hash": ""
   },
   "assets/offical/Bear1.webp": {
-    "mtime": 1785183078.7274308,
+    "mtime": 1785180598.3784118,
     "ast_hash": "ceeb0f4ab66a4a2c81072dd81ad771b6",
     "semantic_hash": ""
   },
   "assets/offical/Lion1.webp": {
-    "mtime": 1785183078.728174,
+    "mtime": 1785180598.3788643,
     "ast_hash": "67eadbcc22c5af6187592ade685c390e",
     "semantic_hash": ""
   },
   "assets/offical/Tiger1.webp": {
-    "mtime": 1785183078.7289603,
+    "mtime": 1785180598.3792408,
     "ast_hash": "c5834320ac3ddb51169f5ffb4f3aa57d",
     "semantic_hash": ""
   },
   "assets/offical/Webelos1.webp": {
-    "mtime": 1785183078.730157,
+    "mtime": 1785180598.3796494,
     "ast_hash": "46728ee90a1ef698f6d103abdc3b03d8",
     "semantic_hash": ""
   },
   "assets/offical/Wolf1.webp": {
-    "mtime": 1785183078.7308838,
+    "mtime": 1785180598.380058,
     "ast_hash": "78f38813a5dc90172b92251d35d69358",
     "semantic_hash": ""
   },
   ".claude/hooks/no-branch-switch.py": {
-    "mtime": 1785183078.7116423,
+    "mtime": 1785181014.3531597,
     "ast_hash": "5ba1dad0291a18c63705cdd4d8a9aa9b",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-07-27-leadership-roster-admin-design.md": {
-    "mtime": 1785186231.0089395,
+    "mtime": 1785185483.9078398,
     "ast_hash": "d2a05aa8ff18220a1fb69db14ef8fdb9",
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-07-27-leadership-roster-admin.md": {
-    "mtime": 1785183078.7395866,
+    "mtime": 1785181723.7147253,
     "ast_hash": "85b973fa74abdd9f0b2eb98258f42e49",
     "semantic_hash": ""
   },
-  ".agents/skills/impeccable/scripts/command-metadata.json": {
-    "mtime": 1785183798.6343272,
-    "ast_hash": "86266801588636b11e00372754118529",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/concept-seed.mjs": {
-    "mtime": 1785186223.1451666,
-    "ast_hash": "8e77f9149bcfa561890ded34b7a5f9c5",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/context-signals.mjs": {
-    "mtime": 1785186223.162555,
-    "ast_hash": "27c0e8b3dff654d8234896d1f1e2190d",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/context.mjs": {
-    "mtime": 1785186223.2081053,
-    "ast_hash": "fe34920b52680e3bda078c5239206e63",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/critique-storage.mjs": {
-    "mtime": 1785186223.2168453,
-    "ast_hash": "6db803f9dbe93c5b6c06a15d934b843a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detect-csp.mjs": {
-    "mtime": 1785186223.2229857,
-    "ast_hash": "7a56f0a99cb39db1f02cef30706a0cfb",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detect.mjs": {
-    "mtime": 1785186223.2258677,
-    "ast_hash": "cb445d55a30c4015085db298e2cddab6",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
-    "mtime": 1785186223.2878594,
-    "ast_hash": "b8844ee2916f9fcb732c56bfa5daefcb",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/cli/main.mjs": {
-    "mtime": 1785186223.302817,
-    "ast_hash": "6cfe0350baf7193446528cdfba980814",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/design-system.mjs": {
-    "mtime": 1785186223.3285735,
-    "ast_hash": "04d82ca2b6ece20f228693254cd19d48",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
-    "mtime": 1785186223.7227523,
-    "ast_hash": "11a4f51a801da38c2fb99877f30df109",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
-    "mtime": 1785186223.7258904,
-    "ast_hash": "8779d5ecfd15657376fde1d9d2517d60",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
-    "mtime": 1785186223.7366014,
-    "ast_hash": "16a096b55cab096655c8b5a408493c9e",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
-    "mtime": 1785186223.760569,
-    "ast_hash": "05b3731f9f18ac1387426c7e982a671c",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
-    "mtime": 1785186223.7900426,
-    "ast_hash": "6b8bd6c86ca114203802f9187794b647",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
-    "mtime": 1785186223.8014128,
-    "ast_hash": "9ddfa4b6ffc6f3b204ebe176823f7a50",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
-    "mtime": 1785186223.8112528,
-    "ast_hash": "3a300f5d25a01c27cfe3a9ae2713e13a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/findings.mjs": {
-    "mtime": 1785186223.813525,
-    "ast_hash": "906295fe2651c3afb4cc05cd45cf98f0",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/node/file-system.mjs": {
-    "mtime": 1785186223.8202465,
-    "ast_hash": "92cf719c149adce4a65271a4b649dd1f",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/profile/profiler.mjs": {
-    "mtime": 1785186223.826251,
-    "ast_hash": "5226d117461388dc7d5903313fcd446c",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
-    "mtime": 1785186223.8339245,
-    "ast_hash": "7261111afd5a4f3f29cfdb67071520ef",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/rules/checks.mjs": {
-    "mtime": 1785186224.0917413,
-    "ast_hash": "f42f5936536b60e70d05bd24cf3aa817",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/shared/color.mjs": {
-    "mtime": 1785186224.1141741,
-    "ast_hash": "fe1483b4ad3626b786bba64ff385ba13",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/shared/constants.mjs": {
-    "mtime": 1785186224.1199932,
-    "ast_hash": "1848a46dd0f5a3ca4ccfb076bb11ea86",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/shared/fonts.mjs": {
-    "mtime": 1785186224.1235278,
-    "ast_hash": "635bfa8889cf8b6ea644a0e7d2ce05f3",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
-    "mtime": 1785186224.1297555,
-    "ast_hash": "70bda18225b8042875f65247e46776a9",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/detector/shared/page.mjs": {
-    "mtime": 1785183798.648244,
-    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/doctor.mjs": {
-    "mtime": 1785186224.146029,
-    "ast_hash": "dfef67c8f17d79dd0d2b58cefaed9720",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/generate-image.mjs": {
-    "mtime": 1785186224.1599612,
-    "ast_hash": "ee221f124d3abcf94ae4592db4af1d70",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/hook-admin.mjs": {
-    "mtime": 1785186224.1885414,
-    "ast_hash": "04a20d9f19bb28952205c79a316ba31d",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/hook-before-edit.mjs": {
-    "mtime": 1785186224.2060297,
-    "ast_hash": "843e58883522773b1a99f23292e23f77",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/hook-lib.mjs": {
-    "mtime": 1785186224.2847333,
-    "ast_hash": "2fca93f3eaf08b6a4ceb44c18a7a2375",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/hook.mjs": {
-    "mtime": 1785186224.2883308,
-    "ast_hash": "8d97232d2fd09898fdfe2f9cb69bc06e",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/artifact-schema.mjs": {
-    "mtime": 1785186224.2917974,
-    "ast_hash": "fdb8df4af3f0196e7f8b56a29a646742",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/composition-catalog.mjs": {
-    "mtime": 1785186224.29916,
-    "ast_hash": "74ded7381fd5328af611c0b31e66b910",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/concept-catalog.mjs": {
-    "mtime": 1785186224.3139038,
-    "ast_hash": "4f6054218f0e79e68a1b5dda78dd1f38",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/design-parser.mjs": {
-    "mtime": 1785186224.3347204,
-    "ast_hash": "3b01a2545e398e8c58133c77c2a2adc4",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/impeccable-config.mjs": {
-    "mtime": 1785186224.3534148,
-    "ast_hash": "2dcfc4233fec6ada737733ff3e4851fe",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
-    "mtime": 1785186224.3587806,
-    "ast_hash": "4b87c3154bdaba90441fabb865b22b15",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/is-generated.mjs": {
-    "mtime": 1785186224.3616323,
-    "ast_hash": "d1ddbb0f18ddc31e8e657b95033c1699",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/provider.mjs": {
-    "mtime": 1785186224.3635929,
-    "ast_hash": "9cf480f106e24562639531101dfb781d",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/staleness-deep.mjs": {
-    "mtime": 1785186224.3798559,
-    "ast_hash": "d1ce6b6bc0576c97d47c299c96be472e",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/staleness-notice.mjs": {
-    "mtime": 1785186224.3887622,
-    "ast_hash": "fd165b7dcce48d30706375c44c49880b",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/staleness.mjs": {
-    "mtime": 1785186224.405981,
-    "ast_hash": "f62220d5105cea0a353219f978f2d053",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/surface-briefs.mjs": {
-    "mtime": 1785186224.4129677,
-    "ast_hash": "b57853ee65f0cd5d5424701a93ce7253",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/target-args.mjs": {
-    "mtime": 1785183798.656071,
-    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/target-slug.mjs": {
-    "mtime": 1785186224.4184911,
-    "ast_hash": "cfc4d3ea8bf4d17684acadcb681b8c98",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/lib/template-extensions.mjs": {
-    "mtime": 1785186224.4226956,
-    "ast_hash": "6d32210aebd65c78581dd703ccf803dd",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-accept.mjs": {
-    "mtime": 1785186224.4456716,
-    "ast_hash": "284001117e8e9fdb2b85baf7cfdaf6e1",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-browser-dom.js": {
-    "mtime": 1785186224.4512045,
-    "ast_hash": "8ac7dcfa3848f13e5b2850f755789465",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-browser-session.js": {
-    "mtime": 1785186224.4552457,
-    "ast_hash": "aab23591a4f97f46cd6329e0cb5b972a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-browser.js": {
-    "mtime": 1785186224.7841024,
-    "ast_hash": "9db3f63a077ca08741b923b39feb4dfb",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
-    "mtime": 1785186224.8136709,
-    "ast_hash": "4b0ae999d6fe1b24bb8d54fd1be1e186",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-complete.mjs": {
-    "mtime": 1785186224.817987,
-    "ast_hash": "ccd51a79c6fd98e83617fc9266a8cf96",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
-    "mtime": 1785186224.8316152,
-    "ast_hash": "e72e2bb838c972c81b2a5bf579037c74",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
-    "mtime": 1785183798.668113,
-    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-inject.mjs": {
-    "mtime": 1785186224.8530612,
-    "ast_hash": "2aabb9a17fe7feda8535a3c9665ccf74",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-insert.mjs": {
-    "mtime": 1785186224.8600872,
-    "ast_hash": "4586a5cf56003c6d6850c86dcbcff1a1",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
-    "mtime": 1785186224.8698974,
-    "ast_hash": "fd7048676379e5a08b6cd362995feb58",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-poll.mjs": {
-    "mtime": 1785186224.8797565,
-    "ast_hash": "92df8457f9af527a56b3caad1ece2749",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-resume.mjs": {
-    "mtime": 1785186224.884609,
-    "ast_hash": "b384025a67f58a0aaef839e13becd697",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-server.mjs": {
-    "mtime": 1785186224.9201577,
-    "ast_hash": "00345183d410ec0439a4a126616377eb",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-status.mjs": {
-    "mtime": 1785186224.9350998,
-    "ast_hash": "91f23444add9d4382c6b2821d34f3a35",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-target.mjs": {
-    "mtime": 1785186224.9388494,
-    "ast_hash": "cfd5ce8b98477c659facfac513626e63",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live-wrap.mjs": {
-    "mtime": 1785186224.971458,
-    "ast_hash": "8c512d24bac93ef44af7133653013d79",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live.mjs": {
-    "mtime": 1785186224.9813635,
-    "ast_hash": "670d3948e51cfe6ff625e7667bea995a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/browser-script-parts.mjs": {
-    "mtime": 1785186224.986555,
-    "ast_hash": "4e3250746d15370c9767b5b229af64b3",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/completion.mjs": {
-    "mtime": 1785186224.9894114,
-    "ast_hash": "d79395f246e506da95957262a7fdc2c3",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/event-validation.mjs": {
-    "mtime": 1785186224.9960256,
-    "ast_hash": "44ab1baa614f1e637a66074b50697491",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/generation-preflight.mjs": {
-    "mtime": 1785186225.0029862,
-    "ast_hash": "6fb07679e7a317f641424adddb7f9ea7",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/insert-ui.mjs": {
-    "mtime": 1785186225.0165489,
-    "ast_hash": "b4e18bcb9c7490861db4f5e990258ab6",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/manual-apply.mjs": {
-    "mtime": 1785186225.0457222,
-    "ast_hash": "62535d1766d9b23cf8c38064085c2802",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
-    "mtime": 1785186225.0599544,
-    "ast_hash": "74294d4e31d01a8031b647d9e06b535a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
-    "mtime": 1785183798.6608293,
-    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/poll-lanes.mjs": {
-    "mtime": 1785186225.0680678,
-    "ast_hash": "b0ad0bababe24e2f48dca9da52e31699",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/session-store.mjs": {
-    "mtime": 1785186225.0783904,
-    "ast_hash": "323f480c7dd1ab3d9204250a8273cd69",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/source-lock.mjs": {
-    "mtime": 1785186225.0824633,
-    "ast_hash": "47ca8b80ae1aad649dc2d0b72cfae4ca",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/source-search.mjs": {
-    "mtime": 1785186225.0859127,
-    "ast_hash": "702b93296c877c6c00f5bbd334f1804c",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/svelte-component.mjs": {
-    "mtime": 1785186225.1069608,
-    "ast_hash": "6f50d8c176bf4f4b3c876b41aab37f7e",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
-    "mtime": 1785186225.1139252,
-    "ast_hash": "f634400dace26ba26886766b2bdcb61b",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/tanstack-adapter.mjs": {
-    "mtime": 1785186225.1205647,
-    "ast_hash": "00228fb5a750a39974cad6859cea68f0",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/ui-core.mjs": {
-    "mtime": 1785186225.1277764,
-    "ast_hash": "3ae462d3b9ffef091d0ca7fb17e61ec0",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/live/vocabulary.mjs": {
-    "mtime": 1785186225.13178,
-    "ast_hash": "a78112ef4064a02c65b5ea5ff695f182",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/modern-screenshot.umd.js": {
-    "mtime": 1785186225.1802056,
-    "ast_hash": "26a43695bdd999534dea93e5801a8240",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/palette.mjs": {
-    "mtime": 1785186225.1975386,
-    "ast_hash": "3c1f9982828143ac6b8b6789cf26c5bf",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/pin.mjs": {
-    "mtime": 1785186225.204029,
-    "ast_hash": "0ed33c796fadba4baed5111d69b37ad8",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/serve-question.mjs": {
-    "mtime": 1785186225.2165408,
-    "ast_hash": "05f696eb665d64cfea7c6383d2314020",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/scripts/surface-brief.mjs": {
-    "mtime": 1785186225.2201717,
-    "ast_hash": "abcde85be11d56ca98714182f50582d9",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/command-metadata.json": {
-    "mtime": 1785183798.5722222,
-    "ast_hash": "86266801588636b11e00372754118529",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/concept-seed.mjs": {
-    "mtime": 1785186225.8320239,
-    "ast_hash": "8e77f9149bcfa561890ded34b7a5f9c5",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/context-signals.mjs": {
-    "mtime": 1785186225.8402417,
-    "ast_hash": "27c0e8b3dff654d8234896d1f1e2190d",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/context.mjs": {
-    "mtime": 1785186225.8744845,
-    "ast_hash": "fe34920b52680e3bda078c5239206e63",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/critique-storage.mjs": {
-    "mtime": 1785186225.8814678,
-    "ast_hash": "6db803f9dbe93c5b6c06a15d934b843a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detect-csp.mjs": {
-    "mtime": 1785186225.8867304,
-    "ast_hash": "7a56f0a99cb39db1f02cef30706a0cfb",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detect.mjs": {
-    "mtime": 1785186225.888762,
-    "ast_hash": "cb445d55a30c4015085db298e2cddab6",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
-    "mtime": 1785186225.9500773,
-    "ast_hash": "b8844ee2916f9fcb732c56bfa5daefcb",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/cli/main.mjs": {
-    "mtime": 1785186225.9624903,
-    "ast_hash": "6cfe0350baf7193446528cdfba980814",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/design-system.mjs": {
-    "mtime": 1785186225.9877272,
-    "ast_hash": "04d82ca2b6ece20f228693254cd19d48",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
-    "mtime": 1785186226.378125,
-    "ast_hash": "11a4f51a801da38c2fb99877f30df109",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
-    "mtime": 1785186226.3813503,
-    "ast_hash": "8779d5ecfd15657376fde1d9d2517d60",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
-    "mtime": 1785186226.3923123,
-    "ast_hash": "16a096b55cab096655c8b5a408493c9e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
-    "mtime": 1785186226.4175775,
-    "ast_hash": "05b3731f9f18ac1387426c7e982a671c",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
-    "mtime": 1785186226.4461305,
-    "ast_hash": "6b8bd6c86ca114203802f9187794b647",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
-    "mtime": 1785186226.4571407,
-    "ast_hash": "9ddfa4b6ffc6f3b204ebe176823f7a50",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
-    "mtime": 1785186226.4641538,
-    "ast_hash": "3a300f5d25a01c27cfe3a9ae2713e13a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/findings.mjs": {
-    "mtime": 1785186226.4664989,
-    "ast_hash": "906295fe2651c3afb4cc05cd45cf98f0",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/node/file-system.mjs": {
-    "mtime": 1785186226.4732473,
-    "ast_hash": "92cf719c149adce4a65271a4b649dd1f",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/profile/profiler.mjs": {
-    "mtime": 1785186226.4785535,
-    "ast_hash": "5226d117461388dc7d5903313fcd446c",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
-    "mtime": 1785186226.4860387,
-    "ast_hash": "7261111afd5a4f3f29cfdb67071520ef",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/rules/checks.mjs": {
-    "mtime": 1785186226.7467856,
-    "ast_hash": "f42f5936536b60e70d05bd24cf3aa817",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/shared/color.mjs": {
-    "mtime": 1785186226.75356,
-    "ast_hash": "fe1483b4ad3626b786bba64ff385ba13",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/shared/constants.mjs": {
-    "mtime": 1785186226.7568185,
-    "ast_hash": "1848a46dd0f5a3ca4ccfb076bb11ea86",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/shared/fonts.mjs": {
-    "mtime": 1785186226.759045,
-    "ast_hash": "635bfa8889cf8b6ea644a0e7d2ce05f3",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
-    "mtime": 1785186226.7626448,
-    "ast_hash": "70bda18225b8042875f65247e46776a9",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/detector/shared/page.mjs": {
-    "mtime": 1785183798.590073,
-    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/doctor.mjs": {
-    "mtime": 1785186226.7713609,
-    "ast_hash": "dfef67c8f17d79dd0d2b58cefaed9720",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/generate-image.mjs": {
-    "mtime": 1785186226.779735,
-    "ast_hash": "ee221f124d3abcf94ae4592db4af1d70",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/hook-admin.mjs": {
-    "mtime": 1785186226.8270862,
-    "ast_hash": "04a20d9f19bb28952205c79a316ba31d",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/hook-before-edit.mjs": {
-    "mtime": 1785186226.8496237,
-    "ast_hash": "843e58883522773b1a99f23292e23f77",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/hook-lib.mjs": {
-    "mtime": 1785186226.9301817,
-    "ast_hash": "2fca93f3eaf08b6a4ceb44c18a7a2375",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/hook.mjs": {
-    "mtime": 1785186226.934063,
-    "ast_hash": "8d97232d2fd09898fdfe2f9cb69bc06e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/artifact-schema.mjs": {
-    "mtime": 1785186226.937872,
-    "ast_hash": "fdb8df4af3f0196e7f8b56a29a646742",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/composition-catalog.mjs": {
-    "mtime": 1785186226.945938,
-    "ast_hash": "74ded7381fd5328af611c0b31e66b910",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/concept-catalog.mjs": {
-    "mtime": 1785186226.9633482,
-    "ast_hash": "4f6054218f0e79e68a1b5dda78dd1f38",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/design-parser.mjs": {
-    "mtime": 1785186226.9879284,
-    "ast_hash": "3b01a2545e398e8c58133c77c2a2adc4",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/impeccable-config.mjs": {
-    "mtime": 1785186227.0071018,
-    "ast_hash": "2dcfc4233fec6ada737733ff3e4851fe",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
-    "mtime": 1785186227.0123641,
-    "ast_hash": "4b87c3154bdaba90441fabb865b22b15",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/is-generated.mjs": {
-    "mtime": 1785186227.0159717,
-    "ast_hash": "d1ddbb0f18ddc31e8e657b95033c1699",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/provider.mjs": {
-    "mtime": 1785186227.0182846,
-    "ast_hash": "b94eefbbd08830aead3efa488cd499dd",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/staleness-deep.mjs": {
-    "mtime": 1785186227.0352607,
-    "ast_hash": "d1ce6b6bc0576c97d47c299c96be472e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/staleness-notice.mjs": {
-    "mtime": 1785186227.04238,
-    "ast_hash": "fd165b7dcce48d30706375c44c49880b",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/staleness.mjs": {
-    "mtime": 1785186227.0540135,
-    "ast_hash": "f62220d5105cea0a353219f978f2d053",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/surface-briefs.mjs": {
-    "mtime": 1785186227.061789,
-    "ast_hash": "b57853ee65f0cd5d5424701a93ce7253",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/target-args.mjs": {
-    "mtime": 1785183798.6000423,
-    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/target-slug.mjs": {
-    "mtime": 1785186227.0677736,
-    "ast_hash": "cfc4d3ea8bf4d17684acadcb681b8c98",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/lib/template-extensions.mjs": {
-    "mtime": 1785186227.072483,
-    "ast_hash": "6d32210aebd65c78581dd703ccf803dd",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-accept.mjs": {
-    "mtime": 1785186227.094452,
-    "ast_hash": "284001117e8e9fdb2b85baf7cfdaf6e1",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-browser-dom.js": {
-    "mtime": 1785186227.1003745,
-    "ast_hash": "8ac7dcfa3848f13e5b2850f755789465",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-browser-session.js": {
-    "mtime": 1785186227.104211,
-    "ast_hash": "aab23591a4f97f46cd6329e0cb5b972a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-browser.js": {
-    "mtime": 1785186227.4267533,
-    "ast_hash": "9db3f63a077ca08741b923b39feb4dfb",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
-    "mtime": 1785186227.455949,
-    "ast_hash": "4b0ae999d6fe1b24bb8d54fd1be1e186",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-complete.mjs": {
-    "mtime": 1785186227.4604776,
-    "ast_hash": "ccd51a79c6fd98e83617fc9266a8cf96",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
-    "mtime": 1785186227.4752743,
-    "ast_hash": "e72e2bb838c972c81b2a5bf579037c74",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
-    "mtime": 1785183798.6130157,
-    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-inject.mjs": {
-    "mtime": 1785186227.4961004,
-    "ast_hash": "2aabb9a17fe7feda8535a3c9665ccf74",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-insert.mjs": {
-    "mtime": 1785186227.5030591,
-    "ast_hash": "4586a5cf56003c6d6850c86dcbcff1a1",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
-    "mtime": 1785186227.512397,
-    "ast_hash": "fd7048676379e5a08b6cd362995feb58",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-poll.mjs": {
-    "mtime": 1785186227.521585,
-    "ast_hash": "92df8457f9af527a56b3caad1ece2749",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-resume.mjs": {
-    "mtime": 1785186227.5259676,
-    "ast_hash": "b384025a67f58a0aaef839e13becd697",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-server.mjs": {
-    "mtime": 1785186227.5595543,
-    "ast_hash": "00345183d410ec0439a4a126616377eb",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-status.mjs": {
-    "mtime": 1785186227.5739152,
-    "ast_hash": "91f23444add9d4382c6b2821d34f3a35",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-target.mjs": {
-    "mtime": 1785186227.5778592,
-    "ast_hash": "cfd5ce8b98477c659facfac513626e63",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live-wrap.mjs": {
-    "mtime": 1785186227.6137137,
-    "ast_hash": "8c512d24bac93ef44af7133653013d79",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live.mjs": {
-    "mtime": 1785186227.624643,
-    "ast_hash": "670d3948e51cfe6ff625e7667bea995a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/browser-script-parts.mjs": {
-    "mtime": 1785186227.6296668,
-    "ast_hash": "4e3250746d15370c9767b5b229af64b3",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/completion.mjs": {
-    "mtime": 1785186227.633687,
-    "ast_hash": "d79395f246e506da95957262a7fdc2c3",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/event-validation.mjs": {
-    "mtime": 1785186227.6410613,
-    "ast_hash": "44ab1baa614f1e637a66074b50697491",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/generation-preflight.mjs": {
-    "mtime": 1785186227.647674,
-    "ast_hash": "6fb07679e7a317f641424adddb7f9ea7",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/insert-ui.mjs": {
-    "mtime": 1785186227.6624596,
-    "ast_hash": "b4e18bcb9c7490861db4f5e990258ab6",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/manual-apply.mjs": {
-    "mtime": 1785186227.6940331,
-    "ast_hash": "62535d1766d9b23cf8c38064085c2802",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
-    "mtime": 1785186227.7084963,
-    "ast_hash": "74294d4e31d01a8031b647d9e06b535a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
-    "mtime": 1785183798.605277,
-    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/poll-lanes.mjs": {
-    "mtime": 1785186227.715713,
-    "ast_hash": "b0ad0bababe24e2f48dca9da52e31699",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/session-store.mjs": {
-    "mtime": 1785186227.7260923,
-    "ast_hash": "323f480c7dd1ab3d9204250a8273cd69",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/source-lock.mjs": {
-    "mtime": 1785186227.7300367,
-    "ast_hash": "47ca8b80ae1aad649dc2d0b72cfae4ca",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/source-search.mjs": {
-    "mtime": 1785186227.7334266,
-    "ast_hash": "702b93296c877c6c00f5bbd334f1804c",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/svelte-component.mjs": {
-    "mtime": 1785186227.7562277,
-    "ast_hash": "6f50d8c176bf4f4b3c876b41aab37f7e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
-    "mtime": 1785186227.7632952,
-    "ast_hash": "f634400dace26ba26886766b2bdcb61b",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/tanstack-adapter.mjs": {
-    "mtime": 1785186227.7701807,
-    "ast_hash": "00228fb5a750a39974cad6859cea68f0",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/ui-core.mjs": {
-    "mtime": 1785186227.777674,
-    "ast_hash": "3ae462d3b9ffef091d0ca7fb17e61ec0",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/live/vocabulary.mjs": {
-    "mtime": 1785186227.7810102,
-    "ast_hash": "a78112ef4064a02c65b5ea5ff695f182",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/modern-screenshot.umd.js": {
-    "mtime": 1785186227.8242908,
-    "ast_hash": "26a43695bdd999534dea93e5801a8240",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/palette.mjs": {
-    "mtime": 1785186227.8421829,
-    "ast_hash": "3c1f9982828143ac6b8b6789cf26c5bf",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/pin.mjs": {
-    "mtime": 1785186227.8477118,
-    "ast_hash": "0ed33c796fadba4baed5111d69b37ad8",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/serve-question.mjs": {
-    "mtime": 1785186227.8602185,
-    "ast_hash": "05f696eb665d64cfea7c6383d2314020",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/scripts/surface-brief.mjs": {
-    "mtime": 1785186227.864147,
-    "ast_hash": "abcde85be11d56ca98714182f50582d9",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/SKILL.md": {
-    "mtime": 1785186225.2475789,
-    "ast_hash": "eaaa6e1d4850352b97f5e8a0faa4108a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/agents/openai.yaml": {
-    "mtime": 1785186222.418954,
-    "ast_hash": "84ede7a4550e878a5a3accceaf5938c2",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/adapt.md": {
-    "mtime": 1785186222.49038,
-    "ast_hash": "87234bd8bd3dd658da63b626aefc5098",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/adapt.native.md": {
-    "mtime": 1785186222.503255,
-    "ast_hash": "820c0c3d130311e5dcc50df633202448",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/android.md": {
-    "mtime": 1785183798.6240966,
-    "ast_hash": "ef4911df81f96b6556ebc1a7ac9c7ada",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/animate.md": {
-    "mtime": 1785186222.5242357,
-    "ast_hash": "891655d1ab627c43012f8dfb628c746b",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/audit.md": {
-    "mtime": 1785186222.541102,
-    "ast_hash": "b323970e3a3d7a85cf9d764589587e2a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/audit.native.md": {
-    "mtime": 1785186222.559361,
-    "ast_hash": "27b89f2bd84b9ce4d84dff88170eadfe",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/bolder.md": {
-    "mtime": 1785183798.6254275,
-    "ast_hash": "510ab7c177dbd2be4c96b9b4e6a24a02",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/clarify.md": {
-    "mtime": 1785183798.6257515,
-    "ast_hash": "413da6eb075a6c3ed05de43f760f3be8",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/colorize.md": {
-    "mtime": 1785186222.5927553,
-    "ast_hash": "eb37ba5efb47c953eb6a768ab50a8791",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/craft-floor.md": {
-    "mtime": 1785183798.626357,
-    "ast_hash": "7d8a38554ebc4e8eddba33558a091518",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/craft.md": {
-    "mtime": 1785183798.6266,
-    "ast_hash": "9075911f45c58c15a720f8188b2738f4",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/critique.md": {
-    "mtime": 1785186222.6801937,
-    "ast_hash": "d41a22f6eee684403ee764da45ce5df2",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/delight.md": {
-    "mtime": 1785183798.627149,
-    "ast_hash": "4a4fb8494ddda3d2b4687b938209eb32",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/distill.md": {
-    "mtime": 1785186222.7056556,
-    "ast_hash": "cea4a3ab1b62dd585bc734061c5afb1a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/doctor.md": {
-    "mtime": 1785183798.6276932,
-    "ast_hash": "4854a58b10217df9a63dda1b7badaad7",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/document.md": {
-    "mtime": 1785186222.7675261,
-    "ast_hash": "953667c6681461fe8b61b2819cc23eb1",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/extract.md": {
-    "mtime": 1785186222.7761338,
-    "ast_hash": "63aa6bc2d5ddaa38d84aca0ea0faebb3",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/harden.md": {
-    "mtime": 1785186222.8124838,
-    "ast_hash": "a3e1d313b99274c4bc8469f423b78a40",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/hooks.md": {
-    "mtime": 1785186222.8295305,
-    "ast_hash": "e4b213de8d0d629276e051c1ab0461e5",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/init.md": {
-    "mtime": 1785186222.8428156,
-    "ast_hash": "0eb4b670a2136cdb78384d720bbae1be",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/ios.md": {
-    "mtime": 1785183798.6299627,
-    "ast_hash": "acb0cb16ded572058bd0ae5779cf4bf3",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/layout.md": {
-    "mtime": 1785186222.8589516,
-    "ast_hash": "5a8d57cfff8597b650bd8cf3a6803a94",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/live.md": {
-    "mtime": 1785186222.9762166,
-    "ast_hash": "1ea39f2f2db0e991dd86efc843dcbb59",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/new-work.md": {
-    "mtime": 1785183798.63102,
-    "ast_hash": "7e0e47af1185c49be3154c738c0dad9d",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/onboard.md": {
-    "mtime": 1785186223.0185182,
-    "ast_hash": "3ea0a01b61d934f9560867ca55f4215d",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/operate.md": {
-    "mtime": 1785183798.6315966,
-    "ast_hash": "53a569b985749058f7b178a32e0a157f",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/optimize.md": {
-    "mtime": 1785186223.045642,
-    "ast_hash": "33ff711c71084e2ce093609fe86a4eb0",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/overdrive.md": {
-    "mtime": 1785186223.0603428,
-    "ast_hash": "1627e08ef137586f02e552dcb3121ce4",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/polish.md": {
-    "mtime": 1785183798.6325037,
-    "ast_hash": "ed085680138151dcaacb5ebf355dc4c2",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/quieter.md": {
-    "mtime": 1785186223.0791035,
-    "ast_hash": "08a2623254f0cef48247a9677a53521f",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/routing.md": {
-    "mtime": 1785183798.632979,
-    "ast_hash": "4ce068d7f19d4f85c0de635056bfaa6c",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/shape.md": {
-    "mtime": 1785183798.6332095,
-    "ast_hash": "ecf5345d56452d10cd2c9203a7512704",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/typeset.md": {
-    "mtime": 1785186223.0985632,
-    "ast_hash": "1f4f43028303d13cf3e6ea4a24c4dd5a",
-    "semantic_hash": ""
-  },
-  ".agents/skills/impeccable/reference/visualize.md": {
-    "mtime": 1785183798.6336727,
-    "ast_hash": "854cdbe8a566cabe7bf87d420bfa4a83",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/SKILL.md": {
-    "mtime": 1785186227.8917525,
-    "ast_hash": "a520faa1f405a1ddacbf0741240a6519",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/adapt.md": {
-    "mtime": 1785186225.2875452,
-    "ast_hash": "12daf6acbb5ca57aa0c654b058527162",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/adapt.native.md": {
-    "mtime": 1785186225.2969062,
-    "ast_hash": "646bbf358410447db62f9bba35139c96",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/android.md": {
-    "mtime": 1785183798.5604293,
-    "ast_hash": "ef4911df81f96b6556ebc1a7ac9c7ada",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/animate.md": {
-    "mtime": 1785186225.3132637,
-    "ast_hash": "4792ab789b14ca0fc2f64352bc438742",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/audit.md": {
-    "mtime": 1785186225.3301995,
-    "ast_hash": "6fcc08008b801c6f2a1ff2899c3fc68e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/audit.native.md": {
-    "mtime": 1785186225.3451886,
-    "ast_hash": "3f544a2b6fbac037b254bd754dbf3e3c",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/bolder.md": {
-    "mtime": 1785183798.5621088,
-    "ast_hash": "eb91770e460c5bd34e8b140865fbc3c9",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/clarify.md": {
-    "mtime": 1785183798.5623643,
-    "ast_hash": "3f9b6ded202ec0b912807451daaf1d5c",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/colorize.md": {
-    "mtime": 1785186225.367887,
-    "ast_hash": "b3f44387324f095c711a9014e3f6771e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/craft-floor.md": {
-    "mtime": 1785183798.56296,
-    "ast_hash": "ed388ecb5d796b87e30977a49f6a11d4",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/craft.md": {
-    "mtime": 1785183798.5631883,
-    "ast_hash": "9075911f45c58c15a720f8188b2738f4",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/critique.md": {
-    "mtime": 1785186225.4594707,
-    "ast_hash": "d8cd750eb1112d18e8d631007a1ad1e8",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/delight.md": {
-    "mtime": 1785183798.5638738,
-    "ast_hash": "e10166bb38cadd52ee69fb78226e1322",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/distill.md": {
-    "mtime": 1785186225.4780378,
-    "ast_hash": "8f2f0179cf49e2497667b47478b4e67d",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/doctor.md": {
-    "mtime": 1785183798.564673,
-    "ast_hash": "374bd1e2b589d9df0fa9baac17f0ea9e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/document.md": {
-    "mtime": 1785186225.526335,
-    "ast_hash": "804f3239fb089f4986c3ecd542d8e022",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/extract.md": {
-    "mtime": 1785186225.5326052,
-    "ast_hash": "5045a9234c71d1a41333bad3f3120ba5",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/harden.md": {
-    "mtime": 1785186225.5528717,
-    "ast_hash": "5bdfdcb17256f37ab64b616fdc4ca7d1",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/hooks.md": {
-    "mtime": 1785186225.5693252,
-    "ast_hash": "38889a071bcaa98187d1c45be1d2644a",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/init.md": {
-    "mtime": 1785186225.581517,
-    "ast_hash": "f126cbf8cb8e5b38c06dc688bca2496e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/ios.md": {
-    "mtime": 1785183798.5666893,
-    "ast_hash": "acb0cb16ded572058bd0ae5779cf4bf3",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/layout.md": {
-    "mtime": 1785186225.5952055,
-    "ast_hash": "cdefd138849a37bf0f365c109466f305",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/live.md": {
-    "mtime": 1785186225.6814992,
-    "ast_hash": "03f8ca975072fad7deb06c5734a72ee1",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/new-work.md": {
-    "mtime": 1785183798.56786,
-    "ast_hash": "ff0238dd5d85ad15f5d77107e78e5d08",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/onboard.md": {
-    "mtime": 1785186225.724542,
-    "ast_hash": "e2ceba9231a8d0b418bc248ac366da4e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/operate.md": {
-    "mtime": 1785183798.5684788,
-    "ast_hash": "53a569b985749058f7b178a32e0a157f",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/optimize.md": {
-    "mtime": 1785186225.7471638,
-    "ast_hash": "be5f06485cc88f241ccda1172ac9d2d8",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/overdrive.md": {
-    "mtime": 1785186225.7613933,
-    "ast_hash": "8e0efcd627ed4869155ff17370835356",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/polish.md": {
-    "mtime": 1785183798.569609,
-    "ast_hash": "35e3fcfa004821bdb6fdcd301cdab96e",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/quieter.md": {
-    "mtime": 1785186225.777433,
-    "ast_hash": "abe2227c3955681abff7ebffbc97f5d1",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/routing.md": {
-    "mtime": 1785183798.570425,
-    "ast_hash": "09e3b2453b824630ec33e2fc553cacd8",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/shape.md": {
-    "mtime": 1785183798.5708122,
-    "ast_hash": "ecf5345d56452d10cd2c9203a7512704",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/typeset.md": {
-    "mtime": 1785186225.8056235,
-    "ast_hash": "ca0601d9d070e2ef6c38b77dbd3ae7a4",
-    "semantic_hash": ""
-  },
-  ".claude/skills/impeccable/reference/visualize.md": {
-    "mtime": 1785183798.5715022,
-    "ast_hash": "854cdbe8a566cabe7bf87d420bfa4a83",
-    "semantic_hash": ""
-  },
-  "DESIGN.json": {
-    "mtime": 1785186633.0922015,
-    "ast_hash": "5c505b93845498f0f37742b6848d74b3",
-    "semantic_hash": ""
-  },
   "src/components/RankEmblem.astro": {
-    "mtime": 1785187211.6744711,
+    "mtime": 1785185699.6455586,
     "ast_hash": "cba43d9f36890871eba2326dc3cf97ca",
     "semantic_hash": ""
   },
+  "src/data/adventures.test.ts": {
+    "mtime": 1785189345.320345,
+    "ast_hash": "4cb70a5ab94215d38033a4550d614e77",
+    "semantic_hash": ""
+  },
   "src/lib/official-image.ts": {
-    "mtime": 1785187211.6779828,
+    "mtime": 1785185503.1612008,
     "ast_hash": "f429f94ad16418948ace00d7d6e8c3c5",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_AOL_Bobcat.webp": {
-    "mtime": 1785187211.5585644,
+    "mtime": 1785184893.9984488,
     "ast_hash": "42da2492839b7ce412678c9d07e382b4",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_AOL_Duty_to_God.webp": {
-    "mtime": 1785187211.5590734,
+    "mtime": 1785184894.078852,
     "ast_hash": "af46ff5e1e7be9b18d091b9d708452af",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_AOL_Outdoor_Adventurer.webp": {
-    "mtime": 1785187211.5595493,
+    "mtime": 1785184894.15223,
     "ast_hash": "8f7b4a4eca47708da89e21204dd7807b",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Archery.webp": {
-    "mtime": 1785187211.5599048,
+    "mtime": 1785184894.7415762,
     "ast_hash": "b5790ffa891950d4004c5e406ea2897f",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_BB_Guns.webp": {
-    "mtime": 1785187211.5602732,
+    "mtime": 1785184894.8438709,
     "ast_hash": "00cbbbcf991633bc2538cbf9371fa83b",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Champions_of_Nature.webp": {
-    "mtime": 1785187211.5607064,
+    "mtime": 1785184894.1820056,
     "ast_hash": "3e15b7ca7ac50e15a3861423b68a5fec",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Citizenship.webp": {
-    "mtime": 1785187211.5610788,
+    "mtime": 1785184894.100596,
     "ast_hash": "d16c166367db1cf2e46cf8c9f426e028",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Cycling.webp": {
-    "mtime": 1785187211.5614276,
+    "mtime": 1785184894.2068703,
     "ast_hash": "b448c8b70bdd4eeac514cc96e9b63e38",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Engineering.webp": {
-    "mtime": 1785187211.5617712,
+    "mtime": 1785184894.2684205,
     "ast_hash": "580714a33db64fced2d3ce68f840c45b",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Estimations.webp": {
-    "mtime": 1785187211.5621297,
+    "mtime": 1785184894.3315303,
     "ast_hash": "984f720ad38b987dba72d25c496ad123",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_First_Aid.webp": {
-    "mtime": 1785187211.5624745,
+    "mtime": 1785184894.0582163,
     "ast_hash": "d1ef5c1623835389077e1692e322207b",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Fishing.webp": {
-    "mtime": 1785187211.5628452,
+    "mtime": 1785184894.353793,
     "ast_hash": "bf73f76d4bf0be79ca4aaf3993717b6e",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_High_Tech_Outdoors.webp": {
-    "mtime": 1785187211.5632472,
+    "mtime": 1785184894.3796577,
     "ast_hash": "e8f4a28a9b78c2f949b0f3306b6956a6",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Into_the_Wild.webp": {
-    "mtime": 1785187211.5636866,
+    "mtime": 1785184894.4266713,
     "ast_hash": "a06dada10ff694fdf37d1ccc193e1530",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Into_the_Woods.webp": {
-    "mtime": 1785187211.5641594,
+    "mtime": 1785184894.4776328,
     "ast_hash": "135ef2cdab092ea815a2aa66b3fa51bd",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Knife_Safety.webp": {
-    "mtime": 1785187211.5646188,
+    "mtime": 1785184894.5060642,
     "ast_hash": "665ff87788b695ec5ac75f31de49e644",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Paddle_Craft.webp": {
-    "mtime": 1785187211.5649943,
+    "mtime": 1785184894.5630777,
     "ast_hash": "c2418101239b7cfe86e50540f5b9f012",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Personal_Fitness.webp": {
-    "mtime": 1785187211.5653522,
+    "mtime": 1785184894.033062,
     "ast_hash": "4c95264138f51cdc053cd098904f5a88",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Race_Time.webp": {
-    "mtime": 1785187211.5656974,
+    "mtime": 1785184894.59912,
     "ast_hash": "3e7b117c8e51221052ef88cb9b1bc88a",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Slingshot.webp": {
-    "mtime": 1785187211.5662277,
+    "mtime": 1785184894.8159842,
     "ast_hash": "86fd3d75a6d9fef545d7f58bb977493f",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Summertime_Fun.webp": {
-    "mtime": 1785187211.5666738,
+    "mtime": 1785184894.6694238,
     "ast_hash": "2fbe1f2d8a6a7709e637e96717ed050b",
     "semantic_hash": ""
   },
   "assets/offical/arrow-of-light_Swimming.webp": {
-    "mtime": 1785187211.5671213,
+    "mtime": 1785184894.7131703,
     "ast_hash": "8230316c86b1b117c0c16e76ab36a1c8",
     "semantic_hash": ""
   },
   "assets/offical/bear_A_Bear_Goes_Fishing.webp": {
-    "mtime": 1785187211.5675151,
+    "mtime": 1785184892.169684,
     "ast_hash": "321768c59f98ffbe9dbdee72f907c3d9",
     "semantic_hash": ""
   },
   "assets/offical/bear_Archery.webp": {
-    "mtime": 1785187211.5679703,
+    "mtime": 1785184892.8362691,
     "ast_hash": "a38a14aeeb0f8b24c50c8a8168524c00",
     "semantic_hash": ""
   },
   "assets/offical/bear_BB_Guns.webp": {
-    "mtime": 1785187211.568353,
+    "mtime": 1785184893.0050802,
     "ast_hash": "82cffd3a971b0dd23a407f734d2824f0",
     "semantic_hash": ""
   },
   "assets/offical/bear_Balancing_Bears.webp": {
-    "mtime": 1785187211.5687425,
+    "mtime": 1785184892.194743,
     "ast_hash": "3a5cec9a7dab7ef3a3496bfc4efaf0ff",
     "semantic_hash": ""
   },
   "assets/offical/bear_Baloo_the_Builder.webp": {
-    "mtime": 1785187211.56922,
+    "mtime": 1785184892.2186096,
     "ast_hash": "8afae9731f64220338a040fb2da4dc11",
     "semantic_hash": ""
   },
   "assets/offical/bear_Bear_Bobcat.webp": {
-    "mtime": 1785187211.5696137,
+    "mtime": 1785184891.9775069,
     "ast_hash": "9734c175301d9b21b6692828f739e6dc",
     "semantic_hash": ""
   },
   "assets/offical/bear_Bear_Habitat.webp": {
-    "mtime": 1785187211.569916,
+    "mtime": 1785184892.0555625,
     "ast_hash": "6cc089f3d59836aa871d789461512d79",
     "semantic_hash": ""
   },
   "assets/offical/bear_Bear_Strong.webp": {
-    "mtime": 1785187211.5702412,
+    "mtime": 1785184892.0044107,
     "ast_hash": "7f6c29c6172baa1d58c7d9fb0cc6801e",
     "semantic_hash": ""
   },
   "assets/offical/bear_Bears_Afloat.webp": {
-    "mtime": 1785187211.5705953,
+    "mtime": 1785184892.2464795,
     "ast_hash": "7e4e5c587a86fbba08a93c97a8cf6c26",
     "semantic_hash": ""
   },
   "assets/offical/bear_Bears_on_Bikes.webp": {
-    "mtime": 1785187211.5709527,
+    "mtime": 1785184892.2743678,
     "ast_hash": "b1cc978b6014fa2a3327b4ffad2a9ea9",
     "semantic_hash": ""
   },
   "assets/offical/bear_Champions_of_Nature.webp": {
-    "mtime": 1785187211.571461,
+    "mtime": 1785184892.3266132,
     "ast_hash": "f53345ebd4eb6b03f99e54d1e5efa1b4",
     "semantic_hash": ""
   },
   "assets/offical/bear_Chef_Tech.webp": {
-    "mtime": 1785187211.5719004,
+    "mtime": 1785184892.3505335,
     "ast_hash": "c8428c50a53d913c95c6389bae1b44d5",
     "semantic_hash": ""
   },
   "assets/offical/bear_Critter_Care.webp": {
-    "mtime": 1785187211.572449,
+    "mtime": 1785184892.3782952,
     "ast_hash": "bb4eb928e625813c1f89105493b06697",
     "semantic_hash": ""
   },
   "assets/offical/bear_Fellowship.webp": {
-    "mtime": 1785187211.5728579,
+    "mtime": 1785184892.1441004,
     "ast_hash": "e9260458845c79f5a671b478619bf534",
     "semantic_hash": ""
   },
   "assets/offical/bear_Forensics.webp": {
-    "mtime": 1785187211.5732126,
+    "mtime": 1785184892.4188066,
     "ast_hash": "3abe75175a6700365e682f71d72be851",
     "semantic_hash": ""
   },
   "assets/offical/bear_Lets_Camp.webp": {
-    "mtime": 1785187211.5736408,
+    "mtime": 1785184892.4491735,
     "ast_hash": "d386b7e3bb7a5949750ce12870ba7607",
     "semantic_hash": ""
   },
   "assets/offical/bear_Marble_Madness.webp": {
-    "mtime": 1785187211.5742142,
+    "mtime": 1785184892.4772403,
     "ast_hash": "febe81faefa6aac57e54c99a7c82ccf3",
     "semantic_hash": ""
   },
   "assets/offical/bear_Paws_For_Action.webp": {
-    "mtime": 1785187211.5745747,
+    "mtime": 1785184892.1016912,
     "ast_hash": "e15135d21a53efa3cd9d8d476ed6a69f",
     "semantic_hash": ""
   },
   "assets/offical/bear_Race_Time.webp": {
-    "mtime": 1785187211.5750926,
+    "mtime": 1785184892.4992485,
     "ast_hash": "2f2194194aed713ab3f524b1ee90bf2a",
     "semantic_hash": ""
   },
   "assets/offical/bear_Roaring_Laughter.webp": {
-    "mtime": 1785187211.5755124,
+    "mtime": 1785184892.5768664,
     "ast_hash": "ea66df27ab44a30557b45f47ce615d4a",
     "semantic_hash": ""
   },
   "assets/offical/bear_Salmon_Run.webp": {
-    "mtime": 1785187211.5758939,
+    "mtime": 1785184892.6052263,
     "ast_hash": "e2075e4b70709d661fa289c826965e8c",
     "semantic_hash": ""
   },
   "assets/offical/bear_Slingshot.webp": {
-    "mtime": 1785187211.5764244,
+    "mtime": 1785184892.9708803,
     "ast_hash": "3dde266393a15ce81d69963f878bcca7",
     "semantic_hash": ""
   },
   "assets/offical/bear_Standing_Tall.webp": {
-    "mtime": 1785187211.5769446,
+    "mtime": 1785184892.0325074,
     "ast_hash": "1f490c0f1d493fe7e72ce8b7c975b9d4",
     "semantic_hash": ""
   },
   "assets/offical/bear_Summertime_Fun.webp": {
-    "mtime": 1785187211.5774531,
+    "mtime": 1785184892.6295223,
     "ast_hash": "abdd1ec7b2d32e9a6bf801ddef1f03bb",
     "semantic_hash": ""
   },
   "assets/offical/bear_Super_Science.webp": {
-    "mtime": 1785187211.577874,
+    "mtime": 1785184892.6981575,
     "ast_hash": "53cd1838a068b0d8bc4b8cbb88f83852",
     "semantic_hash": ""
   },
   "assets/offical/bear_Whittling.webp": {
-    "mtime": 1785187211.5782707,
+    "mtime": 1785184892.8014224,
     "ast_hash": "46122ef7e12ce7aae50c92dc2aff0188",
     "semantic_hash": ""
   },
   "assets/offical/lion_Archery.webp": {
-    "mtime": 1785187211.5786338,
+    "mtime": 1785184895.7207556,
     "ast_hash": "37adaf9a650d959d258819ae1e2b8dd6",
     "semantic_hash": ""
   },
   "assets/offical/lion_Build_It_Up_Knock_It_Down.webp": {
-    "mtime": 1785187211.5791,
+    "mtime": 1785184895.0717087,
     "ast_hash": "b6cbf7e257110415dd40071e3edf0dee",
     "semantic_hash": ""
   },
   "assets/offical/lion_Champions_of_Nature.webp": {
-    "mtime": 1785187211.5795643,
+    "mtime": 1785184895.0944235,
     "ast_hash": "de49f0f941d9a34164935d6f26e994f0",
     "semantic_hash": ""
   },
   "assets/offical/lion_Count_On_Me.webp": {
-    "mtime": 1785187211.5800378,
+    "mtime": 1785184895.1380064,
     "ast_hash": "a6a98c6a3b08639279ddf0c0041428b8",
     "semantic_hash": ""
   },
   "assets/offical/lion_Everyday_Tech.webp": {
-    "mtime": 1785187211.580423,
+    "mtime": 1785184895.1926377,
     "ast_hash": "62d3fa22070736005099e08794e4ae73",
     "semantic_hash": ""
   },
   "assets/offical/lion_Fun_On_The_Run.webp": {
-    "mtime": 1785187211.5808172,
+    "mtime": 1785184894.9060903,
     "ast_hash": "67db76433655285dc371681ea2b496e7",
     "semantic_hash": ""
   },
   "assets/offical/lion_Gizmos_and_Gadgets.webp": {
-    "mtime": 1785187211.5812628,
+    "mtime": 1785184895.2365704,
     "ast_hash": "b16a3b989f529a6ca7b9200f8fad9d0f",
     "semantic_hash": ""
   },
   "assets/offical/lion_Go_Fish.webp": {
-    "mtime": 1785187211.5816512,
+    "mtime": 1785184895.2648475,
     "ast_hash": "9fe9b166b8bb335a6bdbe9ccd928f985",
     "semantic_hash": ""
   },
   "assets/offical/lion_Ill_Do_It_Myself.webp": {
-    "mtime": 1785187211.5820553,
+    "mtime": 1785184895.388809,
     "ast_hash": "f5e1d13c02055a2e421443ccd8044fb4",
     "semantic_hash": ""
   },
   "assets/offical/lion_King_of_The_Jungle.webp": {
-    "mtime": 1785187211.5826278,
+    "mtime": 1785184895.021031,
     "ast_hash": "4feeefe5e544bc7b4dcc1025a540b87e",
     "semantic_hash": ""
   },
   "assets/offical/lion_Lets_Camp.webp": {
-    "mtime": 1785187211.5830734,
+    "mtime": 1785184895.499307,
     "ast_hash": "de32e0a08b9e32215a1c97c9845572cd",
     "semantic_hash": ""
   },
   "assets/offical/lion_Lion_Bobcat.webp": {
-    "mtime": 1785187211.583681,
+    "mtime": 1785184894.8779397,
     "ast_hash": "f19d31d8cdce6746c75474f8978d5df2",
     "semantic_hash": ""
   },
   "assets/offical/lion_Lions_Pride.webp": {
-    "mtime": 1785187211.5843668,
+    "mtime": 1785184894.967157,
     "ast_hash": "c2cd01b1e8277530b505107d792e2e8b",
     "semantic_hash": ""
   },
   "assets/offical/lion_Lions_Roar.webp": {
-    "mtime": 1785187211.584742,
+    "mtime": 1785184894.940453,
     "ast_hash": "1461a0c7b27b5f69b818bd07c901ceb9",
     "semantic_hash": ""
   },
   "assets/offical/lion_Mountain_Lion.webp": {
-    "mtime": 1785187211.5851026,
+    "mtime": 1785184895.0453377,
     "ast_hash": "2165bb2a583a933fe2d7510e4c8b4f57",
     "semantic_hash": ""
   },
   "assets/offical/lion_On_Your_Mark.webp": {
-    "mtime": 1785187211.5854533,
+    "mtime": 1785184895.573988,
     "ast_hash": "c417cb6d6d9806ac92e9356765979d20",
     "semantic_hash": ""
   },
   "assets/offical/lion_On_a_Roll.webp": {
-    "mtime": 1785187211.586457,
+    "mtime": 1785184895.5405192,
     "ast_hash": "7ac028422b4d7a1ce362eb93c1172cca",
     "semantic_hash": ""
   },
   "assets/offical/lion_Pick_My_Path.webp": {
-    "mtime": 1785187211.5868983,
+    "mtime": 1785184895.598888,
     "ast_hash": "32bcbb80a061ccc3550183ed8213f49a",
     "semantic_hash": ""
   },
   "assets/offical/lion_Race_Time.webp": {
-    "mtime": 1785187211.5872204,
+    "mtime": 1785184895.6211967,
     "ast_hash": "97230c66d09f88645ae638f9e2b9694c",
     "semantic_hash": ""
   },
   "assets/offical/lion_Ready_Set_Grow.webp": {
-    "mtime": 1785187211.5874977,
+    "mtime": 1785184895.649847,
     "ast_hash": "206ec29bf171d96b23416fe49f38a74a",
     "semantic_hash": ""
   },
   "assets/offical/lion_Slingshot.webp": {
-    "mtime": 1785187211.5878582,
+    "mtime": 1785184895.765443,
     "ast_hash": "21fae19e6fd445666b6e0c64b0651471",
     "semantic_hash": ""
   },
   "assets/offical/lion_Time_to_Swim.webp": {
-    "mtime": 1785187211.588266,
+    "mtime": 1785184895.693818,
     "ast_hash": "2ce1b0993adbb244c1208d75abb8fa44",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Archery.webp": {
-    "mtime": 1785187211.588902,
+    "mtime": 1785184890.9521055,
     "ast_hash": "c6d28a03a78b3d89cbb7f387a7dd59ec",
     "semantic_hash": ""
   },
   "assets/offical/tiger_BB_Guns.webp": {
-    "mtime": 1785187211.5893517,
+    "mtime": 1785184891.0318766,
     "ast_hash": "5768353675eb16de51ce3b64bda1a723",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Champions_of_Nature.webp": {
-    "mtime": 1785187211.5898683,
+    "mtime": 1785184890.2394993,
     "ast_hash": "efd19733df0912f42c439887cd8aabe2",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Curiosity_Intrigue_and_Magical_Mysteries.webp": {
-    "mtime": 1785187211.5903032,
+    "mtime": 1785184890.286246,
     "ast_hash": "cd55b4ed12ee579c18b019a2ecbf3ffb",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Designed_by_Tiger.webp": {
-    "mtime": 1785187211.5910285,
+    "mtime": 1785184890.3209186,
     "ast_hash": "84f653ec27a15ba72b1fdec8325c9741",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Fish_On.webp": {
-    "mtime": 1785187211.591399,
+    "mtime": 1785184890.354933,
     "ast_hash": "2709dabc229c8226999c07dd2b270db2",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Floats_and_Boats.webp": {
-    "mtime": 1785187211.591747,
+    "mtime": 1785184890.3875449,
     "ast_hash": "552d78a6866cbbe48b29bcbdd593dc18",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Good_Knights.webp": {
-    "mtime": 1785187211.5920632,
+    "mtime": 1785184890.4357889,
     "ast_hash": "0e4f5f59e91eb945673294307be818ac",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Lets_Camp.webp": {
-    "mtime": 1785187211.5925393,
+    "mtime": 1785184890.488167,
     "ast_hash": "243f3879e102dd419742b972e57bfbb5",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Race_Time.webp": {
-    "mtime": 1785187211.5928862,
+    "mtime": 1785184890.5246544,
     "ast_hash": "6af774ade504d4d2a11925af064096dc",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Rolling_Tigers.webp": {
-    "mtime": 1785187211.593219,
+    "mtime": 1785184890.5646105,
     "ast_hash": "e3913880bd398f2dd99c2b74b6b0324c",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Sky_is_the_Limit.webp": {
-    "mtime": 1785187211.5939062,
+    "mtime": 1785184890.6596746,
     "ast_hash": "208d2790f65030fbae8888bb32769ccf",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Slingshot.webp": {
-    "mtime": 1785187211.5944755,
+    "mtime": 1785184890.998723,
     "ast_hash": "f8e8a88adb23eb10f0696c915bcfb784",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Stories_in_Shapes.webp": {
-    "mtime": 1785187211.5952551,
+    "mtime": 1785184890.7380443,
     "ast_hash": "461f9bdaf48e898b3a0ebb770342ae3d",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Summertime_Fun.webp": {
-    "mtime": 1785187211.5956843,
+    "mtime": 1785184890.7668772,
     "ast_hash": "109c1026a75165c77d8519959be6d21d",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Team_Tiger.webp": {
-    "mtime": 1785187211.5959916,
+    "mtime": 1785184890.1439881,
     "ast_hash": "f231fdd6512fe1bbb73d927af3ac434e",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tech_All_Around.webp": {
-    "mtime": 1785187211.596393,
+    "mtime": 1785184890.8104794,
     "ast_hash": "1af8f83dd141d584bcf29a6d092780a3",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tiger-Bobcat.webp": {
-    "mtime": 1785187211.596842,
+    "mtime": 1785184890.036704,
     "ast_hash": "3a129501af286a2f0fb44e69b8c90877",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tiger_Bites.webp": {
-    "mtime": 1785187211.597318,
+    "mtime": 1785184890.0617278,
     "ast_hash": "02e6a88ec20b9874521b131430511952",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tiger_Circles.webp": {
-    "mtime": 1785187211.5977335,
+    "mtime": 1785184890.1120603,
     "ast_hash": "45ed269143faaf9f86e7daf72e8e69bf",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tiger_Safe_and_Smart.webp": {
-    "mtime": 1785187211.598129,
+    "mtime": 1785184890.5986438,
     "ast_hash": "d3ea350ce9f4f57cfac7ebdd893ecf9d",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tiger_rrrrific.webp": {
-    "mtime": 1785187211.5985231,
+    "mtime": 1785184890.8793097,
     "ast_hash": "38304e8bcbf2b11e4158349c9ce40af9",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tigers-Roar.webp": {
-    "mtime": 1785187211.5989494,
+    "mtime": 1785184890.0875845,
     "ast_hash": "e8ee3a7d71b87574332d631e0677b0a3",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tigers_Tag.webp": {
-    "mtime": 1785187211.5997548,
+    "mtime": 1785184890.8492167,
     "ast_hash": "29b8fa6b53834d51d6336bb1ee757cdb",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tigers_in_the_Water.webp": {
-    "mtime": 1785187211.6015968,
+    "mtime": 1785184890.9048967,
     "ast_hash": "0a6867d13006dd01569058169e67a3af",
     "semantic_hash": ""
   },
   "assets/offical/tiger_Tigers_in_the_Wild.webp": {
-    "mtime": 1785187211.6034734,
+    "mtime": 1785184890.1935556,
     "ast_hash": "361f35c2053484675e0687f9c828133f",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Aquanaut.webp": {
-    "mtime": 1785187211.604412,
+    "mtime": 1785184893.3246014,
     "ast_hash": "edb380065a98936730632c618cb6ba0a",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Archery.webp": {
-    "mtime": 1785187211.6050858,
+    "mtime": 1785184893.8734853,
     "ast_hash": "55335eaa82c47bcf83fafc684e47bb98",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Art_Explosion.webp": {
-    "mtime": 1785187211.609425,
+    "mtime": 1785184893.3502555,
     "ast_hash": "d2487ca7bc887c8ed75e66caf87d447f",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Aware_and_Care.webp": {
-    "mtime": 1785187211.610047,
+    "mtime": 1785184893.3746793,
     "ast_hash": "23f6fc0e094c78f1463fd6d4aba532c7",
     "semantic_hash": ""
   },
   "assets/offical/webelos_BB_Guns.webp": {
-    "mtime": 1785187211.610514,
+    "mtime": 1785184893.9660861,
     "ast_hash": "028c93f66d79fc5e2dc841d6ba3d739d",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Build_It.webp": {
-    "mtime": 1785187211.6115077,
+    "mtime": 1785184893.4014375,
     "ast_hash": "50b003dc7913fc178d0fa7fa367dbcf1",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Catch_the_Big_One.webp": {
-    "mtime": 1785187211.6119466,
+    "mtime": 1785184893.4382772,
     "ast_hash": "22b96c3cb2129bc0292db459a6872ce1",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Champions_of_Nature.webp": {
-    "mtime": 1785187211.6123748,
+    "mtime": 1785184893.4955513,
     "ast_hash": "65870bc7c8fcfec2da8609fdc762b668",
     "semantic_hash": ""
   },
   "assets/offical/webelos_ChefsKnife.webp": {
-    "mtime": 1785187211.6127262,
+    "mtime": 1785184893.5411813,
     "ast_hash": "65a21707080c4f0cf5d8d38687dc85d9",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Earth_Rocks.webp": {
-    "mtime": 1785187211.613423,
+    "mtime": 1785184893.573859,
     "ast_hash": "cb5ab76e81aba295c24f01944915ba51",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Lets_Camp.webp": {
-    "mtime": 1785187211.6139064,
+    "mtime": 1785184893.6016314,
     "ast_hash": "e8e00f2a003f1fbdee3884bd45aeb23c",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Math_on_the_Trail.webp": {
-    "mtime": 1785187211.6142833,
+    "mtime": 1785184893.6276004,
     "ast_hash": "b1c38790df214bbc3b24d0a1dfe43eb2",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Modular_Design.webp": {
-    "mtime": 1785187211.6148062,
+    "mtime": 1785184893.6575274,
     "ast_hash": "5e3845b586a6c6043e10e9128e666bfc",
     "semantic_hash": ""
   },
   "assets/offical/webelos_My_Community.webp": {
-    "mtime": 1785187211.6151786,
+    "mtime": 1785184893.2227106,
     "ast_hash": "9ee7ff0a9482554c987c1ee02501290c",
     "semantic_hash": ""
   },
   "assets/offical/webelos_My_Family.webp": {
-    "mtime": 1785187211.615646,
+    "mtime": 1785184893.1986372,
     "ast_hash": "ad81a63a193f3012b1fc6b2260e1aba9",
     "semantic_hash": ""
   },
   "assets/offical/webelos_My_Safety.webp": {
-    "mtime": 1785187211.616016,
+    "mtime": 1785184893.1691732,
     "ast_hash": "f99b22b743cff9bfaba89caee42ecbeb",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Paddle_Onward.webp": {
-    "mtime": 1785187211.616458,
+    "mtime": 1785184893.6896777,
     "ast_hash": "70bb74c1adb6816b5bbb5abf3eca7291",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Pedal_Away.webp": {
-    "mtime": 1785187211.6168263,
+    "mtime": 1785184893.742038,
     "ast_hash": "e677473452d073e33555cb55cac71a57",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Race_Time.webp": {
-    "mtime": 1785187211.6171713,
+    "mtime": 1785184893.7645967,
     "ast_hash": "012bfe5dfe6256cf737dc33fa1327137",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Slingshot.webp": {
-    "mtime": 1785187211.6175263,
+    "mtime": 1785184893.9341187,
     "ast_hash": "e31ab0b72e498270aded4b854ad34041",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Stronger_Faster_Higher.webp": {
-    "mtime": 1785187211.6178355,
+    "mtime": 1785184893.122853,
     "ast_hash": "58db3a1da2cd306ab8513304c21883f2",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Summertime_Fun.webp": {
-    "mtime": 1785187211.61821,
+    "mtime": 1785184893.797927,
     "ast_hash": "2de3f05772e4d1da34bc6b4965eecf9e",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Tech_on_the_Trail.webp": {
-    "mtime": 1785187211.618845,
+    "mtime": 1785184893.8283534,
     "ast_hash": "a4c2daa98c9aeaf9c5440cdea855c246",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Webelos_Bobcat_edit.webp": {
-    "mtime": 1785187211.6191745,
+    "mtime": 1785184893.0688446,
     "ast_hash": "06a02d0d3bc5d3e2cb6378f67176f044",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Webelos_Walkabout.webp": {
-    "mtime": 1785187211.619495,
+    "mtime": 1785184893.2909236,
     "ast_hash": "32dd948fd13551b280250bd450298961",
     "semantic_hash": ""
   },
   "assets/offical/webelos_Yo_Yo.webp": {
-    "mtime": 1785187211.6198227,
+    "mtime": 1785184893.8543417,
     "ast_hash": "594e360853ff2578d27a3ed1433e1c0e",
     "semantic_hash": ""
   },
   "assets/offical/wolf_A_Wolf_Goes_Fishing.webp": {
-    "mtime": 1785187211.6201255,
+    "mtime": 1785184891.245555,
     "ast_hash": "a1012923bdee71ec7fb89e9e3e9b15b8",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Adventures_in_Coins.webp": {
-    "mtime": 1785187211.6205454,
+    "mtime": 1785184891.2699506,
     "ast_hash": "b9aad469d0cc08bf19701c3406378f11",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Air_of_the_Wolf.webp": {
-    "mtime": 1785187211.6209428,
+    "mtime": 1785184891.2903159,
     "ast_hash": "23e715ead9358af0a847055fdc0134c7",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Archery.webp": {
-    "mtime": 1785187211.621347,
+    "mtime": 1785184891.87169,
     "ast_hash": "fa7497cd047b8f425a3b06a03467caac",
     "semantic_hash": ""
   },
   "assets/offical/wolf_BB_Guns.webp": {
-    "mtime": 1785187211.6216452,
+    "mtime": 1785184891.9477468,
     "ast_hash": "4076b4f155fddee27a2536f4686cee71",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Champions_of_Nature.webp": {
-    "mtime": 1785187211.6220474,
+    "mtime": 1785184891.3236036,
     "ast_hash": "f0f04e7df68143f635e16f3ac79e6da8",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Code_of_the_Wolf.webp": {
-    "mtime": 1785187211.6226919,
+    "mtime": 1785184891.3799617,
     "ast_hash": "a1c134e9c88e42cdb4c2636ddfb4455f",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Computing_Wolves.webp": {
-    "mtime": 1785187211.6231163,
+    "mtime": 1785184891.4215631,
     "ast_hash": "aa4a182118835083b7eda053e88c293d",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Council_Fire.webp": {
-    "mtime": 1785187211.623652,
+    "mtime": 1785184891.1781108,
     "ast_hash": "a47c69c63ccdf9076e0a7efd39b1ae3c",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Cubs_Who_Care.webp": {
-    "mtime": 1785187211.6241364,
+    "mtime": 1785184891.4530718,
     "ast_hash": "6a634f310a265e901b1b7fc80fc14be2",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Digging_Into_the_Past.webp": {
-    "mtime": 1785187211.6245558,
+    "mtime": 1785184891.4820416,
     "ast_hash": "56d86a7bedccef013e2364fb1021e407",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Finding_Your_Way.webp": {
-    "mtime": 1785187211.6250157,
+    "mtime": 1785184891.5241215,
     "ast_hash": "6802c1f64c26bc9614857ea122f3a796",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Footsteps.webp": {
-    "mtime": 1785187211.6255827,
+    "mtime": 1785184891.152614,
     "ast_hash": "3a58b655c85f3a415dd5f9541f445923",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Germs_Alive.webp": {
-    "mtime": 1785187211.626177,
+    "mtime": 1785184891.5865533,
     "ast_hash": "c110c94f23dae17924288bc276ee7eee",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Lets_Camp.webp": {
-    "mtime": 1785187211.6265724,
+    "mtime": 1785184891.6385303,
     "ast_hash": "ece95af2aaad17bdfbd65eb081a0e3d8",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Paws_For_Water.webp": {
-    "mtime": 1785187211.627059,
+    "mtime": 1785184891.6681168,
     "ast_hash": "20b06dea0f67cc2b4fc9424b9e12d45a",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Paws_of_Skill.webp": {
-    "mtime": 1785187211.627523,
+    "mtime": 1785184891.6966696,
     "ast_hash": "d319b1ddedfd5889d55a970603926411",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Paws_on_the_Path.webp": {
-    "mtime": 1785187211.627855,
+    "mtime": 1785184891.2051942,
     "ast_hash": "b55a65bd9b4796c71b8b81f38351530c",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Pedal_With_the_Pack.webp": {
-    "mtime": 1785187211.628222,
+    "mtime": 1785184891.7527573,
     "ast_hash": "59f192fd5f4b093de2af9bb2f97359be",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Race_Time.webp": {
-    "mtime": 1785187211.628582,
+    "mtime": 1785184891.7863622,
     "ast_hash": "931a52a8f7fb6d21614e479b79930443",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Running_With_the_Pack.webp": {
-    "mtime": 1785187211.6290402,
+    "mtime": 1785184891.08229,
     "ast_hash": "5751b25a76dc3410bf74a79d5ca7e874",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Safety_in_Numbers.webp": {
-    "mtime": 1785187211.6295235,
+    "mtime": 1785184891.1294858,
     "ast_hash": "5868ab3bce4318dd3542e1fe649d412d",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Slingshot.webp": {
-    "mtime": 1785187211.6298258,
+    "mtime": 1785184891.921252,
     "ast_hash": "45a9d1dfc15e6dae17ce6b07718fce5d",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Spirit_of_the_Water.webp": {
-    "mtime": 1785187211.6301315,
+    "mtime": 1785184891.8173027,
     "ast_hash": "00f4f55118d0f64b093303f42da9132a",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Summertime_Fun.webp": {
-    "mtime": 1785187211.6306581,
+    "mtime": 1785184891.8436317,
     "ast_hash": "bc605e90e59213b6df31b579c01c796e",
     "semantic_hash": ""
   },
   "assets/offical/wolf_Wolf_Bobcat.webp": {
-    "mtime": 1785187211.6311154,
+    "mtime": 1785184891.0578816,
     "ast_hash": "09b3e6ebf64543caf8a047dce64f81e6",
     "semantic_hash": ""
   }

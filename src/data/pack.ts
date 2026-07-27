@@ -48,7 +48,8 @@ export const pack = {
     // with their my.scouting account to see their own Scout.
     scoutbook: 'https://advancements.scouting.org/',
     // ponytail: no `payment` link — there are no pack or council dues to collect.
-    parentHandbook: null,
+    // ponytail: no `parentHandbook` — the pack has none and will not have one. Uniform and
+    // handbook questions go through /contact/; BSA publications cannot be reproduced here anyway.
   },
   // Pack 170 charges no pack dues and the council charges none either. The only cost to join is
   // Scouting America's national registration fee, paid at online checkout.
