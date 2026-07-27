@@ -1,0 +1,19 @@
+# Dummy, non-secret values for local end-to-end testing only (see wrangler.e2e.jsonc
+# and playwright.config.ts). Safe to commit: wrangler dev always auto-loads .dev.vars
+# for every local run regardless of --config, which would silently override these
+# with the real developer values in .dev.vars unless this file is passed explicitly
+# via --env-file to take precedence instead.
+ENVIRONMENT=development
+PUBLIC_SITE_ORIGIN=http://localhost:8790
+# Deliberately a different hostname than PUBLIC_SITE_ORIGIN (admin.localtest.me
+# resolves to 127.0.0.1/::1, same as localhost): worker/index.ts's admin-hostname
+# check (`url.hostname === adminHostname`) has no path condition attached, so if
+# this shared the "localhost" hostname, every public page - not just /admin -
+# would match it and get served the admin shell instead. /admin itself still
+# works at plain localhost via the separate pathname check further down.
+ADMIN_ORIGIN=http://admin.localtest.me:8790
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+TURNSTILE_EXPECTED_HOSTNAMES=localhost
+ACCESS_TEAM_DOMAIN=https://test.cloudflareaccess.com
+ACCESS_AUD=test-audience
