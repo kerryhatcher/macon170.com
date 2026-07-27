@@ -20,7 +20,7 @@ Research compiled for the Pack 170 (Macon, GA) website project. Covers program s
   Source: [Family Scouting FAQ (PDF)](https://www.scouting.org/wp-content/uploads/2019/02/UPDATED-Family-Scouting-FAQ-2-11-191.pdf), [onscouting.org — family dens](https://onscouting.org/2023/06/22/cub-scout-family-dens-what-they-are-and-how-they-could-work-for-your-pack/), [Aaron on Scouting — BSA welcomes girls (2017)](https://blog.scoutingmagazine.org/2017/10/11/bsa-welcomes-girls/), [Wikipedia — Cub Scouts (Scouting America)](https://en.wikipedia.org/wiki/Cub_Scouts_(Scouting_America))
 - **Adult leadership roles:**
   - **Cubmaster** — runs the overall pack program and monthly pack meetings (assisted by Assistant Cubmasters).
-  - **Den Leader** — runs weekly/biweekly den meetings for a single rank group.
+  - **Den Leader** — runs den meetings for a single rank group and sets that den's meeting schedule.
   - **Den Chief** — an older youth (Scouts BSA member or Venturer) who helps lead a den.
   - **Pack Committee Chair / Pack Committee** — handles program planning, finances, and administration behind the scenes.
   - **Akela** — not a title/office but a traditional term (from Kipling's *The Jungle Book*) meaning "a good leader"; at any given moment the den leader or Cubmaster running the activity is "Akela."
@@ -64,16 +64,16 @@ Common annual rhythm for a Cub Scout pack (exact timing varies by pack/council):
 - **Popcorn fundraiser** (Sept–Nov) — the major annual fundraising drive; teaches entrepreneurship, communication, money handling; proceeds fund pack activities, campouts, and gear so families don't pay out-of-pocket for everything.
 - **Fall campout / family camping weekend.**
 - **Pinewood Derby** — Scouts carve and race a wood-block car; classic Cub Scout signature event; commonly held in **late January**. Source: [Wikipedia — Pinewood Derby](https://en.wikipedia.org/wiki/Pinewood_derby)
-- **Blue and Gold Banquet** — annual celebration of Scouting America's founding anniversary (**February 8, 1910**); usually replaces the February pack meeting; a dinner/ceremony recognizing advancement and honoring den leaders.
-- **Raingutter Regatta** — Scouts build and race small sailboats down rain gutters filled with water; popular spring/summer event.
-- **Space Derby** — similar build-and-race concept using rubber-band-powered balsa wood rockets on a wire track.
+- **Blue and Gold Banquet** — annual celebration of Scouting America's founding anniversary (**February 8, 1910**); usually replaces the February pack meeting; a dinner/ceremony recognizing advancement. Scouting America notes the Arrow of Light crossover ceremony is often folded into it.
+- **Rain Gutter Regatta** — Scouts build and race model sailboats down a water-filled course; traditionally actual rain gutters, though plastic and inflatable courses are now common. (Scouting America spells it **"Rain Gutter Regatta"**; "Raingutter" is the common informal spelling.)
+- **Space Derby** — build-and-race concept using rubber-band-powered balsa rockets on a wire track. *A traditional pack event, but not currently listed on Scouting America's "Special Pack Events" page alongside the Pinewood Derby, Blue and Gold, and Rain Gutter Regatta.*
 - **Crossover Ceremony** — a ceremony where Arrow of Light Scouts formally graduate from Cub Scouts into a Scouts BSA troop, ideally with the receiving troop's youth leaders present. Since the 2024 update, the Arrow of Light program is explicitly designed for Scouts to join a troop **between January and March**, so crossover commonly lands at or near the Blue and Gold Banquet rather than late spring.
 - **Day Camp / Resident Camp (summer)** — day camps run during daytime hours with no overnight stay; resident camps are 3–5 day overnight camps at a council-owned facility with a different theme each year. Webelos/AOL scouts may also attend week-long Webelos-specific camp.
 - **Pack overnighters / family campouts** — pack-organized overnight camping (parent/guardian accompanies each Scout); requires at least one adult with **BALOO** (Basic Adult Leader Outdoor Orientation) training present.
 - **Service projects** — food drives, flag placement/retirement ceremonies, community cleanups.
 - **End-of-year picnic / awards night.**
 
-Sources: [Scouting America — Special Pack Events](https://www.scouting.org/programs/cub-scouts/activities/pack-events/), [Scouting America — Camping and Outdoor Adventures](https://www.scouting.org/programs/cub-scouts/activities/cub-scout-camping/), [Pack 1776 — Activities](https://pack1776.com/join/activities/), [Aaron on Scouting — Blue and Gold](https://blog.scoutingmagazine.org/)
+Sources: [Scouting America — Special Pack Events](https://www.scouting.org/programs/cub-scouts/activities/pack-events/), [Scouting America — Camping and Outdoor Adventures](https://www.scouting.org/programs/cub-scouts/activities/cub-scout-camping/), [Pack 1776 — Activities](https://pack1776.com/join/activities/), [onscouting.org (formerly the Aaron on Scouting blog)](https://onscouting.org/) *(general blog index, not a specific article — replace with a direct link if this claim is cited on the site)*
 
 **Prohibited/restricted activities (for any liability language on the site):** the official list is more nuanced than "these six things are banned," so quote it carefully:
 
@@ -135,7 +135,7 @@ These are **national norms, not Pack 170's schedule** — see `docs/Offical-info
 - **1–2 additional optional pack events per month** (campouts, service projects, derbies, etc.).
 
 ### How to join
-- Families search **BeAScout** (canonical URL: <https://beascout.scouting.org/>; the shorter `beascout.org` also resolves) by ZIP code and program type to find local packs, see meeting info/websites/contacts, and in many cases **register and pay online directly** from the listing.
+- Families search **BeAScout** by ZIP code and program type to find local packs, see meeting info/websites/contacts, and in many cases **register and pay online directly** from the listing. Link to the canonical <https://beascout.scouting.org/> rather than the `beascout.org` shorthand used in most write-ups — the short form did not resolve cleanly in testing.
 - A pack website should make it easy to (a) confirm meeting night/location/frequency, (b) show upcoming recruitment events ("Join Night"), and (c) link to registration (BeAScout or a pack-specific signup form).
 
 Source: [Scouting America council join pages](https://www.scoutingatl.org/cub-scouts), [Woodlands Cub Scouts — Joining FAQ](https://www.woodlandscubscouts.com/joining-faqs.html)
@@ -168,6 +168,6 @@ Sources: [Pack 1776 site structure](https://pack1776.com/join/activities/), [Sco
 - Rank colors for design/iconography (neckerchief colors — the officially attested cue): **Lion = yellow, Tiger = orange, Wolf = red, Bear = light blue, Webelos = plaid, Arrow of Light = tan (no dedicated neckerchief; wears the Scouts BSA uniform with blue shoulder loops).**
 - Motto: **"Do Your Best."**
 - Meets in **dens** (small, same-grade groups; frequency set locally, nationally 2–3x/month) within a **pack** (all dens together, typically 1x/month pack meeting). *Use Pack 170's own schedule on the site, not these norms.*
-- Signature annual events: **Pinewood Derby (Jan), Blue and Gold Banquet (Feb, around the Feb 8 BSA anniversary), Raingutter Regatta, popcorn fundraiser (fall), summer camp/day camp, crossover ceremony (Jan–Mar).**
+- Signature annual events: **Pinewood Derby (Jan), Blue and Gold Banquet (Feb, around the Feb 8 BSA anniversary), Rain Gutter Regatta, popcorn fundraiser (fall), summer camp/day camp, crossover ceremony (Jan–Mar).**
 - To join: **BeAScout** (<https://beascout.scouting.org/>), **$85 national fee** (no joining fee — eliminated April 2024) + local pack dues; roughly $150–200/year all-in (*unverified estimate*), blue uniform.
 - Girls and boys both welcome (Family Scouting); dens are single-gender or co-ed "family dens" (K–4), packs can mix den types.

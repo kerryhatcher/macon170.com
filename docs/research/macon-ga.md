@@ -46,7 +46,7 @@ Sitting on the **east bank of the Ocmulgee River** just east of downtown Macon (
 - **The Great Temple Mound**—at 55 feet the tallest mound in the park; visitors can walk to the top for views of downtown Macon and the surrounding landscape
 - **The Earth Lodge**—a reconstructed council chamber built over an **original clay floor carbon-dated to about 1015 A.D.**, with molded seats for the leaders who met there
 - **Mississippian Period earthworks**—the Macon Plateau's main mound-building occupation runs roughly **900–1150 A.D.** (Mississippian culture at the site spans ca. 900–1600), including a defensive trench and council chambers
-- **The Spiral Mound**—widely described as the only known spiral (spiral-ramp/staircase) mound in North America, built during the later Lamar Period (ca. 1350–1600). ⚠️ Note: it is at the park's separate **Lamar Mounds Unit**, a few miles downriver in wetlands, which is **not open for general visitation**—access is by occasional ranger-led tour only. Do not plan a Pack outing around it.
+- **The Spiral Mound**—widely described as the only known spiral (spiral-ramp/staircase) mound in North America, built during the later Lamar Period (ca. 1350–1600). ⚠️ Note: it is **not** at the main Macon Plateau visitor area — it is in the park's separate **Lamar Mounds Unit**, roughly three miles downriver in wetlands. ⚠️ *Unverified:* public access to the Lamar Unit appears to be restricted (historically by ranger-led tour only), but NPS has no current public page stating the policy. Call the park at (478) 752-8257 before treating it as visitable, and do not build a Pack outing around it.
 
 The park is the ancestral homeland of the **Muscogee (Creek) Nation**, whose citizens today live primarily in Oklahoma; the connection is stated explicitly by the NPS. It's ideal for educational outdoor experiences, trail hiking, and wildlife observation. *(Kayaking, canoeing, and fishing happen on the adjacent Ocmulgee River and along the Ocmulgee Heritage Trail rather than as in-park NPS programs—verify put-in points separately before planning.)*
 
@@ -111,14 +111,14 @@ Macon is home to the **Central Georgia Council, BSA** (Council 96) headquarters 
 - Shooting sports activities
 - Leader training (BALOO, First Aid)
 
-> ⚠️ **Important correction — Camp Benjamin Hawkins is no longer a council property.** The 550-acre camp near Byron, GA (2251 Boy Scout Rd), which had operated since **1927** as the oldest Scout camp in Georgia, was **put under contract for sale in July 2024** and sold, citing financial pressure from COVID-era membership decline and the national BSA bankruptcy. It no longer appears anywhere on the council's website or activities page. The council's Cub/Webelos summer camp has since been held at **Camp Christian**. Any reference to Camp Benjamin Hawkins—or to C.O.P.E. courses, which were located there—should **not** appear on the Pack 170 site as a current resource. Confirm the council's present camping arrangements directly at (478) 743-9386 before publishing anything about camp locations.
+> ⚠️ **Important correction — Camp Benjamin Hawkins is no longer a council property.** The 550-acre camp near Byron, GA (2251 Boy Scout Rd), which had operated since **1927** as the oldest Scout camp in Georgia, was **put under contract for sale in July 2024**, with the council citing financial pressure from COVID-era membership decline and the national BSA bankruptcy. It no longer appears anywhere on the council's website, homepage, or Camping & Activities page. *(The formal closing was not confirmable from a primary source — treat "sold" as strongly indicated rather than documented.)* The council's Cub/Webelos summer camp has since been held at **Camp Christian**. Any reference to Camp Benjamin Hawkins—or to C.O.P.E. courses, which were located there—should **not** appear on the Pack 170 site as a current resource. Confirm the council's present camping arrangements directly at (478) 743-9386 before publishing anything about camp locations.
 
 **Sources:**
 - [Central Georgia Council, BSA](https://www.centralgeorgiacouncil.org/)
 - [About Central Georgia Council, BSA](https://www.centralgeorgiacouncil.org/about)
 - [Council Office & Scout Shop Hours](https://www.centralgeorgiacouncil.org/hours)
 - [Camping & Activities | Central Georgia Council](https://www.centralgeorgiacouncil.org/activities)
-- [Camp Benjamin Hawkins under contract for sale, nearing 100 years | 13WMAZ](https://www.13wmaz.com/article/news/local/camp-benjamin-hawkins-contract-sold-nearing-100-year-legacy/93-e49907a0-d0a6-4c52-8f81-644cb5a5bf5f)
+- ⚠️ [Camp Benjamin Hawkins under contract for sale, nearing 100 years | 13WMAZ (July 2024)](https://www.13wmaz.com/article/news/local/camp-benjamin-hawkins-contract-sold-nearing-100-year-legacy/93-e49907a0-d0a6-4c52-8f81-644cb5a5bf5f) — the article exists and is indexed, but the site blocks automated fetches, so its full text could not be re-read directly. The camp's disappearance from the council's own site corroborates it.
 
 ### Lake Tobesofkee Recreation Area
 
