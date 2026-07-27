@@ -54,7 +54,7 @@ type EventRouteContext = {
   requireAccess: (request: Request, env: Env) => Promise<{ email?: string }>;
   enforceSameOrigin: (request: Request, origin: string) => void;
   json: (data: unknown, status?: number, headers?: HeadersInit) => Response;
-  publicHeaders: () => Record<string, string>;
+  publicHeaders: (request: Request) => Record<string, string>;
   adminHeaders: (env: Env) => Record<string, string>;
 };
 
@@ -91,7 +91,7 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
     )
       .bind(now)
       .run<EventRow>();
-    return context.json({ ok: true, events: result.results }, 200, context.publicHeaders());
+    return context.json({ ok: true, events: result.results }, 200, context.publicHeaders(request));
   }
 
   const publicMatch = url.pathname.match(/^\/api\/events\/([a-z0-9-]{2,80})$/);
@@ -101,8 +101,8 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
     )
       .bind(publicMatch[1], new Date().toISOString())
       .first<EventRow>();
-    if (!event) return context.json({ ok: false, error: 'Event not found.' }, 404, context.publicHeaders());
-    return context.json({ ok: true, event }, 200, context.publicHeaders());
+    if (!event) return context.json({ ok: false, error: 'Event not found.' }, 404, context.publicHeaders(request));
+    return context.json({ ok: true, event }, 200, context.publicHeaders(request));
   }
 
   if (!url.pathname.startsWith('/api/admin/events')) return null;

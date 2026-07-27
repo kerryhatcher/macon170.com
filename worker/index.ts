@@ -443,11 +443,16 @@ function json(data: unknown, status = 200, headers: HeadersInit = {}): Response 
   return Response.json(data, { status, headers: { 'cache-control': 'no-store', ...headers } });
 }
 
-function publicHeaders(): Record<string, string> {
+const LOCAL_DEV_ORIGINS = new Set(['http://localhost:4321', 'http://127.0.0.1:4321']);
+
+function publicHeaders(request: Request): Record<string, string> {
+  const origin = request.headers.get('origin') ?? '';
+  const allowOrigin = LOCAL_DEV_ORIGINS.has(origin) ? origin : 'https://www.macon170.com';
   return {
     ...securityHeaders(),
     'cache-control': 'public, max-age=30, s-maxage=60',
-    'access-control-allow-origin': 'https://www.macon170.com',
+    'access-control-allow-origin': allowOrigin,
+    vary: 'origin',
   };
 }
 

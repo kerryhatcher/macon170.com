@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    // e2e/ holds Playwright specs (run via `npm run test:e2e`), not vitest tests -
+    // e2e/ holds Playwright specs (run via `bun run test:e2e`), not vitest tests -
     // vitest's default glob would otherwise pick them up and fail importing
     // '@playwright/test' globals as if they were vitest's.
     include: ['worker/**/*.test.ts'],
