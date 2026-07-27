@@ -9,7 +9,7 @@ const faq = [
   ],
   [
     'Can girls join Pack 170?',
-    'Yes. Cub Scouting welcomes boys and girls in kindergarten through 5th grade. Current den structure will be posted after pack leadership confirms it.',
+    'Yes. Cub Scouting welcomes boys and girls in kindergarten through 5th grade, and Pack 170 runs a den for every grade.',
   ],
   [
     'Do we need a uniform for the first visit?',
@@ -31,7 +31,7 @@ const faq = [
     title="Your family’s first"
     accent="Pack 170 visit"
     intro="No uniform. No experience. No pressure. Come meet the adults who run the pack, see what Cub Scouts are working on, and decide together whether it feels right."
-    noteTitle="Write this down"
+    noteTitle="You’re invited to the next meeting!"
     noteBody="Loading the next scheduled Pack 170 meeting…"
   >
     <div slot="actions" class="hero-actions">
@@ -40,7 +40,7 @@ const faq = [
       >
     </div>
     <p slot="note">
-      <strong>{pack.meeting.location}</strong><br />{pack.meeting.address}<br />Confirm the next date and exact room before visiting.
+      <strong>{pack.meeting.location}</strong><br />{pack.meeting.address}
     </p>
   </ChapterHero>
 
@@ -80,8 +80,11 @@ const faq = [
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">Which den?</span><h2>Start with your child’s grade.</h2><p>
-          Cub Scout rank names follow elementary grades. This guide explains the program path; Pack 170’s current active den roster is still
-          being confirmed.
+          Cub Scout rank names follow elementary grades, and Pack 170 runs all six dens. Each den sets its own meeting time and place after
+          the first pack meeting of the school year, so ask a pack adult where your child’s den has landed.
+        </p><p>
+          New to Cub Scouting? <a href="/what-is-cub-scouts/">Start with what the program is</a>, or open a den to see
+          <a href="/dens/">what that grade works on</a>.
         </p>
       </div>
       <div class="rank-path">
@@ -106,15 +109,24 @@ const faq = [
     <div class="container cost-grid">
       <div>
         <span class="chapter-tab">Cost & gear</span><h2>Know the real number before you register.</h2><p class="lead">
-          Registration, local pack dues, uniform pieces, and handbooks may all affect a family’s first-year cost. We will publish Pack 170’s
-          exact breakdown as soon as leadership confirms it.
+          The only cost to join is Scouting America’s national registration fee: <strong>{pack.cost.youth}</strong> and
+          <strong>{pack.cost.adult}</strong>. {pack.cost.localDues}
+          {pack.cost.optional} Uniform pieces and handbooks are a separate cost — ask pack adults what your family actually needs before buying
+          anything.
+        </p>
+        <p>
+          <strong>Military families:</strong> Scouting America waives {pack.cost.militaryWaiver.covers} for {
+            pack.cost.militaryWaiver.eligibility
+          }.
+          {pack.cost.militaryWaiver.how}
+          <small>{pack.cost.militaryWaiver.caveat}</small>
         </p>
       </div>
-      <div class="notice notice--editor">
-        <span class="notice__pin">!</span><div>
-          <h3>Pack editor: cost details needed</h3><p>
-            Local dues, what they include, due dates, and payment links have not been supplied. This site will not guess or reuse national
-            estimates as Pack 170 facts.
+      <div class="notice">
+        <span class="notice__pin">?</span><div>
+          <h3>Cost should never be the reason</h3><p>
+            If the registration fee is a hardship for your family, talk to a pack leader. <a href="/contact/">Reach out</a> and we will work it
+            out.
           </p>
         </div>
       </div>
@@ -151,6 +163,7 @@ const faq = [
   </section>
 </BaseLayout>
 <script>
+  import { API_BASE } from '../lib/api-base';
   type PublicEvent = {
     title: string;
     status: string;
@@ -168,7 +181,7 @@ const faq = [
   async function loadNextPackMeeting() {
     if (!note) return;
     try {
-      const response = await fetch('/api/events');
+      const response = await fetch(`${API_BASE}/api/events`);
       if (!response.ok) throw new Error();
       const body = (await response.json()) as { events?: PublicEvent[] };
       const meeting = body.events?.find(

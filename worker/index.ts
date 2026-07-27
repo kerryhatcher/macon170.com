@@ -122,9 +122,12 @@ export default {
 
   async scheduled(_controller: ScheduledController, env: Env): Promise<void> {
     const retentionDays = 365;
+    // strftime, not datetime: rows are stored as '...THH:MM:SS.sssZ', and datetime()
+    // renders a space where the 'T' is, so a plain text compare keeps boundary-day rows a day too long.
+    const cutoff = `strftime('%Y-%m-%dT%H:%M:%fZ', 'now', ?)`;
     await env.DB.batch([
-      env.DB.prepare(`DELETE FROM submission_audit_log WHERE created_at < datetime('now', ?)`).bind(`-${retentionDays} days`),
-      env.DB.prepare(`DELETE FROM contact_submissions WHERE created_at < datetime('now', ?)`).bind(`-${retentionDays} days`),
+      env.DB.prepare(`DELETE FROM submission_audit_log WHERE created_at < ${cutoff}`).bind(`-${retentionDays} days`),
+      env.DB.prepare(`DELETE FROM contact_submissions WHERE created_at < ${cutoff}`).bind(`-${retentionDays} days`),
     ]);
     console.log(JSON.stringify({ event: 'retention_cleanup', retentionDays }));
   },

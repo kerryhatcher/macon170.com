@@ -60,6 +60,7 @@ import { pack } from '../../data/pack';
   </section>
 </BaseLayout>
 <script>
+  import { API_BASE } from '../../lib/api-base';
   type PublicEvent = {
     slug: string;
     title: string;
@@ -83,7 +84,7 @@ import { pack } from '../../data/pack';
     new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
   async function loadCalendar() {
     try {
-      const response = await fetch('/api/events');
+      const response = await fetch(`${API_BASE}/api/events`);
       if (!response.ok) throw new Error();
       const body = (await response.json()) as { events: PublicEvent[] };
       if (!body.events.length) {

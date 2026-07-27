@@ -29,7 +29,7 @@ export const pack = {
     time: '6:30 PM',
     location: 'Highland Hills Baptist Church',
     address: '1370 Briarcliff Rd, Macon, GA 31211',
-    room: null,
+    // ponytail: no `room` here — it varies per meeting; put it in the calendar event's location.
   },
   charteredOrganization: {
     name: 'Highland Hills Baptist Church',
@@ -45,22 +45,32 @@ export const pack = {
     join: 'https://beascout.scouting.org/list/?zip=31201&program%5B%5D=pack&unitID=234351',
     facebook: null,
     scoutbook: null,
-    payment: null,
+    // ponytail: no `payment` link — there are no pack or council dues to collect.
     parentHandbook: null,
   },
-  dues: {
-    amount: null,
-    includes: null,
-    dueDate: null,
+  // Pack 170 charges no pack dues and the council charges none either. The only cost to join is
+  // Scouting America's national registration fee, paid at online checkout.
+  // Figures verified against a real my.scouting.org checkout for Pack 0170, 2026-07-27.
+  cost: {
+    youth: '$87.55 per Cub Scout ($85.00 registration + $2.55 online admin fee)',
+    adult: '$66.95 per registered adult ($65.00 registration + $1.95 online admin fee)',
+    optional: 'Scout Life magazine is an optional $15 add-on at checkout, not required.',
+    localDues: 'None. Pack 170 charges no pack dues, and there are no council dues.',
+    // Military Family Fee Waiver, effective June 1, 2026 (Scouting America).
+    militaryWaiver: {
+      eligibility: 'families with current service in the Active Duty, Reserve, National Guard, or Coast Guard',
+      covers: 'the $85.00 national youth registration fee, reduced to $0 — leaving just the $2.55 admin fee',
+      how: 'Select “Get Military Discount Code” during online registration, complete verification, then enter the code at checkout.',
+      caveat: 'Youth registrations only, online only — new and renewing. Adult registration and admin fees still apply.',
+    },
   },
+  // All contact funnels through the form. The pack publishes no adult email addresses.
   contact: {
-    membershipEmail: null,
-    leadershipEmail: null,
-    webmasterEmail: null,
     formEndpoint: '/api/contact',
   },
-  leadership: [] as Array<{ role: string; name: string; email: string | null }>,
-  dens: [] as Array<{ grade: string; name: string; meeting: string | null }>,
+  // ponytail: roster lives in src/data/leadership.md so pack editors can edit prose, not TypeScript.
+  // ponytail: no `dens` array — `ranks` below already encodes one den per grade, and all six are
+  // active. Per-den schedules are set after the first pack meeting, so they are not site data.
 } as const;
 
 export const ranks = [
@@ -120,9 +130,7 @@ export const activities = [
 
 export const editorChecklist = [
   'Add this program year’s event dates',
-  'Add pack dues and what they include',
   'Add role-based contact addresses',
-  'Add the current adult leadership roster',
   'Add active dens and their meeting patterns',
   'Add approved official or consent-cleared photography',
   'Add role-based recipient and webmaster emails',

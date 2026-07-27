@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import FieldIllustration from '../components/FieldIllustration.astro';
 import { pack } from '../data/pack';
+// Leadership content lives entirely in Markdown — headings, sections, and prose included — so pack
+// editors control it without touching code. Do not mirror any of it back into this file.
+import { Content as Roster } from '../data/leadership.md';
 ---
 
 <BaseLayout
@@ -57,6 +60,12 @@ import { pack } from '../data/pack';
       </div>
     </div>
   </section>
+  <section class="section roster-section">
+    <div class="container">
+      <span class="chapter-tab">Pack leadership</span>
+      <div class="roster"><Roster /></div>
+    </div>
+  </section>
   <section class="section council-section">
     <div class="container council-grid">
       <div>
@@ -106,6 +115,44 @@ import { pack } from '../data/pack';
   .promise {
     padding: clamp(2rem, 5vw, 4rem);
     transform: rotate(-1deg);
+  }
+  .roster-section {
+    background: var(--page);
+    border-block: 1px solid var(--rule);
+  }
+  /* Styles any structure the Markdown grows: h2 sections, prose, and role lists. */
+  .roster :global(h2) {
+    margin-top: 2.5rem;
+  }
+  .roster :global(h2:first-child) {
+    margin-top: 0.5rem;
+  }
+  .roster :global(h3) {
+    margin-top: 2rem;
+  }
+  .roster :global(p) {
+    max-width: 65ch;
+  }
+  .roster :global(ul) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1rem 2rem;
+    margin: 1.5rem 0;
+    padding: 0;
+    list-style: none;
+  }
+  .roster :global(li) {
+    padding: 1rem 1.25rem;
+    background: var(--paper, #fff);
+    border-left: 4px solid var(--blue);
+  }
+  /* A role with no name yet reads as vacant rather than as a broken card. */
+  .roster :global(li:empty) {
+    display: none;
+  }
+  .roster :global(strong) {
+    display: block;
+    font-family: var(--font-display);
   }
   .council-section {
     background: var(--blue-deep);

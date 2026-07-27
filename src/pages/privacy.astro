@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
-import { pack } from '../data/pack';
 ---
 
 <BaseLayout
@@ -14,18 +13,11 @@ import { pack } from '../data/pack';
     accent="Pack 170 families"
     intro="This policy applies to macon170.com, a local unit website. It is separate from Scouting America’s and the Central Georgia Council’s privacy policies."
     noteTitle="Policy status"
-    noteBody="Draft awaiting pack webmaster details"
-    ><p slot="note">Last reviewed: July 2026. A responsible adult webmaster contact must be added before launch.</p></ChapterHero
+    noteBody="In effect"><p slot="note">Last reviewed: July 2026.</p></ChapterHero
   >
   <section class="section">
     <article class="container paper-sheet policy">
-      <div class="notice notice--editor">
-        <span class="notice__pin">!</span><div>
-          <h3>Pack editor: webmaster contact required</h3><p>
-            No webmaster address has been supplied. Add a role-based address in <code>src/data/pack.ts</code> before launch.
-          </p>
-        </div>
-      </div><h2>Who this site serves</h2><p>
+      <h2>Who this site serves</h2><p>
         This website shares public information with parents, guardians, and community members. It is not directed to children for the
         purpose of collecting personal information. A parent or guardian should submit every inquiry.
       </p><h2>Information a parent provides</h2><p>
@@ -54,18 +46,13 @@ import { pack } from '../data/pack';
       </p><h2>Retention and deletion</h2><p>
         Contact submissions and their volunteer audit records are automatically deleted after 365 days. Pack leadership may delete
         information sooner when it is no longer needed for the inquiry, pack administration, safety, or applicable recordkeeping. A parent
-        may request review or deletion by contacting the pack webmaster once that role-based address is published.
+        may request review or deletion through the <a href="/contact/">contact form</a>.
       </p><h2>Changes</h2><p>
         The effective or review date shown above will change when this policy materially changes. Pack 170 adults should review this policy
         whenever forms, analytics, photography practices, or administrators change.
       </p><h2>Contact</h2><p>
-        {
-          pack.contact.webmasterEmail ? (
-            <a href={`mailto:${pack.contact.webmasterEmail}`}>{pack.contact.webmasterEmail}</a>
-          ) : (
-            'Webmaster role address pending. For now, contact information is not published.'
-          )
-        }
+        Pack 170 does not publish adult email addresses. Send every question about this site or this policy through the
+        <a href="/contact/">contact form</a>; it reaches multiple authorized adult volunteers.
       </p>
     </article>
   </section>

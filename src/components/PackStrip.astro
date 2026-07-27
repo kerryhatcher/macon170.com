@@ -10,11 +10,7 @@ import { pack } from '../data/pack';
     </div>
     <div class="pack-strip__item">
       <span class="pack-strip__label">Next up</span>
-      <a
-        class="pack-strip__value pack-strip__next-link"
-        id="pack-strip-next-event"
-        href="/calendar/"
-        aria-label="Open the Pack calendar"
+      <a class="pack-strip__value pack-strip__next-link" id="pack-strip-next-event" href="/calendar/" aria-label="Open the Pack calendar"
         >The next date is being added</a
       >
     </div>
@@ -25,6 +21,7 @@ import { pack } from '../data/pack';
   </div>
 </aside>
 <script>
+  import { API_BASE } from '../lib/api-base';
   type PublicEvent = { slug: string; title: string };
   const nextEventLink = document.querySelector<HTMLAnchorElement>('#pack-strip-next-event');
   const compactTitle = (title: string) => (title.length > 44 ? `${title.slice(0, 41).trimEnd()}…` : title);
@@ -32,7 +29,7 @@ import { pack } from '../data/pack';
   async function loadNextEvent() {
     if (!nextEventLink) return;
     try {
-      const response = await fetch('/api/events');
+      const response = await fetch(`${API_BASE}/api/events`);
       if (!response.ok) return;
       const body = (await response.json()) as { events?: PublicEvent[] };
       const event = body.events?.[0];
