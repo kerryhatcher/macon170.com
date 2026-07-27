@@ -105,8 +105,7 @@ import { pack } from '../../data/pack';
           .slice(1)
           .map((event) => {
             // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
-            const flag =
-              event.status.toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status)}</span>`;
+            const flag = event.status.toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status)}</span>`;
             return `<article data-category="${escapeHtml(event.category)}"><span class="event-cat">${escapeHtml(event.category)}</span>${flag}<span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`;
           })
           .join('');
@@ -153,7 +152,7 @@ import { pack } from '../../data/pack';
   }
   .date-sheet span {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 900;
   }
   .date-sheet strong {
@@ -229,11 +228,11 @@ import { pack } from '../../data/pack';
   .event-cards article p {
     margin: 0 0 0.8rem;
     color: var(--muted);
-    font-size: 0.98rem;
+    font-size: 0.95rem;
   }
   .event-cards article a {
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 800;
   }
   .event-date {

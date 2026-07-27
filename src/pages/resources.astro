@@ -116,7 +116,8 @@ const resources = [
   .pending {
     color: var(--red);
     font-weight: 700;
-    background: #fbe9e7;
+    /* Tint derived from the palette rather than a hand-picked pink. */
+    background: color-mix(in srgb, var(--red) 12%, var(--page));
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
   }
