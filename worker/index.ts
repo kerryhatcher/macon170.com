@@ -1,6 +1,7 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
 import { EventRouteError, handleEventRoute } from './event-routes';
 import { renderCalendarAdmin } from './calendar-admin';
+import { deskHead, deskHeader, escapeHtml } from './desk-chrome';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
 type SubmissionStatus = 'new' | 'in_progress' | 'resolved' | 'spam';
@@ -336,12 +337,11 @@ async function requireAccess(request: Request, env: Env): Promise<AccessIdentity
 
 function renderAdminShell(email: string, env: Env): Response {
   const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Pack 170 volunteer desk</title><style>${adminCss()}</style></head>
-<body><a class="skip" href="#main">Skip to submissions</a><header><div class="brand"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></div><nav class="admin-nav"><a aria-current="page" href="/">Parent inquiries</a><a href="/calendar">Calendar editor</a></nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>
+<html lang="en">${deskHead('Pack 170 volunteer desk', '1200px', adminCss())}
+<body>${deskHeader(email, 'inbox')}
 <main id="main"><section class="intro"><div><p class="tab">Parent inquiries</p><h1>Volunteer desk</h1><p>Read parent questions, follow up through approved adult channels, and keep the queue current.</p></div><div class="safety"><b>Youth safety</b><span>These are parent-to-adult messages. Do not move a conversation into a private adult–youth channel.</span></div></section>
 <nav class="filters" aria-label="Submission status"><button data-status="" aria-pressed="true">All</button><button data-status="new">New</button><button data-status="in_progress">In progress</button><button data-status="resolved">Resolved</button><button data-status="spam">Spam</button></nav>
-<div id="status" class="status" role="status">Loading submissions…</div><section class="desk"><div id="list" class="list" aria-label="Submissions"></div><article id="detail" class="detail"><div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div></article></section></main>
+<div id="status" class="status" role="status">Loading submissions…</div><section class="desk"><ul id="list" class="list" aria-label="Parent inquiries"></ul><article id="detail" class="detail" tabindex="-1"><div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div></article></section></main>
 <script>${adminScript(env.ADMIN_ORIGIN)}</script></body></html>`;
   return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8', ...adminHeaders(env) } });
 }
@@ -353,17 +353,53 @@ let currentStatus='';let selectedId=null;
 const list=document.querySelector('#list');const detail=document.querySelector('#detail');const status=document.querySelector('#status');
 const esc=(v)=>{const s=String(v??'');return s.replace(/[&<>"]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/'/g,'&#039;');};
 const fmt=(v)=>new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date(v));
+// The status word, not just a colour. A bare coloured dot is invisible to a colour-blind
+// volunteer and silent to a screen reader, so every row states its status in text.
+const STATUS_LABEL={new:'New',in_progress:'In progress',resolved:'Resolved',spam:'Spam'};
+const statusChip=(s)=>'<span class="state '+esc(s)+'">'+esc(STATUS_LABEL[s]||s)+'</span>';
 async function load(){status.textContent='Loading submissions…';try{const r=await fetch(API+(currentStatus?'?status='+encodeURIComponent(currentStatus):''));if(!r.ok){const txt=await r.text();throw new Error('Unable to load submissions. ('+r.status+': '+txt.slice(0,120)+')');}const data=await r.json();renderList(data.submissions);status.textContent=data.submissions.length?data.submissions.length+' message'+(data.submissions.length===1?'':'s')+' shown':'No messages in this view.';}catch(e){status.textContent=e instanceof Error?e.message:'Unable to load submissions.';}}
-function renderList(rows){list.innerHTML=rows.map((row)=>'<button class="row '+(row.id===selectedId?'active':'')+'" data-id="'+esc(row.id)+'"><span class="dot '+esc(row.status)+'"></span><span><b>'+esc(row.parent_name)+'</b><small>'+esc(row.topic)+'</small><small>'+fmt(row.created_at)+'</small></span></button>').join('');list.querySelectorAll('[data-id]').forEach((button)=>button.addEventListener('click',()=>openOne(button.dataset.id)));}
-async function openOne(id){selectedId=id;renderListSelection();detail.innerHTML='<div class="empty">Loading message…</div>';const r=await fetch(API+'/'+encodeURIComponent(id));if(!r.ok){detail.innerHTML='<div class="empty">Unable to load this message.</div>';return;}const data=await r.json();renderDetail(data.submission);}
+function renderList(rows){list.innerHTML=rows.map((row)=>'<li><button class="row '+(row.id===selectedId?'active':'')+'" data-id="'+esc(row.id)+'"><b>'+esc(row.parent_name)+'</b>'+statusChip(row.status)+'<small>'+esc(row.topic)+'</small><small>'+fmt(row.created_at)+'</small></button></li>').join('');list.querySelectorAll('[data-id]').forEach((button)=>button.addEventListener('click',()=>openOne(button.dataset.id)));}
+// Opening a message swaps the whole right-hand pane, so focus has to follow it - otherwise a
+// screen reader user is left on the list with no signal that anything opened.
+async function openOne(id){selectedId=id;renderListSelection();detail.innerHTML='<div class="empty">Loading message…</div>';const r=await fetch(API+'/'+encodeURIComponent(id));if(!r.ok){detail.innerHTML='<div class="empty">Unable to load this message.</div>';detail.focus();return;}const data=await r.json();renderDetail(data.submission);detail.focus();}
 function renderListSelection(){list.querySelectorAll('[data-id]').forEach((button)=>button.classList.toggle('active',button.dataset.id===selectedId));}
 function renderDetail(s){const phone=s.phone?'<a href="tel:'+esc(s.phone)+'">'+esc(s.phone)+'</a>':'Not supplied';const grade=s.child_grade?esc(s.child_grade):'Not supplied';detail.innerHTML='<div class="detail-head"><div><p class="tab">'+esc(s.topic)+'</p><h2>'+esc(s.parent_name)+'</h2><p>'+fmt(s.created_at)+'</p></div><select id="submission-status" aria-label="Submission status"><option value="new">New</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option><option value="spam">Spam</option></select></div><dl><div><dt>Email</dt><dd><a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a></dd></div><div><dt>Phone</dt><dd>'+phone+'</dd></div><div><dt>Child grade</dt><dd>'+grade+'</dd></div><div><dt>Country</dt><dd>'+esc(s.country_code||'Not available')+'</dd></div></dl><section class="message"><h3>Parent question</h3><p>'+esc(s.message).replace(/\\n/g,'<br>')+'</p></section><p class="privacy">Use these details only to respond to this pack inquiry. Do not copy them into unapproved systems.</p>';const select=document.querySelector('#submission-status');select.value=s.status;select.addEventListener('change',()=>updateStatus(s.id,select.value,select));}
 async function updateStatus(id,next,select){select.disabled=true;status.textContent='Saving status…';try{const r=await fetch(API+'/'+encodeURIComponent(id),{method:'PATCH',headers:{'content-type':'application/json','origin':ADMIN_ORIGIN},body:JSON.stringify({status:next})});if(!r.ok)throw new Error('Unable to save status.');status.textContent='Status saved.';await load();}catch(e){status.textContent=e instanceof Error?e.message:'Unable to save status.';}finally{select.disabled=false;}}
 document.querySelectorAll('[data-status]').forEach((button)=>button.addEventListener('click',()=>{currentStatus=button.dataset.status||'';selectedId=null;document.querySelectorAll('[data-status]').forEach((item)=>item.setAttribute('aria-pressed',String(item===button)));detail.innerHTML='<div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div>';load();}));load();`;
 }
 
+// Inbox-specific layout only. Shared desk chrome (tokens, header, skip link, filter buttons,
+// the state chip) lives in desk-chrome.ts so it cannot drift from the calendar editor again.
 function adminCss(): string {
-  return `:root{--blue:#003f87;--deep:#002b5c;--gold:#fcd116;--paper:#f7f1e3;--page:#fffdf7;--ink:#272b2e;--muted:#59636b;--rule:#d7cdb8;--green:#28543f;--red:#a33c34}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}button,select{font:inherit}:focus-visible{outline:3px solid var(--deep);outline-offset:0;box-shadow:0 0 0 7px var(--gold)}.skip{position:fixed;top:-5rem;left:1rem;background:var(--gold);color:var(--deep);padding:.75rem;z-index:10}.skip:focus{top:1rem}header{min-height:76px;padding:.75rem max(1rem,calc((100% - 1200px)/2));display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--deep);color:white;border-bottom:6px solid var(--gold)}.brand,.identity{display:flex;align-items:center;gap:.75rem}.brand>span{display:grid;place-items:center;width:44px;height:44px;border:3px solid var(--gold);border-radius:50%;color:var(--gold);font-weight:900}.brand b,.brand small,.identity strong,.identity small{display:block}.admin-nav{display:flex;align-self:stretch}.admin-nav a{display:grid;place-items:center;padding:0 1rem;color:white;text-decoration:none;font-weight:700}.admin-nav a[aria-current=page]{background:var(--gold);color:var(--deep)}.identity{margin-left:auto;text-align:right;min-width:0}.identity strong{overflow-wrap:anywhere}.identity small{color:#bed1e5}.tab{display:inline-block;margin:0 0 .5rem;padding:.35rem .65rem;border-radius:4px 10px 10px 4px;background:var(--gold);color:var(--deep);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}main{width:min(1200px,calc(100% - 2rem));margin:2.5rem auto}.intro{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:end}.intro h1{font-size:clamp(2.5rem,7vw,4.8rem);line-height:1;margin:0}.intro>div>p:last-child{max-width:60ch;font-size:1.1rem}.safety{display:grid;gap:.35rem;padding:1.25rem;background:var(--green);color:white;border-radius:6px 18px 8px 6px;box-shadow:5px 7px 0 rgba(0,43,92,.16)}.filters{display:flex;gap:.5rem;margin:2rem 0 1rem;overflow:auto;padding-bottom:.25rem}.filters button{min-height:44px;padding:.55rem .9rem;border:2px solid var(--deep);border-radius:7px;background:var(--page);color:var(--deep);font-weight:700;white-space:nowrap}.filters button[aria-pressed=true]{background:var(--deep);color:white}.status{min-height:1.5rem;margin-bottom:.75rem;color:var(--muted)}.desk{display:grid;grid-template-columns:370px 1fr;min-height:570px;border:1px solid var(--rule);border-radius:8px 22px 12px 8px;overflow:hidden;background:var(--page);box-shadow:8px 10px 0 rgba(0,43,92,.12),0 18px 42px rgba(39,43,46,.12)}.list{border-right:1px solid var(--rule);background:#f2ead9}.row{display:grid;grid-template-columns:auto 1fr;gap:.8rem;width:100%;padding:1rem;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}.row:hover,.row.active{background:white}.row.active{box-shadow:inset 5px 0 var(--blue)}.row b,.row small{display:block}.row small{color:var(--muted);margin-top:.15rem}.dot{width:12px;height:12px;margin-top:.35rem;border-radius:50%;background:#82909a}.dot.new{background:var(--red)}.dot.in_progress{background:#d39b00}.dot.resolved{background:#34815e}.detail{padding:clamp(1.5rem,4vw,3rem)}.empty{display:grid;place-items:center;align-content:center;gap:.4rem;min-height:400px;text-align:center;color:var(--muted)}.empty b{color:var(--deep);font-size:1.3rem}.detail-head{display:flex;justify-content:space-between;gap:2rem;align-items:start;padding-bottom:1.5rem;border-bottom:3px solid var(--blue)}.detail-head h2{font-size:2rem;margin:0}.detail-head p:last-child{margin:.35rem 0 0;color:var(--muted)}select{min-height:44px;padding:.5rem;border:2px solid var(--blue);border-radius:7px;background:white}.detail dl{margin:1.5rem 0}.detail dl div{display:grid;grid-template-columns:130px 1fr;padding:.65rem 0;border-bottom:1px solid var(--rule)}dt{font-weight:800;color:var(--deep)}dd{margin:0}.detail a{color:var(--blue)}.message{margin-top:2rem;padding:1.5rem;background:#f7f1e3;border-radius:6px 16px 8px 6px}.message h3{margin-top:0;color:var(--deep)}.privacy{margin-top:2rem;color:var(--muted);font-size:.9rem}@media(max-width:800px){header{align-items:flex-start}.identity small{display:none}.intro,.desk{grid-template-columns:1fr}.intro{gap:1rem}.desk{overflow:visible}.list{border-right:0;max-height:360px;overflow:auto}.detail{border-top:1px solid var(--rule)}.detail-head{display:grid}.detail dl div{grid-template-columns:1fr}dt{margin-bottom:.2rem}}`;
+  return `.intro{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:end}
+.intro h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1;margin:0}
+.intro>div>p:last-child{max-width:60ch;font-size:1.1rem}
+.safety{display:grid;gap:.35rem;padding:1.25rem;background:var(--green);color:white;border-radius:6px 18px 8px 6px;box-shadow:5px 7px 0 rgba(0,43,92,.16)}
+.filters{display:flex;gap:.5rem;margin:2rem 0 1rem;overflow:auto;padding-bottom:.25rem}
+.desk{display:grid;grid-template-columns:370px 1fr;min-height:570px;border:1px solid var(--rule);border-radius:8px 22px 12px 8px;overflow:hidden;background:var(--page);box-shadow:8px 10px 0 rgba(0,43,92,.12),0 18px 42px rgba(39,43,46,.12)}
+.list{list-style:none;margin:0;padding:0;border-right:1px solid var(--rule);background:var(--wash)}
+.row{display:grid;grid-template-columns:1fr auto;gap:.15rem .8rem;width:100%;padding:1rem;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}
+.row:hover,.row.active{background:white}
+.row.active{box-shadow:inset 5px 0 var(--blue)}
+.row b{grid-column:1;grid-row:1}
+.row .state{grid-column:2;grid-row:1;align-self:start}
+.row small{grid-column:1;color:var(--muted)}
+.detail{padding:clamp(1.5rem,4vw,3rem)}
+.empty{display:grid;place-items:center;align-content:center;gap:.4rem;min-height:400px;text-align:center;color:var(--muted)}
+.empty b{color:var(--deep);font-size:1.15rem}
+.detail-head{display:flex;justify-content:space-between;gap:2rem;align-items:start;padding-bottom:1.5rem;border-bottom:3px solid var(--blue)}
+.detail-head h2{font-size:2rem;margin:0}
+.detail-head p:last-child{margin:.35rem 0 0;color:var(--muted)}
+select{min-height:44px;padding:.5rem;border:2px solid var(--blue);border-radius:7px;background:white}
+.detail dl{margin:1.5rem 0}
+.detail dl div{display:grid;grid-template-columns:130px 1fr;padding:.65rem 0;border-bottom:1px solid var(--rule)}
+dt{font-weight:800;color:var(--deep)}
+dd{margin:0}
+.detail a{color:var(--blue)}
+.message{margin-top:2rem;padding:1.5rem;background:var(--paper);border-radius:6px 16px 8px 6px}
+.message h3{margin-top:0;color:var(--deep)}
+.privacy{margin-top:2rem;color:var(--muted);font-size:.95rem}
+@media(max-width:800px){.intro,.desk{grid-template-columns:1fr}.intro{gap:1rem}.desk{overflow:visible}.list{border-right:0;max-height:360px;overflow:auto}.detail{border-top:1px solid var(--rule)}.detail-head{display:grid}.detail dl div{grid-template-columns:1fr}dt{margin-bottom:.2rem}}`;
 }
 
 function enforceBodyLimit(request: Request, maximum: number): void {
@@ -474,18 +510,4 @@ function adminHeaders(env: Env): Record<string, string> {
     'cdn-cache-control': 'no-cache, no-store, must-revalidate',
     'content-security-policy': `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' ${env.ADMIN_ORIGIN}; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`,
   };
-}
-
-function escapeHtml(value: string): string {
-  return value.replace(
-    /[&<>"']/g,
-    (character) =>
-      ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;',
-      })[character] ?? character,
-  );
 }
