@@ -96,13 +96,18 @@ export const annualProgram = [
   { season: 'Fall', title: 'Join Scouting Night', state: 'Date to be added', match: { keywords: ['join scouting'], months: [7, 8, 9] } },
   { season: 'Sep–Nov', title: 'Popcorn fundraiser', state: 'Dates to be added', match: { keywords: ['popcorn'], months: [8, 9, 10] } },
   { season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added', match: { keywords: ['pinewood'], months: [0, 1] } },
+  // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and
+  // the pack calls it the Arrow of Light Ceremony (both confirmed by the Cubmaster, 2026-07-28).
+  // This matches Scouting America's own guidance that the Arrow of Light crossover is folded into
+  // Blue & Gold — see docs/research/cub-scouting.md:70. The strip has room for one short title, so
+  // the ceremony is named on /activities/ instead; its keywords stay here so a calendar event named
+  // for the ceremony still fills in this milestone's real date.
   {
     season: 'February',
     title: 'Blue & Gold Banquet',
     state: 'Date to be added',
-    match: { keywords: ['blue & gold', 'blue and gold'], months: [1, 2] },
+    match: { keywords: ['blue & gold', 'blue and gold', 'arrow of light', 'crossover'], months: [1, 2] },
   },
-  { season: 'Spring', title: 'Crossover', state: 'Date to be added', match: { keywords: ['crossover'], months: [2, 3, 4] } },
   {
     season: 'Summer',
     title: 'Summer camp',
@@ -136,7 +141,10 @@ export const activities = [
     shortTitle: 'Blue & Gold Banquet',
     season: 'February',
     illustration: 'banner',
-    description: 'The pack’s annual celebration of Cub Scouting, shared accomplishments, and community.',
+    // The Arrow of Light Ceremony — the crossover into Scouts BSA — happens here, not at a separate
+    // spring event. Confirmed by the Cubmaster, 2026-07-28.
+    description:
+      'The pack’s annual celebration of Cub Scouting, shared accomplishments, and community. It is also where the Arrow of Light Ceremony happens: our fifth graders cross the bridge into a Scouts BSA troop.',
   },
   {
     slug: 'service',

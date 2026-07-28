@@ -44,7 +44,7 @@ import { externalLink } from '../lib/external-link';
           height={1260}
           sizes="(max-width: 760px) 100vw, 42vw"
           loading="lazy"
-        /><figcaption>Shirley Hills · Macon, Georgia</figcaption>
+        /><figcaption>A rank badge presented at a pack meeting · Shirley Hills, Macon</figcaption>
       </figure>
     </div>
   </section>
@@ -87,7 +87,11 @@ import { externalLink } from '../lib/external-link';
           height={853}
           sizes="(max-width: 760px) 100vw, 60rem"
           loading="lazy"
-        /><figcaption>Every den in Pack 170 is led by a trained, background-checked parent volunteer.</figcaption>
+        /><figcaption>
+          Every den is led by a registered adult who has cleared a background check and youth protection training. <a
+            href="/youth-protection/">How that screening works</a
+          >.
+        </figcaption>
       </figure>
       <div class="roster"><Roster /></div>
     </div>
@@ -153,9 +157,16 @@ import { externalLink } from '../lib/external-link';
     background: var(--paper);
     border: 1px solid var(--rule);
   }
+  /* Both source photos are taller than the copy beside them, so they are cropped to a ratio rather
+     than shown at full height — otherwise the portrait one runs about twice the paragraph's height. */
   .pack-photo img {
     width: 100%;
     height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .pack-photo--wide img {
+    aspect-ratio: 3 / 2;
   }
   .pack-photo figcaption {
     padding: 0.75rem 0.25rem;
