@@ -28,6 +28,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#003f87" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- iOS ignores the SVG icon and needs an opaque square, so the badge sits on its own
+         Midnight field there rather than being masked against white. -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title} | Cub Scout Pack 170</title>
   </head>
   <body>
