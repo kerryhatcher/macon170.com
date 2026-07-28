@@ -6,6 +6,7 @@ import { pack } from '../data/pack';
 // Leadership content lives entirely in Markdown — headings, sections, and prose included — so pack
 // editors control it without touching code. Do not mirror any of it back into this file.
 import { Content as Roster } from '../data/leadership.md';
+import { externalLink } from '../lib/external-link';
 ---
 
 <BaseLayout
@@ -73,7 +74,7 @@ import { Content as Roster } from '../data/leadership.md';
           Pack 170 is a unit of the Central Georgia Council, Scouting America. The council supports local units with training, program
           resources, camps, and the Macon Scout Shop.
         </p>
-      </div><a class="button button--paper" href={pack.council.url}>Visit the council website</a>
+      </div><a class="button button--paper" href={pack.council.url} {...externalLink(pack.council.url)}>Visit the council website</a>
     </div>
   </section>
 </BaseLayout>

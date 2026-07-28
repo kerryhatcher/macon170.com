@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { pack } from '../data/pack';
+import { externalLink } from '../lib/external-link';
 const resources = [
   {
     title: 'Join or register',
@@ -71,7 +72,7 @@ const resources = [
               <p>{item.body}</p>
             </div>
             {item.link ? (
-              <a class="button button--paper" href={item.link}>
+              <a class="button button--paper" href={item.link} {...externalLink(item.link)}>
                 {item.label}
               </a>
             ) : (
@@ -89,7 +90,7 @@ const resources = [
           The council’s Scout Shop is at 4335 Confederate Way in Macon. Use the council website or call before visiting to confirm current
           hours and inventory.
         </p>
-      </div><a class="button button--gold" href={pack.council.url}>Check council details</a>
+      </div><a class="button button--gold" href={pack.council.url} {...externalLink(pack.council.url)}>Check council details</a>
     </div>
   </section>
 </BaseLayout>

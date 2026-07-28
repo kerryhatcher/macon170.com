@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { pack } from '../data/pack';
+import { externalLink } from '../lib/external-link';
 const hasEndpoint = Boolean(pack.contact.formEndpoint);
 const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
 ---
@@ -100,7 +101,7 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
         </div><div class="contact-card">
           <h2>Need council help instead?</h2><p>
             Central Georgia Council<br />{pack.council.phone}<br /><a href={`mailto:${pack.council.email}`}>{pack.council.email}</a>
-          </p><p><a href={pack.council.url}>Council website</a></p>
+          </p><p><a href={pack.council.url} {...externalLink(pack.council.url)}>Council website</a></p>
         </div><div class="contact-card">
           <h2>Visit location</h2><p>{pack.meeting.location}<br />{pack.meeting.address}</p><p>
             Pack meetings are roughly monthly. Confirm the date before making a special trip.

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
+import { externalLink } from '../lib/external-link';
 const faq = [
   [
     'Does my family need to belong to the church?',
@@ -36,7 +37,7 @@ const faq = [
     noteBody="Loading the next scheduled Pack 170 meeting…"
   >
     <div slot="actions" class="hero-actions">
-      <a class="button button--gold" href={pack.links.join}>Start with BeAScout</a><a class="button button--paper" href="/contact/"
+      <a class="button button--gold" href={pack.links.join} {...externalLink(pack.links.join)}>Start with BeAScout</a><a class="button button--paper" href="/contact/"
         >Ask a pack adult</a
       >
     </div>
@@ -154,7 +155,7 @@ const faq = [
   <section class="section join-close">
     <div class="container paper-sheet join-close__sheet">
       <h2>Ready to turn the first page?</h2><p>Start on BeAScout, or contact Pack 170 adults if you want a local answer first.</p><div>
-        <a class="button button--gold" href={pack.links.join}>Open BeAScout</a><a class="button button--paper" href="/contact/"
+        <a class="button button--gold" href={pack.links.join} {...externalLink(pack.links.join)}>Open BeAScout</a><a class="button button--paper" href="/contact/"
           >Contact the pack</a
         >
       </div>

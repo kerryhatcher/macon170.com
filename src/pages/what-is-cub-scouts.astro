@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { pack, ranks } from '../data/pack';
+import { externalLink } from '../lib/external-link';
 
 const aims = [
   ['Character development', 'Practicing honesty, respect, and responsibility in a small group with adult guidance.'],
@@ -90,7 +91,7 @@ const asks = [
         <h2>Pack 170, specifically.</h2>
         <p>
           {pack.name} is Macon's local Cub Scout pack, part of the {pack.council.name} of Scouting America. We're chartered by <a
-            href={pack.charteredOrganization.url}>{pack.charteredOrganization.name}</a
+            href={pack.charteredOrganization.url} {...externalLink(pack.charteredOrganization.url)}>{pack.charteredOrganization.name}</a
           >, where the pack meets. The pack is entirely volunteer-run — there is no paid staff.
         </p>
         <p>
