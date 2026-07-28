@@ -93,7 +93,15 @@ export const ranks = [
 // "Lego Pinewood Derby & Cookout" is an August recruiting event and must not be mistaken
 // for the late-January Derby — so every match is also fenced to plausible months (0-based).
 export const annualProgram = [
-  { season: 'Fall', title: 'Join Scouting Night', state: 'Date to be added', match: { keywords: ['join scouting'], months: [7, 8, 9] } },
+  // The year opens with the Lego Pinewood Derby & Cookout — a free August event families are asked
+  // to invite anyone interested in Scouting to, so it is the pack's Join Scouting Night in practice
+  // (docs/calendar.md:4, Cubmaster 2026-07-28). There is no separate Join Scouting Night milestone.
+  {
+    season: 'August',
+    title: 'Lego Pinewood Derby',
+    state: 'Date to be added',
+    match: { keywords: ['lego', 'join scouting'], months: [7, 8] },
+  },
   { season: 'Fall', title: 'Fall camp', state: 'Dates to be added', match: { keywords: ['fall camp', 'day camp', 'resident camp'], months: [8, 9, 10] } },
   { season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added', match: { keywords: ['pinewood'], months: [0, 1] } },
   // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and

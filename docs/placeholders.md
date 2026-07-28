@@ -63,7 +63,7 @@ a placeholder.
 ### `src/data/pack.ts` annual program (L76–81)
 
 Four entries whose `state` is a placeholder string, surfaced on the homepage timeline:
-Join Scouting Night, Fall camp, Pinewood Derby, Blue & Gold Banquet —
+Lego Pinewood Derby, Fall camp, Pinewood Derby, Blue & Gold Banquet —
 all "Date to be added" / "Dates to be added".
 
 The standalone "Spring · Crossover" milestone was removed 2026-07-28: the Cubmaster confirmed the
