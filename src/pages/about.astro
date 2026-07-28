@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
-import FieldIllustration from '../components/FieldIllustration.astro';
 import { pack } from '../data/pack';
+// Real Pack 170 photos, used with the families' permission. They back the two claims on this page
+// that a drawing can't: that the pack is genuinely ours, and that adult volunteers run it.
+import advancement from '../../assets/packphotos/award2.jpg';
+import denLeader from '../../assets/packphotos/Stephanie_awards.jpeg';
 // Leadership content lives entirely in Markdown — headings, sections, and prose included — so pack
 // editors control it without touching code. Do not mirror any of it back into this file.
 import { Content as Roster } from '../data/leadership.md';
@@ -31,7 +35,17 @@ import { externalLink } from '../lib/external-link';
           The church charters the pack and supports its meeting home. Parents and registered adult volunteers deliver the Cub Scouting
           program. Families don't need to belong to the church, and Pack 170 welcomes boys and girls from every background.
         </p>
-      </div><FieldIllustration label="Shirley Hills · Macon, Georgia" />
+      </div><figure class="pack-photo">
+        <Image
+          src={advancement}
+          alt="A Pack 170 den leader pins a rank badge on a Cub Scout's uniform at a pack meeting."
+          widths={[420, 840]}
+          width={840}
+          height={1260}
+          sizes="(max-width: 760px) 100vw, 42vw"
+          loading="lazy"
+        /><figcaption>Shirley Hills · Macon, Georgia</figcaption>
+      </figure>
     </div>
   </section>
   <section class="section how-section">
@@ -64,6 +78,17 @@ import { externalLink } from '../lib/external-link';
   <section class="section roster-section">
     <div class="container">
       <span class="chapter-tab">Pack leadership</span>
+      <figure class="pack-photo pack-photo--wide">
+        <Image
+          src={denLeader}
+          alt="A Pack 170 den leader speaks from the podium at a pack meeting."
+          widths={[640, 1280]}
+          width={1280}
+          height={853}
+          sizes="(max-width: 760px) 100vw, 60rem"
+          loading="lazy"
+        /><figcaption>Every den in Pack 170 is led by a trained, background-checked parent volunteer.</figcaption>
+      </figure>
       <div class="roster"><Roster /></div>
     </div>
   </section>
@@ -120,6 +145,26 @@ import { externalLink } from '../lib/external-link';
   .roster-section {
     background: var(--page);
     border-block: 1px solid var(--rule);
+  }
+  /* Photos sit in the same paper frame as the rest of the handbook, not edge-to-edge. */
+  .pack-photo {
+    margin: 0;
+    padding: 0.75rem 0.75rem 0;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .pack-photo img {
+    width: 100%;
+    height: auto;
+  }
+  .pack-photo figcaption {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .pack-photo--wide {
+    max-width: 60rem;
+    margin: 1.5rem 0 2.5rem;
   }
   /* Styles any structure the Markdown grows: h2 sections, prose, and role lists. */
   .roster :global(h2) {

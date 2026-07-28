@@ -76,7 +76,10 @@ The dead `.rank__mark` rules and the `mark` field in `ranks[]` are gone.
 
 Still hand-drawn on purpose, with no official equivalent:
 
-- `src/components/FieldIllustration.astro` — CSS Georgia-hills scene on `/` and `/about/`.
+- `src/components/FieldIllustration.astro` — CSS Georgia-hills scene. **Now referenced by no page**
+  as of 2026-07-28: `/about/` replaced it with a real Pack 170 photo from `assets/packphotos/`. The
+  component and its `.field-illustration*` rules in `src/styles/global.css` are dead code; delete
+  them once leadership confirms the illustration is not wanted elsewhere.
 - `src/pages/activities.astro:5` — `→ ▲ ★ ✦` symbols per activity. Generic, but no official
   Scouting America graphic maps to "pinewood derby" or "blue & gold banquet".
 - `src/components/SiteHeader.astro:18` — the `170` brand mark. `assets/logo.svg`,
