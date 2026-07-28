@@ -156,6 +156,12 @@ p {
 .measure {
   max-width: var(--reading);
 }
+/* Shared by index.astro, dens/index.astro, and dens/[den].astro. Only index.astro's scoped
+   <style> sets this class's color/spacing, so without a global rule the den pages rendered it
+   as an unconstrained full-width paragraph. */
+.grade-note {
+  max-width: var(--reading);
+}
 .container {
   width: var(--container);
   margin-inline: auto;
@@ -465,6 +471,7 @@ p {
 .section-heading p {
   color: var(--muted);
   font-size: 1.2rem;
+  max-width: var(--reading);
 }
 
 /* Real pack photography. Sits in the same paper frame as the rest of the handbook rather than
@@ -692,7 +699,7 @@ p {
   padding-top: 1.5rem;
   font-size: 0.95rem;
   color: var(--blue-dim);
-  max-width: 95ch;
+  max-width: var(--reading);
 }
 
 @media (max-width: 960px) {
