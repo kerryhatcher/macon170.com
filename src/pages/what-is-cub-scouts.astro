@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
+import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
+import { denSlug } from '../lib/den-slug';
 import { externalLink } from '../lib/external-link';
 
 const aims = [
@@ -74,10 +76,17 @@ const asks = [
         {
           ranks.map((rank) => (
             <li>
-              <p class="rank-list__name">
-                <strong>{rank.name}</strong> · {rank.grade}
-              </p>
-              {selNotes[rank.name] && <p class="rank-list__note">{selNotes[rank.name]}</p>}
+              <a class="rank-list__link" href={`/dens/${denSlug(rank.name)}/`}>
+                <span class="rank-list__badge">
+                  <RankEmblem emblem={rank.emblem} name={rank.name} />
+                </span>
+                <span class="rank-list__body">
+                  <span class="rank-list__name">
+                    <strong>{rank.name}</strong> · {rank.grade}
+                  </span>
+                  {selNotes[rank.name] && <span class="rank-list__note">{selNotes[rank.name]}</span>}
+                </span>
+              </a>
             </li>
           ))
         }
@@ -269,13 +278,29 @@ const asks = [
     padding: 0;
     list-style: none;
   }
-  .rank-list li {
+  /* The whole row is the link, so background, tab, and padding all live on the anchor and lift
+     together on hover. Matches .den-link on /dens/. */
+  .rank-list__link {
     position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
     padding: 0.6rem 0.9rem;
     background: var(--page);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+  .rank-list__link:focus-visible {
+    transform: translate(-3px, -3px);
+  }
+  @media (hover: hover) {
+    .rank-list__link:hover {
+      transform: translate(-3px, -3px);
+    }
   }
   /* A sewn-in bookmark tab at the corner, not a rail down the whole edge. */
-  .rank-list li::before {
+  .rank-list__link::before {
     content: '';
     position: absolute;
     left: 0;
@@ -284,10 +309,30 @@ const asks = [
     height: 1.4rem;
     background: var(--blue);
   }
-  .rank-list__name {
+  .rank-list__badge {
+    flex: 0 0 54px;
+  }
+  /* RankEmblem carries its own scope, so reaching its class needs :global(). Its own rule centers
+     the badge under a caption (max-width 118px, margin 0 auto 0.75rem), which is wrong beside a line
+     of type — this selector is deliberately more specific so the bottom margin does not survive. */
+  .rank-list .rank-list__badge :global(.rank__emblem) {
+    width: 54px;
+    height: auto;
     margin: 0;
   }
+  .rank-list__body {
+    min-width: 0;
+  }
+  .rank-list__name {
+    display: block;
+  }
+  .rank-list__link strong {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
   .rank-list__note {
+    display: block;
     margin: 0.35rem 0 0;
     font-size: 0.95rem;
     line-height: 1.55;
