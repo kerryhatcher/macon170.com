@@ -38,6 +38,7 @@ const asks = [
   <section class="section">
     <div class="container">
       <div class="plan-slab">
+        <h2 class="plan-slab__head">Building stakeholder engagement</h2>
         <p class="plan-slab__source">
           Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
         </p>
@@ -286,6 +287,14 @@ const asks = [
     border-radius: 6px 18px 12px 8px;
     box-shadow: var(--shadow-paper);
   }
+  /* Subheading step from DESIGN.md. The heading leads, so the quote steps down to `subtitle` —
+     the step DESIGN.md names for emphasis inside a coloured sheet. */
+  .plan-slab__head {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
+    line-height: 1.3;
+    color: #fff;
+  }
   .plan-slab__source {
     margin: 0 0 0.85rem;
     font-family: var(--font-display);
@@ -300,12 +309,11 @@ const asks = [
   .plan-slab__source a {
     color: inherit;
   }
-  /* The district's own words carry the argument, so they outsize the sentences framing them.
-     Subheading step from DESIGN.md — the next documented size above .lead. */
+  /* The district's own words still outsize the prose framing them, one step below the heading. */
   .plan-slab__quote {
     margin: 0;
     max-width: 62ch;
-    font-size: clamp(1.25rem, 2vw, 1.65rem);
+    font-size: 1.2rem;
     font-style: italic;
     font-weight: 800;
     line-height: 1.3;
