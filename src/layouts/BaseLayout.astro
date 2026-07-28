@@ -1,12 +1,19 @@
 ---
-import '@fontsource/montserrat/600.css';
+// Only the weights the stylesheets actually ask for. Montserrat 600 and Source Sans 3 600
+// were imported and never used, which shipped six unused woff2 files per family and two
+// dead @font-face blocks into the stylesheet every page loads.
 import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
 import '@fontsource/montserrat/900.css';
 import '@fontsource/source-sans-3/400.css';
 import '@fontsource/source-sans-3/500.css';
-import '@fontsource/source-sans-3/600.css';
 import '@fontsource/source-sans-3/700.css';
+// The chapter-hero <h1> is the LCP element on every route, and it is Montserrat 900. Left to
+// the bundled CSS, its woff2 is only discovered after that CSS parses - one serialized round
+// trip in front of the largest paint. Importing the file gives us the same hashed asset the
+// @font-face already points at, so the preload matches the request instead of duplicating it.
+import montserrat900 from '@fontsource/montserrat/files/montserrat-latin-900-normal.woff2';
+import sourceSans400 from '@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
@@ -26,6 +33,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#003f87" />
+    <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin /><link
+      rel="preload"
+      href={sourceSans400}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <!-- iOS ignores the SVG icon and needs an opaque square, so the badge sits on its own
