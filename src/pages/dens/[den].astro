@@ -229,13 +229,24 @@ const program = adventures.find((entry) => entry.rank === rank.name);
     gap: 1rem;
   }
   .adventure-list li {
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem;
     background: var(--page);
-    border-left: 5px solid var(--blue);
     box-shadow: 3px 5px 0 var(--rule);
+  }
+  /* A sewn-in bookmark tab at the corner, not a rail down the whole edge.
+     Absolutely positioned so it stays out of the flex flow. */
+  .adventure-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 1.75rem;
+    background: var(--blue);
   }
   .adventure-list__loop {
     flex: 0 0 auto;

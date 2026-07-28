@@ -273,9 +273,19 @@ const asks = [
     list-style: none;
   }
   .rank-list li {
+    position: relative;
     padding: 0.6rem 0.9rem;
     background: var(--page);
-    border-left: 4px solid var(--blue);
+  }
+  /* A sewn-in bookmark tab at the corner, not a rail down the whole edge. */
+  .rank-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 1.4rem;
+    background: var(--blue);
   }
   .rank-list__name {
     margin: 0;
