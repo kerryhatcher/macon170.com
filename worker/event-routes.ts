@@ -31,6 +31,10 @@ type EventRow = {
   updated_by: string;
 };
 
+type CalendarEventRow = EventRow & {
+  sequence: number;
+};
+
 type EventInput = {
   title?: unknown;
   slug?: unknown;
@@ -73,6 +77,10 @@ const adminFields = `id, slug, created_at, updated_at, published_at, archived_at
   created_by, updated_by`;
 const publicFields = `slug, status, category, title, summary, description, starts_at, ends_at,
   timezone, location_name, address, audience, what_to_bring, cost, registration_url, milestone`;
+const calendarFields = `calendar_events.id, slug, created_at, updated_at, status, category, title, summary,
+  description, starts_at, ends_at, timezone, location_name, address, audience,
+  what_to_bring, cost, registration_url,
+  (SELECT COUNT(*) FROM event_audit_log WHERE event_id = calendar_events.id) AS sequence`;
 
 export class EventRouteError extends Error {
   constructor(
@@ -98,6 +106,27 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
       .bind(now)
       .run<EventRow>();
     return context.json({ ok: true, events: result.results }, 200, context.publicHeaders(request));
+  }
+
+  if (url.pathname === '/api/calendar.ics' && (request.method === 'GET' || request.method === 'HEAD')) {
+    const result = await env.DB.prepare(
+      `
+      SELECT ${calendarFields} FROM calendar_events
+      WHERE visibility = 'published'
+      ORDER BY starts_at DESC LIMIT 500
+    `,
+    ).run<CalendarEventRow>();
+    const calendar = renderCalendar(result.results, env.PUBLIC_SITE_ORIGIN);
+    const etag = `"${await sha256(calendar)}"`;
+    const headers = {
+      ...context.publicHeaders(request),
+      'cache-control': 'public, no-cache, must-revalidate',
+      'content-type': 'text/calendar; charset=utf-8',
+      'content-disposition': 'inline; filename="pack-170-calendar.ics"',
+      etag,
+    };
+    if (request.headers.get('if-none-match') === etag) return new Response(null, { status: 304, headers });
+    return new Response(request.method === 'HEAD' ? null : calendar, { status: 200, headers });
   }
 
   const publicMatch = url.pathname.match(/^\/api\/events\/([a-z0-9-]{2,80})$/);
@@ -384,4 +413,93 @@ function milestoneValue(value: unknown): string | null {
   const key = value.trim();
   if (!milestoneKeys.has(key)) throw new EventRouteError(400, 'Choose a valid milestone.');
   return key;
+}
+
+function renderCalendar(events: CalendarEventRow[], publicOrigin: string): string {
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Cub Scout Pack 170//Pack Calendar//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:Pack 170 Calendar',
+    'X-WR-CALDESC:Published events for Cub Scout Pack 170 in Macon\\, Georgia.',
+    'X-WR-TIMEZONE:America/New_York',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT15M',
+    'X-PUBLISHED-TTL:PT15M',
+  ];
+
+  for (const event of events) {
+    const description = [
+      event.description,
+      `Audience: ${event.audience}`,
+      event.what_to_bring ? `What to bring: ${event.what_to_bring}` : null,
+      event.cost ? `Cost: ${event.cost}` : null,
+      event.registration_url ? `Registration: ${event.registration_url}` : null,
+    ]
+      .filter((value): value is string => Boolean(value))
+      .join('\n\n');
+    const location = [event.location_name, event.address].filter(Boolean).join(', ');
+    const eventUrl = `${publicOrigin.replace(/\/$/, '')}/events/?event=${encodeURIComponent(event.slug)}`;
+
+    lines.push(
+      'BEGIN:VEVENT',
+      `UID:${event.id}@macon170.com`,
+      `DTSTAMP:${icsDate(event.updated_at)}`,
+      `CREATED:${icsDate(event.created_at)}`,
+      `LAST-MODIFIED:${icsDate(event.updated_at)}`,
+      `SEQUENCE:${event.sequence}`,
+      `DTSTART:${icsDate(event.starts_at)}`,
+    );
+    if (event.ends_at) lines.push(`DTEND:${icsDate(event.ends_at)}`);
+    lines.push(
+      `SUMMARY:${escapeIcsText(event.title)}`,
+      `DESCRIPTION:${escapeIcsText(description)}`,
+      ...(location ? [`LOCATION:${escapeIcsText(location)}`] : []),
+      `URL:${eventUrl}`,
+      `STATUS:${event.status === 'cancelled' ? 'CANCELLED' : event.status === 'tentative' ? 'TENTATIVE' : 'CONFIRMED'}`,
+      `CATEGORIES:${escapeIcsText(event.category)}`,
+      'TRANSP:OPAQUE',
+      'END:VEVENT',
+    );
+  }
+
+  lines.push('END:VCALENDAR');
+  return `${lines.map(foldIcsLine).join('\r\n')}\r\n`;
+}
+
+function icsDate(value: string): string {
+  return new Date(value)
+    .toISOString()
+    .replace(/[-:]/g, '')
+    .replace(/\.\d{3}Z$/, 'Z');
+}
+
+function escapeIcsText(value: string): string {
+  return value
+    .replace(/\\/g, '\\\\')
+    .replace(/\r\n|\r|\n/g, '\\n')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,');
+}
+
+function foldIcsLine(line: string): string {
+  const encoder = new TextEncoder();
+  const folded: string[] = [];
+  let current = '';
+  for (const character of line) {
+    if (encoder.encode(current + character).byteLength > 75) {
+      folded.push(current);
+      current = ` ${character}`;
+    } else {
+      current += character;
+    }
+  }
+  folded.push(current);
+  return folded.join('\r\n');
+}
+
+async function sha256(value: string): Promise<string> {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
 }

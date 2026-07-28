@@ -163,6 +163,74 @@ describe('calendar events', () => {
     expect(event?.milestone).toBe('lego-derby');
   });
 
+  it('serves a refreshable iCalendar subscription with stable event metadata', async () => {
+    const feedPayload = {
+      ...eventPayload,
+      title: 'Campfire, Songs & Games',
+      slug: 'calendar-feed-event',
+      description: 'Gather around the campfire.\nFamilies should bring a chair.',
+      status: 'tentative',
+    };
+    const created = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify(feedPayload),
+    });
+    expect(created.status).toBe(201);
+    const { id } = await created.json<{ id: string }>();
+
+    let response = await exports.default.fetch('https://www.macon170.com/api/calendar.ics');
+    expect(await response.text()).not.toContain(`${id}@macon170.com`);
+
+    const published = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...feedPayload, visibility: 'published' }),
+    });
+    expect(published.status).toBe(200);
+
+    response = await exports.default.fetch('https://www.macon170.com/api/calendar.ics');
+    expect(response.status).toBe(200);
+    expect(response.headers.get('content-type')).toBe('text/calendar; charset=utf-8');
+    expect(response.headers.get('content-disposition')).toContain('pack-170-calendar.ics');
+    const etag = response.headers.get('etag');
+    expect(etag).toBeTruthy();
+    const calendar = (await response.text()).replace(/\r\n[ \t]/g, '');
+    expect(calendar).toContain('BEGIN:VCALENDAR\r\n');
+    expect(calendar).toContain(`UID:${id}@macon170.com\r\n`);
+    expect(calendar).toContain('DTSTART:20270112T233000Z\r\n');
+    expect(calendar).toContain('SUMMARY:Campfire\\, Songs & Games\r\n');
+    expect(calendar).toContain('DESCRIPTION:Gather around the campfire.\\nFamilies should bring a chair.');
+    expect(calendar).toContain('STATUS:TENTATIVE\r\n');
+    expect(calendar).toContain('SEQUENCE:2\r\n');
+    expect(calendar).toContain('URL:https://www.macon170.com/events/?event=calendar-feed-event\r\n');
+    expect(calendar).toContain('END:VCALENDAR\r\n');
+
+    const updated = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...feedPayload, title: 'Campfire postponed', status: 'cancelled', visibility: 'published' }),
+    });
+    expect(updated.status).toBe(200);
+
+    const changed = await exports.default.fetch('https://www.macon170.com/api/calendar.ics', {
+      headers: { 'if-none-match': etag! },
+    });
+    expect(changed.status).toBe(200);
+    expect(changed.headers.get('etag')).not.toBe(etag);
+    const changedCalendar = (await changed.text()).replace(/\r\n[ \t]/g, '');
+    expect(changedCalendar).toContain(`UID:${id}@macon170.com\r\n`);
+    expect(changedCalendar).toContain('SUMMARY:Campfire postponed\r\n');
+    expect(changedCalendar).toContain('STATUS:CANCELLED\r\n');
+    expect(changedCalendar).toContain('SEQUENCE:3\r\n');
+
+    const unchanged = await exports.default.fetch('https://www.macon170.com/api/calendar.ics', {
+      headers: { 'if-none-match': changed.headers.get('etag')! },
+    });
+    expect(unchanged.status).toBe(304);
+    expect(await unchanged.text()).toBe('');
+  });
+
   it('rejects a milestone key that is not in the program', async () => {
     const response = await exports.default.fetch('http://localhost/api/admin/events', {
       method: 'POST',

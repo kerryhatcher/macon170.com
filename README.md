@@ -158,13 +158,17 @@ One Worker serves both the static Astro output and the API:
 - **`POST /api/contact`** — Turnstile-verified, rate-limited parent
   inquiries, written to [D1](https://developers.cloudflare.com/d1/)
 - **`GET /api/events`** — public, read-only, published-only calendar data
+- **`GET /api/calendar.ics`** — public iCalendar subscription containing
+  published events; stable event IDs and revision metadata let calendar apps
+  apply volunteer updates without creating duplicate entries
 - **`admin.macon170.com/*`** — the volunteer desk; every request
   requires a Cloudflare Access JWT verified server-side against
   Cloudflare's rotating JWKS, and every view or status change is
   written to an audit log tied to the verified email
 
 See [`docs/CLOUDFLARE-DEPLOYMENT.md`](docs/CLOUDFLARE-DEPLOYMENT.md) for
-the full request/response and data-safety model.
+the data-safety and deployment model. The complete machine-readable API
+contract is in [`docs/openapi.yaml`](docs/openapi.yaml).
 
 ## 🏗️ Architecture
 
