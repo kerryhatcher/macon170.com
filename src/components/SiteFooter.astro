@@ -27,9 +27,17 @@ const year = new Date().getFullYear();
         <h3>Community</h3>
         <ul>
           <li>
-            <a href={pack.charteredOrganization.url} {...externalLink(pack.charteredOrganization.url)}>{pack.charteredOrganization.name}</a>
+            <a href={pack.charteredOrganization.url} {...externalLink(pack.charteredOrganization.url)}>
+              {pack.charteredOrganization.name}<span class="external-mark" aria-hidden="true">↗</span><span class="sr-only">
+                (opens in a new tab)</span
+              >
+            </a>
           </li>
-          <li><a href={pack.council.url} {...externalLink(pack.council.url)}>{pack.council.name}</a></li>
+          <li>
+            <a href={pack.council.url} {...externalLink(pack.council.url)}>
+              {pack.council.name}<span class="external-mark" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
           <li><a href="/contact/">Contact pack adults</a></li>
           <li><a href="/what-is-cub-scouts/">What is Cub Scouts?</a></li>
           <li><a href="/youth-protection/">Youth protection</a></li>
