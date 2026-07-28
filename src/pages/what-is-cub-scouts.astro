@@ -24,8 +24,8 @@ const planUrl = 'https://www.bcsdk12.net/about-us/strategic-plan';
 const selNotes: Record<string, string> = {
   Lion: 'An adult partner is in the den for every Lion meeting, so a five-year-old practices the first group skills — waiting a turn, sharing an adult’s attention — with their own grown-up beside them.',
   Tiger: 'Den meetings run to a routine: an opening, a job to do, a closing. A first grader learns to name what they need and ask for help inside a structure that does not change week to week.',
-  Wolf: 'One of the six required Adventures at every rank is Character & Leadership. For a second grader that is working with the partner they were given rather than the one they wanted, and finishing the part they agreed to do.',
-  Bear: 'One of the six required Adventures at every rank is Citizenship. For a third grader that is a service project whose benefit goes to people they will never meet.',
+  Wolf: 'Character & Leadership is one of the six Adventures every rank requires. For a second grader that means working with the partner they were given rather than the one they wanted, and finishing the part they agreed to do.',
+  Bear: 'The required Citizenship Adventure puts a third grader on a service project — work whose benefit goes to people they will never meet.',
   Webelos: 'Webelos choose from twenty elective Adventures. Picking one, planning it, and carrying it through is goal-setting a fourth grader owns rather than receives.',
   'Arrow of Light':
     'The fifth-grade program is built around the crossover to Scouts BSA: leading parts of a meeting for the younger dens, then handing the job to whoever comes next.',
@@ -46,7 +46,7 @@ const asks = [
     chapter="For school & community leaders"
     title="What is"
     accent="Cub Scouting?"
-    intro="A plain-language briefing for principals, PTA/PTO boards, librarians, and civic leaders: what the program is, how it is run and supervised, and where it lines up with goals schools are already working on."
+    intro="A plain-language briefing for administrators, executives, and civic leaders: what the program is, how it is run and supervised, and where it lines up with goals schools are already working on."
     noteTitle="The short version"
     noteBody={`${pack.grades} · ${pack.welcome}`}
     ><p slot="note">A local, volunteer-run program of Scouting America — not a sales pitch, not a fundraiser at the door.</p></ChapterHero
@@ -54,22 +54,6 @@ const asks = [
 
   <section class="section">
     <div class="container">
-      <div class="plan-slab">
-        <h2 class="plan-slab__head">Building stakeholder engagement</h2>
-        <p class="plan-slab__source">
-          Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
-        </p>
-        <p class="plan-slab__quote">
-          <q
-            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
-            teaching and learning, we will maximize student achievement.</q
-          >
-        </p>
-        <p class="plan-slab__answer">
-          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
-          by its members.
-        </p>
-      </div>
       <div class="section-heading">
         <span class="chapter-tab">The program</span>
         <h2>A structured after-school activity, run by trained, background-checked parent volunteers.</h2>
@@ -96,6 +80,22 @@ const asks = [
           ))
         }
       </ul>
+      <div class="plan-slab">
+        <h2 class="plan-slab__head">Building stakeholder engagement</h2>
+        <p class="plan-slab__source">
+          Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
+        </p>
+        <p class="plan-slab__quote">
+          <q
+            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
+            teaching and learning, we will maximize student achievement.</q
+          >
+        </p>
+        <p class="plan-slab__answer">
+          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
+          by its members.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -308,14 +308,13 @@ const asks = [
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
-  /* The district's own premise, on a midnight slab tucked up into the hero so it reads as the
-     hero's closing band rather than the page's first paragraph. Gold rule because this is the
-     one thing on the page worth noticing first. */
+  /* The district's own premise, on a midnight slab closing the program section: the reader meets
+     the program first, then the reason a school should care. Gold rule because this is the one
+     thing on the page worth noticing. */
   .plan-slab {
     position: relative;
     z-index: 2;
-    margin-top: -7rem;
-    margin-bottom: clamp(2rem, 5vw, 3.25rem);
+    margin-top: clamp(2rem, 5vw, 3.25rem);
     padding: clamp(1.75rem, 4vw, 2.75rem);
     background: var(--blue-deep);
     color: #fff;
@@ -363,13 +362,6 @@ const asks = [
     font-size: 1.32rem;
     line-height: 1.65;
     color: var(--blue-soft);
-  }
-  /* The hero's bottom padding is what the slab tucks into; on phones that padding is smaller
-     and the slab is taller, so it sits below the hero instead of inside it. */
-  @media (max-width: 640px) {
-    .plan-slab {
-      margin-top: 0;
-    }
   }
   /* Alignment reads like the policy spread: heading in the margin, prose in its own column,
      so a principal can scan for the goal they care about instead of reading a wall. */
