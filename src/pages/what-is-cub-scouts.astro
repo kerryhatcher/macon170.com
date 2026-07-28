@@ -98,15 +98,18 @@ const asks = [
           {pack.meeting.location}. Families do not need any connection to the chartering church to join.
         </p>
       </div>
-      <div class="paper-sheet">
-        <span class="chapter-tab">What we're usually asking for</span>
+      <div class="ask-slip">
+        <span class="chapter-tab ask-slip__tab">What we're usually asking for</span>
         <h3>Small, specific, low-burden asks.</h3>
-        <ul class="ask-list">
+        <ul class="ask-checklist">
           {
             asks.map(([title, body]) => (
               <li>
-                <strong>{title}</strong>
-                <p>{body}</p>
+                <span class="ask-tick" aria-hidden="true" />
+                <div>
+                  <strong>{title}</strong>
+                  <p>{body}</p>
+                </div>
               </li>
             ))
           }
@@ -190,15 +193,75 @@ const asks = [
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
-  .ask-list {
-    display: grid;
-    gap: 1rem;
-    margin: 1rem 0 0;
-    padding: 0;
-    list-style: none;
+  /* The asks are the whole pitch to a school or civic partner, so they sit on their own
+     slip with an index tab straddling the cut edge and a ticked row per ask. */
+  .ask-slip {
+    position: relative;
+    margin-top: 1.6rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: var(--page);
+    border: 1px solid var(--rule);
+    border-radius: 6px 20px 10px 8px;
+    box-shadow: var(--shadow-paper);
   }
-  .ask-list li p {
-    margin: 0.25rem 0 0;
+  .ask-slip__tab {
+    position: absolute;
+    top: -1.05rem;
+    left: clamp(1.5rem, 3vw, 2.25rem);
+    margin: 0;
+  }
+  .ask-slip h3 {
+    margin: 0.9rem 0 0;
+    font-size: 1.15rem;
+    color: var(--blue);
+  }
+  .ask-checklist {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+  }
+  .ask-checklist li {
+    display: grid;
+    grid-template-columns: 1.4rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .ask-checklist li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .ask-checklist li:last-child {
+    padding-bottom: 0;
+  }
+  .ask-checklist strong {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--blue-deep);
+  }
+  .ask-checklist p {
+    margin: 0.2rem 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .ask-tick {
+    position: relative;
+    width: 1.4rem;
+    height: 1.6rem;
+  }
+  /* Pen tick drawn from two borders, matching the calendar and policy sheets. */
+  .ask-tick::before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    left: 0.1rem;
+    top: 0.45rem;
+    width: 0.9rem;
+    height: 0.45rem;
+    border-left: 3px solid var(--green-deep);
+    border-bottom: 3px solid var(--green-deep);
+    transform: rotate(-45deg);
   }
   .safety-section {
     background: var(--blue-deep);
