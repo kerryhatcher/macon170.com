@@ -4,6 +4,7 @@ import ChapterHero from '../components/ChapterHero.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
 import { externalLink } from '../lib/external-link';
+import { denSlug } from '../lib/den-slug';
 const faq = [
   {
     q: 'Does my family need to belong to the church?',
@@ -73,8 +74,8 @@ const faq = [
           A first visit is an introduction, not a commitment. You can expect a busy room, families arriving together, and age-appropriate
           activities led by adult volunteers.
         </p>
-        <div class="notice">
-          <span class="notice__pin">✓</span><div>
+        <div class="notice notice--success">
+          <span class="notice__pin" aria-hidden="true">✓</span><div>
             <h3>Parent-to-parent clarity</h3><p>
               All contact and registration steps are addressed to a parent or guardian. Pack 170 does not create one-to-one adult–youth
               communication channels.
@@ -99,13 +100,13 @@ const faq = [
       <div class="rank-path">
         {
           ranks.map((rank) => (
-            <div class:list={['rank', `rank--${rank.color}`]}>
+            <a class:list={['rank', `rank--${rank.color}`]} href={`/dens/${denSlug(rank.name)}/`}>
               <>
                 <RankEmblem emblem={rank.emblem} name={rank.name} />
                 <strong>{rank.name}</strong>
                 <small>{rank.grade}</small>
               </>
-            </div>
+            </a>
           ))
         }
       </div>
@@ -129,7 +130,7 @@ const faq = [
         </p>
       </div>
       <div class="notice">
-        <span class="notice__pin">?</span><div>
+        <span class="notice__pin" aria-hidden="true">?</span><div>
           <h3>Cost should never be the reason</h3><p>
             If the registration fee is a hardship for your family, talk to a pack leader. <a href="/contact/">Reach out</a> and we will work it
             out.

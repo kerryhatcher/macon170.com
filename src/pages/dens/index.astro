@@ -33,7 +33,7 @@ import { denSlug } from '../../lib/den-slug';
       <div class="rank-path">
         {
           ranks.map((rank) => (
-            <a class:list={['rank', 'den-link', `rank--${rank.color}`]} href={`/dens/${denSlug(rank.name)}/`}>
+            <a class:list={['rank', `rank--${rank.color}`]} href={`/dens/${denSlug(rank.name)}/`}>
               <RankEmblem emblem={rank.emblem} name={rank.name} />
               <>
                 <strong>{rank.name}</strong>
@@ -63,8 +63,8 @@ import { denSlug } from '../../lib/den-slug';
           Since 2024 it is earned fresh each year at a level that fits the grade.
         </p>
       </div>
-      <div class="notice">
-        <span class="notice__pin">✓</span>
+      <div class="notice notice--success">
+        <span class="notice__pin" aria-hidden="true">✓</span>
         <div>
           <h3>Nobody falls behind</h3>
           <p>
@@ -77,27 +77,6 @@ import { denSlug } from '../../lib/den-slug';
   </section>
 </BaseLayout>
 <style>
-  .den-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition:
-      transform 0.15s ease,
-      color 0.15s ease;
-  }
-  .den-link:focus-visible {
-    transform: translate(-3px, -3px);
-  }
-  @media (hover: hover) {
-    .den-link:hover {
-      transform: translate(-3px, -3px);
-    }
-  }
-  .den-link strong {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-  }
   .den-close {
     background: var(--green-deep);
     color: white;
@@ -107,15 +86,6 @@ import { denSlug } from '../../lib/den-slug';
     grid-template-columns: 1.2fr 0.8fr;
     gap: 4rem;
     align-items: start;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .den-link {
-      transition: none;
-    }
-    .den-link:hover,
-    .den-link:focus-visible {
-      transform: none;
-    }
   }
   @media (max-width: 800px) {
     .den-close__grid {

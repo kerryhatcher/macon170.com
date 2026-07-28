@@ -10,6 +10,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
+import { denSlug } from '../lib/den-slug';
 // Real Pack 170 photo, used with the family's permission. It replaced a CSS pinewood-derby
 // illustration: "small hands" reads better as actual muddy hands than as a drawn car.
 import mudProject from '../../assets/packphotos/15-576A9185.jpg';
@@ -91,13 +92,13 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
       <div class="rank-path">
         {
           ranks.map((rank) => (
-            <div class:list={['rank', `rank--${rank.color}`]}>
+            <a class:list={['rank', `rank--${rank.color}`]} href={`/dens/${denSlug(rank.name)}/`}>
               <RankEmblem emblem={rank.emblem} name={rank.name} />
               <>
                 <strong>{rank.name}</strong>
                 <small>{rank.grade}</small>
               </>
-            </div>
+            </a>
           ))
         }
       </div>
@@ -345,13 +346,15 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
     border-bottom: 1px dashed var(--blue-dim);
   }
   .cover__binding {
+    /* A perforated fold between the two hero columns, not a loose row of dashes: short
+       marks close enough together to read as a tear line, at enough contrast to see it. */
     position: absolute;
-    width: 22px;
+    width: 3px;
     top: 0;
     bottom: 0;
     left: 50%;
-    opacity: 0.25;
-    background: repeating-linear-gradient(0deg, transparent 0 26px, var(--gold) 27px 32px, transparent 33px 48px);
+    opacity: 0.55;
+    background: repeating-linear-gradient(0deg, var(--gold) 0 6px, transparent 6px 12px);
   }
   .welcome__grid {
     display: grid;

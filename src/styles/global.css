@@ -537,6 +537,17 @@ p {
   background: var(--red);
   color: white;
 }
+/* Success (✓): the affirming state distinct from the default gold pending/open-question
+   card and the red editor-error card, using the green already reserved for it in DESIGN.md's
+   Notice component but never wired up. */
+.notice--success {
+  background: var(--notice-green);
+  border-color: var(--green-deep);
+}
+.notice--success .notice__pin {
+  background: var(--green);
+  color: white;
+}
 
 .rank-path {
   display: grid;
@@ -546,15 +557,35 @@ p {
 }
 .rank {
   position: relative;
+  display: block;
   text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
+}
+.rank:focus-visible {
+  transform: translate(-3px, -3px);
+}
+@media (hover: hover) {
+  .rank:hover {
+    transform: translate(-3px, -3px);
+  }
 }
 /* The letter-in-a-blob mark these rules styled is gone — RankEmblem.astro renders the official
    badge of rank instead, and each badge carries its own colors. `rank--<color>` stays on the
-   wrapper as a styling hook. */
+   wrapper as a styling hook. Every rank strip is a link to its den page (see /dens/), so the
+   name carries the same underline affordance an inline text link would. */
 .rank strong,
 .rank small {
   display: block;
   line-height: 1.25;
+}
+.rank strong {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 .rank small {
   color: var(--muted);
@@ -692,6 +723,21 @@ p {
 }
 .site-footer li {
   margin-bottom: 0.35rem;
+}
+/* A restrained external-link mark: the footer's Community links already open in a new tab
+   (see lib/external-link.ts), but nothing showed that before it happened. The arrow is
+   decorative; sr-only carries the same fact to a screen reader. */
+.external-mark {
+  font-size: 0.75em;
+  margin-left: 0.2em;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 .footer-small {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -1130,6 +1176,13 @@ p {
       box-shadow 0.2s ease;
   }
   .button:hover {
+    transform: none;
+  }
+  .rank {
+    transition: none;
+  }
+  .rank:hover,
+  .rank:focus-visible {
     transform: none;
   }
 }
