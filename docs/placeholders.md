@@ -60,11 +60,18 @@ a placeholder.
 
 - `:18` "The next date is being added" — fallback link text when no next event is available.
 
-### `src/data/pack.ts` annual program (L76–81)
+### `src/data/pack.ts` annual program (L97–109)
 
 Four entries whose `state` is a placeholder string, surfaced on the homepage timeline:
 Lego Pinewood Derby, Fall camp, Pinewood Derby, Blue & Gold Banquet —
 all "Date to be added" / "Dates to be added".
+
+A row fills from a calendar event whose `milestone` column holds that entry's `key`, set from the
+Milestone dropdown in the calendar editor (spec:
+`docs/superpowers/specs/2026-07-28-milestone-event-association-design.md`). Keyword-and-month
+matching is gone. A milestone with no event associated to it keeps the placeholder, and because
+`/api/events` only returns events that have not ended, a row reverts to its placeholder once its
+event passes.
 
 The standalone "Spring · Crossover" milestone was removed 2026-07-28: the Cubmaster confirmed the
 crossover happens **at** the Blue & Gold Banquet and that the pack calls it the **Arrow of Light

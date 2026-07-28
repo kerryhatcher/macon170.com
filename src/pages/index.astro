@@ -146,7 +146,7 @@ import { API_BASE } from '../lib/api-base';
       <ol class="pm-strip" data-pm-list>
         {
           annualProgram.map((item) => (
-            <li class="pm-cell" data-pm-row={item.title}>
+            <li class="pm-cell" data-pm-row={item.key}>
               <span class="pm-month">{item.season}</span>
               <strong>{item.title}</strong>
               <small data-pm-when>{item.state}</small>
@@ -185,24 +185,25 @@ import { API_BASE } from '../lib/api-base';
     if (!root) return;
     const fmt = (iso) => new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'America/New_York' }).format(new Date(iso));
 
-    // Keywords alone would let an August "Lego Pinewood Derby" fill the late-January
-    // Derby milestone, so a match must also land in a plausible month.
-    function matchFor(milestone, events) {
-      return (
-        events.find(function (event) {
-          const title = String(event.title || '').toLowerCase();
-          const month = new Date(event.starts_at).getMonth();
-          return milestone.match.keywords.some((word) => title.includes(word)) && milestone.match.months.indexOf(month) !== -1;
-        }) || null
-      );
+    // An event claims a milestone by carrying its key (calendar_events.milestone). Milestones recur
+    // every year, so two events can share a key; the soonest one owns the row.
+    function soonestByMilestone(events) {
+      const byKey = {};
+      events.forEach(function (event) {
+        const key = event.milestone;
+        if (!key) return;
+        if (!byKey[key] || Date.parse(event.starts_at) < Date.parse(byKey[key].starts_at)) byKey[key] = event;
+      });
+      return byKey;
     }
 
     function paint(events) {
       let confirmed = 0;
+      const byKey = soonestByMilestone(events);
       pmProgram.forEach(function (milestone) {
-        const hit = matchFor(milestone, events);
+        const hit = byKey[milestone.key] || null;
         if (hit) confirmed += 1;
-        root.querySelectorAll('[data-pm-row="' + CSS.escape(milestone.title) + '"]').forEach(function (cell) {
+        root.querySelectorAll('[data-pm-row="' + CSS.escape(milestone.key) + '"]').forEach(function (cell) {
           const when = cell.querySelector('[data-pm-when]');
           if (!when) return;
           if (hit) {
