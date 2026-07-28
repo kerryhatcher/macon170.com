@@ -296,6 +296,13 @@ const asks = [
     font-weight: 900;
     max-width: 34ch;
   }
+  /* This is the only route out of a page written for someone else, so its control is set
+     a step above the site's default button rather than at body-CTA scale. */
+  .join-signpost__inner .button {
+    min-height: 62px;
+    padding: 1rem 1.9rem;
+    font-size: 1.1rem;
+  }
   @media (max-width: 800px) {
     .aims-grid {
       grid-template-columns: 1fr 1fr;
