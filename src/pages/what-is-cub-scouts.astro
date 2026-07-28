@@ -82,21 +82,24 @@ const asks = [
           ))
         }
       </ul>
-      <div class="plan-slab">
-        <h2 class="plan-slab__head">Building stakeholder engagement</h2>
-        <p class="plan-slab__source">
-          Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
-        </p>
-        <p class="plan-slab__quote">
-          <q
-            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
-            teaching and learning, we will maximize student achievement.</q
-          >
-        </p>
-        <p class="plan-slab__answer">
-          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
-          by its members.
-        </p>
+      <div class="notice plan-notice">
+        <span class="notice__pin" aria-hidden="true">“</span>
+        <div>
+          <h3>Building stakeholder engagement</h3>
+          <p class="plan-notice__source">
+            Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
+          </p>
+          <p class="plan-notice__quote">
+            <q
+              >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
+              teaching and learning, we will maximize student achievement.</q
+            >
+          </p>
+          <p>
+            A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
+            by its members.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -319,60 +322,36 @@ const asks = [
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
-  /* The district's own premise, on a midnight slab closing the program section: the reader meets
-     the program first, then the reason a school should care. Gold rule because this is the one
-     thing on the page worth noticing. */
-  .plan-slab {
-    position: relative;
-    z-index: 2;
+  /* The district's premise closes the program section as a pinned notice — the same sheet the
+     youth-protection callout uses, so the page carries one callout treatment rather than two.
+     .notice supplies the surface, dashed border, gold pin, and heading colour; only the citation
+     and the quotation need rules of their own. */
+  .plan-notice {
     margin-top: clamp(2rem, 5vw, 3.25rem);
-    padding: clamp(1.75rem, 4vw, 2.75rem);
-    background: var(--blue-deep);
-    color: #fff;
-    border-top: 3px solid var(--gold);
-    border-radius: 6px 18px 12px 8px;
-    box-shadow: var(--shadow-paper);
   }
-  /* Keeps the global h2 `headline` step, as the callout heading had before. The quote sits a step
-     below at `subtitle`, which is what DESIGN.md names for emphasis inside a coloured sheet. */
-  .plan-slab__head {
-    width: fit-content;
-    margin: 0 0 0.6rem;
-    padding: 0.1em 0.3em;
-    /* Gold as a marker field with midnight ink, the same pairing as the highlight button — not
-       gold type. */
-    background: var(--gold);
-    color: var(--blue-deep);
+  /* A left double quote sits high in its em box, so it needs a nudge to land on the pin's
+     optical centre the way ✓ and ? already do. */
+  .plan-notice .notice__pin {
+    font-size: 1.4rem;
+    transform: translateY(0.14em);
   }
-  .plan-slab__source {
-    margin: 0 0 0.85rem;
+  .plan-notice__source {
+    margin: 0.15rem 0 0.85rem;
     font-family: var(--font-display);
-    font-size: 0.98rem;
+    /* `meta` — logistics in display weight. Not uppercase: DESIGN.md reserves that for edition
+       marks and chapter tabs, and the plan's name has to stay readable as a link. */
+    font-size: 0.82rem;
     font-weight: 800;
     line-height: 1.3;
-    letter-spacing: 0.02em;
-    /* Not gold: gold is a marker here, never type (PRODUCT.md, DESIGN.md gold rule). The slab's
-       gold is the top rule. */
-    color: var(--blue-soft);
+    color: var(--muted);
   }
-  .plan-slab__source a {
-    color: inherit;
-  }
-  /* The district's own words still outsize the prose framing them, one step below the heading. */
-  .plan-slab__quote {
-    margin: 0;
-    font-size: 1.45rem;
+  /* The district's own words, one documented step above the prose framing them. Italic and the
+     q marks carry the attribution; the notice is a light sheet, so the ink colour stays. */
+  .plan-notice__quote {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
     font-style: italic;
-    font-weight: 800;
-    line-height: 1.3;
-    color: inherit;
-  }
-  .plan-slab__answer {
-    margin: 1rem 0 0;
-    /* +20% on the body step, at the user's request — a new size, not a documented ramp step. */
-    font-size: 1.32rem;
-    line-height: 1.65;
-    color: var(--blue-soft);
+    line-height: 1.45;
   }
   /* Alignment reads like the policy spread: heading in the margin, prose in its own column,
      so a principal can scan for the goal they care about instead of reading a wall. */
