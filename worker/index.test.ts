@@ -140,6 +140,62 @@ describe('calendar events', () => {
     const publicDetail = await exports.default.fetch('https://www.macon170.com/api/events/pack-meeting-january');
     expect(publicDetail.status).toBe(404);
   });
+
+  it('round-trips a milestone key through the public API', async () => {
+    const created = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby' }),
+    });
+    expect(created.status).toBe(201);
+    const { id } = await created.json<{ id: string }>();
+
+    const published = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby', visibility: 'published' }),
+    });
+    expect(published.status).toBe(200);
+
+    const list = await exports.default.fetch('https://www.macon170.com/api/events');
+    const body = await list.json<{ events: Array<{ slug: string; milestone: string | null }> }>();
+    const event = body.events.find((candidate) => candidate.slug === 'lego-derby-cookout');
+    expect(event?.milestone).toBe('lego-derby');
+  });
+
+  it('rejects a milestone key that is not in the program', async () => {
+    const response = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, slug: 'not-a-milestone', milestone: 'summer-camp' }),
+    });
+    expect(response.status).toBe(400);
+  });
+
+  it('treats an absent or cleared milestone as null', async () => {
+    const created = await exports.default.fetch('http://localhost/api/admin/events', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting' }),
+    });
+    expect(created.status).toBe(201);
+    const { id } = await created.json<{ id: string }>();
+    const stored = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?')
+      .bind(id)
+      .first<{ milestone: string | null }>();
+    expect(stored?.milestone).toBeNull();
+
+    const cleared = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+      body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting', milestone: '', visibility: 'draft' }),
+    });
+    expect(cleared.status).toBe(200);
+    const after = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?')
+      .bind(id)
+      .first<{ milestone: string | null }>();
+    expect(after?.milestone).toBeNull();
+  });
 });
 
 describe('volunteer desk', () => {

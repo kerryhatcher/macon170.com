@@ -87,35 +87,25 @@ export const ranks = [
   { name: 'Arrow of Light', grade: '5th grade', color: 'tan', emblem: 'Arrows-of-Ligth-1.webp' },
 ] as const;
 
-// The annual rhythm is known fact (see PRODUCT.md Operating Context) and is NOT the
-// calendar: these are recurring milestones, while D1 holds specific dated events. `match`
-// lets a published event fill in a milestone's real date. Keywords alone are not enough —
-// "Lego Pinewood Derby & Cookout" is an August recruiting event and must not be mistaken
-// for the late-January Derby — so every match is also fenced to plausible months (0-based).
+// The annual rhythm is known fact (see PRODUCT.md Operating Context) and is NOT the calendar:
+// these are recurring milestones, while D1 holds specific dated events. A calendar event claims a
+// milestone by storing its `key` in calendar_events.milestone, set from a dropdown in the admin UI.
+// A milestone with no event associated to it keeps its `state` placeholder on the homepage.
+//
+// `key` is a stored database value: rewording a `title` is safe, but changing a `key` orphans every
+// event that holds the old one. Add a migration if a key ever has to change.
 export const annualProgram = [
   // The year opens with the Lego Pinewood Derby & Cookout — a free August event families are asked
   // to invite anyone interested in Scouting to, so it is the pack's Join Scouting Night in practice
   // (docs/calendar.md:4, Cubmaster 2026-07-28). There is no separate Join Scouting Night milestone.
-  {
-    season: 'August',
-    title: 'Lego Pinewood Derby',
-    state: 'Date to be added',
-    match: { keywords: ['lego', 'join scouting'], months: [7, 8] },
-  },
-  { season: 'Fall', title: 'Fall camp', state: 'Dates to be added', match: { keywords: ['fall camp', 'day camp', 'resident camp'], months: [8, 9, 10] } },
-  { season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added', match: { keywords: ['pinewood'], months: [0, 1] } },
-  // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and
-  // the pack calls it the Arrow of Light Ceremony (both confirmed by the Cubmaster, 2026-07-28).
-  // This matches Scouting America's own guidance that the Arrow of Light crossover is folded into
-  // Blue & Gold — see docs/research/cub-scouting.md:70. The strip has room for one short title, so
-  // the ceremony is named on /activities/ instead; its keywords stay here so a calendar event named
-  // for the ceremony still fills in this milestone's real date.
-  {
-    season: 'February',
-    title: 'Blue & Gold Banquet',
-    state: 'Date to be added',
-    match: { keywords: ['blue & gold', 'blue and gold', 'arrow of light', 'crossover'], months: [1, 2] },
-  },
+  { key: 'lego-derby', season: 'August', title: 'Lego Pinewood Derby', state: 'Date to be added' },
+  { key: 'fall-camp', season: 'Fall', title: 'Fall camp', state: 'Dates to be added' },
+  { key: 'pinewood-derby', season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added' },
+  // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and the
+  // pack calls it the Arrow of Light Ceremony (both confirmed by the Cubmaster, 2026-07-28). This
+  // matches Scouting America's guidance — see docs/research/cub-scouting.md:70. The strip has room
+  // for one short title, so the ceremony is named on /activities/ instead.
+  { key: 'blue-gold', season: 'February', title: 'Blue & Gold Banquet', state: 'Date to be added' },
 ] as const;
 
 export const events: PackEvent[] = [];

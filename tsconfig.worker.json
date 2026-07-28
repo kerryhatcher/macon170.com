@@ -9,6 +9,6 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["worker/**/*.ts", "worker-configuration.d.ts"],
+  "include": ["worker/**/*.ts", "worker-configuration.d.ts", "src/data/pack.ts"],
   "exclude": ["worker/**/*.test.ts"]
 }

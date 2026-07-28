@@ -1,3 +1,5 @@
+import { annualProgram } from '../src/data/pack';
+
 type EventVisibility = 'draft' | 'published' | 'archived';
 type EventStatus = 'scheduled' | 'tentative' | 'cancelled';
 type EventCategory = 'pack' | 'den' | 'family';
@@ -24,6 +26,7 @@ type EventRow = {
   what_to_bring: string | null;
   cost: string | null;
   registration_url: string | null;
+  milestone: string | null;
   created_by: string;
   updated_by: string;
 };
@@ -45,6 +48,7 @@ type EventInput = {
   whatToBring?: unknown;
   cost?: unknown;
   registrationUrl?: unknown;
+  milestone?: unknown;
 };
 
 type EventRouteContext = {
@@ -61,12 +65,14 @@ type EventRouteContext = {
 const categories = new Set<EventCategory>(['pack', 'den', 'family']);
 const statuses = new Set<EventStatus>(['scheduled', 'tentative', 'cancelled']);
 const visibilities = new Set<EventVisibility>(['draft', 'published', 'archived']);
+// The admin dropdown and this validator read the same array, so they can never disagree.
+const milestoneKeys = new Set<string>(annualProgram.map((entry) => entry.key));
 const adminFields = `id, slug, created_at, updated_at, published_at, archived_at, visibility,
   status, category, title, summary, description, starts_at, ends_at, timezone,
-  location_name, address, audience, what_to_bring, cost, registration_url,
+  location_name, address, audience, what_to_bring, cost, registration_url, milestone,
   created_by, updated_by`;
 const publicFields = `slug, status, category, title, summary, description, starts_at, ends_at,
-  timezone, location_name, address, audience, what_to_bring, cost, registration_url`;
+  timezone, location_name, address, audience, what_to_bring, cost, registration_url, milestone`;
 
 export class EventRouteError extends Error {
   constructor(
@@ -142,8 +148,8 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
         INSERT INTO calendar_events (
           id, slug, visibility, status, category, title, summary, description,
           starts_at, ends_at, timezone, location_name, address, audience,
-          what_to_bring, cost, registration_url, published_at, created_by, updated_by
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          what_to_bring, cost, registration_url, milestone, published_at, created_by, updated_by
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
       ).bind(
         id,
@@ -163,6 +169,7 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
         input.whatToBring,
         input.cost,
         input.registrationUrl,
+        input.milestone,
         null,
         actor,
         actor,
@@ -214,7 +221,8 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
         UPDATE calendar_events SET slug = ?, visibility = ?, status = ?, category = ?,
           title = ?, summary = ?, description = ?, starts_at = ?, ends_at = ?, timezone = ?,
           location_name = ?, address = ?, audience = ?, what_to_bring = ?, cost = ?,
-          registration_url = ?, published_at = CASE WHEN ? = 'published' THEN COALESCE(published_at, ?) ELSE published_at END,
+          registration_url = ?, milestone = ?,
+          published_at = CASE WHEN ? = 'published' THEN COALESCE(published_at, ?) ELSE published_at END,
           archived_at = CASE WHEN ? = 'archived' THEN ? ELSE NULL END,
           updated_at = ?, updated_by = ? WHERE id = ?
       `,
@@ -235,6 +243,7 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
         input.whatToBring,
         input.cost,
         input.registrationUrl,
+        input.milestone,
         input.visibility,
         now,
         input.visibility,
@@ -322,6 +331,7 @@ function parseEventInput(input: EventInput, mode: 'create' | 'update') {
     whatToBring: optionalText(input.whatToBring, 2_000),
     cost: optionalText(input.cost, 500),
     registrationUrl,
+    milestone: milestoneValue(input.milestone),
   };
 }
 
@@ -368,4 +378,10 @@ function optionalUrl(value: unknown): string | null {
   const url = new URL(raw);
   if (!['https:', 'http:'].includes(url.protocol)) throw new EventRouteError(400, 'Registration link must use HTTP or HTTPS.');
   return url.toString();
+}
+function milestoneValue(value: unknown): string | null {
+  if (typeof value !== 'string' || !value.trim()) return null;
+  const key = value.trim();
+  if (!milestoneKeys.has(key)) throw new EventRouteError(400, 'Choose a valid milestone.');
+  return key;
 }
