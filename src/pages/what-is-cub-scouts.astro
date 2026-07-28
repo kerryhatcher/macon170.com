@@ -6,7 +6,7 @@ import { externalLink } from '../lib/external-link';
 
 const aims = [
   ['Character development', 'Practicing honesty, respect, and responsibility in a small group with adult guidance.'],
-  ['Citizenship training', 'Learning civic habits — flag ceremonies, service projects, caring for the neighborhood.'],
+  ['Citizenship training', 'Civic habits, learned by doing them: flag ceremonies, service projects, caring for the neighborhood.'],
   ['Personal fitness', 'Age-appropriate physical activity built into meetings and outdoor events.'],
   ['Leadership development', 'Kids take turns leading parts of a meeting, in a structure sized for their age.'],
 ];
@@ -22,15 +22,15 @@ const planUrl = 'https://www.bcsdk12.net/about-us/strategic-plan';
 // verified knife-safety Adventure was deliberately dropped as the wrong note for a page pitched
 // at school leaders.
 const selNotes: Record<string, string> = {
-  Lion: 'An adult partner is in the den for every Lion meeting, so a five-year-old practices the first group skills — waiting a turn, sharing an adult’s attention — with their own grown-up beside them.',
+  Lion: 'An adult partner sits in the den for every Lion meeting. So a five-year-old practices the very first group skills, waiting a turn and sharing a grown-up’s attention, with their own grown-up right there beside them.',
   Tiger:
-    'Den meetings run to a routine: an opening, a job to do, a closing. A first grader learns to name what they need and ask for help inside a structure that does not change week to week.',
-  Wolf: 'Character & Leadership is one of the six Adventures every rank requires. For a second grader that means working with the partner they were given rather than the one they wanted, and finishing the part they agreed to do.',
-  Bear: 'The required Citizenship Adventure puts a third grader on a service project — work whose benefit goes to people they will never meet.',
+    'Den meetings run to a routine: an opening, a job to do, a closing. Inside a structure that doesn’t shift week to week, a first grader learns to say what they need and to ask for help.',
+  Wolf: 'Character & Leadership is one of the six Adventures every rank requires. For a second grader that means working with the partner they got, not the partner they wanted, and finishing the part they said they would do.',
+  Bear: 'Third graders take on a service project for the required Citizenship Adventure. The people who benefit are people they will never meet. That is the point.',
   Webelos:
-    'Webelos choose from twenty elective Adventures. Picking one, planning it, and carrying it through is goal-setting a fourth grader owns rather than receives.',
+    'Twenty elective Adventures, and Webelos are the ones who pick. Choosing one, planning it, then seeing it through is goal-setting a fourth grader owns rather than receives.',
   'Arrow of Light':
-    'The fifth-grade program is built around the crossover to Scouts BSA: leading parts of a meeting for the younger dens, then handing the job to whoever comes next.',
+    'Fifth grade is built around the crossover to Scouts BSA. They lead parts of a meeting for the younger dens, then hand the job off to whoever comes next.',
 };
 
 const asks = [
@@ -51,7 +51,7 @@ const asks = [
     intro="A plain-language briefing for administrators, executives, and civic leaders: what the program is, how it is run and supervised, and where it lines up with goals schools are already working on."
     noteTitle="The short version"
     noteBody={`${pack.grades} · ${pack.welcome}`}
-    ><p slot="note">A local, volunteer-run program of Scouting America — not a sales pitch, not a fundraiser at the door.</p></ChapterHero
+    ><p slot="note">A local, volunteer-run program of Scouting America. No sales pitch, no fundraiser at the door.</p></ChapterHero
   >
 
   <section class="section">
@@ -63,8 +63,8 @@ const asks = [
       <p>
         Cub Scouting is a program of Scouting America for children in {pack.grades}. {pack.welcome}. Kids meet in small, same-grade groups
         called dens, and the whole pack gathers periodically for a larger meeting. Every adult who runs a meeting is a registered, trained
-        volunteer. Every child in Scouting must be escorted by their parent or guardian at every event — there is never a time at a Cub
-        Scout event where a child's parent or guardian is not present.
+        volunteer. Every child in Scouting must be escorted by their parent or guardian at every event. There is never a moment at a Cub
+        Scout event when a child's parent or guardian isn't present.
       </p>
       <p>
         The six grade levels each carry a rank name, so a program built for a kindergartner looks and feels different from one built for a
@@ -75,7 +75,7 @@ const asks = [
           ranks.map((rank) => (
             <li>
               <p class="rank-list__name">
-                <strong>{rank.name}</strong> — {rank.grade}
+                <strong>{rank.name}</strong> · {rank.grade}
               </p>
               {selNotes[rank.name] && <p class="rank-list__note">{selNotes[rank.name]}</p>}
             </li>
@@ -96,8 +96,8 @@ const asks = [
             >
           </p>
           <p>
-            A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
-            by its members.
+            A Cub Scout pack can help meet that goal. It gives families a standing, year-round reason to show up, and its own members
+            organize and pay for it.
           </p>
         </div>
       </div>
@@ -139,11 +139,11 @@ const asks = [
           <h3>Engaged families, already vetted</h3>
           <div>
             <p>
-              Every Cub Scout is enrolled by an adult, and the pack only runs because those adults take registered roles — den leader,
+              Every Cub Scout is enrolled by an adult, and the pack only runs because those adults take registered roles: den leader,
               treasurer, event coordinator, driver. Each one is trained and passes a criminal background check.
             </p>
             <p>
-              Many of our adults are already approved Bibb County school volunteers. A pack does not draw down a school's volunteer
+              Many of our adults are already approved Bibb County school volunteers. A pack doesn't draw down a school's volunteer
               capacity. It draws on adults who are already in the habit of showing up for their own children.
             </p>
           </div>
@@ -152,13 +152,14 @@ const asks = [
           <h3>Practice in the skills behind SEL</h3>
           <div>
             <p>
-              We are not a curriculum and we do not replace one. What a den gives a child is repeated practice in a small, same-grade group:
+              We aren't a curriculum and we don't replace one. What a den gives a child is repeated practice in a small, same-grade group:
               taking a turn leading, working with a partner who was not their first choice, finishing something difficult, and being
               accountable to other kids for it.
             </p>
             <p>
-              The five competencies the district plan's SEL objective draws on — self-awareness, self-management, social awareness,
-              relationship skills, responsible decision-making — are the ordinary business of a den meeting rather than a unit we teach.
+              Self-awareness, self-management, social awareness, relationship skills, responsible decision-making. Those are the five
+              competencies the district plan's SEL objective draws on, and in a den they are just the ordinary business of a meeting rather
+              than a unit we teach.
             </p>
           </div>
         </section>
@@ -166,13 +167,12 @@ const asks = [
           <h3>One more adult who knows the child</h3>
           <div>
             <p>
-              Research on school connectedness consistently finds that a stable relationship with a caring adult is protective for children.
-              A den leader is one of those adults: the same eight or ten kids, month after month, for years, and a standing reason to talk
-              to their parents.
+              A den leader sees the same eight or ten kids month after month, for years, and has a standing reason to talk to their parents.
+              That is one more adult who knows a child well enough to notice when something is off.
             </p>
             <p>
-              Multi-tiered supports depend on someone noticing a child early. Having more adults who know a child well, outside the school
-              day, is not a bad thing.
+              Multi-tiered supports depend on someone catching a problem early. More adults who know a child outside the school day means
+              more chances that somebody does.
             </p>
           </div>
         </section>
@@ -189,11 +189,11 @@ const asks = [
           {pack.name} is Macon's local Cub Scout pack, part of the {pack.council.name} of Scouting America. We're chartered by <a
             href={pack.charteredOrganization.url}
             {...externalLink(pack.charteredOrganization.url)}>{pack.charteredOrganization.name}</a
-          >, where the pack meets. The pack is entirely volunteer-run — there is no paid staff.
+          >, where the pack meets. It's run entirely by volunteers. There is no paid staff.
         </p>
         <p>
           Pack meetings happen {pack.meeting.cadence.toLowerCase()} on {pack.meeting.day}s at {pack.meeting.time}, at{' '}
-          {pack.meeting.location}. Families do not need any connection to the chartering church to join.
+          {pack.meeting.location}. Your family doesn't need any connection to the chartering church to join.
         </p>
       </div>
       <div class="ask-slip">
@@ -224,11 +224,11 @@ const asks = [
         <div>
           <h3>Youth protection, at a glance</h3>
           <p>
-            Every registered adult completes Scouting America's Safeguarding Youth Training before serving with youth, and renews it every
-            year. Every registered adult passes a criminal background check. Two-deep leadership means at least two registered adults are
-            present at every activity, and one-on-one contact between an adult and a youth is prohibited. Every part of the program is open
-            to observation by parents at any time. Suspected abuse is reported to law enforcement — this is never handled internally.
-            Nothing on this website is members-only, and every contact channel reaches multiple adults.
+            Every registered adult completes Scouting America's Safeguarding Youth Training before serving with youth, renews it every year,
+            and passes a criminal background check. Two-deep leadership means at least two registered adults are present at every activity,
+            and one-on-one contact between an adult and a youth is prohibited. Parents can observe any part of the program, any time.
+            Suspected abuse goes to law enforcement; it is never handled internally. Nothing on this website is members-only, and every
+            contact channel reaches multiple adults.
           </p>
           <p>
             Scouting America's national general liability program covers chartered units, so a school hosting our table is not underwriting

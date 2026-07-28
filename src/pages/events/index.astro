@@ -123,7 +123,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         registration
           ? '<p class="event-action"><a class="button button--blue" href="' + esc(registration) + '">Open registration</a></p>'
           : e.registration_url
-            ? '<p class="event-action event-action--broken">The registration link on file could not be opened — ask the pack for a working link.</p>'
+            ? '<p class="event-action event-action--broken">The registration link on file could not be opened. Ask the pack for a working link.</p>'
             : '',
         pending.length
           ? '<div class="event-pending"><h3>Still being confirmed</h3><p>Pack 170 has not published ' +

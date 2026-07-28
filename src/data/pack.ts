@@ -62,9 +62,9 @@ export const pack = {
     // Military Family Fee Waiver, effective June 1, 2026 (Scouting America).
     militaryWaiver: {
       eligibility: 'families with current service in the Active Duty, Reserve, National Guard, or Coast Guard',
-      covers: 'the $85.00 national youth registration fee, reduced to $0 — leaving just the $2.55 admin fee',
+      covers: 'the $85.00 national youth registration fee, reduced to $0, leaving just the $2.55 admin fee',
       how: 'Select “Get Military Discount Code” during online registration, complete verification, then enter the code at checkout.',
-      caveat: 'Youth registrations only, online only — new and renewing. Adult registration and admin fees still apply.',
+      caveat: 'Youth registrations only, online only, new and renewing alike. Adult registration and admin fees still apply.',
     },
   },
   // All contact funnels through the form. The pack publishes no adult email addresses.

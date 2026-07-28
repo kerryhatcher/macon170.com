@@ -158,7 +158,7 @@ const program = adventures.find((entry) => entry.rank === rank.name);
               <ul>
                 {program.specialElectives.map((adventure) => (
                   <li>
-                    <strong>{adventure.name}</strong> — {adventure.summary}
+                    <strong>{adventure.name}.</strong> {adventure.summary}
                   </li>
                 ))}
               </ul>
@@ -213,7 +213,7 @@ const program = adventures.find((entry) => entry.rank === rank.name);
         <a href={program.source} {...externalLink(program.source)}>
           {new URL(program.source).hostname}
         </a>
-        , July 2026. The one-line descriptions are Pack 170’s own summaries of each linked page, not Scouting America’s wording — follow a
+        , July 2026. The one-line descriptions are Pack 170’s own summaries of each linked page, not Scouting America’s wording. Follow a
         link for the actual requirements. Scouting America updated the Cub Scout adventure program on June 1, 2024.
       </p>
     )
