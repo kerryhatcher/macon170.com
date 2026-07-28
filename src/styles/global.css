@@ -165,6 +165,9 @@ p {
   border: 1px solid var(--rule);
   border-radius: 6px 18px 12px 8px;
   box-shadow: var(--shadow-paper);
+  /* DESIGN.md gives paper-sheet a 2rem pad; without it a sheet used on its own prints its
+     content flush to the cut edge. Sheets that want a different pad still set their own. */
+  padding: 2rem;
 }
 
 .skip-link {
