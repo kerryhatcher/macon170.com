@@ -211,14 +211,10 @@ p {
   white-space: nowrap;
 }
 .brand-mark {
-  width: 42px;
+  width: 50px;
+  height: auto;
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: 3px solid var(--gold);
-  border-radius: 50% 50% 46% 46%;
-  color: var(--gold);
-  font-size: 1rem;
+  border-radius: 50%;
 }
 .site-nav {
   margin-left: auto;
@@ -692,7 +688,7 @@ p {
     top: 72px;
   }
   .brand-mark {
-    width: 38px;
+    width: 44px;
   }
   .pack-strip__inner {
     display: block;
@@ -882,9 +878,6 @@ p {
   }
   .site-header {
     border-bottom: 2px solid var(--print-ink) !important;
-  }
-  .brand-mark {
-    border-color: var(--print-ink) !important;
   }
   /* The strip carries meeting time and place — the two facts a handout exists for. */
   .pack-strip {
