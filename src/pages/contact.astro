@@ -68,8 +68,15 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
             ><option>Website or privacy question</option><option>Something else</option></select
           >
         </div><div class="field-row">
-          <label for="message">Your question</label><textarea id="message" name="message" rows="6" minlength="10" maxlength="4000" required
-          ></textarea><small
+          <label for="message">Your question</label><textarea
+            id="message"
+            name="message"
+            rows="6"
+            minlength="10"
+            maxlength="4000"
+            aria-describedby="message-safety"
+            required></textarea
+          ><small id="message-safety"
             >Please do not send a child’s full name, school, address, medical information, or other sensitive details.</small
           >
         </div><div class="website-field" aria-hidden="true">
