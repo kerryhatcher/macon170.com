@@ -5,16 +5,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import { activities } from '../data/pack';
 import blueGoldCrossover from '../../assets/packphotos/crossover-2.jpeg';
+import outdoorTrail from '../../assets/packphotos/576A8821.jpg';
 const symbols: Record<string, string> = { car: '→', tent: '▲', banner: '★', hands: '✦' };
 // Real Pack 170 photos, used with the families' permission, keyed by activity slug. A chapter with
 // no photo keeps its illustrated blob. The mapping lives here rather than in pack.ts so that file
 // stays plain facts a pack editor can edit without touching build-tool imports.
 // Crossover happens at the Blue & Gold Banquet, so it illustrates that chapter instead of getting
 // an entry of its own — see the annualProgram note in src/data/pack.ts.
-const photos: Record<string, { src: ImageMetadata; alt: string }> = {
+const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }> = {
   'blue-gold': {
     src: blueGoldCrossover,
     alt: 'A Pack 170 Scout crosses the bridge into Scouts BSA at the Arrow of Light Ceremony, beside the American flag.',
+  },
+  camping: {
+    src: outdoorTrail,
+    alt: 'Pack 170 families in gold pack shirts walking a shaded, pine-lined trail together, a parent holding a child by the hand.',
+    // Landscape, unlike the portrait crossover shot, so the blob has to widen for it.
+    ratio: '4 / 3',
   },
 };
 ---
@@ -45,6 +52,7 @@ const photos: Record<string, { src: ImageMetadata; alt: string }> = {
                   `activity-picture--${activity.illustration}`,
                   photos[activity.slug] && 'activity-picture--photo',
                 ]}
+                style={photos[activity.slug]?.ratio && `aspect-ratio: ${photos[activity.slug].ratio}`}
               >
                 <>
                   {photos[activity.slug] ? (
@@ -53,7 +61,6 @@ const photos: Record<string, { src: ImageMetadata; alt: string }> = {
                       alt={photos[activity.slug].alt}
                       widths={[420, 840]}
                       width={840}
-                      height={1260}
                       sizes="(max-width: 760px) 100vw, 34vw"
                       loading="lazy"
                     />

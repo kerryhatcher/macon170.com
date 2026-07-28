@@ -6,9 +6,13 @@ STORY: A new family and a current family choose equally clear paths, share the s
 FIRST VIEWPORT: A handbook-cover split with the title and meeting facts left, two oversized audience bookmarks right, and Calendar/Join actions at equal scale.
 FORM: Handbook-cover index fused with children’s chapter-book warmth; selected from the user’s approved 04/07 concepts.
 */
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
+// Real Pack 170 photo, used with the family's permission. It replaced a CSS pinewood-derby
+// illustration: "small hands" reads better as actual muddy hands than as a drawn car.
+import mudProject from '../../assets/packphotos/15-576A9185.jpg';
 import { API_BASE } from '../lib/api-base';
 ---
 
@@ -107,9 +111,15 @@ import { API_BASE } from '../lib/api-base';
 
   <section class="section adventure-spread">
     <div class="container adventure-spread__grid">
-      <div class="adventure-art" role="img" aria-label="Illustrated wooden race car crossing a finish line beneath Georgia pines">
-        <div class="adventure-art__sun"></div><div class="adventure-art__pine pine-1">▲</div><div class="adventure-art__pine pine-2">▲</div>
-        <div class="adventure-art__track"></div><div class="adventure-art__car">170</div><div class="adventure-art__flag">■<br />■</div>
+      <div class="adventure-art">
+        <Image
+          src={mudProject}
+          alt="A Pack 170 Cub Scout in a gold pack shirt crouches over a tub of mud, packing it into an egg carton with both hands."
+          widths={[420, 840]}
+          width={840}
+          sizes="(max-width: 900px) 100vw, 32vw"
+          loading="lazy"
+        />
       </div>
       <div class="adventure-copy">
         <span class="chapter-tab">What we do</span>
@@ -411,75 +421,21 @@ import { API_BASE } from '../lib/api-base';
   .adventure-copy .lead {
     color: var(--green-soft);
   }
+  /* Keeps the hand-drawn frame the derby illustration used — white stroke, organic radius — so a
+     photograph still reads as part of the handbook rather than a dropped-in stock image. */
   .adventure-art {
-    min-height: 430px;
     position: relative;
+    aspect-ratio: 4 / 5;
     border: 4px solid var(--page);
-    background: #bfe0ec;
     overflow: hidden;
     border-radius: 50% 50% 10% 10% / 22% 22% 8% 8%;
   }
-  .adventure-art__sun {
+  .adventure-art img {
     position: absolute;
-    width: 80px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--gold);
-    top: 45px;
-    right: 16%;
-  }
-  .adventure-art__pine {
-    position: absolute;
-    color: var(--green);
-    font-size: 12rem;
-    bottom: 18%;
-    line-height: 1;
-  }
-  .pine-1 {
-    left: 4%;
-  }
-  .pine-2 {
-    right: 2%;
-    transform: scale(0.78);
-  }
-  .adventure-art__track {
-    position: absolute;
-    height: 110px;
-    left: -10%;
-    right: -10%;
-    bottom: 5%;
-    background: #a06b3f;
-    transform: rotate(-4deg);
-    border-block: 8px solid #82502b;
-  }
-  .adventure-art__car {
-    position: absolute;
-    left: 32%;
-    bottom: 22%;
-    width: 150px;
-    height: 65px;
-    border-radius: 55px 20px 14px 14px;
-    display: grid;
-    place-items: center;
-    background: var(--red);
-    border: 5px solid var(--blue-deep);
-    color: white;
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.4rem;
-    transform: rotate(-4deg);
-    box-shadow:
-      -25px 42px 0 -17px var(--blue-deep),
-      54px 42px 0 -17px var(--blue-deep);
-  }
-  .adventure-art__flag {
-    position: absolute;
-    right: 17%;
-    bottom: 35%;
-    color: var(--ink);
-    font-size: 2rem;
-    line-height: 0.8;
-    transform: rotate(10deg);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .year-line {
     list-style: none;
@@ -580,12 +536,6 @@ import { API_BASE } from '../lib/api-base';
     }
     .year-actions {
       display: grid;
-    }
-    .adventure-art {
-      min-height: 330px;
-    }
-    .adventure-art__car {
-      left: 22%;
     }
   }
   /* Pack-year milestones. State is carried by stroke style and depth rather than a

@@ -63,7 +63,7 @@ a placeholder.
 ### `src/data/pack.ts` annual program (L76–81)
 
 Five entries whose `state` is a placeholder string, surfaced on the homepage timeline:
-Join Scouting Night, Popcorn fundraiser, Pinewood Derby, Blue & Gold Banquet, Summer camp —
+Join Scouting Night, Fall camp, Popcorn fundraiser, Pinewood Derby, Blue & Gold Banquet —
 all "Date to be added" / "Dates to be added".
 
 The standalone "Spring · Crossover" milestone was removed 2026-07-28: the Cubmaster confirmed the
@@ -79,6 +79,12 @@ blob (`L`, `T`, `W`, `B`, `Web`, `AOL`), and each den page numbered its six requ
 `1`–`6`. Both are now the official Scouting America art from `assets/offical/`, resolved through
 `src/lib/official-image.ts` and rendered by `src/components/RankEmblem.astro` and Astro's `<Image>`.
 The dead `.rank__mark` rules and the `mark` field in `ranks[]` are gone.
+
+Real Pack 170 photography from `assets/packphotos/` now carries four spots that were illustrated or
+generic, all used with the families' permission: the `/about/` story grid and leadership roster, the
+`/activities/` Blue & Gold and Camping chapters, and the homepage "Small hands. Big adventures."
+panel. That last one retired the CSS pinewood-derby illustration (`.adventure-art__sun/pine/track/
+car/flag`), whose rules are deleted rather than left dead.
 
 Still hand-drawn on purpose, with no official equivalent:
 
