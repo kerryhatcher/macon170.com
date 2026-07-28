@@ -11,6 +11,9 @@ const aims = [
   ['Leadership development', 'Kids take turns leading parts of a meeting, in a structure sized for their age.'],
 ];
 
+// Verified against docs/research/bcsd/notes/strategic-plan.md — the district's own plan page.
+const planUrl = 'https://www.bcsdk12.net/about-us/strategic-plan';
+
 const asks = [
   ['A table at an open house or family night', 'One table, one hour, staffed by adults who are already approved district volunteers.'],
   ['A few minutes on a PTO agenda', 'Optional, and short. Three minutes is plenty.'],
@@ -37,11 +40,11 @@ const asks = [
       <div class="plan-callout">
         <h2 class="plan-callout-head">Supporting BCSD's stated goals</h2>
         <p class="lead">
-          Bibb County's 2023–2028 strategic plan names its own theory of action: <q
+          Bibb County's <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a> names its own theory of action: <q
             >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
             teaching and learning, we will maximize student achievement.</q
-          > A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
-          by its members.
+          > A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for by
+          its members.
         </p>
       </div>
       <div class="section-heading">
@@ -51,11 +54,11 @@ const asks = [
       <p>
         Cub Scouting is a program of Scouting America for children in {pack.grades}. {pack.welcome}. Kids meet in small, same-grade groups
         called dens, and the whole pack gathers periodically for a larger meeting. Every adult who runs a meeting is a registered, trained
-        volunteer. Every child in Scouting must be escorted by their parent or guardian at every event — there is never a time at a Cub Scout
-        event where a child's parent or guardian is not present.
+        volunteer. Every child in Scouting must be escorted by their parent or guardian at every event — there is never a time at a Cub
+        Scout event where a child's parent or guardian is not present.
       </p>
       <p>
-        The six grade levels each carry a rank name, so a program built for kindergarten looks and feels different from one built for a
+        The six grade levels each carry a rank name, so a program built for a kindergartner looks and feels different from one built for a
         fifth grader:
       </p>
       <ul class="rank-list">
@@ -110,12 +113,12 @@ const asks = [
             </p>
             <p>
               Many of our adults are already approved Bibb County school volunteers. A pack does not draw down a school's volunteer
-              capacity. It turns out adults who are already in the habit of showing up for their own children.
+              capacity. It draws on adults who are already in the habit of showing up for their own children.
             </p>
           </div>
         </section>
         <section class="align-row">
-          <h3>Practice at the skills behind SEL</h3>
+          <h3>Practice in the skills behind SEL</h3>
           <div>
             <p>
               We are not a curriculum and we do not replace one. What a den gives a child is repeated practice in a small, same-grade group:
@@ -137,8 +140,8 @@ const asks = [
               to their parents.
             </p>
             <p>
-              Multi-tiered supports depend on someone noticing a child early. More adults who know a child well, outside the school day, is
-              not a bad thing.
+              Multi-tiered supports depend on someone noticing a child early. Having more adults who know a child well, outside the school
+              day, is not a bad thing.
             </p>
           </div>
         </section>
