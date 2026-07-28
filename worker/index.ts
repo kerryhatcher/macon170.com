@@ -1,7 +1,7 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
 import { EventRouteError, handleEventRoute } from './event-routes';
 import { renderCalendarAdmin } from './calendar-admin';
-import { deskHead, deskHeader, escapeHtml } from './desk-chrome';
+import { deskHead, deskHeader } from './desk-chrome';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
 type SubmissionStatus = 'new' | 'in_progress' | 'resolved' | 'spam';

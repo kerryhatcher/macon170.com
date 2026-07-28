@@ -18,7 +18,7 @@ that a pack editor could not have made.
 
 ## Approach
 
-Keep the static milestone list as the shape of the program year. Let a calendar event *claim* a
+Keep the static milestone list as the shape of the program year. Let a calendar event _claim_ a
 milestone through an explicit dropdown, giving a direct relationship between one milestone and one
 event. A milestone with no event associated to it stays "to be added".
 

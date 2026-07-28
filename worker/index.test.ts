@@ -191,9 +191,7 @@ describe('calendar events', () => {
       body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting', milestone: '', visibility: 'draft' }),
     });
     expect(cleared.status).toBe(200);
-    const after = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?')
-      .bind(id)
-      .first<{ milestone: string | null }>();
+    const after = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?').bind(id).first<{ milestone: string | null }>();
     expect(after?.milestone).toBeNull();
   });
 });

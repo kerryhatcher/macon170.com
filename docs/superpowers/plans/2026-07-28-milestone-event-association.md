@@ -95,61 +95,57 @@ In `tsconfig.worker.json`, change the `include` array so the imported data file 
 Add these three tests inside the existing `describe('calendar events')` block in `worker/index.test.ts`, after the `'archives rather than deleting an event'` test at `:128`. `eventPayload` at `:61` is already in scope; each test uses its own slug so it does not collide with the shared database that `beforeAll` migrates once:
 
 ```ts
-  it('round-trips a milestone key through the public API', async () => {
-    const created = await exports.default.fetch('http://localhost/api/admin/events', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
-      body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby' }),
-    });
-    expect(created.status).toBe(201);
-    const { id } = await created.json<{ id: string }>();
-
-    const published = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
-      method: 'PUT',
-      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
-      body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby', visibility: 'published' }),
-    });
-    expect(published.status).toBe(200);
-
-    const list = await exports.default.fetch('https://www.macon170.com/api/events');
-    const body = await list.json<{ events: Array<{ slug: string; milestone: string | null }> }>();
-    const event = body.events.find((candidate) => candidate.slug === 'lego-derby-cookout');
-    expect(event?.milestone).toBe('lego-derby');
+it('round-trips a milestone key through the public API', async () => {
+  const created = await exports.default.fetch('http://localhost/api/admin/events', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+    body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby' }),
   });
+  expect(created.status).toBe(201);
+  const { id } = await created.json<{ id: string }>();
 
-  it('rejects a milestone key that is not in the program', async () => {
-    const response = await exports.default.fetch('http://localhost/api/admin/events', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
-      body: JSON.stringify({ ...eventPayload, slug: 'not-a-milestone', milestone: 'summer-camp' }),
-    });
-    expect(response.status).toBe(400);
+  const published = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+    body: JSON.stringify({ ...eventPayload, slug: 'lego-derby-cookout', milestone: 'lego-derby', visibility: 'published' }),
   });
+  expect(published.status).toBe(200);
 
-  it('treats an absent or cleared milestone as null', async () => {
-    const created = await exports.default.fetch('http://localhost/api/admin/events', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
-      body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting' }),
-    });
-    expect(created.status).toBe(201);
-    const { id } = await created.json<{ id: string }>();
-    const stored = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?')
-      .bind(id)
-      .first<{ milestone: string | null }>();
-    expect(stored?.milestone).toBeNull();
+  const list = await exports.default.fetch('https://www.macon170.com/api/events');
+  const body = await list.json<{ events: Array<{ slug: string; milestone: string | null }> }>();
+  const event = body.events.find((candidate) => candidate.slug === 'lego-derby-cookout');
+  expect(event?.milestone).toBe('lego-derby');
+});
 
-    const cleared = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
-      method: 'PUT',
-      headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
-      body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting', milestone: '', visibility: 'draft' }),
-    });
-    expect(cleared.status).toBe(200);
-    const after = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?')
-      .bind(id)
-      .first<{ milestone: string | null }>();
-    expect(after?.milestone).toBeNull();
+it('rejects a milestone key that is not in the program', async () => {
+  const response = await exports.default.fetch('http://localhost/api/admin/events', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+    body: JSON.stringify({ ...eventPayload, slug: 'not-a-milestone', milestone: 'summer-camp' }),
   });
+  expect(response.status).toBe(400);
+});
+
+it('treats an absent or cleared milestone as null', async () => {
+  const created = await exports.default.fetch('http://localhost/api/admin/events', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+    body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting' }),
+  });
+  expect(created.status).toBe(201);
+  const { id } = await created.json<{ id: string }>();
+  const stored = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?').bind(id).first<{ milestone: string | null }>();
+  expect(stored?.milestone).toBeNull();
+
+  const cleared = await exports.default.fetch(`http://localhost/api/admin/events/${id}`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json', origin: 'https://admin.macon170.com' },
+    body: JSON.stringify({ ...eventPayload, slug: 'ordinary-pack-meeting', milestone: '', visibility: 'draft' }),
+  });
+  expect(cleared.status).toBe(200);
+  const after = await env.DB.prepare('SELECT milestone FROM calendar_events WHERE id = ?').bind(id).first<{ milestone: string | null }>();
+  expect(after?.milestone).toBeNull();
+});
 ```
 
 - [ ] **Step 5: Run the tests to verify they fail**
@@ -168,7 +164,7 @@ import { annualProgram } from '../src/data/pack';
 Add to `EventRow` (after `registration_url: string | null;` at `:26`):
 
 ```ts
-  milestone: string | null;
+milestone: string | null;
 ```
 
 Add to `EventInput` (after `registrationUrl?: unknown;` at `:47`):
@@ -299,15 +295,15 @@ Note this file is deliberately written as dense single-line template literals ho
 Add this to the `describe('volunteer desk')` block in `worker/index.test.ts`, after the `'serves the calendar editor in local authenticated mode'` test that ends at `:157`. It fetches the same page that test does — `http://localhost/admin/calendar`, no headers, which the worker serves in local authenticated mode:
 
 ```ts
-  it('offers every pack-year milestone in the editor dropdown', async () => {
-    const response = await exports.default.fetch('http://localhost/admin/calendar');
-    expect(response.status).toBe(200);
-    const html = await response.text();
-    expect(html).toContain('<select name="milestone">');
-    expect(html).toContain('<option value="">Not a milestone</option>');
-    expect(html).toContain('<option value="lego-derby">Lego Pinewood Derby</option>');
-    expect(html).toContain('<option value="blue-gold">Blue &amp; Gold Banquet</option>');
-  });
+it('offers every pack-year milestone in the editor dropdown', async () => {
+  const response = await exports.default.fetch('http://localhost/admin/calendar');
+  expect(response.status).toBe(200);
+  const html = await response.text();
+  expect(html).toContain('<select name="milestone">');
+  expect(html).toContain('<option value="">Not a milestone</option>');
+  expect(html).toContain('<option value="lego-derby">Lego Pinewood Derby</option>');
+  expect(html).toContain('<option value="blue-gold">Blue &amp; Gold Banquet</option>');
+});
 ```
 
 - [ ] **Step 2: Run the test to verify it fails**
@@ -339,13 +335,29 @@ const milestoneOptions = [
 In the page HTML at `:6`, find the Status label and insert a Milestone label immediately after it, before the `<label>Starts` field. The existing text reads:
 
 ```html
-<label>Status<select name="status"><option value="scheduled">Scheduled</option><option value="tentative">Tentative</option><option value="cancelled">Cancelled</option></select></label><label>Starts<input name="startsAt" type="datetime-local" required></label>
+<label
+  >Status<select name="status">
+    <option value="scheduled">Scheduled</option>
+    <option value="tentative">Tentative</option>
+    <option value="cancelled">Cancelled</option>
+  </select></label
+><label>Starts<input name="startsAt" type="datetime-local" required /></label>
 ```
 
 Change it to:
 
 ```html
-<label>Status<select name="status"><option value="scheduled">Scheduled</option><option value="tentative">Tentative</option><option value="cancelled">Cancelled</option></select></label><label>Milestone<select name="milestone">${milestoneOptions}</select></label><label>Starts<input name="startsAt" type="datetime-local" required></label>
+<label
+  >Status<select name="status">
+    <option value="scheduled">Scheduled</option>
+    <option value="tentative">Tentative</option>
+    <option value="cancelled">Cancelled</option>
+  </select></label
+><label
+  >Milestone<select name="milestone">
+    ${milestoneOptions}
+  </select></label
+><label>Starts<input name="startsAt" type="datetime-local" required /></label>
 ```
 
 The surrounding string is already a template literal, so `${milestoneOptions}` interpolates as-is.
@@ -402,7 +414,7 @@ There is no automated coverage of this strip — no e2e spec or unit test refere
 In `src/pages/index.astro`, the row currently identifies itself by title (`:149`). Change that one attribute to the key, so the script never depends on display copy:
 
 ```astro
-            <li class="pm-cell" data-pm-row={item.key}>
+<li class="pm-cell" data-pm-row={item.key}></li>
 ```
 
 Leave the rest of the `<li>` — `{item.season}`, `{item.title}`, `{item.state}` — untouched.
@@ -412,17 +424,17 @@ Leave the rest of the `<li>` — `{item.season}`, `{item.title}`, `{item.state}`
 In the inline script, delete `matchFor` and its two-line comment entirely (`:188-198`) and put this in its place:
 
 ```js
-    // An event claims a milestone by carrying its key (calendar_events.milestone). Milestones recur
-    // every year, so two events can share a key; the soonest one owns the row.
-    function soonestByMilestone(events) {
-      const byKey = {};
-      events.forEach(function (event) {
-        const key = event.milestone;
-        if (!key) return;
-        if (!byKey[key] || Date.parse(event.starts_at) < Date.parse(byKey[key].starts_at)) byKey[key] = event;
-      });
-      return byKey;
-    }
+// An event claims a milestone by carrying its key (calendar_events.milestone). Milestones recur
+// every year, so two events can share a key; the soonest one owns the row.
+function soonestByMilestone(events) {
+  const byKey = {};
+  events.forEach(function (event) {
+    const key = event.milestone;
+    if (!key) return;
+    if (!byKey[key] || Date.parse(event.starts_at) < Date.parse(byKey[key].starts_at)) byKey[key] = event;
+  });
+  return byKey;
+}
 ```
 
 - [ ] **Step 3: Point `paint` at the lookup**

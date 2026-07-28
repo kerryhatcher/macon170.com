@@ -6,27 +6,21 @@
       {
         "rule": "border-accent-on-rounded",
         "value": "*",
-        "files": [
-          "src/styles/global.css"
-        ],
+        "files": ["src/styles/global.css"],
         "reason": "User confirmed: the flagged rule is .field-illustration__river, an absolutely-positioned drawn ellipse inside the illustration frame — border-radius 50% is the river's shape and border-top is light on the water, not a rounded card with an accent border",
         "createdAt": "2026-07-27T22:13:14.226Z"
       },
       {
         "rule": "side-tab",
         "value": "*",
-        "files": [
-          "src/pages/what-is-cub-scouts.astro"
-        ],
+        "files": ["src/pages/what-is-cub-scouts.astro"],
         "reason": "User confirmed: the flagged rule is .ask-tick::before, a checkmark glyph — border-left and border-bottom on a 0.9rem x 0.45rem pseudo-element with transform: rotate(-45deg) draws a tick, not an accent rail down a card edge. Fired five times on this same glyph. The genuine side-tab rails in this file were already converted to corner bookmark tabs in 0d91bfc; calendar/index.astro has the same checkmark and will need its own waiver if it ever fires.",
         "createdAt": "2026-07-28T05:48:04.000Z"
       },
       {
         "rule": "border-accent-on-rounded",
         "value": "*",
-        "files": [
-          "worker/calendar-admin.ts"
-        ],
+        "files": ["worker/calendar-admin.ts"],
         "reason": "User confirmed. This is a line-granularity artifact, not a design defect: the whole admin stylesheet is a single physical line (the css() template literal), so the check pairs a border-bottom from one selector with a border-radius belonging to a different selector on that same line. The two flagged borders are header{border-bottom:6px solid var(--gold)} and .editor-head{border-bottom:3px solid var(--blue)} — plain horizontal rules under a full-bleed bar and a section heading, and NEITHER element has a border-radius. Same class of mismatch DESIGN.json's $comment documents for radius corners. Re-check by hand if that CSS is ever split across lines.",
         "createdAt": "2026-07-28T06:01:04.270Z"
       }
