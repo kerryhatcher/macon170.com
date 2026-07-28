@@ -7,7 +7,6 @@ FIRST VIEWPORT: A handbook-cover split with the title and meeting facts left, tw
 FORM: Handbook-cover index fused with children’s chapter-book warmth; selected from the user’s approved 04/07 concepts.
 */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FieldIllustration from '../components/FieldIllustration.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { annualProgram, pack, ranks } from '../data/pack';
 import { API_BASE } from '../lib/api-base';
@@ -64,7 +63,10 @@ import { API_BASE } from '../lib/api-base';
         </p>
         <a class="button button--blue" href="/about/">Meet our pack</a>
       </div>
-      <FieldIllustration />
+      <figure class="pack-badge-figure">
+        <img src="/logo/pack170-logo-512.webp" width="512" height="512" alt="Cub Scout Pack 170 badge: a lit tent under a crescent moon and pines, lettered “Cub Scout Pack 170 · Macon, Georgia”" />
+        <figcaption>A Macon adventure, waiting close to home</figcaption>
+      </figure>
     </div>
   </section>
 

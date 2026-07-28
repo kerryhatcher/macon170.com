@@ -521,6 +521,32 @@ p {
   color: var(--muted);
 }
 
+/* The badge is the pack's own art, so it stands in for an illustration on the welcome
+   spread — sized to hold its own beside the column of type, captioned like a plate. */
+.pack-badge-figure {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+}
+.pack-badge-figure img {
+  width: min(100%, 380px);
+  height: auto;
+  aspect-ratio: 1;
+}
+.pack-badge-figure figcaption {
+  background: var(--page);
+  border: 1px solid var(--rule);
+  border-radius: 3px 9px 5px 3px;
+  box-shadow: var(--shadow-lift);
+  padding: 0.5rem 0.75rem;
+  color: var(--blue-deep);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  transform: rotate(-1deg);
+}
+
 .field-illustration {
   position: relative;
   min-height: 310px;
@@ -594,6 +620,13 @@ p {
   border-top: 7px solid var(--gold);
   /* The footer is the last thing above the home indicator, so it owns the bottom inset. */
   padding: 3.5rem 0 max(2rem, env(safe-area-inset-bottom));
+}
+.footer-badge {
+  width: 88px;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-bottom: 0.9rem;
 }
 .footer-grid {
   display: grid;
