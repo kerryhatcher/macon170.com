@@ -23,6 +23,25 @@ colors:
   print-ink: '#000000'
   print-ink-muted: '#333333'
   print-rule: '#999999'
+  # The volunteer desk (admin.macon170.com) is an Operate surface, not a family-facing one:
+  # PRODUCT.md scopes it to "correct, clear, and functional rather than expressive". It reuses
+  # the palette above for chrome and adds only what a dense working tool needs and the handbook
+  # has no equivalent for — a sidebar wash, a legible tint on the dark header bar, a field
+  # stroke, and the state marks that carry status at a glance. Valid only in worker/index.ts
+  # and worker/calendar-admin.ts, never on the public site. Chip and dot fills are backgrounds
+  # for short labels; the ink they pair with is named alongside them or is a palette token.
+  desk-wash: '#f2ead9'
+  desk-header-tint: '#bed1e5'
+  desk-field-stroke: '#8794a0'
+  desk-chip-neutral: '#ddd'
+  desk-chip-draft: '#fff0ad'
+  desk-chip-draft-ink: '#725c00'
+  desk-chip-published: '#d9efdf'
+  desk-chip-archived: '#eee'
+  desk-chip-archived-ink: '#555'
+  desk-dot-new: '#82909a'
+  desk-dot-active: '#d39b00'
+  desk-dot-resolved: '#34815e'
 typography:
   display:
     fontFamily: 'Montserrat, Arial, sans-serif'
@@ -179,6 +198,20 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 - **Clean Page:** Reading sheets, controls, and raised notices.
 - **Pencil Charcoal:** Primary copy and drawn marks.
 - **Rule Line:** Notebook structure and quiet separation.
+
+### Desk
+
+The volunteer desk borrows the palette above for its chrome and adds only what a dense working tool needs.
+
+- **Desk Wash:** The submission list and event list column, one step deeper than notebook paper so the working column reads as separate from the sheet being edited.
+- **Desk Header Tint:** Small supporting text on the midnight-blue desk bar, where pencil muted would fall below AA.
+- **Desk Field Stroke:** The input, select, and textarea outline. Heavier than a rule line because a form is the desk's primary instrument.
+- **Desk Chip Neutral / Draft / Published / Archived:** Visibility state on an event, as a small filled mark. Draft and archived carry their own paired ink; published pairs with river green deep.
+- **Desk Dot New / Active / Resolved:** Parent-inquiry status in the inbox, as a filled dot beside the row.
+
+**The Desk Stays Behind the Door Rule.** Desk colors are valid only in `worker/index.ts` and `worker/calendar-admin.ts`. A desk token on a family-facing page is a defect, and a family-facing composition inside the desk is misplaced effort: the desk earns its keep by being legible and fast, not expressive.
+
+**The State Reads Without Color Rule.** A state mark must never carry its meaning in hue alone: it is labelled in text, or it is not a state mark. The event chips satisfy this — each one prints its visibility word inside the fill. The inbox dots in `worker/index.ts` currently do not: `<span class="dot new"></span>` is an empty span whose only signal is its color, so new-versus-active-versus-resolved is invisible to a color-blind volunteer and to a screen reader. That is a known WCAG 1.4.1 gap against PRODUCT.md's AA commitment, recorded here rather than quietly blessed, and the fix is the chip pattern the sibling page already uses.
 
 **The Gold Is a Marker Rule.** Gold marks what to do or notice; it is never body copy and never scattered as confetti.
 

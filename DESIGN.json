@@ -25,10 +25,14 @@
     "narrative block restating DESIGN.md's north star, rules, and do's/don'ts — is left out",
     "deliberately: it is consumed by the live panel, not the detector, and duplicating",
     "DESIGN.md's prose here would create a second source of truth that drifts. Add it only",
-    "when someone actually uses the panel."
+    "when someone actually uses the panel.",
+    "",
+    "The volunteer desk's twelve colors are documented in DESIGN.md frontmatter (desk-*), which is",
+    "normative, so they need no colorMeta entry here. colorMeta stays for what the frontmatter",
+    "cannot express: illustration paints, alpha veils, and the shadow's ambient half."
   ],
   "schemaVersion": 2,
-  "generatedAt": "2026-07-28T05:00:00.000Z",
+  "generatedAt": "2026-07-28T06:35:00.000Z",
   "title": "Design System: Pack 170 Elementary Adventure Handbook",
   "extensions": {
     "colorMeta": {
