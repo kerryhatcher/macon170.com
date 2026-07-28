@@ -6,16 +6,26 @@
       {
         "rule": "border-accent-on-rounded",
         "value": "*",
-        "files": ["src/styles/global.css"],
-        "createdAt": "2026-07-27T22:13:14.226Z",
-        "reason": "User confirmed: the flagged rule is .field-illustration__river, an absolutely-positioned drawn ellipse inside the illustration frame — border-radius 50% is the river's shape and border-top is light on the water, not a rounded card with an accent border"
+        "files": [
+          "src/styles/global.css"
+        ],
+        "reason": "User confirmed: the flagged rule is .field-illustration__river, an absolutely-positioned drawn ellipse inside the illustration frame — border-radius 50% is the river's shape and border-top is light on the water, not a rounded card with an accent border",
+        "createdAt": "2026-07-27T22:13:14.226Z"
       },
       {
         "rule": "side-tab",
         "value": "*",
-        "files": ["src/pages/what-is-cub-scouts.astro"],
-        "createdAt": "2026-07-28T05:48:04.000Z",
-        "reason": "User confirmed: the flagged rule is .ask-tick::before, a checkmark glyph — border-left and border-bottom on a 0.9rem x 0.45rem pseudo-element with transform: rotate(-45deg) draws a tick, not an accent rail down a card edge. Fired five times on this same glyph. The genuine side-tab rails in this file were already converted to corner bookmark tabs in 0d91bfc; calendar/index.astro has the same checkmark and will need its own waiver if it ever fires."
+        "files": [
+          "src/pages/what-is-cub-scouts.astro"
+        ],
+        "reason": "User confirmed: the flagged rule is .ask-tick::before, a checkmark glyph — border-left and border-bottom on a 0.9rem x 0.45rem pseudo-element with transform: rotate(-45deg) draws a tick, not an accent rail down a card edge. Fired five times on this same glyph. The genuine side-tab rails in this file were already converted to corner bookmark tabs in 0d91bfc; calendar/index.astro has the same checkmark and will need its own waiver if it ever fires.",
+        "createdAt": "2026-07-28T05:48:04.000Z"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "* --file worker/calendar-admin.ts",
+        "reason": "User confirmed: the flagged pairing is .brand>span in the admin header — border:3px solid var(--gold) with border-radius:50% draws the round 170 badge's gold ring, the pack's emblem treatment used across the public site, not an accent border on a rounded card. The other pairs on that line (2px ink borders with asymmetric radii on buttons and inputs) are the same deliberate scout-paper language. No CSS in this file was touched by the milestone-association work that surfaced it.",
+        "createdAt": "2026-07-28T06:01:04.270Z"
       }
     ]
   }
