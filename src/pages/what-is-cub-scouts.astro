@@ -37,20 +37,19 @@ const asks = [
 
   <section class="section">
     <div class="container">
-      <div class="plan-callout">
-        <h2 class="plan-callout-head">Building stakeholder engagement</h2>
-        <p class="lead">
-          Bibb County's <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a> names its own theory of action:
+      <div class="plan-slab">
+        <p class="plan-slab__source">
+          Bibb County School District · <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a>
         </p>
-        <p class="plan-quote">
+        <p class="plan-slab__quote">
           <q
-            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive teaching
-            and learning, we will maximize student achievement.</q
+            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
+            teaching and learning, we will maximize student achievement.</q
           >
         </p>
-        <p class="lead">
-          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for by
-          its members.
+        <p class="plan-slab__answer">
+          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for
+          by its members.
         </p>
       </div>
       <div class="section-heading">
@@ -272,34 +271,59 @@ const asks = [
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
-  /* The district's own premise, quoted on its own sheet before the page says anything about
-     the program. Gold rule because it is the one thing on the page worth noticing first. */
-  .plan-callout {
-    max-width: 120ch;
-    margin-inline: auto;
+  /* The district's own premise, on a midnight slab tucked up into the hero so it reads as the
+     hero's closing band rather than the page's first paragraph. Gold rule because this is the
+     one thing on the page worth noticing first. */
+  .plan-slab {
+    position: relative;
+    z-index: 2;
+    margin-top: -7rem;
     margin-bottom: clamp(2rem, 5vw, 3.25rem);
-    padding: clamp(1.25rem, 3vw, 2rem);
-    background: var(--page);
-    border: 1px solid var(--rule);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: var(--blue-deep);
+    color: #fff;
     border-top: 3px solid var(--gold);
     border-radius: 6px 18px 12px 8px;
     box-shadow: var(--shadow-paper);
   }
-  .plan-callout-head {
-    margin: 0 0 0.75rem;
+  .plan-slab__source {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    /* Not gold: gold is a marker here, never type (PRODUCT.md, DESIGN.md gold rule). The slab's
+       gold is the top rule. */
+    color: var(--blue-soft);
   }
-  /* The district's own words carry the argument, so they outsize the sentences framing them. */
-  .plan-quote {
-    margin: 0.75rem 0;
-    /* subheading step from DESIGN.md — the next documented size above .lead */
+  .plan-slab__source a {
+    color: inherit;
+  }
+  /* The district's own words carry the argument, so they outsize the sentences framing them.
+     Subheading step from DESIGN.md — the next documented size above .lead. */
+  .plan-slab__quote {
+    margin: 0;
+    max-width: 62ch;
     font-size: clamp(1.25rem, 2vw, 1.65rem);
     font-style: italic;
     font-weight: 800;
     line-height: 1.3;
+    color: inherit;
   }
-  .plan-callout .lead {
-    margin: 0;
-    max-width: none;
+  .plan-slab__answer {
+    margin: 1rem 0 0;
+    max-width: 68ch;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--blue-soft);
+  }
+  /* The hero's bottom padding is what the slab tucks into; on phones that padding is smaller
+     and the slab is taller, so it sits below the hero instead of inside it. */
+  @media (max-width: 640px) {
+    .plan-slab {
+      margin-top: 0;
+    }
   }
   /* Alignment reads like the policy spread: heading in the margin, prose in its own column,
      so a principal can scan for the goal they care about instead of reading a wall. */
