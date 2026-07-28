@@ -34,9 +34,9 @@ const selNotes: Record<string, string> = {
 };
 
 const asks = [
-  ['A table at an open house or family night', 'One table, one hour, staffed by adults who are already approved district volunteers.'],
-  ['A few minutes on a PTO agenda', 'Optional, and short. Three minutes is plenty.'],
-  ['Permission to post a flyer', 'On a bulletin board or in a newsletter, sized however the school prefers.'],
+  ['A table at an open house or family night', 'One table, staffed by vetted, trained parents.'],
+  ['A few minutes on a PTO agenda, civic meeting, or similar', 'Optional, and short. Three minutes is plenty.'],
+  ['Permission to post a flyer', 'On a bulletin board or in a newsletter, sized and formatted however the organization prefers.'],
 ];
 ---
 
@@ -140,16 +140,12 @@ const asks = [
           <div>
             <p>
               Every Cub Scout is enrolled by an adult, and the pack only runs because those adults take registered roles: den leader,
-              treasurer, event coordinator, driver. Each one is trained and passes a criminal background check.
-            </p>
-            <p>
-              Many of our adults are already approved Bibb County school volunteers. A pack doesn't draw down a school's volunteer capacity.
-              It draws on adults who are already in the habit of showing up for their own children.
+              treasurer, event coordinator, driver. Every year each one is trained and passes a criminal background check.
             </p>
           </div>
         </section>
         <section class="align-row">
-          <h3>Practice in the skills behind SEL</h3>
+          <h3>Practice in the skills behind Social-Emotional Learning (SEL)</h3>
           <div>
             <p>
               We aren't a curriculum and we don't replace one. What a den gives a child is repeated practice in a small, same-grade group:
@@ -158,8 +154,8 @@ const asks = [
             </p>
             <p>
               Self-awareness, self-management, social awareness, relationship skills, responsible decision-making. Those are the five
-              competencies the district plan's SEL objective draws on, and in a den they are just the ordinary business of a meeting rather
-              than a unit we teach.
+              competencies schools teach every day, and in a den they are just the ordinary business of a meeting rather than a unit we
+              teach.
             </p>
           </div>
         </section>
@@ -193,12 +189,13 @@ const asks = [
         </p>
         <p>
           Pack meetings happen {pack.meeting.cadence.toLowerCase()} on {pack.meeting.day}s at {pack.meeting.time}, at{' '}
-          {pack.meeting.location}. Your family doesn't need any connection to the chartering church to join.
+          {pack.meeting.location}. Member families don't need any connection to the chartering church to join. The church graciously gives
+          us the space to meet.
         </p>
       </div>
       <div class="ask-slip">
-        <span class="chapter-tab ask-slip__tab">What we would ask of a school</span>
-        <h3>A table, and that is about it.</h3>
+        <span class="chapter-tab ask-slip__tab">What we need</span>
+        <h3>A table, an opportunity, and that is about it.</h3>
         <ul class="ask-checklist">
           {
             asks.map(([title, body]) => (
