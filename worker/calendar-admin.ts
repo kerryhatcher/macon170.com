@@ -1,10 +1,10 @@
 import { annualProgram } from '../src/data/pack';
 
 // Generated from annualProgram so the dropdown can never offer a key the worker would reject.
-// `&` in "Blue & Gold Banquet" must be escaped — these titles land straight in HTML.
+// Titles land straight in HTML, so they go through the same escapeHtml() used elsewhere in this page.
 const milestoneOptions = [
   '<option value="">Not a milestone</option>',
-  ...annualProgram.map((entry) => `<option value="${entry.key}">${entry.title.replace(/&/g, '&amp;')}</option>`),
+  ...annualProgram.map((entry) => `<option value="${entry.key}">${escapeHtml(entry.title)}</option>`),
 ].join('');
 
 export function renderCalendarAdmin(email: string, env: Env, headers: Record<string, string>): Response {
