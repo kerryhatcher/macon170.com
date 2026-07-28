@@ -224,9 +224,20 @@ import { externalLink } from '../lib/external-link';
     list-style: none;
   }
   .roster :global(li) {
+    position: relative;
     padding: 1rem 1.25rem;
     background: var(--paper);
-    border-left: 4px solid var(--blue);
+  }
+  /* A sewn-in bookmark tab at the corner, not a rail down the whole edge — the same treatment
+     .rank-list li and .adventure-list li got in 0d91bfc. This roster was not in that sweep. */
+  .roster :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 1.75rem;
+    background: var(--blue);
   }
   /* A role with no name yet reads as vacant rather than as a broken card. */
   .roster :global(li:empty) {
