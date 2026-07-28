@@ -1,8 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterHero from '../components/ChapterHero.astro';
 import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
+// Real Pack 170 photos, used with the families' permission. This page argues to school leaders that
+// the program does specific things; each photo is placed against the claim it evidences.
+import guideTeaching from '../../assets/packphotos/8-576A9027.jpg';
+import olderHelpingYounger from '../../assets/packphotos/10-576A9104.jpg';
+import leaderWithKids from '../../assets/packphotos/4-576A8832.jpg';
 import { denSlug } from '../lib/den-slug';
 import { externalLink } from '../lib/external-link';
 
@@ -72,6 +78,16 @@ const asks = [
         The six grade levels each carry a rank name, so a program built for a kindergartner looks and feels different from one built for a
         fifth grader. Social-Emotional Learning is at the core of each program:
       </p>
+      <figure class="pack-photo pack-photo--wide program-photo">
+        <Image
+          src={guideTeaching}
+          alt="A zoo educator in an orange staff shirt shows two Pack 170 Cub Scouts an activity across a table on a pack outing."
+          widths={[640, 1280]}
+          width={640}
+          sizes="(max-width: 360px) 100vw, 54rem"
+          loading="lazy"
+        /><figcaption>A pack outing at a zoo.</figcaption>
+      </figure>
       <ul class="rank-list">
         {
           ranks.map((rank) => (
@@ -166,6 +182,16 @@ const asks = [
               competencies schools teach every day, and in a den they are just the ordinary business of a meeting rather than a unit we
               teach.
             </p>
+            <figure class="pack-photo pack-photo--wide">
+              <Image
+                src={olderHelpingYounger}
+                alt="An older Pack 170 Cub Scout sits on a bench turned toward a younger boy, showing him something in his hands."
+                widths={[540, 1080]}
+                width={1080}
+                sizes="(max-width: 900px) 100vw, 34rem"
+                loading="lazy"
+              /><figcaption>Taking a turn leading looks like this: an older Scout showing a younger one how.</figcaption>
+            </figure>
           </div>
         </section>
         <section class="align-row">
@@ -179,6 +205,16 @@ const asks = [
               Multi-tiered supports depend on someone catching a problem early. More adults who know a child outside the school day means
               more chances that somebody does.
             </p>
+            <figure class="pack-photo pack-photo--wide">
+              <Image
+                src={leaderWithKids}
+                alt="A Pack 170 den leader in a gold pack shirt walks a wooded path alongside two Cub Scouts, talking with them."
+                widths={[540, 1080]}
+                width={1080}
+                sizes="(max-width: 900px) 100vw, 34rem"
+                loading="lazy"
+              /><figcaption>The same den leader, the same kids, month after month.</figcaption>
+            </figure>
           </div>
         </section>
       </div>
@@ -268,6 +304,12 @@ const asks = [
   </section>
 </BaseLayout>
 <style>
+  /* Caps the figure at the width its `sizes` attribute promises. Without this it stretched to the
+     full 1160px container and upscaled an 864px source. */
+  .program-photo {
+    max-width: 54rem;
+    margin-block: clamp(1.5rem, 4vw, 2.5rem);
+  }
   /* Two columns, not three: each rank now carries a sentence, and a third column would squeeze
      the measure below readable. */
   .rank-list {

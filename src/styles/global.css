@@ -461,6 +461,32 @@ p {
   font-size: 1.2rem;
 }
 
+/* Real pack photography. Sits in the same paper frame as the rest of the handbook rather than
+   bleeding edge to edge, so a photo reads as something pasted into the book. Shared by /about/ and
+   /what-is-cub-scouts/; the blob-clipped photos on /activities/ and / are their own thing.
+   Both stock ratios crop rather than run at full height, because every source photo is taller than
+   the copy beside it. --wide is the landscape variant. */
+.pack-photo {
+  margin: 0;
+  padding: 0.75rem 0.75rem 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.pack-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.pack-photo--wide img {
+  aspect-ratio: 3 / 2;
+}
+.pack-photo figcaption {
+  padding: 0.75rem 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .notice {
   display: grid;
   grid-template-columns: auto 1fr;

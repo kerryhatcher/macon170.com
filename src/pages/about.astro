@@ -7,6 +7,10 @@ import { pack } from '../data/pack';
 // that a drawing can't: that the pack is genuinely ours, and that adult volunteers run it.
 import advancement from '../../assets/packphotos/award2.jpg';
 import denLeader from '../../assets/packphotos/Stephanie_awards.jpeg';
+// The Scout hut on the church grounds, shared by Pack 170 and Troop 170 (confirmed 2026-07-28).
+// Source AVIF from the church's own site, so it is the church's photograph rather than the pack's.
+import scoutHut from '../../assets/packphotos/scout-hut.avif';
+import practiceTogether from '../../assets/packphotos/9-576A9059.jpg';
 // Leadership content lives entirely in Markdown — headings, sections, and prose included — so pack
 // editors control it without touching code. Do not mirror any of it back into this file.
 import { Content as Roster } from '../data/leadership.md';
@@ -47,6 +51,21 @@ import { externalLink } from '../lib/external-link';
         /><figcaption>A rank badge presented at a pack meeting · Shirley Hills, Macon</figcaption>
       </figure>
     </div>
+    <div class="container">
+      <!-- quality={68}: the hut source is already a compressed AVIF at its native 1272px, so a
+        default-quality WebP re-encode gained nothing (222kB in, 221kB out). 68 halves it. -->
+      <figure class="pack-photo pack-photo--hut">
+        <Image
+          src={scoutHut}
+          alt="A dark timber Scout hut set back in the trees on the church grounds, with a flagpole and a Georgia-shaped sign reading “BSA Troop 170, Macon GA”."
+          widths={[636, 1272]}
+          width={1272}
+          sizes="(max-width: 760px) 100vw, 68rem"
+          loading="lazy"
+          quality={68}
+        /><figcaption>The Scout hut on the church grounds, shared by Pack 170 and Troop 170.</figcaption>
+      </figure>
+    </div>
   </section>
   <section class="section how-section">
     <div class="container">
@@ -63,10 +82,22 @@ import { externalLink } from '../lib/external-link';
   </section>
   <section class="section promise-section">
     <div class="container promise-grid">
-      <div class="paper-sheet promise">
-        <span class="chapter-tab">Our approach</span><h2>Do your best.</h2><p class="lead">
-          Cub Scouting meets children where they are. Adults make space to practice; kids build confidence by trying.
-        </p>
+      <div class="promise-column">
+        <div class="paper-sheet promise">
+          <span class="chapter-tab">Our approach</span><h2>Do your best.</h2><p class="lead">
+            Cub Scouting meets children where they are. Adults make space to practice; kids build confidence by trying.
+          </p>
+        </div>
+        <figure class="pack-photo">
+          <Image
+            src={practiceTogether}
+            alt="A Pack 170 adult volunteer crouches on a path beside a child, the two of them playing tic-tac-toe with hand-painted ladybug and bee stones on a slice of log."
+            widths={[420, 840]}
+            width={840}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            loading="lazy"
+          /><figcaption>Making space to practice, one hand-painted game at a time.</figcaption>
+        </figure>
       </div><div>
         <h2>Volunteer-powered, family-supported.</h2><p>
           Pack adults provide program, training, planning, and safety. Families bring encouragement, participation, and the willingness to
@@ -146,36 +177,30 @@ import { externalLink } from '../lib/external-link';
     padding: clamp(2rem, 5vw, 4rem);
     transform: rotate(-1deg);
   }
+  /* The rotated sheet and the photo share one grid column, so the sheet keeps its tilt against the
+     square photo below it rather than fighting the volunteer copy for width. */
+  .promise-column {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
   .roster-section {
     background: var(--page);
     border-block: 1px solid var(--rule);
   }
-  /* Photos sit in the same paper frame as the rest of the handbook, not edge-to-edge. */
-  .pack-photo {
-    margin: 0;
-    padding: 0.75rem 0.75rem 0;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-  }
-  /* Both source photos are taller than the copy beside them, so they are cropped to a ratio rather
-     than shown at full height — otherwise the portrait one runs about twice the paragraph's height. */
-  .pack-photo img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-  }
-  .pack-photo--wide img {
-    aspect-ratio: 3 / 2;
-  }
-  .pack-photo figcaption {
-    padding: 0.75rem 0.25rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
+  /* .pack-photo itself is global (src/styles/global.css); only these placements are local. */
   .pack-photo--wide {
     max-width: 60rem;
     margin: 1.5rem 0 2.5rem;
+  }
+  /* The hut source is a 1272x588 banner crop, so it keeps its own ratio instead of the 4/5 default. */
+  .pack-photo--hut {
+    /* Matches the figure's `sizes`. Uncapped it filled the 1134px container and upscaled the
+       1088px variant, which would otherwise force the heavier 1272px one for 46px of width. */
+    max-width: 68rem;
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+  .pack-photo--hut img {
+    aspect-ratio: 1272 / 588;
   }
   /* Styles any structure the Markdown grows: h2 sections, prose, and role lists. */
   .roster :global(h2) {

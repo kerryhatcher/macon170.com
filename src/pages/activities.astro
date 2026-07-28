@@ -6,6 +6,7 @@ import ChapterHero from '../components/ChapterHero.astro';
 import { activities } from '../data/pack';
 import blueGoldCrossover from '../../assets/packphotos/crossover-2.jpeg';
 import outdoorTrail from '../../assets/packphotos/576A8821.jpg';
+import localOuting from '../../assets/packphotos/11-576A9122.jpg';
 const symbols: Record<string, string> = { car: '→', tent: '▲', banner: '★', hands: '✦' };
 // Real Pack 170 photos, used with the families' permission, keyed by activity slug. A chapter with
 // no photo keeps its illustrated blob. The mapping lives here rather than in pack.ts so that file
@@ -95,8 +96,15 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
           Our neighborhood sits near parks, trails, waterways, history, and a community worth serving. Pack-specific destinations will only
           be named when they are confirmed for a real event.
         </p>
-      </div><div class="local-map" role="img" aria-label="Abstract illustrated map showing Macon, a river, pines, and a trail">
-        <span class="river"></span><span class="map-dot">170</span><span class="trail">· · · · · ·</span><span class="trees">▲ ▲ ▲</span>
+      </div><div class="local-map">
+        <Image
+          src={localOuting}
+          alt="Two Pack 170 Cub Scouts lean on a log rail, watching a camel graze across the fence on a pack outing."
+          widths={[480, 960]}
+          width={960}
+          sizes="(max-width: 760px) 100vw, 40vw"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -202,54 +210,20 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
     gap: 4rem;
     align-items: center;
   }
+  /* Keeps the hand-cut frame the illustrated Macon map used, now around a real outing photo. */
   .local-map {
     position: relative;
-    min-height: 360px;
-    background: #d8e8cc;
+    aspect-ratio: 3 / 2;
     border: 4px solid white;
     border-radius: 8px 30px 10px 22px;
     overflow: hidden;
   }
-  .river {
+  .local-map img {
     position: absolute;
-    left: 30%;
-    top: -10%;
-    width: 140px;
-    height: 130%;
-    background: #8ac8e7;
-    transform: rotate(19deg);
-    border-inline: 5px solid rgba(255, 255, 255, 0.6);
-  }
-  .map-dot {
-    position: absolute;
-    left: 44%;
-    top: 44%;
-    width: 64px;
-    height: 64px;
-    display: grid;
-    place-items: center;
-    background: var(--gold);
-    border: 5px solid var(--blue);
-    border-radius: 50%;
-    color: var(--blue-deep);
-    font-family: var(--font-display);
-    font-weight: 900;
-  }
-  .trail {
-    position: absolute;
-    left: 8%;
-    top: 25%;
-    color: var(--red);
-    font-size: 2rem;
-    transform: rotate(18deg);
-  }
-  .trees {
-    position: absolute;
-    right: 8%;
-    bottom: 10%;
-    color: var(--green-deep);
-    font-size: 3rem;
-    letter-spacing: -0.2em;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   @media (max-width: 760px) {
     .activity-chapter,
