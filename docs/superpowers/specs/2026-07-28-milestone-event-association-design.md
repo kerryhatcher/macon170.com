@@ -1,7 +1,10 @@
 # Associate homepage milestones with calendar events
 
 Date: 2026-07-28
-Status: approved, not yet implemented
+Status: implemented. The `milestone` column, the admin dropdown, worker validation, and the homepage
+`soonestByMilestone` lookup are all in place (`src/pages/index.astro:189-226`).
+Amended 2026-07-28 by [calendar-empty-first](2026-07-28-calendar-empty-first-design.md), which reverses
+the passed-milestone decision recorded under Error handling and edge cases below.
 
 ## Problem
 
