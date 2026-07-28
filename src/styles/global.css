@@ -512,6 +512,14 @@ p {
      without this a notice inside a dark section inherits white and cannot be read */
   color: var(--ink);
 }
+
+/* Author-level display rules such as .notice { display: grid } outrank the browser's
+   built-in [hidden] rule. Keep hidden state authoritative so callback-driven notices
+   cannot remain visibly stale after the underlying condition recovers. */
+[hidden] {
+  display: none !important;
+}
+
 .notice__pin {
   width: 2.5rem;
   height: 2.5rem;

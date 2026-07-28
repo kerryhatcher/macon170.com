@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 8790;
-const BASE_URL = `http://localhost:${PORT}`;
+const BASE_URL = process.env.LIVE_BASE_URL ?? `http://localhost:${PORT}`;
+const isLiveCheck = Boolean(process.env.LIVE_BASE_URL);
 
 export default defineConfig({
   testDir: './e2e',
@@ -14,10 +15,12 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
-  webServer: {
-    command: 'bun run e2e:server',
-    url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
-  },
+  webServer: isLiveCheck
+    ? undefined
+    : {
+        command: 'bun run e2e:server',
+        url: BASE_URL,
+        reuseExistingServer: !process.env.CI,
+        timeout: 60_000,
+      },
 });

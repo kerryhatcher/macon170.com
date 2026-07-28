@@ -90,6 +90,10 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
           data-callback="onTurnstileSuccess"
           data-error-callback="onTurnstileError"
           data-expired-callback="onTurnstileExpired"
+          data-timeout-callback="onTurnstileTimeout"
+          data-retry="auto"
+          data-retry-interval="5000"
+          data-refresh-expired="auto"
         >
         </div><button class="button button--blue" type="submit" id="contact-submit" disabled={!hasEndpoint}
           >{hasEndpoint ? 'Send securely to pack adults' : 'Form connection pending'}</button
@@ -99,10 +103,15 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
               The secure form connection is not ready yet.
             </p>
           )
-        }<div class="notice notice--editor" id="turnstile-notice" role="alert" hidden>
+        }<p class="turnstile-status" id="turnstile-status" role="status" hidden></p><div
+          class="notice notice--editor"
+          id="turnstile-notice"
+          role="alert"
+          hidden
+        >
           <span class="notice__pin">!</span><div>
-            <h3>Security check didn’t load</h3><p>
-              Your note can’t be sent securely right now.{' '}
+            <h3>Security check is temporarily unavailable</h3><p>
+              Automatic retries did not restore the security check.{' '}
               <a href={pack.links.facebook} {...externalLink(pack.links.facebook)}>Message Pack 170 on Facebook</a>{' '}
               so a volunteer can help, or reload this page to try again.
             </p>
@@ -184,6 +193,11 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     color: var(--red);
     margin-top: 1rem;
   }
+  .turnstile-status {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: -0.5rem 0 1rem;
+  }
   .contact-card {
     border-top: 4px solid var(--blue);
     padding: 1.5rem 0.25rem;
@@ -243,6 +257,8 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
 </style>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
+  import { createTurnstileController, type TurnstileView } from '../lib/contact-turnstile';
+
   const success = document.querySelector<HTMLElement>('#submission-success');
   const params = new URLSearchParams(window.location.search);
   if (success && params.get('submitted') === 'success') {
@@ -258,30 +274,40 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   // reason if the widget errors or its token expires before the parent submits.
   declare global {
     interface Window {
-      onTurnstileSuccess?: () => void;
-      onTurnstileError?: () => void;
+      onTurnstileSuccess?: (token?: string) => void;
+      onTurnstileError?: (errorCode?: string) => boolean;
       onTurnstileExpired?: () => void;
+      onTurnstileTimeout?: () => boolean;
     }
   }
 
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   const submitButton = document.querySelector<HTMLButtonElement>('#contact-submit');
+  const turnstileStatus = document.querySelector<HTMLElement>('#turnstile-status');
   const turnstileNotice = document.querySelector<HTMLElement>('#turnstile-notice');
   const endpointReady = form?.hasAttribute('data-endpoint-ready') ?? false;
 
   if (endpointReady && submitButton) {
-    submitButton.disabled = true;
+    const renderTurnstile = ({ submitEnabled, statusMessage, showUnavailableNotice }: TurnstileView) => {
+      submitButton.disabled = !submitEnabled;
+      turnstileStatus?.toggleAttribute('hidden', statusMessage === null);
+      if (turnstileStatus) turnstileStatus.textContent = statusMessage ?? '';
+      turnstileNotice?.toggleAttribute('hidden', !showUnavailableNotice);
 
-    window.onTurnstileSuccess = () => {
-      submitButton.disabled = false;
-      turnstileNotice?.setAttribute('hidden', '');
+      if (showUnavailableNotice) {
+        submitButton.setAttribute('aria-describedby', 'turnstile-notice');
+      } else if (statusMessage) {
+        submitButton.setAttribute('aria-describedby', 'turnstile-status');
+      } else {
+        submitButton.removeAttribute('aria-describedby');
+      }
     };
 
-    window.onTurnstileError = () => {
-      submitButton.disabled = true;
-      turnstileNotice?.removeAttribute('hidden');
-    };
-
-    window.onTurnstileExpired = window.onTurnstileError;
+    const turnstileController = createTurnstileController(renderTurnstile);
+    window.onTurnstileSuccess = () => turnstileController.success();
+    window.onTurnstileError = () => turnstileController.error();
+    window.onTurnstileExpired = () => turnstileController.expired();
+    window.onTurnstileTimeout = () => turnstileController.error();
+    window.addEventListener('pagehide', () => turnstileController.destroy(), { once: true });
   }
 </script>

@@ -59,3 +59,7 @@ jobs:
             TURNSTILE_SECRET
         env:
           TURNSTILE_SECRET: ${{ secrets.TURNSTILE_SECRET }}
+      - name: Install browser for production checks
+        run: bunx playwright install --with-deps chromium
+      - name: Verify production Turnstile state recovery
+        run: bun run test:live
