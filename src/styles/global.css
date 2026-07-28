@@ -11,10 +11,13 @@
   --rule: #d7cdb8;
   --green: #42765c;
   --green-deep: #28543f;
+  /* Brand-committed in PRODUCT.md and reserved for spring/Macon annotation. Declared but not
+     yet placed on any surface - it is held, not dead, so do not sweep it as unused. */
   --pink: #e8a3c6;
   --red: #a33c34;
+  /* The fourth category accent: the "family" event on the calendar, alongside blue for pack
+     and green for den. Carries meaning under the Local Accent Rule like the other three. */
   --orange: #e87722;
-  --tan: #88745c;
   /* Text and rules on blue fields. Six near-identical pale blues were doing this one
      job; --blue-soft carries it, --blue-dim keeps the quieter footer/legal step. */
   --blue-dim: #b8cce0;
@@ -39,6 +42,9 @@
   --reading: 70ch;
   --radius: 14px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  /* The handbook is a paper world with no dark counterpart, so say so rather than letting a
+     dark-mode OS paint its own scrollbars and UA controls against the warm page. */
+  color-scheme: light;
 }
 
 * {
@@ -1097,13 +1103,26 @@ p {
   }
 }
 
+/* Reduced motion removes the travel, not the feedback. A blanket transition kill would also
+   flatten the colour and shadow changes that tell a parent a button is being hovered or has
+   focus, so only the transform is dropped and the tonal transitions stay. The hand-placed
+   rotations on sheets and notes are static print geometry, not motion, so they remain. */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+  .button {
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .button:hover {
+    transform: none;
   }
 }
