@@ -212,6 +212,16 @@ describe('volunteer desk', () => {
     expect(await response.text()).toContain('Calendar editor');
   });
 
+  it('offers every pack-year milestone in the editor dropdown', async () => {
+    const response = await exports.default.fetch('http://localhost/admin/calendar');
+    expect(response.status).toBe(200);
+    const html = await response.text();
+    expect(html).toContain('<select name="milestone">');
+    expect(html).toContain('<option value="">Not a milestone</option>');
+    expect(html).toContain('<option value="lego-derby">Lego Pinewood Derby</option>');
+    expect(html).toContain('<option value="blue-gold">Blue &amp; Gold Banquet</option>');
+  });
+
   it('lists submissions in local authenticated mode', async () => {
     const response = await exports.default.fetch('http://localhost/api/admin/submissions');
     expect(response.status).toBe(200);
