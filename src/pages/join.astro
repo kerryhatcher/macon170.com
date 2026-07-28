@@ -5,22 +5,28 @@ import RankEmblem from '../components/RankEmblem.astro';
 import { pack, ranks } from '../data/pack';
 import { externalLink } from '../lib/external-link';
 const faq = [
-  [
-    'Does my family need to belong to the church?',
-    'No. Pack 170 welcomes families from every background. Highland Hills Baptist Church is our chartered organization and meeting home.',
-  ],
-  [
-    'Can girls join Pack 170?',
-    'Yes. Cub Scouting welcomes boys and girls in kindergarten through 5th grade, and Pack 170 runs a den for every grade.',
-  ],
-  [
-    'Do we need a uniform for the first visit?',
-    'No. Come as you are for a first visit. Pack adults can explain current uniform and handbook expectations before you buy anything.',
-  ],
-  [
-    'How often do Cub Scouts meet?',
-    'The full pack gathers roughly once a month on Tuesdays at 6:30 PM. Each den sets its own schedule; many meet for an hour before the pack meeting.',
-  ],
+  {
+    q: 'Does my family need to belong to the church?',
+    a: 'No. Pack 170 welcomes families from every background. Highland Hills Baptist Church is our chartered organization and meeting home.',
+    // Open by default. PRODUCT.md principle 5 makes countering the members-only assumption a stated
+    // goal, and a parent meets Highland Hills Baptist Church three times before reaching this list -
+    // the gold strip, the hero's Where row, and the footer charter link. Leaving the one answer that
+    // defuses that behind a click asserted the church at full weight and denied it at half. The
+    // pattern to copy is the Who row, where "Boys and girls welcome" is simply already visible.
+    open: true,
+  },
+  {
+    q: 'Can girls join Pack 170?',
+    a: 'Yes. Cub Scouting welcomes boys and girls in kindergarten through 5th grade, and Pack 170 runs a den for every grade.',
+  },
+  {
+    q: 'Do we need a uniform for the first visit?',
+    a: 'No. Come as you are for a first visit. Pack adults can explain current uniform and handbook expectations before you buy anything.',
+  },
+  {
+    q: 'How often do Cub Scouts meet?',
+    a: 'The full pack gathers roughly once a month on Tuesdays at 6:30 PM. Each den sets its own schedule; many meet for an hour before the pack meeting.',
+  },
 ];
 ---
 
@@ -86,7 +92,7 @@ const faq = [
           Cub Scout rank names follow elementary grades, and Pack 170 runs all six dens. Each den sets its own meeting time and place after
           the first pack meeting of the school year, so ask a pack adult where your child’s den has landed.
         </p><p>
-          New to Cub Scouting? <a href="/what-is-cub-scouts/">Start with what the program is</a>, or open a den to see
+          New to Cub Scouting? <a href="/what-is-cub-scouts/">Start with what the program is</a>, or open a den to see{' '}
           <a href="/dens/">what that grade works on</a>.
         </p>
       </div>
@@ -139,8 +145,8 @@ const faq = [
         class="faq-list"
       >
         {
-          faq.map(([q, a]) => (
-            <details>
+          faq.map(({ q, a, open }) => (
+            <details open={open}>
               <>
                 <summary>{q}</summary>
                 <p>{a}</p>
@@ -265,15 +271,39 @@ const faq = [
     border-bottom: 2px solid var(--rule);
     padding: 1.15rem 0;
   }
+  /* The raw browser disclosure triangle was the one unstyled control in an otherwise fully drawn
+     system. This draws the marker instead, with clip-path rather than rotated borders so it stays
+     a single shape rather than reading as an accent rule on a card edge. */
   .faq-list summary {
+    display: grid;
+    grid-template-columns: 0.85rem 1fr;
+    gap: 0.7rem;
+    align-items: baseline;
     cursor: pointer;
     color: var(--blue);
     font-family: var(--font-display);
     font-weight: 800;
     line-height: 1.3;
+    list-style: none;
+  }
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-list summary::before {
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: 0.25rem;
+    background: var(--blue);
+    clip-path: polygon(0 15%, 100% 50%, 0 85%);
+    transition: transform 0.2s var(--ease);
+  }
+  .faq-list details[open] summary::before {
+    transform: rotate(90deg);
+    background: var(--gold-deep);
   }
   .faq-list p {
-    padding: 0.8rem 1rem 0;
+    padding: 0.8rem 0 0 1.55rem;
     margin: 0;
   }
   .join-close {
