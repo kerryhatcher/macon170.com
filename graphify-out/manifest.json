@@ -65,8 +65,8 @@
     "semantic_hash": "a365cf87f6d8a0641517063b42ce5de9"
   },
   "src/components/SiteFooter.astro": {
-    "mtime": 1785200522.518789,
-    "ast_hash": "3f25da8802624e4ea9c17a3c0b11f76b",
+    "mtime": 1785207320.8864143,
+    "ast_hash": "984946dabdbb4c3316b732f46595f27c",
     "semantic_hash": ""
   },
   "src/components/SiteHeader.astro": {
@@ -75,13 +75,13 @@
     "semantic_hash": ""
   },
   "src/data/pack.ts": {
-    "mtime": 1785190986.061456,
-    "ast_hash": "080abe5cff3ababab3dbf1b32cf9bb72",
+    "mtime": 1785216649.571476,
+    "ast_hash": "0e5c6ad20203ab6e24518ac2608c4f24",
     "semantic_hash": ""
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1785200300.8630404,
-    "ast_hash": "b9da031f7d26c97ea2bebaa7eb6738d2",
+    "mtime": 1785207632.552269,
+    "ast_hash": "cea2d2844c8526326ad279c22d8266c8",
     "semantic_hash": ""
   },
   "src/lib/api-base.ts": {
@@ -90,38 +90,38 @@
     "semantic_hash": "442116963e15d263e8aab25158b01b47"
   },
   "src/pages/about.astro": {
-    "mtime": 1785200522.5076816,
-    "ast_hash": "44dd5037f9c4dbd2c0a8ff5544eb4c08",
+    "mtime": 1785217443.0448487,
+    "ast_hash": "5ecd5361fce86560b82089eae73ec8cc",
     "semantic_hash": ""
   },
   "src/pages/activities.astro": {
-    "mtime": 1785165199.133769,
-    "ast_hash": "72fd6073042ab28bc94e77cd997d27d6",
-    "semantic_hash": "72fd6073042ab28bc94e77cd997d27d6"
+    "mtime": 1785215015.3701065,
+    "ast_hash": "b63d6da87724cb150e6647bc7dd4f6ee",
+    "semantic_hash": ""
   },
   "src/pages/calendar/index.astro": {
-    "mtime": 1785196442.0733004,
-    "ast_hash": "e874eaffd48bae317b9e39f76f76fc21",
+    "mtime": 1785208796.9491398,
+    "ast_hash": "c732559a53cbe45df05e6664724ba742",
     "semantic_hash": ""
   },
   "src/pages/contact.astro": {
-    "mtime": 1785200522.5105865,
-    "ast_hash": "4ce5b6f9cb717cb5a5dbe4efa1c8f53e",
+    "mtime": 1785208756.3799257,
+    "ast_hash": "8f0353a702f5be880c050fca658db2e4",
     "semantic_hash": ""
   },
   "src/pages/events/index.astro": {
-    "mtime": 1785190986.0648286,
-    "ast_hash": "0d64dbb8c9953f74d7446db263fbf041",
+    "mtime": 1785208802.152604,
+    "ast_hash": "f82754dce07d6e5ae7b0fa313102aeee",
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
-    "mtime": 1785200324.961096,
-    "ast_hash": "73d254d46a33e906b25b3e3632df3783",
+    "mtime": 1785217523.2981896,
+    "ast_hash": "6fe830eb99ef166b96b5ed7bab3058aa",
     "semantic_hash": ""
   },
   "src/pages/join.astro": {
-    "mtime": 1785200522.5089686,
-    "ast_hash": "7b1e34830e727187fbcf7e325e8f3f14",
+    "mtime": 1785209111.0406954,
+    "ast_hash": "4577a516a77cfadc2ad3640f8ceb53bd",
     "semantic_hash": ""
   },
   "src/pages/privacy.astro": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "src/pages/volunteer.astro": {
-    "mtime": 1785180598.4174395,
-    "ast_hash": "fbe746275f515ff882308e010bfe7601",
+    "mtime": 1785208713.4700255,
+    "ast_hash": "4a0629cae29aa78b4e269965ec36cedb",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -145,9 +145,9 @@
     "semantic_hash": "59c426bcd5ce532af0333ab02c04af3a"
   },
   "tsconfig.worker.json": {
-    "mtime": 1785165199.1374373,
-    "ast_hash": "e4e833791573fcc1313de8086170a37d",
-    "semantic_hash": "e4e833791573fcc1313de8086170a37d"
+    "mtime": 1785216659.9102447,
+    "ast_hash": "85dfaf6858efbc4a3c92481a5c4cb05a",
+    "semantic_hash": ""
   },
   "vitest.config.ts": {
     "mtime": 1785189349.4619143,
@@ -165,19 +165,19 @@
     "semantic_hash": "068d7677a0923344a5df68bcfdf7acfc"
   },
   "worker/calendar-admin.ts": {
-    "mtime": 1785190986.0700173,
-    "ast_hash": "2c06d1a0cc7f016f7b1515a9041e7235",
+    "mtime": 1785217343.5648286,
+    "ast_hash": "77786cda8c6d8c8c0cc82c639fab0284",
     "semantic_hash": ""
   },
   "worker/event-routes.ts": {
-    "mtime": 1785168175.7746193,
-    "ast_hash": "db50420bfd83e09c16c87b3564aa470a",
-    "semantic_hash": "db50420bfd83e09c16c87b3564aa470a"
+    "mtime": 1785216783.8923194,
+    "ast_hash": "2ccafb6135ebcf72259f57b2df8118b2",
+    "semantic_hash": ""
   },
   "worker/index.test.ts": {
-    "mtime": 1785165199.1394362,
-    "ast_hash": "e3cc7c4ff147285eebccba5836805f45",
-    "semantic_hash": "e3cc7c4ff147285eebccba5836805f45"
+    "mtime": 1785217109.3660154,
+    "ast_hash": "cf3b5b6769c395e669e515e0694c0c17",
+    "semantic_hash": ""
   },
   "worker/index.ts": {
     "mtime": 1785190986.0709236,
@@ -195,9 +195,9 @@
     "semantic_hash": "e838d408f85c4ea8c8705282bde38ebc"
   },
   ".agents/skills/calendar-api/SKILL.md": {
-    "mtime": 1785180598.369135,
-    "ast_hash": "4c143c608d91c045e4fff79215fdcec6",
-    "semantic_hash": "4c143c608d91c045e4fff79215fdcec6"
+    "mtime": 1785218064.3623385,
+    "ast_hash": "2147189babdfaa9c8e09aa3fad66dd68",
+    "semantic_hash": ""
   },
   ".github/workflows/deploy.yml": {
     "mtime": 1785193578.9849613,
@@ -310,8 +310,8 @@
     "semantic_hash": "5457725db532107c0ea3317463f996a9"
   },
   "docs/placeholders.md": {
-    "mtime": 1785187903.1287766,
-    "ast_hash": "b11b661e2939f7de1df334a8760efcd3",
+    "mtime": 1785217544.433971,
+    "ast_hash": "f2409d783e3049eca9e7e6d66877cb13",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -335,23 +335,23 @@
     "semantic_hash": ""
   },
   "src/pages/dens/[den].astro": {
-    "mtime": 1785200522.5178208,
-    "ast_hash": "3b8b4b97d362b6340e2b67d09ae2d130",
+    "mtime": 1785208953.121283,
+    "ast_hash": "b8f4f9f8c17b1c4a0fe7d34017fab2cd",
     "semantic_hash": ""
   },
   "src/pages/dens/index.astro": {
-    "mtime": 1785191872.0989118,
-    "ast_hash": "f11de5cd57ac7f5da6216eb5c7bbafc2",
+    "mtime": 1785208738.4619532,
+    "ast_hash": "b8faa0e7fe584884edd6ee6d5c3d0cac",
     "semantic_hash": ""
   },
   "src/pages/what-is-cub-scouts.astro": {
-    "mtime": 1785200522.5165036,
-    "ast_hash": "ca2c09df1b38c27d7792b2591e41b0d7",
+    "mtime": 1785215323.1957238,
+    "ast_hash": "14dd36331ba5eb9844d8e4c70455fd62",
     "semantic_hash": ""
   },
   "src/pages/youth-protection.astro": {
-    "mtime": 1785197132.0976293,
-    "ast_hash": "0d18c6187537b393a818f772135920fb",
+    "mtime": 1785209111.1311815,
+    "ast_hash": "662c18b935604b66eacec2190d8899be",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Fun_On_The_Run.webp": {
@@ -2045,8 +2045,8 @@
     "semantic_hash": ""
   },
   ".impeccable/config.json": {
-    "mtime": 1785191880.2714822,
-    "ast_hash": "e540c9dfa674dc63777f2831806138aa",
+    "mtime": 1785217710.700469,
+    "ast_hash": "7c41bc826d18223f84fbcc80b67eb1ad",
     "semantic_hash": ""
   },
   "DESIGN.json": {
@@ -2410,23 +2410,23 @@
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/district-profile.md": {
-    "mtime": 1785198779.7840059,
-    "ast_hash": "e22f3d28b314e611dc879eb0c3649db3",
+    "mtime": 1785207320.010808,
+    "ast_hash": "560fc0a38cb0b0f7d907159872d0f1a0",
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/mtss.md": {
-    "mtime": 1785198810.4843833,
-    "ast_hash": "d5c66a2130241c103bdc42ab4dec9b2f",
+    "mtime": 1785207320.0590634,
+    "ast_hash": "7fd71baa1d39c49036927ee13e5c4826",
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/scouting-and-education.md": {
-    "mtime": 1785198942.7374973,
-    "ast_hash": "f98f8df8ed134862c78d85239c3fc081",
+    "mtime": 1785207320.1147373,
+    "ast_hash": "b52a9d770ab8db1b4c2f3bd824590830",
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/sel.md": {
-    "mtime": 1785198781.6706603,
-    "ast_hash": "a34a11b2756cbe714e946fb68a4254d9",
+    "mtime": 1785207320.142293,
+    "ast_hash": "1596cbea8cefc2b737876e8dc12a3d7d",
     "semantic_hash": ""
   },
   "assets/Pack_170_Logo.svg": {
@@ -2505,18 +2505,18 @@
     "semantic_hash": ""
   },
   "docs/research/bcsd/SYNTHESIS.md": {
-    "mtime": 1785200486.2014847,
-    "ast_hash": "68ae926b808688e0034e39e9f0d5538e",
+    "mtime": 1785207320.2418625,
+    "ast_hash": "539df062b3c9fd07536386533b4e7600",
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/strategic-plan.md": {
-    "mtime": 1785199035.1042104,
-    "ast_hash": "be0f04585418aadc8b5639a5cba9e963",
+    "mtime": 1785207320.1783595,
+    "ast_hash": "33a839302166bc3d0791f432adc16b92",
     "semantic_hash": ""
   },
   "docs/research/bcsd/talking-points.md": {
-    "mtime": 1785200510.4936807,
-    "ast_hash": "6f80c4468890a1f9a37c26ce057315cb",
+    "mtime": 1785207320.2514524,
+    "ast_hash": "a0863fefe97cd3ba274316f23a88e4a8",
     "semantic_hash": ""
   },
   "src/lib/external-link.ts": {
@@ -2525,8 +2525,8 @@
     "semantic_hash": ""
   },
   "docs/research/bcsd/notes/alexander-ii.md": {
-    "mtime": 1785200151.6655664,
-    "ast_hash": "fa961a344df99e5af577f0edf4d99c2f",
+    "mtime": 1785207319.9812915,
+    "ast_hash": "c8eed81b3d0d79cd8b38df6cc5870f4e",
     "semantic_hash": ""
   },
   "public/apple-touch-icon.png": {
@@ -2542,6 +2542,131 @@
   "public/logo/pack170-maskable-512.png": {
     "mtime": 1785200279.710387,
     "ast_hash": "c3ce175c3455cf634362b29c9eb7a152",
+    "semantic_hash": ""
+  },
+  "migrations/0003_add_event_milestone.sql": {
+    "mtime": 1785216655.486559,
+    "ast_hash": "0bdd5cb8a84de8b3148cabfab8e41164",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/final-review.md": {
+    "mtime": 1785217974.583614,
+    "ast_hash": "7ee6537a567c9a465e796a544f29952e",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/fix-wave-report.md": {
+    "mtime": 1785218130.2795017,
+    "ast_hash": "33ba0b30edd1e9efe50226bccf62e0f4",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/progress.md": {
+    "mtime": 1785218329.746234,
+    "ast_hash": "83308f4ea30d18edea22aff36ee0fabd",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-1-brief.md": {
+    "mtime": 1785216480.5495532,
+    "ast_hash": "67a576f834cbf92da93c146b695fe7d0",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-1-report.md": {
+    "mtime": 1785216884.6542528,
+    "ast_hash": "e98485e1f4e42f0648db914da1ad1470",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-1-review.md": {
+    "mtime": 1785217014.6311624,
+    "ast_hash": "aab565fa8e987ea165e56125e1223bb1",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-2-brief.md": {
+    "mtime": 1785216480.6840687,
+    "ast_hash": "ee41c8e902a84b83aedba23f4e450fc9",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-2-report.md": {
+    "mtime": 1785217384.2612145,
+    "ast_hash": "a19e7fe5e57f2666f991f2fa742416e5",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-2-review.md": {
+    "mtime": 1785217289.6649086,
+    "ast_hash": "2f4393a6fc7e2ae5c1bcd41f99b4bb66",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-3-brief.md": {
+    "mtime": 1785216480.9729912,
+    "ast_hash": "39e181fb7da95babef2e6c5372d99440",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-3-report.md": {
+    "mtime": 1785217666.4837718,
+    "ast_hash": "ce5ef201d40c581b2c1b8120825b33de",
+    "semantic_hash": ""
+  },
+  ".superpowers/sdd/2026-07-28-milestone-event-association/task-3-review.md": {
+    "mtime": 1785217760.9455602,
+    "ast_hash": "e1292a34a877e7fe32a402bd89cb0e29",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-07-28-milestone-event-association.md": {
+    "mtime": 1785216343.2306793,
+    "ast_hash": "d75e1201199cf1c9da5f6fb77964ae3a",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-07-28-milestone-event-association-design.md": {
+    "mtime": 1785216069.9806015,
+    "ast_hash": "c4856ffbc7972fecd28f5d3c8806e940",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/10-576A9104.jpg": {
+    "mtime": 1713625874.0,
+    "ast_hash": "c7033fec9c2e0fe3d15f3c91ccd5bec6",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/11-576A9122.jpg": {
+    "mtime": 1713626196.0,
+    "ast_hash": "d3e231e6e1dd0d6a9ae76fa70d10dca0",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/15-576A9185.jpg": {
+    "mtime": 1713627833.0,
+    "ast_hash": "d261005d9160b7298694809b71b4202f",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/4-576A8832.jpg": {
+    "mtime": 1713620556.0,
+    "ast_hash": "7168eedc56b8a563da2d5edee57c49e7",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/576A8821.jpg": {
+    "mtime": 1785213419.5521848,
+    "ast_hash": "869b6487c78ce9518dc7ad492de404aa",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/8-576A9027.jpg": {
+    "mtime": 1713623919.0,
+    "ast_hash": "1b5d3bf4b8c5081827855f34f1730875",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/9-576A9059.jpg": {
+    "mtime": 1713624243.0,
+    "ast_hash": "e490e09be4939a8a2ae01e6b68a7b612",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/Stephanie_awards.jpeg": {
+    "mtime": 1785211117.5804896,
+    "ast_hash": "c12287519f67b72d9ea49b9bd2034b33",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/award2.jpg": {
+    "mtime": 1785211220.1765118,
+    "ast_hash": "7feb3d3eadf2e1507678763a7cfcebf7",
+    "semantic_hash": ""
+  },
+  "assets/packphotos/crossover-2.jpeg": {
+    "mtime": 1785211160.4058025,
+    "ast_hash": "8daa81e1c7e0ad57d921785382ef9ca6",
     "semantic_hash": ""
   }
 }
