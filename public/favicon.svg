@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#003f87"/><path d="M14 15h36v29l-18 10-18-10z" fill="none" stroke="#fcd116" stroke-width="5"/><text x="32" y="39" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff">170</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cub Scout Pack 170">
+  <!-- Simplified from the Pack 170 badge (assets/Pack_170_Logo.svg): tent + moon only,
+       since the badge lettering and pine line-art turn to mush at 16px. -->
+  <circle cx="32" cy="32" r="32" fill="#221D53"/>
+  <path d="M45 10a8.5 8.5 0 1 0 0 15 10 10 0 0 1 0-15z" fill="#FDC30A"/>
+  <g fill="#E0B331">
+    <path d="M15 15l1.6 3.4L20 20l-3.4 1.6L15 25l-1.6-3.4L10 20l3.4-1.6z"/>
+    <path d="M26 9l1 2.2 2.2 1-2.2 1L26 15.4l-1-2.2-2.2-1 2.2-1z"/>
+  </g>
+  <path d="M31 22 10 50h42z" fill="#C39A6E" stroke="#0C0B16" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M25 50V38l6-4 6 4v12z" fill="#0C0B16"/>
+  <path d="M4 50h56" stroke="#3FA05E" stroke-width="3"/>
+  <path d="M18 57h26" stroke="#3FA05E" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
