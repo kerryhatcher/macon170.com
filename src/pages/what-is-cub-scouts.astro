@@ -62,19 +62,33 @@ const asks = [
     ><p slot="note">A local, volunteer-run program of Scouting America. No sales pitch, no fundraiser at the door.</p></ChapterHero
   >
 
+  <nav class="chapter-index" aria-label="On this page">
+    <div class="container">
+      <span class="chapter-tab">On this page</span>
+      <ol>
+        <li><a href="#the-program">The program</a></li>
+        <li><a href="#school-aims">Why schools partner with us</a></li>
+        <li><a href="#complementing-the-plan">Complementing the plan</a></li>
+        <li><a href="#who-we-are">Who we are</a></li>
+        <li><a href="#youth-protection-glance">Youth protection, at a glance</a></li>
+        <li><a href="#invite-pack-170">Invite Pack 170 to a family night</a></li>
+      </ol>
+    </div>
+  </nav>
+
   <section class="section">
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">The program</span>
-        <h2>A structured after-school activity, run by trained, background-checked parent volunteers.</h2>
+        <h2 id="the-program">A structured after-school activity, run by trained, background-checked parent volunteers.</h2>
       </div>
-      <p>
+      <p class="measure">
         Cub Scouting is a program of Scouting America for children in {pack.grades}. {pack.welcome}. Kids meet in small, same-grade groups
         called dens, and the whole pack gathers periodically for a larger meeting. Every adult who runs a meeting is a registered, trained
         volunteer. Every child in Scouting must be escorted by their parent or guardian at every event. There is never a moment at a Cub
         Scout event when a child's parent or guardian isn't present.
       </p>
-      <p>
+      <p class="measure">
         The six grade levels each carry a rank name, so a program built for a kindergartner looks and feels different from one built for a
         fifth grader. Social-Emotional Learning is at the core of each program:
       </p>
@@ -133,7 +147,7 @@ const asks = [
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">Why schools partner with us</span>
-        <h2>Four aims a school can get behind.</h2>
+        <h2 id="school-aims">Four aims a school can get behind.</h2>
       </div>
       <p class="lead">
         Cub Scouting is organized around four aims that line up with what schools already work on: character, citizenship, fitness, and
@@ -157,7 +171,7 @@ const asks = [
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">Complementing the plan</span>
-        <h2>Where this lines up with what schools are already working on.</h2>
+        <h2 id="complementing-the-plan">Where this lines up with what schools are already working on.</h2>
       </div>
       <div class="align-rows">
         <section class="align-row">
@@ -225,7 +239,7 @@ const asks = [
     <div class="container who-grid">
       <div>
         <span class="chapter-tab">Who we are</span>
-        <h2>Pack 170, specifically.</h2>
+        <h2 id="who-we-are">Pack 170, specifically.</h2>
         <p>
           {pack.name} is Macon's local Cub Scout pack, part of the {pack.council.name} of Scouting America. We're chartered by <a
             href={pack.charteredOrganization.url}
@@ -264,7 +278,7 @@ const asks = [
       <div class="notice">
         <span class="notice__pin">✓</span>
         <div>
-          <h3>Youth protection, at a glance</h3>
+          <h3 id="youth-protection-glance">Youth protection, at a glance</h3>
           <p>
             Every registered adult completes Scouting America's Safeguarding Youth Training before serving with youth, renews it every year,
             and passes a criminal background check. Two-deep leadership means at least two registered adults are present at every activity,
@@ -286,8 +300,8 @@ const asks = [
   <section class="section">
     <div class="container close-grid paper-sheet">
       <div>
-        <h2>Invite Pack 170 to a family night.</h2>
-        <p>
+        <h2 id="invite-pack-170">Invite Pack 170 to a family night.</h2>
+        <p class="measure">
           When a school has an open house, a family night, or a few minutes on a PTO agenda, Pack 170 would like to be there. The pack
           brings the table, the adults, and the paperwork.
         </p>
@@ -304,6 +318,49 @@ const asks = [
   </section>
 </BaseLayout>
 <style>
+  /* A chapter index for a page this long (8700px+ at desktop) with no wayfinding otherwise.
+     Numbered because the order is the page's own reading order, not a decorative label — the
+     one case craft-floor.md's "no section numbers" default yields to. Real anchor links, not a
+     script: the site already sets html { scroll-behavior: smooth } in global.css and turns it
+     off under prefers-reduced-motion, so this needs no motion code of its own. */
+  .chapter-index {
+    border-bottom: 1px solid var(--rule);
+    background: var(--page);
+  }
+  .chapter-index .container {
+    padding-block: clamp(1.25rem, 3vw, 1.75rem);
+  }
+  .chapter-index .chapter-tab {
+    margin-bottom: 0.75rem;
+  }
+  .chapter-index ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: chapter;
+  }
+  .chapter-index li {
+    counter-increment: chapter;
+  }
+  .chapter-index li::before {
+    content: counter(chapter) '. ';
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  .chapter-index a {
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .chapter-index ol {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  }
+
   /* Caps the figure at the width its `sizes` attribute promises. Without this it stretched to the
      full 1160px container and upscaled an 864px source. */
   .program-photo {
@@ -422,6 +479,10 @@ const asks = [
      and the quotation need rules of their own. */
   .plan-notice {
     margin-top: clamp(2rem, 5vw, 3.25rem);
+  }
+  /* The notice's text column, not the notice itself — the pin column must stay its own width. */
+  .plan-notice > div {
+    max-width: var(--reading);
   }
   /* A left double quote sits high in its em box, so it needs a nudge to land on the pin's
      optical centre the way ✓ and ? already do. */
@@ -552,6 +613,9 @@ const asks = [
   .safety-section {
     background: var(--blue-deep);
     color: white;
+  }
+  .safety-section .notice > div {
+    max-width: var(--reading);
   }
   .close-grid {
     padding: clamp(2rem, 5vw, 4rem);
