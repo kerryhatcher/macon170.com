@@ -14,6 +14,23 @@ const aims = [
 // Verified against docs/research/bcsd/notes/strategic-plan.md — the district's own plan page.
 const planUrl = 'https://www.bcsdk12.net/about-us/strategic-plan';
 
+// What a rank's advancement actually asks a child to practice, in SEL terms. Keyed by rank name
+// so a rank without a note simply renders without one. Every claim here is either the six
+// required-Adventure areas that apply at every rank or a rank specific verified in
+// docs/research/cub-scouting.md (Lion's adult partner, Bear's Whittling adventure, Webelos'
+// 20 electives, Arrow of Light as crossover prep). Specific adventure names are deliberately
+// absent apart from Whittling: many were retired or renamed in June 2024 and only that one is
+// verified in the research.
+const selNotes: Record<string, string> = {
+  Lion: 'An adult partner is in the den for every Lion meeting, so a five-year-old practices the first group skills — waiting a turn, sharing an adult’s attention — with their own grown-up beside them.',
+  Tiger: 'Den meetings run to a routine: an opening, a job to do, a closing. A first grader learns to name what they need and ask for help inside a structure that does not change week to week.',
+  Wolf: 'One of the six required Adventures at every rank is Character & Leadership. For a second grader that is working with the partner they were given rather than the one they wanted, and finishing the part they agreed to do.',
+  Bear: 'Knife safety arrives at Bear, in the Whittling Adventure. Handling a real tool means following a safety rule exactly, every time — responsible decision-making with something genuinely at stake.',
+  Webelos: 'Webelos choose from twenty elective Adventures. Picking one, planning it, and carrying it through is goal-setting a fourth grader owns rather than receives.',
+  'Arrow of Light':
+    'The fifth-grade program is built around the crossover to Scouts BSA: leading parts of a meeting for the younger dens, then handing the job to whoever comes next.',
+};
+
 const asks = [
   ['A table at an open house or family night', 'One table, one hour, staffed by adults who are already approved district volunteers.'],
   ['A few minutes on a PTO agenda', 'Optional, and short. Three minutes is plenty.'],
@@ -71,7 +88,10 @@ const asks = [
         {
           ranks.map((rank) => (
             <li>
-              <strong>{rank.name}</strong> — {rank.grade}
+              <p class="rank-list__name">
+                <strong>{rank.name}</strong> — {rank.grade}
+              </p>
+              {selNotes[rank.name] && <p class="rank-list__note">{selNotes[rank.name]}</p>}
             </li>
           ))
         }
@@ -237,9 +257,11 @@ const asks = [
   </section>
 </BaseLayout>
 <style>
+  /* Two columns, not three: each rank now carries a sentence, and a third column would squeeze
+     the measure below readable. */
   .rank-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem 1.5rem;
     margin: 1.5rem 0 0;
     padding: 0;
@@ -249,6 +271,20 @@ const asks = [
     padding: 0.6rem 0.9rem;
     background: var(--page);
     border-left: 4px solid var(--blue);
+  }
+  .rank-list__name {
+    margin: 0;
+  }
+  .rank-list__note {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  @media (max-width: 640px) {
+    .rank-list {
+      grid-template-columns: 1fr;
+    }
   }
   .aims-section {
     background: var(--page);
