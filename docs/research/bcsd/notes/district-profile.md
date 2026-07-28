@@ -1,4 +1,5 @@
 # Bibb County School District Profile
+
 ## Research for Cub Scout Partnership Opportunity
 
 **Compiled:** July 27, 2026  
@@ -18,10 +19,12 @@
 ## Enrollment & Schools
 
 ### Total Enrollment
+
 - **Student Population:** 21,392 students (2024-2025 school year)
 - **School Count:** 35 schools total
 
 ### School Breakdown
+
 - **Elementary Schools:** 21 schools
   - Alexander II Magnet School
   - Bernd Elementary School
@@ -44,7 +47,7 @@
   - Veterans Elementary School
   - Vineville Academy of the Arts
   - Williams Elementary School
-  
+
 - **Middle Schools:** 6 schools
 - **High Schools:** 8 schools (Northeast, Westside, Southwest Magnet)
 
@@ -53,6 +56,7 @@
 ## Student Demographics
 
 ### Race/Ethnicity
+
 - Minority enrollment: 90%
 - Black/African American: 76.9%
 - White: 10.2%
@@ -62,9 +66,11 @@
 **Source:** [U.S. News Education - Bibb County Public Schools](https://www.usnews.com/education/k12/georgia/districts/bibb-county-103595)
 
 ### Economic Status & Title I
+
 - **Economically Disadvantaged:** 47.8%
 
 **Title I Schools (Recognized for Excellence):**
+
 - Alexander II Magnet School (2023 Title I Distinguished School; eligible for National ESEA Distinguished School Award)
 - Carter Elementary School (Title I Reward School)
 - Skyview Elementary School (Title I Reward School)
@@ -73,6 +79,7 @@
 **Source:** [4 Bibb County schools earn top honors from Georgia Department of Education - 41NBC News](https://www.41nbc.com/bibb-county-schools-earn-top-honors-georgia-department-education/); [41NBC News - Union Elementary recognized](https://www.41nbc.com/union-elementary-school-recognized-by-gadoe-for-exceptional-academic-achievements/)
 
 ### English Language Learners
+
 - The district operates an ESOL (English to Speakers of Other Languages) program; specific enrollment percentage not found in primary sources.
 
 **Source:** [ESOL Department - Bibb County School District](https://www.bcsdk12.net/departments/english-to-speakers-of-other-languages-esol/)
@@ -82,6 +89,7 @@
 ## Academic Performance
 
 ### Graduation Rate
+
 - **Class of 2025 Graduation Rate:** 88.97%
 - **Trend:** Third consecutive year exceeding Georgia state average
 - **Historical Context:** District graduation rate has increased approximately 37% over the past decade, up from 52% in 2012
@@ -89,16 +97,19 @@
 **Source:** [Bibb County School District's graduation rate tops state average for third year in a row - 41NBC News](https://www.41nbc.com/bibb-county-schools-graduation-rate-2025/); [Bibb County public schools' graduation rate is the highest in a decade - Macon Newsroom](https://macon-newsroom.com/19078/news/local/bibb-county-public-schools-graduation-rate-is-the-highest-in-a-decade/)
 
 ### Accreditation
+
 - **Cognia Accreditation:** "Above Average" rating for overall performance
 
 **Source:** [Bibb County School District earns Cognia accreditation with above average score - 41NBC News](https://www.41nbc.com/bibb-county-school-district-cognia-accreditation/)
 
 ### Achievement Assessment
+
 - 2024-2025 Georgia Milestones: Math scores improved across all grades (3-8); reading performance remains below state average; district trails state averages in most subject areas
 
 **Source:** [Bibb County School District's recent Milestones scores showing 'positive momentum' - AOL News](https://www.aol.com/bibb-county-schools-recent-milestones-040000014.html)
 
 ### Chronic Absenteeism
+
 - **Georgia Statewide 2024-2025:** 19.5% chronic absenteeism rate (down from 21.3% in 2023-2024)
 - **BCSD Specific Data:** Not found for 2024-2025; historical data shows district reduced chronic absenteeism from 16% (2019) to 11% (2020), then saw significant increase during 2020-2021 COVID period
 - **BCSD Improvement Efforts:** District participates in Breakthrough Results Program to reduce attendance issues
@@ -112,11 +123,13 @@
 ## Leadership & Governance
 
 ### Superintendent
+
 - **Superintendent:** Dr. Dan A. Sims
 
 **Source:** [Bibb County School District - U.S. News Education](https://www.usnews.com/education/k12/georgia/districts/bibb-county-103595)
 
 ### Board of Education
+
 - **Board Structure:** 8-member board (four-year terms)
 - **2025-2026 Officers:**
   - President: Daryl Morton
@@ -134,6 +147,7 @@
 ## District Initiatives & Programs Relevant to Partnerships
 
 ### Office of Partnerships, Projects and Engagement
+
 **Primary Contact for Community Partnerships**
 
 - **Phone:** 478-765-8762
@@ -142,12 +156,14 @@
 - **Mission:** Facilitate strategic partnerships aligned with district's three strategic goals; partnerships are "student-centered and strategic"
 
 **How to Become a Partner:**
+
 1. Contact the Office of Partnerships via phone, email, or submit Partnership Interest Form at: https://forms.cloud.microsoft/r/KPtZnA7srz
 2. Organization mission and goals are reviewed for alignment with district strategic plan
 3. If approved, organization completes Partnership Agreement documentation
 4. Formal onboarding process (orientation, training, background checks where applicable)
 
 **Partnership Tiers & Contributions:**
+
 - **Silver Tier (I):** Up to $999
 - **Gold Tier (II):** $1,000–$5,000
 - **Platinum Tier (III):** $5,000+
@@ -221,6 +237,7 @@
 ## Community Context: Macon-Bibb County
 
 ### Economic Indicators
+
 - **Poverty Rate:** 24.73% of population (compared to national average of 12.5%)
 - **Family Poverty:** 19.5% of families
 - **Median Household Income:** $51,234
@@ -234,6 +251,7 @@
 **Note:** Specific data on single-parent household percentage not found in accessible primary sources; Census Reporter and American Community Survey detailed tables may contain this data.
 
 ### Population & County Size
+
 - **County Population:** 131,815 residents (school district service area)
 - **Median Age:** 39 years
 - **Gender:** 47.31% male, 52.69% female
@@ -243,21 +261,25 @@
 ### Youth Programs Landscape
 
 **Next Level Community Development Center (Camp Zion)**
+
 - 501(c)(3) nonprofit serving at-risk youth and families
 - Programs: After-school Program, Summer Day Camp, E.L.I.T.E. Leadership Academy
 - Academic focus with free programs for eligible students
 - Applications for 2026-2027 being accepted
 
 **Salvation Army Macon Corps**
+
 - After-school tutoring and mentoring programs
 - Boys & Girls Club programming at select locations
 
 **Boys & Girls Clubs of Central Georgia**
+
 - Summer camps and year-round youth programming
 - STEM, literacy, and arts focus
 - Brain Gain Program to prevent summer learning loss
 
 **Other Initiatives:**
+
 - Girls Dig Deeper Initiative (mentorship, financial literacy, mental health)
 - Summer programs and youth development services
 
@@ -318,4 +340,3 @@
 - [Point2Homes - Bibb County School District Demographics](https://www.point2homes.com/US/Neighborhood/GA/Bibb-County/Bibb-County-School-District-Demographics.html)
 - [Next Level Macon Community Development Center](https://www.nextlevelmacon.org/)
 - [Salvation Army - Macon Corps Youth Programs](https://southernusa.salvationarmy.org/macon/empower-youth/)
-

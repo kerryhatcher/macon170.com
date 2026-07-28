@@ -60,7 +60,9 @@ const program = adventures.find((entry) => entry.rank === rank.name);
                 />
                 <div>
                   <strong>
-                    <a href={adventure.url} {...externalLink(adventure.url)}>{adventure.name}</a>
+                    <a href={adventure.url} {...externalLink(adventure.url)}>
+                      {adventure.name}
+                    </a>
                   </strong>
                   <p>{adventure.summary}</p>
                 </div>
@@ -83,7 +85,10 @@ const program = adventures.find((entry) => entry.rank === rank.name);
               <p>
                 Pack 170 will not publish an adventure list it has not checked against Scouting America's current program. Until then, ask a
                 den leader through the <a href="/contact/">contact form</a>, or look up the {rank.name} adventures on
-                <a href="https://www.scouting.org/programs/cub-scouts/" target="_blank" rel="noopener">scouting.org</a>.
+                <a href="https://www.scouting.org/programs/cub-scouts/" target="_blank" rel="noopener">
+                  scouting.org
+                </a>
+                .
               </p>
             </div>
           </div>
@@ -133,7 +138,9 @@ const program = adventures.find((entry) => entry.rank === rank.name);
                 />
                 <div>
                   <strong>
-                    <a href={adventure.url} {...externalLink(adventure.url)}>{adventure.name}</a>
+                    <a href={adventure.url} {...externalLink(adventure.url)}>
+                      {adventure.name}
+                    </a>
                   </strong>
                   <p>{adventure.summary}</p>
                 </div>
@@ -202,9 +209,12 @@ const program = adventures.find((entry) => entry.rank === rank.name);
   {
     program?.verified && (
       <p class="container source-note">
-        Adventure names, links, and loop images taken from <a href={program.source} {...externalLink(program.source)}>{new URL(program.source).hostname}</a>, July 2026. The
-        one-line descriptions are Pack 170’s own summaries of each linked page, not Scouting America’s wording — follow a link for the
-        actual requirements. Scouting America updated the Cub Scout adventure program on June 1, 2024.
+        Adventure names, links, and loop images taken from{' '}
+        <a href={program.source} {...externalLink(program.source)}>
+          {new URL(program.source).hostname}
+        </a>
+        , July 2026. The one-line descriptions are Pack 170’s own summaries of each linked page, not Scouting America’s wording — follow a
+        link for the actual requirements. Scouting America updated the Cub Scout adventure program on June 1, 2024.
       </p>
     )
   }

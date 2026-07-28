@@ -31,19 +31,21 @@ The school's official designation is **Alexander II Math and Science Magnet Scho
 
 ### Georgia STEM Certification
 
-- **Certification Status:** GA STEM Certified  
-- **Date:** October 22, 2021  
-- **Significance:** First magnet school in Macon-Bibb County to receive state STEM certification; also first to earn virtual STEM certification in Georgia. Across Georgia, 75 schools hold this certification as of the certification period.  
+- **Certification Status:** GA STEM Certified
+- **Date:** October 22, 2021
+- **Significance:** First magnet school in Macon-Bibb County to receive state STEM certification; also first to earn virtual STEM certification in Georgia. Across Georgia, 75 schools hold this certification as of the certification period.
 - **Source:** https://wgxa.tv/news/local/alexander-ii-joins-list-receiving-stem-certification
 
 ### Magnet Program Curriculum & Activities
 
 **Core Instructional Model:**
+
 - Math and science specialists conduct weekly labs with all students
 - Hands-on, problem-based activities integrated across grade levels
 - Annual environmental education trips
 
 **Extracurricular Programs & Partnerships:**
+
 - FIRST LEGO Robotics Team
 - Quiz Bowl Team
 - Media Center News Team
@@ -67,6 +69,7 @@ Alexander II operates on a **magnet school lottery system**. Application window 
 **Overall Ranking:** Top 10% of all public schools in Georgia
 
 **Test Performance:**
+
 - Math proficiency: 68% (Georgia state average: 39%)
 - Reading/Language Arts proficiency: 59% (Georgia state average: 40%)
 
@@ -77,13 +80,16 @@ Alexander II operates on a **magnet school lottery system**. Application window 
 ### State & National Awards
 
 **National Blue Ribbon School of Excellence:**
+
 - **2006** — U.S. Department of Education recognition
 - **2015** — Second National Blue Ribbon award, reaffirming sustained excellence
 
 **Georgia School of Excellence:**
+
 - 1984, 1993, 2001, 2011
 
 **Historic Recognition:**
+
 - June 2000: Named to the National Trust for Historic Preservation's list of 11 Most Endangered Historic Places
 - 1902: School founded by Elam Alexander, founder of the Alexander Free School Board
 - 1979: Became Georgia's first magnet school
@@ -97,7 +103,7 @@ Alexander II operates on a **magnet school lottery system**. Application window 
 
 ### Published Event Calendar
 
-**Status:** The school maintains a calendar page (https://alexii.bcsdk12.net/cms/one.aspx?contextId.119705=1817637&objectId.119705=1817710&pageId=1817636&parentId.119705=1817638&portalId=1736404), but specific 2025-26 event dates were not publicly accessible in web search results. 
+**Status:** The school maintains a calendar page (https://alexii.bcsdk12.net/cms/one.aspx?contextId.119705=1817637&objectId.119705=1817710&pageId=1817636&parentId.119705=1817638&portalId=1736404), but specific 2025-26 event dates were not publicly accessible in web search results.
 
 ### Known Programs & Initiatives
 
@@ -119,15 +125,18 @@ Alexander II operates on a **magnet school lottery system**. Application window 
 ### Leadership & Governance
 
 **School Administration:**
+
 - Principal: Donna Cline
 - Assistant Principal: Precious Jones
 
 **Parent Organization:**
+
 - Alexander II maintains parent involvement structures (referenced as PTA/PTO, though specific organization details are not published on the school website)
 
 ### Strategic Alignment
 
 Alexander II operates as part of the **Bibb County School District's Strategic Plan (2022-2027)**, which emphasizes three core goals:
+
 1. Student achievement
 2. Staff effectiveness
 3. Stakeholder engagement
@@ -144,11 +153,13 @@ Alexander II operates as part of the **Bibb County School District's Strategic P
 
 **Strategic Partner Definition:**
 An organization that meets all three criteria:
+
 - Supports the district's Strategic Plan
 - Provides sustained, aligned support for students and staff
 - Commits to enhance student learning experiences for academic outcomes
 
 **NOT considered Strategic Partners:**
+
 - Organizations making only one-time donations without ongoing involvement
 - Vendors focused solely on transactional relationships
 - Groups seeking promotional student access
@@ -159,15 +170,18 @@ An organization that meets all three criteria:
 ### Becoming a Partner
 
 **For External Organizations:**
+
 1. Contact the **Office of Partnerships, Projects & Engagement**
 2. Complete a **Partnership Interest Form**
 3. **Brand Ambassador Fee:** $20 to activate support
 4. All partnerships must align with district strategic goals and be student-centered
 
 **For Events & Sponsorships:**
+
 - District and school leaders seeking sponsorship support must submit a **District Sponsorship Request Form 25-26** no less than **45 days in advance**
 
 **Contact:**
+
 - Office of Partnerships: (478) 765-8762
 - Email: partnerships@bcsdk12.net
 
@@ -176,6 +190,7 @@ An organization that meets all three criteria:
 ### Volunteer Approval Process
 
 **BCSD Volunteer Requirements:**
+
 - BCSD maintains **Regulation IFCD-R: School Volunteers** (available through Simbli, the district's policy management system)
 - Criminal background checks are required for all volunteers
 - Training materials and resources are provided by the district
@@ -201,15 +216,16 @@ states who owns that decision at Alexander II specifically. Flagged as open belo
 
 **Recommendation for Pack 170:**
 Ask the Alexander II front office (or the BCSD Volunteer Office, 478-765-8711) directly:
+
 - Whether an already-approved IFCD-R volunteer may staff a table for an outside group at a
   school or PTO-run family event (open house, fall festival, family night), with no additional
   approval.
 - If not, what the additional step is (a second form, a one-time notice to the office).
 - Whether posting a flyer or getting a few minutes on a PTO meeting agenda needs anything beyond
   what a PTO/PTA member would already need.
-This is a small, cheap question to resolve directly. It does not require going through the Office
-of Partnerships unless the pack later wants a standing partner listing (see the Partnership
-Framework above for that separate, heavier route).
+  This is a small, cheap question to resolve directly. It does not require going through the Office
+  of Partnerships unless the pack later wants a standing partner listing (see the Partnership
+  Framework above for that separate, heavier route).
 
 [Sources: https://www.bcsdk12.net/parents/volunteer; https://www.bcsdk12.net/departments/human-resources]
 
@@ -226,6 +242,7 @@ The following details were **not found** in published sources:
 5. **CCRPI (College and Career Ready Performance Index) detailed score data** — school is ranked top 10%, but specific CCRPI score not published online
 
 **To obtain these details, contact:**
+
 - Alexander II principal's office: (478) 779-2700
 - School website or Facebook page: https://www.facebook.com/AlexIIMagnet/
 - BCSD Office of Partnerships: partnerships@bcsdk12.net or (478) 765-8762

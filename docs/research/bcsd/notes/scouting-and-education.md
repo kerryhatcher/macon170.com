@@ -13,7 +13,7 @@ table near the end.
 
 **Study:** Wang, J., Ferris, K. A., Hershberg, R. M., & Lerner, R. M. (2015). "Developmental
 Trajectories of Youth Character: A Five-Wave Longitudinal Study of Cub Scouts and Non-Scout Boys."
-*Journal of Youth and Adolescence*, 44(12). DOI: 10.1007/s10964-015-0340-y.
+_Journal of Youth and Adolescence_, 44(12). DOI: 10.1007/s10964-015-0340-y.
 Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
 
 - **Author/institution:** Tufts University Institute for Applied Research in Youth Development
@@ -25,7 +25,7 @@ Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
   future expectations.
 - **Findings:** Scouts' self-ratings increased significantly over time for cheerfulness, helpfulness,
   kindness, obedience, trustworthiness, and hopeful future expectations. Non-Scout boys showed no
-  significant change on these measures (and a significant *decrease* in religious reverence for
+  significant change on these measures (and a significant _decrease_ in religious reverence for
   non-Scouts from religious institutions).
 - **Limitations to disclose to a school audience:**
   - This is **not a randomized trial**. Scouts and comparison boys were not randomly assigned;
@@ -40,8 +40,8 @@ Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
 - A related Tufts/BSA study specifically on the **Scoutreach** initiative (low-income, racially and
   ethnically diverse youth) found similar self-reported character gains: Wang, J., Champine, R. B.,
   Ferris, K. A., et al. (2017). "Is the Scoutreach Initiative of Boy Scouts of America Linked to
-  Character Development among Socioeconomically, Racially, and Ethnically Diverse Youth?" *Journal of
-  Youth and Adolescence*, 46(10), 2230–2240. https://pubmed.ncbi.nlm.nih.gov/28664312/ (same
+  Character Development among Socioeconomically, Racially, and Ethnically Diverse Youth?" _Journal of
+  Youth and Adolescence_, 46(10), 2230–2240. https://pubmed.ncbi.nlm.nih.gov/28664312/ (same
   self-report/non-randomized limitations apply).
 
 ### 1.2 Baylor University — Eagle Scout / Scouting alumni research (mixed: academic center, BSA-commissioned)
@@ -86,8 +86,8 @@ Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
     description — the underlying regression model is not published in full), and better self-reported
     health behaviors.
   - **Method is cross-sectional, retrospective, adult self-report**, commissioned and paid for by the
-    same organization whose program is being evaluated, and it compares *people who stayed in
-    Scouting long enough to reach Eagle* against people who never joined — a strong self-selection
+    same organization whose program is being evaluated, and it compares _people who stayed in
+    Scouting long enough to reach Eagle_ against people who never joined — a strong self-selection
     and survivorship bias (a plausible confound: kids who persist to Eagle rank may already have
     more supportive families, more stable households, or more of the very traits — grit,
     persistence — being "found" in the results).
@@ -105,13 +105,13 @@ Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
 ### 1.5 Other peer-reviewed work on Scouting and character/persistence
 
 - Callina, K. S., Johnson, S. K., Tirrell, J. M., Batanova, M., Weiner, M. B., & Lerner, R. M. (2017).
-  "Modeling Pathways of Character Development across the First Three Decades of Life…" *Journal of
-  Youth and Adolescence*, 46(6), 1216–1237. https://pubmed.ncbi.nlm.nih.gov/28332053/ — extends the
+  "Modeling Pathways of Character Development across the First Three Decades of Life…" _Journal of
+  Youth and Adolescence_, 46(6), 1216–1237. https://pubmed.ncbi.nlm.nih.gov/28332053/ — extends the
   Tufts Scout dataset to look at hopeful future expectations across decades; same self-report/
   non-randomized caveats apply.
 - Ramos, A. M., Griffin, A. M., Neiderhiser, J. M., & Reiss, D. (2019). "Did I Inherit My Moral
   Compass? Examining Socialization and Evocative Mechanisms for Virtuous Character Development."
-  *Behavior Genetics*, 49(2), 175–186. https://pubmed.ncbi.nlm.nih.gov/30656439/ — uses a genetically
+  _Behavior Genetics_, 49(2), 175–186. https://pubmed.ncbi.nlm.nih.gov/30656439/ — uses a genetically
   informed design (adoptive families) and is useful context on how much of "character" is
   environmentally malleable versus inherited; not a Scouting-specific outcome study but cited by the
   Scouting literature.
@@ -146,7 +146,7 @@ Source: https://pubmed.ncbi.nlm.nih.gov/26280400/
   school-based chartering and in-kind support because of Establishment Clause and equal-access
   concerns; the practical effect nationally was a shift of school-based packs toward PTA-adjacent or
   independent community-organization charters rather than the school itself holding the charter. This
-  shift is documented piecemeal in litigation history (e.g., *Winkler v. Chicago School Reform Board*,
+  shift is documented piecemeal in litigation history (e.g., _Winkler v. Chicago School Reform Board_,
   a 2004 case on a Chicago public school's continued sponsorship) rather than in a single consolidated
   BSA history document. https://en.wikipedia.org/wiki/Scouting_America_membership_controversies
   (see "Access to Government Forums" and school-sponsorship citations). Treat this as a documented
@@ -182,14 +182,14 @@ sourced directly from the current official requirements pages.
 
 Program source for all rank pages: https://www.scouting.org/programs/cub-scouts/adventures/
 
-| Rank | Grade | Required Adventures (must complete all, plus 2 electives) |
-|---|---|---|
-| **Lion** | Kindergarten | See https://www.scouting.org/programs/cub-scouts/adventures/lion/ |
-| **Tiger** | 1st grade | Bobcat (Character & Leadership, includes the "How to Protect Your Children from Child Abuse: A Parent's Guide"), Tiger Bites (Personal Fitness), Tiger's Roar (Personal Safety), Tiger Circles (Family & Reverence), Team Tiger (Citizenship), Tigers in the Wild (Outdoors). Source: https://www.scouting.org/programs/cub-scouts/adventures/tiger/ |
-| **Wolf** | 2nd grade | See https://www.scouting.org/programs/cub-scouts/adventures/wolf/ |
-| **Bear** | 3rd grade | See https://www.scouting.org/programs/cub-scouts/adventures/bear/ |
-| **Webelos** | 4th grade | Bobcat (Character & Leadership), Stronger Faster Higher (Personal Fitness), My Safety (Personal Safety), My Family (Family & Reverence), My Community (Citizenship), Webelos Walkabout (Outdoors). Source: https://www.scouting.org/programs/cub-scouts/adventures/webelos/ |
-| **Arrow of Light** | 5th grade | See https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/ |
+| Rank               | Grade        | Required Adventures (must complete all, plus 2 electives)                                                                                                                                                                                                                                                                                            |
+| ------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Lion**           | Kindergarten | See https://www.scouting.org/programs/cub-scouts/adventures/lion/                                                                                                                                                                                                                                                                                    |
+| **Tiger**          | 1st grade    | Bobcat (Character & Leadership, includes the "How to Protect Your Children from Child Abuse: A Parent's Guide"), Tiger Bites (Personal Fitness), Tiger's Roar (Personal Safety), Tiger Circles (Family & Reverence), Team Tiger (Citizenship), Tigers in the Wild (Outdoors). Source: https://www.scouting.org/programs/cub-scouts/adventures/tiger/ |
+| **Wolf**           | 2nd grade    | See https://www.scouting.org/programs/cub-scouts/adventures/wolf/                                                                                                                                                                                                                                                                                    |
+| **Bear**           | 3rd grade    | See https://www.scouting.org/programs/cub-scouts/adventures/bear/                                                                                                                                                                                                                                                                                    |
+| **Webelos**        | 4th grade    | Bobcat (Character & Leadership), Stronger Faster Higher (Personal Fitness), My Safety (Personal Safety), My Family (Family & Reverence), My Community (Citizenship), Webelos Walkabout (Outdoors). Source: https://www.scouting.org/programs/cub-scouts/adventures/webelos/                                                                          |
+| **Arrow of Light** | 5th grade    | See https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/                                                                                                                                                                                                                                                                          |
 
 Every rank's required-adventure set follows the same six pillars — Character & Leadership, Personal
 Fitness, Personal Safety, Family & Reverence, Citizenship, Outdoors — confirmed directly on the
@@ -268,7 +268,7 @@ at Lion, Wolf, and Bear per the program's own design description.
   mandatory YPT/background-check regime described in §4.1 is the direct organizational response to
   this history, tightened multiple times over the past two decades and again in 2023. A district
   should be told plainly: the abuse happened at scale, it was catastrophic, the bankruptcy was a
-  direct consequence, and the current youth-protection architecture exists *because of* that history,
+  direct consequence, and the current youth-protection architecture exists _because of_ that history,
   not despite it.
 
 ### 4.3 Insurance and liability
@@ -299,9 +299,9 @@ at Lion, Wolf, and Bear per the program's own design description.
 
 ### 4.5 Non-discrimination and membership policy — current state
 
-- Scouting America's stated policy: *"It is the philosophy of Scouting to welcome all eligible youth,
+- Scouting America's stated policy: _"It is the philosophy of Scouting to welcome all eligible youth,
   regardless of race, ethnic background, gender or orientation, who are willing to accept Scouting's
-  values and meet any other requirements of membership."*
+  values and meet any other requirements of membership."_
   https://www.scouting.org/about/membership-policy/
 - **Girls:** Girls were officially admitted to **all** Scouting America programs, from Cub Scouts
   through Eagle Scout, nationwide, effective **February 1, 2019**.
@@ -348,15 +348,15 @@ at Lion, Wolf, and Bear per the program's own design description.
 ## 5. Family/community engagement evidence — mapped to BCSD's Goal 3 (Stakeholder Engagement)
 
 BCSD's strategic-plan Goal 3 treats stakeholder engagement (3.1 Collective Ownership, 3.2 Mutual
-Trust & Relationship-Building, 3.3 Maximizing Student Learning) as an *input* to achievement. This
+Trust & Relationship-Building, 3.3 Maximizing Student Learning) as an _input_ to achievement. This
 section separates (a) established general research on family/community engagement and achievement,
 from (b) the specific, largely un-tested argument that a Cub Scout pack is a good vehicle for that
 engagement.
 
 ### 5.1 Family involvement and achievement — the general research base (peer-reviewed synthesis)
 
-- **Henderson, A. T., & Mapp, K. L. (2002). *A New Wave of Evidence: The Impact of School, Family,
-  and Community Connections on Student Achievement.* Southwest Educational Development Laboratory
+- **Henderson, A. T., & Mapp, K. L. (2002). _A New Wave of Evidence: The Impact of School, Family,
+  and Community Connections on Student Achievement._ Southwest Educational Development Laboratory
   (SEDL), National Center for Family & Community Connections with Schools.**
   Full text: https://sedl.org/connections/resources/evidence.pdf (also
   https://massinc.org/wp-content/uploads/2014/01/evidence.pdf ;
@@ -368,7 +368,7 @@ engagement.
     linked to gains in reading and math achievement, and to improved attendance and behavior — not
     just test scores. Effects hold across income and education levels, though the report also notes
     that white, middle-class families tend to be more involved at school by default, meaning
-    *increasing* involvement from all family types (not just relying on existing high-involvement
+    _increasing_ involvement from all family types (not just relying on existing high-involvement
     families) is an equity-relevant strategy for closing gaps.
   - **Limitation to disclose:** This is a synthesis of correlational school-based studies, not a
     single randomized experiment; it establishes a strong, consistent association between family
@@ -379,14 +379,14 @@ engagement.
   school-family-partnership model.
   https://www.ebsco.com/research-starters/education/joyce-epsteins-school-family-community-partnership-model ;
   practitioner summary: https://www.ocecd.org/Downloads/Epstein%27s%20Framework%20-%20six%20times%20of%20involvement%2020163.pdf
-  - Epstein's framework explicitly distinguishes *volunteering* and *collaborating with the
-    community* as two of the six legitimate, evidence-informed channels of engagement — this gives a
+  - Epstein's framework explicitly distinguishes _volunteering_ and _collaborating with the
+    community_ as two of the six legitimate, evidence-informed channels of engagement — this gives a
     school-side, non-Scouting-specific vocabulary a district partnership office is likely already
     using, which a pack-district conversation can map onto directly (see §5.4).
 
 ### 5.2 Social capital between families and schools (theoretical, empirically supported at the level of the general framework, not Scouting-specific)
 
-- **Coleman, J. S. (1988), and Putnam, R. D. (1995, 2000, *Bowling Alone*)** established the concept
+- **Coleman, J. S. (1988), and Putnam, R. D. (1995, 2000, _Bowling Alone_)** established the concept
   of social capital — trust, norms, and networks among people that make collective action (including
   supporting children's schooling) more effective. Putnam's own work documents a decades-long decline
   in exactly the kind of civic-association membership (bowling leagues, PTAs, and by extension youth
@@ -394,11 +394,11 @@ engagement.
   https://www.familiesandschools.org/blog/social-capital/ (secondary summary with citations to
   Putnam 1995/2000) ; https://infed.org/dir/welcome/social-capital/ (secondary summary of Coleman and
   Putnam) ; primary Putnam article: https://www.cftompkins.org/wp-content/uploads/2012/07/Putnam-article.pdf
-- **Evidence strength note:** This is a well-established *theoretical framework* with substantial
+- **Evidence strength note:** This is a well-established _theoretical framework_ with substantial
   empirical support at the level of "civic associational density correlates with community
   well-being and school functioning." It is **not** a study that measured whether a Cub Scout pack
   specifically builds social capital between families and a school. Using it in a district
-  conversation is legitimate as a well-supported *argument* — "structured, recurring, parent-run
+  conversation is legitimate as a well-supported _argument_ — "structured, recurring, parent-run
   organizations are a documented mechanism for building the trust and norms that Coleman/Putnam
   describe" — but it should be labeled as argument-from-theory, not a Scouting-specific finding.
 
@@ -444,34 +444,34 @@ engagement.
 
 ## Evidence strength table
 
-| Claim | Strength | Basis |
-|---|---|---|
-| Cub Scouts show increased self-reported character-trait ratings over time vs. non-Scouts (Tufts, Wang et al. 2015) | (a) Peer-reviewed | Non-randomized, self-report only, small comparison group |
-| Scoutreach participants show character gains (Wang et al. 2017) | (a) Peer-reviewed | Same limitations; underserved-youth subsample |
-| Eagle Scouts report higher well-being, lower loneliness (Harris Poll 2026) | (b) Organization-commissioned | Cross-sectional adult retrospective self-report, self-selection/survivorship bias, funded by BSA |
-| The Scouting Edge ethics/character findings (Harris Poll) | (b) Organization-commissioned | Self-report opinion survey |
-| "Eagle Scouts 73% more likely to vote" | (b)/unverified | Traceable only to secondary/alumni sources in this pass; primary source not confirmed |
-| Merrill Lynch/Age Wave alumni value study | Unverified | Could not locate a primary source; do not cite |
-| Cub Scout program structure/requirements by grade | (a)/primary document | Scouting America official pages (scouting.org) |
-| Youth protection policy (two-deep, no one-on-one, YPT, background checks) | (a)/primary document | Scouting America official Guide to Safe Scouting |
-| Bankruptcy, $2.4B settlement, 85%+ survivor support, Supreme Court declining review | (a)/primary + court record | Scouting America press releases, PBS, court reporting |
-| National liability insurance covers chartered organizations, funded via membership fee | (a)/primary document | scouting.org, council insurance summaries |
-| Girls admitted to all programs Feb. 1, 2019 | (a)/primary/historical fact | Wikipedia summary citing BSA press release, corroborated |
-| 2026 Pentagon/DoD membership-policy agreement | Contested/current | AP, PBS, and a pending FOIA lawsuit — BSA and DoD characterizations conflict |
-| STEM Nova national award program discontinued effective June 1, 2025 | (a)/primary + council notices | Council announcements citing national program change |
-| Family involvement improves achievement, attendance, behavior (Henderson & Mapp 2002) | (a) Peer-reviewed synthesis | Synthesis of 50+ studies; correlational, not Scouting-specific |
-| Epstein's six types of involvement (volunteering, community collaboration) | (a) Established academic framework | Widely adopted model; descriptive framework, not a causal study |
-| Coleman/Putnam social capital theory applies to civic associations and schools | (a) Established theory, empirically supported at the framework level | Not Scouting-specific; argument-from-theory when applied to a pack |
-| Scout-parent volunteering predicts school volunteering/engagement | (c) Plausible argument | No direct study located; inferred from vetting-structure overlap |
-| School volunteer background-check costs ($10–$75/person) | (c)/documentary evidence | District/trade-press reporting, not peer-reviewed, but specific and dated |
-| A chartered pack's vetted-adult pool reduces a district's own recruiting/vetting burden | (c) Plausible argument | Logical inference from §4.1 + §5.3; not directly measured |
-| Chartered organizations (schools, churches) bear no direct insurance cost | (a)/primary document | scouting.org insurance program pages |
+| Claim                                                                                                              | Strength                                                             | Basis                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Cub Scouts show increased self-reported character-trait ratings over time vs. non-Scouts (Tufts, Wang et al. 2015) | (a) Peer-reviewed                                                    | Non-randomized, self-report only, small comparison group                                         |
+| Scoutreach participants show character gains (Wang et al. 2017)                                                    | (a) Peer-reviewed                                                    | Same limitations; underserved-youth subsample                                                    |
+| Eagle Scouts report higher well-being, lower loneliness (Harris Poll 2026)                                         | (b) Organization-commissioned                                        | Cross-sectional adult retrospective self-report, self-selection/survivorship bias, funded by BSA |
+| The Scouting Edge ethics/character findings (Harris Poll)                                                          | (b) Organization-commissioned                                        | Self-report opinion survey                                                                       |
+| "Eagle Scouts 73% more likely to vote"                                                                             | (b)/unverified                                                       | Traceable only to secondary/alumni sources in this pass; primary source not confirmed            |
+| Merrill Lynch/Age Wave alumni value study                                                                          | Unverified                                                           | Could not locate a primary source; do not cite                                                   |
+| Cub Scout program structure/requirements by grade                                                                  | (a)/primary document                                                 | Scouting America official pages (scouting.org)                                                   |
+| Youth protection policy (two-deep, no one-on-one, YPT, background checks)                                          | (a)/primary document                                                 | Scouting America official Guide to Safe Scouting                                                 |
+| Bankruptcy, $2.4B settlement, 85%+ survivor support, Supreme Court declining review                                | (a)/primary + court record                                           | Scouting America press releases, PBS, court reporting                                            |
+| National liability insurance covers chartered organizations, funded via membership fee                             | (a)/primary document                                                 | scouting.org, council insurance summaries                                                        |
+| Girls admitted to all programs Feb. 1, 2019                                                                        | (a)/primary/historical fact                                          | Wikipedia summary citing BSA press release, corroborated                                         |
+| 2026 Pentagon/DoD membership-policy agreement                                                                      | Contested/current                                                    | AP, PBS, and a pending FOIA lawsuit — BSA and DoD characterizations conflict                     |
+| STEM Nova national award program discontinued effective June 1, 2025                                               | (a)/primary + council notices                                        | Council announcements citing national program change                                             |
+| Family involvement improves achievement, attendance, behavior (Henderson & Mapp 2002)                              | (a) Peer-reviewed synthesis                                          | Synthesis of 50+ studies; correlational, not Scouting-specific                                   |
+| Epstein's six types of involvement (volunteering, community collaboration)                                         | (a) Established academic framework                                   | Widely adopted model; descriptive framework, not a causal study                                  |
+| Coleman/Putnam social capital theory applies to civic associations and schools                                     | (a) Established theory, empirically supported at the framework level | Not Scouting-specific; argument-from-theory when applied to a pack                               |
+| Scout-parent volunteering predicts school volunteering/engagement                                                  | (c) Plausible argument                                               | No direct study located; inferred from vetting-structure overlap                                 |
+| School volunteer background-check costs ($10–$75/person)                                                           | (c)/documentary evidence                                             | District/trade-press reporting, not peer-reviewed, but specific and dated                        |
+| A chartered pack's vetted-adult pool reduces a district's own recruiting/vetting burden                            | (c) Plausible argument                                               | Logical inference from §4.1 + §5.3; not directly measured                                        |
+| Chartered organizations (schools, churches) bear no direct insurance cost                                          | (a)/primary document                                                 | scouting.org insurance program pages                                                             |
 
 ---
 
 ## Sources
 
-1. Wang, Ferris, Hershberg, Lerner (2015), *J. Youth Adolesc.* — https://pubmed.ncbi.nlm.nih.gov/26280400/
+1. Wang, Ferris, Hershberg, Lerner (2015), _J. Youth Adolesc._ — https://pubmed.ncbi.nlm.nih.gov/26280400/
 2. Wang, Champine, Ferris et al. (2017) Scoutreach study — https://pubmed.ncbi.nlm.nih.gov/28664312/
 3. Callina, Johnson, Tirrell et al. (2017) — https://pubmed.ncbi.nlm.nih.gov/28332053/
 4. Ramos, Griffin, Neiderhiser, Reiss (2019) — https://pubmed.ncbi.nlm.nih.gov/30656439/
@@ -508,7 +508,7 @@ engagement.
 35. AP: Pentagon/Scouting America agreement — https://apnews.com/article/scouting-america-pentagon-military-boy-scouts-14a5fc1521fcd1e51103638f6f504214
 36. PBS: transgender youth policy dispute — https://www.pbs.org/newshour/nation/transgender-youths-are-targeted-in-scouting-america-changes-pushed-by-the-pentagon
 37. WSLS: complaint over Pentagon deal terms — https://www.wsls.com/news/politics/2026/06/26/complaint-seeks-answers-on-scouting-americas-transgender-policy-after-pentagon-deal/
-38. Henderson & Mapp (2002), *A New Wave of Evidence* — https://sedl.org/connections/resources/evidence.pdf
+38. Henderson & Mapp (2002), _A New Wave of Evidence_ — https://sedl.org/connections/resources/evidence.pdf
 39. ERIC record for Henderson & Mapp — https://eric.ed.gov/?id=ED474521
 40. Epstein's Six Types of Involvement (EBSCO research starter) — https://www.ebsco.com/research-starters/education/joyce-epsteins-school-family-community-partnership-model
 41. Epstein framework practitioner summary — https://www.ocecd.org/Downloads/Epstein%27s%20Framework%20-%20six%20times%20of%20involvement%2020163.pdf

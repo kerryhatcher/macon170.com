@@ -7,6 +7,7 @@
 The framework operates on the principle that all students deserve high-quality instruction and support, with intensity matched to need. Rather than the traditional "wait to fail" approach, MTSS emphasizes prevention and early intervention, identifying struggling students before challenges become severe.
 
 **Sources:**
+
 - https://www.pbis.org/pbis/tier-2
 - https://www.pbisrewards.com/blog/what-is-mtss/
 - https://gadoe.org/whole-child-supports/gatss/
@@ -20,6 +21,7 @@ The framework operates on the principle that all students deserve high-quality i
 **What it is:** Core instruction and behavioral expectations delivered to all students in high-quality, evidence-based classroom teaching, schoolwide expectations, and proactive classroom management.
 
 **Key characteristics:**
+
 - High-quality core academic instruction aligned to standards
 - Clear, explicitly taught schoolwide behavioral expectations (e.g., "Be Respectful," "Be Responsible," "Be Safe")
 - Consistent positive reinforcement for meeting expectations
@@ -30,6 +32,7 @@ The framework operates on the principle that all students deserve high-quality i
 **When it works:** Most students succeed with Tier 1 supports alone when they receive consistent, quality instruction and positive behavioral support.
 
 **Examples in an elementary school:**
+
 - Daily explicit teaching of classroom expectations in all settings (classroom, hallway, cafeteria, playground)
 - Whole-group morning meetings that build community and discuss the day's focus
 - Token or point systems that recognize positive behavior across the school
@@ -39,6 +42,7 @@ The framework operates on the principle that all students deserve high-quality i
 - Grade-level assemblies reinforcing behavioral themes
 
 **Sources:**
+
 - https://www.pbis.org/pbis/tier-2
 - https://www.pbisrewards.com/blog/what-is-mtss/
 - https://gadoe.org/whole-child-supports/gatss/
@@ -50,6 +54,7 @@ The framework operates on the principle that all students deserve high-quality i
 **What it is:** Small-group, standardized interventions designed for students who are not succeeding with Tier 1 supports alone. These interventions address specific academic, behavioral, or social-emotional needs and should be accessible within 72 hours of referral.
 
 **Key characteristics:**
+
 - Accessible and low-effort to implement
 - Continuously available and aligned with Tier 1 expectations
 - Group interventions (10 or more students in a group)
@@ -87,6 +92,7 @@ The framework operates on the principle that all students deserve high-quality i
 **Equity in Tier 2:** Data on which students receive Tier 2 support must be reviewed for disproportionate representation. If students from a particular racial or ethnic group represent a higher percentage of Tier 2 participants than their percentage in the school, the focus should be on improving equity in Tier 1 systems first.
 
 **Sources:**
+
 - https://www.pbis.org/pbis/tier-2
 - https://navigate360.com/blog/tier-2-behavior-interventions/
 - https://www.panoramaed.com/blog/mtss-tiers-tier-1-2-and-3-explained
@@ -99,6 +105,7 @@ The framework operates on the principle that all students deserve high-quality i
 **What it is:** Highly individualized, sustained interventions for students with ongoing, complex needs who have not adequately responded to Tier 1 and Tier 2 supports. Typically involves specialists, behavioral counselors, mental health professionals, and case management.
 
 **Key characteristics:**
+
 - Individualized to the student's unique needs
 - May involve special education evaluation and services
 - Frequent progress monitoring (weekly or more)
@@ -106,6 +113,7 @@ The framework operates on the principle that all students deserve high-quality i
 - May address trauma, mental health, housing, food insecurity, or other systemic barriers
 
 **Sources:**
+
 - https://www.pbis.org/pbis/tier-2
 - https://www.pbisrewards.com/blog/what-is-mtss/
 
@@ -143,6 +151,7 @@ Georgia has adapted MTSS under the name **Georgia Multi-Tiered System of Support
 - Georgia receives federal **State Personnel Development Grant (SPDG)** funding (2022–2027) to improve adolescent literacy outcomes in grades 4–8 through GaMTSS implementation.
 
 **Sources:**
+
 - https://gadoe.org/whole-child-supports/gatss/
 - https://gadoe.org/grants-awards-diploma-seals/georgia-multi-tiered-system-of-supports-recognition/
 
@@ -154,9 +163,10 @@ Research consistently shows that **school connectedness**—students' sense that
 
 ### What CDC Research Shows:
 
-The Centers for Disease Control defines school connectedness as: *Students feel that adults and peers in school care about the students as individuals and about their learning. This includes a sense of being cared for, being valued and supported, and belonging at school.*
+The Centers for Disease Control defines school connectedness as: _Students feel that adults and peers in school care about the students as individuals and about their learning. This includes a sense of being cared for, being valued and supported, and belonging at school._
 
 **Youth who feel connected at school are less likely to experience:**
+
 - Poor mental health
 - Sexual health risks
 - Substance use
@@ -164,6 +174,7 @@ The Centers for Disease Control defines school connectedness as: *Students feel 
 - Depression, suicidal ideation, and social anxiety
 
 **Youth who feel connected at school are more likely to:**
+
 - Engage in positive health behaviors (physical activity, healthy eating)
 - Have higher grades and test scores
 - Have better school attendance
@@ -175,6 +186,7 @@ The Centers for Disease Control defines school connectedness as: *Students feel 
 **Equity considerations:** School connectedness is beneficial for all students, but not all students experience it equally. Students who report lower connectedness include those experiencing racism, students from racial and ethnic minority groups, and LGBTQ+ students. Schools play a key role in creating inclusive connectedness through strategies that reduce health disparities and promote belonging for all.
 
 **Sources:**
+
 - https://www.cdc.gov/youth-behavior/school-connectedness/index.html
 - https://www.cdc.gov/mmwr/volumes/72/su/su7201a2.htm
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC10037103/
@@ -189,12 +201,14 @@ Research across multiple disciplines identifies **the presence of one stable, po
 ### Key Research Findings:
 
 **The "One Caring Adult" Effect:** Multiple peer-reviewed studies document that youth with at least one caring, stable adult relationship show:
+
 - Increased resilience in the face of challenges
 - Reduced engagement in high-risk behaviors
 - Better mental health outcomes
 - Greater likelihood of thriving
 
 **What defines a caring adult relationship:**
+
 - Stability and dependability (someone the young person can trust)
 - Genuine interest in the young person's life and wellbeing
 - Availability for both celebration and problem-solving
@@ -206,6 +220,7 @@ Research across multiple disciplines identifies **the presence of one stable, po
 **Note on evidence:** While the research literature emphasizes the profound importance of at least one caring adult, most studies on this topic have focused on family members, school staff, and formal mentors. The evidence for out-of-school-time programs (including youth organizations) operating as a source of caring adult relationships is growing but less comprehensive. Programs that intentionally build developmental relationships—with training, supervision, and relationship-building practices—are positioned to serve this role, though more direct evaluation of specific programs is needed.
 
 **Sources:**
+
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC9684361/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7900893/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7986824/
@@ -252,6 +267,7 @@ Research across multiple disciplines identifies **the presence of one stable, po
 ### Impact:
 
 When young people experience these relationships in their families, schools, programs, and communities, they are more likely to be:
+
 - Resilient in the face of challenges
 - Engaged in increased academic growth and learning
 - More socially and emotionally competent
@@ -263,6 +279,7 @@ When young people experience these relationships in their families, schools, pro
 **Relevance to community programs:** While developmental relationships research originated in educational and family settings, the framework is being applied by youth-serving organizations, mentoring programs, and out-of-school-time programs. The research suggests that any adult working with young people—including community volunteers and program staff—can intentionally practice these elements.
 
 **Sources:**
+
 - https://searchinstitute.org/developmental-relationships
 - https://searchinstitute.org/resources-hub/developmental-relationships-framework
 - https://searchinstitute.org/10-years-of-developmental-relationships
@@ -282,18 +299,21 @@ When young people experience these relationships in their families, schools, pro
 #### **Foundational Strategies (Whole School)**
 
 Create positive conditions for learning where students are more likely to attend and be engaged:
+
 - Welcoming, inclusive school climate
 - Strong family and community partnerships
 - Student and adult well-being support
 - Accessible, equitable services (transportation, meals, etc.)
 
 **Sources:**
+
 - https://www.attendanceworks.org/chronic-absence/addressing-chronic-absence/3-tiers-of-intervention/
 - https://www.attendanceworks.org/using-chronic-absence-data-to-improve-conditions-for-learning/
 
 #### **Tier 1: Prevention and Universal Strategies**
 
 Aimed at encouraging better attendance for all students and preventing absenteeism before it affects achievement:
+
 - Clear attendance policies communicated to families
 - Positive incentive programs recognizing good attendance
 - Engaging instruction and school climate
@@ -302,6 +322,7 @@ Aimed at encouraging better attendance for all students and preventing absenteei
 #### **Tier 2: Early Intervention (10% of students)**
 
 Designed to remove barriers to attendance for students at greater risk, typically those who have missed 10% of school year:
+
 - Personalized, data-informed outreach to families
 - Problem-solving conversations to identify barriers (transportation, childcare, health, safety, engagement)
 - Connection to resources and supports (food, medical services, counseling, transportation assistance)
@@ -310,6 +331,7 @@ Designed to remove barriers to attendance for students at greater risk, typicall
 - More frequent communication with family
 
 **Examples of Tier 2 attendance interventions:**
+
 - A staff member or mentor meets weekly with a student and family to discuss attendance barriers and progress.
 - Transportation assistance is provided to a family with a recent move.
 - A school social worker connects a family to community health services for a child with chronic illness.
@@ -318,12 +340,14 @@ Designed to remove barriers to attendance for students at greater risk, typicall
 #### **Tier 3: Intensive Support (Students missing 20%+)**
 
 Intensive, individualized support often involving multiple agencies:
+
 - Case management involving school, family, and community agencies
 - Addressing underlying systemic barriers (homelessness, health problems, housing instability)
 - Intensive mentoring or trusted adult relationship
 - Court involvement if necessary (attendance officers, truancy proceedings)
 
 **Sources:**
+
 - https://www.attendanceworks.org/chronic-absence/addressing-chronic-absence/3-tiers-of-intervention/
 - https://www.attendanceworks.org/chronic-absence/addressing-chronic-absence/what-activates-support-at-each-of-the-3-tiers/
 
@@ -349,6 +373,7 @@ The program uses two key components:
 ### Evidence of Effectiveness:
 
 Research from rigorous randomized controlled trials (RCTs) shows:
+
 - Students in Check & Connect showed significant improvement in **staying in school** (staying enrolled rather than dropping out) compared to comparison groups.
 - Effects were sustained over multiple years of follow-up.
 - The program has been adapted and tested in multiple districts and school settings.
@@ -357,12 +382,14 @@ Research from rigorous randomized controlled trials (RCTs) shows:
 ### Relevance to Attendance and Belonging:
 
 Check & Connect's effectiveness suggests that:
+
 - Regular monitoring by a trusted adult is protective.
 - A consistent, caring adult relationship matters—mentors stay with students across transitions.
 - Problem-solving around barriers (not just behavior management) is essential.
 - Connection to broader school and community resources increases effectiveness.
 
 **Sources:**
+
 - https://ies.ed.gov/ncee/wwc/Docs/InterventionReports/wwc_checkconnect_050515.pdf
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC2805010/
 - https://ies.ed.gov/rel-southwest/2025/01/handout-strategies-address-chronic-absenteeism
@@ -386,12 +413,14 @@ Check & Connect's effectiveness suggests that:
 7. **Safety/Wellness:** Physical safety, access to food and resources, connections to needed services.
 
 #### **Staffing Practices:**
+
 - Hire staff with shared lived experiences when possible; emphasize openness and collaboration when differences exist.
 - Provide training on both content and mentoring/relational practices.
 - Establish strong leadership for retention and recruitment.
 - Create pathways for program alumni to become staff.
 
 #### **Recruitment and Engagement:**
+
 - Leverage existing relationships with trusted community members.
 - Communicate concrete benefits: skill-building and social connection.
 - Address and remove barriers (transportation, cost) through accessible community locations.
@@ -402,6 +431,7 @@ Check & Connect's effectiveness suggests that:
 #### **Outcomes and Mechanisms:**
 
 OST programs have produced improvements in:
+
 - Social-emotional development
 - STEM interest and achievement
 - Academic achievement
@@ -413,6 +443,7 @@ These outcomes operate through **positive youth development (PYD) frameworks**�
 ### Community Partnerships in MTSS:
 
 The research literature on MTSS and school connectedness emphasizes that:
+
 - **Families and community partners are essential team members** in implementing MTSS. Georgia's GaMTSS explicitly calls for "teamwork" where educators, staff, students, families, and community partners work together.
 - **Schools alone cannot address all barriers** to student success. Connection to community resources, health services, and supportive adults strengthens Tier 2 and Tier 3 interventions.
 - **Trusted community organizations** can serve as sources of belonging, mentoring, and support, particularly when they are culturally responsive and prioritize relational practices.
@@ -420,6 +451,7 @@ The research literature on MTSS and school connectedness emphasizes that:
 **Note on evidence:** While research strongly supports the role of community partnerships in general and the benefits of out-of-school programs for youth development, the direct evidence linking specific community youth programs (like Cub Scouts) to MTSS tiers is emerging rather than definitive. The argument is theoretically sound—a well-designed youth program providing mentoring, skill-building, belonging, and connection to caring adults aligns with Tier 1 universal supports (belonging, positive climate) and Tier 2 targeted interventions (mentoring, social-emotional support, engagement strategies). However, this would ideally be supported by formal evaluation data specific to the program and outcomes of interest.
 
 **Sources:**
+
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC12217409/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7147944/
 - https://ies.ed.gov/rel-northwest/2025/01/community-partnerships
@@ -434,6 +466,7 @@ Based on the research literature, here are the theoretically sound integration p
 ### **Tier 1: Universal Supports and School Connectedness**
 
 A quality youth program can contribute to Tier 1 by:
+
 - **Promoting belonging and connectedness:** Programs that prioritize relational practices, cultural celebration, and inclusive environments build students' sense of belonging.
 - **Providing positive adult relationships:** Consistent adult volunteers/leaders create additional sources of caring relationships in students' lives.
 - **Supporting positive skill development:** Age-appropriate challenges, leadership opportunities, and skill-building support the developmental assets literature identifies as protective.
@@ -442,6 +475,7 @@ A quality youth program can contribute to Tier 1 by:
 ### **Tier 2: Targeted Interventions**
 
 A community program can serve Tier 2 functions by:
+
 - **Providing structured mentoring:** Regular, consistent contact with an adult mentor within the program setting addresses the research on protective mentoring relationships.
 - **Offering small-group, targeted support:** Program activities can be designed to build specific social-emotional skills (teamwork, communication, resilience) needed by students.
 - **Supporting attendance and engagement:** Engaging, relevant activities and mentoring relationships can motivate attendance at both the program and school.
@@ -451,12 +485,14 @@ A community program can serve Tier 2 functions by:
 ### **Articulation with School Systems**
 
 The effectiveness of community program participation within MTSS would be strengthened by:
+
 - **Data sharing (with consent):** School awareness of a student's program participation, engagement, and progress could inform Tier 1 and Tier 2 decisions at school.
 - **Communication about barriers and goals:** Open dialogue between program staff and school staff about a student's needs, interests, and progress supports coordinated support.
 - **Alignment of expectations:** When school and program both emphasize similar behavioral/social-emotional expectations and use consistent language, students benefit.
 - **Referral pathways:** Schools could refer students to programs as a Tier 2 or Tier 1 support (general recommendation for engagement and belonging).
 
 **Important caveat on evidence:** The research base for youth programs as explicit MTSS interventions is growing but not yet as robust as the research for school-based interventions. Programs that invest in:
+
 - Intentional relationship-building practices (aligned with developmental relationships framework)
 - Staff training on mentoring and youth development
 - Structured evaluation of student outcomes
@@ -481,6 +517,7 @@ MTSS operates across multiple domains, all interconnected:
 5. **Wellness/Wellbeing:** Student and adult mental health and physical health support, access to basic services (nutrition, medical), connections to community resources.
 
 **Sources:**
+
 - https://gadoe.org/whole-child-supports/gatss/
 - https://www.rti4success.org/essential-components/multi-level-prevention-system
 
@@ -489,6 +526,7 @@ MTSS operates across multiple domains, all interconnected:
 ## Summary of Georgia's Role and Implications
 
 Georgia's framework (GaMTSS) explicitly recognizes that:
+
 - MTSS is a "whole child" endeavor requiring integration of academics, behavior, and wellbeing.
 - **Family and community partnerships are essential**, not optional.
 - Data-driven decision-making at each tier prevents students from falling through gaps.
@@ -496,6 +534,7 @@ Georgia's framework (GaMTSS) explicitly recognizes that:
 - Positive school climate and adult relationships are foundational to all other interventions.
 
 For a school district considering how a community youth program fits its MTSS goals, the research suggests asking:
+
 - Does the program build students' sense of belonging and connection to caring adults?
 - Does it offer structured, developmentally appropriate support in social-emotional, behavioral, or academic domains?
 - Does it align with school expectations and goals?
@@ -508,6 +547,7 @@ For a school district considering how a community youth program fits its MTSS go
 ## Sources
 
 ### Federal and State Education Guidance
+
 - https://gadoe.org/whole-child-supports/gatss/
 - https://gadoe.org/grants-awards-diploma-seals/georgia-multi-tiered-system-of-supports-recognition/
 - https://ies.ed.gov/rel-southwest/2025/01/handout-strategies-address-chronic-absenteeism
@@ -515,6 +555,7 @@ For a school district considering how a community youth program fits its MTSS go
 - https://ies.ed.gov/rel-northwest/2025/01/community-partnerships
 
 ### PBIS and RTI Framework
+
 - https://www.pbis.org/pbis/tier-2
 - https://www.rti4success.org/essential-components/multi-level-prevention-system
 - https://www.pbisrewards.com/blog/what-is-mtss/
@@ -523,14 +564,17 @@ For a school district considering how a community youth program fits its MTSS go
 - https://ed.cde.state.co.us/mtss/pbis/examplestier2
 
 ### CDC Research on School Connectedness
+
 - https://www.cdc.gov/youth-behavior/school-connectedness/index.html
 - https://www.cdc.gov/mmwr/volumes/72/su/su7201a2.htm
 
 ### Research on School Connectedness as Protective Factor
+
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC10037103/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC6128354/
 
 ### Research on One Caring Adult and Protective Factors
+
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC9684361/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7900893/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7986824/
@@ -538,16 +582,19 @@ For a school district considering how a community youth program fits its MTSS go
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC10275340/
 
 ### Developmental Relationships Framework
+
 - https://searchinstitute.org/developmental-relationships
 - https://searchinstitute.org/resources-hub/developmental-relationships-framework
 - https://searchinstitute.org/10-years-of-developmental-relationships
 
 ### Chronic Absenteeism and Mentoring Interventions
+
 - https://www.attendanceworks.org/chronic-absence/addressing-chronic-absence/3-tiers-of-intervention/
 - https://www.attendanceworks.org/using-chronic-absence-data-to-improve-conditions-for-learning/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC2805010/
 
 ### Out-of-School-Time Programs and Community Partnerships
+
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC12217409/
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC7147944/
 - https://afterschoolalliance.org/afterschoolsnack/Measuring-Youth-Development-How-out-of-school-time-programs_04-02-2024.cfm

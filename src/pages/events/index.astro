@@ -10,9 +10,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </div>
   </section>
-  <section class="section">
+  <section class="event-detail-section">
     <div class="container event-grid">
-      <article class="paper-sheet event-sheet" id="event-detail">
+      <article class="event-sheet" id="event-detail">
         <div class="loading" role="status">Loading event details…</div>
         <noscript
           ><style>
@@ -23,9 +23,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             Published logistics load from the Pack 170 calendar. Please contact Pack 170 adults for this event’s confirmed details.
           </p><a href="/contact/">Ask the pack</a></noscript
         >
-      </article><aside class="notice">
-        <span class="notice__pin">?</span><div>
-          <h3>Need a detail?</h3><p>Contact Pack 170 adults before relying on incomplete logistics.</p><a href="/contact/">Ask the pack</a>
+      </article><aside class="event-notice">
+        <span class="event-notice__pin" aria-hidden="true">?</span><div>
+          <h3>Need a detail?</h3>
+          <p>Contact Pack 170 adults before relying on incomplete logistics.</p>
+          <a href="/contact/">Ask the pack</a>
         </div>
       </aside>
     </div>
@@ -50,8 +52,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   };
   const esc = (value: string) =>
     value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
-  const fmt = (value: string) =>
-    new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
+  const part = (value: string, options: Intl.DateTimeFormatOptions) =>
+    new Intl.DateTimeFormat(undefined, { timeZone: 'America/New_York', ...options }).format(new Date(value));
+  const timeOf = (value: string) => part(value, { hour: 'numeric', minute: '2-digit' });
   const slug = new URLSearchParams(location.search).get('event');
   const detail = document.querySelector<HTMLElement>('#event-detail');
   // A desk-entered registration link is editable data, so only http(s) reaches an href.
@@ -82,34 +85,52 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     if (title) title.textContent = e.title;
     if (summary) summary.textContent = e.summary;
     const registration = e.registration_url ? webUrl(e.registration_url) : null;
+    // The date pin carries the start date, so an end time only reads as a range on a
+    // single-day event; a multi-day event has to restate the end date.
+    const sameDay = e.ends_at ? part(e.starts_at, { dateStyle: 'short' }) === part(e.ends_at, { dateStyle: 'short' }) : false;
+    const whenRange = e.ends_at
+      ? timeOf(e.starts_at) +
+        ' – ' +
+        (sameDay ? timeOf(e.ends_at) : part(e.ends_at, { month: 'short', day: 'numeric' }) + ', ' + timeOf(e.ends_at))
+      : timeOf(e.starts_at);
+    // A fact row appears only for a detail the desk actually published. Everything still
+    // unpublished is named once, plainly, instead of sitting in the list as a fake row.
+    const facts: [string, string][] = [['Who', e.audience]];
+    if (e.what_to_bring) facts.push(['Bring', e.what_to_bring]);
+    if (e.cost) facts.push(['Cost', e.cost]);
+    const pending = [e.what_to_bring ? null : 'what to bring', e.cost ? null : 'cost', e.registration_url ? null : 'registration'].filter(
+      (item): item is string => item !== null,
+    );
+    const listed = (items: string[]) => (items.length > 1 ? items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1] : items[0]);
     if (detail)
-      detail.innerHTML =
-        '<div class="status-line"><span>' +
-        esc(e.category) +
-        ' event</span><strong>' +
-        esc(e.status) +
-        '</strong></div><h2>Family field notes</h2><p class="lead">' +
-        esc(e.description).replace(/\n/g, '<br>') +
-        '</p><dl><div><dt>Starts</dt><dd>' +
-        fmt(e.starts_at) +
-        '</dd></div><div><dt>Ends</dt><dd>' +
-        (e.ends_at ? fmt(e.ends_at) : 'No end time supplied') +
-        '</dd></div><div><dt>Location</dt><dd>' +
-        esc(e.location_name || 'Being confirmed') +
-        (e.address ? '<br>' + esc(e.address) : '') +
-        '</dd></div><div><dt>Who</dt><dd>' +
-        esc(e.audience) +
-        '</dd></div><div><dt>Bring</dt><dd>' +
-        esc(e.what_to_bring || 'No special items listed') +
-        '</dd></div><div><dt>Cost</dt><dd>' +
-        esc(e.cost || 'No cost information supplied') +
-        '</dd></div><div><dt>Registration</dt><dd>' +
-        (registration
-          ? '<a class="button button--blue" href="' + esc(registration) + '">Open registration</a>'
+      detail.innerHTML = [
+        '<div class="event-masthead">',
+        '<div class="event-datepin">',
+        '<span class="event-datepin__dow">' + esc(part(e.starts_at, { weekday: 'short' })) + '</span>',
+        '<span class="event-datepin__day">' + esc(part(e.starts_at, { day: 'numeric' })) + '</span>',
+        '<span class="event-datepin__mon">' + esc(part(e.starts_at, { month: 'short', year: 'numeric' })) + '</span>',
+        '</div><div>',
+        '<h2 class="event-when__time">' + esc(whenRange) + '</h2>',
+        '<p class="event-when__place">' + esc(e.location_name || 'Location being confirmed') + '</p>',
+        e.address ? '<p class="event-when__addr">' + esc(e.address) + '</p>' : '',
+        '<p class="event-chips"><span class="event-chip">' + esc(e.category) + ' event</span>',
+        '<span class="event-chip event-chip--status">' + esc(e.status) + '</span></p>',
+        '</div></div>',
+        '<p class="event-lead">' + esc(e.description).replace(/\n/g, '<br>') + '</p>',
+        '<ul class="event-facts">',
+        facts.map(([label, value]) => '<li><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong></li>').join(''),
+        '</ul>',
+        registration
+          ? '<p class="event-action"><a class="button button--blue" href="' + esc(registration) + '">Open registration</a></p>'
           : e.registration_url
-            ? 'Registration link could not be opened — ask the pack'
-            : 'No registration link supplied') +
-        '</dd></div></dl>';
+            ? '<p class="event-action event-action--broken">The registration link on file could not be opened — ask the pack for a working link.</p>'
+            : '',
+        pending.length
+          ? '<div class="event-pending"><h3>Still being confirmed</h3><p>Pack 170 has not published ' +
+            esc(listed(pending)) +
+            ' for this event yet.</p></div>'
+          : '',
+      ].join('');
   }
   load().catch(() => {
     const title = document.querySelector('#event-title'),
@@ -136,47 +157,243 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .event-hero .lead {
     color: var(--blue-soft);
   }
+  .event-detail-section {
+    padding: clamp(3rem, 7vw, 5.5rem) 0;
+  }
   .event-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 320px;
     gap: 3rem;
     align-items: start;
   }
   .event-sheet {
-    padding: clamp(2rem, 5vw, 4rem);
+    background: var(--page);
+    color: var(--ink);
+    border-radius: 6px 22px 12px 8px;
+    box-shadow: var(--shadow-paper);
+    padding: clamp(1.75rem, 4vw, 3.25rem);
     min-height: 450px;
   }
   .loading {
     color: var(--muted);
   }
-  .status-line {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    text-transform: capitalize;
-    color: var(--blue);
-    font-weight: 800;
-  }
-  .event-sheet dl div {
+  /* The sheet's contents are injected at runtime by the script above, so they never carry
+     Astro's scope attribute. These rules must be :global() or they silently do not apply. */
+  .event-sheet :global(.event-masthead) {
     display: grid;
-    grid-template-columns: 130px 1fr;
-    border-top: 1px solid var(--rule);
-    padding: 1rem 0;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: center;
+    padding-bottom: 1.75rem;
+    border-bottom: 3px solid var(--gold);
   }
-  .event-sheet dt {
+  .event-sheet :global(.event-datepin) {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 0.1rem;
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 4px 5px 0 rgba(0, 43, 92, 0.22);
+  }
+  .event-sheet :global(.event-datepin__dow),
+  .event-sheet :global(.event-datepin__mon) {
     font-family: var(--font-display);
+    font-size: 0.76rem;
     font-weight: 800;
-    color: var(--blue);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-  .event-sheet dd {
+  .event-sheet :global(.event-datepin__day) {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .event-sheet :global(.event-when__time) {
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 3vw, 2.05rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--blue);
     margin: 0;
   }
-  @media (max-width: 760px) {
+  .event-sheet :global(.event-when__place) {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0.35rem 0 0;
+  }
+  .event-sheet :global(.event-when__addr) {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0.15rem 0 0;
+  }
+  .event-sheet :global(.event-chips) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.85rem 0 0;
+  }
+  .event-sheet :global(.event-chip) {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px 9px 5px 3px;
+    padding: 0.3rem 0.6rem;
+    background: var(--blue-soft);
+    color: var(--blue-deep);
+  }
+  .event-sheet :global(.event-chip--status) {
+    background: var(--gold);
+    color: var(--blue-deep);
+  }
+  .event-sheet :global(.event-lead) {
+    max-width: var(--reading);
+    font-size: 1.1rem;
+    line-height: 1.65;
+    margin: 1.75rem 0 0;
+  }
+  .event-sheet :global(.event-facts) {
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    display: grid;
+  }
+  .event-sheet :global(.event-facts li) {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1rem;
+    border-top: 1px solid var(--rule);
+    padding: 0.9rem 0;
+  }
+  .event-sheet :global(.event-facts span) {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue);
+    padding-top: 0.15rem;
+  }
+  .event-sheet :global(.event-facts strong) {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  .event-sheet :global(.event-action) {
+    margin: 1.5rem 0 0;
+  }
+  .event-sheet :global(.event-action--broken) {
+    color: var(--red);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .event-sheet :global(.event-pending) {
+    margin: 1.5rem 0 0;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+  .event-sheet :global(.event-pending h3) {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+  }
+  .event-sheet :global(.event-pending p) {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0;
+  }
+  .event-notice {
+    background: var(--notice-gold);
+    border: 2px dashed var(--gold-deep);
+    border-radius: 6px 18px 12px 8px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .event-notice__pin {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 900;
+    display: grid;
+    place-items: center;
+  }
+  .event-notice h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 0.4rem;
+  }
+  .event-notice p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 0.9rem;
+    color: var(--ink);
+  }
+  .event-notice a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 50px;
+    padding: 0.75rem 1.25rem;
+    background: var(--blue);
+    color: var(--page);
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 9px 9px 3px 9px;
+    box-shadow: 4px 5px 0 var(--blue-deep);
+    transition:
+      transform 0.35s var(--ease),
+      box-shadow 0.35s var(--ease);
+  }
+  .event-notice a:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 7px 0 var(--blue-deep);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .event-notice a {
+      transition: none;
+    }
+  }
+  @media (max-width: 860px) {
     .event-grid {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
-    .event-sheet dl div {
+  }
+  @media (max-width: 560px) {
+    .event-sheet :global(.event-masthead) {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .event-sheet :global(.event-facts li) {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
     }
   }
 </style>

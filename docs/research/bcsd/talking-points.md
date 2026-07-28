@@ -46,8 +46,8 @@ Handing this over before being asked answers the questions before they're raised
 ## Four facts to have ready
 
 1. **BCSD's own plan says engagement comes first.** The district's Theory of Action states:
-   *"if we build stakeholder engagement... and strengthen staff effectiveness... we will
-   maximize student achievement."* That's their language.
+   _"if we build stakeholder engagement... and strengthen staff effectiveness... we will
+   maximize student achievement."_ That's their language.
    (bcsdk12.net/about-us/strategic-plan)
 
 2. **The district's own numbers show the gap.** Only 33% of students are "committed to
@@ -70,7 +70,7 @@ Handing this over before being asked answers the questions before they're raised
 Yes, and don't dodge it. Scouting America went through Chapter 11 bankruptcy in 2020 because of a
 huge number of historical abuse claims. They settled by putting $2.4 billion into a victims'
 trust, and more than 85% of survivors who voted on it supported the plan. The background-check
-and two-adult rules exist *because of* that history, not in spite of it.
+and two-adult rules exist _because of_ that history, not in spite of it.
 
 **"What does this cost the school?"**
 Nothing. It's a table at an event you're already running, for a few hours, staffed by people

@@ -77,9 +77,9 @@ or precedent, and that saying yes is not a personal judgment call they have to d
 ## The opening
 
 BCSD's 2023–2028 strategic plan, #Built4Bibb, states its own Theory of Action in these
-words: *"if we build stakeholder engagement of students, parents staff and community, and
+words: _"if we build stakeholder engagement of students, parents staff and community, and
 strengthen staff effectiveness to drive teaching and learning, we will maximize student
-achievement."* `[district's own document]` (source:
+achievement."_ `[district's own document]` (source:
 [bcsdk12.net/about-us/strategic-plan](https://www.bcsdk12.net/about-us/strategic-plan), via
 `notes/strategic-plan.md`). Stakeholder engagement is not one goal among three of equal
 weight — it is the causal input the district's own plan says everything else depends on.
@@ -112,9 +112,9 @@ already do. This is a district-general point: it does not depend on which school
 
 ### 3.1 — "Develop a culture of collective ownership"
 
-District wording, quoted exactly: *"Develop a culture of collective ownership."*
+District wording, quoted exactly: _"Develop a culture of collective ownership."_
 `[district's own document]`. Measures include the partner-count metric above (337 → 1,000)
-and *"% stakeholders committed to 'Show Up'"* broken out by students (33% → 95%), staff
+and _"% stakeholders committed to 'Show Up'"_ broken out by students (33% → 95%), staff
 (87% → 95%), and parents (TBD → 80%).
 
 What pack families concretely are: families already showing up at a school, month after month,
@@ -131,10 +131,10 @@ a district or research finding (`notes/strategic-plan.md`).
 
 ### 3.2 — "Develop mutual trust and relationships with and amongst stakeholder groups"
 
-District wording, quoted exactly: *"Develop mutual trust and relationships with and amongst
-stakeholder groups."* `[district's own document]`. Measures: *"% of parents/guardians
-volunteering"* (TBD → 70%), *"% of parents/guardians attending academic school meetings per
-year"* (TBD → 80%), and student/staff engagement indices (3.83 → 4.95 and 4.04 → 4.95; survey
+District wording, quoted exactly: _"Develop mutual trust and relationships with and amongst
+stakeholder groups."_ `[district's own document]`. Measures: _"% of parents/guardians
+volunteering"_ (TBD → 70%), _"% of parents/guardians attending academic school meetings per
+year"_ (TBD → 80%), and student/staff engagement indices (3.83 → 4.95 and 4.04 → 4.95; survey
 scale not documented in the source).
 
 What pack families concretely are: every den requires an adult volunteer under Scouting
@@ -149,7 +149,7 @@ engaged, already-vetted parents the district says it wants more of.
 
 Evidence strength: the requirement that pack adults be vetted volunteers is
 `[district's own document]` plus Scouting America's own primary policy documents. The claim
-that this specific population *increases* the district's measured "% parents volunteering" is
+that this specific population _increases_ the district's measured "% parents volunteering" is
 `[argument — no direct evidence]` — no study measures whether Scout-parent volunteering predicts
 subsequent school volunteering (`notes/scouting-and-education.md`, §5.3). The general research
 base that family involvement correlates with school outcomes — Henderson & Mapp (2002), a
@@ -158,10 +158,10 @@ and does not examine youth organizations at all (`notes/scouting-and-education.m
 
 ### 3.3 — "Strengthen practices of engagement to maximize students' overall learning experiences"
 
-District wording, quoted exactly: *"Strengthen practices of engagement to maximize
-students' overall learning experiences."* `[district's own document]`. Measures include
-*"% of students participating in extra-curricular activities"* (TBD → 90%) and *"# of
-established internships with business/community partners per high school"* (TBD → 100 —
+District wording, quoted exactly: _"Strengthen practices of engagement to maximize
+students' overall learning experiences."_ `[district's own document]`. Measures include
+_"% of students participating in extra-curricular activities"_ (TBD → 90%) and _"# of
+established internships with business/community partners per high school"_ (TBD → 100 —
 worded for high schools, a weak fit for a K-5 pack).
 
 What pack families concretely are: children already in an extracurricular activity that a
@@ -185,8 +185,8 @@ as the caveats below make clear.
 
 ### 1.1 — Social-Emotional Learning
 
-District's own goal statement: *"Develop and implement a comprehensive social-emotional
-learning (SEL) framework."* `[district's own document]`. No SEL curriculum vendor is named
+District's own goal statement: _"Develop and implement a comprehensive social-emotional
+learning (SEL) framework."_ `[district's own document]`. No SEL curriculum vendor is named
 publicly (`notes/strategic-plan.md`), which means there is no existing program to compete
 against, but also no district language connecting SEL specifically to any outside youth
 program.
@@ -222,8 +222,8 @@ evidence that Cub Scouting already meets them.
 
 ### 1.2 — Multi-Tiered System of Supports (MTSS)
 
-District's own goal statement: *"Build a multi-tiered system of supports (MTSS) that
-equitably meets the academic and behavioral needs of all students."* `[district's own
+District's own goal statement: _"Build a multi-tiered system of supports (MTSS) that
+equitably meets the academic and behavioral needs of all students."_ `[district's own
 document]`. Georgia's version, GaMTSS, explicitly calls for "teamwork" among "educators,
 staff, students, families, and community partners" `[district/state document]`
 (`notes/mtss.md`, citing gadoe.org).
@@ -238,8 +238,8 @@ out-of-school-time programs, including youth organizations, serving this role is
 but less comprehensive"** — not absent, but not as robust as the school-based evidence
 (`notes/mtss.md`).
 
-The notes' own MTSS researcher states this caveat directly: *"the direct empirical evidence
-linking specific community programs like Cub Scouts to school MTSS outcomes is limited"* and
+The notes' own MTSS researcher states this caveat directly: _"the direct empirical evidence
+linking specific community programs like Cub Scouts to school MTSS outcomes is limited"_ and
 that the theoretical alignment, while sound, "would ideally be supported by formal
 evaluation data specific to the program." This must be carried into the pitch verbatim in
 spirit: the structural analogy (den as a Tier 1 belonging space, mentoring as a Tier 2-type
@@ -257,8 +257,7 @@ into the district-general sections above.
 
 ### Verified identity
 
-- **Official name:** Alexander II Math and Science Magnet School, 1156 College Street, Macon, GA
-  31201. Grades Pre-K through 5. (Source:
+- **Official name:** Alexander II Math and Science Magnet School, 1156 College Street, Macon, GA 31201. Grades Pre-K through 5. (Source:
   [alexii.bcsdk12.net](https://alexii.bcsdk12.net/), via `notes/alexander-ii.md`.)
 - **Enrollment (2025-26):** 479–490 students, sources vary slightly (`notes/alexander-ii.md`).
 - **Principal:** Donna Cline, per the school's own materials as researched (`notes/alexander-ii.md`).
@@ -482,9 +481,9 @@ have to personally own." **If a standing partner listing is wanted later**, the 
 the **Office of Partnerships, Projects and Engagement** — 478-765-8762, partnerships@bcsdk12.net,
 or the
 [Partnership Interest Form](https://forms.cloud.microsoft/r/KPtZnA7srz). The district's own
-process, quoted: *"Your organization's mission and goals will be reviewed for alignment. If
+process, quoted: _"Your organization's mission and goals will be reviewed for alignment. If
 approved, you'll complete the Partnership Agreement and an onboarding process, which may
-include orientation, training, and background checks (if applicable)."* `[district's own
+include orientation, training, and background checks (if applicable)."_ `[district's own
 document]` (`notes/strategic-plan.md`, `notes/district-profile.md`). **Event sponsorship
 specifically requires 45 days' notice** via the District Sponsorship Request Form
 (`notes/alexander-ii.md`, citing

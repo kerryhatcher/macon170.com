@@ -23,10 +23,12 @@ const planUrl = 'https://www.bcsdk12.net/about-us/strategic-plan';
 // at school leaders.
 const selNotes: Record<string, string> = {
   Lion: 'An adult partner is in the den for every Lion meeting, so a five-year-old practices the first group skills — waiting a turn, sharing an adult’s attention — with their own grown-up beside them.',
-  Tiger: 'Den meetings run to a routine: an opening, a job to do, a closing. A first grader learns to name what they need and ask for help inside a structure that does not change week to week.',
+  Tiger:
+    'Den meetings run to a routine: an opening, a job to do, a closing. A first grader learns to name what they need and ask for help inside a structure that does not change week to week.',
   Wolf: 'Character & Leadership is one of the six Adventures every rank requires. For a second grader that means working with the partner they were given rather than the one they wanted, and finishing the part they agreed to do.',
   Bear: 'The required Citizenship Adventure puts a third grader on a service project — work whose benefit goes to people they will never meet.',
-  Webelos: 'Webelos choose from twenty elective Adventures. Picking one, planning it, and carrying it through is goal-setting a fourth grader owns rather than receives.',
+  Webelos:
+    'Webelos choose from twenty elective Adventures. Picking one, planning it, and carrying it through is goal-setting a fourth grader owns rather than receives.',
   'Arrow of Light':
     'The fifth-grade program is built around the crossover to Scouts BSA: leading parts of a meeting for the younger dens, then handing the job to whoever comes next.',
 };
@@ -66,7 +68,7 @@ const asks = [
       </p>
       <p>
         The six grade levels each carry a rank name, so a program built for a kindergartner looks and feels different from one built for a
-        fifth grader:
+        fifth grader. Social-Emotional Learning is at the core of each program:
       </p>
       <ul class="rank-list">
         {
@@ -175,7 +177,7 @@ const asks = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section who-section">
     <div class="container who-grid">
       <div>
         <span class="chapter-tab">Who we are</span>
@@ -301,6 +303,15 @@ const asks = [
     background: var(--page);
     border-top: 5px solid var(--gold);
     box-shadow: 3px 5px 0 var(--rule);
+  }
+  /* "Who we are" opens a new chapter directly after the align rows, and two prose sections on
+     the same warm paper ran together with nothing marking the cut. A river-green field carries
+     it — DESIGN.md's role for practical guidance — with a gold rule at the top edge as the
+     break. Light green, not the deep tone: .safety-section below is already midnight blue, and
+     two dark fields in a row would merge into one band instead of reading as two chapters. */
+  .who-section {
+    background: var(--green-soft);
+    border-top: 8px solid var(--gold);
   }
   .who-grid {
     display: grid;
