@@ -65,13 +65,13 @@
     "semantic_hash": "a365cf87f6d8a0641517063b42ce5de9"
   },
   "src/components/SiteFooter.astro": {
-    "mtime": 1785180598.4032185,
-    "ast_hash": "0e0ece25063dedbeab1ae89da81e2f84",
+    "mtime": 1785200522.518789,
+    "ast_hash": "3f25da8802624e4ea9c17a3c0b11f76b",
     "semantic_hash": ""
   },
   "src/components/SiteHeader.astro": {
-    "mtime": 1785192120.3441603,
-    "ast_hash": "7403e21556cfa6b39a68f1e03857ad6c",
+    "mtime": 1785198869.5800946,
+    "ast_hash": "e79104b079484f0972b6657c9ad43038",
     "semantic_hash": ""
   },
   "src/data/pack.ts": {
@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "src/layouts/BaseLayout.astro": {
-    "mtime": 1785191871.63067,
-    "ast_hash": "0989e8f2be8268dabc396664f9e9769e",
+    "mtime": 1785200300.8630404,
+    "ast_hash": "b9da031f7d26c97ea2bebaa7eb6738d2",
     "semantic_hash": ""
   },
   "src/lib/api-base.ts": {
@@ -90,8 +90,8 @@
     "semantic_hash": "442116963e15d263e8aab25158b01b47"
   },
   "src/pages/about.astro": {
-    "mtime": 1785190986.0626514,
-    "ast_hash": "cbd622881ba557aff629c73e31232553",
+    "mtime": 1785200522.5076816,
+    "ast_hash": "44dd5037f9c4dbd2c0a8ff5544eb4c08",
     "semantic_hash": ""
   },
   "src/pages/activities.astro": {
@@ -100,13 +100,13 @@
     "semantic_hash": "72fd6073042ab28bc94e77cd997d27d6"
   },
   "src/pages/calendar/index.astro": {
-    "mtime": 1785190986.0633452,
-    "ast_hash": "9546d401459ba914900553a152632f1a",
+    "mtime": 1785196442.0733004,
+    "ast_hash": "e874eaffd48bae317b9e39f76f76fc21",
     "semantic_hash": ""
   },
   "src/pages/contact.astro": {
-    "mtime": 1785192619.2655785,
-    "ast_hash": "be60708a500662a057200b43101e04e4",
+    "mtime": 1785200522.5105865,
+    "ast_hash": "4ce5b6f9cb717cb5a5dbe4efa1c8f53e",
     "semantic_hash": ""
   },
   "src/pages/events/index.astro": {
@@ -115,13 +115,13 @@
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
-    "mtime": 1785192955.0797787,
-    "ast_hash": "7baedbdc60d4d4139ed47e09831c5055",
+    "mtime": 1785200324.961096,
+    "ast_hash": "73d254d46a33e906b25b3e3632df3783",
     "semantic_hash": ""
   },
   "src/pages/join.astro": {
-    "mtime": 1785185643.562043,
-    "ast_hash": "8755ffcf6e25f8cdbdeeeaf28358ae03",
+    "mtime": 1785200522.5089686,
+    "ast_hash": "7b1e34830e727187fbcf7e325e8f3f14",
     "semantic_hash": ""
   },
   "src/pages/privacy.astro": {
@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "src/pages/resources.astro": {
-    "mtime": 1785190986.0672984,
-    "ast_hash": "bdb99067fc123aca6376f1f74bb95e30",
+    "mtime": 1785200522.5122337,
+    "ast_hash": "01aeb9652412fc2538c19b0fc5a49476",
     "semantic_hash": ""
   },
   "src/pages/volunteer.astro": {
@@ -200,9 +200,9 @@
     "semantic_hash": "4c143c608d91c045e4fff79215fdcec6"
   },
   ".github/workflows/deploy.yml": {
-    "mtime": 1785180598.370855,
-    "ast_hash": "0734fefb190f0e1551e27cea97288cdf",
-    "semantic_hash": "0734fefb190f0e1551e27cea97288cdf"
+    "mtime": 1785193578.9849613,
+    "ast_hash": "a596341b10f27a4273be9ba7e9669dc9",
+    "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
     "mtime": 1785165199.1063614,
@@ -215,8 +215,8 @@
     "semantic_hash": "d50dd7ca3c4b160b1b8ff1a61386c5a4"
   },
   "DESIGN.md": {
-    "mtime": 1785190986.0580642,
-    "ast_hash": "a40d469576e78d2045660213ef9ac496",
+    "mtime": 1785193127.8647614,
+    "ast_hash": "4ee26b7ddfa6b3d00919665a214a2cdf",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
@@ -300,9 +300,9 @@
     "semantic_hash": "1bfc7d8b673a305420be4f1c3f125fb7"
   },
   "public/favicon.svg": {
-    "mtime": 1785165199.1311536,
-    "ast_hash": "a42fab04a1d054942419b145355cc0bc",
-    "semantic_hash": "a42fab04a1d054942419b145355cc0bc"
+    "mtime": 1785198018.2832167,
+    "ast_hash": "9a5300cadb7d77cc55a901cf83d79ae6",
+    "semantic_hash": ""
   },
   "worker/retention.test.ts": {
     "mtime": 1785180598.4207933,
@@ -335,8 +335,8 @@
     "semantic_hash": ""
   },
   "src/pages/dens/[den].astro": {
-    "mtime": 1785189848.2613833,
-    "ast_hash": "886ab0d74303fba84154e9c32b10cdeb",
+    "mtime": 1785200522.5178208,
+    "ast_hash": "3b8b4b97d362b6340e2b67d09ae2d130",
     "semantic_hash": ""
   },
   "src/pages/dens/index.astro": {
@@ -345,13 +345,13 @@
     "semantic_hash": ""
   },
   "src/pages/what-is-cub-scouts.astro": {
-    "mtime": 1785180598.4184577,
-    "ast_hash": "28ca2978d3942008e2dc13539e51b258",
+    "mtime": 1785200522.5165036,
+    "ast_hash": "ca2c09df1b38c27d7792b2591e41b0d7",
     "semantic_hash": ""
   },
   "src/pages/youth-protection.astro": {
-    "mtime": 1785190986.0682058,
-    "ast_hash": "9c7088e253507e47d9d15105f7ca6204",
+    "mtime": 1785197132.0976293,
+    "ast_hash": "0d18c6187537b393a818f772135920fb",
     "semantic_hash": ""
   },
   "assets/offical/2023_2024_loops_pins_Fun_On_The_Run.webp": {
@@ -2407,6 +2407,141 @@
   ".claude/skills/impeccable/reference/visualize.md": {
     "mtime": 1785190986.0187132,
     "ast_hash": "854cdbe8a566cabe7bf87d420bfa4a83",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/district-profile.md": {
+    "mtime": 1785198779.7840059,
+    "ast_hash": "e22f3d28b314e611dc879eb0c3649db3",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/mtss.md": {
+    "mtime": 1785198810.4843833,
+    "ast_hash": "d5c66a2130241c103bdc42ab4dec9b2f",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/scouting-and-education.md": {
+    "mtime": 1785198942.7374973,
+    "ast_hash": "f98f8df8ed134862c78d85239c3fc081",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/sel.md": {
+    "mtime": 1785198781.6706603,
+    "ast_hash": "a34a11b2756cbe714e946fb68a4254d9",
+    "semantic_hash": ""
+  },
+  "assets/Pack_170_Logo.svg": {
+    "mtime": 1785197292.3237212,
+    "ast_hash": "9b318fdd18ba89ced0d93116c9443951",
+    "semantic_hash": ""
+  },
+  "assets/Pack_170_Logo_ORG_LOW.jpg": {
+    "mtime": 1785196297.336923,
+    "ast_hash": "eec20d771714c833643050a81e0c893f",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-1024.jpg": {
+    "mtime": 1785197837.3540647,
+    "ast_hash": "426e5e7d94d3ae2fd86daa5d3f7a5a0a",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-1024.png": {
+    "mtime": 1785197837.1322072,
+    "ast_hash": "70fa04f4901f770618073b9aefd4e7af",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-1024.webp": {
+    "mtime": 1785197837.4997265,
+    "ast_hash": "74ded2d81a0139ea58315e1137218809",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-256.jpg": {
+    "mtime": 1785197836.5722187,
+    "ast_hash": "0e36410d76a6fa2090e07439d445c0e4",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-256.png": {
+    "mtime": 1785197835.8115098,
+    "ast_hash": "998e54933f664106811175ef4721fb39",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-256.webp": {
+    "mtime": 1785197836.6136587,
+    "ast_hash": "adcd97380fbedac24d0e7f05f759641e",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-512.jpg": {
+    "mtime": 1785197836.9288404,
+    "ast_hash": "79fbf4e902349a9b8b884a6aecd6d689",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-512.png": {
+    "mtime": 1785197836.6897864,
+    "ast_hash": "1a6f494c2eb382820be0ba0fbf1ceefe",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-512.webp": {
+    "mtime": 1785197836.9856021,
+    "ast_hash": "a6ea6de224df082e7948b05a56c34424",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-64.jpg": {
+    "mtime": 1785197835.1129909,
+    "ast_hash": "9123b55f01dc4cc56a063d0b472f6a8a",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-64.png": {
+    "mtime": 1785197833.679703,
+    "ast_hash": "16ca69abd6a4e7fe78a503333025c4cd",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-64.webp": {
+    "mtime": 1785197835.6842635,
+    "ast_hash": "6a6ab6cc97f72f0b7503fd886fc4c5a4",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/README.md": {
+    "mtime": 1785200391.5770142,
+    "ast_hash": "dd5dabd3ad1ecd2b9a766b80cd1c2dd7",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/SYNTHESIS.md": {
+    "mtime": 1785200486.2014847,
+    "ast_hash": "68ae926b808688e0034e39e9f0d5538e",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/strategic-plan.md": {
+    "mtime": 1785199035.1042104,
+    "ast_hash": "be0f04585418aadc8b5639a5cba9e963",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/talking-points.md": {
+    "mtime": 1785200510.4936807,
+    "ast_hash": "6f80c4468890a1f9a37c26ce057315cb",
+    "semantic_hash": ""
+  },
+  "src/lib/external-link.ts": {
+    "mtime": 1785200545.3316512,
+    "ast_hash": "f19f965cbcf1d91d9053330ebc66d810",
+    "semantic_hash": ""
+  },
+  "docs/research/bcsd/notes/alexander-ii.md": {
+    "mtime": 1785200151.6655664,
+    "ast_hash": "fa961a344df99e5af577f0edf4d99c2f",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1785200279.6495497,
+    "ast_hash": "7cff81d9c2f9c9a07907e6c66e990e03",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-logo-192.png": {
+    "mtime": 1785200279.7741997,
+    "ast_hash": "032c0fd1e94baf0de04b2f9283dc0cc8",
+    "semantic_hash": ""
+  },
+  "public/logo/pack170-maskable-512.png": {
+    "mtime": 1785200279.710387,
+    "ast_hash": "c3ce175c3455cf634362b29c9eb7a152",
     "semantic_hash": ""
   }
 }
