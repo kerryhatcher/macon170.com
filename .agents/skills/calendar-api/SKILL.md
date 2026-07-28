@@ -65,7 +65,8 @@ curl -X POST 'https://api.macon170.com/api/admin/events' \
     "locationName": "Macon State Park",
     "address": "456 Park Rd, Macon, GA",
     "whatToBring": "Tent, sleeping bag, flashlight, water bottle",
-    "cost": "$10 per family"
+    "cost": "$10 per family",
+    "milestone": null
   }'
 ```
 
@@ -78,6 +79,16 @@ to review the stored values before publishing it.
 then send a complete payload in the API's camelCase field names. To publish,
 archive, or restore, change only `visibility` to `published`, `archived`, or
 `draft` respectively and preserve the other fields.
+
+**`milestone` is one of those fields you must preserve.** Because PUT
+replaces the whole row, an omitted `milestone` is stored as NULL — it does
+not leave the existing value alone. If the event you fetched has
+`"milestone": "blue-gold"` and your update payload leaves `milestone` out,
+the update **silently clears the association** and the homepage milestone
+strip reverts to its placeholder text. There is no error and no warning; the
+audit log only shows a generic `updated` entry. Always echo back the
+`milestone` value from the GET response in every PUT, even when the update
+is unrelated to milestones (a time change, a `visibility` flip, etc.).
 
 ```bash
 curl -X PUT 'https://api.macon170.com/api/admin/events/EVENT_UUID' \
@@ -99,7 +110,8 @@ curl -X PUT 'https://api.macon170.com/api/admin/events/EVENT_UUID' \
     "address": "456 Park Rd, Macon, GA",
     "whatToBring": "Tent, sleeping bag, flashlight, water bottle",
     "cost": "$10 per family",
-    "registrationUrl": ""
+    "registrationUrl": "",
+    "milestone": null
   }'
 ```
 
@@ -123,10 +135,23 @@ unintended URL change.
 | `timezone`                                       | Optional, but if supplied must be `America/New_York`             |
 | `locationName`, `address`, `whatToBring`, `cost` | Optional text fields                                             |
 | `registrationUrl`                                | Optional `http` or `https` URL                                   |
+| `milestone`                                      | Optional; a key from `annualProgram` in `src/data/pack.ts`, or `null`/omitted for a non-milestone event; any other value is a 400 |
 
 API responses use database-style names such as `starts_at` and
 `location_name`; request bodies use camelCase such as `startsAt` and
-`locationName`.
+`locationName`. `milestone` is the same spelling on both sides.
+
+`milestone` associates an event with one of the pack's four recurring annual
+milestones so the homepage strip can fill in that milestone's row with the
+event's real date instead of its placeholder text. Empty string, `null`, and
+omission all store SQL NULL (no milestone). The valid keys live in
+`annualProgram` in `src/data/pack.ts` — treat that file as the source of
+truth, since the list below can go stale:
+
+- `lego-derby` — Lego Pinewood Derby
+- `fall-camp` — Fall camp
+- `pinewood-derby` — Pinewood Derby
+- `blue-gold` — Blue & Gold Banquet
 
 ## Public read-only endpoints
 
