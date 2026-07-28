@@ -12,10 +12,9 @@ const aims = [
 ];
 
 const asks = [
-  ['A table at your event', 'A back-to-school night, open house, or community fair — one table, one hour.'],
-  ['A few minutes on the agenda', 'A short, family-friendly announcement at a PTA/PTO or civic-group meeting.'],
-  ['Permission to post a flyer', 'On a bulletin board or in a newsletter, sized however your organization prefers.'],
-  ['A meeting space', 'A room for a den or pack meeting, on a schedule that works for your facility.'],
+  ['A table at an open house or family night', 'One table, one hour, staffed by adults who are already approved district volunteers.'],
+  ['A few minutes on a PTO agenda', 'Optional, and short. Three minutes is plenty.'],
+  ['Permission to post a flyer', 'On a bulletin board or in a newsletter, sized however you prefer.'],
 ];
 ---
 
@@ -27,7 +26,7 @@ const asks = [
     chapter="For school & community leaders"
     title="What is"
     accent="Cub Scouting?"
-    intro="A quick, plain-language briefing for principals, PTA/PTO boards, librarians, and civic leaders deciding whether to open a door for Pack 170."
+    intro="A plain-language briefing for principals, PTA/PTO boards, librarians, and civic leaders: what the program is, how it is run and supervised, and where it lines up with goals your school is already working on."
     noteTitle="The short version"
     noteBody={`${pack.grades} · ${pack.welcome}`}
     ><p slot="note">A local, volunteer-run program of Scouting America — not a sales pitch, not a fundraiser at your door.</p></ChapterHero
@@ -84,6 +83,77 @@ const asks = [
     </div>
   </section>
 
+  <section class="section align-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="chapter-tab">Complementing your plan</span>
+        <h2>Where this lines up with what you are already working on.</h2>
+      </div>
+      <p class="lead">
+        Bibb County's 2023–2028 strategic plan states its own theory of action: <q
+          >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive teaching
+          and learning, we will maximize student achievement.</q
+        > A Cub Scout pack is built out of that first ingredient.
+      </p>
+      <div class="align-rows">
+        <section class="align-row">
+          <h3>Engaged families, already vetted</h3>
+          <div>
+            <p>
+              Every Cub Scout is enrolled by an adult, and the pack only runs because those adults take registered roles — den leader,
+              treasurer, event coordinator, driver. Each one is trained and passes a criminal background check.
+            </p>
+            <p>
+              Many of our adults are already approved Bibb County school volunteers. A pack does not draw down your volunteer capacity. It
+              turns out adults who are already in the habit of showing up for their own children.
+            </p>
+          </div>
+        </section>
+        <section class="align-row">
+          <h3>Practice at the skills behind SEL</h3>
+          <div>
+            <p>
+              We are not a curriculum and we do not replace one. What a den gives a child is repeated practice in a small, same-grade group:
+              taking a turn leading, working with a partner who was not their first choice, finishing something difficult, and being
+              accountable to other kids for it.
+            </p>
+            <p>
+              The five competencies your plan's SEL objective draws on — self-awareness, self-management, social awareness, relationship
+              skills, responsible decision-making — are the ordinary business of a den meeting rather than a unit we teach.
+            </p>
+          </div>
+        </section>
+        <section class="align-row">
+          <h3>One more adult who knows the child</h3>
+          <div>
+            <p>
+              Research on school connectedness consistently finds that a stable relationship with a caring adult is protective for children.
+              A den leader is one of those adults: the same eight or ten kids, month after month, for years, and a standing reason to talk
+              to their parents.
+            </p>
+            <p>
+              Your multi-tiered supports depend on someone noticing a child early. More adults who know a child well, outside the school
+              day, is not a bad thing.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="paper-sheet honesty">
+        <h3>What we are not going to claim</h3>
+        <p>
+          No study of Scouting uses school records — grades, attendance, discipline — as an outcome measure. Anyone who tells you Cub
+          Scouting raises test scores is overselling it, and we would rather say so first.
+        </p>
+        <p>We are not a curriculum, an intervention, or a tier in your system of supports, and we are not asking for instructional time.</p>
+        <p>
+          We are also not asking for a room. The pack meets at {pack.charteredOrganization.name}, which charters us, and families need no
+          connection to that church to join.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container who-grid">
       <div>
@@ -91,7 +161,8 @@ const asks = [
         <h2>Pack 170, specifically.</h2>
         <p>
           {pack.name} is Macon's local Cub Scout pack, part of the {pack.council.name} of Scouting America. We're chartered by <a
-            href={pack.charteredOrganization.url} {...externalLink(pack.charteredOrganization.url)}>{pack.charteredOrganization.name}</a
+            href={pack.charteredOrganization.url}
+            {...externalLink(pack.charteredOrganization.url)}>{pack.charteredOrganization.name}</a
           >, where the pack meets. The pack is entirely volunteer-run — there is no paid staff.
         </p>
         <p>
@@ -100,8 +171,8 @@ const asks = [
         </p>
       </div>
       <div class="ask-slip">
-        <span class="chapter-tab ask-slip__tab">What we're usually asking for</span>
-        <h3>Small, specific, low-burden asks.</h3>
+        <span class="chapter-tab ask-slip__tab">What we would ask of a school</span>
+        <h3>A table, and that is about it.</h3>
         <ul class="ask-checklist">
           {
             asks.map(([title, body]) => (
@@ -115,6 +186,7 @@ const asks = [
             ))
           }
         </ul>
+        <p class="ask-slip__note">That is the whole list. No room, no budget, no staff time.</p>
       </div>
     </div>
   </section>
@@ -132,6 +204,11 @@ const asks = [
             to observation by parents at any time. Suspected abuse is reported to law enforcement — this is never handled internally.
             Nothing on this website is members-only, and every contact channel reaches multiple adults.
           </p>
+          <p>
+            Scouting America's national general liability program covers chartered units, so a school hosting our table is not underwriting
+            our coverage. We can provide a certificate, our training records, and the names of the adults who would staff the table, before
+            anyone asks for them.
+          </p>
           <p><a href="/youth-protection/">Read the full youth protection standards →</a></p>
         </div>
       </div>
@@ -141,13 +218,13 @@ const asks = [
   <section class="section">
     <div class="container close-grid paper-sheet">
       <div>
-        <h2>Invite Pack 170.</h2>
+        <h2>Invite Pack 170 to a family night.</h2>
         <p>
-          If your school, church, or civic group has an opening for a table, a few minutes on the agenda, a flyer, or a meeting space, we'd
-          like to hear from you.
+          If your school has an open house, a family night, or a few minutes on a PTO agenda, we would like to be there. We bring the table,
+          the adults, and the paperwork.
         </p>
       </div>
-      <a class="button button--blue" href="/contact/">Ask us to come speak</a>
+      <a class="button button--blue" href="/contact/">Ask about a table</a>
     </div>
   </section>
 
@@ -193,6 +270,51 @@ const asks = [
     grid-template-columns: 1.1fr 1fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
+  }
+  /* Alignment reads like the policy spread: heading in the margin, prose in its own column,
+     so a principal can scan for the goal they care about instead of reading a wall. */
+  .align-rows {
+    margin-top: clamp(1.5rem, 4vw, 2.75rem);
+  }
+  .align-row {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 62ch);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    padding: 1.9rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .align-row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .align-row h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: var(--blue);
+  }
+  .align-row p:last-child {
+    margin-bottom: 0;
+  }
+  /* Saying the limits out loud is the point of this block, so it gets a Gold rule and a
+     sheet of its own rather than being buried as a caveat in body copy. */
+  .honesty {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    border-top: 3px solid var(--gold);
+    max-width: 74ch;
+  }
+  .honesty h3 {
+    color: var(--blue);
+  }
+  .honesty p:last-child {
+    margin-bottom: 0;
+  }
+  .ask-slip__note {
+    margin: 1.25rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.95rem;
+    color: var(--muted);
   }
   /* The asks are the whole pitch to a school or civic partner, so they sit on their own
      slip with an index tab straddling the cut edge and a ticked row per ask. */
@@ -303,6 +425,12 @@ const asks = [
     min-height: 62px;
     padding: 1rem 1.9rem;
     font-size: 1.1rem;
+  }
+  @media (max-width: 860px) {
+    .align-row {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
   }
   @media (max-width: 800px) {
     .aims-grid {
