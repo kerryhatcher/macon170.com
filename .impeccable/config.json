@@ -23,8 +23,11 @@
       },
       {
         "rule": "border-accent-on-rounded",
-        "value": "* --file worker/calendar-admin.ts",
-        "reason": "User confirmed: the flagged pairing is .brand>span in the admin header — border:3px solid var(--gold) with border-radius:50% draws the round 170 badge's gold ring, the pack's emblem treatment used across the public site, not an accent border on a rounded card. The other pairs on that line (2px ink borders with asymmetric radii on buttons and inputs) are the same deliberate scout-paper language. No CSS in this file was touched by the milestone-association work that surfaced it.",
+        "value": "*",
+        "files": [
+          "worker/calendar-admin.ts"
+        ],
+        "reason": "User confirmed. This is a line-granularity artifact, not a design defect: the whole admin stylesheet is a single physical line (the css() template literal), so the check pairs a border-bottom from one selector with a border-radius belonging to a different selector on that same line. The two flagged borders are header{border-bottom:6px solid var(--gold)} and .editor-head{border-bottom:3px solid var(--blue)} — plain horizontal rules under a full-bleed bar and a section heading, and NEITHER element has a border-radius. Same class of mismatch DESIGN.json's $comment documents for radius corners. Re-check by hand if that CSS is ever split across lines.",
         "createdAt": "2026-07-28T06:01:04.270Z"
       }
     ]
