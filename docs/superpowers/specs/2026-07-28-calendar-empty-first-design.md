@@ -118,9 +118,25 @@ second source of truth for the milestone list, which stays `annualProgram` in `s
 
 ## States
 
-- **Zero published events** (today's real state): four anchors in season order, each stating it is
-  being scheduled. No notice, no apology, no tutorial for cards that do not exist. This is the state
-  to design first and the one to screenshot for review.
+**Production reality, checked 2026-07-28 against `https://www.macon170.com/api/events`:** ten published
+events run from August 2026 to February 2027, and **every one has `milestone: null`**. The calendar is
+not empty; the spine is dark because no event has been associated with a milestone in the editor's
+dropdown. Two of the ten obviously correspond to milestones ("Lego Pinewood Derby & Cookout" to
+`lego-derby`, "Scout Sunday & Pinewood Derby Race" most likely to `pinewood-derby`), and `fall-camp`
+and `blue-gold` have no event at all.
+
+That makes the dominant real state **"dates published, spine unassociated"**, not "empty". The largest
+user-visible improvement available here is data entry in the volunteer desk, not code — which the
+milestone spec already put out of scope, and which is a pack-fact judgment for pack leadership rather
+than something to infer from an event title. The structure below must therefore be honest in both
+states, and must not imply a milestone is unscheduled when an event for it exists but is unlinked.
+
+- **Zero published events**: four anchors in season order, each stating it is being scheduled. No
+  notice, no apology, no tutorial for cards that do not exist. Still a required state — it is what a
+  fresh program year looks like before entry begins.
+- **Dates published, no associations** (production today): the ten events render on the timeline in
+  date order under month headings, and the four anchors sit in season position stating they are being
+  scheduled. This is the state to screenshot for review.
 - **Some milestones dated, some not**: mixed solid and dashed anchors, ordinary events between them.
 - **Mid-year**: earlier milestones marked done with their dates, later ones upcoming.
 - **API unavailable**: the four anchors still render from `annualProgram`, which is server-rendered, so

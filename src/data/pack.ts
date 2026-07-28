@@ -98,14 +98,18 @@ export const annualProgram = [
   // The year opens with the Lego Pinewood Derby & Cookout — a free August event families are asked
   // to invite anyone interested in Scouting to, so it is the pack's Join Scouting Night in practice
   // (docs/calendar.md:4, Cubmaster 2026-07-28). There is no separate Join Scouting Night milestone.
-  { key: 'lego-derby', season: 'August', title: 'Lego Pinewood Derby', state: 'Date to be added' },
-  { key: 'fall-camp', season: 'Fall', title: 'Fall camp', state: 'Dates to be added' },
-  { key: 'pinewood-derby', season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added' },
+  // sortMonth places a milestone on the /calendar/ timeline before any event is associated with it,
+  // so the spine keeps its shape while dates are still being entered. It is the nominal month of the
+  // season, not a claim about a date: months from August on belong to the program year's opening
+  // calendar year, earlier ones to the following year (see src/lib/pack-year.ts).
+  { key: 'lego-derby', season: 'August', title: 'Lego Pinewood Derby', state: 'Date to be added', sortMonth: 8 },
+  { key: 'fall-camp', season: 'Fall', title: 'Fall camp', state: 'Dates to be added', sortMonth: 10 },
+  { key: 'pinewood-derby', season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added', sortMonth: 1 },
   // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and the
   // pack calls it the Arrow of Light Ceremony (both confirmed by the Cubmaster, 2026-07-28). This
   // matches Scouting America's guidance — see docs/research/cub-scouting.md:70. The strip has room
   // for one short title, so the ceremony is named on /activities/ instead.
-  { key: 'blue-gold', season: 'February', title: 'Blue & Gold Banquet', state: 'Date to be added' },
+  { key: 'blue-gold', season: 'February', title: 'Blue & Gold Banquet', state: 'Date to be added', sortMonth: 2 },
 ] as const;
 
 export const events: PackEvent[] = [];

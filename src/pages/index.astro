@@ -13,7 +13,6 @@ import { annualProgram, pack, ranks } from '../data/pack';
 // Real Pack 170 photo, used with the family's permission. It replaced a CSS pinewood-derby
 // illustration: "small hands" reads better as actual muddy hands than as a drawn car.
 import mudProject from '../../assets/packphotos/15-576A9185.jpg';
-import { API_BASE } from '../lib/api-base';
 ---
 
 <BaseLayout
@@ -179,68 +178,29 @@ import { API_BASE } from '../lib/api-base';
   </section>
 </BaseLayout>
 
-<script is:inline define:vars={{ pmProgram: annualProgram, pmApiBase: API_BASE }}>
-  (function () {
-    const root = document.querySelector('.year-section');
-    if (!root) return;
-    const fmt = (iso) => new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'America/New_York' }).format(new Date(iso));
+<script>
+  // The spine's association logic lives in src/lib/pack-year.ts so this strip and the /calendar/
+  // timeline can never disagree about which event owns which milestone. This script only fetches
+  // and paints; paintSpine reads the milestone keys straight off the server-rendered DOM and only
+  // ever adds a date, so a failed fetch leaves the honest "to be added" placeholders in place.
+  import { API_BASE } from '../lib/api-base';
+  import { paintSpine, type SpineEvent } from '../lib/pack-year';
 
-    // An event claims a milestone by carrying its key (calendar_events.milestone). Milestones recur
-    // every year, so two events can share a key; the soonest one owns the row.
-    function soonestByMilestone(events) {
-      const byKey = {};
-      events.forEach(function (event) {
-        const key = event.milestone;
-        if (!key) return;
-        if (!byKey[key] || Date.parse(event.starts_at) < Date.parse(byKey[key].starts_at)) byKey[key] = event;
-      });
-      return byKey;
-    }
+  const root = document.querySelector('[data-pm-list]');
 
-    function paint(events) {
-      let confirmed = 0;
-      const byKey = soonestByMilestone(events);
-      pmProgram.forEach(function (milestone) {
-        const hit = byKey[milestone.key] || null;
-        if (hit) confirmed += 1;
-        root.querySelectorAll('[data-pm-row="' + CSS.escape(milestone.key) + '"]').forEach(function (cell) {
-          const when = cell.querySelector('[data-pm-when]');
-          if (!when) return;
-          if (hit) {
-            cell.setAttribute('data-confirmed', '');
-            when.textContent = fmt(hit.starts_at);
-          } else {
-            cell.removeAttribute('data-confirmed');
-            when.textContent = milestone.state;
-          }
-        });
-      });
-      const note = root.querySelector('[data-pm-note]');
-      if (!note) return;
-      note.textContent = confirmed
-        ? confirmed +
-          ' of ' +
-          pmProgram.length +
-          ' milestones have a published date. The other ' +
-          (pmProgram.length - confirmed) +
-          ' are still being scheduled by pack volunteers.'
-        : 'No milestone dates are published yet. Pack volunteers are still scheduling the year.';
-    }
-
-    fetch(pmApiBase + '/api/events')
-      .then(function (response) {
-        if (!response.ok) throw new Error('events unavailable');
-        return response.json();
-      })
-      .then(function (body) {
-        paint(Array.isArray(body.events) ? body.events : []);
-      })
-      .catch(function () {
-        // Leave the server-rendered placeholders untouched; never invent a date.
-        const note = root.querySelector('[data-pm-note]');
-        if (note) note.textContent = 'Live dates could not be loaded. The pack calendar has the confirmed schedule.';
-      });
-  })();
+  fetch(`${API_BASE}/api/events`)
+    .then((response) => {
+      if (!response.ok) throw new Error('events unavailable');
+      return response.json();
+    })
+    .then((body) => {
+      const events = (body as { events?: SpineEvent[] }).events;
+      paintSpine(root, Array.isArray(events) ? events : []);
+    })
+    .catch(() => {
+      const note = document.querySelector('[data-pm-note]');
+      if (note) note.textContent = 'Live dates could not be loaded. The pack calendar has the confirmed schedule.';
+    });
 </script>
 
 <style>
@@ -542,13 +502,16 @@ import { API_BASE } from '../lib/api-base';
   /* Pack-year milestones. State is carried by stroke style and depth rather than a
      coloured side-tab: a published date reads as a real lifted sheet, a pending one as
      a provisional dashed note. */
+  /* Four columns for four milestones. This was repeat(6, …) from when the program year was
+     described as six generic milestones, which left the four real ones at ~130px and wrapping
+     their titles onto two ragged lines. */
   .pm-strip {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
   }
   .pm-cell {
     padding: 0.9rem 0.7rem;

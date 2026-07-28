@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
-import { pack } from '../../data/pack';
+import { pack, annualProgram } from '../../data/pack';
 ---
 
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
@@ -14,27 +14,45 @@ import { pack } from '../../data/pack';
     noteBody={`${pack.meeting.cadence} · ${pack.meeting.day}s at ${pack.meeting.time}`}
   >
     <div slot="actions" class="hero-actions">
-      <a class="button button--gold" href="#published-events">See upcoming events</a><a class="button button--paper" href="/contact/"
+      <a class="button button--gold" href="#program-year">See the program year</a><a class="button button--paper" href="/contact/"
         >Ask about a date</a
       >
     </div>
     <p slot="note">At {pack.meeting.location}. Den schedules vary.</p>
   </ChapterHero>
 
-  <section class="section next-section" id="published-events">
+  <section class="section next-section" id="program-year">
     <div class="container">
-      <div id="calendar-status" class="calendar-status" role="status">Loading the Pack 170 calendar…</div><div
-        id="next-event"
-        class="next-grid"
-        hidden
+      <div class="section-heading">
+        <span class="chapter-tab">The pack year</span><h2>Four milestones, and everything in between.</h2><p>
+          The four milestones below are the shape of every Pack 170 year. Published dates fill in as volunteers schedule them, and other
+          pack, den, and family dates land between them.
+        </p>
+      </div>
+
+      {
+        /* Server-rendered so the year is on the page before any fetch: a failed API leaves the spine
+      standing rather than an empty column. The client merges published dates into this list. */
+      }
+      <ol class="timeline" id="timeline" data-pm-list>
+        {
+          annualProgram.map((item) => (
+            <li class="timeline__row timeline__row--milestone" data-pm-row={item.key} data-season={item.season}>
+              <span class="timeline__season">{item.season}</span>
+              <strong class="timeline__title">{item.title}</strong>
+              <small class="timeline__when" data-pm-when>
+                {item.state}
+              </small>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="timeline__note" data-pm-note>Checking the pack calendar for confirmed dates…</p>
+      <div id="calendar-status" class="calendar-status" role="status" aria-live="polite"></div><div
+        id="calendar-notice"
+        class="calendar-notice"
       >
-      </div><div id="event-list" class="event-cards"></div><noscript
-        ><div class="notice">
-          <span class="notice__pin">!</span><div>
-            <h3>JavaScript is needed for live dates</h3><p>Please contact Pack 170 adults for the next confirmed event.</p>
-          </div>
-        </div></noscript
-      >
+      </div>
     </div>
   </section>
 
@@ -81,60 +99,99 @@ import { pack } from '../../data/pack';
 </BaseLayout>
 <script>
   import { API_BASE } from '../../lib/api-base';
-  type PublicEvent = {
-    slug: string;
-    title: string;
-    summary: string;
-    starts_at: string;
-    ends_at: string | null;
-    status: string;
-    category: string;
-    location_name: string | null;
-    audience: string;
-  };
+  import { annualProgram } from '../../data/pack';
+  import { buildTimeline, monthKey, monthLabel, milestoneProgress, type SpineEvent } from '../../lib/pack-year';
+
+  const timeline = document.querySelector<HTMLElement>('#timeline');
   const status = document.querySelector<HTMLElement>('#calendar-status');
-  const next = document.querySelector<HTMLElement>('#next-event');
-  const list = document.querySelector<HTMLElement>('#event-list');
+  const notice = document.querySelector<HTMLElement>('#calendar-notice');
+  const note = document.querySelector<HTMLElement>('[data-pm-note]');
+
   const escapeHtml = (value: string) =>
     value.replace(
       /[&<>"']/g,
       (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character] ?? character,
     );
-  const date = (value: string) =>
-    new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short', timeZone: 'America/New_York' }).format(new Date(value));
+  const dayLabel = (value: string) =>
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', month: 'short', day: 'numeric' }).format(
+      new Date(value),
+    );
+  const timeLabel = (value: string) =>
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeStyle: 'short' }).format(new Date(value));
+
+  function milestoneRow(entry: Extract<ReturnType<typeof buildTimeline>[number], { kind: 'milestone' }>): string {
+    const { milestone, event, done } = entry;
+    // No event yet: keep the honest placeholder the server already wrote rather than inventing a date.
+    const when = event ? `${dayLabel(event.starts_at)} · ${timeLabel(event.starts_at)}` : milestone.state;
+    const where = event?.location_name ? `<span class="timeline__where">${escapeHtml(event.location_name)}</span>` : '';
+    const state = done ? '<span class="timeline__state">Held this year</span>' : '';
+    const open = event ? `<a class="timeline__open" href="/events/?event=${encodeURIComponent(event.slug)}">Open event details</a>` : '';
+    const flags = [event ? 'data-confirmed' : '', done ? 'data-done' : ''].filter(Boolean).join(' ');
+    return `<li class="timeline__row timeline__row--milestone" data-pm-row="${escapeHtml(milestone.key)}" ${flags}>
+      <span class="timeline__season">${escapeHtml(milestone.season)}</span>
+      <strong class="timeline__title">${escapeHtml(event ? event.title : milestone.title)}</strong>
+      <small class="timeline__when" data-pm-when>${escapeHtml(when)}</small>${where}${state}${open}
+    </li>`;
+  }
+
+  function eventRow(event: SpineEvent): string {
+    // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
+    const flag =
+      (event.status ?? '').toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status ?? '')}</span>`;
+    const where = event.location_name ? `<span class="timeline__where">${escapeHtml(event.location_name)}</span>` : '';
+    return `<li class="timeline__row timeline__row--event" data-category="${escapeHtml(event.category ?? 'pack')}">
+      <span class="timeline__day">${dayLabel(event.starts_at)} · ${timeLabel(event.starts_at)}</span>
+      <a class="timeline__title" href="/events/?event=${encodeURIComponent(event.slug)}">${escapeHtml(event.title)}</a>
+      <span class="event-cat">${escapeHtml(event.category ?? 'pack')}</span>${flag}${where}
+    </li>`;
+  }
+
+  function render(events: SpineEvent[]) {
+    if (!timeline) return;
+    const entries = buildTimeline(annualProgram, events);
+    let month = '';
+    const rows: string[] = [];
+    for (const entry of entries) {
+      const key = monthKey(entry.at);
+      if (key !== month) {
+        month = key;
+        // An undated milestone sits in its nominal month, so the heading is a season marker for it.
+        rows.push(`<li class="timeline__month"><h3>${escapeHtml(monthLabel(entry.at))}</h3></li>`);
+      }
+      rows.push(entry.kind === 'milestone' ? milestoneRow(entry) : eventRow(entry.event));
+    }
+    timeline.innerHTML = rows.join('');
+
+    const progress = milestoneProgress(annualProgram, events);
+    if (note)
+      note.textContent = progress.confirmed
+        ? `${progress.confirmed} of ${progress.total} milestones have a published date. The other ${progress.total - progress.confirmed} are still being scheduled by pack volunteers.`
+        : 'No milestone dates are published yet. Pack volunteers are still scheduling the year.';
+
+    const count = events.length;
+    if (status)
+      status.textContent = count
+        ? `${count} published date${count === 1 ? '' : 's'} on the calendar, coloured by who each one is for.`
+        : '';
+  }
+
   async function loadCalendar() {
     try {
       const response = await fetch(`${API_BASE}/api/events`);
-      if (!response.ok) throw new Error();
-      const body = (await response.json()) as { events: PublicEvent[] };
-      if (!body.events.length) {
-        if (status)
-          status.innerHTML =
-            '<div class="notice"><span class="notice__pin">i</span><div><h3>No published dates yet</h3><p>Pack volunteers are preparing the calendar. Use the annual overview below and contact the pack before making a special trip.</p></div></div>';
-        return;
-      }
-      if (status)
-        status.textContent = `${body.events.length} upcoming event${body.events.length === 1 ? '' : 's'} · color-coded by who each event is for`;
-      const first = body.events[0];
-      if (next) {
-        next.hidden = false;
-        next.innerHTML = `<div><span class="chapter-tab">Next up</span><h2>${escapeHtml(first.title)}</h2><p class="lead">${escapeHtml(first.summary)}</p><a class="button button--blue" href="/events/?event=${encodeURIComponent(first.slug)}">Open event details</a></div><div class="date-sheet"><span>${date(first.starts_at)}</span><strong>${escapeHtml(first.location_name || 'Location being confirmed')}</strong><small>${escapeHtml(first.status)}</small></div>`;
-      }
-      if (list)
-        list.innerHTML = body.events
-          .slice(1)
-          .map((event) => {
-            // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
-            const flag = event.status.toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status)}</span>`;
-            return `<article data-category="${escapeHtml(event.category)}"><span class="event-cat">${escapeHtml(event.category)}</span>${flag}<span class="event-date">${date(event.starts_at)}</span><h3>${escapeHtml(event.title)}</h3><p>${escapeHtml(event.summary)}</p><a href="/events/?event=${encodeURIComponent(event.slug)}">Event details →</a></article>`;
-          })
-          .join('');
+      if (!response.ok) throw new Error('events unavailable');
+      const body = (await response.json()) as { events: SpineEvent[] };
+      render(body.events);
+      if (!body.events.length && notice)
+        notice.innerHTML =
+          '<div class="notice"><span class="notice__pin">i</span><div><h3>No dates are published yet</h3><p>Pack volunteers are still scheduling the year. The four milestones above are the shape it will take. <a href="/contact/">Ask a pack adult</a> before making a special trip.</p></div></div>';
     } catch {
-      if (status)
-        status.innerHTML =
-          '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>Calendar unavailable</h3><p>We could not load live event data. Please try again or contact Pack 170 adults.</p></div></div>';
+      // The spine is already on the page, so a failed fetch loses the dates, not the year.
+      if (notice)
+        notice.innerHTML =
+          '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>We could not load live dates</h3><p>The four milestones above still show the shape of the year. Please try again, or <a href="/contact/">ask a pack adult</a> for the next confirmed date.</p></div></div>';
     }
   }
+
   loadCalendar();
 </script>
 <style>
@@ -144,8 +201,10 @@ import { pack } from '../../data/pack';
     flex-wrap: wrap;
     margin-top: 1.5rem;
   }
+  /* The one-line count only. Body copy must never be injected here: the label ramp is uppercase
+     0.76rem, which DESIGN.md reserves for chips and edition marks. Notices go in .calendar-notice. */
   .calendar-status {
-    margin-bottom: 2rem;
+    margin-top: 1.25rem;
     color: var(--muted);
     font-family: var(--font-display);
     font-size: 0.76rem;
@@ -153,84 +212,172 @@ import { pack } from '../../data/pack';
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-  .next-grid,
-  .calendar-help__grid {
+  .calendar-status:empty {
+    margin: 0;
+  }
+  .calendar-notice:not(:empty) {
+    margin-top: 1.5rem;
+  }
+
+  /* One date-ordered stream: milestone anchors carry the year's shape, ordinary dates sit between
+     them, and a month heading opens each new month. A milestone with no date still holds its place
+     from its nominal season, so the spine is intact before any date is entered. */
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: clamp(2rem, 6vw, 5rem);
+    gap: 0.5rem;
+  }
+  .timeline :global(.timeline__month) {
+    margin: 2rem 0 0.35rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
     align-items: center;
   }
-  .next-grid :global(.date-sheet) {
-    display: grid;
-    gap: 0.7rem;
-    padding: clamp(1.5rem, 4vw, 3rem);
-    background: var(--gold);
-    color: var(--blue-deep);
-    border-radius: 7px 20px 8px 7px;
-    box-shadow: var(--shadow-paper);
-    transform: rotate(1deg);
+  .timeline :global(.timeline__month:first-child) {
+    margin-top: 0;
   }
-  .next-grid :global(.date-sheet span) {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 900;
-  }
-  .next-grid :global(.date-sheet strong) {
+  .timeline :global(.timeline__month h3) {
+    margin: 0;
     font-size: 1.15rem;
+    color: var(--blue-deep);
   }
-  .next-grid :global(.date-sheet small) {
-    text-transform: capitalize;
+  /* The rule that finishes the month heading, drawn rather than bordered onto a box. */
+  .timeline :global(.timeline__month::after) {
+    content: '';
+    height: 2px;
+    background: var(--rule);
   }
-  .event-cards {
+  .timeline :global(.timeline__row) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.15rem;
-    margin-top: 3rem;
-  }
-  /* Category drives the accent: the Local Accent Rule wants colour to explain something. */
-  .event-cards :global(article) {
-    --cat: var(--blue);
-    --cat-ink: var(--page);
-    position: relative;
-    padding: 1.5rem;
+    gap: 0.15rem 0.9rem;
+    padding: 0.85rem 1rem;
     background: var(--page);
     border: 1px solid var(--rule);
-    border-radius: 6px 16px 8px 6px;
+    border-radius: 5px 14px 7px 5px;
+  }
+  .timeline :global(.timeline__row--milestone) {
+    --cat: var(--blue);
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    padding: 1.15rem 1.25rem;
+    border: 2px dashed var(--rule);
+    border-radius: 6px 18px 10px 6px;
+  }
+  /* A published milestone becomes a real sheet: solid edge, print shadow, lifted off the page. */
+  .timeline :global(.timeline__row--milestone[data-confirmed]) {
+    border-style: solid;
+    border-color: var(--blue);
     box-shadow: var(--shadow-paper);
   }
-  .event-cards :global(article[data-category='den']) {
-    --cat: var(--green);
-    --cat-ink: var(--page);
+  .timeline :global(.timeline__row--milestone[data-done]) {
+    border-color: var(--rule);
+    box-shadow: none;
+    background: var(--paper);
   }
-  .event-cards :global(article[data-category='family']) {
-    --cat: var(--orange);
-    --cat-ink: var(--ink);
-  }
-  .event-cards :global(article)::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 8px;
-    background: var(--cat);
-    border-radius: 6px 16px 0 0;
-    opacity: 0.77;
-  }
-  .event-cards :global(.event-cat) {
-    display: inline-block;
+  .timeline :global(.timeline__season) {
+    grid-column: 1;
     font-family: var(--font-display);
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--muted);
+  }
+  .timeline :global(.timeline__row--milestone[data-confirmed] .timeline__season) {
+    color: var(--blue);
+  }
+  .timeline :global(.timeline__row--milestone .timeline__title) {
+    grid-column: 1;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--blue-deep);
+  }
+  .timeline :global(.timeline__when) {
+    grid-column: 1;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .timeline :global(.timeline__row--milestone[data-confirmed] .timeline__when) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .timeline :global(.timeline__where) {
+    grid-column: 1;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .timeline :global(.timeline__state) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
     padding: 0.3rem 0.6rem;
     border-radius: 3px 9px 5px 3px;
-    background: var(--cat);
-    color: var(--cat-ink);
-    margin-bottom: 0.9rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
-  .event-cards :global(.event-status) {
+  .timeline :global(.timeline__open) {
+    grid-column: 1;
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+  /* Ordinary dates: a quieter row, category on the right, so the milestones stay the loud thing. */
+  .timeline :global(.timeline__row--event) {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .timeline :global(.timeline__row--event[data-category='den']) {
+    --cat: var(--green);
+  }
+  .timeline :global(.timeline__row--event[data-category='family']) {
+    --cat: var(--orange);
+  }
+  .timeline :global(.timeline__day) {
+    grid-column: 1;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .timeline :global(.timeline__row--event .timeline__title) {
+    grid-column: 1;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .timeline :global(.timeline__row--event .event-cat) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
     display: inline-block;
-    margin: 0 0 0.9rem 0.4rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px 9px 5px 3px;
+    background: var(--cat, var(--blue));
+    color: var(--page);
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .timeline :global(.timeline__row--event[data-category='family'] .event-cat) {
+    color: var(--ink);
+  }
+  .timeline :global(.timeline__row--event .event-status) {
+    grid-column: 1;
+    justify-self: start;
     padding: 0.3rem 0.6rem;
     border-radius: 3px 9px 5px 3px;
     background: var(--red);
@@ -241,27 +388,18 @@ import { pack } from '../../data/pack';
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .event-cards :global(h3) {
-    font-size: 1.15rem;
-    margin: 0 0 0.35rem;
-  }
-  .event-cards :global(article p) {
-    margin: 0 0 0.8rem;
+  /* Server-rendered sibling of .timeline, so it keeps its scope attribute and needs no :global. */
+  .timeline__note {
+    margin-top: 1.5rem;
     color: var(--muted);
     font-size: 0.95rem;
   }
-  .event-cards :global(article a) {
-    font-family: var(--font-display);
-    font-size: 0.82rem;
-    font-weight: 800;
-  }
-  .event-cards :global(.event-date) {
-    display: block;
-    color: var(--blue);
-    font-family: var(--font-display);
-    font-size: 0.82rem;
-    font-weight: 800;
-    margin-bottom: 0.7rem;
+
+  .calendar-help__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
   }
   .calendar-help {
     background: var(--green-deep);
@@ -330,12 +468,19 @@ import { pack } from '../../data/pack';
     align-items: center;
   }
   @media (max-width: 760px) {
-    .next-grid,
     .calendar-help__grid {
       grid-template-columns: 1fr;
     }
-    .event-cards {
+    /* The timeline is already one column; only the category chip needs to stop competing
+       with the title for width on a narrow screen. */
+    .timeline :global(.timeline__row--event) {
       grid-template-columns: 1fr;
+    }
+    .timeline :global(.timeline__row--event .event-cat) {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: start;
+      margin-top: 0.35rem;
     }
     .calendar-help__sheet {
       transform: none;
