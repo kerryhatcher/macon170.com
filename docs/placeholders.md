@@ -62,8 +62,8 @@ a placeholder.
 
 ### `src/data/pack.ts` annual program (L76–81)
 
-Five entries whose `state` is a placeholder string, surfaced on the homepage timeline:
-Join Scouting Night, Fall camp, Popcorn fundraiser, Pinewood Derby, Blue & Gold Banquet —
+Four entries whose `state` is a placeholder string, surfaced on the homepage timeline:
+Join Scouting Night, Fall camp, Pinewood Derby, Blue & Gold Banquet —
 all "Date to be added" / "Dates to be added".
 
 The standalone "Spring · Crossover" milestone was removed 2026-07-28: the Cubmaster confirmed the
@@ -71,6 +71,9 @@ crossover happens **at** the Blue & Gold Banquet and that the pack calls it the 
 Ceremony**, which matches `docs/research/cub-scouting.md:70`. Listing it separately implied a sixth
 event that does not exist, and that row could never have matched a real calendar event. Its
 keywords moved onto Blue & Gold; the homepage heading went from "Six milestones" to "Five".
+
+The popcorn fundraiser was removed 2026-07-28 as well: Pack 170 does not sell popcorn (Cubmaster).
+The homepage heading is now "Four milestones".
 
 ## Placeholder graphics
 

@@ -95,7 +95,6 @@ export const ranks = [
 export const annualProgram = [
   { season: 'Fall', title: 'Join Scouting Night', state: 'Date to be added', match: { keywords: ['join scouting'], months: [7, 8, 9] } },
   { season: 'Fall', title: 'Fall camp', state: 'Dates to be added', match: { keywords: ['fall camp', 'day camp', 'resident camp'], months: [8, 9, 10] } },
-  { season: 'Sep–Nov', title: 'Popcorn fundraiser', state: 'Dates to be added', match: { keywords: ['popcorn'], months: [8, 9, 10] } },
   { season: 'Late January', title: 'Pinewood Derby', state: 'Date to be added', match: { keywords: ['pinewood'], months: [0, 1] } },
   // The crossover is not a separate milestone: Pack 170 holds it at the Blue & Gold Banquet, and
   // the pack calls it the Arrow of Light Ceremony (both confirmed by the Cubmaster, 2026-07-28).
