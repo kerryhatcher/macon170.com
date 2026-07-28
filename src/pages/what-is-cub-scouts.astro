@@ -38,12 +38,13 @@ const asks = [
   <section class="section">
     <div class="container">
       <div class="plan-callout">
-        <h2 class="plan-callout-head">Supporting BCSD's stated goals</h2>
+        <h2 class="plan-callout-head">Buildig stakeholder engagement</h2>
         <p class="lead">
-          Bibb County's <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a> names its own theory of action: <q
-            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive
+          Bibb County's <a href={planUrl} {...externalLink(planUrl)}>2023–2028 strategic plan</a> names its own theory of action: <p><q
+            >if we build stakeholder engagement of students, parents staff and community, and strengthen staff effectiveness to drive 
             teaching and learning, we will maximize student achievement.</q
-          > A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for by
+          ></p> 
+          A Cub Scout pack can help meet that goal, with a standing, year-round reason for families to be engaged — organized and paid for by
           its members.
         </p>
       </div>
@@ -280,6 +281,12 @@ const asks = [
   }
   .plan-callout-head {
     margin: 0 0 0.75rem;
+  }
+  /* The district's own words carry the argument, so they outsize the sentences framing them. */
+  .plan-callout q {
+    font-size: 1.15em;
+    font-style: italic;
+    font-weight: 700;
   }
   .plan-callout .lead {
     margin: 0;
