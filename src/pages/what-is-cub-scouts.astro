@@ -290,8 +290,13 @@ const asks = [
   /* Keeps the global h2 `headline` step, as the callout heading had before. The quote sits a step
      below at `subtitle`, which is what DESIGN.md names for emphasis inside a coloured sheet. */
   .plan-slab__head {
+    width: fit-content;
     margin: 0 0 0.6rem;
-    color: #fff;
+    padding: 0.1em 0.3em;
+    /* Gold as a marker field with midnight ink, the same pairing as the highlight button — not
+       gold type. */
+    background: var(--gold);
+    color: var(--blue-deep);
   }
   .plan-slab__source {
     margin: 0 0 0.85rem;
