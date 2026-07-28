@@ -98,6 +98,14 @@ export const annualProgram = [
   // The year opens with the Lego Pinewood Derby & Cookout — a free August event families are asked
   // to invite anyone interested in Scouting to, so it is the pack's Join Scouting Night in practice
   // (docs/calendar.md:4, Cubmaster 2026-07-28). There is no separate Join Scouting Night milestone.
+  //
+  // Why Lego, and why it opens the year (Cubmaster 2026-07-28): the cars are built out of Lego at
+  // the event itself, on the same track and setup and under the same tournament rules as the real
+  // Pinewood Derby in late January. The January derby needs a wooden car built at home beforehand,
+  // which a family that has just heard of the pack cannot have; building on the spot lets a
+  // prospective or brand-new Scout join the build instead of arriving empty-handed, and the kids
+  // iterate on designs during the event. It is a genuine dry run of the January experience, not a
+  // toy substitute for it — which is exactly why it works as the recruiting event.
   // sortMonth places a milestone on the /calendar/ timeline before any event is associated with it,
   // so the spine keeps its shape while dates are still being entered. It is the nominal month of the
   // season, not a claim about a date: months from August on belong to the program year's opening
