@@ -15,9 +15,21 @@
     "outside these bands still surface. 55px is deliberately excluded — it is a one-off",
     "in the codebase and should be reviewed rather than blessed.",
     "",
-    "Kept at the project root on purpose: .impeccable/ is gitignored, so a sidecar there",
-    "would silence findings on one machine and nowhere else."
+    "Kept at the project root on purpose: .impeccable/ is gitignored except for config.json",
+    "(see .gitignore:161-163), so a sidecar at .impeccable/design.json would silence findings",
+    "on one machine and nowhere else. The skill reports this location as a legacy path and",
+    "offers to migrate it; that migration is declined on purpose and should stay declined.",
+    "",
+    "This file carries detector tuning only. The generator's optional panel payload —",
+    "component html/css snippets, per-token tonalRamp arrays for the whole palette, and a",
+    "narrative block restating DESIGN.md's north star, rules, and do's/don'ts — is left out",
+    "deliberately: it is consumed by the live panel, not the detector, and duplicating",
+    "DESIGN.md's prose here would create a second source of truth that drifts. Add it only",
+    "when someone actually uses the panel."
   ],
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-28T05:00:00.000Z",
+  "title": "Design System: Pack 170 Elementary Adventure Handbook",
   "extensions": {
     "colorMeta": {
       "illustrationSky": {
