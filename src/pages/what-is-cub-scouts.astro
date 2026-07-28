@@ -150,8 +150,8 @@ const asks = [
     </div>
   </section>
 
-  <section class="section parent-section">
-    <div class="container parent-grid">
+  <section class="join-signpost">
+    <div class="container join-signpost__inner">
       <p>Looking to enroll your own child instead?</p>
       <a class="button button--paper" href="/join/">See how to join Pack 170</a>
     </div>
@@ -274,18 +274,27 @@ const asks = [
     gap: 2rem;
     align-items: center;
   }
-  .parent-section {
-    border-top: 1px solid var(--rule);
+  /* A parent landing on a page written for schools needs a door of their own, so the
+     handoff is signposted as its own gold band rather than a hairline-ruled afterthought
+     tacked onto the end of the partner CTA. */
+  .join-signpost {
+    padding: clamp(2rem, 4vw, 3rem) 0;
+    background: var(--gold);
+    color: var(--blue-deep);
   }
-  .parent-grid {
+  .join-signpost__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
     flex-wrap: wrap;
   }
-  .parent-grid p {
+  .join-signpost__inner p {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 900;
+    max-width: 34ch;
   }
   @media (max-width: 800px) {
     .aims-grid {
