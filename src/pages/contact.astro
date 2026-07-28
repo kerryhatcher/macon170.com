@@ -27,6 +27,7 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
         method="post"
         action={pack.contact.formEndpoint ?? undefined}
         aria-describedby={!hasEndpoint ? 'form-status' : undefined}
+        data-endpoint-ready={hasEndpoint}
       >
         <span class="chapter-tab">Parent note</span><h2>Send a question</h2><div
           class="success-message"
@@ -86,8 +87,11 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
           data-action="turnstile-spin-v2"
           data-size="flexible"
           data-theme="light"
+          data-callback="onTurnstileSuccess"
+          data-error-callback="onTurnstileError"
+          data-expired-callback="onTurnstileExpired"
         >
-        </div><button class="button button--blue" type="submit" disabled={!hasEndpoint}
+        </div><button class="button button--blue" type="submit" id="contact-submit" disabled={!hasEndpoint}
           >{hasEndpoint ? 'Send securely to pack adults' : 'Form connection pending'}</button
         >{
           !hasEndpoint && (
@@ -95,7 +99,15 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
               The secure form connection is not ready yet.
             </p>
           )
-        }
+        }<div class="notice notice--editor" id="turnstile-notice" role="alert" hidden>
+          <span class="notice__pin">!</span><div>
+            <h3>Security check didn’t load</h3><p>
+              Your note can’t be sent securely right now.{' '}
+              <a href={pack.links.facebook} {...externalLink(pack.links.facebook)}>Message Pack 170 on Facebook</a>{' '}
+              so a volunteer can help, or reload this page to try again.
+            </p>
+          </div>
+        </div>
       </form><aside>
         <div class="notice">
           <span class="notice__pin">✓</span><div>
@@ -237,5 +249,39 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     success.hidden = false;
     success.focus();
     window.history.replaceState({}, '', `${window.location.pathname}#contact-form`);
+  }
+
+  // The server only knows whether a form endpoint is configured; it cannot know whether the
+  // Turnstile widget actually loads in this parent's browser. Bind the submit control to the
+  // widget's real outcome so an enabled button never lies about being able to send: start
+  // disabled, enable only once Turnstile hands back a token, and re-disable with a named
+  // reason if the widget errors or its token expires before the parent submits.
+  declare global {
+    interface Window {
+      onTurnstileSuccess?: () => void;
+      onTurnstileError?: () => void;
+      onTurnstileExpired?: () => void;
+    }
+  }
+
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+  const submitButton = document.querySelector<HTMLButtonElement>('#contact-submit');
+  const turnstileNotice = document.querySelector<HTMLElement>('#turnstile-notice');
+  const endpointReady = form?.hasAttribute('data-endpoint-ready') ?? false;
+
+  if (endpointReady && submitButton) {
+    submitButton.disabled = true;
+
+    window.onTurnstileSuccess = () => {
+      submitButton.disabled = false;
+      turnstileNotice?.setAttribute('hidden', '');
+    };
+
+    window.onTurnstileError = () => {
+      submitButton.disabled = true;
+      turnstileNotice?.removeAttribute('hidden');
+    };
+
+    window.onTurnstileExpired = window.onTurnstileError;
   }
 </script>

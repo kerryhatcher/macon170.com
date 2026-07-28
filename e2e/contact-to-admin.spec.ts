@@ -46,6 +46,14 @@ test('parent submission appears in the volunteer desk with no console errors', a
     input.name = 'cf-turnstile-response';
     input.value = 'XXXX.DUMMY.TOKEN.XXXX';
     form.appendChild(input);
+
+    // The stubbed api.js above never renders a real widget, so it never calls
+    // onTurnstileSuccess and the submit button stays disabled (see contact.astro's
+    // Turnstile-binding script). Standing in for that callback is the same kind of
+    // deterministic substitution as the dummy token above: this spec exercises the
+    // submission path, not the widget itself.
+    const submitButton = document.querySelector('#contact-submit') as HTMLButtonElement | null;
+    if (submitButton) submitButton.disabled = false;
   });
 
   await page.click('#contact-form button[type="submit"]');
@@ -67,4 +75,27 @@ test('parent submission appears in the volunteer desk with no console errors', a
 
   expect(consoleErrors, `Unexpected console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   expect(pageErrors, `Unexpected page errors: ${pageErrors.join('\n')}`).toEqual([]);
+});
+
+// Stage 5 hardening: contact.astro previously enabled "Send securely to pack adults" whenever
+// a form endpoint was configured, with no check that Turnstile itself had succeeded. A parent
+// whose widget failed to load got a button that looked live but could never actually send - and
+// the page said nothing about why. Turnstile's own widget legitimately rejects a bare localhost
+// domain (error 110200), which makes this the real widget's real error-callback firing, not a
+// mock - the same failure a parent would see if the widget failed in production.
+test('submit stays disabled and names the problem when Turnstile fails to load', async ({ page }) => {
+  await page.goto('/contact');
+
+  const submitButton = page.locator('#contact-submit');
+  const notice = page.locator('#turnstile-notice');
+
+  // The control starts disabled and stays disabled - per DESIGN.md's Inputs rule, a disabled
+  // action must remain visible and name the missing connection once known. localhost is not a
+  // domain this widget is registered for, so Turnstile's error-callback fires for real within a
+  // few seconds (sometimes before this assertion even runs, so this test does not pin the
+  // pre-error instant).
+  await expect(submitButton).toBeDisabled();
+  await expect(notice).toBeVisible({ timeout: 15_000 });
+  await expect(submitButton).toBeDisabled();
+  await expect(notice).toContainText('Message Pack 170 on Facebook');
 });
