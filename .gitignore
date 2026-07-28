@@ -176,6 +176,11 @@ graphify-out/.graph.tmp.json
 .firecrawl
 .claude/worktrees
 
+# Pack photos we looked at but did not place. Kept on disk as a bench to pull from when a page
+# needs an image, but untracked: Astro only processes what a page imports, so an unused photo
+# is pure repo weight. Move one back up to assets/packphotos/ when you actually use it.
+assets/packphotos/unused/
+
 # Local scrape of the scouting.org adventure pages, kept for reference while writing
 # src/data/adventures.ts. It holds the full requirement text, which is Scouting America
 # publication content and must not be committed here - cite the scouting.org URLs instead.
