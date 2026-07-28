@@ -14,6 +14,25 @@ colors:
   river-green-deep: '#28543F'
   cherry-blossom: '#E8A3C6'
   brick-red: '#A33C34'
+  # The fourth category accent. Blue means pack, river green means den, and this means family
+  # on the calendar; it carries meaning under the Local Accent Rule exactly like the other three.
+  event-orange: '#E87722'
+  # Working steps the four fields above cannot supply. Each exists because a specific pairing
+  # needed a value the primary ramp does not hold: legible small text on a blue or green field,
+  # a quieter footer step, a gold that can take charcoal on top, and the input stroke the
+  # Inputs component asks for by description.
+  blue-soft: '#DBEAF8'
+  blue-dim: '#B8CCE0'
+  green-soft: '#E8F4EC'
+  gold-deep: '#E5B900'
+  field-stroke: '#8794A0'
+  # The three Notice states (see the Notice component): pending/editor task, success, cancellation.
+  # Each is a light field that keeps pencil charcoal readable; the gold one carries its own ink
+  # because charcoal on the pale gold reads as a warning rather than a note.
+  notice-gold: '#FFF8CD'
+  notice-gold-ink: '#B18D00'
+  notice-green: '#E6F4EA'
+  notice-red: '#FBE9E7'
   # Paper is a monochrome medium and a volunteer's printer is usually black-only, so on
   # paper the palette collapses to this four-step ink ramp: the blue and green fields
   # become type on white and a rule carries the separation the fill used to. Valid only
@@ -39,7 +58,7 @@ colors:
   desk-chip-published: '#d9efdf'
   desk-chip-archived: '#eee'
   desk-chip-archived-ink: '#555'
-  desk-dot-new: '#82909a'
+  desk-dot-default: '#82909a'
   desk-dot-active: '#d39b00'
   desk-dot-resolved: '#34815e'
 typography:
@@ -189,8 +208,27 @@ Cub Blue and Gold establish unmistakable program recognition; warm paper keeps l
 ### Secondary
 
 - **River Green:** Outdoor chapters, practical guidance, and calm supporting fields.
-- **Cherry Blossom:** Sparse spring and Macon annotation, never a generic feminine cue.
+- **Cherry Blossom:** Sparse spring and Macon annotation, never a generic feminine cue. Committed in PRODUCT.md and reserved; it is declared in `global.css` but not yet placed on a surface.
 - **Brick Red:** Cancellation, editor warning, and rare heritage emphasis.
+- **Event Orange:** The family-audience event on the calendar, completing the category set with Cub Blue (pack) and River Green (den).
+
+### Working Steps
+
+Values the four fields above cannot supply on their own. Each one exists for a specific pairing, and none of them is a decorative addition to the palette.
+
+- **Blue Soft:** Body-scale text and rules on a Cub Blue field, where Pencil Muted would fall below AA.
+- **Blue Dim:** The quieter footer and legal step, one stop back from Blue Soft.
+- **Green Soft:** The green field's counterpart to Blue Soft.
+- **Gold Deep:** A gold that still carries charcoal on top, for a rule or dashed edge rather than a fill.
+- **Field Stroke:** The two-pixel gray-blue input stroke the Inputs component describes.
+
+### Notice States
+
+The three states the Notice component can carry. Each is a light field so Pencil Charcoal stays readable on it.
+
+- **Notice Gold / Notice Gold Ink:** Pending data or an editor task. This is the one notice that carries its own ink, because charcoal on the pale gold reads as a warning rather than a note.
+- **Notice Green:** A completed action, such as a sent contact form.
+- **Notice Red:** A cancellation or a failed load, paired with Brick Red on the border.
 
 ### Neutral
 
@@ -207,11 +245,13 @@ The volunteer desk borrows the palette above for its chrome and adds only what a
 - **Desk Header Tint:** Small supporting text on the midnight-blue desk bar, where pencil muted would fall below AA.
 - **Desk Field Stroke:** The input, select, and textarea outline. Heavier than a rule line because a form is the desk's primary instrument.
 - **Desk Chip Neutral / Draft / Published / Archived:** Visibility state on an event, as a small filled mark. Draft and archived carry their own paired ink; published pairs with river green deep.
-- **Desk Dot New / Active / Resolved:** Parent-inquiry status in the inbox, as a filled dot beside the row.
+- **Desk Dot Default / Active / Resolved:** The reinforcing dot inside a state chip. Default covers an unclassed or set-aside row; active and resolved carry in-progress and resolved. A new inquiry reuses Brick Red rather than owning a value of its own.
 
-**The Desk Stays Behind the Door Rule.** Desk colors are valid only in `worker/index.ts` and `worker/calendar-admin.ts`. A desk token on a family-facing page is a defect, and a family-facing composition inside the desk is misplaced effort: the desk earns its keep by being legible and fast, not expressive.
+**The Desk Stays Behind the Door Rule.** Desk colors are valid only in `worker/desk-chrome.ts`, `worker/index.ts`, and `worker/calendar-admin.ts`. A desk token on a family-facing page is a defect, and a family-facing composition inside the desk is misplaced effort: the desk earns its keep by being legible and fast, not expressive.
 
-**The State Reads Without Color Rule.** A state mark must never carry its meaning in hue alone: it is labelled in text, or it is not a state mark. The event chips satisfy this — each one prints its visibility word inside the fill. The inbox dots in `worker/index.ts` currently do not: `<span class="dot new"></span>` is an empty span whose only signal is its color, so new-versus-active-versus-resolved is invisible to a color-blind volunteer and to a screen reader. That is a known WCAG 1.4.1 gap against PRODUCT.md's AA commitment, recorded here rather than quietly blessed, and the fix is the chip pattern the sibling page already uses.
+**The State Reads Without Color Rule.** A state mark must never carry its meaning in hue alone: it is labelled in text, or it is not a state mark. One `.state` chip in `worker/desk-chrome.ts` serves both surfaces — event visibility in the calendar editor and inquiry status in the inbox — and it always prints its word, with the fill and the reinforcing dot supporting the label rather than replacing it. Variants set only custom properties, so no variant can introduce a color this document has not named. The inbox previously used a bare colored dot, which was invisible to a color-blind volunteer and silent to a screen reader; that WCAG 1.4.1 gap against PRODUCT.md's AA commitment is closed.
+
+**The Chrome Is Shared Rule.** Both desk pages render their skip link, header, badge, section nav, identity block, filter buttons, and state chip from `worker/desk-chrome.ts`. They drifted once — one page had a styled skip link, 44px filter targets, and a labelled filter nav, and the other had none of the three — so anything a volunteer sees on both pages belongs in the shared module, and only the instrument itself (the inbox's two-pane desk, the editor's form grid) stays in the page file.
 
 **The Gold Is a Marker Rule.** Gold marks what to do or notice; it is never body copy and never scattered as confetti.
 
