@@ -17,7 +17,7 @@
   "r2_buckets": [{ "binding": "MEDIA_BUCKET", "bucket_name": "macon170-cms-media" }],
   "vars": {
     "ENVIRONMENT": "production",
-    "CORS_ORIGINS": "https://www.macon170.com,http://localhost:41771"
+    "CORS_ORIGINS": "https://www.macon170.com"
   },
   "observability": {
     "enabled": true,

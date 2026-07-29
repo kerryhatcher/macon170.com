@@ -41,6 +41,12 @@ Its first collection is **Volunteer leadership roster**. Each record is a role; 
    npm run dev
    ```
 
+   Configure LAN-only browser origins in the ignored `cms/.dev.vars` file:
+   ```dotenv
+   CORS_ORIGINS=http://localhost:41771,http://kudzu:41771
+   ```
+   The committed Worker configuration permits only `https://www.macon170.com` in production.
+
 6. **Open your browser:**
    Navigate to `http://kudzu:41772/admin` from any computer on the LAN to access the admin interface.
 

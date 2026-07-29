@@ -191,7 +191,8 @@ import { externalLink } from '../lib/external-link';
           const role = document.createElement('strong');
           role.textContent = entry.title;
           item.appendChild(role);
-          item.appendChild(document.createTextNode(entry.data.name?.trim() || 'Open volunteer role'));
+          const name = entry.data.name?.trim();
+          if (name) item.appendChild(document.createTextNode(name));
           list.appendChild(item);
         }
         fragment.appendChild(heading);
@@ -204,7 +205,7 @@ import { externalLink } from '../lib/external-link';
       }
       roster.replaceChildren(fragment);
     } catch {
-      emptyMessage('The volunteer leadership roster is temporarily unavailable. Please use the contact form to reach the pack.');
+      roster.replaceChildren();
     }
   }
 
