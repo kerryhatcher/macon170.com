@@ -16,8 +16,8 @@ bun run db:migrate:local
 
 Two ways to run it locally:
 
-- `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1.
-- `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `localhost:8787`. Use this for anything touching `worker/`.
+- `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1. It binds to `0.0.0.0:41771` for LAN access.
+- `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `0.0.0.0:8787`. Use this for anything touching `worker/`.
 
 `.dev.vars` provides `TURNSTILE_SECRET` set to Cloudflare's documented always-pass test secret — safe for local use, never used in production. Never commit a real Turnstile or Cloudflare secret.
 

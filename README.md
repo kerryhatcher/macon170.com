@@ -139,8 +139,8 @@ Actions secrets, is documented in
 
 | Command                   | What it does                                                     |
 | ------------------------- | ---------------------------------------------------------------- |
-| `bun run dev`             | Astro dev server only (no API, no D1)                            |
-| `bun run dev:worker`      | Full Worker + static site + local D1, at `:8787`                 |
+| `bun run dev`             | Astro dev server only (no API, no D1), exposed on the LAN at `:41771` |
+| `bun run dev:worker`      | Full Worker + static site + local D1, exposed on the LAN at `:8787` |
 | `bun run build`           | Type-checks and builds to `dist/`                                |
 | `bun run test`            | [Vitest](https://vitest.dev) unit + integration                  |
 | `bun run test:e2e`        | [Playwright](https://playwright.dev) e2e coverage                |
