@@ -12,6 +12,36 @@ import denLeader from '../../assets/packphotos/Stephanie_awards.jpeg';
 import scoutHut from '../../assets/packphotos/scout-hut.avif';
 import practiceTogether from '../../assets/packphotos/9-576A9059.jpg';
 import { externalLink } from '../lib/external-link';
+
+type LeadershipEntry = {
+  title: string;
+  data: {
+    name?: string;
+    section?: 'pack-leadership' | 'den-leaders';
+    sortOrder?: number;
+  };
+};
+
+type LeadershipResponse = { data?: LeadershipEntry[] };
+
+const cmsRosterUrl = import.meta.env.DEV
+  ? 'http://kudzu:41772/api/collections/leadership-roster/content'
+  : 'https://cms.macon170.com/api/collections/leadership-roster/content';
+const leadershipSections = [
+  ['pack-leadership', 'Who leads Pack 170'],
+  ['den-leaders', 'Den Leaders'],
+] as const;
+
+let initialLeadershipEntries: LeadershipEntry[] = [];
+try {
+  const response = await fetch(cmsRosterUrl, { signal: AbortSignal.timeout(5_000) });
+  if (response.ok) {
+    const body = (await response.json()) as LeadershipResponse;
+    initialLeadershipEntries = body.data ?? [];
+  }
+} catch {
+  // The browser refresh below gets another chance. If it also fails, the roster stays blank.
+}
 ---
 
 <BaseLayout
@@ -121,8 +151,33 @@ import { externalLink } from '../lib/external-link';
           >.
         </figcaption>
       </figure>
-      <div class="roster" id="leadership-roster" aria-live="polite">
-        <p>Loading the current volunteer leadership roster…</p>
+      <div class="roster">
+        <h2>Who leads Pack 170</h2>
+        <p>Pack 170 is run by registered adult volunteers who are Youth Protection trained and background-checked.</p>
+        <div id="leadership-roster" aria-live="polite">
+          {
+            leadershipSections.map(([sectionKey, sectionTitle]) => {
+              const sectionEntries = initialLeadershipEntries
+                .filter((entry) => entry.data.section === sectionKey)
+                .sort((a, b) => (a.data.sortOrder ?? 0) - (b.data.sortOrder ?? 0));
+              if (sectionEntries.length === 0) return null;
+
+              return (
+                <>
+                  {sectionKey === 'den-leaders' && <h2>{sectionTitle}</h2>}
+                  <ul>
+                    {sectionEntries.map((entry) => (
+                      <li>
+                        <strong>{entry.title}</strong>
+                        {entry.data.name?.trim()}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -158,10 +213,6 @@ import { externalLink } from '../lib/external-link';
     ['den-leaders', 'Den Leaders'],
   ] as const;
 
-  function emptyMessage(message: string) {
-    if (roster) roster.replaceChildren(Object.assign(document.createElement('p'), { textContent: message }));
-  }
-
   async function loadLeadershipRoster() {
     if (!roster) return;
 
@@ -172,7 +223,7 @@ import { externalLink } from '../lib/external-link';
       const body = (await response.json()) as LeadershipResponse;
       const entries = body.data ?? [];
       if (entries.length === 0) {
-        emptyMessage('The volunteer leadership roster is being updated. Please use the contact form to reach the pack.');
+        roster.replaceChildren();
         return;
       }
 
@@ -183,9 +234,12 @@ import { externalLink } from '../lib/external-link';
           .sort((a, b) => (a.data.sortOrder ?? 0) - (b.data.sortOrder ?? 0));
         if (sectionEntries.length === 0) continue;
 
-        const heading = document.createElement('h2');
-        heading.textContent = sectionTitle;
         const list = document.createElement('ul');
+        if (sectionKey === 'den-leaders') {
+          const heading = document.createElement('h2');
+          heading.textContent = sectionTitle;
+          fragment.appendChild(heading);
+        }
         for (const entry of sectionEntries) {
           const item = document.createElement('li');
           const role = document.createElement('strong');
@@ -195,17 +249,16 @@ import { externalLink } from '../lib/external-link';
           if (name) item.appendChild(document.createTextNode(name));
           list.appendChild(item);
         }
-        fragment.appendChild(heading);
         fragment.appendChild(list);
       }
 
       if (!fragment.childNodes.length) {
-        emptyMessage('The volunteer leadership roster is being updated. Please use the contact form to reach the pack.');
+        roster.replaceChildren();
         return;
       }
       roster.replaceChildren(fragment);
     } catch {
-      roster.replaceChildren();
+      // Retain the roster rendered during the static build if the live refresh fails.
     }
   }
 
