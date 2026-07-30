@@ -5,7 +5,7 @@ import { pack } from '../data/pack';
 import { externalLink } from '../lib/external-link';
 import { CONTACT_SUBMISSION_URL } from '../lib/cms-origin';
 const hasEndpoint = Boolean(CONTACT_SUBMISSION_URL);
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '0x4AAAAAAD-sr-Bk7AntxyZ7';
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY?.trim() || '0x4AAAAAAD-sr-Bk7AntxyZ7';
 ---
 
 <BaseLayout title="Contact Pack 170" description="Parents and guardians can contact adult volunteers with Cub Scout Pack 170 questions.">
@@ -103,7 +103,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '0x4AAAAAA
         >{
           !hasEndpoint && (
             <p class="form-status" id="form-status" role="status">
-              The secure form connection is not ready yet.
+              Contact submissions are not enabled for this build.
             </p>
           )
         }<p class="turnstile-status" id="turnstile-status" role="status" hidden></p><div

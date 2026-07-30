@@ -19,10 +19,11 @@ Two ways to run it locally:
   `0.0.0.0:8787`. The contact API and volunteer queue run in the separate
   `macon170-cms` project.
 
-Calendar pages call the CMS directly. In development they use
-`http://localhost:41772` by default; set `PUBLIC_CALENDAR_CMS_ORIGIN` before the
-Astro build to use another local CMS origin. Production builds always use
-`https://cms.macon170.com`.
+Calendar pages, the leadership roster, and the contact form call the CMS
+directly. They default to `https://cms.macon170.com`; set
+`PUBLIC_CMS_ORIGIN=http://localhost:41772` before the Astro build to use a
+local CMS. Do not use the retired `PUBLIC_CALENDAR_CMS_ORIGIN` setting: all
+CMS-derived URLs now share `PUBLIC_CMS_ORIGIN`.
 
 This project has no contact-form secret or D1 binding. Never copy the CMS
 `TURNSTILE_SECRET`, database values, or authentication configuration here.

@@ -1,7 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 
 const turnstileScript = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-const cmsSubmit = 'https://cms.macon170.com/api/forms/contact/submit';
+const cmsOrigin = process.env.PUBLIC_CMS_ORIGIN?.trim().replace(/\/$/, '') || 'https://cms.macon170.com';
+const cmsSubmit = `${cmsOrigin}/api/forms/contact/submit`;
 
 async function stubTurnstile(page: Page) {
   await page.route(turnstileScript, (route) =>
