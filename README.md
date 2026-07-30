@@ -117,9 +117,10 @@ bun install --frozen-lockfile
 <details>
 <summary><strong>Environment variables reference</strong></summary>
 
-| Variable                     | Where                        | Purpose                                                     |
-| ---------------------------- | ---------------------------- | ----------------------------------------------------------- |
-| `PUBLIC_CALENDAR_CMS_ORIGIN` | local build environment only | Optional local CMS origin for calendar reads during a build |
+| Variable                    | Where             | Purpose                                                                    |
+| --------------------------- | ----------------- | -------------------------------------------------------------------------- |
+| `PUBLIC_CMS_ORIGIN`         | build environment | Optional CMS origin; defaults to production and is used for every CMS URL  |
+| `PUBLIC_TURNSTILE_SITE_KEY` | build environment | Optional public Turnstile key; CMS previews use Cloudflare's test site key |
 
 The Turnstile secret, contact allowlists, rate limit, D1 binding, and CMS
 authentication configuration belong to `macon170-cms`, not this project. Full

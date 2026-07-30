@@ -12,6 +12,7 @@ import denLeader from '../../assets/packphotos/Stephanie_awards.jpeg';
 import scoutHut from '../../assets/packphotos/scout-hut.avif';
 import practiceTogether from '../../assets/packphotos/9-576A9059.jpg';
 import { externalLink } from '../lib/external-link';
+import { LEADERSHIP_ROSTER_URL } from '../lib/cms-origin';
 
 type LeadershipEntry = {
   title: string;
@@ -24,9 +25,7 @@ type LeadershipEntry = {
 
 type LeadershipResponse = { data?: LeadershipEntry[] };
 
-const cmsRosterUrl = import.meta.env.DEV
-  ? 'http://kudzu:41772/api/collections/leadership-roster/content'
-  : 'https://cms.macon170.com/api/collections/leadership-roster/content';
+const cmsRosterUrl = LEADERSHIP_ROSTER_URL;
 const leadershipSections = [
   ['pack-leadership', 'Who leads Pack 170'],
   ['den-leaders', 'Den Leaders'],
@@ -193,6 +192,7 @@ try {
   </section>
 </BaseLayout>
 <script>
+  import { LEADERSHIP_ROSTER_URL } from '../lib/cms-origin';
   type LeadershipEntry = {
     title: string;
     data: {
@@ -205,9 +205,7 @@ try {
   type LeadershipResponse = { data?: LeadershipEntry[] };
 
   const roster = document.querySelector<HTMLElement>('#leadership-roster');
-  const cmsRosterUrl = import.meta.env.DEV
-    ? 'http://kudzu:41772/api/collections/leadership-roster/content'
-    : 'https://cms.macon170.com/api/collections/leadership-roster/content';
+  const cmsRosterUrl = LEADERSHIP_ROSTER_URL;
   const sections = [
     ['pack-leadership', 'Who leads Pack 170'],
     ['den-leaders', 'Den Leaders'],

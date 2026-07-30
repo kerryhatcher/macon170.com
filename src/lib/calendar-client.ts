@@ -27,14 +27,9 @@ export type CalendarEvent = {
   publishedAt: string;
 };
 
-const PRODUCTION_CALENDAR_API = 'https://cms.macon170.com/api/calendar/v1';
-const DEVELOPMENT_CALENDAR_API = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN
-  ? `${import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN.replace(/\/$/, '')}/api/calendar/v1`
-  : 'http://localhost:41772/api/calendar/v1';
-const isLocalPage = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+import { CALENDAR_API_BASE, CALENDAR_SUBSCRIPTION_URL } from './cms-origin';
 
-export const CALENDAR_API_BASE = import.meta.env.DEV || isLocalPage ? DEVELOPMENT_CALENDAR_API : PRODUCTION_CALENDAR_API;
-export const CALENDAR_SUBSCRIPTION_URL = `${PRODUCTION_CALENDAR_API}/calendar.ics`;
+export { CALENDAR_API_BASE, CALENDAR_SUBSCRIPTION_URL };
 
 const statuses = new Set<CalendarEventStatus>(['scheduled', 'tentative', 'cancelled']);
 const categories = new Set<CalendarEventCategory>(['pack', 'den', 'family']);

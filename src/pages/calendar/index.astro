@@ -19,7 +19,7 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
     <div slot="actions" class="hero-actions">
       <a class="button button--gold" href="#program-year">See the program year</a><a
         class="button button--paper"
-        href="webcal://cms.macon170.com/api/calendar/v1/calendar.ics">Subscribe to calendar</a
+        href={calendarSubscriptionUrl}>Subscribe to calendar</a
       >
     </div>
     <p slot="note">At {pack.meeting.location}. Den schedules vary.</p>
@@ -72,7 +72,7 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
         </p>
       </div>
       <div class="subscribe-card__actions">
-        <a class="button button--blue" href="webcal://cms.macon170.com/api/calendar/v1/calendar.ics">Open calendar app</a>
+        <a class="button button--blue" href={calendarSubscriptionUrl}>Open calendar app</a>
         <button class="button button--paper" type="button" data-copy-calendar data-calendar-url={calendarSubscriptionUrl}
           >Copy subscription URL</button
         >
