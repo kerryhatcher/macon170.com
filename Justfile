@@ -1,7 +1,8 @@
 install:
   bun install
 
-# Astro dev on :4321 (fast HMR, no D1) plus the Worker on :8787 (D1, contact API, admin desk).
+# Astro dev on :41771 (fast HMR, no D1) plus the Worker on :8787 (D1, contact API, admin desk),
+# both bound to 0.0.0.0 for access from the local network.
 # The Worker takes a while to appear: dev:worker runs a full build first.
 run: install
   #!/usr/bin/env bash

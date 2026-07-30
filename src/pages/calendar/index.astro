@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, annualProgram } from '../../data/pack';
+
+const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
 ---
 
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
@@ -14,8 +16,9 @@ import { pack, annualProgram } from '../../data/pack';
     noteBody={`${pack.meeting.cadence} · ${pack.meeting.day}s at ${pack.meeting.time}`}
   >
     <div slot="actions" class="hero-actions">
-      <a class="button button--gold" href="#program-year">See the program year</a><a class="button button--paper" href="/contact/"
-        >Ask about a date</a
+      <a class="button button--gold" href="#program-year">See the program year</a><a
+        class="button button--paper"
+        href="webcal://www.macon170.com/api/calendar.ics">Subscribe to calendar</a
       >
     </div>
     <p slot="note">At {pack.meeting.location}. Den schedules vary.</p>
@@ -52,6 +55,28 @@ import { pack, annualProgram } from '../../data/pack';
         id="calendar-notice"
         class="calendar-notice"
       >
+      </div>
+    </div>
+  </section>
+
+  <section class="section subscribe-section">
+    <div class="container subscribe-card paper-sheet">
+      <div>
+        <span class="chapter-tab">Stay in sync</span><h2>Let your phone keep the dates current.</h2><p>
+          Subscribe once and published Pack 170 events will appear in your calendar app. When a volunteer changes a time, place, or status,
+          the subscription updates automatically the next time your app refreshes.
+        </p>
+        <p class="subscribe-card__fine">
+          Calendar apps choose their own refresh schedule, so a last-minute change may take a little while to appear.
+        </p>
+      </div>
+      <div class="subscribe-card__actions">
+        <a class="button button--blue" href="webcal://www.macon170.com/api/calendar.ics">Open calendar app</a>
+        <button class="button button--paper" type="button" data-copy-calendar data-calendar-url={calendarSubscriptionUrl}
+          >Copy subscription URL</button
+        >
+        <p class="subscribe-card__status" role="status" aria-live="polite" data-copy-status></p>
+        <code>{calendarSubscriptionUrl}</code>
       </div>
     </div>
   </section>
@@ -106,6 +131,8 @@ import { pack, annualProgram } from '../../data/pack';
   const status = document.querySelector<HTMLElement>('#calendar-status');
   const notice = document.querySelector<HTMLElement>('#calendar-notice');
   const note = document.querySelector<HTMLElement>('[data-pm-note]');
+  const copyButton = document.querySelector<HTMLButtonElement>('[data-copy-calendar]');
+  const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]');
 
   const escapeHtml = (value: string) =>
     value.replace(
@@ -198,6 +225,17 @@ import { pack, annualProgram } from '../../data/pack';
   }
 
   loadCalendar();
+
+  copyButton?.addEventListener('click', async () => {
+    const subscriptionUrl = copyButton.dataset.calendarUrl;
+    if (!subscriptionUrl) return;
+    try {
+      await navigator.clipboard.writeText(subscriptionUrl);
+      if (copyStatus) copyStatus.textContent = 'Subscription URL copied.';
+    } catch {
+      if (copyStatus) copyStatus.textContent = 'Copy the URL shown below and paste it into your calendar app.';
+    }
+  });
 </script>
 <style>
   .hero-actions {
@@ -400,6 +438,44 @@ import { pack, annualProgram } from '../../data/pack';
     font-size: 0.95rem;
   }
 
+  .subscribe-section {
+    padding-top: 0;
+  }
+  .subscribe-card {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .subscribe-card h2 {
+    margin: 0;
+    max-width: 22ch;
+  }
+  .subscribe-card__fine {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .subscribe-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .subscribe-card__actions code {
+    flex-basis: 100%;
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .subscribe-card__status {
+    flex-basis: 100%;
+    min-height: 1.5em;
+    margin: 0;
+    color: var(--green-deep);
+    font-weight: 700;
+  }
+
   .calendar-help__grid {
     display: grid;
     grid-template-columns: 0.85fr 1fr;
@@ -473,6 +549,12 @@ import { pack, annualProgram } from '../../data/pack';
     align-items: center;
   }
   @media (max-width: 760px) {
+    .subscribe-card {
+      grid-template-columns: 1fr;
+    }
+    .subscribe-card__actions .button {
+      width: 100%;
+    }
     .calendar-help__grid {
       grid-template-columns: 1fr;
     }

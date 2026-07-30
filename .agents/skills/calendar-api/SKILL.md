@@ -155,11 +155,17 @@ truth, since the list below can go stale:
 
 ## Public read-only endpoints
 
-No authentication is required for published, upcoming events:
+No authentication is required for these public endpoints:
 
 ```text
 GET https://www.macon170.com/api/events
 GET https://www.macon170.com/api/events/{slug}
+GET https://www.macon170.com/api/calendar.ics
 ```
 
-The public API excludes drafts, archived events, and events that have ended.
+The JSON endpoints exclude drafts, archived events, and events that have ended.
+The iCalendar subscription includes all published events, including past and
+cancelled entries, so calendar clients can reconcile edits and cancellations.
+It returns `text/calendar` with an ETag and stable event UIDs. Calendar apps
+control their own refresh cadence, so updates are automatic but not guaranteed
+to appear immediately.
