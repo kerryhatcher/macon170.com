@@ -1,0 +1,5 @@
+ignore:
+  # Development scripts intentionally bind to all local interfaces.
+  - source: package.json
+    column: scripts
+    type: IP Address
