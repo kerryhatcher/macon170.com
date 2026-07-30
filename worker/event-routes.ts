@@ -75,11 +75,9 @@ const adminFields = `id, slug, created_at, updated_at, published_at, archived_at
   status, category, title, summary, description, starts_at, ends_at, timezone,
   location_name, address, audience, what_to_bring, cost, registration_url, milestone,
   created_by, updated_by`;
-const publicFields = `slug, status, category, title, summary, description, starts_at, ends_at,
-  timezone, location_name, address, audience, what_to_bring, cost, registration_url, milestone`;
 const calendarFields = `calendar_events.id, slug, created_at, updated_at, status, category, title, summary,
   description, starts_at, ends_at, timezone, location_name, address, audience,
-  what_to_bring, cost, registration_url,
+  what_to_bring, cost, registration_url, milestone,
   (SELECT COUNT(*) FROM event_audit_log WHERE event_id = calendar_events.id) AS sequence`;
 
 export class EventRouteError extends Error {
@@ -95,28 +93,25 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
   const { request, env, url } = context;
 
   if (url.pathname === '/api/events' && request.method === 'GET') {
+    const events = await readPublishedEvents(env);
     const now = new Date().toISOString();
-    const result = await env.DB.prepare(
-      `
-      SELECT ${publicFields} FROM calendar_events
-      WHERE visibility = 'published' AND COALESCE(ends_at, starts_at) >= ?
-      ORDER BY starts_at ASC LIMIT 200
-    `,
-    )
-      .bind(now)
-      .run<EventRow>();
-    return context.json({ ok: true, events: result.results }, 200, context.publicHeaders(request));
+    return context.json(
+      {
+        ok: true,
+        events: events
+          .filter((event) => (event.ends_at ?? event.starts_at) >= now)
+          .sort((a, b) => a.starts_at.localeCompare(b.starts_at))
+          .slice(0, 200)
+          .map(publicEvent),
+      },
+      200,
+      context.publicHeaders(request),
+    );
   }
 
   if (url.pathname === '/api/calendar.ics' && (request.method === 'GET' || request.method === 'HEAD')) {
-    const result = await env.DB.prepare(
-      `
-      SELECT ${calendarFields} FROM calendar_events
-      WHERE visibility = 'published'
-      ORDER BY starts_at DESC LIMIT 500
-    `,
-    ).run<CalendarEventRow>();
-    const calendar = renderCalendar(result.results, env.PUBLIC_SITE_ORIGIN);
+    const events = await readPublishedEvents(env);
+    const calendar = renderCalendar(events.sort((a, b) => b.starts_at.localeCompare(a.starts_at)).slice(0, 500), env.PUBLIC_SITE_ORIGIN);
     const etag = `"${await sha256(calendar)}"`;
     const headers = {
       ...context.publicHeaders(request),
@@ -131,13 +126,11 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
 
   const publicMatch = url.pathname.match(/^\/api\/events\/([a-z0-9-]{2,80})$/);
   if (publicMatch && request.method === 'GET') {
-    const event = await env.DB.prepare(
-      `SELECT ${publicFields} FROM calendar_events WHERE slug = ? AND visibility = 'published' AND COALESCE(ends_at, starts_at) >= ?`,
-    )
-      .bind(publicMatch[1], new Date().toISOString())
-      .first<EventRow>();
+    const event = (await readPublishedEvents(env)).find(
+      (candidate) => candidate.slug === publicMatch[1] && (candidate.ends_at ?? candidate.starts_at) >= new Date().toISOString(),
+    );
     if (!event) return context.json({ ok: false, error: 'Event not found.' }, 404, context.publicHeaders(request));
-    return context.json({ ok: true, event }, 200, context.publicHeaders(request));
+    return context.json({ ok: true, event: publicEvent(event) }, 200, context.publicHeaders(request));
   }
 
   if (!url.pathname.startsWith('/api/admin/events')) return null;
@@ -292,6 +285,145 @@ export async function handleEventRoute(context: EventRouteContext): Promise<Resp
   }
 
   return context.json({ ok: false, error: 'Method not allowed.' }, 405, context.adminHeaders(env));
+}
+
+function publicEvent(
+  event: CalendarEventRow,
+): Omit<EventRow, 'id' | 'created_at' | 'updated_at' | 'published_at' | 'archived_at' | 'visibility' | 'created_by' | 'updated_by'> {
+  return {
+    slug: event.slug,
+    status: event.status,
+    category: event.category,
+    title: event.title,
+    summary: event.summary,
+    description: event.description,
+    starts_at: event.starts_at,
+    ends_at: event.ends_at,
+    timezone: event.timezone,
+    location_name: event.location_name,
+    address: event.address,
+    audience: event.audience,
+    what_to_bring: event.what_to_bring,
+    cost: event.cost,
+    registration_url: event.registration_url,
+    milestone: event.milestone,
+  };
+}
+
+type CalendarAdapterEnv = Env & { CALENDAR_READ_SOURCE?: string; CALENDAR_CMS_ORIGIN?: string };
+
+async function readPublishedEvents(env: CalendarAdapterEnv): Promise<CalendarEventRow[]> {
+  const source = env.CALENDAR_READ_SOURCE ?? 'legacy';
+  if (source === 'cms') return readCmsProjection(env);
+  const legacy = await env.DB.prepare(
+    `SELECT ${calendarFields} FROM calendar_events WHERE visibility = 'published' ORDER BY starts_at DESC LIMIT 500`,
+  ).run<CalendarEventRow>();
+  if (source === 'shadow') {
+    try {
+      const cms = await readCmsProjection(env);
+      const legacyFingerprint = legacy.results.map((event) => `${event.slug}:${event.id}:${event.sequence}`).join('|');
+      const cmsFingerprint = cms.map((event) => `${event.slug}:${event.id}:${event.sequence}`).join('|');
+      if (legacyFingerprint !== cmsFingerprint)
+        console.error(JSON.stringify({ event: 'calendar_shadow_mismatch', legacy: legacy.results.length, cms: cms.length }));
+    } catch (error) {
+      console.error(
+        JSON.stringify({ event: 'calendar_shadow_read_failed', error: error instanceof Error ? error.message : 'Unknown error' }),
+      );
+    }
+  }
+  return legacy.results;
+}
+
+async function readCmsProjection(env: CalendarAdapterEnv): Promise<CalendarEventRow[]> {
+  if (!env.CALENDAR_CMS_ORIGIN) throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  let response: Response;
+  try {
+    response = await fetch(`${env.CALENDAR_CMS_ORIGIN.replace(/\/$/, '')}/api/calendar-projection/v1`, {
+      headers: { accept: 'application/json' },
+    });
+  } catch (error) {
+    console.error(
+      JSON.stringify({ event: 'calendar_adapter_fetch_failed', error: error instanceof Error ? error.message : 'Unknown error' }),
+    );
+    throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  }
+  if (!response.ok) {
+    console.error(JSON.stringify({ event: 'calendar_adapter_bad_status', status: response.status }));
+    throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  }
+  let body: unknown;
+  try {
+    body = await response.json();
+  } catch {
+    throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  }
+  if (
+    !body ||
+    typeof body !== 'object' ||
+    (body as { version?: unknown }).version !== 'v1' ||
+    !Array.isArray((body as { events?: unknown }).events)
+  ) {
+    console.error(JSON.stringify({ event: 'calendar_adapter_invalid_projection' }));
+    throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  }
+  try {
+    return (body as { events: unknown[] }).events.map(validateCmsEvent);
+  } catch (error) {
+    console.error(
+      JSON.stringify({ event: 'calendar_adapter_invalid_event', error: error instanceof Error ? error.message : 'Unknown error' }),
+    );
+    throw new EventRouteError(502, 'The Pack 170 calendar is temporarily unavailable.');
+  }
+}
+
+function validateCmsEvent(value: unknown): CalendarEventRow {
+  if (!value || typeof value !== 'object') throw new Error('Event is not an object');
+  const event = value as Record<string, unknown>;
+  const requiredText = (key: string) => {
+    if (typeof event[key] !== 'string' || !event[key]) throw new Error(`Missing ${key}`);
+    return event[key] as string;
+  };
+  const optionalText = (key: string) => (event[key] === null || event[key] === undefined ? null : requiredText(key));
+  const id = requiredText('legacy_event_id');
+  if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error('Invalid legacy_event_id');
+  const sequence = event.adapter_revision;
+  if (!Number.isInteger(sequence) || (sequence as number) < 0) throw new Error('Invalid adapter_revision');
+  const status = requiredText('status');
+  const category = requiredText('category');
+  const timezone = requiredText('timezone');
+  if (!statuses.has(status as EventStatus) || !categories.has(category as EventCategory) || timezone !== 'America/New_York')
+    throw new Error('Invalid calendar enum');
+  const startsAt = new Date(requiredText('starts_at')).toISOString();
+  const ends = optionalText('ends_at');
+  const endsAt = ends ? new Date(ends).toISOString() : null;
+  if (Number.isNaN(Date.parse(startsAt)) || (endsAt && endsAt < startsAt)) throw new Error('Invalid event times');
+  return {
+    id,
+    slug: requiredText('slug'),
+    created_at: new Date(requiredText('created_at')).toISOString(),
+    updated_at: new Date(requiredText('updated_at')).toISOString(),
+    published_at: optionalText('published_at'),
+    archived_at: null,
+    visibility: 'published',
+    status: status as EventStatus,
+    category: category as EventCategory,
+    title: requiredText('title'),
+    summary: requiredText('summary'),
+    description: requiredText('description'),
+    starts_at: startsAt,
+    ends_at: endsAt,
+    timezone: 'America/New_York',
+    location_name: optionalText('location_name'),
+    address: optionalText('address'),
+    audience: requiredText('audience'),
+    what_to_bring: optionalText('what_to_bring'),
+    cost: optionalText('cost'),
+    registration_url: optionalText('registration_url'),
+    milestone: optionalText('milestone'),
+    created_by: 'cms-adapter',
+    updated_by: 'cms-adapter',
+    sequence: sequence as number,
+  };
 }
 
 function requireJsonRequest(request: Request): void {
