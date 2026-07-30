@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "macon170-e2e",
   "main": "worker/index.ts",
-  "compatibility_date": "2026-07-27",
+  "compatibility_date": "2026-07-29",
   "compatibility_flags": ["nodejs_compat"],
   // No `routes` here: local browser tests must keep the literal localhost host
   // rather than simulating a production custom domain.

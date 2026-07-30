@@ -14,7 +14,7 @@ export default {
       return Response.redirect(CMS_CONTACT_QUEUE, 308);
     }
 
-    if (url.hostname === 'api.macon170.com' || url.pathname.startsWith('/api/')) {
+    if (url.hostname === 'api.macon170.com' || url.pathname === '/api' || url.pathname.startsWith('/api/')) {
       return Response.json(
         { error: { code: 'not_found', message: 'Not found.' } },
         {

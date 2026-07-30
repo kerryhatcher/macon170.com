@@ -67,6 +67,13 @@ Deploy the public frontend second. Browser-test the contact page at desktop and
 mobile widths, Turnstile recovery, a successful submission, friendly error
 redirects, and the `admin.macon170.com` redirect.
 
+Before testing the admin redirect, obtain separate approval to remove or
+disable the legacy Cloudflare Access application that covers
+`admin.macon170.com/*`. Access evaluates the request before the Worker, so the
+old application can challenge or deny visitors before the redirect runs. The
+public-site deployment workflow deliberately does not remove that account-level
+cloud resource.
+
 Rollback is a frontend revert coordinated with an explicitly approved backend
 rollback. Never dual-write. Do not delete or mutate the legacy D1 database as
 part of rollback.

@@ -15,6 +15,7 @@ describe('public Worker routing after the contact migration', () => {
   });
 
   it.each([
+    ['GET', 'https://www.macon170.com/api'],
     ['POST', 'https://www.macon170.com/api/contact'],
     ['GET', 'https://www.macon170.com/api/admin/submissions'],
     ['PATCH', 'https://www.macon170.com/api/admin/submissions/11111111-1111-4111-8111-111111111111'],
