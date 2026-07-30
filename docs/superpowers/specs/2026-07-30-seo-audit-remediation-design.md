@@ -67,7 +67,20 @@ Page-count math confirmed: 13 static routes + 6 generated den pages = 19 total, 
 **Boundary:** every URL canonicalization is Cloudflare configuration. The Worker keeps only
 application concerns — the `/api/*` guard, security headers, and `Cache-Control`.
 
-### 1a. Cloudflare Redirect Rules (dashboard)
+### 1a. Cloudflare Redirect Rules (dashboard) — DEPLOYED 2026-07-30
+
+**Status: complete and verified.** Both rules are live on zone
+`02444593a477496a8f085e83184670f9` and recorded verbatim in the "Redirect rules" section of
+`docs/CLOUDFLARE-DEPLOYMENT.md`, which is the authoritative copy. The design below is retained for
+its rationale.
+
+Measured after deployment: `http://macon170.com/join` reaches `https://www.macon170.com/join/` in
+**2 hops, both 308**; query strings survive both hops exactly once; all static assets and all 12
+canonical routes return 200 with zero redirects.
+
+An interim configuration using Cloudflare's two built-in templates (`Redirect from HTTP to HTTPS`
+and `Redirect from root to WWW`) was deployed first and measured at **3 hops** with mixed 301/301/308
+statuses. It was replaced by the single combined rule below and both templates were deleted.
 
 Three redirects, all 308. **Rule order matters**: scheme and host are canonicalized in a single
 rule so that a worst-case request costs two hops, not three.
@@ -148,15 +161,24 @@ which CSP does not govern. No allowlist entry needed.
 
 **Acceptance criteria**
 
-- `curl -I http://www.macon170.com/` returns 308 to `https://www.macon170.com/`
-- `curl -I http://macon170.com/join` reaches `https://www.macon170.com/join/` in **at most two**
-  redirect hops, every hop a 308
-- `curl -I https://www.macon170.com/join` returns 308, not 307
-- `curl -I https://www.macon170.com/favicon.svg` returns 200, not a redirect
-- All five security headers present on the HTTPS HTML response
-- `/_astro/*` responses carry `max-age=31536000, immutable`
-- `e2e/redirects.live.spec.ts` passes against the deployed site
-- Existing Playwright e2e suite passes with no new console CSP violations
+Redirects (1a) — all verified 2026-07-30:
+
+- [x] `curl -I http://www.macon170.com/` returns 308 to `https://www.macon170.com/`
+- [x] `curl -I http://macon170.com/join` reaches `https://www.macon170.com/join/` in **at most two**
+      redirect hops, every hop a 308
+- [x] `curl -I https://www.macon170.com/join` returns 308, not 307
+- [x] `curl -I https://www.macon170.com/favicon.svg` returns 200, not a redirect
+- [x] A query string survives the full chain exactly once, not doubled
+- [x] All 12 canonical routes return 200 with zero redirects
+
+Headers and coverage (1b) — outstanding:
+
+- [ ] All five security headers present on the HTTPS HTML response
+- [ ] `/_astro/*` responses carry `max-age=31536000, immutable`
+- [ ] `e2e/redirects.live.spec.ts` passes against the deployed site
+- [ ] `worker/index.ts:5-9` and `worker/index.test.ts:5-9` deleted — the Cloudflare rule now
+      catches apex before the request reaches the Worker, making both dead code
+- [ ] Existing Playwright e2e suite passes with no new console CSP violations
 
 ## Phase 2 — Crawl discovery
 

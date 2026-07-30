@@ -48,6 +48,65 @@ bun install --frozen-lockfile
 bun run dev:worker
 ```
 
+## Redirect rules
+
+URL canonicalization lives in Cloudflare Redirect Rules, not in the Worker. Redirect Rules execute
+before Workers in Cloudflare's request pipeline, and the trailing-slash 307 is emitted by the
+static-asset handler *after* the Worker delegates to `env.ASSETS.fetch` — so neither redirect could
+be fixed in `worker/index.ts` without intercepting every asset request.
+
+This is unversioned dashboard state. **These two rules are load-bearing; record any change here.**
+Zone `macon170.com` = `02444593a477496a8f085e83184670f9`. Deployed 2026-07-30.
+
+Cloudflare stops at the first matching rule, so at most one redirect is issued per request pass.
+Order matters.
+
+### Rule 1 — "www and tls" (order: first)
+
+Canonicalizes scheme and host together. Splitting these into the two Cloudflare templates
+(`Redirect from HTTP to HTTPS` + `Redirect from root to WWW`) was measured at three hops for
+`http://macon170.com/join`; combining them gives two.
+
+```
+Expression:            (not ssl or http.host ne "www.macon170.com")
+Type:                  Dynamic
+Target:                concat("https://www.macon170.com", http.request.uri)
+Status:                308
+Preserve query string: OFF
+```
+
+`http.request.uri` already carries path *and* query, so preserving the query string here would
+append it a second time.
+
+### Rule 2 — "Trailing slash" (order: last)
+
+Replaces the asset handler's 307 with a permanent 308.
+
+```
+Expression:            (http.host eq "www.macon170.com"
+                        and not ends_with(http.request.uri.path, "/")
+                        and not http.request.uri.path contains ".")
+Type:                  Dynamic
+Target:                concat("https://www.macon170.com", http.request.uri.path, "/")
+Status:                308
+Preserve query string: ON
+```
+
+The `contains "."` guard keeps static assets (`/favicon.svg`, `/_astro/*.css`, `/logo/*.png`) from
+acquiring a trailing slash. Preserve-query-string is ON here because the target rebuilds from
+`http.request.uri.path`, which omits the query.
+
+### Verifying
+
+```bash
+# worst case: 2 hops, both 308
+curl -sIL http://macon170.com/join -o /dev/null -w '%{num_redirects} %{url_effective}\n'
+# query survives exactly once
+curl -sIL "http://macon170.com/join?a=1" -o /dev/null -w '%{url_effective}\n'
+# assets must not redirect
+curl -sI https://www.macon170.com/favicon.svg -o /dev/null -w '%{http_code}\n'
+```
+
 ## Contact cutover
 
 Before changing the public frontend, confirm the CMS contact migration is
