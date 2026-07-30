@@ -137,15 +137,15 @@ Actions secrets, is documented in
 
 ## 🔧 Usage
 
-| Command                   | What it does                                                     |
-| ------------------------- | ---------------------------------------------------------------- |
+| Command                   | What it does                                                          |
+| ------------------------- | --------------------------------------------------------------------- |
 | `bun run dev`             | Astro dev server only (no API, no D1), exposed on the LAN at `:41771` |
-| `bun run dev:worker`      | Full Worker + static site + local D1, exposed on the LAN at `:8787` |
-| `bun run build`           | Type-checks and builds to `dist/`                                |
-| `bun run test`            | [Vitest](https://vitest.dev) unit + integration                  |
-| `bun run test:e2e`        | [Playwright](https://playwright.dev) e2e coverage                |
-| `bun run lint` / `format` | [ESLint](https://eslint.org) and [Prettier](https://prettier.io) |
-| `just ci`                 | The full local battery, same as CI                               |
+| `bun run dev:worker`      | Full Worker + static site + local D1, exposed on the LAN at `:8787`   |
+| `bun run build`           | Type-checks and builds to `dist/`                                     |
+| `bun run test`            | [Vitest](https://vitest.dev) unit + integration                       |
+| `bun run test:e2e`        | [Playwright](https://playwright.dev) e2e coverage                     |
+| `bun run lint` / `format` | [ESLint](https://eslint.org) and [Prettier](https://prettier.io)      |
+| `just ci`                 | The full local battery, same as CI                                    |
 
 Run `just ci` before every commit — it's the same battery
 [GitHub Actions](https://docs.github.com/actions) runs before it will
