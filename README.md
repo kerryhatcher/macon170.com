@@ -106,6 +106,12 @@ submission and event change.
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 authenticated (`bunx wrangler login`).
 
+The installed pre-commit hooks also require
+[pii-hound v0.1.9](https://github.com/saddledata/pii-hound/releases/tag/v0.1.9)
+on your `PATH`. Download the binary for your platform from that release and
+verify it against the published `checksums.txt` before installing it. The hook
+scans changed files and blocks commits containing detected PII or secrets.
+
 ```bash
 git clone https://github.com/kerryhatcher/macon170.com.git
 cd macon170.com
