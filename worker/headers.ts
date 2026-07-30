@@ -31,6 +31,18 @@ const SECURITY_HEADERS: Record<string, string> = {
   'Content-Security-Policy-Report-Only': CONTENT_SECURITY_POLICY,
 };
 
+// Astro content-hashes everything under /_astro/, so a changed file is a changed URL.
+const IMMUTABLE_CACHE = 'public, max-age=31536000, immutable';
+// Files copied verbatim from public/ keep stable names, so they must stay replaceable.
+const STABLE_ASSET_CACHE = 'public, max-age=604800';
+const STABLE_ASSET_PATHS = new Set(['/favicon.svg', '/apple-touch-icon.png', '/site.webmanifest']);
+
+function cacheControlFor(pathname: string): string | null {
+  if (pathname.startsWith('/_astro/')) return IMMUTABLE_CACHE;
+  if (pathname.startsWith('/logo/') || STABLE_ASSET_PATHS.has(pathname)) return STABLE_ASSET_CACHE;
+  return null;
+}
+
 export function withSiteHeaders(request: Request, response: Response): Response {
   // Responses from the ASSETS binding have immutable headers, so copy before mutating.
   const result = new Response(response.body, response);
@@ -40,6 +52,9 @@ export function withSiteHeaders(request: Request, response: Response): Response 
       result.headers.set(name, value);
     }
   }
+
+  const cacheControl = cacheControlFor(new URL(request.url).pathname);
+  if (cacheControl) result.headers.set('Cache-Control', cacheControl);
 
   return result;
 }

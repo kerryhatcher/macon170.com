@@ -31,4 +31,15 @@ describe('public Worker routing after the contact migration', () => {
     expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
     expect(response.headers.get('Content-Security-Policy-Report-Only')).toContain("default-src 'self'");
   });
+
+  it('serves the real hashed stylesheet with immutable caching', async () => {
+    const page = await exports.default.fetch('https://www.macon170.com/');
+    const html = await page.text();
+    // Discover the hashed filename from the build rather than hardcoding a hash that rotates.
+    const stylesheet = html.match(/\/_astro\/[^"']+\.css/)?.[0];
+
+    expect(stylesheet, 'homepage should link a bundled stylesheet').toBeDefined();
+    const asset = await exports.default.fetch(`https://www.macon170.com${stylesheet}`);
+    expect(asset.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
+  });
 });

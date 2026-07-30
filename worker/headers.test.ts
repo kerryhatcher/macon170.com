@@ -47,4 +47,28 @@ describe('withSiteHeaders', () => {
     expect(result.status).toBe(404);
     await expect(result.text()).resolves.toBe('page');
   });
+
+  it('caches content-hashed bundles immutably for a year', () => {
+    const result = withSiteHeaders(request('/_astro/index.CvL8xK2p.css'), cssResponse());
+
+    expect(result.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
+  });
+
+  it('caches stable-named public assets for a week without marking them immutable', () => {
+    // These filenames are not content-hashed, so `immutable` would pin a stale logo in every
+    // browser cache for a year with no way to bust it.
+    for (const path of ['/logo/pack170-logo-512.png', '/favicon.svg', '/apple-touch-icon.png']) {
+      const result = withSiteHeaders(request(path), new Response('', { headers: { 'content-type': 'image/png' } }));
+      expect(result.headers.get('Cache-Control'), path).toBe('public, max-age=604800');
+    }
+  });
+
+  it('leaves HTML caching alone so content edits go live on the next request', () => {
+    const original = new Response('<!doctype html>', {
+      headers: { 'content-type': 'text/html', 'cache-control': 'public, max-age=0, must-revalidate' },
+    });
+    const result = withSiteHeaders(request('/about/'), original);
+
+    expect(result.headers.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
+  });
 });
