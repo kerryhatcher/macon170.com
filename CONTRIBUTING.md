@@ -10,21 +10,22 @@ Thanks for helping with the Pack 170 website. This is a small, volunteer-maintai
 git clone https://github.com/kerryhatcher/macon170.com.git
 cd macon170.com
 bun install --frozen-lockfile
-cp .dev.vars.example .dev.vars
-bun run db:migrate:local
 ```
 
 Two ways to run it locally:
 
 - `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1. It binds to `0.0.0.0:41771` for LAN access.
-- `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `0.0.0.0:8787`. Use this for anything touching `worker/`.
+- `bun run dev:worker` — builds the site and runs the public routing Worker at
+  `0.0.0.0:8787`. The contact API and volunteer queue run in the separate
+  `macon170-cms` project.
 
 Calendar pages call the CMS directly. In development they use
 `http://localhost:41772` by default; set `PUBLIC_CALENDAR_CMS_ORIGIN` before the
 Astro build to use another local CMS origin. Production builds always use
 `https://cms.macon170.com`.
 
-`.dev.vars` provides `TURNSTILE_SECRET` set to Cloudflare's documented always-pass test secret — safe for local use, never used in production. Never commit a real Turnstile or Cloudflare secret.
+This project has no contact-form secret or D1 binding. Never copy the CMS
+`TURNSTILE_SECRET`, database values, or authentication configuration here.
 
 ## Before you open a PR
 
@@ -34,16 +35,24 @@ Run the full local CI battery — it's the same set of checks GitHub Actions run
 just ci
 ```
 
-Which runs, in order: `bun run lint`, `bun run check` (Astro + Worker type-checking), `bun run format:check`, `bun run test` (unit + integration, against the real Cloudflare Workers runtime and applied D1 migrations), and `bun run test:e2e` (Playwright, contact-to-admin flow).
+Which runs, in order: `bun run lint`, `bun run check` (Astro + Worker
+type-checking), `bun run format:check`, `bun run test` (unit and Workers route
+tests), and `bun run test:e2e` (Playwright coverage of the branded form,
+redirect states, Turnstile recovery, and mobile layout).
 
 Don't have `just`? Run the individual `bun run` scripts listed in [README.md](README.md#-usage) in the same order.
 
 ## Code standards
 
-- **TypeScript everywhere in `worker/`.** No `any` where a real type is available; the Worker environment is typed via `WorkerEnv = Env & { TURNSTILE_SECRET: string }` in `worker/index.ts`, not by widening the generated `worker-configuration.d.ts`.
+- **TypeScript everywhere in `worker/`.** No `any` where a real type is
+  available; regenerate `worker-configuration.d.ts` after changing Worker
+  bindings.
 - **Formatting is enforced, not debated.** Run `bun run format` (Prettier, including `.astro` files) before committing; `format:check` in CI will fail otherwise.
 - **Lint clean.** `bun run lint:fix` handles most ESLint issues automatically.
-- **Test the layer you changed.** Worker logic changes need a unit or integration test in `worker/*.test.ts`; anything touching the contact-to-admin user flow needs e2e coverage in `e2e/`.
+- **Test the layer you changed.** Worker routing changes need a test in
+  `worker/*.test.ts`; anything touching the branded contact form or redirected
+  result states needs e2e coverage in `e2e/`. Backend submission behavior
+  belongs in `macon170-cms`.
 - **Pack facts live in one place.** Pack-specific details (dues, contacts, event dates) belong in `src/data/pack.ts`, never hardcoded into a page. Unknown facts are marked as clear placeholders, never invented.
 - **`docs/Official-info.md` is human-authored.** It's the canonical source of truth for pack and council facts and should not be edited by an agent or contributor without explicit sign-off from pack leadership — it overrides the research docs in `docs/research/` if they ever disagree.
 - **Respect the youth-protection and brand constraints.** Youth are identified by first name and last initial only, with no photos without consent; official Scouting marks are used unmodified only. See `PRODUCT.md` for the full constraint list before adding anything that touches youth data, contact flows, or Scouting branding.

@@ -1,122 +1,76 @@
-# Cloudflare deployment and volunteer access
+# Cloudflare deployment and contact ownership
 
-The public site deploys as one Cloudflare Worker with Astro static assets, a D1-backed contact API, and a private submissions desk. Public traffic uses `www.macon170.com`; the apex `macon170.com` permanently redirects to `www`; volunteers use `admin.macon170.com` behind Cloudflare Access. The independently deployed SonicJS service at `cms.macon170.com` owns calendar storage, editing, public JSON, and ICS.
+The public Astro site and the SonicJS CMS are independently deployed Workers.
+Do not merge their Wrangler configuration, secrets, databases, migrations, or
+deployment workflows.
 
-## Resources already created
+## Ownership
 
-- D1 database: `macon170-submissions`
-- D1 ID: `30e2d4be-5f6d-4f52-827d-c050c2ade104`
-- Turnstile site key: `0x4AAAAAAD-sr-Bk7AntxyZ7`
-- Turnstile widget domains: `macon170.com`, `www.macon170.com`
+| Surface                                                         | Owner                                           |
+| --------------------------------------------------------------- | ----------------------------------------------- |
+| `www.macon170.com` and `macon170.com`                           | Public Astro Worker                             |
+| `admin.macon170.com`                                            | Public Worker redirect to the CMS contact queue |
+| `api.macon170.com` and public-site `/api/*`                     | Closed with `404`                               |
+| `cms.macon170.com/api/forms/contact/submit`                     | CMS contact submission handler                  |
+| `cms.macon170.com/api/forms/contact/schema`                     | CMS public form schema                          |
+| `cms.macon170.com/admin/forms/default-contact-form/submissions` | CMS-authenticated volunteer queue               |
+| CMS calendar JSON, ICS, and editing                             | CMS                                             |
 
-Local and automated development uses Cloudflare’s documented test widget keys rather than allowing production credentials on localhost.
+The public Worker has only an `ASSETS` binding. It has no D1, rate-limit, cron,
+Turnstile secret, or Cloudflare Access configuration.
 
-The Turnstile secret is intentionally absent from source control. Store it in GitHub Actions and as a Worker secret.
+## Legacy database
 
-## 1. Finish Cloudflare Access
+The production `macon170-submissions` D1 database is retained untouched and
+read-only. Its migrations remain in this repository as history, but the public
+workflow does not apply them and the Worker does not bind, read, write, migrate,
+or delete that database. The two existing test rows are not migrated or
+removed.
 
-In **Zero Trust → Access controls → Applications**:
+Do not restore the old contact routes or dual-write the public and CMS
+databases. An authorized export may be taken for recovery without reconnecting
+the database to the Worker.
 
-1. Create a **Self-hosted and private** application.
-2. Add the public hostname `admin.macon170.com` with path `*`.
-3. Add an **Allow** policy containing only the volunteer email addresses approved by pack leadership. Access is deny-by-default; do not use an `Everyone` allow rule.
-4. Enable **One-time PIN** as the initial login method.
-5. Set a conservative session duration such as 8 hours. Require volunteers to reauthenticate rather than leaving multi-week sessions on shared family devices.
-6. Copy the application’s **Application Audience (AUD) Tag**.
-7. Find the team domain under Zero Trust settings. It has the form `https://YOUR-TEAM.cloudflareaccess.com`.
-8. Replace the two placeholders in `wrangler.jsonc`:
-   - `ACCESS_TEAM_DOMAIN`
-   - `ACCESS_AUD`
-9. Run `bun run cf:types` and commit the regenerated `worker-configuration.d.ts`.
+## Public-site deployment
 
-The Worker verifies every Access JWT using Cloudflare’s rotating JWKS, issuer, and application audience. Cloudflare Access in front of the hostname is necessary but not the only check.
+Configure only these GitHub `production` environment secrets:
 
-### Access validation checklist
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN` with the minimum Worker deployment and route scope
 
-- An allowlisted volunteer receives the one-time PIN and can open the desk.
-- A non-allowlisted address receives an Access denial.
-- Opening `/api/admin/submissions` without Access returns 403.
-- Sign-out and session expiration require authentication again.
-- Access audit logs identify the volunteer and policy decision.
+The workflow installs locked dependencies, runs `just ci`, builds, performs a
+Wrangler dry run, deploys the Worker/static assets, and runs the production
+Turnstile-state browser check. It does not apply D1 migrations or upload a
+Turnstile secret.
 
-## 2. GitHub Actions secrets
-
-Create a GitHub **production** environment and add these repository or environment secrets:
-
-| Secret                  | Purpose                                           |
-| ----------------------- | ------------------------------------------------- |
-| `CLOUDFLARE_ACCOUNT_ID` | `6d837580a4d0641139ecada9e74076b8`                |
-| `CLOUDFLARE_API_TOKEN`  | A narrowly scoped deployment token                |
-| `TURNSTILE_SECRET`      | Secret for the `macon170.com contact form` widget |
-
-Create a custom Cloudflare API token restricted to the Kerry Personal account and the macon170.com zone. It needs the minimum permissions required to deploy Workers, edit Workers routes, and edit D1. Do not reuse a Global API Key.
-
-The workflow on `main`:
-
-1. Installs locked dependencies.
-2. Runs Astro, Worker type, Wrangler binding, and Worker integration checks.
-3. Runs the test suite and production build.
-4. Performs a Wrangler dry run.
-5. Applies pending D1 migrations.
-6. Deploys the Worker and static assets with the Turnstile secret.
-
-The `production` GitHub environment can require manual reviewer approval if desired.
-
-## 3. Local development
-
-Create an ignored `.dev.vars`:
-
-```dotenv
-TURNSTILE_SECRET=1x0000000000000000000000000000000AA
-```
-
-For predictable local browser testing, temporarily use Cloudflare’s always-pass test site key `1x00000000000000000000AA` in the rendered form or expose the configured key at build time. The committed production form uses the production site key.
+Local setup needs no `.dev.vars`:
 
 ```bash
 bun install --frozen-lockfile
-bun run db:migrate:local
 bun run dev:worker
 ```
 
-The local Worker accepts the development admin identity instead of requiring a real Access JWT. Production never uses that bypass because `ENVIRONMENT` is `production` in `wrangler.jsonc`.
+## Contact cutover
 
-## 4. First deployment
+Deploy the CMS first only after separately configuring its
+`TURNSTILE_SECRET` Worker secret. Apply the CMS core and custom migrations,
+then verify:
 
-Before the first production deploy:
+- form schema version `pack-contact-v1`;
+- allowed-origin CORS and preflight;
+- missing-token rejection;
+- CMS login protection;
+- successful branded-form redirect;
+- queue rendering, view audit, and each status transition.
 
-1. Complete the Access placeholders in `wrangler.jsonc`.
-2. Add at least two approved adult volunteer emails to the Access Allow policy where possible.
-3. Add the GitHub secrets above.
-4. Push to `main`, or run the workflow manually.
-5. Verify `https://www.macon170.com/contact/` and submit a test parent inquiry.
-6. Sign in at `https://admin.macon170.com/`, open the message, and move it from New to Resolved.
-7. Confirm the D1 row and audit log:
+Deploy the public frontend second. Browser-test the contact page at desktop and
+mobile widths, Turnstile recovery, a successful submission, friendly error
+redirects, and the `admin.macon170.com` redirect.
 
-```bash
-bunx wrangler d1 execute macon170-submissions --remote \
-  --command "SELECT id, created_at, status, parent_name, topic FROM contact_submissions ORDER BY created_at DESC LIMIT 10"
-```
+Rollback is a frontend revert coordinated with an explicitly approved backend
+rollback. Never dual-write. Do not delete or mutate the legacy D1 database as
+part of rollback.
 
-## Data and safety model
-
-- The form collects parent name, email, optional parent phone, optional child grade, topic, and message.
-- It explicitly tells parents not to submit a child’s name or sensitive information.
-- Turnstile is verified server-side before D1 insertion.
-- A hidden honeypot and Worker rate limiter provide additional abuse resistance.
-- D1 stores country code and browser user-agent for abuse and troubleshooting; it does not intentionally store IP addresses.
-- A daily Worker cron deletes submissions and their audit logs after 365 days.
-- Admin responses are private and non-cacheable.
-- Every submission detail view and status change creates an audit entry tied to the verified Access email.
-- The public site calls `https://cms.macon170.com/api/calendar/v1` directly and does not proxy or translate calendar fields.
-- The CMS public API exposes only published family logistics and never exposes volunteer identities or internal revision history.
-- The old `calendar_events` and `event_audit_log` tables remain in `macon170-submissions` as inaccessible history. The Worker does not read or write them, and recovery must use an authorized D1 export rather than re-enabling the retired routes.
-- Volunteers should reply through an approved shared pack mailbox reaching multiple adults, not from private one-to-one youth channels.
-
-## Operations
-
-- Back up D1 periodically with `wrangler d1 export macon170-submissions --remote --output <secure-path>`.
-- Back up and recover the CMS calendar through the CMS repository’s runbook. Do not restore the legacy public-site calendar routes or dual-write the two databases.
-- Review Access membership when volunteer roles change.
-- Remove departed volunteers immediately and invalidate their Access sessions if needed.
-- Keep Turnstile and GitHub secrets out of repository files and logs.
-- Update `src/pages/privacy.astro` before adding analytics, notifications, or a new data processor.
+The CMS repository’s contact runbook documents its D1 schema, Turnstile
+secret, rate limit, administrator access, retention cron, smoke checks, and
+deployment order.

@@ -2,13 +2,13 @@ openapi: 3.1.1
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 
 info:
-  title: Pack 170 Public-Site Worker API
-  version: 0.2.0
-  summary: Contact and submissions-desk APIs owned by macon170.com.
+  title: Pack 170 CMS Contact API
+  version: 1.0.0
+  summary: Public submission and administrator review APIs owned by macon170-cms.
   description: |
-    This contract covers only the public-site Worker. Calendar JSON, event
-    administration, and the iCalendar feed are owned by the independently
-    deployed SonicJS CMS at `https://cms.macon170.com/api/calendar/v1`.
+    The public Astro site posts its branded form directly to this independently
+    deployed SonicJS CMS API. The public-site Worker does not proxy, store, or
+    administer contact submissions.
   contact:
     name: Pack 170
     url: https://www.macon170.com/contact/
@@ -17,19 +17,63 @@ info:
     identifier: MIT
 
 servers:
-  - url: https://www.macon170.com
-    description: Public website
-  - url: https://admin.macon170.com
-    description: Cloudflare Access-protected submissions desk
+  - url: https://cms.macon170.com
+    description: Pack 170 SonicJS CMS
 
 tags:
   - name: Contact
-    description: Parent or guardian contact-form submission.
-  - name: Submission administration
-    description: Access-protected parent inquiry management.
+    description: Public form schema and parent or guardian submission.
+  - name: Contact administration
+    description: SonicJS administrator-only inquiry queue.
 
 paths:
-  /api/contact:
+  /api/forms/contact/schema:
+    get:
+      tags: [Contact]
+      operationId: getContactFormSchema
+      summary: Read the public contact form schema
+      security: []
+      responses:
+        '200':
+          description: Pack contact form definition and version.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id, name, displayName, schema, settings, submitUrl]
+                properties:
+                  id:
+                    const: default-contact-form
+                  name:
+                    const: contact
+                  displayName:
+                    type: string
+                  schema:
+                    type: object
+                  settings:
+                    type: object
+                    required: [version]
+                    properties:
+                      version:
+                        const: pack-contact-v1
+                  submitUrl:
+                    type: string
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/forms/contact/submit:
+    options:
+      tags: [Contact]
+      operationId: preflightContactSubmission
+      summary: Preflight a JSON contact submission
+      security: []
+      responses:
+        '204':
+          description: The configured public origin may submit.
+        '403':
+          $ref: '#/components/responses/Forbidden'
     post:
       tags: [Contact]
       operationId: submitParentInquiry
@@ -44,15 +88,42 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ContactForm'
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/ContactForm'
+                - type: object
+                  required: [data]
+                  properties:
+                    data:
+                      $ref: '#/components/schemas/ContactForm'
       responses:
+        '201':
+          description: JSON submission accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success, submissionId, contentId, message]
+                properties:
+                  success:
+                    const: true
+                  submissionId:
+                    type: string
+                    format: uuid
+                  contentId:
+                    type: string
+                    format: uuid
+                  message:
+                    type: string
         '303':
-          description: Inquiry accepted.
+          description: HTML form submission accepted or redirected to a friendly error state.
           headers:
             Location:
               required: true
               schema:
                 type: string
-              example: /contact/?submitted=success#contact-form
+                format: uri
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -63,18 +134,16 @@ paths:
           $ref: '#/components/responses/UnsupportedMediaType'
         '429':
           $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/Unavailable'
 
-  /api/admin/submissions:
+  /api/contact-admin/v1/submissions:
     get:
-      tags: [Submission administration]
-      operationId: listSubmissions
+      tags: [Contact administration]
+      operationId: listContactSubmissions
       summary: List parent inquiries
-      servers:
-        - url: https://admin.macon170.com
       security:
-        - cloudflareAccessJwt: []
+        - cmsSession: []
       parameters:
         - name: status
           in: query
@@ -94,10 +163,10 @@ paths:
             application/json:
               schema:
                 type: object
-                required: [ok, submissions, page, hasMore]
+                required: [version, submissions, page, hasMore]
                 properties:
-                  ok:
-                    const: true
+                  version:
+                    const: pack-contact-v1
                   submissions:
                     type: array
                     items:
@@ -106,49 +175,49 @@ paths:
                     type: integer
                   hasMore:
                     type: boolean
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
         '500':
           $ref: '#/components/responses/InternalError'
 
-  /api/admin/submissions/{submissionId}:
+  /api/contact-admin/v1/submissions/{submissionId}:
     parameters:
       - $ref: '#/components/parameters/SubmissionId'
     get:
-      tags: [Submission administration]
-      operationId: getSubmission
-      summary: Open a parent inquiry
-      servers:
-        - url: https://admin.macon170.com
+      tags: [Contact administration]
+      operationId: getContactSubmission
+      summary: Open and audit a parent inquiry
       security:
-        - cloudflareAccessJwt: []
+        - cmsSession: []
       responses:
         '200':
-          description: Submission detail. Opening it creates an audit entry.
+          description: Submission detail. Opening it creates a view audit record.
           content:
             application/json:
               schema:
                 type: object
-                required: [ok, submission]
+                required: [version, submission]
                 properties:
-                  ok:
-                    const: true
+                  version:
+                    const: pack-contact-v1
                   submission:
                     $ref: '#/components/schemas/Submission'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
     patch:
-      tags: [Submission administration]
-      operationId: updateSubmissionStatus
-      summary: Change an inquiry status
-      servers:
-        - url: https://admin.macon170.com
+      tags: [Contact administration]
+      operationId: updateContactSubmission
+      summary: Change and audit an inquiry status
       security:
-        - cloudflareAccessJwt: []
+        - cmsSession: []
+      parameters:
+        - $ref: '#/components/parameters/CsrfToken'
       requestBody:
         required: true
         content:
@@ -167,14 +236,18 @@ paths:
             application/json:
               schema:
                 type: object
-                required: [ok, status]
+                required: [version, status, statusLabel]
                 properties:
-                  ok:
-                    const: true
+                  version:
+                    const: pack-contact-v1
                   status:
                     $ref: '#/components/schemas/SubmissionStatus'
+                  statusLabel:
+                    type: string
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
@@ -184,11 +257,11 @@ paths:
 
 components:
   securitySchemes:
-    cloudflareAccessJwt:
+    cmsSession:
       type: apiKey
-      in: header
-      name: Cf-Access-Jwt-Assertion
-      description: Cloudflare Access JWT verified by the Worker.
+      in: cookie
+      name: auth_token
+      description: Active SonicJS administrator session.
 
   parameters:
     SubmissionId:
@@ -198,6 +271,13 @@ components:
       schema:
         type: string
         format: uuid
+    CsrfToken:
+      name: X-CSRF-Token
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Must match the signed `csrf_token` cookie.
 
   schemas:
     ContactForm:
@@ -211,16 +291,23 @@ components:
         email:
           type: string
           format: email
+          minLength: 5
           maxLength: 254
         phone:
           type: string
           maxLength: 40
         childGrade:
           type: string
-          maxLength: 30
+          enum: ['', Kindergarten, 1st grade, 2nd grade, 3rd grade, 4th grade, 5th grade]
         topic:
           type: string
-          maxLength: 80
+          enum:
+            - Planning a first visit
+            - Calendar or event detail
+            - Finding my child’s den
+            - Volunteering
+            - Website or privacy question
+            - Something else
         message:
           type: string
           minLength: 10
@@ -229,86 +316,108 @@ components:
           type: string
           minLength: 1
           maxLength: 2048
+          writeOnly: true
         website:
           type: string
           maxLength: 100
-          description: Honeypot field; browsers leave it empty.
+          writeOnly: true
+          description: Honeypot field; browsers leave it empty and it is never stored.
 
     SubmissionStatus:
       type: string
-      enum: [new, in_progress, resolved, spam]
+      enum: [pending, reviewed, approved, spam]
 
     Submission:
       type: object
-      required: [id, created_at, updated_at, status, parent_name, email, topic, message, source_path]
+      required:
+        - id
+        - status
+        - statusLabel
+        - parentName
+        - email
+        - topic
+        - message
+        - submittedAt
+        - updatedAt
       properties:
         id:
           type: string
           format: uuid
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
+        number:
+          type: [integer, 'null']
         status:
           $ref: '#/components/schemas/SubmissionStatus'
-        parent_name:
+        statusLabel:
+          type: string
+        parentName:
           type: string
         email:
           type: string
           format: email
         phone:
           type: [string, 'null']
-        child_grade:
+        childGrade:
           type: [string, 'null']
         topic:
           type: string
         message:
           type: string
-        source_path:
+        countryCode:
+          type: [string, 'null']
+        sourcePath:
+          type: [string, 'null']
+        submittedAt:
           type: string
-        country_code:
-          type: [string, 'null']
-        assigned_to:
-          type: [string, 'null']
-        resolved_at:
-          type: [string, 'null']
           format: date-time
-        last_viewed_at:
+        updatedAt:
+          type: string
+          format: date-time
+        lastViewedAt:
           type: [string, 'null']
           format: date-time
 
     Error:
       type: object
-      required: [ok, error]
+      required: [error]
       properties:
-        ok:
-          const: false
+        success:
+          type: boolean
         error:
-          type: string
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+            message:
+              type: string
 
   responses:
     BadRequest:
-      description: Invalid request.
+      description: Validation or security-check failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: CMS sign-in required.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     Forbidden:
-      description: Origin or Access authentication rejected.
+      description: Origin, CMS role, or CSRF protection rejected the request.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     NotFound:
-      description: Submission not found.
+      description: Form or submission not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     PayloadTooLarge:
-      description: Request body exceeded the accepted limit.
+      description: Request body exceeded 24 KB.
       content:
         application/json:
           schema:
@@ -320,13 +429,19 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
     TooManyRequests:
-      description: Rate limit exceeded.
+      description: Contact rate limit exceeded.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     InternalError:
-      description: Unexpected server error.
+      description: Unexpected CMS error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unavailable:
+      description: CMS or Turnstile temporarily unavailable.
       content:
         application/json:
           schema:

@@ -34,8 +34,18 @@ The neighborhood pack, plainly local: Macon's own Pack 170, meeting in the histo
 
 ## Capabilities and Constraints
 
-- Astro, deployed as a Cloudflare Worker serving static assets, the contact API, and the submissions desk. D1 (`macon170-submissions`) backs the contact inbox; retained calendar tables are read-only history. The separately deployed SonicJS CMS owns calendar storage, editing, public JSON, and ICS. Turnstile guards the public form; a daily cron prunes submissions after 365 days. Public traffic uses `www.macon170.com`, submissions use `admin.macon170.com`, and calendar administration uses `cms.macon170.com`.
-- **Volunteer desk access:** Cloudflare Access, deny-by-default allowlist of approved adult volunteer emails, one-time PIN, short sessions. The public Worker independently verifies every Access JWT for the submissions desk. Calendar administration uses SonicJS authentication and a dedicated calendar permission in the CMS.
+- Astro, deployed as a Cloudflare Worker serving static assets and hostname
+  redirects. The separately deployed SonicJS CMS owns contact validation,
+  Turnstile verification, rate limiting, storage, the volunteer queue, audit
+  records, 365-day retention, calendar storage/editing, public JSON, and ICS.
+  The legacy `macon170-submissions` D1 database and migrations remain
+  read-only history and are not bound to this Worker. Public traffic uses
+  `www.macon170.com`; `admin.macon170.com` redirects to the CMS contact queue;
+  `api.macon170.com` remains closed.
+- **Volunteer queue access:** only active SonicJS `admin` users may review
+  submissions. The CMS independently authenticates every queue/API request and
+  requires CSRF protection for status changes. Calendar administration uses
+  SonicJS authentication and its dedicated calendar permission.
 - **Placeholder policy (user-confirmed, evolving):** pack-specific facts not in `docs/Official-info.md` are never invented. Facts a volunteer can maintain (leadership roster, calendar events) move to D1 and are edited in the desk — no git, no deploy. The clearly-marked single-file placeholder pattern (`src/data/`) remains for facts that have no editor yet (dues, den structure, contact emails). Meeting info IS known (see Operating Context).
 - **Brand/trademark rules (binding, see trademark-brand-guidance.md):** official Scouting artwork used unmodified only, from the Brand Center; fleur-de-lis affirmatively recommended as icon/favicon; never extract the Wolf element; never use the WOSM World Scout Emblem; no recoloring/effects on marks; footer attribution + non-endorsement block required; no ads or merchandise sales; don't reproduce Supply Group publications.
 - **Youth protection (binding):** youth identified by first name + last initial only; no youth photos without consent; site needs its own privacy policy page naming a webmaster contact; all contact channels reach multiple adults, parent-framed. **All family-facing content is public — there is no members-only site.** The single gated surface is adult-volunteer administration, which holds no youth data: the contact form tells parents not to submit a child's name, the roster schema has no adult email column, and the public calendar API exposes only published family logistics, never volunteer identities or audit metadata. Volunteers reply from an approved shared pack mailbox, never a private one-to-one youth channel.
