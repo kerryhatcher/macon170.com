@@ -11,10 +11,10 @@ import {
 } from './pack-year';
 import type { Milestone, SpineEvent } from './pack-year';
 
-const event = (slug: string, starts_at: string, extra: Partial<SpineEvent> = {}): SpineEvent => ({
+const event = (slug: string, startsAt: string, extra: Partial<SpineEvent> = {}): SpineEvent => ({
   slug,
   title: slug,
-  starts_at,
+  startsAt,
   ...extra,
 });
 

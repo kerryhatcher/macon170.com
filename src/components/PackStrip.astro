@@ -21,18 +21,14 @@ import { pack } from '../data/pack';
   </div>
 </aside>
 <script>
-  import { API_BASE } from '../lib/api-base';
-  type PublicEvent = { slug: string; title: string };
+  import { getCalendarEvents } from '../lib/calendar-client';
   const nextEventLink = document.querySelector<HTMLAnchorElement>('#pack-strip-next-event');
   const compactTitle = (title: string) => (title.length > 44 ? `${title.slice(0, 41).trimEnd()}…` : title);
 
   async function loadNextEvent() {
     if (!nextEventLink) return;
     try {
-      const response = await fetch(`${API_BASE}/api/events`);
-      if (!response.ok) return;
-      const body = (await response.json()) as { events?: PublicEvent[] };
-      const event = body.events?.[0];
+      const event = (await getCalendarEvents())[0];
       if (!event) return;
       nextEventLink.textContent = compactTitle(event.title);
       nextEventLink.href = `/events/?event=${encodeURIComponent(event.slug)}`;

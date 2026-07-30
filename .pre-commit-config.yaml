@@ -44,4 +44,6 @@ repos:
     rev: 57b21406f092110c18776e39b0bda50d37c945c8
     hooks:
       - id: codespell
-        exclude: '^(\.agents/|\.claude/|graphify-out/|worker-configuration\.d\.ts$|bun\.lock$)'
+        # Official-info is human-authored and the BCSD corpus contains the MAPP
+        # framework name, which codespell incorrectly expands to "Map".
+        exclude: '^(\.agents/|\.claude/|graphify-out/|docs/Official-info\.md$|docs/research/bcsd/|worker-configuration\.d\.ts$|bun\.lock$)'

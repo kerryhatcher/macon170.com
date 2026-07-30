@@ -2,9 +2,8 @@ import { exports } from 'cloudflare:workers';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'acorn';
 
-// Unit-level guard for the admin shells' server-rendered <script> blocks. Both
-// worker/index.ts (volunteer desk) and worker/calendar-admin.ts (calendar editor)
-// build their client-side script as a TypeScript template literal, so any escape
+// Unit-level guard for the volunteer desk's server-rendered <script> block.
+// worker/index.ts builds its client-side script as a TypeScript template literal, so any escape
 // sequence written directly in that literal (e.g. \n, \t) is consumed by the
 // TS/JS parser before it ever reaches the browser - turning intended regex source
 // text like /\n/g into a regex containing a literal newline, which the browser
@@ -27,30 +26,20 @@ async function fetchDeskHtml(path: string): Promise<string> {
 }
 
 describe('admin inline scripts', () => {
-  it.each([
-    ['/admin', 'volunteer desk'],
-    ['/admin/calendar', 'calendar editor'],
-  ])('renders syntactically valid JavaScript for %s (%s)', async (path) => {
-    const script = await extractInlineScript(path);
+  it('renders syntactically valid JavaScript', async () => {
+    const script = await extractInlineScript('/admin');
     expect(() => parse(script, { ecmaVersion: 'latest' })).not.toThrow();
   });
 });
 
-// The two desk pages each used to carry a private copy of their chrome, and they drifted:
-// the calendar editor's skip link lost its background (invisible on focus over the dark
-// header), its filter buttons fell under 44px, and its filter row lost its accessible name.
-// These assert the shared chrome in desk-chrome.ts actually reaches both pages, so the
-// divergence cannot come back unnoticed.
-describe('shared desk chrome', () => {
-  it.each([
-    ['/admin', 'volunteer desk'],
-    ['/admin/calendar', 'calendar editor'],
-  ])('gives %s (%s) a visible skip link, 44px filters, and a scalable viewport', async (path) => {
-    const html = await fetchDeskHtml(path);
+describe('desk chrome', () => {
+  it('gives the desk a visible skip link, 44px filters, and a scalable viewport', async () => {
+    const html = await fetchDeskHtml('/admin');
     expect(html).toContain('content="width=device-width, initial-scale=1"');
     expect(html).toMatch(/\.skip\{[^}]*background:var\(--gold\)/);
     expect(html).toMatch(/\.filters button\{[^}]*min-height:44px/);
     expect(html).toContain('<nav class="desk-nav" aria-label="Desk sections">');
+    expect(html).toContain('href="https://cms.macon170.com/admin/calendar"');
     // Every list the volunteer scans is a real list with a name, not an aria-labelled div.
     expect(html).toMatch(/<ul id="(list|event-list)"[^>]*aria-label="[^"]+"/);
   });

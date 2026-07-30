@@ -29,6 +29,9 @@ test('parent submission appears in the volunteer desk with no console errors', a
   await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js', (route) =>
     route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }),
   );
+  await page.route('http://localhost:41772/api/calendar/v1/events', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ version: 'v1', events: [] }) }),
+  );
 
   const parentName = `E2E Parent ${Date.now()}`;
   const message = 'Testing that submissions reach the volunteer desk.\nSecond line to check newline handling.';

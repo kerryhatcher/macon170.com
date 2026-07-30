@@ -1,0 +1,333 @@
+openapi: 3.1.1
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+
+info:
+  title: Pack 170 Public-Site Worker API
+  version: 0.2.0
+  summary: Contact and submissions-desk APIs owned by macon170.com.
+  description: |
+    This contract covers only the public-site Worker. Calendar JSON, event
+    administration, and the iCalendar feed are owned by the independently
+    deployed SonicJS CMS at `https://cms.macon170.com/api/calendar/v1`.
+  contact:
+    name: Pack 170
+    url: https://www.macon170.com/contact/
+  license:
+    name: MIT
+    identifier: MIT
+
+servers:
+  - url: https://www.macon170.com
+    description: Public website
+  - url: https://admin.macon170.com
+    description: Cloudflare Access-protected submissions desk
+
+tags:
+  - name: Contact
+    description: Parent or guardian contact-form submission.
+  - name: Submission administration
+    description: Access-protected parent inquiry management.
+
+paths:
+  /api/contact:
+    post:
+      tags: [Contact]
+      operationId: submitParentInquiry
+      summary: Submit a parent or guardian inquiry
+      security: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ContactForm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ContactForm'
+      responses:
+        '303':
+          description: Inquiry accepted.
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+              example: /contact/?submitted=success#contact-form
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/admin/submissions:
+    get:
+      tags: [Submission administration]
+      operationId: listSubmissions
+      summary: List parent inquiries
+      servers:
+        - url: https://admin.macon170.com
+      security:
+        - cloudflareAccessJwt: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/SubmissionStatus'
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 1
+      responses:
+        '200':
+          description: Paginated submissions ordered newest first.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, submissions, page, hasMore]
+                properties:
+                  ok:
+                    const: true
+                  submissions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Submission'
+                  page:
+                    type: integer
+                  hasMore:
+                    type: boolean
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /api/admin/submissions/{submissionId}:
+    parameters:
+      - $ref: '#/components/parameters/SubmissionId'
+    get:
+      tags: [Submission administration]
+      operationId: getSubmission
+      summary: Open a parent inquiry
+      servers:
+        - url: https://admin.macon170.com
+      security:
+        - cloudflareAccessJwt: []
+      responses:
+        '200':
+          description: Submission detail. Opening it creates an audit entry.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, submission]
+                properties:
+                  ok:
+                    const: true
+                  submission:
+                    $ref: '#/components/schemas/Submission'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    patch:
+      tags: [Submission administration]
+      operationId: updateSubmissionStatus
+      summary: Change an inquiry status
+      servers:
+        - url: https://admin.macon170.com
+      security:
+        - cloudflareAccessJwt: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [status]
+              properties:
+                status:
+                  $ref: '#/components/schemas/SubmissionStatus'
+      responses:
+        '200':
+          description: Status updated and audited.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, status]
+                properties:
+                  ok:
+                    const: true
+                  status:
+                    $ref: '#/components/schemas/SubmissionStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  securitySchemes:
+    cloudflareAccessJwt:
+      type: apiKey
+      in: header
+      name: Cf-Access-Jwt-Assertion
+      description: Cloudflare Access JWT verified by the Worker.
+
+  parameters:
+    SubmissionId:
+      name: submissionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    ContactForm:
+      type: object
+      required: [parentName, email, topic, message, cf-turnstile-response]
+      properties:
+        parentName:
+          type: string
+          minLength: 2
+          maxLength: 120
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 40
+        childGrade:
+          type: string
+          maxLength: 30
+        topic:
+          type: string
+          maxLength: 80
+        message:
+          type: string
+          minLength: 10
+          maxLength: 4000
+        cf-turnstile-response:
+          type: string
+          minLength: 1
+          maxLength: 2048
+        website:
+          type: string
+          maxLength: 100
+          description: Honeypot field; browsers leave it empty.
+
+    SubmissionStatus:
+      type: string
+      enum: [new, in_progress, resolved, spam]
+
+    Submission:
+      type: object
+      required: [id, created_at, updated_at, status, parent_name, email, topic, message, source_path]
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/SubmissionStatus'
+        parent_name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: [string, 'null']
+        child_grade:
+          type: [string, 'null']
+        topic:
+          type: string
+        message:
+          type: string
+        source_path:
+          type: string
+        country_code:
+          type: [string, 'null']
+        assigned_to:
+          type: [string, 'null']
+        resolved_at:
+          type: [string, 'null']
+          format: date-time
+        last_viewed_at:
+          type: [string, 'null']
+          format: date-time
+
+    Error:
+      type: object
+      required: [ok, error]
+      properties:
+        ok:
+          const: false
+        error:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Origin or Access authentication rejected.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Submission not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PayloadTooLarge:
+      description: Request body exceeded the accepted limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnsupportedMediaType:
+      description: Unsupported request content type.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

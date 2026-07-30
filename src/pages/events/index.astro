@@ -34,22 +34,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 </BaseLayout>
 <script>
-  import { API_BASE } from '../../lib/api-base';
-  type PublicEvent = {
-    title: string;
-    summary: string;
-    description: string;
-    starts_at: string;
-    ends_at: string | null;
-    status: string;
-    category: string;
-    location_name: string | null;
-    address: string | null;
-    audience: string;
-    what_to_bring: string | null;
-    cost: string | null;
-    registration_url: string | null;
-  };
+  import { CalendarClientError, getCalendarEvent } from '../../lib/calendar-client';
   const esc = (value: string) =>
     value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
   const part = (value: string, options: Intl.DateTimeFormatOptions) =>
@@ -71,34 +56,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       if (detail) detail.innerHTML = '<h2>Event not found</h2><p>Return to the <a href="/calendar/">Pack calendar</a>.</p>';
       return;
     }
-    const response = await fetch(`${API_BASE}/api/events/` + encodeURIComponent(slug));
-    if (!response.ok) {
+    let e;
+    try {
+      e = await getCalendarEvent(slug);
+    } catch (error) {
+      if (!(error instanceof CalendarClientError) || error.status !== 404) throw error;
       if (detail)
         detail.innerHTML =
           '<h2>Event not found</h2><p>This event may be a draft, archived, or no longer available. Return to the <a href="/calendar/">Pack calendar</a>.</p>';
       return;
     }
-    const { event: e } = (await response.json()) as { event: PublicEvent };
     document.title = e.title + ' | Cub Scout Pack 170';
     const title = document.querySelector('#event-title'),
       summary = document.querySelector('#event-summary');
     if (title) title.textContent = e.title;
     if (summary) summary.textContent = e.summary;
-    const registration = e.registration_url ? webUrl(e.registration_url) : null;
+    const registration = e.registrationUrl ? webUrl(e.registrationUrl) : null;
     // The date pin carries the start date, so an end time only reads as a range on a
     // single-day event; a multi-day event has to restate the end date.
-    const sameDay = e.ends_at ? part(e.starts_at, { dateStyle: 'short' }) === part(e.ends_at, { dateStyle: 'short' }) : false;
-    const whenRange = e.ends_at
-      ? timeOf(e.starts_at) +
+    const sameDay = e.endsAt ? part(e.startsAt, { dateStyle: 'short' }) === part(e.endsAt, { dateStyle: 'short' }) : false;
+    const whenRange = e.endsAt
+      ? timeOf(e.startsAt) +
         ' – ' +
-        (sameDay ? timeOf(e.ends_at) : part(e.ends_at, { month: 'short', day: 'numeric' }) + ', ' + timeOf(e.ends_at))
-      : timeOf(e.starts_at);
+        (sameDay ? timeOf(e.endsAt) : part(e.endsAt, { month: 'short', day: 'numeric' }) + ', ' + timeOf(e.endsAt))
+      : timeOf(e.startsAt);
     // A fact row appears only for a detail the desk actually published. Everything still
     // unpublished is named once, plainly, instead of sitting in the list as a fake row.
     const facts: [string, string][] = [['Who', e.audience]];
-    if (e.what_to_bring) facts.push(['Bring', e.what_to_bring]);
+    if (e.whatToBring) facts.push(['Bring', e.whatToBring]);
     if (e.cost) facts.push(['Cost', e.cost]);
-    const pending = [e.what_to_bring ? null : 'what to bring', e.cost ? null : 'cost', e.registration_url ? null : 'registration'].filter(
+    const pending = [e.whatToBring ? null : 'what to bring', e.cost ? null : 'cost', e.registrationUrl ? null : 'registration'].filter(
       (item): item is string => item !== null,
     );
     const listed = (items: string[]) => (items.length > 1 ? items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1] : items[0]);
@@ -106,15 +93,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       detail.innerHTML = [
         '<div class="event-masthead">',
         '<div class="event-datepin">',
-        '<span class="event-datepin__dow">' + esc(part(e.starts_at, { weekday: 'short' })) + '</span>',
-        '<span class="event-datepin__day">' + esc(part(e.starts_at, { day: 'numeric' })) + '</span>',
-        '<span class="event-datepin__mon">' + esc(part(e.starts_at, { month: 'short', year: 'numeric' })) + '</span>',
+        '<span class="event-datepin__dow">' + esc(part(e.startsAt, { weekday: 'short' })) + '</span>',
+        '<span class="event-datepin__day">' + esc(part(e.startsAt, { day: 'numeric' })) + '</span>',
+        '<span class="event-datepin__mon">' + esc(part(e.startsAt, { month: 'short', year: 'numeric' })) + '</span>',
         '</div><div>',
         '<h2 class="event-when__time">' + esc(whenRange) + '</h2>',
-        '<p class="event-when__place">' + esc(e.location_name || 'Location being confirmed') + '</p>',
+        '<p class="event-when__place">' + esc(e.locationName || 'Location being confirmed') + '</p>',
         e.address ? '<p class="event-when__addr">' + esc(e.address) + '</p>' : '',
         '<p class="event-chips"><span class="event-chip">' + esc(e.category) + ' event</span>',
-        '<span class="event-chip event-chip--status">' + esc(e.status) + '</span></p>',
+        '<span class="event-chip event-chip--status">' + esc(e.eventStatus) + '</span></p>',
         '</div></div>',
         '<p class="event-lead">' + esc(e.description).replace(/\n/g, '<br>') + '</p>',
         '<ul class="event-facts">',
@@ -122,7 +109,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         '</ul>',
         registration
           ? '<p class="event-action"><a class="button button--blue" href="' + esc(registration) + '">Open registration</a></p>'
-          : e.registration_url
+          : e.registrationUrl
             ? '<p class="event-action event-action--broken">The registration link on file could not be opened. Ask the pack for a working link.</p>'
             : '',
         pending.length

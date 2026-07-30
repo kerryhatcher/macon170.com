@@ -1,6 +1,4 @@
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
-import { EventRouteError, handleEventRoute } from './event-routes';
-import { renderCalendarAdmin } from './calendar-admin';
 import { deskHead, deskHeader } from './desk-chrome';
 
 type WorkerEnv = Env & { TURNSTILE_SECRET: string };
@@ -62,6 +60,16 @@ export default {
         return await handleContactSubmission(request, runtimeEnv);
       }
 
+      if (
+        url.pathname === '/api/events' ||
+        url.pathname.startsWith('/api/events/') ||
+        url.pathname === '/api/calendar.ics' ||
+        url.pathname === '/api/admin/events' ||
+        url.pathname.startsWith('/api/admin/events/')
+      ) {
+        throw new HttpError(404, 'Not found.');
+      }
+
       const adminHostname = new URL(env.ADMIN_ORIGIN).hostname;
       const localAdmin = String(env.ENVIRONMENT) === 'development' && (url.hostname === 'localhost' || url.hostname === '127.0.0.1');
       const isAdminApiPath = url.pathname.startsWith('/api/admin/');
@@ -70,18 +78,6 @@ export default {
       if (isAdminApiPath && !isApiHostname && !localAdmin && !hasApiAuth) {
         throw new HttpError(404, 'Not found.');
       }
-
-      const eventResponse = await handleEventRoute({
-        request,
-        env,
-        url,
-        requireAccess,
-        enforceSameOrigin,
-        json,
-        publicHeaders,
-        adminHeaders,
-      });
-      if (eventResponse) return eventResponse;
 
       if (url.pathname === '/api/admin/submissions' && request.method === 'GET') {
         const identity = await requireAccess(request, env);
@@ -100,19 +96,14 @@ export default {
 
       if (url.hostname === new URL(env.ADMIN_ORIGIN).hostname || url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
         const identity = await requireAccess(request, env);
-        if (url.pathname === '/calendar' || url.pathname === '/admin/calendar') {
-          return renderCalendarAdmin(identity.email ?? 'Authorized volunteer', env, adminHeaders(env));
-        }
+        if (url.pathname === '/calendar' || url.pathname === '/admin/calendar') throw new HttpError(404, 'Not found.');
         return renderAdminShell(identity.email ?? 'Authorized volunteer', env);
       }
 
       return env.ASSETS.fetch(request);
     } catch (error) {
-      if (error instanceof HttpError || error instanceof EventRouteError) {
+      if (error instanceof HttpError) {
         return json({ ok: false, error: error.message }, error.status, securityHeaders());
-      }
-      if (error instanceof Error && error.message.includes('UNIQUE constraint failed: calendar_events.slug')) {
-        return json({ ok: false, error: 'Another event already uses that URL slug.' }, 409, securityHeaders());
       }
       console.error(
         JSON.stringify({ event: 'request_failed', path: url.pathname, error: error instanceof Error ? error.message : 'Unknown error' }),
@@ -338,7 +329,7 @@ async function requireAccess(request: Request, env: Env): Promise<AccessIdentity
 function renderAdminShell(email: string, env: Env): Response {
   const html = `<!doctype html>
 <html lang="en">${deskHead('Pack 170 volunteer desk', '1200px', adminCss())}
-<body>${deskHeader(email, 'inbox')}
+<body>${deskHeader(email)}
 <main id="main"><section class="intro"><div><p class="tab">Parent inquiries</p><h1>Volunteer desk</h1><p>Read parent questions, follow up through approved adult channels, and keep the queue current.</p></div><div class="safety"><b>Youth safety</b><span>These are parent-to-adult messages. Do not move a conversation into a private adult–youth channel.</span></div></section>
 <nav class="filters" aria-label="Submission status"><button data-status="" aria-pressed="true">All</button><button data-status="new">New</button><button data-status="in_progress">In progress</button><button data-status="resolved">Resolved</button><button data-status="spam">Spam</button></nav>
 <div id="status" class="status" role="status">Loading submissions…</div><section class="desk"><ul id="list" class="list" aria-label="Parent inquiries"></ul><article id="detail" class="detail" tabindex="-1"><div class="empty"><b>Select a message</b><span>Parent contact details and the full question will appear here.</span></div></article></section></main>
@@ -369,7 +360,7 @@ document.querySelectorAll('[data-status]').forEach((button)=>button.addEventList
 }
 
 // Inbox-specific layout only. Shared desk chrome (tokens, header, skip link, filter buttons,
-// the state chip) lives in desk-chrome.ts so it cannot drift from the calendar editor again.
+// and the state chip) lives in desk-chrome.ts.
 function adminCss(): string {
   return `.intro{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:end}
 .intro h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1;margin:0}
@@ -480,19 +471,6 @@ function redirectToContact(state: 'success'): Response {
 
 function json(data: unknown, status = 200, headers: HeadersInit = {}): Response {
   return Response.json(data, { status, headers: { 'cache-control': 'no-store', ...headers } });
-}
-
-const LOCAL_DEV_ORIGINS = new Set(['http://localhost:4321', 'http://127.0.0.1:4321']);
-
-function publicHeaders(request: Request): Record<string, string> {
-  const origin = request.headers.get('origin') ?? '';
-  const allowOrigin = LOCAL_DEV_ORIGINS.has(origin) ? origin : 'https://www.macon170.com';
-  return {
-    ...securityHeaders(),
-    'cache-control': 'public, max-age=30, s-maxage=60',
-    'access-control-allow-origin': allowOrigin,
-    vary: 'origin',
-  };
 }
 
 function securityHeaders(): Record<string, string> {

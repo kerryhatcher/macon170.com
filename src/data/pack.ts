@@ -88,8 +88,8 @@ export const ranks = [
 ] as const;
 
 // The annual rhythm is known fact (see PRODUCT.md Operating Context) and is NOT the calendar:
-// these are recurring milestones, while D1 holds specific dated events. A calendar event claims a
-// milestone by storing its `key` in calendar_events.milestone, set from a dropdown in the admin UI.
+// these are recurring milestones, while the CMS holds specific dated events. A calendar event
+// claims a milestone by storing one of these stable keys.
 // A milestone with no event associated to it keeps its `state` placeholder on the homepage.
 //
 // `key` is a stored database value: rewording a `title` is safe, but changing a `key` orphans every

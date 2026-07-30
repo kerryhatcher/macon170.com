@@ -2,8 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, annualProgram } from '../../data/pack';
+import { CALENDAR_SUBSCRIPTION_URL } from '../../lib/calendar-client';
 
-const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
+const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
 ---
 
 <BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
@@ -18,7 +19,7 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
     <div slot="actions" class="hero-actions">
       <a class="button button--gold" href="#program-year">See the program year</a><a
         class="button button--paper"
-        href="webcal://www.macon170.com/api/calendar.ics">Subscribe to calendar</a
+        href="webcal://cms.macon170.com/api/calendar/v1/calendar.ics">Subscribe to calendar</a
       >
     </div>
     <p slot="note">At {pack.meeting.location}. Den schedules vary.</p>
@@ -71,7 +72,7 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
         </p>
       </div>
       <div class="subscribe-card__actions">
-        <a class="button button--blue" href="webcal://www.macon170.com/api/calendar.ics">Open calendar app</a>
+        <a class="button button--blue" href="webcal://cms.macon170.com/api/calendar/v1/calendar.ics">Open calendar app</a>
         <button class="button button--paper" type="button" data-copy-calendar data-calendar-url={calendarSubscriptionUrl}
           >Copy subscription URL</button
         >
@@ -123,7 +124,7 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
   </section>
 </BaseLayout>
 <script>
-  import { API_BASE } from '../../lib/api-base';
+  import { getCalendarEvents } from '../../lib/calendar-client';
   import { annualProgram } from '../../data/pack';
   import { buildTimeline, monthKey, monthLabel, milestoneProgress, type SpineEvent } from '../../lib/pack-year';
 
@@ -149,8 +150,8 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
   function milestoneRow(entry: Extract<ReturnType<typeof buildTimeline>[number], { kind: 'milestone' }>): string {
     const { milestone, event, done } = entry;
     // No event yet: keep the honest placeholder the server already wrote rather than inventing a date.
-    const when = event ? `${dayLabel(event.starts_at)} · ${timeLabel(event.starts_at)}` : milestone.state;
-    const where = event?.location_name ? `<span class="timeline__where">${escapeHtml(event.location_name)}</span>` : '';
+    const when = event ? `${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}` : milestone.state;
+    const where = event?.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
     const state = done ? '<span class="timeline__state">Held this year</span>' : '';
     const open = event ? `<a class="timeline__open" href="/events/?event=${encodeURIComponent(event.slug)}">Open event details</a>` : '';
     const flags = [event ? 'data-confirmed' : '', done ? 'data-done' : ''].filter(Boolean).join(' ');
@@ -169,10 +170,12 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
   function eventRow(event: SpineEvent): string {
     // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
     const flag =
-      (event.status ?? '').toLowerCase() === 'scheduled' ? '' : `<span class="event-status">${escapeHtml(event.status ?? '')}</span>`;
-    const where = event.location_name ? `<span class="timeline__where">${escapeHtml(event.location_name)}</span>` : '';
+      (event.eventStatus ?? '').toLowerCase() === 'scheduled'
+        ? ''
+        : `<span class="event-status">${escapeHtml(event.eventStatus ?? '')}</span>`;
+    const where = event.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
     return `<li class="timeline__row timeline__row--event" data-category="${escapeHtml(event.category ?? 'pack')}">
-      <span class="timeline__day">${dayLabel(event.starts_at)} · ${timeLabel(event.starts_at)}</span>
+      <span class="timeline__day">${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}</span>
       <a class="timeline__title" href="/events/?event=${encodeURIComponent(event.slug)}">${escapeHtml(event.title)}</a>
       <span class="event-cat">${escapeHtml(event.category ?? 'pack')}</span>${flag}${where}
     </li>`;
@@ -209,11 +212,9 @@ const calendarSubscriptionUrl = 'https://www.macon170.com/api/calendar.ics';
 
   async function loadCalendar() {
     try {
-      const response = await fetch(`${API_BASE}/api/events`);
-      if (!response.ok) throw new Error('events unavailable');
-      const body = (await response.json()) as { events: SpineEvent[] };
-      render(body.events);
-      if (!body.events.length && notice)
+      const events = await getCalendarEvents();
+      render(events);
+      if (!events.length && notice)
         notice.innerHTML =
           '<div class="notice"><span class="notice__pin">i</span><div><h3>No dates are published yet</h3><p>Pack volunteers are still scheduling the year. The four milestones above are the shape it will take. <a href="/contact/">Ask a pack adult</a> before making a special trip.</p></div></div>';
     } catch {

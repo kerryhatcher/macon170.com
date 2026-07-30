@@ -19,6 +19,11 @@ Two ways to run it locally:
 - `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1. It binds to `0.0.0.0:41771` for LAN access.
 - `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `0.0.0.0:8787`. Use this for anything touching `worker/`.
 
+Calendar pages call the CMS directly. In development they use
+`http://localhost:41772` by default; set `PUBLIC_CALENDAR_CMS_ORIGIN` before the
+Astro build to use another local CMS origin. Production builds always use
+`https://cms.macon170.com`.
+
 `.dev.vars` provides `TURNSTILE_SECRET` set to Cloudflare's documented always-pass test secret — safe for local use, never used in production. Never commit a real Turnstile or Cloudflare secret.
 
 ## Before you open a PR
