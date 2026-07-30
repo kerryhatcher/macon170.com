@@ -38,9 +38,9 @@ jobs:
         run: |
           preview_url="https://${PREVIEW_NAME}.${CLOUDFLARE_ACCOUNT_SUBDOMAIN}.workers.dev"
           test -n "$CLOUDFLARE_ACCOUNT_SUBDOMAIN"
-          curl --fail-with-body --silent --show-error "$preview_url/" > /dev/null
-          curl --fail-with-body --silent --show-error "$preview_url/about/" > /dev/null
-          curl --fail-with-body --silent --show-error "$preview_url/calendar/" > /tmp/calendar.html
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/" > /dev/null
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/about/" > /dev/null
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/calendar/" > /tmp/calendar.html
           grep --fixed-strings --quiet "https://cms.macon170.com/api/calendar/v1/calendar.ics" /tmp/calendar.html
           curl --fail-with-body --silent --show-error --header "Origin: $preview_url" \
             https://cms.macon170.com/api/collections/leadership-roster/content > /dev/null
