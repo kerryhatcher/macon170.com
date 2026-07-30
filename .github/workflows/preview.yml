@@ -1,0 +1,80 @@
+name: Preview frontend pull request
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: frontend-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    # Forks receive the normal validation workflow but never our Cloudflare credentials.
+    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    # Configure a protected `preview` environment with preview-only Cloudflare
+    # credentials. It must not reuse the production deployment environment.
+    environment: preview
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.PREVIEW_CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_ACCOUNT_SUBDOMAIN: ${{ vars.CLOUDFLARE_ACCOUNT_SUBDOMAIN }}
+      PREVIEW_NAME: macon170-pr-${{ github.event.pull_request.number }}
+      PUBLIC_CMS_ORIGIN: https://cms.macon170.com
+      PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAAD-sr-Bk7AntxyZ7
+      # A preview reads production CMS data. Keep real submissions disabled
+      # unless the protected preview environment explicitly opts in.
+      PUBLIC_CONTACT_SUBMISSIONS_ENABLED: ${{ vars.PREVIEW_CONTACT_SUBMISSIONS_ENABLED || 'false' }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - name: Deploy production-CMS frontend preview
+        run: bunx wrangler deploy --config wrangler.preview.jsonc --name "$PREVIEW_NAME"
+      - name: Verify read-only preview integration
+        run: |
+          preview_url="https://${PREVIEW_NAME}.${CLOUDFLARE_ACCOUNT_SUBDOMAIN}.workers.dev"
+          cms_origin="${PUBLIC_CMS_ORIGIN%/}"
+          test -n "$CLOUDFLARE_ACCOUNT_SUBDOMAIN"
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/" > /dev/null
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/about/" > /dev/null
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/calendar/" > /tmp/calendar.html
+          grep --fixed-strings --quiet "webcal://${cms_origin#*://}/api/calendar/v1/calendar.ics" /tmp/calendar.html
+          curl --retry 12 --retry-all-errors --retry-delay 5 --fail-with-body --silent --show-error "$preview_url/contact/" > /tmp/contact.html
+          grep --fixed-strings --quiet 'data-endpoint-ready="false"' /tmp/contact.html
+          curl --fail-with-body --silent --show-error --header "Origin: $preview_url" \
+            "$cms_origin/api/collections/leadership-roster/content" > /dev/null
+      - name: Comment preview URLs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          preview_url="https://${PREVIEW_NAME}.${CLOUDFLARE_ACCOUNT_SUBDOMAIN}.workers.dev"
+          gh pr comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "## Production-CMS frontend preview\n\nFrontend: ${preview_url}\n\nSource commit: ${GITHUB_SHA}\n\nThis preview reads the production CMS. Automated checks are read-only. Contact submissions are disabled unless the protected preview environment explicitly enables them."
+
+  cleanup:
+    if: github.event.action == 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    environment: preview
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.PREVIEW_CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
+      PREVIEW_NAME: macon170-pr-${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Delete only this PR Worker
+        run: bunx wrangler delete --config wrangler.preview.jsonc --name "$PREVIEW_NAME"

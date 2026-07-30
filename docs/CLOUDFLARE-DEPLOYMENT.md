@@ -48,6 +48,21 @@ bun install --frozen-lockfile
 bun run dev:worker
 ```
 
+## Pull-request previews
+
+Same-repository frontend pull requests use the protected GitHub `preview`
+environment. Configure it separately from `production` with least-privilege,
+preview-only credentials:
+
+- `PREVIEW_CLOUDFLARE_ACCOUNT_ID`
+- `PREVIEW_CLOUDFLARE_API_TOKEN`
+- repository variable `CLOUDFLARE_ACCOUNT_SUBDOMAIN`
+
+The preview reads production CMS data but disables contact submissions by
+default. Set the protected `preview` environment variable
+`PREVIEW_CONTACT_SUBMISSIONS_ENABLED` to `true` only when a real production
+inquiry is intentionally allowed. Preview automation remains read-only.
+
 ## Contact cutover
 
 Before changing the public frontend, confirm the CMS contact migration is

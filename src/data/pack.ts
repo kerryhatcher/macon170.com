@@ -69,7 +69,7 @@ export const pack = {
   },
   // All contact funnels through the form. The pack publishes no adult email addresses.
   contact: {
-    formEndpoint: 'https://cms.macon170.com/api/forms/contact/submit',
+    formEndpoint: undefined,
   },
   // ponytail: the public leadership roster is loaded from cms.macon170.com on the About page.
   // ponytail: no `dens` array — `ranks` below already encodes one den per grade, and all six are
