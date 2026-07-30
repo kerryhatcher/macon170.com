@@ -13,6 +13,15 @@ async function stubTurnstile(page: Page) {
   );
 }
 
+test('enables submission when Turnstile succeeds before the page module is ready', async ({ page }) => {
+  await page.route(turnstileScript, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/javascript', body: "window.onTurnstileSuccess('early-token')" }),
+  );
+  await page.goto('/contact/');
+
+  await expect(page.locator('#contact-submit')).toBeEnabled();
+});
+
 test('keeps the branded form fields and submits directly to the CMS', async ({ page }) => {
   await stubTurnstile(page);
   await page.goto('/contact/');
