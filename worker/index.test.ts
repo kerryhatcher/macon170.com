@@ -2,12 +2,6 @@ import { exports } from 'cloudflare:workers';
 import { describe, expect, it } from 'vitest';
 
 describe('public Worker routing after the contact migration', () => {
-  it('keeps the apex redirect on the production public hostname', async () => {
-    const response = await exports.default.fetch('https://macon170.com/contact/?from=apex', { redirect: 'manual' });
-    expect(response.status).toBe(308);
-    expect(response.headers.get('Location')).toBe('https://www.macon170.com/contact/?from=apex');
-  });
-
   it.each([
     ['GET', 'https://www.macon170.com/api'],
     ['POST', 'https://www.macon170.com/api/contact'],

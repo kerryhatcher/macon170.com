@@ -11,7 +11,7 @@
     "check": "astro check && tsc --noEmit --project tsconfig.worker.json",
     "test": "bun run build && vitest run",
     "test:e2e": "playwright test",
-    "test:live": "LIVE_BASE_URL=https://www.macon170.com playwright test e2e/contact-turnstile.live.spec.ts",
+    "test:live": "LIVE_BASE_URL=https://www.macon170.com playwright test e2e/contact-turnstile.live.spec.ts e2e/redirects.live.spec.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
