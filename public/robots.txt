@@ -1,0 +1,14 @@
+# Cub Scout Pack 170 — macon170.com
+# Shipping this file displaces Cloudflare's managed AI-content-signals robots.txt,
+# which is served automatically only while this origin returns 404 for this path.
+
+User-agent: *
+Allow: /
+
+# Content signals declare intended use. `search` covers indexing and snippets,
+# `ai-input` covers grounding live AI answers, `ai-train` covers model training.
+# Pack 170 wants to be findable by parents, including through AI assistants,
+# but does not consent to being absorbed into a training corpus.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+Sitemap: https://www.macon170.com/sitemap-index.xml

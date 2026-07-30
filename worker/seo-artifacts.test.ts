@@ -51,3 +51,35 @@ describe('sitemap', () => {
     }
   });
 });
+
+describe('robots.txt', () => {
+  it('is served from this repository rather than the Cloudflare edge default', async () => {
+    const response = await exports.default.fetch(`${ORIGIN}/robots.txt`);
+
+    expect(response.status).toBe(200);
+    // Cloudflare's managed file is entirely comments and defines no directives.
+    expect(await response.text()).toContain('User-agent: *');
+  });
+
+  it('points crawlers at the sitemap index', async () => {
+    const body = await (await exports.default.fetch(`${ORIGIN}/robots.txt`)).text();
+
+    // @astrojs/sitemap emits an index plus numbered children; nothing exists at /sitemap.xml.
+    expect(body).toContain(`Sitemap: ${ORIGIN}/sitemap-index.xml`);
+  });
+
+  it('declares the pack content signals explicitly', async () => {
+    const body = await (await exports.default.fetch(`${ORIGIN}/robots.txt`)).text();
+
+    expect(body).toContain('Content-Signal: search=yes, ai-input=yes, ai-train=no');
+  });
+
+  it('never disallows a path that relies on a noindex tag', async () => {
+    const body = await (await exports.default.fetch(`${ORIGIN}/robots.txt`)).text();
+
+    // A disallowed page is never fetched, so its noindex is never read, and the URL can still
+    // surface as a bare link. Disallow and noindex are mutually exclusive tools.
+    expect(body).not.toContain('Disallow: /events/');
+    expect(body).not.toContain('Disallow: /');
+  });
+});
