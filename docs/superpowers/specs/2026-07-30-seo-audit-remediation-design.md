@@ -60,22 +60,78 @@ Page-count math confirmed: 13 static routes + 6 generated den pages = 19 total, 
 | Event indexability | Build-time fetch + CMS deploy hook | Keeps `output: 'static'`; real dates land in crawlable HTML; follows the existing `about.astro:37` precedent |
 | AI content signals | `search=yes, ai-input=yes, ai-train=no` | Maximize discoverability for parents searching, including AI assistants; withhold training-corpus use |
 | CSP rollout | Report-Only first, enforce after Phase 5 | A strict `style-src 'self'` would break the critical-CSS inlining that Phase 5 introduces |
+| Redirect ownership | All URL canonicalization is Cloudflare config; Worker keeps response headers | Redirects are infrastructure, and the trailing-slash 307 is emitted by the asset handler after the Worker delegates, so it cannot be fixed in the Worker without intercepting every asset request |
 
-## Phase 1 — Worker and edge
+## Phase 1 — Edge redirects and Worker response headers
 
-All changes in `worker/index.ts` (currently 27 lines, one redirect).
+**Boundary:** every URL canonicalization is Cloudflare configuration. The Worker keeps only
+application concerns — the `/api/*` guard, security headers, and `Cache-Control`.
 
-**Changes**
+### 1a. Cloudflare Redirect Rules (dashboard)
 
-- **HTTP → HTTPS.** Redirect with 308 when the request scheme is `http:`, mirroring the existing
-  apex-hostname redirect at line 5.
-- **307 → 308 trailing slash.** Normalize extensionless paths to trailing-slash with a 308 in the
-  Worker before delegating to `env.ASSETS.fetch`. `run_worker_first: true` in `wrangler.jsonc`
-  means the Worker gets first handling, so the asset handler's 307 never fires.
+Three redirects, all 308. **Rule order matters**: scheme and host are canonicalized in a single
+rule so that a worst-case request costs two hops, not three.
+
+**Rule 1 — canonical scheme and host.** One rule handles both, rather than pairing the
+"Always Use HTTPS" toggle with a separate apex rule, which would chain
+`http://macon170.com/x` → `https://macon170.com/x` → `https://www.macon170.com/x` at three hops
+including the trailing slash.
+
+```
+Expression:  not ssl or http.host ne "www.macon170.com"
+Target:      concat("https://www.macon170.com", http.request.uri)
+Status:      308  (preserve query string)
+```
+
+`http.request.uri` carries path and query together, so the query string survives without a
+separate concat.
+
+**Rule 2 — trailing slash.** Runs after Rule 1, so it only ever sees canonical scheme and host.
+
+```
+Expression:  http.host eq "www.macon170.com"
+             and not ends_with(http.request.uri.path, "/")
+             and not http.request.uri.path contains "."
+Target:      concat("https://www.macon170.com", http.request.uri.path, "/")
+Status:      308
+```
+
+The `contains "."` guard keeps static assets (`/_astro/x.css`, `/logo/x.png`, `/favicon.svg`) from
+acquiring a trailing slash. Note this rule drops the query string as written; if any extensionless
+route is ever linked with a query, the target must concat `http.request.uri.query` back on.
+Currently only `/events/?event=…` takes a query and it already ends in a slash, so Rule 2 does not
+fire for it.
+
+Because this fires at the edge, Cloudflare's static-asset handler never emits its 307 — that 307
+is generated *after* the Worker delegates to `env.ASSETS.fetch`, which is why the fix cannot live
+in the Worker without intercepting every asset request.
+
+**Deletions this forces in code:**
+
+- `worker/index.ts:5-9` — the apex-hostname redirect
+- `worker/index.test.ts:5-9` — the apex redirect test
+
+**Compensating coverage.** Dashboard config is unversioned and invisible to CI, so the three
+redirects get a live e2e spec, `e2e/redirects.live.spec.ts`, run by the existing `test:live`
+script against the deployed site. This is the mitigation for trading vitest coverage for dashboard
+state, and it must land in the same change that deletes the Worker redirect — not after.
+
+**Documentation.** The rules become load-bearing infrastructure with no representation in the
+repository, so record them verbatim (expression, target, status, order) in a new "Redirect rules"
+section of `docs/CLOUDFLARE-DEPLOYMENT.md`.
+
+### 1b. Worker response headers
+
+Remaining changes in `worker/index.ts`, which after the deletion is the `/api/*` guard plus:
+
 - **Security headers** on HTML responses: `Strict-Transport-Security`, `X-Content-Type-Options`,
   `Referrer-Policy`, `X-Frame-Options`, and `Content-Security-Policy-Report-Only`.
 - **Cache-Control.** `/_astro/*` and `/logo/*` get `public, max-age=31536000, immutable`
   (filenames are content-hashed, so this is safe). HTML keeps `must-revalidate`.
+
+These stay in code deliberately. CSP enumerates the application's own script and connect origins,
+so it is only correct relative to what `src/` actually loads; divorcing it from that source means a
+new third-party script could silently violate a policy nothing in CI checks.
 
 **CSP allowlist**, derived from origins actually referenced in `src/` and `worker/`:
 
@@ -90,17 +146,16 @@ Remaining external origins found in source (`scouting.org`, `facebook.com`,
 `centralgeorgiacouncil.org`, `highlandhillsbaptist.org`, `bcsdk12.net`) are outbound anchor hrefs,
 which CSP does not govern. No allowlist entry needed.
 
-**Open question to resolve during implementation:** whether a Worker on a Cloudflare custom domain
-observes `http:` in `request.url`, or whether TLS termination rewrites it. If the Worker cannot see
-the original scheme, fall back to the zone-level "Always Use HTTPS" setting and document it in
-`docs/CLOUDFLARE-DEPLOYMENT.md`. An e2e test settles this before the rest of the phase is written.
-
 **Acceptance criteria**
 
-- `curl -I http://www.macon170.com/` returns 308 to `https://`
+- `curl -I http://www.macon170.com/` returns 308 to `https://www.macon170.com/`
+- `curl -I http://macon170.com/join` reaches `https://www.macon170.com/join/` in **at most two**
+  redirect hops, every hop a 308
 - `curl -I https://www.macon170.com/join` returns 308, not 307
+- `curl -I https://www.macon170.com/favicon.svg` returns 200, not a redirect
 - All five security headers present on the HTTPS HTML response
 - `/_astro/*` responses carry `max-age=31536000, immutable`
+- `e2e/redirects.live.spec.ts` passes against the deployed site
 - Existing Playwright e2e suite passes with no new console CSP violations
 
 ## Phase 2 — Crawl discovery
@@ -250,7 +305,9 @@ Dropped deliberately, with reasons:
 
 | Risk | Mitigation |
 |---|---|
-| Worker may not observe the original `http:` scheme | Resolve with an e2e test in Phase 1; fall back to the zone-level "Always Use HTTPS" setting |
+| Redirect logic moves to unversioned dashboard state, invisible to PR review and CI | `e2e/redirects.live.spec.ts` run via `test:live`, landing in the same change that deletes the Worker redirect; rules recorded verbatim in `docs/CLOUDFLARE-DEPLOYMENT.md` |
+| Redirect rules could chain into 3+ hops, diluting link equity | Scheme and host canonicalized in a single rule; two-hop worst case is an explicit acceptance criterion |
+| Trailing-slash rule could redirect static assets or drop query strings | `contains "."` guard excludes assets; query-string limitation documented, and no current extensionless route takes a query |
 | Build-time CMS fetch makes builds depend on CMS availability | 5s timeout with graceful fallback, matching `about.astro:37`; build degrades rather than fails |
 | CMS deploy hook is outside this repo and may not get wired up | Scheduled nightly rebuild as a safety net |
 | Enforcing CSP could break Turnstile on `/contact` | Report-Only first; existing Playwright Turnstile e2e specs validate before enforcing |
@@ -261,3 +318,7 @@ Dropped deliberately, with reasons:
 Phases 1 and 2 have no content dependency and can ship the same day. Phase 3 is the highest-value
 work but carries the ops dependency. Phase 4 is independent of 1–3 and can land in parallel.
 Phase 5 is measured after 1–4 land. Phase 6 is handed to the pack.
+
+Phase 1 splits across two surfaces and must be ordered within itself: create the Cloudflare
+redirect rules **before** deleting the Worker's apex redirect, so no window exists where neither
+handles it.
