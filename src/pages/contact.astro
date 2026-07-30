@@ -267,9 +267,28 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     }
   }
 </style>
+<script is:inline>
+  // Turnstile's API script is asynchronous. Queue its callbacks immediately so
+  // a solved widget cannot win the race against the page module below.
+  window.__pack170TurnstileEvents = [];
+  window.onTurnstileSuccess = (token) => window.__pack170TurnstileEvents.push(['success', token]);
+  window.onTurnstileError = () => {
+    window.__pack170TurnstileEvents.push(['error']);
+    return false;
+  };
+  window.onTurnstileExpired = () => window.__pack170TurnstileEvents.push(['expired']);
+  window.onTurnstileTimeout = () => window.onTurnstileError();
+</script>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   import { createTurnstileController, type TurnstileView } from '../lib/contact-turnstile';
+
+  type QueuedTurnstileEvent = ['success' | 'error' | 'expired', string?];
+  declare global {
+    interface Window {
+      __pack170TurnstileEvents?: QueuedTurnstileEvent[];
+    }
+  }
 
   const success = document.querySelector<HTMLElement>('#submission-success');
   const submissionError = document.querySelector<HTMLElement>('#submission-error');
@@ -337,6 +356,14 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     };
 
     const turnstileController = createTurnstileController(renderTurnstile);
+    const dispatchTurnstileEvent = (event: string) => {
+      if (event === 'success') turnstileController.success();
+      else if (event === 'expired') turnstileController.expired();
+      else turnstileController.error();
+    };
+    const earlyEvents = window.__pack170TurnstileEvents ?? [];
+    window.__pack170TurnstileEvents = [];
+    earlyEvents.forEach(([event]) => dispatchTurnstileEvent(event));
     window.onTurnstileSuccess = () => turnstileController.success();
     window.onTurnstileError = () => turnstileController.error();
     window.onTurnstileExpired = () => turnstileController.expired();
