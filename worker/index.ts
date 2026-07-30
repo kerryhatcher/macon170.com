@@ -1,3 +1,5 @@
+import { withSiteHeaders } from './headers';
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -16,6 +18,6 @@ export default {
       );
     }
 
-    return env.ASSETS.fetch(request);
+    return withSiteHeaders(request, await env.ASSETS.fetch(request));
   },
 } satisfies ExportedHandler<Env>;

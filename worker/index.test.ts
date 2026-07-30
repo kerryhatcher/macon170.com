@@ -23,4 +23,12 @@ describe('public Worker routing after the contact migration', () => {
     expect(response.status).toBe(200);
     await expect(response.text()).resolves.toContain('Contact Pack 170');
   });
+
+  it('serves real pages with the security headers applied', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/contact/');
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
+    expect(response.headers.get('Content-Security-Policy-Report-Only')).toContain("default-src 'self'");
+  });
 });
