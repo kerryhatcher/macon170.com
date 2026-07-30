@@ -13,12 +13,21 @@ async function stubTurnstile(page: Page) {
   );
 }
 
-test('enables submission when Turnstile succeeds before the page module is ready', async ({ page }) => {
+test('enables submission through the callback Turnstile captured while rendering', async ({ page }) => {
   await page.route(turnstileScript, (route) =>
-    route.fulfill({ status: 200, contentType: 'application/javascript', body: "window.onTurnstileSuccess('early-token')" }),
+    route.fulfill({
+      status: 200,
+      contentType: 'application/javascript',
+      body: 'window.__capturedTurnstileSuccess = window.onTurnstileSuccess',
+    }),
   );
   await page.goto('/contact/');
 
+  await expect(page.locator('#contact-submit')).toBeDisabled();
+  await page.evaluate(() => {
+    const capturedSuccess = (window as Window & { __capturedTurnstileSuccess?: (token: string) => void }).__capturedTurnstileSuccess;
+    capturedSuccess?.('captured-token');
+  });
   await expect(page.locator('#contact-submit')).toBeEnabled();
 });
 

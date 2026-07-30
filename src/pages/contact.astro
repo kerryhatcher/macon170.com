@@ -268,25 +268,32 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   }
 </style>
 <script is:inline>
-  // Turnstile's API script is asynchronous. Queue its callbacks immediately so
-  // a solved widget cannot win the race against the page module below.
+  // Turnstile's implicit renderer retains these function references. Keep them
+  // stable for the lifetime of the page and delegate once the controller exists.
   window.__pack170TurnstileEvents = [];
-  window.onTurnstileSuccess = (token) => window.__pack170TurnstileEvents.push(['success', token]);
-  window.onTurnstileError = () => {
-    window.__pack170TurnstileEvents.push(['error']);
-    return false;
+  const dispatchPack170TurnstileEvent = (event, token) => {
+    if (window.__pack170TurnstileHandler) {
+      return window.__pack170TurnstileHandler(event, token);
+    }
+
+    window.__pack170TurnstileEvents.push([event, token]);
+    return event === 'error' ? false : undefined;
   };
-  window.onTurnstileExpired = () => window.__pack170TurnstileEvents.push(['expired']);
-  window.onTurnstileTimeout = () => window.onTurnstileError();
+  window.onTurnstileSuccess = (token) => dispatchPack170TurnstileEvent('success', token);
+  window.onTurnstileError = (errorCode) => dispatchPack170TurnstileEvent('error', errorCode);
+  window.onTurnstileExpired = () => dispatchPack170TurnstileEvent('expired');
+  window.onTurnstileTimeout = () => dispatchPack170TurnstileEvent('error');
 </script>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   import { createTurnstileController, type TurnstileView } from '../lib/contact-turnstile';
 
   type QueuedTurnstileEvent = ['success' | 'error' | 'expired', string?];
+  type TurnstileEventHandler = (event: QueuedTurnstileEvent[0], detail?: string) => boolean | void;
   declare global {
     interface Window {
       __pack170TurnstileEvents?: QueuedTurnstileEvent[];
+      __pack170TurnstileHandler?: TurnstileEventHandler;
     }
   }
 
@@ -356,18 +363,25 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
     };
 
     const turnstileController = createTurnstileController(renderTurnstile);
-    const dispatchTurnstileEvent = (event: string) => {
-      if (event === 'success') turnstileController.success();
-      else if (event === 'expired') turnstileController.expired();
-      else turnstileController.error();
+    window.__pack170TurnstileHandler = (event) => {
+      if (event === 'success') {
+        turnstileController.success();
+      } else if (event === 'expired') {
+        turnstileController.expired();
+      } else {
+        return turnstileController.error();
+      }
     };
     const earlyEvents = window.__pack170TurnstileEvents ?? [];
     window.__pack170TurnstileEvents = [];
-    earlyEvents.forEach(([event]) => dispatchTurnstileEvent(event));
-    window.onTurnstileSuccess = () => turnstileController.success();
-    window.onTurnstileError = () => turnstileController.error();
-    window.onTurnstileExpired = () => turnstileController.expired();
-    window.onTurnstileTimeout = () => turnstileController.error();
-    window.addEventListener('pagehide', () => turnstileController.destroy(), { once: true });
+    earlyEvents.forEach(([event, detail]) => window.__pack170TurnstileHandler?.(event, detail));
+    window.addEventListener(
+      'pagehide',
+      () => {
+        window.__pack170TurnstileHandler = undefined;
+        turnstileController.destroy();
+      },
+      { once: true },
+    );
   }
 </script>
