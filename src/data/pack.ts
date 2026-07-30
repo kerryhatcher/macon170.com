@@ -76,7 +76,7 @@ export const pack = {
   // active. Per-den schedules are set after the first pack meeting, so they are not site data.
 } as const;
 
-// `emblem` is the official badge of rank in assets/offical/, rendered by RankEmblem.astro.
+// `emblem` is the official badge of rank in assets/official/, rendered by RankEmblem.astro.
 // It replaced a `mark` letter ('L', 'T', …) that stood in before the official art was on hand.
 export const ranks = [
   { name: 'Lion', grade: 'Kindergarten', color: 'sun', emblem: 'Lion1.webp' },
