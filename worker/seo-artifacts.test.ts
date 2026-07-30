@@ -83,3 +83,26 @@ describe('robots.txt', () => {
     expect(body).not.toContain('Disallow: /');
   });
 });
+
+describe('indexability', () => {
+  it('marks the client-rendered event shell noindex', async () => {
+    const response = await exports.default.fetch(`${ORIGIN}/events/`);
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain('<meta name="robots" content="noindex"');
+  });
+
+  it('keeps the event shell crawlable so the noindex tag can be read', async () => {
+    const robots = await (await exports.default.fetch(`${ORIGIN}/robots.txt`)).text();
+
+    expect(robots).not.toContain('Disallow: /events/');
+  });
+
+  it('leaves genuinely indexable pages unmarked', async () => {
+    for (const path of ['/', '/join/', '/calendar/', '/about/', '/dens/lion/']) {
+      const html = await (await exports.default.fetch(`${ORIGIN}${path}`)).text();
+      expect(html, `${path} must stay indexable`).not.toContain('name="robots"');
+    }
+  });
+});

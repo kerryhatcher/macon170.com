@@ -19,8 +19,8 @@ import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
-type Props = { title: string; description: string; showStrip?: boolean };
-const { title, description, showStrip = true } = Astro.props;
+type Props = { title: string; description: string; showStrip?: boolean; noindex?: boolean };
+const { title, description, showStrip = true, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -32,6 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
          sitting in a letterbox; the safe-area insets in global.css keep content clear of it. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#003f87" />
     <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin /><link
       rel="preload"
