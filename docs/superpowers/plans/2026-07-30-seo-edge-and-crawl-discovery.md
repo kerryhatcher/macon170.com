@@ -26,19 +26,19 @@
 
 ## File Structure
 
-| File | Responsibility |
-|---|---|
-| `worker/headers.ts` | **Create.** Security and cache response headers. Pure function, no routing knowledge. |
-| `worker/headers.test.ts` | **Create.** Unit tests for the header policy in isolation. |
-| `worker/index.ts` | **Modify.** Remove the dead apex redirect; apply `withSiteHeaders` to asset responses. Stays routing-only. |
-| `worker/index.test.ts` | **Modify.** Remove the apex redirect test. |
+| File                           | Responsibility                                                                                             |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `worker/headers.ts`            | **Create.** Security and cache response headers. Pure function, no routing knowledge.                      |
+| `worker/headers.test.ts`       | **Create.** Unit tests for the header policy in isolation.                                                 |
+| `worker/index.ts`              | **Modify.** Remove the dead apex redirect; apply `withSiteHeaders` to asset responses. Stays routing-only. |
+| `worker/index.test.ts`         | **Modify.** Remove the apex redirect test.                                                                 |
 | `worker/seo-artifacts.test.ts` | **Create.** Asserts built SEO artifacts (`sitemap-index.xml`, `robots.txt`, `noindex`) as actually served. |
-| `e2e/redirects.live.spec.ts` | **Create.** Live coverage for the Cloudflare redirect rules, which have no repo representation. |
-| `astro.config.mjs` | **Modify.** Register `@astrojs/sitemap` with an `/events/` filter. |
-| `public/robots.txt` | **Create.** Displaces Cloudflare's managed AI-content-signals file. |
-| `src/layouts/BaseLayout.astro` | **Modify.** Add an optional `noindex` prop. |
-| `src/pages/events/index.astro` | **Modify.** Pass `noindex`. |
-| `package.json` | **Modify.** Add `@astrojs/sitemap`; extend `test:live` to run the new spec. |
+| `e2e/redirects.live.spec.ts`   | **Create.** Live coverage for the Cloudflare redirect rules, which have no repo representation.            |
+| `astro.config.mjs`             | **Modify.** Register `@astrojs/sitemap` with an `/events/` filter.                                         |
+| `public/robots.txt`            | **Create.** Displaces Cloudflare's managed AI-content-signals file.                                        |
+| `src/layouts/BaseLayout.astro` | **Modify.** Add an optional `noindex` prop.                                                                |
+| `src/pages/events/index.astro` | **Modify.** Pass `noindex`.                                                                                |
+| `package.json`                 | **Modify.** Add `@astrojs/sitemap`; extend `test:live` to run the new spec.                                |
 
 ---
 
@@ -69,11 +69,13 @@ This plan covers **Phase 1b and Phase 2** of the spec. Phases 3–5 are separate
 The Cloudflare rule "www and tls" now catches apex requests before they reach the Worker, so `worker/index.ts:5-9` is unreachable. Its unit test passes only because vitest calls the Worker directly, bypassing the edge — it is testing code that never runs in production. Delete both, and cover the real behavior where it now lives.
 
 **Files:**
+
 - Create: `e2e/redirects.live.spec.ts`
 - Modify: `worker/index.ts:5-9` (delete), `worker/index.test.ts:5-9` (delete)
 - Modify: `package.json` (`test:live` script)
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: nothing consumed by later tasks. `worker/index.ts` retains its default export `{ fetch(request: Request, env: Env): Promise<Response> }`.
 
@@ -142,7 +144,7 @@ test('preserves the query string exactly once across the full chain', async () =
 Run: `LIVE_BASE_URL=https://www.macon170.com bunx playwright test e2e/redirects.live.spec.ts`
 Expected: 5 passed.
 
-This is the one place in this plan where the test passes before the code change. That is correct and intentional: the behavior already ships (deployed 2026-07-30), and this spec exists to *capture* it before the Worker code that duplicated it is removed. Running it green first is what proves the deletion in Step 4 is safe.
+This is the one place in this plan where the test passes before the code change. That is correct and intentional: the behavior already ships (deployed 2026-07-30), and this spec exists to _capture_ it before the Worker code that duplicated it is removed. Running it green first is what proves the deletion in Step 4 is safe.
 
 - [ ] **Step 3: Verify it skips cleanly without the live env var**
 
@@ -154,11 +156,11 @@ Expected: 5 skipped, 0 failed. Confirms `bun run test:e2e` and `just ci` stay gr
 In `worker/index.ts`, remove these lines:
 
 ```typescript
-    if (url.hostname === 'macon170.com') {
-      const destination = new URL(request.url);
-      destination.hostname = 'www.macon170.com';
-      return Response.redirect(destination, 308);
-    }
+if (url.hostname === 'macon170.com') {
+  const destination = new URL(request.url);
+  destination.hostname = 'www.macon170.com';
+  return Response.redirect(destination, 308);
+}
 ```
 
 `url` is still used by the `/api` check below, so keep the `const url = new URL(request.url);` line. The file becomes:
@@ -192,11 +194,11 @@ export default {
 In `worker/index.test.ts`, remove this block:
 
 ```typescript
-  it('keeps the apex redirect on the production public hostname', async () => {
-    const response = await exports.default.fetch('https://macon170.com/contact/?from=apex', { redirect: 'manual' });
-    expect(response.status).toBe(308);
-    expect(response.headers.get('Location')).toBe('https://www.macon170.com/contact/?from=apex');
-  });
+it('keeps the apex redirect on the production public hostname', async () => {
+  const response = await exports.default.fetch('https://macon170.com/contact/?from=apex', { redirect: 'manual' });
+  expect(response.status).toBe(308);
+  expect(response.headers.get('Location')).toBe('https://www.macon170.com/contact/?from=apex');
+});
 ```
 
 - [ ] **Step 6: Extend `test:live` to run the new spec**
@@ -241,10 +243,12 @@ git commit -F /tmp/msg-task1.txt
 ### Task 2: Add security headers to HTML responses
 
 **Files:**
+
 - Create: `worker/headers.ts`, `worker/headers.test.ts`
 - Modify: `worker/index.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `export function withSiteHeaders(request: Request, response: Response): Response` — returns a new mutable `Response` with headers applied. Task 3 extends this same function with cache control.
 
@@ -372,13 +376,13 @@ Expected: PASS, 5 tests.
 In `worker/index.ts`, replace the final return:
 
 ```typescript
-    return env.ASSETS.fetch(request);
+return env.ASSETS.fetch(request);
 ```
 
 with:
 
 ```typescript
-    return withSiteHeaders(request, await env.ASSETS.fetch(request));
+return withSiteHeaders(request, await env.ASSETS.fetch(request));
 ```
 
 and add the import at the top of the file:
@@ -392,13 +396,13 @@ import { withSiteHeaders } from './headers';
 Append to the `describe` block in `worker/index.test.ts`:
 
 ```typescript
-  it('serves real pages with the security headers applied', async () => {
-    const response = await exports.default.fetch('https://www.macon170.com/contact/');
+it('serves real pages with the security headers applied', async () => {
+  const response = await exports.default.fetch('https://www.macon170.com/contact/');
 
-    expect(response.status).toBe(200);
-    expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
-    expect(response.headers.get('Content-Security-Policy-Report-Only')).toContain("default-src 'self'");
-  });
+  expect(response.status).toBe(200);
+  expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
+  expect(response.headers.get('Content-Security-Policy-Report-Only')).toContain("default-src 'self'");
+});
 ```
 
 - [ ] **Step 7: Run the full suite**
@@ -445,9 +449,11 @@ git commit -F /tmp/msg-task2.txt
 Everything currently serves `public, max-age=0, must-revalidate`, so every content-hashed CSS bundle and font revalidates on every navigation.
 
 **Files:**
+
 - Modify: `worker/headers.ts`, `worker/headers.test.ts`
 
 **Interfaces:**
+
 - Consumes: `withSiteHeaders(request, response)` from Task 2.
 - Produces: no new exports. Same signature, extended behavior.
 
@@ -456,29 +462,29 @@ Everything currently serves `public, max-age=0, must-revalidate`, so every conte
 Append to `worker/headers.test.ts`, inside the existing `describe('withSiteHeaders', ...)` block:
 
 ```typescript
-  it('caches content-hashed bundles immutably for a year', () => {
-    const result = withSiteHeaders(request('/_astro/index.CvL8xK2p.css'), cssResponse());
+it('caches content-hashed bundles immutably for a year', () => {
+  const result = withSiteHeaders(request('/_astro/index.CvL8xK2p.css'), cssResponse());
 
-    expect(result.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
+  expect(result.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
+});
+
+it('caches stable-named public assets for a week without marking them immutable', () => {
+  // These filenames are not content-hashed, so `immutable` would pin a stale logo in every
+  // browser cache for a year with no way to bust it.
+  for (const path of ['/logo/pack170-logo-512.png', '/favicon.svg', '/apple-touch-icon.png']) {
+    const result = withSiteHeaders(request(path), new Response('', { headers: { 'content-type': 'image/png' } }));
+    expect(result.headers.get('Cache-Control'), path).toBe('public, max-age=604800');
+  }
+});
+
+it('leaves HTML caching alone so content edits go live on the next request', () => {
+  const original = new Response('<!doctype html>', {
+    headers: { 'content-type': 'text/html', 'cache-control': 'public, max-age=0, must-revalidate' },
   });
+  const result = withSiteHeaders(request('/about/'), original);
 
-  it('caches stable-named public assets for a week without marking them immutable', () => {
-    // These filenames are not content-hashed, so `immutable` would pin a stale logo in every
-    // browser cache for a year with no way to bust it.
-    for (const path of ['/logo/pack170-logo-512.png', '/favicon.svg', '/apple-touch-icon.png']) {
-      const result = withSiteHeaders(request(path), new Response('', { headers: { 'content-type': 'image/png' } }));
-      expect(result.headers.get('Cache-Control'), path).toBe('public, max-age=604800');
-    }
-  });
-
-  it('leaves HTML caching alone so content edits go live on the next request', () => {
-    const original = new Response('<!doctype html>', {
-      headers: { 'content-type': 'text/html', 'cache-control': 'public, max-age=0, must-revalidate' },
-    });
-    const result = withSiteHeaders(request('/about/'), original);
-
-    expect(result.headers.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
-  });
+  expect(result.headers.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
+});
 ```
 
 - [ ] **Step 2: Run the test to verify it fails**
@@ -507,8 +513,8 @@ function cacheControlFor(pathname: string): string | null {
 Then extend `withSiteHeaders`, inserting before `return result;`:
 
 ```typescript
-  const cacheControl = cacheControlFor(new URL(request.url).pathname);
-  if (cacheControl) result.headers.set('Cache-Control', cacheControl);
+const cacheControl = cacheControlFor(new URL(request.url).pathname);
+if (cacheControl) result.headers.set('Cache-Control', cacheControl);
 ```
 
 - [ ] **Step 4: Run the test to verify it passes**
@@ -521,16 +527,16 @@ Expected: PASS, 8 tests.
 Append to the `describe` block in `worker/index.test.ts`:
 
 ```typescript
-  it('serves the real hashed stylesheet with immutable caching', async () => {
-    const page = await exports.default.fetch('https://www.macon170.com/');
-    const html = await page.text();
-    // Discover the hashed filename from the build rather than hardcoding a hash that rotates.
-    const stylesheet = html.match(/\/_astro\/[^"']+\.css/)?.[0];
+it('serves the real hashed stylesheet with immutable caching', async () => {
+  const page = await exports.default.fetch('https://www.macon170.com/');
+  const html = await page.text();
+  // Discover the hashed filename from the build rather than hardcoding a hash that rotates.
+  const stylesheet = html.match(/\/_astro\/[^"']+\.css/)?.[0];
 
-    expect(stylesheet, 'homepage should link a bundled stylesheet').toBeDefined();
-    const asset = await exports.default.fetch(`https://www.macon170.com${stylesheet}`);
-    expect(asset.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
-  });
+  expect(stylesheet, 'homepage should link a bundled stylesheet').toBeDefined();
+  const asset = await exports.default.fetch(`https://www.macon170.com${stylesheet}`);
+  expect(asset.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
+});
 ```
 
 - [ ] **Step 6: Run the full suite**
@@ -562,10 +568,12 @@ git commit -F /tmp/msg-task3.txt
 ### Task 4: Generate an XML sitemap
 
 **Files:**
+
 - Modify: `astro.config.mjs`, `package.json`
 - Create: `worker/seo-artifacts.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `dist/sitemap-index.xml` and `dist/sitemap-0.xml`, served at those paths. Task 5's `robots.txt` references `/sitemap-index.xml`.
 
@@ -713,10 +721,12 @@ git commit -F /tmp/msg-task4.txt
 There is no `robots.txt` in this repository, yet the live site serves one. Cloudflare injects a managed AI-content-signals file because the origin 404s that path. Shipping our own displaces it — so this is not merely adding a `Sitemap:` line, it is taking ownership of a policy statement currently on autopilot.
 
 **Files:**
+
 - Create: `public/robots.txt`
 - Modify: `worker/seo-artifacts.test.ts`
 
 **Interfaces:**
+
 - Consumes: `/sitemap-index.xml` from Task 4.
 - Produces: nothing consumed by later tasks.
 
@@ -820,9 +830,11 @@ git commit -F /tmp/msg-task5.txt
 `src/pages/events/index.astro` renders a placeholder (`<h1 id="event-title">Loading event…</h1>`) and fills it client-side from `?event=<slug>`. Crawlers fetching the bare URL see a page whose only content is "Loading event…" — thin content that should not be indexed.
 
 **Files:**
+
 - Modify: `src/layouts/BaseLayout.astro`, `src/pages/events/index.astro`, `worker/seo-artifacts.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `BaseLayout` gains an optional prop, giving the full type `{ title: string; description: string; showStrip?: boolean; noindex?: boolean }`. Later plans adding JSON-LD and Open Graph tags extend this same `Props` type.
 
@@ -864,14 +876,14 @@ Expected: FAIL — no robots meta tag on `/events/`.
 
 In `src/layouts/BaseLayout.astro`, change the props block:
 
-```astro
+```
 type Props = { title: string; description: string; showStrip?: boolean; noindex?: boolean };
 const { title, description, showStrip = true, noindex = false } = Astro.props;
 ```
 
 Then add the tag in `<head>`, immediately after the existing `<meta name="description" ... />` line:
 
-```astro
+```
     {noindex && <meta name="robots" content="noindex" />}
 ```
 
@@ -881,7 +893,7 @@ Defaulting to `false` keeps every existing page indexable without touching it.
 
 In `src/pages/events/index.astro`, change the opening layout tag:
 
-```astro
+```
 <BaseLayout
   title="Event details"
   description="Published logistics for an upcoming Cub Scout Pack 170 event."
@@ -930,9 +942,11 @@ git commit -F /tmp/msg-task6.txt
 ### Task 7: Close out the spec's acceptance criteria
 
 **Files:**
+
 - Modify: `docs/superpowers/specs/2026-07-30-seo-audit-remediation-design.md`
 
 **Interfaces:**
+
 - Consumes: the verified state produced by Tasks 1–6.
 - Produces: nothing.
 

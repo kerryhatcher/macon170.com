@@ -18,8 +18,7 @@ were wrong or incomplete, and the plan deviates from the report accordingly. Rec
 so the deviations are not mistaken for oversights.
 
 1. **Finding #4 is not a data or fetch bug.** "The next date is being added" is the hardcoded
-   server-rendered fallback at `src/components/PackStrip.astro:14`, replaced by client JS at line
-   33. Crawlers and `curl` always see the placeholder regardless of whether events exist. The fix
+   server-rendered fallback at `src/components/PackStrip.astro:14`, replaced by client JS at line 33. Crawlers and `curl` always see the placeholder regardless of whether events exist. The fix
    is architectural (Phase 3), not a bug fix.
 
 2. **Finding #5 understates the scope.** `PackStrip` is rendered from `BaseLayout.astro:54` with
@@ -34,7 +33,7 @@ so the deviations are not mistaken for oversights.
    architectural change in Phase 3 rather than a template edit.
 
 4. **robots.txt is not in the repository.** No `public/robots.txt` exists. The live file is
-   Cloudflare's managed *AI content signals* file, auto-injected because the origin returns 404.
+   Cloudflare's managed _AI content signals_ file, auto-injected because the origin returns 404.
    "Template comments with no values set" is that feature's default output, not an unfinished edit.
    Fixing it means shipping our own file, which displaces the managed one.
 
@@ -55,11 +54,11 @@ Page-count math confirmed: 13 static routes + 6 generated den pages = 19 total, 
 
 ## Decisions
 
-| Decision | Choice | Rationale |
-|---|---|---|
-| Event indexability | Build-time fetch + CMS deploy hook | Keeps `output: 'static'`; real dates land in crawlable HTML; follows the existing `about.astro:37` precedent |
-| AI content signals | `search=yes, ai-input=yes, ai-train=no` | Maximize discoverability for parents searching, including AI assistants; withhold training-corpus use |
-| CSP rollout | Report-Only first, enforce after Phase 5 | A strict `style-src 'self'` would break the critical-CSS inlining that Phase 5 introduces |
+| Decision           | Choice                                                                       | Rationale                                                                                                                                                                                         |
+| ------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Event indexability | Build-time fetch + CMS deploy hook                                           | Keeps `output: 'static'`; real dates land in crawlable HTML; follows the existing `about.astro:37` precedent                                                                                      |
+| AI content signals | `search=yes, ai-input=yes, ai-train=no`                                      | Maximize discoverability for parents searching, including AI assistants; withhold training-corpus use                                                                                             |
+| CSP rollout        | Report-Only first, enforce after Phase 5                                     | A strict `style-src 'self'` would break the critical-CSS inlining that Phase 5 introduces                                                                                                         |
 | Redirect ownership | All URL canonicalization is Cloudflare config; Worker keeps response headers | Redirects are infrastructure, and the trailing-slash 307 is emitted by the asset handler after the Worker delegates, so it cannot be fixed in the Worker without intercepting every asset request |
 
 ## Phase 1 — Edge redirects and Worker response headers
@@ -116,7 +115,7 @@ Currently only `/events/?event=…` takes a query and it already ends in a slash
 fire for it.
 
 Because this fires at the edge, Cloudflare's static-asset handler never emits its 307 — that 307
-is generated *after* the Worker delegates to `env.ASSETS.fetch`, which is why the fix cannot live
+is generated _after_ the Worker delegates to `env.ASSETS.fetch`, which is why the fix cannot live
 in the Worker without intercepting every asset request.
 
 **Deletions this forces in code:**
@@ -198,6 +197,7 @@ Headers and coverage (1b) — outstanding:
   ```
 
   This displaces Cloudflare's managed file, which only serves while the origin 404s.
+
 - Add an optional `noindex` prop to `BaseLayout.astro`; set it on `src/pages/events/index.astro`.
 
 **Two corrections to the originally proposed robots.txt**
@@ -325,15 +325,15 @@ Dropped deliberately, with reasons:
 
 ## Risks
 
-| Risk | Mitigation |
-|---|---|
+| Risk                                                                               | Mitigation                                                                                                                                                                |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Redirect logic moves to unversioned dashboard state, invisible to PR review and CI | `e2e/redirects.live.spec.ts` run via `test:live`, landing in the same change that deletes the Worker redirect; rules recorded verbatim in `docs/CLOUDFLARE-DEPLOYMENT.md` |
-| Redirect rules could chain into 3+ hops, diluting link equity | Scheme and host canonicalized in a single rule; two-hop worst case is an explicit acceptance criterion |
-| Trailing-slash rule could redirect static assets or drop query strings | `contains "."` guard excludes assets; query-string limitation documented, and no current extensionless route takes a query |
-| Build-time CMS fetch makes builds depend on CMS availability | 5s timeout with graceful fallback, matching `about.astro:37`; build degrades rather than fails |
-| CMS deploy hook is outside this repo and may not get wired up | Scheduled nightly rebuild as a safety net |
-| Enforcing CSP could break Turnstile on `/contact` | Report-Only first; existing Playwright Turnstile e2e specs validate before enforcing |
-| Phase 5's win may be smaller than the audit implies | Measurement step gates tool selection; phase is scoped last and can be cut |
+| Redirect rules could chain into 3+ hops, diluting link equity                      | Scheme and host canonicalized in a single rule; two-hop worst case is an explicit acceptance criterion                                                                    |
+| Trailing-slash rule could redirect static assets or drop query strings             | `contains "."` guard excludes assets; query-string limitation documented, and no current extensionless route takes a query                                                |
+| Build-time CMS fetch makes builds depend on CMS availability                       | 5s timeout with graceful fallback, matching `about.astro:37`; build degrades rather than fails                                                                            |
+| CMS deploy hook is outside this repo and may not get wired up                      | Scheduled nightly rebuild as a safety net                                                                                                                                 |
+| Enforcing CSP could break Turnstile on `/contact`                                  | Report-Only first; existing Playwright Turnstile e2e specs validate before enforcing                                                                                      |
+| Phase 5's win may be smaller than the audit implies                                | Measurement step gates tool selection; phase is scoped last and can be cut                                                                                                |
 
 ## Sequencing
 

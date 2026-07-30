@@ -52,7 +52,7 @@ bun run dev:worker
 
 URL canonicalization lives in Cloudflare Redirect Rules, not in the Worker. Redirect Rules execute
 before Workers in Cloudflare's request pipeline, and the trailing-slash 307 is emitted by the
-static-asset handler *after* the Worker delegates to `env.ASSETS.fetch` — so neither redirect could
+static-asset handler _after_ the Worker delegates to `env.ASSETS.fetch` — so neither redirect could
 be fixed in `worker/index.ts` without intercepting every asset request.
 
 This is unversioned dashboard state. **These two rules are load-bearing; record any change here.**
@@ -75,7 +75,7 @@ Status:                308
 Preserve query string: OFF
 ```
 
-`http.request.uri` already carries path *and* query, so preserving the query string here would
+`http.request.uri` already carries path _and_ query, so preserving the query string here would
 append it a second time.
 
 ### Rule 2 — "Trailing slash" (order: last)
