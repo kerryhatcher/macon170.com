@@ -6,15 +6,13 @@ deployment workflows.
 
 ## Ownership
 
-| Surface                                                         | Owner                                           |
-| --------------------------------------------------------------- | ----------------------------------------------- |
-| `www.macon170.com` and `macon170.com`                           | Public Astro Worker                             |
-| `admin.macon170.com`                                            | Public Worker redirect to the CMS contact queue |
-| `api.macon170.com` and public-site `/api/*`                     | Closed with `404`                               |
-| `cms.macon170.com/api/forms/contact/submit`                     | CMS contact submission handler                  |
-| `cms.macon170.com/api/forms/contact/schema`                     | CMS public form schema                          |
-| `cms.macon170.com/admin/forms/default-contact-form/submissions` | CMS-authenticated volunteer queue               |
-| CMS calendar JSON, ICS, and editing                             | CMS                                             |
+| Surface                                                         | Owner                             |
+| --------------------------------------------------------------- | --------------------------------- |
+| `www.macon170.com` and `macon170.com`                           | Public Astro Worker               |
+| `cms.macon170.com/api/forms/contact/submit`                     | CMS contact submission handler    |
+| `cms.macon170.com/api/forms/contact/schema`                     | CMS public form schema            |
+| `cms.macon170.com/admin/forms/default-contact-form/submissions` | CMS-authenticated volunteer queue |
+| CMS calendar JSON, ICS, and editing                             | CMS                               |
 
 The public Worker has only an `ASSETS` binding. It has no D1, rate-limit, cron,
 Turnstile secret, or Cloudflare Access configuration.
@@ -65,15 +63,13 @@ core and custom migrations, then verify:
 - queue rendering, view audit, and each status transition.
 
 Deploy the public frontend second. Browser-test the contact page at desktop and
-mobile widths, Turnstile recovery, a successful submission, friendly error
-redirects, and the `admin.macon170.com` redirect.
+mobile widths, Turnstile recovery, a successful submission, and friendly error
+redirects.
 
-Before testing the admin redirect, obtain separate approval to remove or
-disable the legacy Cloudflare Access application that covers
-`admin.macon170.com/*`. Access evaluates the request before the Worker, so the
-old application can challenge or deny visitors before the redirect runs. The
-public-site deployment workflow deliberately does not remove that account-level
-cloud resource.
+The deployed Worker configuration removes the unused `admin.macon170.com` and
+`api.macon170.com` custom domains. Separately remove the legacy Cloudflare
+Access application for `admin.macon170.com/*`; that account-level resource is
+intentionally outside the public-site deployment workflow.
 
 Rollback is a frontend revert coordinated with an explicitly approved backend
 rollback. Never dual-write. Do not delete or mutate the legacy D1 database as

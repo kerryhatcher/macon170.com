@@ -42,7 +42,7 @@ colors:
   print-ink: '#000000'
   print-ink-muted: '#333333'
   print-rule: '#999999'
-  # The volunteer desk (admin.macon170.com) is an Operate surface, not a family-facing one:
+  # The CMS volunteer desk is an Operate surface, not a family-facing one:
   # PRODUCT.md scopes it to "correct, clear, and functional rather than expressive". It reuses
   # the palette above for chrome and adds only what a dense working tool needs and the handbook
   # has no equivalent for — a sidebar wash, a legible tint on the dark header bar, a field
