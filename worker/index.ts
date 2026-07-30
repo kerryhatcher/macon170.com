@@ -1,5 +1,3 @@
-const CMS_CONTACT_QUEUE = 'https://cms.macon170.com/admin/forms/default-contact-form/submissions';
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -10,11 +8,7 @@ export default {
       return Response.redirect(destination, 308);
     }
 
-    if (url.hostname === 'admin.macon170.com') {
-      return Response.redirect(CMS_CONTACT_QUEUE, 308);
-    }
-
-    if (url.hostname === 'api.macon170.com' || url.pathname === '/api' || url.pathname.startsWith('/api/')) {
+    if (url.pathname === '/api' || url.pathname.startsWith('/api/')) {
       return Response.json(
         { error: { code: 'not_found', message: 'Not found.' } },
         {

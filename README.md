@@ -37,9 +37,8 @@ official website of Cub Scout Pack 170 in Macon, Georgia, built with
 - 📅 **CMS-managed family calendar** — volunteers manage events in the
   separately deployed SonicJS CMS; this frontend reads its versioned public
   JSON and iCalendar feeds directly
-- 🔐 **CMS-authenticated volunteer queue** — `admin.macon170.com` redirects to
-  the contact queue in `cms.macon170.com`; only active SonicJS administrators
-  can review or change inquiry status
+- 🔐 **CMS-authenticated volunteer queue** — only active SonicJS
+  administrators at `cms.macon170.com` can review or change inquiry status
 - 🧪 **Real Workers-runtime tests** — [Vitest](https://vitest.dev) route
   coverage plus [Playwright](https://playwright.dev) coverage of the branded
   form, CMS redirect states, Turnstile recovery, and mobile layout
@@ -147,10 +146,8 @@ deploy.
 
 ## 📖 API Reference
 
-The public-site Worker serves the Astro output and owns only hostname routing:
-
-- **`admin.macon170.com/*`** — permanent redirect to the CMS contact queue
-- **`api.macon170.com/*` and `/api/*`** — closed with `404`
+The public-site Worker serves the Astro output and keeps unowned `/api/*`
+paths closed with `404`.
 
 Contact submission (`POST /api/forms/contact/submit`), the public form schema,
 the authenticated volunteer queue, calendar JSON, event detail, editing, and
@@ -164,7 +161,7 @@ this frontend is recorded in [`docs/openapi.yaml`](docs/openapi.yaml).
 ```text
 src/               Astro pages, layouts, and components (the public site)
 src/data/pack.ts   The single editable file for pack-specific facts
-worker/            Cloudflare Worker: static assets and hostname redirects only
+worker/            Cloudflare Worker: static assets, apex redirect, and API guard
 migrations/        Legacy public-site D1 history; retained read-only and unapplied
 e2e/               Playwright coverage of the branded contact form and redirects
 docs/              Deployment runbook and pack research/reference material

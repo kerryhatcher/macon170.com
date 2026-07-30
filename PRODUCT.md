@@ -13,7 +13,7 @@ Two primary audiences, weighted equally (user-confirmed):
 1. **Prospective families** — a Macon-area parent of a K–5 child who just heard about Cub Scouts (from a friend, school flyer, or BeAScout) and needs to answer in under two minutes: what is this, does my kid qualify, when/where do you meet, what does it cost, how do I join. Mostly on phones.
 2. **Current pack families** — returning for the calendar (the most-used page), event details, leader contacts, and resources.
 
-Secondary, internal (user-confirmed as an ops surface, not a third design priority): **adult pack volunteers** answering parent inquiries at `admin.macon170.com` and managing calendar content and leadership in the separately deployed CMS at `cms.macon170.com`.
+Secondary, internal (user-confirmed as an ops surface, not a third design priority): **adult pack volunteers** answer parent inquiries and manage calendar content and leadership in the separately deployed CMS at `cms.macon170.com`.
 
 ## Product Purpose
 
@@ -40,8 +40,8 @@ The neighborhood pack, plainly local: Macon's own Pack 170, meeting in the histo
   records, 365-day retention, calendar storage/editing, public JSON, and ICS.
   The legacy `macon170-submissions` D1 database and migrations remain
   read-only history and are not bound to this Worker. Public traffic uses
-  `www.macon170.com`; `admin.macon170.com` redirects to the CMS contact queue;
-  `api.macon170.com` remains closed.
+  `www.macon170.com`; all administrative functions live at
+  `cms.macon170.com`.
 - **Volunteer queue access:** only active SonicJS `admin` users may review
   submissions. The CMS independently authenticates every queue/API request and
   requires CSRF protection for status changes. Calendar administration uses
