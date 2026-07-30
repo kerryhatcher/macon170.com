@@ -43,22 +43,12 @@ jobs:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - name: Apply D1 migrations
-        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 migrations apply macon170-submissions --remote
       - name: Deploy Worker and static site
         uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          secrets: |
-            TURNSTILE_SECRET
-        env:
-          TURNSTILE_SECRET: ${{ secrets.TURNSTILE_SECRET }}
       - name: Install browser for production checks
         run: bunx playwright install --with-deps chromium
       - name: Verify production Turnstile state recovery

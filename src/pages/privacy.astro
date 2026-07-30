@@ -35,10 +35,10 @@ import ChapterHero from '../components/ChapterHero.astro';
         Everything on this website is public. The site does not provide a members-only area, private group, direct messaging, or youth
         account.
       </p><h2>Storage, security, and service providers</h2><p>
-        Contact submissions are stored in Cloudflare D1. Cloudflare Turnstile checks whether a submission appears automated, and Cloudflare
-        Access authenticates allowlisted volunteers before they can open the volunteer desk. Basic security metadata may include submission
-        time, browser user-agent, country code, and Turnstile verification details. The pack does not intentionally store the visitor’s IP
-        address in D1.
+        Contact submissions are stored in the Pack’s SonicJS CMS on Cloudflare D1. Cloudflare Turnstile checks whether a submission appears
+        automated, and the CMS authenticates authorized adult administrators before they can open the volunteer queue. Restricted security
+        metadata may include submission time, IP address, browser user-agent, referring page, and country code. The Turnstile response token
+        is verified by the CMS and is never stored.
       </p><h2>Third-party links</h2><p>
         The site may link to BeAScout, the Central Georgia Council, Highland Hills Baptist Church, and other services selected by Pack 170
         adults. Those services have their own privacy practices. No analytics service is currently configured; this policy must be updated

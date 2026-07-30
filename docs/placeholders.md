@@ -115,5 +115,5 @@ Still hand-drawn on purpose, with no official equivalent:
   `src/layouts/BaseLayout.astro`, and the other components — no placeholders.
 - No `TODO`/`FIXME`/`lorem`/`example.com`/`555-`/`XXX` tokens anywhere in `src/` or `worker/`.
 - `src/pages/contact.astro:83` "Form connection pending" and `:87` "The secure form connection is
-  not ready yet." are **not currently showing** — `contact.formEndpoint` is set to `/api/contact`,
-  so `hasEndpoint` is true. Dead-path fallbacks only.
+  not ready yet." are **not currently showing** — `contact.formEndpoint` is set to the CMS-owned
+  `/api/forms/contact/submit` endpoint, so `hasEndpoint` is true. Dead-path fallbacks only.

@@ -30,7 +30,7 @@ repos:
         always_run: true
       - id: pii-hound
         name: pii-hound PII scan
-        entry: pii-hound scan --diff --fail-on-pii
+        entry: bash scripts/pii-scan-changes.sh
         language: system
         pass_filenames: false
         always_run: true

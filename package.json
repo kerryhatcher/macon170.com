@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 0.0.0.0 --port 41771",
-    "dev:worker": "bun run build && wrangler dev --ip 0.0.0.0 --env-file .dev.vars",
+    "dev:worker": "bun run build && wrangler dev --ip 0.0.0.0",
     "start": "astro dev --host 0.0.0.0 --port 41771",
     "build": "astro check && astro build",
     "check": "astro check && tsc --noEmit --project tsconfig.worker.json",
-    "test": "vitest run",
+    "test": "bun run build && vitest run",
     "test:e2e": "playwright test",
     "test:live": "LIVE_BASE_URL=https://www.macon170.com playwright test e2e/contact-turnstile.live.spec.ts",
     "lint": "eslint .",
@@ -18,9 +18,7 @@
     "format:check": "prettier --check .",
     "preview": "astro preview",
     "cf:types": "wrangler types worker-configuration.d.ts",
-    "db:migrate:local": "wrangler d1 migrations apply macon170-submissions --local",
-    "db:migrate:remote": "wrangler d1 migrations apply macon170-submissions --remote",
-    "e2e:server": "bun run build && wrangler d1 migrations apply macon170-submissions-e2e --local --config wrangler.e2e.jsonc && wrangler dev --config wrangler.e2e.jsonc --env-file .dev.vars.e2e --port 8790",
+    "e2e:server": "bun run build && wrangler dev --config wrangler.e2e.jsonc --port 8790",
     "deploy:dry": "bun run build && wrangler deploy --dry-run",
     "deploy": "bun run build && wrangler deploy"
   },
@@ -29,7 +27,6 @@
     "@fontsource/montserrat": "^5.3.0",
     "@fontsource/source-sans-3": "^5.3.0",
     "astro": "latest",
-    "jose": "^6.2.4",
     "typescript": "latest"
   },
   "devDependencies": {

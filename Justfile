@@ -1,7 +1,7 @@
 install:
   bun install
 
-# Astro dev on :41771 (fast HMR, no D1) plus the Worker on :8787 (D1, contact API, admin desk),
+# Astro dev on :41771 plus the static-routing Worker on :8787,
 # both bound to 0.0.0.0 for access from the local network.
 # The Worker takes a while to appear: dev:worker runs a full build first.
 run: install
@@ -9,7 +9,6 @@ run: install
   set -euo pipefail
   # ponytail: trap kills the whole process group so one Ctrl-C doesn't orphan wrangler
   trap 'kill 0' EXIT
-  bun run db:migrate:local
   bun start &
   bun run dev:worker &
   wait

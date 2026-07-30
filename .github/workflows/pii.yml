@@ -29,7 +29,11 @@ jobs:
           echo "$RUNNER_TEMP/pii-hound" >> "$GITHUB_PATH"
       - name: Scan pull-request changes for PII
         if: github.event_name == 'pull_request'
-        run: pii-hound scan --diff --base "${{ github.event.pull_request.base.sha }}" --fail-on-pii
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: bash scripts/pii-scan-changes.sh "$BASE_SHA"
       - name: Scan main changes for PII
         if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
-        run: pii-hound scan --diff --base "${{ github.event.before }}" --fail-on-pii
+        env:
+          BASE_SHA: ${{ github.event.before }}
+        run: bash scripts/pii-scan-changes.sh "$BASE_SHA"

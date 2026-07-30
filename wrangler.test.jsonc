@@ -2,26 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "macon170-test",
   "main": "worker/index.ts",
-  "compatibility_date": "2026-07-27",
+  "compatibility_date": "2026-07-29",
   "compatibility_flags": ["nodejs_compat"],
   "assets": { "directory": "./dist", "binding": "ASSETS" },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "macon170-submissions-test",
-      "database_id": "local-test-db",
-      "migrations_dir": "migrations",
-    },
-  ],
-  "ratelimits": [{ "name": "CONTACT_RATE_LIMITER", "namespace_id": "17002", "simple": { "limit": 100, "period": 60 } }],
-  "vars": {
-    "ENVIRONMENT": "development",
-    "PUBLIC_SITE_ORIGIN": "https://www.macon170.com",
-    "ADMIN_ORIGIN": "https://admin.macon170.com",
-    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
-    "TURNSTILE_SECRET": "1x0000000000000000000000000000000AA",
-    "TURNSTILE_EXPECTED_HOSTNAMES": "macon170.com,localhost",
-    "ACCESS_TEAM_DOMAIN": "https://test.cloudflareaccess.com",
-    "ACCESS_AUD": "test-audience",
-  },
 }

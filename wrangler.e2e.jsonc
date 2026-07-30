@@ -2,32 +2,9 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "macon170-e2e",
   "main": "worker/index.ts",
-  "compatibility_date": "2026-07-27",
+  "compatibility_date": "2026-07-29",
   "compatibility_flags": ["nodejs_compat"],
-  // No `routes` here on purpose: wrangler.jsonc's custom-domain routes make
-  // `wrangler dev` simulate the production Host (e.g. www.macon170.com) for every
-  // local request instead of the literal one the browser sent, which silently
-  // breaks every `url.hostname === 'localhost'` bypass in worker/index.ts (the
-  // volunteer desk becomes unreachable locally without a real Cloudflare Access
-  // session). Omitting routes keeps the local request's real hostname intact.
+  // No `routes` here: local browser tests must keep the literal localhost host
+  // rather than simulating a production custom domain.
   "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "macon170-submissions-e2e",
-      "database_id": "local-e2e-db",
-      "migrations_dir": "migrations",
-    },
-  ],
-  "ratelimits": [{ "name": "CONTACT_RATE_LIMITER", "namespace_id": "17003", "simple": { "limit": 100, "period": 60 } }],
-  "vars": {
-    "ENVIRONMENT": "development",
-    "PUBLIC_SITE_ORIGIN": "http://localhost:8790",
-    "ADMIN_ORIGIN": "http://admin.localtest.me:8790",
-    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
-    "TURNSTILE_SECRET": "1x0000000000000000000000000000000AA",
-    "TURNSTILE_EXPECTED_HOSTNAMES": "localhost",
-    "ACCESS_TEAM_DOMAIN": "https://test.cloudflareaccess.com",
-    "ACCESS_AUD": "test-audience",
-  },
 }
