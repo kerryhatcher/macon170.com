@@ -2,21 +2,13 @@ openapi: 3.1.1
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 
 info:
-  title: Pack 170 Website API
-  version: 0.1.0
-  summary: Public calendar, contact, and volunteer administration APIs for macon170.com.
+  title: Pack 170 Public-Site Worker API
+  version: 0.2.0
+  summary: Contact and submissions-desk APIs owned by macon170.com.
   description: |
-    The Pack 170 Website API serves the public website and the private volunteer
-    desk from one Cloudflare Worker.
-
-    Public calendar responses contain only published family logistics. Contact
-    submissions and their administration are separate, privacy-sensitive flows.
-    Calendar event administration supports either a programmatic bearer key on
-    `api.macon170.com` or a Cloudflare Access session on
-    `admin.macon170.com`.
-
-    JSON response fields use snake_case. Calendar event write bodies use
-    camelCase.
+    This contract covers only the public-site Worker. Calendar JSON, event
+    administration, and the iCalendar feed are owned by the independently
+    deployed SonicJS CMS at `https://cms.macon170.com/api/calendar/v1`.
   contact:
     name: Pack 170
     url: https://www.macon170.com/contact/
@@ -26,198 +18,37 @@ info:
 
 servers:
   - url: https://www.macon170.com
-    description: Public website and unauthenticated APIs
-  - url: https://api.macon170.com
-    description: Programmatic calendar administration
+    description: Public website
   - url: https://admin.macon170.com
-    description: Cloudflare Access-protected volunteer desk
+    description: Cloudflare Access-protected submissions desk
 
 tags:
-  - name: Public calendar
-    description: Published calendar data and the subscribable iCalendar feed.
   - name: Contact
     description: Parent or guardian contact-form submission.
-  - name: Calendar administration
-    description: Draft, publish, update, archive, and inspect Pack 170 events.
   - name: Submission administration
     description: Access-protected parent inquiry management.
 
 paths:
-  /api/events:
-    get:
-      tags:
-        - Public calendar
-      operationId: listPublicEvents
-      summary: List upcoming published events
-      description: |
-        Returns up to 200 published events that have not ended. Drafts, archived
-        events, volunteer identities, audit history, and internal event IDs are
-        excluded.
-      servers:
-        - url: https://www.macon170.com
-      security: []
-      responses:
-        '200':
-          description: Upcoming published events ordered by start time.
-          headers:
-            Cache-Control:
-              $ref: '#/components/headers/PublicJsonCacheControl'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PublicEventList'
-        '500':
-          $ref: '#/components/responses/InternalError'
-
-  /api/events/{slug}:
-    get:
-      tags:
-        - Public calendar
-      operationId: getPublicEvent
-      summary: Get an upcoming published event
-      description: |
-        Looks up a published event by its public slug. Events that are drafts,
-        archived, or already ended return 404.
-      servers:
-        - url: https://www.macon170.com
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/EventSlug'
-      responses:
-        '200':
-          description: Published event.
-          headers:
-            Cache-Control:
-              $ref: '#/components/headers/PublicJsonCacheControl'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PublicEventDetail'
-        '404':
-          $ref: '#/components/responses/EventNotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
-
-  /api/calendar.ics:
-    get:
-      tags:
-        - Public calendar
-      operationId: getCalendarSubscription
-      summary: Get the iCalendar subscription feed
-      description: |
-        Returns the 500 most recent published events as an RFC 5545 iCalendar
-        feed. Stable UIDs, revision sequence numbers, last-modified timestamps,
-        and cancellation statuses allow subscribing calendar clients to
-        reconcile volunteer changes without creating duplicate entries.
-
-        The response may be stored but must be revalidated. Calendar clients
-        determine their own polling schedule, so an update is available on the
-        next request but is not guaranteed to appear immediately on every
-        device.
-      servers:
-        - url: https://www.macon170.com
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/IfNoneMatch'
-      responses:
-        '200':
-          description: Current Pack 170 iCalendar feed.
-          headers:
-            ETag:
-              $ref: '#/components/headers/ETag'
-            Cache-Control:
-              $ref: '#/components/headers/CalendarCacheControl'
-            Content-Disposition:
-              $ref: '#/components/headers/CalendarContentDisposition'
-          content:
-            text/calendar:
-              schema:
-                type: string
-                contentMediaType: text/calendar
-              example: |
-                BEGIN:VCALENDAR
-                VERSION:2.0
-                PRODID:-//Cub Scout Pack 170//Pack Calendar//EN
-                BEGIN:VEVENT
-                UID:104dfe73-73c9-4386-9e08-c89d9e51a284@macon170.com
-                DTSTAMP:20260728T190000Z
-                LAST-MODIFIED:20260728T190000Z
-                SEQUENCE:3
-                DTSTART:20270112T233000Z
-                DTEND:20270113T003000Z
-                SUMMARY:Pack Meeting
-                DESCRIPTION:Families gather for the monthly pack program.
-                URL:https://www.macon170.com/events/?event=pack-meeting-january
-                STATUS:CONFIRMED
-                END:VEVENT
-                END:VCALENDAR
-        '304':
-          description: The feed has not changed since the supplied ETag.
-          headers:
-            ETag:
-              $ref: '#/components/headers/ETag'
-        '500':
-          $ref: '#/components/responses/InternalError'
-    head:
-      tags:
-        - Public calendar
-      operationId: headCalendarSubscription
-      summary: Inspect iCalendar feed headers
-      servers:
-        - url: https://www.macon170.com
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/IfNoneMatch'
-      responses:
-        '200':
-          description: Feed headers without a response body.
-          headers:
-            ETag:
-              $ref: '#/components/headers/ETag'
-            Cache-Control:
-              $ref: '#/components/headers/CalendarCacheControl'
-            Content-Disposition:
-              $ref: '#/components/headers/CalendarContentDisposition'
-        '304':
-          description: The feed has not changed since the supplied ETag.
-          headers:
-            ETag:
-              $ref: '#/components/headers/ETag'
-        '500':
-          $ref: '#/components/responses/InternalError'
-
   /api/contact:
     post:
-      tags:
-        - Contact
-      operationId: submitContactForm
+      tags: [Contact]
+      operationId: submitParentInquiry
       summary: Submit a parent or guardian inquiry
-      description: |
-        Accepts the website contact form after same-origin, size, rate-limit,
-        honeypot, and Cloudflare Turnstile checks. A successful submission
-        redirects back to the contact page instead of returning JSON.
-
-        Do not submit a child's name or sensitive information.
-      servers:
-        - url: https://www.macon170.com
       security: []
-      parameters:
-        - $ref: '#/components/parameters/PublicOrigin'
       requestBody:
         required: true
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               $ref: '#/components/schemas/ContactForm'
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ContactForm'
       responses:
         '303':
-          description: Submission accepted; redirect to the contact success state.
+          description: Inquiry accepted.
           headers:
             Location:
-              description: Relative success URL.
               required: true
               schema:
                 type: string
@@ -235,170 +66,11 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 
-  /api/admin/events:
-    get:
-      tags:
-        - Calendar administration
-      operationId: listAdminEvents
-      summary: List calendar events
-      description: Returns up to 300 events, including private and past events.
-      servers:
-        - url: https://api.macon170.com
-        - url: https://admin.macon170.com
-      security:
-        - calendarApiKey: []
-        - cloudflareAccessJwt: []
-      parameters:
-        - name: visibility
-          in: query
-          required: false
-          description: Limit results to one visibility state.
-          schema:
-            $ref: '#/components/schemas/EventVisibility'
-      responses:
-        '200':
-          description: Events ordered by start time.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminEventList'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '500':
-          $ref: '#/components/responses/InternalError'
-    post:
-      tags:
-        - Calendar administration
-      operationId: createEventDraft
-      summary: Create a draft event
-      description: |
-        Creates an event with `draft` visibility. Any `visibility` property in
-        the request is ignored. Review the stored event before publishing it.
-
-        Bearer-key requests should use `api.macon170.com`. Cloudflare
-        Access-backed browser requests use `admin.macon170.com` and must include
-        the exact admin Origin.
-      servers:
-        - url: https://api.macon170.com
-        - url: https://admin.macon170.com
-      security:
-        - calendarApiKey: []
-        - cloudflareAccessJwt: []
-      parameters:
-        - $ref: '#/components/parameters/AdminMutationOrigin'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventCreateRequest'
-      responses:
-        '201':
-          description: Draft created.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventMutationResult'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '409':
-          $ref: '#/components/responses/SlugConflict'
-        '413':
-          $ref: '#/components/responses/PayloadTooLarge'
-        '415':
-          $ref: '#/components/responses/UnsupportedMediaType'
-        '500':
-          $ref: '#/components/responses/InternalError'
-
-  /api/admin/events/{eventId}:
-    get:
-      tags:
-        - Calendar administration
-      operationId: getAdminEvent
-      summary: Get an event and its audit history
-      servers:
-        - url: https://api.macon170.com
-        - url: https://admin.macon170.com
-      security:
-        - calendarApiKey: []
-        - cloudflareAccessJwt: []
-      parameters:
-        - $ref: '#/components/parameters/EventId'
-      responses:
-        '200':
-          description: Event and up to 30 newest audit entries.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminEventDetail'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/EventNotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
-    put:
-      tags:
-        - Calendar administration
-      operationId: replaceAdminEvent
-      summary: Replace an event
-      description: |
-        Replaces the event's writable fields. Fetch the event first and send a
-        complete representation. Omitted optional fields are cleared rather
-        than preserved. Include the current `slug` and `milestone` to avoid
-        changing or clearing them unintentionally.
-
-        Set `visibility` to `published`, `archived`, or `draft` to publish,
-        archive, or restore the event.
-      servers:
-        - url: https://api.macon170.com
-        - url: https://admin.macon170.com
-      security:
-        - calendarApiKey: []
-        - cloudflareAccessJwt: []
-      parameters:
-        - $ref: '#/components/parameters/EventId'
-        - $ref: '#/components/parameters/AdminMutationOrigin'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventReplaceRequest'
-      responses:
-        '200':
-          description: Event replaced.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventMutationResult'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/EventNotFound'
-        '409':
-          $ref: '#/components/responses/SlugConflict'
-        '413':
-          $ref: '#/components/responses/PayloadTooLarge'
-        '415':
-          $ref: '#/components/responses/UnsupportedMediaType'
-        '500':
-          $ref: '#/components/responses/InternalError'
-
   /api/admin/submissions:
     get:
-      tags:
-        - Submission administration
-      operationId: listContactSubmissions
+      tags: [Submission administration]
+      operationId: listSubmissions
       summary: List parent inquiries
-      description: |
-        Returns 25 parent inquiries per page. This response contains personal
-        information and is available only through the Cloudflare
-        Access-protected volunteer desk.
       servers:
         - url: https://admin.macon170.com
       security:
@@ -406,14 +78,10 @@ paths:
       parameters:
         - name: status
           in: query
-          required: false
-          description: Limit results to one workflow state.
           schema:
             $ref: '#/components/schemas/SubmissionStatus'
         - name: page
           in: query
-          required: false
-          description: One-based page number.
           schema:
             type: integer
             minimum: 1
@@ -421,755 +89,158 @@ paths:
             default: 1
       responses:
         '200':
-          description: Page of parent inquiries.
+          description: Paginated submissions ordered newest first.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubmissionList'
+                type: object
+                required: [ok, submissions, page, hasMore]
+                properties:
+                  ok:
+                    const: true
+                  submissions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Submission'
+                  page:
+                    type: integer
+                  hasMore:
+                    type: boolean
         '403':
           $ref: '#/components/responses/Forbidden'
         '500':
           $ref: '#/components/responses/InternalError'
 
   /api/admin/submissions/{submissionId}:
+    parameters:
+      - $ref: '#/components/parameters/SubmissionId'
     get:
-      tags:
-        - Submission administration
-      operationId: getContactSubmission
-      summary: Get a parent inquiry
-      description: |
-        Returns one inquiry. Reading an inquiry updates its `last_viewed_at`
-        timestamp and writes a `viewed` audit entry for the authenticated
-        volunteer.
+      tags: [Submission administration]
+      operationId: getSubmission
+      summary: Open a parent inquiry
       servers:
         - url: https://admin.macon170.com
       security:
         - cloudflareAccessJwt: []
-      parameters:
-        - $ref: '#/components/parameters/SubmissionId'
       responses:
         '200':
-          description: Parent inquiry.
+          description: Submission detail. Opening it creates an audit entry.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubmissionDetail'
+                type: object
+                required: [ok, submission]
+                properties:
+                  ok:
+                    const: true
+                  submission:
+                    $ref: '#/components/schemas/Submission'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
-          $ref: '#/components/responses/SubmissionNotFound'
+          $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalError'
     patch:
-      tags:
-        - Submission administration
-      operationId: updateContactSubmissionStatus
-      summary: Update a parent inquiry status
-      description: |
-        Changes the workflow status and writes a status-change audit entry for
-        the authenticated volunteer. The request must come from the exact admin
-        origin.
+      tags: [Submission administration]
+      operationId: updateSubmissionStatus
+      summary: Change an inquiry status
       servers:
         - url: https://admin.macon170.com
       security:
         - cloudflareAccessJwt: []
-      parameters:
-        - $ref: '#/components/parameters/SubmissionId'
-        - $ref: '#/components/parameters/RequiredAdminOrigin'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubmissionStatusUpdate'
+              type: object
+              additionalProperties: false
+              required: [status]
+              properties:
+                status:
+                  $ref: '#/components/schemas/SubmissionStatus'
       responses:
         '200':
-          description: Status updated.
+          description: Status updated and audited.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubmissionStatusResult'
+                type: object
+                required: [ok, status]
+                properties:
+                  ok:
+                    const: true
+                  status:
+                    $ref: '#/components/schemas/SubmissionStatus'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
-          $ref: '#/components/responses/SubmissionNotFound'
-        '413':
-          $ref: '#/components/responses/PayloadTooLarge'
+          $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalError'
 
 components:
   securitySchemes:
-    calendarApiKey:
-      type: http
-      scheme: bearer
-      description: |
-        The `CALENDAR_API_KEY` Worker secret. Send it as
-        `Authorization: Bearer <key>` to `https://api.macon170.com`.
     cloudflareAccessJwt:
       type: apiKey
       in: header
       name: Cf-Access-Jwt-Assertion
-      description: |
-        Cloudflare Access injects this JWT after an allowlisted volunteer
-        signs in. Browser users do not manually create or copy this token.
+      description: Cloudflare Access JWT verified by the Worker.
 
   parameters:
-    EventSlug:
-      name: slug
-      in: path
-      required: true
-      description: Public, URL-safe event slug.
-      schema:
-        type: string
-        pattern: ^[a-z0-9-]{2,80}$
-      example: pack-meeting-january
-    EventId:
-      name: eventId
-      in: path
-      required: true
-      description: Internal calendar event UUID.
-      schema:
-        type: string
-        format: uuid
     SubmissionId:
       name: submissionId
       in: path
       required: true
-      description: Parent inquiry UUID.
       schema:
         type: string
         format: uuid
-    IfNoneMatch:
-      name: If-None-Match
-      in: header
-      required: false
-      description: ETag from an earlier calendar-feed response.
-      schema:
-        type: string
-    PublicOrigin:
-      name: Origin
-      in: header
-      required: true
-      description: Must exactly match the public site origin.
-      schema:
-        type: string
-        const: https://www.macon170.com
-    AdminMutationOrigin:
-      name: Origin
-      in: header
-      required: false
-      description: |
-        Required and must equal `https://admin.macon170.com` when authenticating
-        with Cloudflare Access. Bearer-key requests do not require this header.
-      schema:
-        type: string
-        const: https://admin.macon170.com
-    RequiredAdminOrigin:
-      name: Origin
-      in: header
-      required: true
-      description: Must exactly match the volunteer desk origin.
-      schema:
-        type: string
-        const: https://admin.macon170.com
-
-  headers:
-    PublicJsonCacheControl:
-      description: Public JSON cache policy.
-      schema:
-        type: string
-        const: public, max-age=30, s-maxage=60
-    CalendarCacheControl:
-      description: The feed may be stored but must be revalidated before reuse.
-      schema:
-        type: string
-        const: public, no-cache, must-revalidate
-    CalendarContentDisposition:
-      description: Suggested feed filename.
-      schema:
-        type: string
-        const: inline; filename="pack-170-calendar.ics"
-    ETag:
-      description: Strong SHA-256 entity tag for the rendered feed.
-      schema:
-        type: string
-      example: '"3c0f4d812cc3d86ff581511fd06c5f5201e2b3a4958670c2f225927fc2c4f9a7"'
-
-  responses:
-    BadRequest:
-      description: Request validation failed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Authentication, Access session, or same-origin validation failed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    EventNotFound:
-      description: Event not found or not publicly visible.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            ok: false
-            error: Event not found.
-    SubmissionNotFound:
-      description: Parent inquiry not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            ok: false
-            error: Submission not found.
-    PayloadTooLarge:
-      description: Request body exceeds the route limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnsupportedMediaType:
-      description: Request Content-Type is not supported.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Contact-form rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            ok: false
-            error: Too many messages were submitted. Please wait a minute and try again.
-    SlugConflict:
-      description: Another event already uses the requested slug.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            ok: false
-            error: Another event already uses that URL slug.
-    InternalError:
-      description: Unexpected server failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            ok: false
-            error: Something went wrong. Please try again.
 
   schemas:
-    Error:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - error
-      properties:
-        ok:
-          type: boolean
-          const: false
-        error:
-          type: string
-
-    EventStatus:
-      type: string
-      enum:
-        - scheduled
-        - tentative
-        - cancelled
-
-    EventCategory:
-      type: string
-      enum:
-        - pack
-        - den
-        - family
-
-    EventVisibility:
-      type: string
-      enum:
-        - draft
-        - published
-        - archived
-
-    EventMilestone:
-      description: |
-        Optional recurring Pack 170 milestone key. The implemented keys come
-        from `annualProgram` in `src/data/pack.ts`.
-      type:
-        - string
-        - 'null'
-      enum:
-        - lego-derby
-        - fall-camp
-        - pinewood-derby
-        - blue-gold
-        - null
-
-    PublicEvent:
-      type: object
-      required:
-        - slug
-        - status
-        - category
-        - title
-        - summary
-        - description
-        - starts_at
-        - ends_at
-        - timezone
-        - location_name
-        - address
-        - audience
-        - what_to_bring
-        - cost
-        - registration_url
-        - milestone
-      properties:
-        slug:
-          type: string
-          pattern: ^[a-z0-9-]{2,80}$
-        status:
-          $ref: '#/components/schemas/EventStatus'
-        category:
-          $ref: '#/components/schemas/EventCategory'
-        title:
-          type: string
-          minLength: 3
-          maxLength: 160
-        summary:
-          type: string
-          minLength: 10
-          maxLength: 500
-        description:
-          type: string
-          minLength: 10
-          maxLength: 8000
-        starts_at:
-          type: string
-          format: date-time
-        ends_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-        timezone:
-          type: string
-          const: America/New_York
-        location_name:
-          type:
-            - string
-            - 'null'
-          maxLength: 200
-        address:
-          type:
-            - string
-            - 'null'
-          maxLength: 300
-        audience:
-          type: string
-          minLength: 2
-          maxLength: 300
-        what_to_bring:
-          type:
-            - string
-            - 'null'
-          maxLength: 2000
-        cost:
-          type:
-            - string
-            - 'null'
-          maxLength: 500
-        registration_url:
-          type:
-            - string
-            - 'null'
-          format: uri
-          maxLength: 2000
-        milestone:
-          $ref: '#/components/schemas/EventMilestone'
-
-    PublicEventList:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - events
-      properties:
-        ok:
-          type: boolean
-          const: true
-        events:
-          type: array
-          maxItems: 200
-          items:
-            $ref: '#/components/schemas/PublicEvent'
-
-    PublicEventDetail:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - event
-      properties:
-        ok:
-          type: boolean
-          const: true
-        event:
-          $ref: '#/components/schemas/PublicEvent'
-
-    AdminEvent:
-      allOf:
-        - $ref: '#/components/schemas/PublicEvent'
-        - type: object
-          required:
-            - id
-            - created_at
-            - updated_at
-            - published_at
-            - archived_at
-            - visibility
-            - created_by
-            - updated_by
-          properties:
-            id:
-              type: string
-              format: uuid
-            created_at:
-              type: string
-              format: date-time
-            updated_at:
-              type: string
-              format: date-time
-            published_at:
-              type:
-                - string
-                - 'null'
-              format: date-time
-            archived_at:
-              type:
-                - string
-                - 'null'
-              format: date-time
-            visibility:
-              $ref: '#/components/schemas/EventVisibility'
-            created_by:
-              type: string
-            updated_by:
-              type: string
-
-    AdminEventList:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - events
-      properties:
-        ok:
-          type: boolean
-          const: true
-        events:
-          type: array
-          maxItems: 300
-          items:
-            $ref: '#/components/schemas/AdminEvent'
-
-    EventAuditEntry:
-      type: object
-      additionalProperties: false
-      required:
-        - created_at
-        - actor_email
-        - action
-        - detail
-      properties:
-        created_at:
-          type: string
-          format: date-time
-        actor_email:
-          type: string
-        action:
-          type: string
-          enum:
-            - created
-            - updated
-            - published
-            - archived
-            - restored
-        detail:
-          type:
-            - string
-            - 'null'
-
-    AdminEventDetail:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - event
-        - audit
-      properties:
-        ok:
-          type: boolean
-          const: true
-        event:
-          $ref: '#/components/schemas/AdminEvent'
-        audit:
-          type: array
-          maxItems: 30
-          items:
-            $ref: '#/components/schemas/EventAuditEntry'
-
-    EventWriteFields:
-      type: object
-      properties:
-        title:
-          type: string
-          minLength: 3
-          maxLength: 160
-        slug:
-          description: Generated from the title when omitted or blank.
-          type:
-            - string
-            - 'null'
-          maxLength: 80
-        summary:
-          type: string
-          minLength: 10
-          maxLength: 500
-        description:
-          type: string
-          minLength: 10
-          maxLength: 8000
-        category:
-          $ref: '#/components/schemas/EventCategory'
-        status:
-          $ref: '#/components/schemas/EventStatus'
-        startsAt:
-          type: string
-          format: date-time
-        endsAt:
-          type:
-            - string
-            - 'null'
-          format: date-time
-        timezone:
-          type: string
-          const: America/New_York
-          default: America/New_York
-        locationName:
-          type:
-            - string
-            - 'null'
-          maxLength: 200
-        address:
-          type:
-            - string
-            - 'null'
-          maxLength: 300
-        audience:
-          type: string
-          minLength: 2
-          maxLength: 300
-        whatToBring:
-          type:
-            - string
-            - 'null'
-          maxLength: 2000
-        cost:
-          type:
-            - string
-            - 'null'
-          maxLength: 500
-        registrationUrl:
-          type:
-            - string
-            - 'null'
-          format: uri
-          maxLength: 2000
-        milestone:
-          $ref: '#/components/schemas/EventMilestone'
-      example:
-        title: Spring Campout
-        slug: spring-campout
-        summary: An overnight campout at the state park.
-        description: Bring a tent, sleeping bag, flashlight, and water bottle.
-        category: pack
-        status: scheduled
-        startsAt: 2027-04-10T20:00:00.000Z
-        endsAt: 2027-04-11T14:00:00.000Z
-        timezone: America/New_York
-        locationName: Macon State Park
-        address: 456 Park Rd, Macon, GA
-        audience: All scouts and families
-        whatToBring: Tent, sleeping bag, flashlight, water bottle
-        cost: $10 per family
-        registrationUrl: null
-        milestone: null
-
-    EventCreateRequest:
-      allOf:
-        - $ref: '#/components/schemas/EventWriteFields'
-        - type: object
-          required:
-            - title
-            - summary
-            - description
-            - category
-            - status
-            - startsAt
-            - audience
-
-    EventReplaceRequest:
-      allOf:
-        - $ref: '#/components/schemas/EventWriteFields'
-        - type: object
-          required:
-            - title
-            - summary
-            - description
-            - category
-            - status
-            - visibility
-            - startsAt
-            - audience
-          properties:
-            visibility:
-              $ref: '#/components/schemas/EventVisibility'
-
-    EventMutationResult:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - id
-        - slug
-      properties:
-        ok:
-          type: boolean
-          const: true
-        id:
-          type: string
-          format: uuid
-        slug:
-          type: string
-          pattern: ^[a-z0-9-]{2,80}$
-
-    ContactTopic:
-      type: string
-      enum:
-        - Planning a first visit
-        - Calendar or event detail
-        - Finding my child’s den
-        - Volunteering
-        - Website or privacy question
-        - Something else
-
-    ChildGrade:
-      type:
-        - string
-        - 'null'
-      enum:
-        - Kindergarten
-        - 1st grade
-        - 2nd grade
-        - 3rd grade
-        - 4th grade
-        - 5th grade
-        - null
-
-    ChildGradeInput:
-      type: string
-      enum:
-        - ''
-        - Kindergarten
-        - 1st grade
-        - 2nd grade
-        - 3rd grade
-        - 4th grade
-        - 5th grade
-
     ContactForm:
       type: object
-      required:
-        - parentName
-        - email
-        - topic
-        - message
-        - cf-turnstile-response
+      required: [parentName, email, topic, message, cf-turnstile-response]
       properties:
         parentName:
-          description: Parent or guardian name.
           type: string
           minLength: 2
           maxLength: 120
         email:
           type: string
           format: email
-          minLength: 5
           maxLength: 254
         phone:
           type: string
           maxLength: 40
         childGrade:
-          $ref: '#/components/schemas/ChildGradeInput'
+          type: string
+          maxLength: 30
         topic:
-          $ref: '#/components/schemas/ContactTopic'
+          type: string
+          maxLength: 80
         message:
-          description: Parent or guardian question. Do not include a child's name.
           type: string
           minLength: 10
           maxLength: 4000
         cf-turnstile-response:
-          description: Cloudflare Turnstile response token.
           type: string
           minLength: 1
           maxLength: 2048
         website:
-          description: Honeypot field. Leave blank.
           type: string
           maxLength: 100
-          default: ''
+          description: Honeypot field; browsers leave it empty.
 
     SubmissionStatus:
       type: string
-      enum:
-        - new
-        - in_progress
-        - resolved
-        - spam
+      enum: [new, in_progress, resolved, spam]
 
-    ContactSubmission:
+    Submission:
       type: object
-      additionalProperties: false
-      required:
-        - id
-        - created_at
-        - updated_at
-        - status
-        - parent_name
-        - email
-        - phone
-        - child_grade
-        - topic
-        - message
-        - source_path
-        - country_code
-        - assigned_to
-        - resolved_at
-        - last_viewed_at
+      required: [id, created_at, updated_at, status, parent_name, email, topic, message, source_path]
       properties:
         id:
           type: string
@@ -1188,93 +259,75 @@ components:
           type: string
           format: email
         phone:
-          type:
-            - string
-            - 'null'
+          type: [string, 'null']
         child_grade:
-          $ref: '#/components/schemas/ChildGrade'
+          type: [string, 'null']
         topic:
-          $ref: '#/components/schemas/ContactTopic'
+          type: string
         message:
           type: string
         source_path:
           type: string
-          const: /contact/
         country_code:
-          type:
-            - string
-            - 'null'
-          pattern: ^[A-Z]{2}$
+          type: [string, 'null']
         assigned_to:
-          type:
-            - string
-            - 'null'
+          type: [string, 'null']
         resolved_at:
-          type:
-            - string
-            - 'null'
+          type: [string, 'null']
           format: date-time
         last_viewed_at:
-          type:
-            - string
-            - 'null'
+          type: [string, 'null']
           format: date-time
 
-    SubmissionList:
+    Error:
       type: object
-      additionalProperties: false
-      required:
-        - ok
-        - submissions
-        - page
-        - hasMore
+      required: [ok, error]
       properties:
         ok:
-          type: boolean
-          const: true
-        submissions:
-          type: array
-          maxItems: 25
-          items:
-            $ref: '#/components/schemas/ContactSubmission'
-        page:
-          type: integer
-          minimum: 1
-          maximum: 1000
-        hasMore:
-          type: boolean
+          const: false
+        error:
+          type: string
 
-    SubmissionDetail:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - submission
-      properties:
-        ok:
-          type: boolean
-          const: true
-        submission:
-          $ref: '#/components/schemas/ContactSubmission'
-
-    SubmissionStatusUpdate:
-      type: object
-      additionalProperties: false
-      required:
-        - status
-      properties:
-        status:
-          $ref: '#/components/schemas/SubmissionStatus'
-
-    SubmissionStatusResult:
-      type: object
-      additionalProperties: false
-      required:
-        - ok
-        - status
-      properties:
-        ok:
-          type: boolean
-          const: true
-        status:
-          $ref: '#/components/schemas/SubmissionStatus'
+  responses:
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Origin or Access authentication rejected.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Submission not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PayloadTooLarge:
+      description: Request body exceeded the accepted limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnsupportedMediaType:
+      description: Unsupported request content type.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

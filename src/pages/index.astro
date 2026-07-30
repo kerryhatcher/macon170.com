@@ -184,20 +184,13 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
   // timeline can never disagree about which event owns which milestone. This script only fetches
   // and paints; paintSpine reads the milestone keys straight off the server-rendered DOM and only
   // ever adds a date, so a failed fetch leaves the honest "to be added" placeholders in place.
-  import { API_BASE } from '../lib/api-base';
+  import { getCalendarEvents } from '../lib/calendar-client';
   import { paintSpine, type SpineEvent } from '../lib/pack-year';
 
   const root = document.querySelector('[data-pm-list]');
 
-  fetch(`${API_BASE}/api/events`)
-    .then((response) => {
-      if (!response.ok) throw new Error('events unavailable');
-      return response.json();
-    })
-    .then((body) => {
-      const events = (body as { events?: SpineEvent[] }).events;
-      paintSpine(root, Array.isArray(events) ? events : []);
-    })
+  getCalendarEvents()
+    .then((events: SpineEvent[]) => paintSpine(root, events))
     .catch(() => {
       const note = document.querySelector('[data-pm-note]');
       if (note) note.textContent = 'Live dates could not be loaded. The pack calendar has the confirmed schedule.';

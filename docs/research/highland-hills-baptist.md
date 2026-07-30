@@ -3,7 +3,7 @@
 Cub Scout Pack 170's host church in Macon, Georgia
 
 > **Fact-checked 2026-07-26.** Every claim below was re-verified against the church's official website
-> (<https://www.highlandhillsbaptist.org/>) as the primary authority, plus `docs/Offical-info.md` for pack
+> (<https://www.highlandhillsbaptist.org/>) as the primary authority, plus `docs/Official-info.md` for pack
 > and council details. Claims that could not be substantiated are marked ⚠️ **unverified** rather than
 > deleted. Aggregator listings (FaithStreet, Yelp, church directories) proved stale — one still labels the
 > church "Southern Baptist" — and should not be used as sources.
@@ -126,7 +126,7 @@ Neither page names Cub Scout Pack 170 or Venturing Crew 170 specifically, and no
 
 ### Pack 170's Connection — Confirmed by Pack Leadership
 
-**Confirmed:** Cub Scout Pack 170 **meets at Highland Hills Baptist Church**. Pack meetings occur roughly once a month on **Tuesdays at 6:30 p.m.**, and many dens meet at the church for an hour before the pack meeting. Source: `docs/Offical-info.md`, the hand-maintained canonical pack record.
+**Confirmed:** Cub Scout Pack 170 **meets at Highland Hills Baptist Church**. Pack meetings occur roughly once a month on **Tuesdays at 6:30 p.m.**, and many dens meet at the church for an hour before the pack meeting. Source: `docs/Official-info.md`, the hand-maintained canonical pack record.
 
 **Confirmed — the charter relationship.** Highland Hills Baptist Church is the chartered organization for **Cub Scout Pack 170, BSA Troop 170, and Venturing Crew 170**. All three are sister units and all three are part of Scouting America. Source: Kerry Hatcher, 2026-07-27. The website is cleared to state this relationship.
 
@@ -137,11 +137,11 @@ This is leadership testimony, not a copy of the charter paperwork. It outranks t
 **Typical Chartering Organization Role:**
 A chartered organization is a community-based group whose objectives, mission, and methodologies are compatible with Scouting America that agrees to use the Scouting program to further its mission to serve young people. Churches are among the most common chartered organizations, providing meeting facilities, leadership support, and organizational oversight.
 
-**Local Council:** Pack 170 and affiliated units operate under the **Central Georgia Council, BSA**, 4335 Confederate Way, Macon, Georgia 31217-4719; phone (478) 743-9386; centralgeorgiacouncil@scouting.org (per `docs/Offical-info.md`).
+**Local Council:** Pack 170 and affiliated units operate under the **Central Georgia Council, BSA**, 4335 Confederate Way, Macon, Georgia 31217-4719; phone (478) 743-9386; centralgeorgiacouncil@scouting.org (per `docs/Official-info.md`).
 
 **Sources:**
 
-- `docs/Offical-info.md` — canonical pack/council record maintained by pack leadership
+- `docs/Official-info.md` — canonical pack/council record maintained by pack leadership
 - [Official Website – Projects & Partners](https://www.highlandhillsbaptist.org/projects-partners) (names BSA Troop 170)
 - [Official Website – Our Campus & Grounds](https://www.highlandhillsbaptist.org/campus-grounds) (Boy Scout Hut)
 - [Central Georgia Council](https://www.centralgeorgiacouncil.org/)
@@ -238,24 +238,24 @@ Pack 170, Troop 170, and Crew 170 are sister units under the same charter, so th
 
 ## Summary of Confirmed Information
 
-| Fact                              | Status                                                                                                       | Source                                   |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
-| **Address**                       | 1370 Briarcliff Rd, Macon, GA 31211                                                                          | Official site (Contact)                  |
-| **Founded**                       | 1953; charter Sunday April 12, 1953                                                                          | Official site (Our History)              |
-| **Location**                      | Shirley Hills neighborhood, East Macon                                                                       | Official site (About, Campus & Grounds)  |
-| **Campus size**                   | Over 17 acres                                                                                                | Official site (Campus & Grounds)         |
-| **Denomination**                  | Cooperative Baptist Fellowship (CBF)                                                                         | Official site (Who We Are, Welcome)      |
-| **Service Times**                 | Sun 9:45 AM (Sunday School), 11:00 AM (Worship)                                                              | Official site (Home)                     |
-| **Contact**                       | 478-746-4846; churchoffice@highlandhillsbaptist.org                                                          | Official site (Contact)                  |
-| **Co-pastors**                    | Rev. Caitlin Childers Brown & Rev. Ethan Brown, called May 2023                                              | Official site (Our History, Our Staff)   |
-| **Boy Scout Hut on campus**       | Confirmed                                                                                                    | Official site (Campus & Grounds)         |
-| **Troop 170 partnership**         | Confirmed — listed as an ongoing partner                                                                     | Official site (Projects & Partners)      |
-| **Pack 170 meets at the church**  | Confirmed — Tuesdays 6:30 PM, roughly monthly                                                                | `docs/Offical-info.md` (pack leadership) |
-| **Pack 170 charter of record**    | Confirmed — HHBC is the chartered organization                                                               | Kerry Hatcher, 2026-07-27                |
-| **Crew 170 Charter**              | Confirmed — HHBC charters Crew 170 as well                                                                   | Kerry Hatcher, 2026-07-27                |
-| **Pack / Troop / Crew 170**       | Confirmed — sister units, same charter, all Scouting America                                                 | Kerry Hatcher, 2026-07-27                |
-| **Shirley Hills Built**           | Starting 1922                                                                                                | Wikipedia / NRHP                         |
-| **Shirley Hills Historic Status** | National Register Aug 17, 1989 (275 acres); boundary increase May 28, 2014; 401 contributing buildings today | Wikipedia, Historic Macon Foundation     |
+| Fact                              | Status                                                                                                       | Source                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| **Address**                       | 1370 Briarcliff Rd, Macon, GA 31211                                                                          | Official site (Contact)                   |
+| **Founded**                       | 1953; charter Sunday April 12, 1953                                                                          | Official site (Our History)               |
+| **Location**                      | Shirley Hills neighborhood, East Macon                                                                       | Official site (About, Campus & Grounds)   |
+| **Campus size**                   | Over 17 acres                                                                                                | Official site (Campus & Grounds)          |
+| **Denomination**                  | Cooperative Baptist Fellowship (CBF)                                                                         | Official site (Who We Are, Welcome)       |
+| **Service Times**                 | Sun 9:45 AM (Sunday School), 11:00 AM (Worship)                                                              | Official site (Home)                      |
+| **Contact**                       | 478-746-4846; churchoffice@highlandhillsbaptist.org                                                          | Official site (Contact)                   |
+| **Co-pastors**                    | Rev. Caitlin Childers Brown & Rev. Ethan Brown, called May 2023                                              | Official site (Our History, Our Staff)    |
+| **Boy Scout Hut on campus**       | Confirmed                                                                                                    | Official site (Campus & Grounds)          |
+| **Troop 170 partnership**         | Confirmed — listed as an ongoing partner                                                                     | Official site (Projects & Partners)       |
+| **Pack 170 meets at the church**  | Confirmed — Tuesdays 6:30 PM, roughly monthly                                                                | `docs/Official-info.md` (pack leadership) |
+| **Pack 170 charter of record**    | Confirmed — HHBC is the chartered organization                                                               | Kerry Hatcher, 2026-07-27                 |
+| **Crew 170 Charter**              | Confirmed — HHBC charters Crew 170 as well                                                                   | Kerry Hatcher, 2026-07-27                 |
+| **Pack / Troop / Crew 170**       | Confirmed — sister units, same charter, all Scouting America                                                 | Kerry Hatcher, 2026-07-27                 |
+| **Shirley Hills Built**           | Starting 1922                                                                                                | Wikipedia / NRHP                          |
+| **Shirley Hills Historic Status** | National Register Aug 17, 1989 (275 acres); boundary increase May 28, 2014; 401 contributing buildings today | Wikipedia, Historic Macon Foundation      |
 
 ---
 
@@ -265,7 +265,7 @@ Pack 170, Troop 170, and Crew 170 are sister units under the same charter, so th
 
 1. ~~**Pack 170's chartered organization of record**~~ — **Resolved.** Highland Hills Baptist Church charters Pack 170, Troop 170, and Crew 170; the three are sister units under one charter (Kerry Hatcher, 2026-07-27). The website is cleared to state this.
 
-2. ~~**Pack 170 Meeting Location**~~ — **Resolved.** Pack meetings are held at Highland Hills Baptist Church, Tuesdays at 6:30 p.m., roughly monthly; many dens meet at the church for an hour beforehand (`docs/Offical-info.md`).
+2. ~~**Pack 170 Meeting Location**~~ — **Resolved.** Pack meetings are held at Highland Hills Baptist Church, Tuesdays at 6:30 p.m., roughly monthly; many dens meet at the church for an hour beforehand (`docs/Official-info.md`).
 
 3. **Pack 170 founding date and history:** The date Pack 170 was chartered and the origin of its relationship to the church are still undocumented. **Check pack records or ask leadership.**
 

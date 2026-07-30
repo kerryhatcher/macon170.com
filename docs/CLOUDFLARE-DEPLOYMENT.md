@@ -1,6 +1,6 @@
 # Cloudflare deployment and volunteer access
 
-The site deploys as one Cloudflare Worker with Astro static assets, a D1-backed contact API, and a private volunteer desk. Public traffic uses `www.macon170.com`; the apex `macon170.com` permanently redirects to `www`; volunteers use `admin.macon170.com` behind Cloudflare Access.
+The public site deploys as one Cloudflare Worker with Astro static assets, a D1-backed contact API, and a private submissions desk. Public traffic uses `www.macon170.com`; the apex `macon170.com` permanently redirects to `www`; volunteers use `admin.macon170.com` behind Cloudflare Access. The independently deployed SonicJS service at `cms.macon170.com` owns calendar storage, editing, public JSON, and ICS.
 
 ## Resources already created
 
@@ -107,13 +107,15 @@ bunx wrangler d1 execute macon170-submissions --remote \
 - A daily Worker cron deletes submissions and their audit logs after 365 days.
 - Admin responses are private and non-cacheable.
 - Every submission detail view and status change creates an audit entry tied to the verified Access email.
-- Calendar events are stored in D1. Volunteers create drafts, publish only when ready, and archive instead of deleting; every event change records the Access email in `event_audit_log`.
-- The public calendar API exposes only upcoming published family logistics and never exposes volunteer identities or internal audit metadata.
+- The public site calls `https://cms.macon170.com/api/calendar/v1` directly and does not proxy or translate calendar fields.
+- The CMS public API exposes only published family logistics and never exposes volunteer identities or internal revision history.
+- The old `calendar_events` and `event_audit_log` tables remain in `macon170-submissions` as inaccessible history. The Worker does not read or write them, and recovery must use an authorized D1 export rather than re-enabling the retired routes.
 - Volunteers should reply through an approved shared pack mailbox reaching multiple adults, not from private one-to-one youth channels.
 
 ## Operations
 
 - Back up D1 periodically with `wrangler d1 export macon170-submissions --remote --output <secure-path>`.
+- Back up and recover the CMS calendar through the CMS repository’s runbook. Do not restore the legacy public-site calendar routes or dual-write the two databases.
 - Review Access membership when volunteer roles change.
 - Remove departed volunteers immediately and invalidate their Access sessions if needed.
 - Keep Turnstile and GitHub secrets out of repository files and logs.

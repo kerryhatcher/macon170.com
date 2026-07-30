@@ -1,0 +1,49 @@
+minimum_pre_commit_version: '4.3.0'
+default_install_hook_types: [pre-commit, commit-msg, pre-push]
+
+repos:
+  - repo: local
+    hooks:
+      - id: lint
+        name: ESLint
+        entry: bun run lint
+        language: system
+        pass_filenames: false
+        files: "^(src|worker|tests?|e2e)/|^(package\\.json|tsconfig.*\\.json|eslint\\.config\\.js)$"
+      - id: format-check
+        name: Prettier format check
+        entry: bun run format:check
+        language: system
+        pass_filenames: false
+        files: "^(src|worker|tests?|e2e)/|^(package\\.json|tsconfig.*\\.json|eslint\\.config\\.js|\\.prettierrc\\.json)$"
+      - id: check
+        name: Astro and TypeScript checks
+        entry: bun run check
+        language: system
+        pass_filenames: false
+        files: "^(src|worker|tests?|e2e)/|^(package\\.json|tsconfig.*\\.json)$"
+      - id: trivy
+        name: Trivy vulnerability, misconfiguration, and secret scan
+        entry: trivy fs --skip-dirs node_modules --scanners vuln,misconfig,secret --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 .
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: pii-hound
+        name: pii-hound PII scan
+        entry: pii-hound scan --diff --fail-on-pii
+        language: system
+        pass_filenames: false
+        always_run: true
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: 93c7b51d860138c34a0613756c0151209b88d56f
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [pre-push]
+  - repo: https://github.com/codespell-project/codespell
+    rev: 57b21406f092110c18776e39b0bda50d37c945c8
+    hooks:
+      - id: codespell
+        # Official-info is human-authored and the BCSD corpus contains the MAPP
+        # framework name, which codespell incorrectly expands to "Map".
+        exclude: '^(\.agents/|\.claude/|graphify-out/|docs/Official-info\.md$|docs/research/bcsd/|worker-configuration\.d\.ts$|bun\.lock$)'

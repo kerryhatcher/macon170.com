@@ -34,9 +34,9 @@ official website of Cub Scout Pack 170 in Macon, Georgia, built with
 - ✉️ **Turnstile-verified contact form** — parent inquiries are checked
   server-side with [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
   and land in a private, D1-backed volunteer desk, never a public inbox
-- 📅 **Draft → publish → archive calendar** — volunteers manage events
-  with a full audit trail; the public API only ever exposes published
-  family logistics
+- 📅 **CMS-managed family calendar** — volunteers manage events in the
+  separately deployed SonicJS CMS; this frontend reads its versioned public
+  JSON and iCalendar feeds directly
 - 🔐 **Zero-trust admin desk** — every request to `admin.macon170.com` is
   verified against a [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/)
   JWT server-side, not just trusted at the edge
@@ -106,6 +106,12 @@ submission and event change.
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 authenticated (`bunx wrangler login`).
 
+The installed pre-commit hooks also require
+[pii-hound v0.1.9](https://github.com/saddledata/pii-hound/releases/tag/v0.1.9)
+on your `PATH`. Download the binary for your platform from that release and
+verify it against the published `checksums.txt` before installing it. The hook
+scans changed files and blocks commits containing detected PII or secrets.
+
 ```bash
 git clone https://github.com/kerryhatcher/macon170.com.git
 cd macon170.com
@@ -128,6 +134,7 @@ used in production.
 | `ACCESS_TEAM_DOMAIN`                  | `wrangler.jsonc` vars               | Your `https://TEAM.cloudflareaccess.com` domain                                                                 |
 | `ACCESS_AUD`                          | `wrangler.jsonc` vars               | [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/) application audience tag |
 | `ADMIN_ORIGIN` / `PUBLIC_SITE_ORIGIN` | `wrangler.jsonc` vars               | Expected origins for CORS and redirects                                                                         |
+| `PUBLIC_CALENDAR_CMS_ORIGIN`          | local build environment only        | Optional local CMS origin; production is fixed to `https://cms.macon170.com`                                    |
 
 Full production setup, including Access policy configuration and GitHub
 Actions secrets, is documented in
@@ -153,21 +160,20 @@ deploy.
 
 ## 📖 API Reference
 
-One Worker serves both the static Astro output and the API:
+The public-site Worker serves the Astro output, contact flow, and submissions
+desk:
 
 - **`POST /api/contact`** — Turnstile-verified, rate-limited parent
   inquiries, written to [D1](https://developers.cloudflare.com/d1/)
-- **`GET /api/events`** — public, read-only, published-only calendar data
-- **`GET /api/calendar.ics`** — public iCalendar subscription containing
-  published events; stable event IDs and revision metadata let calendar apps
-  apply volunteer updates without creating duplicate entries
 - **`admin.macon170.com/*`** — the volunteer desk; every request
   requires a Cloudflare Access JWT verified server-side against
   Cloudflare's rotating JWKS, and every view or status change is
   written to an audit log tied to the verified email
 
-See [`docs/CLOUDFLARE-DEPLOYMENT.md`](docs/CLOUDFLARE-DEPLOYMENT.md) for
-the data-safety and deployment model. The complete machine-readable API
+Calendar JSON, event detail, editing, and the iCalendar subscription are owned
+by the independently deployed CMS at `cms.macon170.com`. See
+[`docs/CLOUDFLARE-DEPLOYMENT.md`](docs/CLOUDFLARE-DEPLOYMENT.md) for the
+data-safety and deployment model. The public Worker’s machine-readable API
 contract is in [`docs/openapi.yaml`](docs/openapi.yaml).
 
 ## 🏗️ Architecture
@@ -175,8 +181,8 @@ contract is in [`docs/openapi.yaml`](docs/openapi.yaml).
 ```
 src/               Astro pages, layouts, and components (the public site)
 src/data/pack.ts   The single editable file for pack-specific facts
-worker/            Cloudflare Worker: contact API, admin desk, calendar CRUD
-migrations/        D1 schema (contact_submissions, calendar_events, audit)
+worker/            Cloudflare Worker: contact API and Access-gated submissions desk
+migrations/        D1 schema; legacy calendar tables are retained read-only
 e2e/               Playwright coverage of the contact-to-admin flow
 docs/              Deployment runbook and pack research/reference material
 ```

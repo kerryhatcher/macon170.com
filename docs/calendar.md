@@ -1,3 +1,9 @@
+# Historical calendar source
+
+This human-authored schedule is retained for reference. The SonicJS CMS is the
+authoritative source for published dates; the public site must read its
+versioned calendar API rather than hard-code this table.
+
 +-----------------------------------------------------+-----------------------------------------------+---------------------------+------------------------------------------------------------------------------+
 | **Event** | **Date / Time** | **Location** | **Notes** |
 +=====================================================+===============================================+===========================+==============================================================================+

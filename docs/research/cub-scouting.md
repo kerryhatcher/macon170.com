@@ -6,7 +6,7 @@ Research compiled for the Pack 170 (Macon, GA) website project. Covers program s
 >
 > Several official domains (`scouting.org`, `scoutshop.org`, `capitolareascouting.org`) return HTTP 403 to automated fetchers but load normally in a browser — these are **not** dead links. Every cited `scouting.org` URL was confirmed to exist via Internet Archive snapshots. **No cited URL in this document is dead.** One caveat: all `blog.scoutingmagazine.org` links now **redirect to `onscouting.org`** (the blog was renamed); they still work, but prefer the `onscouting.org` form in new citations.
 >
-> Anything here describing _typical_ pack practice is a national norm, not Pack 170's schedule. Pack 170's actual meeting cadence and locations live in `docs/Offical-info.md`, which is authoritative.
+> Anything here describing _typical_ pack practice is a national norm, not Pack 170's schedule. Pack 170's actual meeting cadence and locations live in `docs/Official-info.md`, which is authoritative.
 
 ---
 
@@ -129,7 +129,7 @@ Sources: [Scouting America — Cost of Cub Scouting](https://www.scouting.org/pr
 
 ### Time commitment
 
-These are **national norms, not Pack 170's schedule** — see `docs/Offical-info.md` for the pack's actual cadence, which is lighter than the generic figures below. Never publish these numbers as if they described Pack 170.
+These are **national norms, not Pack 170's schedule** — see `docs/Official-info.md` for the pack's actual cadence, which is lighter than the generic figures below. Never publish these numbers as if they described Pack 170.
 
 - Dens commonly meet **2–3 times per month**, though den meeting frequency is set by each den leader and many packs run monthly.
 - One **pack meeting per month** brings all dens together.

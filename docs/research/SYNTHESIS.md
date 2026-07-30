@@ -231,9 +231,9 @@ leadership or Highland Hills Baptist Church before launch.
 
 1. ~~**Meeting day, time, and frequency**~~ — **Resolved.** Pack meetings run roughly monthly on
    Tuesdays at 6:30 p.m. Each den sets its own time and place, though many meet at the church for an
-   hour beforehand. See `docs/Offical-info.md`.
+   hour beforehand. See `docs/Official-info.md`.
 2. ~~**Meeting location**~~ — **Mostly resolved.** The pack meets at Highland Hills Baptist Church
-   (`docs/Offical-info.md`). **Still open: which building or room** — `src/data/pack.ts` carries
+   (`docs/Official-info.md`). **Still open: which building or room** — `src/data/pack.ts` carries
    `meeting.room: null`, so the site shows its fallback instead of naming a room.
 3. ~~**Charter confirmation**~~ — **Resolved.** Highland Hills Baptist Church charters Pack 170,
    Troop 170, and Crew 170 as sister units (Kerry Hatcher, 2026-07-27). The acknowledgment is cleared

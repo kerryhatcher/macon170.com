@@ -395,7 +395,7 @@ regardless of charter type. Source: `notes/scouting-and-education.md`, ยง2 and ย
 
 **Pack 170's own charter, stated plainly.** Pack 170 is chartered by Highland Hills Baptist
 Church, which charters all three Scouting America units in the 170 family
-(`docs/Offical-info.md`, the pack's canonical fact file) [district-independent, pack's own
+(`docs/Official-info.md`, the pack's canonical fact file) [district-independent, pack's own
 record]. Two facts belong in the same breath, because a public-school administrator will
 weigh them together: families need no connection to the chartering church to join, and the
 pack's public site already says so in its own words. The church provides the pack's regular

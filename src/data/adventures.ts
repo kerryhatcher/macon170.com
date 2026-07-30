@@ -1,16 +1,16 @@
 // Official Cub Scout Adventures per rank, current program (effective June 1, 2024).
 // Names, links, and icon filenames are transcribed from the rank pages under
 // https://www.scouting.org/programs/cub-scouts/adventures/ — see the ## Adventures section of
-// docs/Offical-info.md, verified 2026-07-27. Adventure NAMES are facts and may be listed; the
+// docs/Official-info.md, verified 2026-07-27. Adventure NAMES are facts and may be listed; the
 // requirement TEXT is Scouting America publication content and must not be reproduced here.
 // The `summary` on each adventure is written HERE, in our own words, from the adventure's page —
 // it says what a Scout does, and it is never a quote of the page's text or its requirements.
-// Icons live in assets/offical/ and are resolved by src/lib/official-image.ts.
+// Icons live in assets/official/ and are resolved by src/lib/official-image.ts.
 
 export type Adventure = {
   name: string;
   url: string | null; // scouting.org page, null for the special electives, which have none
-  icon: string; // filename in assets/offical/
+  icon: string; // filename in assets/official/
   summary: string; // one plain sentence, YOUR OWN WORDS, on what the Scout actually does
 };
 

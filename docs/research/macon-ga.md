@@ -1,6 +1,6 @@
 # Macon, Georgia Research
 
-> **Fact-checked 2026-07-26.** Claims below were re-verified against primary sources (U.S. Census, NPS, official city/county and council sites). Council contact details reconcile with `docs/Offical-info.md`.
+> **Fact-checked 2026-07-26.** Claims below were re-verified against primary sources (U.S. Census, NPS, official city/county and council sites). Council contact details reconcile with `docs/Official-info.md`.
 
 ## Basic Facts About Macon
 
@@ -89,7 +89,7 @@ The Ocmulgee River runs through Macon and defines much of the region's character
 
 ### Central Georgia Council, BSA
 
-Macon is home to the **Central Georgia Council, BSA** (Council 96) headquarters at **4335 Confederate Way, Macon, GA 31217-4719**, which serves **24 counties** of middle Georgia with **over 3,700 youth and adult participants** served each year in programs from kindergarten through high school. (The council's own website still brands itself "Boy Scouts of America — Central Georgia Council," matching `docs/Offical-info.md`, even though the national organization now operates as Scouting America.)
+Macon is home to the **Central Georgia Council, BSA** (Council 96) headquarters at **4335 Confederate Way, Macon, GA 31217-4719**, which serves **24 counties** of middle Georgia with **over 3,700 youth and adult participants** served each year in programs from kindergarten through high school. (The council's own website still brands itself "Boy Scouts of America — Central Georgia Council," matching `docs/Official-info.md`, even though the national organization now operates as Scouting America.)
 
 **Contact Information:**
 

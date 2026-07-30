@@ -1,12 +1,4 @@
-// Shared chrome for the two volunteer-desk pages (worker/index.ts, worker/calendar-admin.ts).
-//
-// Both pages previously carried a private copy of this CSS and markup, and they drifted:
-// the inbox had a styled skip link, 44px filter buttons, and a labelled filter nav; the
-// calendar editor had none of the three. Anything a volunteer sees on both pages lives
-// here now, so a fix lands once instead of being remembered twice.
-//
-// Page-specific layout (the inbox's two-pane desk, the editor's form grid) stays in its
-// own file. The split is "chrome the volunteer recognises" versus "the instrument itself".
+// Shared chrome for the Access-gated volunteer submissions desk.
 
 /** Head element for a desk page. `shell` is the page's max content width. */
 export function deskHead(title: string, shell: '1200px' | '1400px', pageCss: string): string {
@@ -14,13 +6,11 @@ export function deskHead(title: string, shell: '1200px' | '1400px', pageCss: str
 }
 
 /**
- * The desk header: home-linked badge, section nav, and the verified Access identity.
- * `current` names the page so exactly one tab carries aria-current.
+ * The desk header: home-linked badge, section navigation, and verified Access identity.
+ * Calendar management lives in the separately authenticated CMS.
  */
-export function deskHeader(email: string, current: 'inbox' | 'calendar'): string {
-  const tab = (href: string, label: string, key: 'inbox' | 'calendar') =>
-    `<a href="${href}"${key === current ? ' aria-current="page"' : ''}>${label}</a>`;
-  return `<a class="skip" href="#main">Skip to content</a><header><a class="brand" href="/"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></a><nav class="desk-nav" aria-label="Desk sections">${tab('/', 'Parent inquiries', 'inbox')}${tab('/calendar', 'Calendar editor', 'calendar')}</nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>`;
+export function deskHeader(email: string): string {
+  return `<a class="skip" href="#main">Skip to content</a><header><a class="brand" href="/"><span>170</span><div><b>Pack 170</b><small>Volunteer desk</small></div></a><nav class="desk-nav" aria-label="Desk sections"><a href="/" aria-current="page">Parent inquiries</a><a href="https://cms.macon170.com/admin/calendar">Calendar editor</a></nav><div class="identity"><small>Signed in with Cloudflare Access</small><strong>${escapeHtml(email)}</strong></div></header>`;
 }
 
 function chromeCss(shell: string): string {

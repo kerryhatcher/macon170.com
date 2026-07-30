@@ -9,11 +9,11 @@
 export type SpineEvent = {
   slug: string;
   title: string;
-  starts_at: string;
-  ends_at?: string | null;
+  startsAt: string;
+  endsAt?: string | null;
   category?: string;
-  status?: string;
-  location_name?: string | null;
+  eventStatus?: string;
+  locationName?: string | null;
   milestone?: string | null;
 };
 
@@ -77,7 +77,7 @@ export function soonestByMilestone(events: SpineEvent[]): Record<string, SpineEv
     const key = event.milestone;
     if (!key) continue;
     const held = byKey[key];
-    if (!held || Date.parse(event.starts_at) < Date.parse(held.starts_at)) byKey[key] = event;
+    if (!held || Date.parse(event.startsAt) < Date.parse(held.startsAt)) byKey[key] = event;
   }
   return byKey;
 }
@@ -101,16 +101,16 @@ export function buildTimeline(milestones: readonly Milestone[], events: SpineEve
     const event = byKey[milestone.key] ?? null;
     return {
       kind: 'milestone' as const,
-      at: event ? new Date(event.starts_at) : nominalMilestoneDate(milestone, now),
+      at: event ? new Date(event.startsAt) : nominalMilestoneDate(milestone, now),
       milestone,
       event,
-      done: event ? Date.parse(event.ends_at || event.starts_at) < now.getTime() : false,
+      done: event ? Date.parse(event.endsAt || event.startsAt) < now.getTime() : false,
     };
   });
 
   for (const event of events) {
     if (claimed.has(event.slug)) continue;
-    entries.push({ kind: 'event', at: new Date(event.starts_at), event });
+    entries.push({ kind: 'event', at: new Date(event.startsAt), event });
   }
 
   return entries.sort((a, b) => a.at.getTime() - b.at.getTime());
@@ -152,8 +152,8 @@ export function paintSpine(root: Element | null, events: SpineEvent[], now: Date
       const when = cell.querySelector('[data-pm-when]');
       if (!when) continue;
       cell.setAttribute('data-confirmed', '');
-      if (Date.parse(event.ends_at || event.starts_at) < now.getTime()) cell.setAttribute('data-done', '');
-      when.textContent = format(event.starts_at);
+      if (Date.parse(event.endsAt || event.startsAt) < now.getTime()) cell.setAttribute('data-done', '');
+      when.textContent = format(event.startsAt);
     }
   }
 

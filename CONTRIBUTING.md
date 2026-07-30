@@ -19,6 +19,11 @@ Two ways to run it locally:
 - `bun run dev` — Astro dev server only. Fastest loop for page/content/style changes; no API, no D1. It binds to `0.0.0.0:41771` for LAN access.
 - `bun run dev:worker` — builds the site and runs the full Cloudflare Worker (contact API, admin desk, local D1) at `0.0.0.0:8787`. Use this for anything touching `worker/`.
 
+Calendar pages call the CMS directly. In development they use
+`http://localhost:41772` by default; set `PUBLIC_CALENDAR_CMS_ORIGIN` before the
+Astro build to use another local CMS origin. Production builds always use
+`https://cms.macon170.com`.
+
 `.dev.vars` provides `TURNSTILE_SECRET` set to Cloudflare's documented always-pass test secret — safe for local use, never used in production. Never commit a real Turnstile or Cloudflare secret.
 
 ## Before you open a PR
@@ -40,7 +45,7 @@ Don't have `just`? Run the individual `bun run` scripts listed in [README.md](RE
 - **Lint clean.** `bun run lint:fix` handles most ESLint issues automatically.
 - **Test the layer you changed.** Worker logic changes need a unit or integration test in `worker/*.test.ts`; anything touching the contact-to-admin user flow needs e2e coverage in `e2e/`.
 - **Pack facts live in one place.** Pack-specific details (dues, contacts, event dates) belong in `src/data/pack.ts`, never hardcoded into a page. Unknown facts are marked as clear placeholders, never invented.
-- **`docs/Offical-info.md` is human-authored.** It's the canonical source of truth for pack and council facts and should not be edited by an agent or contributor without explicit sign-off from pack leadership — it overrides the research docs in `docs/research/` if they ever disagree.
+- **`docs/Official-info.md` is human-authored.** It's the canonical source of truth for pack and council facts and should not be edited by an agent or contributor without explicit sign-off from pack leadership — it overrides the research docs in `docs/research/` if they ever disagree.
 - **Respect the youth-protection and brand constraints.** Youth are identified by first name and last initial only, with no photos without consent; official Scouting marks are used unmodified only. See `PRODUCT.md` for the full constraint list before adding anything that touches youth data, contact flows, or Scouting branding.
 
 ## Pull request process
