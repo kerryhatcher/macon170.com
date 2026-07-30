@@ -9,7 +9,7 @@
     "start": "astro dev --host 0.0.0.0 --port 41771",
     "build": "astro check && astro build",
     "check": "astro check && tsc --noEmit --project tsconfig.worker.json",
-    "test": "vitest run",
+    "test": "bun run build && vitest run",
     "test:e2e": "playwright test",
     "test:live": "LIVE_BASE_URL=https://www.macon170.com playwright test e2e/contact-turnstile.live.spec.ts",
     "lint": "eslint .",

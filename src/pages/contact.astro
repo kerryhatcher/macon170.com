@@ -314,15 +314,6 @@ const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
   // widget's real outcome so an enabled button never lies about being able to send: start
   // disabled, enable only once Turnstile hands back a token, and re-disable with a named
   // reason if the widget errors or its token expires before the parent submits.
-  declare global {
-    interface Window {
-      onTurnstileSuccess?: (token?: string) => void;
-      onTurnstileError?: (errorCode?: string) => boolean;
-      onTurnstileExpired?: () => void;
-      onTurnstileTimeout?: () => boolean;
-    }
-  }
-
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   const submitButton = document.querySelector<HTMLButtonElement>('#contact-submit');
   const turnstileStatus = document.querySelector<HTMLElement>('#turnstile-status');

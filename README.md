@@ -161,7 +161,7 @@ this frontend is recorded in [`docs/openapi.yaml`](docs/openapi.yaml).
 
 ## 🏗️ Architecture
 
-```
+```text
 src/               Astro pages, layouts, and components (the public site)
 src/data/pack.ts   The single editable file for pack-specific facts
 worker/            Cloudflare Worker: static assets and hostname redirects only

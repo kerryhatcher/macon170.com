@@ -52,9 +52,10 @@ bun run dev:worker
 
 ## Contact cutover
 
-Deploy the CMS first only after separately configuring its
-`TURNSTILE_SECRET` Worker secret. Apply the CMS core and custom migrations,
-then verify:
+Before changing the public frontend, confirm the CMS contact migration is
+merged, its production deployment is green, and its live smoke checks pass.
+Configure the CMS `TURNSTILE_SECRET` Worker secret separately, apply the CMS
+core and custom migrations, then verify:
 
 - form schema version `pack-contact-v1`;
 - allowed-origin CORS and preflight;
