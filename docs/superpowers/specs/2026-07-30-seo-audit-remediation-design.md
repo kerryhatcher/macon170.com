@@ -170,14 +170,24 @@ Redirects (1a) — all verified 2026-07-30:
 - [x] A query string survives the full chain exactly once, not doubled
 - [x] All 12 canonical routes return 200 with zero redirects
 
-Headers and coverage (1b) — outstanding:
+Headers and coverage (1b) — implemented and verified locally 2026-07-30; **production
+verification pending deploy**:
 
-- [ ] All five security headers present on the HTTPS HTML response
-- [ ] `/_astro/*` responses carry `max-age=31536000, immutable`
-- [ ] `e2e/redirects.live.spec.ts` passes against the deployed site
-- [ ] `worker/index.ts:5-9` and `worker/index.test.ts:5-9` deleted — the Cloudflare rule now
+- [x] All five security headers present on the HTTPS HTML response — verified through the Worker in
+      `worker/headers.test.ts` and `worker/index.test.ts`
+- [x] `/_astro/*` responses carry `max-age=31536000, immutable` — verified against the real hashed
+      stylesheet discovered from the built homepage
+- [x] `e2e/redirects.live.spec.ts` passes against the deployed site — 5 passed against production
+- [x] `worker/index.ts:5-9` and `worker/index.test.ts:5-9` deleted — the Cloudflare rule now
       catches apex before the request reaches the Worker, making both dead code
-- [ ] Existing Playwright e2e suite passes with no new console CSP violations
+- [x] Existing Playwright e2e suite passes with no new console CSP violations — `just ci` green,
+      10 passed / 6 live-only skipped
+
+The CSP-enforcing criterion is **not** included above and remains open. It belongs to Phase 5 and
+is blocked on two inline-content violations that exist in source today: the inline `style`
+attribute at `src/components/SiteHeader.astro:19`, and the deliberately inline Turnstile callback
+script at `src/pages/contact.astro:270`, which must stay inline so the callbacks exist before the
+async widget script runs.
 
 ## Phase 2 — Crawl discovery
 
@@ -216,10 +226,28 @@ Headers and coverage (1b) — outstanding:
 
 **Acceptance criteria**
 
-- `/sitemap-index.xml` returns 200, and its child sitemap contains exactly 18 `<url>` entries
-- `/events/` is absent from the sitemap, serves `<meta name="robots" content="noindex">`, and is
-  **not** disallowed in robots.txt
-- `/robots.txt` serves our file, not Cloudflare's managed one
+Implemented and verified locally 2026-07-30; **production verification pending deploy**:
+
+- [x] `/sitemap-index.xml` returns 200, and its child sitemap contains exactly 18 `<url>` entries —
+      13 static routes plus the 6 den pages generated from `ranks`, minus `/events/`
+- [x] `/events/` is absent from the sitemap, serves `<meta name="robots" content="noindex">`, and is
+      **not** disallowed in robots.txt
+- [x] `/robots.txt` serves our file, not Cloudflare's managed one
+
+Whole-build check rather than a sample: of the 19 pages Astro emits, exactly one carries a robots
+meta tag, and it is `/events/`. The `noindex` prop defaults to `false`, so no other page was
+touched.
+
+**Still required after the next production deploy** — the local suite cannot verify these, because
+`robots.txt` is currently served by Cloudflare's edge and the sitemap does not yet exist there:
+
+```bash
+curl -sI https://www.macon170.com/ | grep -iE 'strict-transport|content-security|x-content-type|x-frame|referrer-policy'
+curl -so /dev/null -w '%{http_code}\n' https://www.macon170.com/sitemap-index.xml
+curl -s https://www.macon170.com/robots.txt          # must be ours, not Cloudflare's comment block
+curl -s https://www.macon170.com/events/ | grep -o '<meta name="robots"[^>]*>'
+bun run test:live
+```
 
 ## Phase 3 — Build-time events and structured data
 
