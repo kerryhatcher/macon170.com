@@ -153,4 +153,14 @@ describe('structured data', () => {
       expect(html, `${path} should link the next event`).toContain('/events/?event=');
     }
   });
+
+  it('publishes a three-step breadcrumb on every den page', async () => {
+    for (const den of ['lion', 'tiger', 'wolf', 'bear', 'webelos', 'arrow-of-light']) {
+      const crumb = (await jsonLdBlocks(`/dens/${den}/`)).find((s) => s['@type'] === 'BreadcrumbList');
+      expect(crumb, `${den} should carry a breadcrumb`).toBeDefined();
+      const items = crumb?.itemListElement as Array<Record<string, unknown>>;
+      expect(items).toHaveLength(3);
+      expect(items[2].item).toBe(`${ORIGIN}/dens/${den}/`);
+    }
+  });
 });

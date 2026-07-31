@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { organizationSchema, eventSchema } from './event-schema';
+import { organizationSchema, eventSchema, breadcrumbSchema } from './event-schema';
 import type { CalendarEvent } from './calendar-client';
 
 describe('organizationSchema', () => {
@@ -101,5 +101,22 @@ describe('eventSchema', () => {
 
   it('maps a cancelled event to the cancelled schema status', () => {
     expect(eventSchema({ ...sample, eventStatus: 'cancelled' }).eventStatus).toBe('https://schema.org/EventCancelled');
+  });
+});
+
+describe('breadcrumbSchema', () => {
+  it('numbers positions from one in trail order', () => {
+    const schema = breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Dens', path: '/dens/' },
+      { name: 'Lion', path: '/dens/lion/' },
+    ]);
+
+    expect(schema['@type']).toBe('BreadcrumbList');
+    expect(schema.itemListElement).toEqual([
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.macon170.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Dens', item: 'https://www.macon170.com/dens/' },
+      { '@type': 'ListItem', position: 3, name: 'Lion', item: 'https://www.macon170.com/dens/lion/' },
+    ]);
   });
 });

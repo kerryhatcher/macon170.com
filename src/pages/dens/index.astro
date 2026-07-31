@@ -4,11 +4,16 @@ import ChapterHero from '../../components/ChapterHero.astro';
 import RankEmblem from '../../components/RankEmblem.astro';
 import { ranks } from '../../data/pack';
 import { denSlug } from '../../lib/den-slug';
+import { breadcrumbSchema } from '../../lib/event-schema';
 ---
 
 <BaseLayout
   title="Our dens"
   description="Cub Scout Pack 170 runs all six dens, Lion through Arrow of Light. See the adventures each grade works on this year."
+  jsonLd={breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Dens', path: '/dens/' },
+  ])}
 >
   <ChapterHero
     chapter="Six dens, one pack"

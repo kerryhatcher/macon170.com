@@ -65,3 +65,16 @@ export function eventSchema(event: CalendarEvent): Record<string, unknown> {
   }
   return schema;
 }
+
+export function breadcrumbSchema(trail: Array<{ name: string; path: string }>): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((step, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: step.name,
+      item: `${SITE_ORIGIN}${step.path}`,
+    })),
+  };
+}
