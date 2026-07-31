@@ -19,6 +19,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { organizationSchema } from '../lib/event-schema';
+import { getCalendarEvents, type CalendarEvent } from '../lib/calendar-client';
 
 type Props = {
   title: string;
@@ -31,6 +32,15 @@ const { title, description, showStrip = true, noindex = false, jsonLd } = Astro.
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const schemas = [organizationSchema(), ...pageSchemas];
+
+let nextEvent: CalendarEvent | null = null;
+if (showStrip) {
+  try {
+    nextEvent = (await getCalendarEvents())[0] ?? null;
+  } catch {
+    // The strip keeps its honest fallback copy and the client script tries again.
+  }
+}
 ---
 
 <!doctype html>
@@ -62,7 +72,7 @@ const schemas = [organizationSchema(), ...pageSchemas];
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
-    {showStrip && <PackStrip />}
+    {showStrip && <PackStrip nextEvent={nextEvent} />}
     <main id="main"><slot /></main>
     <SiteFooter />
   </body>

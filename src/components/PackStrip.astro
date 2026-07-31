@@ -1,5 +1,13 @@
 ---
 import { pack } from '../data/pack';
+import type { CalendarEvent } from '../lib/calendar-client';
+
+type Props = { nextEvent?: CalendarEvent | null };
+const { nextEvent = null } = Astro.props;
+const compactTitle = (title: string) => (title.length > 44 ? `${title.slice(0, 41).trimEnd()}…` : title);
+const nextLabel = nextEvent ? compactTitle(nextEvent.title) : 'The next date is being added';
+const nextHref = nextEvent ? `/events/?event=${encodeURIComponent(nextEvent.slug)}` : '/calendar/';
+const nextAria = nextEvent ? `Open details for ${nextEvent.title}` : 'Open the Pack calendar';
 ---
 
 <aside class="pack-strip" aria-label="Pack essentials">
@@ -10,9 +18,7 @@ import { pack } from '../data/pack';
     </div>
     <div class="pack-strip__item">
       <span class="pack-strip__label">Next up</span>
-      <a class="pack-strip__value pack-strip__next-link" id="pack-strip-next-event" href="/calendar/" aria-label="Open the Pack calendar"
-        >The next date is being added</a
-      >
+      <a class="pack-strip__value pack-strip__next-link" id="pack-strip-next-event" href={nextHref} aria-label={nextAria}>{nextLabel}</a>
     </div>
     <div class="pack-strip__actions">
       <a class="button button--paper" href="/join/">New here</a>

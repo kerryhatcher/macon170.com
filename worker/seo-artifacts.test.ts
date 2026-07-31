@@ -145,4 +145,12 @@ describe('structured data', () => {
     expect(html).toContain('timeline__row');
     expect(html).not.toContain('No milestone dates are published yet');
   });
+
+  it('names the real next event in server-rendered HTML on every page', async () => {
+    for (const path of ['/', '/join/', '/about/']) {
+      const html = await (await exports.default.fetch(`${ORIGIN}${path}`)).text();
+      expect(html, `${path} should not ship the placeholder`).not.toContain('The next date is being added');
+      expect(html, `${path} should link the next event`).toContain('/events/?event=');
+    }
+  });
 });
