@@ -37,8 +37,12 @@ let nextEvent: CalendarEvent | null = null;
 if (showStrip) {
   try {
     nextEvent = (await getCalendarEvents())[0] ?? null;
-  } catch {
-    // The strip keeps its honest fallback copy and the client script tries again.
+  } catch (error) {
+    // Degrade, never fail: a CMS outage must not block an unrelated deploy. This also fires
+    // when a SINGLE event fails validation, because getCalendarEvents validates the whole list
+    // and rejects all of it — a likelier trigger than an outage. Log loudly so a silently
+    // placeholder-only build is visible in CI instead of looking healthy.
+    console.warn('[pack-strip] build-time next-event fetch failed; keeping the placeholder:', error);
   }
 }
 ---
