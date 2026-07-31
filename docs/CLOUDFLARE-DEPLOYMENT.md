@@ -154,6 +154,51 @@ curl -sI https://cms.macon170.com/api/calendar/v1/events | grep -iE '^HTTP/'
 
 `e2e/redirects.live.spec.ts` asserts all of the above; run it with `bun run test:live`.
 
+## Calendar freshness
+
+`/calendar/` and the pack strip that appears on every page are rendered from a **build-time** fetch
+of `https://cms.macon170.com/api/calendar/v1/events`. Publishing or editing an event in the CMS
+therefore does not change the deployed site until it rebuilds.
+
+This is deliberate. Crawlers do not reliably execute JavaScript, so a runtime-only fetch left
+eleven published events invisible to search and put the placeholder "The next date is being added"
+on every page. Build-time rendering is what makes the dates crawlable.
+
+**Visitors are not affected by staleness.** The client scripts in `PackStrip.astro` and
+`src/pages/calendar/index.astro` still re-fetch after load and replace what the build rendered, so a
+browser always shows current data. Only crawlers see the build-time snapshot — which is the audience
+this design targets.
+
+### Keeping it fresh
+
+- **The CMS should call a Cloudflare deploy hook when an event is published or edited.** That hook
+  lives in the CMS repository and the Cloudflare dashboard, not here.
+- **A scheduled nightly rebuild is the safety net.** If the hook breaks, staleness is bounded at
+  roughly a day instead of lasting indefinitely and silently.
+
+### When the fetch fails
+
+The build never fails on a CMS problem — a build that died because a third-party API blipped would
+block every unrelated deploy. It degrades instead: the calendar falls back to the milestone spine
+and the strip keeps its placeholder.
+
+Because that degradation is invisible in the output, both call sites log a warning, and **those
+warnings are the signal to watch in CI**:
+
+```
+[calendar]   build-time event fetch failed; shipping the milestone spine with no dates: ...
+[pack-strip] build-time next-event fetch failed; keeping the placeholder: ...
+```
+
+A build that emits either line succeeded but shipped an empty calendar. Treat it as a failure worth
+investigating, not a warning to scroll past.
+
+One non-obvious trigger: `getCalendarEvents()` both retrieves _and_ validates, mapping
+`validateCalendarEvent` over the whole list (`src/lib/calendar-client.ts`). A single malformed
+record — a bad slug, revision, or classification — rejects every event, not just the bad one. In
+practice a volunteer saving an unusual event is a likelier cause of these warnings than the CMS
+being down.
+
 ## Contact cutover
 
 Before changing the public frontend, confirm the CMS contact migration is

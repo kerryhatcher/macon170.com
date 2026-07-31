@@ -277,13 +277,32 @@ instead of silently. Document the hook in `docs/CLOUDFLARE-DEPLOYMENT.md`.
 
 **Acceptance criteria**
 
-- Google Rich Results Test on `/` and `/calendar` shows valid `Organization` and `Event` entities
-  with no errors
-- `curl https://www.macon170.com/calendar/` contains real event dates in the HTML response body
-- The string "The next date is being added" does not appear in served HTML when a future event
-  exists in the CMS
-- Network tab on a fresh `/calendar` load shows at most one `GET /api/calendar/v1/events`
-- A den page's HTML contains a valid three-item `BreadcrumbList`
+Implemented and verified against the local build 2026-07-31; **Rich Results Test pending deploy**,
+since it requires a public URL:
+
+- [ ] Google Rich Results Test on `/` and `/calendar` shows valid `Organization` and `Event`
+      entities with no errors — **pending deploy**
+- [x] `curl https://www.macon170.com/calendar/` contains real event dates in the HTML response body
+      — 13 `timeline__row` elements in static markup
+- [x] The string "The next date is being added" does not appear in served HTML when a future event
+      exists in the CMS — 0 of 19 built pages contain it
+- [x] Network tab on a fresh `/calendar` load shows at most one `GET /api/calendar/v1/events` —
+      `getCalendarEvents()` memoizes its in-flight promise, so the two client scripts share one
+      request
+- [x] A den page's HTML contains a valid three-item `BreadcrumbList` — all six verified, positions
+      sequential, final `item` matching each page's own URL
+
+Also verified beyond the original criteria:
+
+- `/calendar/` serves 12 JSON-LD blocks (1 `Organization` + 11 `Event`), every Event with a
+  `startDate`, zero null-valued keys, every `organizer` referencing the Organization by `@id`
+- All 19 pages carry `Organization` schema and a real next-event link
+- The build **succeeds** when the CMS is unreachable, degrading to the milestone spine and the
+  placeholder, and logs `[calendar]` / `[pack-strip]` warnings so the degradation is visible in CI
+
+**Ops dependency, not yet in place:** the CMS deploy hook and the nightly rebuild described in
+`docs/CLOUDFLARE-DEPLOYMENT.md` under "Calendar freshness". Until the hook exists, published events
+do not reach crawlers until the next deploy.
 
 ## Phase 4 — On-page and social
 
