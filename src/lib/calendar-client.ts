@@ -49,7 +49,26 @@ export class CalendarClientError extends Error {
   }
 }
 
-export async function getCalendarEvents(): Promise<CalendarEvent[]> {
+let eventsPromise: Promise<CalendarEvent[]> | null = null;
+
+export function getCalendarEvents(): Promise<CalendarEvent[]> {
+  // Deduped per module instance, which covers both lifetimes that matter: in the browser the
+  // strip and the calendar page share one bundled copy of this module, so /calendar/ makes one
+  // request instead of two; during `astro build` the module persists across page renders, so a
+  // full build makes one request instead of one per page. A rejected promise stays cached too —
+  // a failed fetch is not retried within the same page load or build, which matches how the
+  // existing callers behave: each tries once and falls back. Do not add a retry loop here
+  // expecting a second call to try again; reset the cache instead.
+  eventsPromise ??= fetchCalendarEvents();
+  return eventsPromise;
+}
+
+/** Test-only: clears the memoized events promise so each test starts with a fresh fetch. */
+export function resetCalendarEventsCacheForTests(): void {
+  eventsPromise = null;
+}
+
+async function fetchCalendarEvents(): Promise<CalendarEvent[]> {
   const body = await calendarRequest(`${CALENDAR_API_BASE}/events`);
   if (!isRecord(body) || body.version !== 'v1' || !Array.isArray(body.events)) {
     throw new CalendarClientError('The calendar returned an invalid event list.');
