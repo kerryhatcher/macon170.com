@@ -106,3 +106,24 @@ describe('indexability', () => {
     }
   });
 });
+
+describe('structured data', () => {
+  async function jsonLdBlocks(path: string): Promise<Record<string, unknown>[]> {
+    const html = await (await exports.default.fetch(`${ORIGIN}${path}`)).text();
+    return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+  }
+
+  it('publishes Organization schema on every page', async () => {
+    for (const path of ['/', '/about/', '/calendar/', '/dens/lion/']) {
+      const org = (await jsonLdBlocks(path)).find((s) => s['@type'] === 'Organization');
+      expect(org, `${path} should carry Organization schema`).toBeDefined();
+      expect(org?.['@id']).toBe(`${ORIGIN}/#organization`);
+    }
+  });
+
+  it('emits JSON-LD that parses as valid JSON, not HTML-escaped text', async () => {
+    // A missing set:html directive produces &quot; entities that break every consumer.
+    const html = await (await exports.default.fetch(`${ORIGIN}/`)).text();
+    expect(html).not.toContain('&quot;@context&quot;');
+  });
+});

@@ -18,10 +18,19 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { organizationSchema } from '../lib/event-schema';
 
-type Props = { title: string; description: string; showStrip?: boolean; noindex?: boolean };
-const { title, description, showStrip = true, noindex = false } = Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  showStrip?: boolean;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+const { title, description, showStrip = true, noindex = false, jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const schemas = [organizationSchema(), ...pageSchemas];
 ---
 
 <!doctype html>
@@ -48,6 +57,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title} | Cub Scout Pack 170</title>
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
