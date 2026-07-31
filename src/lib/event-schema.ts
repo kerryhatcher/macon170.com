@@ -34,6 +34,11 @@ export function organizationSchema(): Record<string, unknown> {
 
 const EVENT_STATUS: Record<string, string> = {
   scheduled: 'https://schema.org/EventScheduled',
+  // schema.org has no "tentative" status. Mapping it to EventScheduled is deliberately lossy —
+  // it asserts more certainty than the CMS holds — but the alternatives (EventPostponed,
+  // EventRescheduled) assert something false too, and omitting eventStatus entirely is worse
+  // for a consumer than a status that is merely optimistic. All 11 live events are `scheduled`
+  // today, so this path is latent rather than exercised.
   tentative: 'https://schema.org/EventScheduled',
   cancelled: 'https://schema.org/EventCancelled',
 };
