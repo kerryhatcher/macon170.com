@@ -1,4 +1,5 @@
 import { pack } from '../data/pack';
+import type { CalendarEvent } from './calendar-client';
 
 export const SITE_ORIGIN = 'https://www.macon170.com';
 export const ORGANIZATION_ID = `${SITE_ORIGIN}/#organization`;
@@ -29,4 +30,33 @@ export function organizationSchema(): Record<string, unknown> {
       alternateName: 'Boy Scouts of America',
     },
   };
+}
+
+const EVENT_STATUS: Record<string, string> = {
+  scheduled: 'https://schema.org/EventScheduled',
+  tentative: 'https://schema.org/EventScheduled',
+  cancelled: 'https://schema.org/EventCancelled',
+};
+
+export function eventSchema(event: CalendarEvent): Record<string, unknown> {
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.title,
+    description: event.summary,
+    startDate: event.startsAt,
+    eventStatus: EVENT_STATUS[event.eventStatus] ?? EVENT_STATUS.scheduled,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    url: `${SITE_ORIGIN}/events/?event=${encodeURIComponent(event.slug)}`,
+    organizer: { '@id': ORGANIZATION_ID },
+  };
+
+  // Absent beats null: a null value is a schema validation error, an omitted key is valid.
+  if (event.endsAt) schema.endDate = event.endsAt;
+  if (event.cost && /^free$/i.test(event.cost.trim())) schema.isAccessibleForFree = true;
+  if (event.registrationUrl) schema.offers = { '@type': 'Offer', url: event.registrationUrl };
+  if (event.locationName && event.address) {
+    schema.location = { '@type': 'Place', name: event.locationName, address: event.address };
+  }
+  return schema;
 }

@@ -2,12 +2,29 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, annualProgram } from '../../data/pack';
-import { CALENDAR_SUBSCRIPTION_URL } from '../../lib/calendar-client';
+import { CALENDAR_SUBSCRIPTION_URL, getCalendarEvents, type CalendarEvent } from '../../lib/calendar-client';
+import { renderTimelineRows, milestoneProgressNote } from '../../lib/calendar-render';
+import { eventSchema } from '../../lib/event-schema';
 
 const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
+
+let events: CalendarEvent[] = [];
+try {
+  events = await getCalendarEvents();
+} catch {
+  // A CMS outage must not fail the build. The client script refreshes this in the browser,
+  // and the milestone spine below still renders the shape of the year.
+}
+const timelineRows = renderTimelineRows(annualProgram, events);
+const progressNote = milestoneProgressNote(annualProgram, events);
+const eventSchemas = events.map(eventSchema);
 ---
 
-<BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
+<BaseLayout
+  title="Pack calendar"
+  description="See what is next for Cub Scout Pack 170 and plan around the whole program year."
+  jsonLd={eventSchemas}
+>
   <ChapterHero
     chapter="Family planner"
     title="What’s next for"
@@ -35,23 +52,12 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
       </div>
 
       {
-        /* Server-rendered so the year is on the page before any fetch: a failed API leaves the spine
-      standing rather than an empty column. The client merges published dates into this list. */
+        /* Server-rendered at build time from the CMS feed, so a crawler that runs no JS still sees
+      real dates. A CMS outage degrades to the milestone spine rather than an empty column. The
+      client script refreshes this after load so a stale build self-corrects in the browser. */
       }
-      <ol class="timeline" id="timeline" data-pm-list>
-        {
-          annualProgram.map((item) => (
-            <li class="timeline__row timeline__row--milestone" data-pm-row={item.key} data-season={item.season}>
-              <span class="timeline__season">{item.season}</span>
-              <strong class="timeline__title">{item.title}</strong>
-              <small class="timeline__when" data-pm-when>
-                {item.state}
-              </small>
-            </li>
-          ))
-        }
-      </ol>
-      <p class="timeline__note" data-pm-note>Checking the pack calendar for confirmed dates…</p>
+      <ol class="timeline" id="timeline" data-pm-list set:html={timelineRows} />
+      <p class="timeline__note" data-pm-note>{progressNote}</p>
       <div id="calendar-status" class="calendar-status" role="status" aria-live="polite"></div><div
         id="calendar-notice"
         class="calendar-notice"

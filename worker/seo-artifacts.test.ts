@@ -126,4 +126,23 @@ describe('structured data', () => {
     const html = await (await exports.default.fetch(`${ORIGIN}/`)).text();
     expect(html).not.toContain('&quot;@context&quot;');
   });
+
+  it('serves Event schema for the published calendar', async () => {
+    const events = (await jsonLdBlocks('/calendar/')).filter((s) => s['@type'] === 'Event');
+
+    expect(events.length).toBeGreaterThan(0);
+    for (const event of events) {
+      expect(event.startDate, 'every Event needs a startDate').toBeTruthy();
+      expect(event.organizer).toEqual({ '@id': `${ORIGIN}/#organization` });
+      expect(event.endDate ?? 'absent').not.toBeNull();
+    }
+  });
+
+  it('puts real event dates in the calendar HTML, not just in JavaScript', async () => {
+    const html = await (await exports.default.fetch(`${ORIGIN}/calendar/`)).text();
+
+    // The whole point of the build-time fetch: a crawler that runs no JS still sees the dates.
+    expect(html).toContain('timeline__row');
+    expect(html).not.toContain('No milestone dates are published yet');
+  });
 });
