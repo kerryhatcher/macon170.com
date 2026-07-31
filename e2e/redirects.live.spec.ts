@@ -83,6 +83,18 @@ test('never redirects the CMS subdomain', async () => {
   await context.dispose();
 });
 
+test('upgrades insecure CMS requests without rewriting the host', async () => {
+  const context = await request.newContext();
+  const path = '/api/collections/leadership-roster/content';
+  const response = await context.get(`http://cms.macon170.com${path}`, { maxRedirects: 0 });
+
+  // Asserting the exact Location covers both failure modes at once: a missing upgrade (the CMS
+  // login and API were reachable over cleartext until 2026-07-30), and a host rewrite onto the
+  // public site (the outage the test above guards).
+  expect(response.headers()['location']).toBe(`https://cms.macon170.com${path}`);
+  await context.dispose();
+});
+
 test('serves the calendar feed the public site depends on', async () => {
   const context = await request.newContext();
   const response = await context.get('https://cms.macon170.com/api/calendar/v1/events', {

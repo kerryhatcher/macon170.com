@@ -91,9 +91,7 @@ host-matching predicate here must enumerate hosts rather than negate one.
 part of the branded-form flow — so the test checks for the exact outage signature (same path,
 rewritten host) rather than for any redirect at all.
 
-`http://cms.macon170.com` is deliberately not upgraded to HTTPS by this rule. That is the CMS's
-own concern, and leaving it alone is safer than guessing at a rule for a host this repository does
-not own.
+This rule does not upgrade `http://cms.macon170.com` — Rule 3 does.
 
 ### Rule 2 — "Trailing slash" (order: last)
 
@@ -113,6 +111,33 @@ The `contains "."` guard keeps static assets (`/favicon.svg`, `/_astro/*.css`, `
 acquiring a trailing slash. Preserve-query-string is ON here because the target rebuilds from
 `http.request.uri.path`, which omits the query.
 
+### Rule 3 — HTTP to HTTPS (order: last)
+
+Cloudflare's built-in template, matching `http://*` across the zone and preserving the host:
+
+```
+Match:   URI Full wildcard  r"http://*"
+Action:  301 redirect to wildcard_replace(http.request.full_uri, r"http://*", r"https://${1}")
+```
+
+It exists to upgrade `cms.macon170.com`, whose admin login and API were reachable over cleartext
+until 2026-07-30. It covers any future subdomain for free.
+
+**Order matters: it must stay last.** Rules 1 and 2 match apex and www first and stop evaluation,
+so the public-site chain stays at two hops. Promoting this rule to first would insert a scheme-only
+hop ahead of the host canonicalization and push `http://macon170.com/join` back to three.
+
+Enabling the zone-level **Always Use HTTPS** setting would have the same three-hop effect, since it
+runs ahead of Redirect Rules. Leave it off.
+
+This rule preserves the host, so it cannot rewrite one host onto another — which is why a broad
+`http://*` match is safe here even though a broad match in Rule 1 was not.
+
+One asymmetry to know about: this template issues **301**, while rules 1 and 2 issue 308. A 301
+permits a client to downgrade a POST to GET on redirect. Nothing in this site posts to an
+`http://` CMS URL — the contact form's action is the `https://` endpoint — so it is not a live
+concern, only something to weigh before pointing any new POST at a cleartext CMS URL.
+
 ### Verifying
 
 ```bash
@@ -122,7 +147,12 @@ curl -sIL http://macon170.com/join -o /dev/null -w '%{num_redirects} %{url_effec
 curl -sIL "http://macon170.com/join?a=1" -o /dev/null -w '%{url_effective}\n'
 # assets must not redirect
 curl -sI https://www.macon170.com/favicon.svg -o /dev/null -w '%{http_code}\n'
+# CMS: upgraded to https, host preserved, never rewritten onto www
+curl -sI http://cms.macon170.com/api/calendar/v1/events | grep -i location
+curl -sI https://cms.macon170.com/api/calendar/v1/events | grep -iE '^HTTP/'
 ```
+
+`e2e/redirects.live.spec.ts` asserts all of the above; run it with `bun run test:live`.
 
 ## Contact cutover
 
