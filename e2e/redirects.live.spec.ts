@@ -51,3 +51,46 @@ test('preserves the query string exactly once across the full chain', async () =
   expect(response.status()).toBe(200);
   await context.dispose();
 });
+
+// Regression guard for a real outage on 2026-07-30. Redirect Rules are scoped to the whole
+// macon170.com ZONE, not to one hostname, so a rule written as "redirect anything that is not
+// www" swept up cms.macon170.com and pointed the CMS at the public site. That broke the contact
+// form, the calendar feed, and the leadership roster for about an hour, and nothing in this
+// repository would have noticed. Any future edit to the canonicalisation rules must keep these
+// passing.
+test('never redirects the CMS subdomain', async () => {
+  const context = await request.newContext();
+
+  for (const url of [
+    'https://cms.macon170.com/',
+    'https://cms.macon170.com/api/calendar/v1/events',
+    'https://cms.macon170.com/api/forms/contact/submit',
+    'https://cms.macon170.com/api/collections/leadership-roster/content',
+  ]) {
+    const response = await context.get(url, { maxRedirects: 0 });
+
+    // The CMS legitimately redirects on its own: `/` sends you to /auth/login, and the contact
+    // endpoint 303s back to https://www.macon170.com/contact/?error=... because that is the
+    // branded-form flow. So "any redirect to www" is the wrong assertion.
+    //
+    // The outage had an exact signature: a canonicalisation rule rewrites the host while
+    // PRESERVING the path, so the CMS's own path reappeared under www. That is what must never
+    // happen, and it is what this asserts.
+    expect(response.headers()['location'] ?? '', `${url} must not be host-rewritten onto the public site`).not.toBe(
+      `https://www.macon170.com${new URL(url).pathname}`,
+    );
+  }
+  await context.dispose();
+});
+
+test('serves the calendar feed the public site depends on', async () => {
+  const context = await request.newContext();
+  const response = await context.get('https://cms.macon170.com/api/calendar/v1/events', {
+    headers: { accept: 'application/json' },
+    maxRedirects: 0,
+  });
+
+  expect(response.status()).toBe(200);
+  expect((await response.json()).version).toBe('v1');
+  await context.dispose();
+});

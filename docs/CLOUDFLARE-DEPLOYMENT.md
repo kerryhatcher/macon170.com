@@ -68,7 +68,7 @@ Canonicalizes scheme and host together. Splitting these into the two Cloudflare 
 `http://macon170.com/join`; combining them gives two.
 
 ```
-Expression:            (not ssl or http.host ne "www.macon170.com")
+Expression:            (http.host eq "macon170.com") or (http.host eq "www.macon170.com" and not ssl)
 Type:                  Dynamic
 Target:                concat("https://www.macon170.com", http.request.uri)
 Status:                308
@@ -77,6 +77,23 @@ Preserve query string: OFF
 
 `http.request.uri` already carries path _and_ query, so preserving the query string here would
 append it a second time.
+
+**The expression names both hostnames on purpose. Do not rewrite it as "anything that is not
+www."** Redirect Rules are scoped to the whole `macon170.com` **zone**, which includes every
+subdomain. This rule originally read `(not ssl or http.host ne "www.macon170.com")`, which matched
+`cms.macon170.com` and rewrote the CMS onto the public site — taking down the contact form, the
+calendar feed, and the leadership roster for about an hour on 2026-07-30 before it was caught. Any
+host-matching predicate here must enumerate hosts rather than negate one.
+
+`e2e/redirects.live.spec.ts` guards this: it asserts no CMS path is ever host-rewritten onto
+`www.macon170.com`. Note the CMS does legitimately redirect on its own — `/` sends you to
+`/auth/login`, and the contact endpoint 303s to `https://www.macon170.com/contact/?error=...` as
+part of the branded-form flow — so the test checks for the exact outage signature (same path,
+rewritten host) rather than for any redirect at all.
+
+`http://cms.macon170.com` is deliberately not upgraded to HTTPS by this rule. That is the CMS's
+own concern, and leaving it alone is safer than guessing at a rule for a host this repository does
+not own.
 
 ### Rule 2 — "Trailing slash" (order: last)
 
