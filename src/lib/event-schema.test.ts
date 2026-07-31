@@ -30,10 +30,11 @@ describe('organizationSchema', () => {
     expect(schema.address).toBeUndefined();
   });
 
-  it('names the national organization as parent', () => {
+  it('names the parent by its current brand while keeping the legal name discoverable', () => {
     expect(organizationSchema().parentOrganization).toEqual({
       '@type': 'Organization',
-      name: 'Boy Scouts of America',
+      name: 'Scouting America',
+      alternateName: 'Boy Scouts of America',
     });
   });
 });
