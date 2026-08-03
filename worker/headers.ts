@@ -34,7 +34,7 @@ const SECURITY_HEADERS: Record<string, string> = {
 // Astro content-hashes everything under /_astro/, so a changed file is a changed URL.
 const IMMUTABLE_CACHE = 'public, max-age=31536000, immutable';
 // Files copied verbatim from public/ keep stable names, so they must stay replaceable.
-const STABLE_ASSET_CACHE = 'public, max-age=604800';
+const STABLE_ASSET_CACHE = 'public, max-age=86400';
 const STABLE_ASSET_PATHS = new Set(['/favicon.svg', '/apple-touch-icon.png', '/site.webmanifest']);
 
 function cacheControlFor(pathname: string): string | null {

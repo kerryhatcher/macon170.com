@@ -54,12 +54,12 @@ describe('withSiteHeaders', () => {
     expect(result.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
   });
 
-  it('caches stable-named public assets for a week without marking them immutable', () => {
+  it('caches stable-named public assets for a day without marking them immutable', () => {
     // These filenames are not content-hashed, so `immutable` would pin a stale logo in every
     // browser cache for a year with no way to bust it.
     for (const path of ['/logo/pack170-logo-512.png', '/favicon.svg', '/apple-touch-icon.png']) {
       const result = withSiteHeaders(request(path), new Response('', { headers: { 'content-type': 'image/png' } }));
-      expect(result.headers.get('Cache-Control'), path).toBe('public, max-age=604800');
+      expect(result.headers.get('Cache-Control'), path).toBe('public, max-age=86400');
     }
   });
 
