@@ -67,7 +67,7 @@ Canonicalizes scheme and host together. Splitting these into the two Cloudflare 
 (`Redirect from HTTP to HTTPS` + `Redirect from root to WWW`) was measured at three hops for
 `http://macon170.com/join`; combining them gives two.
 
-```
+```text
 Expression:            (http.host eq "macon170.com") or (http.host eq "www.macon170.com" and not ssl)
 Type:                  Dynamic
 Target:                concat("https://www.macon170.com", http.request.uri)
@@ -97,7 +97,7 @@ This rule does not upgrade `http://cms.macon170.com` — Rule 3 does.
 
 Replaces the asset handler's 307 with a permanent 308.
 
-```
+```text
 Expression:            (http.host eq "www.macon170.com"
                         and not ends_with(http.request.uri.path, "/")
                         and not http.request.uri.path contains ".")
@@ -115,7 +115,7 @@ acquiring a trailing slash. Preserve-query-string is ON here because the target 
 
 Cloudflare's built-in template, matching `http://*` across the zone and preserving the host:
 
-```
+```text
 Match:   URI Full wildcard  r"http://*"
 Action:  301 redirect to wildcard_replace(http.request.full_uri, r"http://*", r"https://${1}")
 ```
@@ -185,7 +185,7 @@ and the strip keeps its placeholder.
 Because that degradation is invisible in the output, both call sites log a warning, and **those
 warnings are the signal to watch in CI**:
 
-```
+```text
 [calendar]   build-time event fetch failed; shipping the milestone spine with no dates: ...
 [pack-strip] build-time next-event fetch failed; keeping the placeholder: ...
 ```
