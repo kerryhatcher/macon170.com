@@ -138,8 +138,11 @@ Remaining changes in `worker/index.ts`, which after the deletion is the `/api/*`
 
 - **Security headers** on HTML responses: `Strict-Transport-Security`, `X-Content-Type-Options`,
   `Referrer-Policy`, `X-Frame-Options`, and `Content-Security-Policy-Report-Only`.
-- **Cache-Control.** `/_astro/*` and `/logo/*` get `public, max-age=31536000, immutable`
-  (filenames are content-hashed, so this is safe). HTML keeps `must-revalidate`.
+- **Cache-Control.** `/_astro/*` gets `public, max-age=31536000, immutable` — safe because Astro
+  content-hashes those filenames. `/logo/*`, `/favicon.svg`, `/apple-touch-icon.png`, and
+  `/site.webmanifest` get `public, max-age=86400` instead: those names are stable, and marking them
+  immutable would pin a stale logo in every browser cache with no way to bust it. HTML keeps
+  `must-revalidate`.
 
 These stay in code deliberately. CSP enumerates the application's own script and connect origins,
 so it is only correct relative to what `src/` actually loads; divorcing it from that source means a
