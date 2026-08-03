@@ -18,7 +18,7 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { organizationSchema } from '../lib/event-schema';
+import { organizationSchema, serializeJsonLd } from '../lib/event-schema';
 import { getCalendarEvents, type CalendarEvent } from '../lib/calendar-client';
 
 type Props = {
@@ -71,7 +71,7 @@ if (showStrip) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title} | Cub Scout Pack 170</title>
-    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+    {schemas.map((schema) => <script type="application/ld+json" set:html={serializeJsonLd(schema)} />)}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

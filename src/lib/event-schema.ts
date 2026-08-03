@@ -43,6 +43,18 @@ const EVENT_STATUS: Record<string, string> = {
   cancelled: 'https://schema.org/EventCancelled',
 };
 
+/**
+ * Serialize a schema object for embedding in a <script type="application/ld+json"> block.
+ *
+ * JSON.stringify does not escape `<`, so CMS-supplied text containing `</script>` would
+ * terminate the block early and let the remainder be parsed as HTML. Escaping `<` as the
+ * JSON escape `<` closes that: it is still valid JSON and parses back to `<`, so
+ * consumers see identical data.
+ */
+export function serializeJsonLd(schema: Record<string, unknown>): string {
+  return JSON.stringify(schema).replace(/</g, '\\u003c');
+}
+
 export function eventSchema(event: CalendarEvent): Record<string, unknown> {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',

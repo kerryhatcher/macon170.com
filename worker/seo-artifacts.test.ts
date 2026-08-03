@@ -127,6 +127,20 @@ describe('structured data', () => {
     expect(html).not.toContain('&quot;@context&quot;');
   });
 
+  it('never lets CMS-supplied text prematurely close a JSON-LD script block', async () => {
+    // Event schema is built from CMS-supplied fields (title, summary, description,
+    // locationName, address). If a literal `</script>` in that text were not escaped, the
+    // browser's HTML parser would terminate the block early, truncating the JSON and
+    // making it fail to parse — exactly what this test would catch.
+    const html = await (await exports.default.fetch(`${ORIGIN}/calendar/`)).text();
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+
+    expect(blocks.length, 'the calendar page should carry at least one JSON-LD block').toBeGreaterThan(0);
+    for (const block of blocks) {
+      expect(() => JSON.parse(block), 'a truncated JSON-LD block indicates a script-breakout').not.toThrow();
+    }
+  });
+
   it('serves Event schema for the published calendar', async () => {
     const events = (await jsonLdBlocks('/calendar/')).filter((s) => s['@type'] === 'Event');
 

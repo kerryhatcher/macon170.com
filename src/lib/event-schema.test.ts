@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { organizationSchema, eventSchema, breadcrumbSchema } from './event-schema';
+import { organizationSchema, eventSchema, breadcrumbSchema, serializeJsonLd } from './event-schema';
 import type { CalendarEvent } from './calendar-client';
 
 describe('organizationSchema', () => {
@@ -101,6 +101,26 @@ describe('eventSchema', () => {
 
   it('maps a cancelled event to the cancelled schema status', () => {
     expect(eventSchema({ ...sample, eventStatus: 'cancelled' }).eventStatus).toBe('https://schema.org/EventCancelled');
+  });
+});
+
+describe('serializeJsonLd', () => {
+  it('escapes </script> so it cannot terminate the surrounding block early', () => {
+    const schema = { name: 'Fun Day </script><img src=x onerror=alert(1)>' };
+
+    expect(serializeJsonLd(schema)).not.toContain('</script>');
+  });
+
+  it('round-trips to the original object, so escaping is invisible to consumers', () => {
+    const schema = { name: 'Fun Day </script><img src=x onerror=alert(1)>' };
+
+    expect(JSON.parse(serializeJsonLd(schema))).toEqual(schema);
+  });
+
+  it('leaves ordinary content without angle brackets unchanged', () => {
+    const schema = { name: 'Lego Pinewood Derby & Cookout' };
+
+    expect(serializeJsonLd(schema)).toBe(JSON.stringify(schema));
   });
 });
 
