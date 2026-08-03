@@ -148,7 +148,18 @@ describe('structured data', () => {
     for (const event of events) {
       expect(event.startDate, 'every Event needs a startDate').toBeTruthy();
       expect(event.organizer).toEqual({ '@id': `${ORIGIN}/#organization` });
-      expect(event.endDate ?? 'absent').not.toBeNull();
+    }
+  });
+
+  it('omits endDate rather than emitting null when an event has no end time', async () => {
+    // A null endDate is a schema validation error; an absent key is valid. So when the CMS
+    // has no end time, the key must be omitted rather than emitted as `endDate: null`.
+    const events = (await jsonLdBlocks('/calendar/')).filter((s) => s['@type'] === 'Event');
+
+    for (const event of events) {
+      if ('endDate' in event) {
+        expect(typeof event.endDate, 'endDate must be a string when present').toBe('string');
+      }
     }
   });
 
