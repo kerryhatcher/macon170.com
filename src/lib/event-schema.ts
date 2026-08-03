@@ -71,6 +71,11 @@ export function eventSchema(event: CalendarEvent): Record<string, unknown> {
   // Absent beats null: a null value is a schema validation error, an omitted key is valid.
   if (event.endsAt) schema.endDate = event.endsAt;
   if (event.cost && /^free$/i.test(event.cost.trim())) schema.isAccessibleForFree = true;
+  // Google's Event guidance lists `offers.price` / `offers.priceCurrency` as recommended, so an
+  // `Offer` with only a `url` can be reported as incomplete. We deliberately leave them out: the
+  // CMS models cost as a free-text field (e.g. "Free", "$5 per scout"), not a numeric price, and
+  // fabricating a number would misstate it to both search engines and AI assistants reading this
+  // schema. A registration link that's honestly incomplete beats a price that's confidently wrong.
   if (event.registrationUrl) schema.offers = { '@type': 'Offer', url: event.registrationUrl };
   if (event.locationName && event.address) {
     schema.location = { '@type': 'Place', name: event.locationName, address: event.address };
