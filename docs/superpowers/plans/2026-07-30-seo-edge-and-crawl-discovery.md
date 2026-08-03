@@ -48,6 +48,11 @@ Two errors in `docs/superpowers/specs/2026-07-30-seo-audit-remediation-design.md
 
 **1. `/logo/*` must not be `immutable`.** The spec assigns `public, max-age=31536000, immutable` to both `/_astro/*` and `/logo/*`. Only `/_astro/*` filenames are content-hashed. Files under `/logo/` have stable names (`pack170-logo-512.png`), so `immutable` would pin a stale logo in every browser cache for a year with no way to bust it. This plan gives non-hashed public assets `public, max-age=604800` (7 days) instead.
 
+> **Superseded 2026-08-03:** the shipped value is `public, max-age=86400` (24 hours), not the 7 days
+> this plan specifies. Changed at the user's request so a logo swap goes live same-day. The `604800`
+> literals below are the plan as written and were not rewritten — `worker/headers.ts` is the source
+> of truth for the current value.
+
 **2. Three known CSP violations exist and are expected.** The spec's allowlist omits them. Report-Only mode is what surfaces them, so this is not a blocker, but the implementer should not be surprised:
 
 - `src/components/SiteHeader.astro:19` — an inline `style="color: var(--gold)"` attribute, which `style-src 'self'` blocks.
