@@ -175,10 +175,13 @@ This is deliberate. Crawlers do not reliably execute JavaScript, so a runtime-on
 eleven published events invisible to search and put the placeholder "The next date is being added"
 on every page. Build-time rendering is what makes the dates crawlable.
 
-**Visitors are not affected by staleness.** The client scripts in `PackStrip.astro` and
-`src/pages/calendar/index.astro` still re-fetch after load and replace what the build rendered, so a
-browser always shows current data. Only crawlers see the build-time snapshot — which is the audience
-this design targets.
+**Visitors see current data when the client-side refresh succeeds.** The client scripts in
+`PackStrip.astro` and `src/pages/calendar/index.astro` re-fetch after load and replace what the
+build rendered. But that refresh calls the same `getCalendarEvents()` (see "When the fetch fails"
+below), so a single malformed CMS record rejects the whole batch there too — not just a network
+outage. When the refresh fails, the client keeps the build-time snapshot instead of showing an
+error, so visitors still see a usable page, just not necessarily the latest one. Crawlers always see
+the build-time snapshot, refresh or no — which is the audience this design targets.
 
 ### Keeping it fresh
 
