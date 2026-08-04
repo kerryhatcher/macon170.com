@@ -89,7 +89,7 @@ rule so that a worst-case request costs two hops, not three.
 `http://macon170.com/x` → `https://macon170.com/x` → `https://www.macon170.com/x` at three hops
 including the trailing slash.
 
-```
+```text
 Expression:  not ssl or http.host ne "www.macon170.com"
 Target:      concat("https://www.macon170.com", http.request.uri)
 Status:      308  (preserve query string)
@@ -100,7 +100,7 @@ separate concat.
 
 **Rule 2 — trailing slash.** Runs after Rule 1, so it only ever sees canonical scheme and host.
 
-```
+```text
 Expression:  http.host eq "www.macon170.com"
              and not ends_with(http.request.uri.path, "/")
              and not http.request.uri.path contains "."

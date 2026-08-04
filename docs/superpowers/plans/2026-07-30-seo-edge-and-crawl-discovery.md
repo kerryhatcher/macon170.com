@@ -782,7 +782,7 @@ Expected: FAIL — `/robots.txt` returns 404 locally, since the managed file onl
 
 Create `public/robots.txt`:
 
-```
+```text
 # Cub Scout Pack 170 — macon170.com
 # Shipping this file displaces Cloudflare's managed AI-content-signals robots.txt,
 # which is served automatically only while this origin returns 404 for this path.
@@ -881,14 +881,14 @@ Expected: FAIL — no robots meta tag on `/events/`.
 
 In `src/layouts/BaseLayout.astro`, change the props block:
 
-```
+```typescript
 type Props = { title: string; description: string; showStrip?: boolean; noindex?: boolean };
 const { title, description, showStrip = true, noindex = false } = Astro.props;
 ```
 
 Then add the tag in `<head>`, immediately after the existing `<meta name="description" ... />` line:
 
-```
+```text
     {noindex && <meta name="robots" content="noindex" />}
 ```
 
@@ -898,7 +898,7 @@ Defaulting to `false` keeps every existing page indexable without touching it.
 
 In `src/pages/events/index.astro`, change the opening layout tag:
 
-```
+```text
 <BaseLayout
   title="Event details"
   description="Published logistics for an upcoming Cub Scout Pack 170 event."
