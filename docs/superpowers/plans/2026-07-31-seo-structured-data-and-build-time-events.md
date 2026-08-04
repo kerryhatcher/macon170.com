@@ -541,9 +541,12 @@ import { eventSchema } from '../../lib/event-schema';
 let events: CalendarEvent[] = [];
 try {
   events = await getCalendarEvents();
-} catch {
-  // A CMS outage must not fail the build. The client script refreshes this in the browser,
-  // and the milestone spine below still renders the shape of the year.
+} catch (error) {
+  // Degrade, never fail: a CMS outage must not block an unrelated deploy. But this also
+  // fires when a SINGLE event fails validation, because getCalendarEvents validates the
+  // whole list and rejects all of it — a far likelier trigger than an outage. Log loudly so
+  // a silently empty calendar is visible in CI rather than looking like a healthy build.
+  console.warn('[calendar] build-time event fetch failed; shipping the milestone spine with no dates:', error);
 }
 const timelineRows = renderTimelineRows(annualProgram, events);
 const progressNote = milestoneProgressNote(annualProgram, events);
@@ -682,8 +685,12 @@ let nextEvent: CalendarEvent | null = null;
 if (showStrip) {
   try {
     nextEvent = (await getCalendarEvents())[0] ?? null;
-  } catch {
-    // The strip keeps its honest fallback copy and the client script tries again.
+  } catch (error) {
+    // Degrade, never fail: a CMS outage must not block an unrelated deploy. This also fires
+    // when a SINGLE event fails validation, because getCalendarEvents validates the whole list
+    // and rejects all of it — a likelier trigger than an outage. Log loudly so a silently
+    // placeholder-only build is visible in CI instead of looking healthy.
+    console.warn('[pack-strip] build-time next-event fetch failed; keeping the placeholder:', error);
   }
 }
 ```
