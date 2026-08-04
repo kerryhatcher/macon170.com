@@ -28,12 +28,21 @@ export type CalendarEvent = {
 };
 
 const PRODUCTION_CALENDAR_API = 'https://cms.macon170.com/api/calendar/v1';
-const DEVELOPMENT_CALENDAR_API = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN
-  ? `${import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN.replace(/\/$/, '')}/api/calendar/v1`
-  : 'http://localhost:41772/api/calendar/v1';
+const LOCAL_DEV_CALENDAR_API = 'http://localhost:41772/api/calendar/v1';
 const isLocalPage = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-export const CALENDAR_API_BASE = import.meta.env.DEV || isLocalPage ? DEVELOPMENT_CALENDAR_API : PRODUCTION_CALENDAR_API;
+// PUBLIC_CALENDAR_CMS_ORIGIN wins unconditionally, including during `astro build`, not just in
+// `astro dev`. That is what lets the build-time fetch in src/pages/calendar/index.astro (and the
+// PackStrip "next event" fetch in BaseLayout.astro) be pointed at a fixture server instead of the
+// real CMS for `bun run test` — see scripts/test-with-fixture-cms.ts. Leaving it unset resolves
+// exactly as before: localhost in dev, the real CMS otherwise.
+function resolveCalendarApiBase(): string {
+  const override = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN;
+  if (override) return `${override.replace(/\/$/, '')}/api/calendar/v1`;
+  return import.meta.env.DEV || isLocalPage ? LOCAL_DEV_CALENDAR_API : PRODUCTION_CALENDAR_API;
+}
+
+export const CALENDAR_API_BASE = resolveCalendarApiBase();
 export const CALENDAR_SUBSCRIPTION_URL = `${PRODUCTION_CALENDAR_API}/calendar.ics`;
 
 const statuses = new Set<CalendarEventStatus>(['scheduled', 'tentative', 'cancelled']);
