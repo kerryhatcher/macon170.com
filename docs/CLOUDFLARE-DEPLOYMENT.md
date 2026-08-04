@@ -93,7 +93,7 @@ rewritten host) rather than for any redirect at all.
 
 This rule does not upgrade `http://cms.macon170.com` — Rule 3 does.
 
-### Rule 2 — "Trailing slash" (order: last)
+### Rule 2 — "Trailing slash" (order: second)
 
 Replaces the asset handler's 307 with a permanent 308.
 
