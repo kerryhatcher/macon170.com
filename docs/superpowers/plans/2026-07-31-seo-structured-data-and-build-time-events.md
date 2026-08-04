@@ -554,7 +554,7 @@ Pass the schema to the layout by changing the opening tag to:
 
 Then seed the server-rendered markup: set the `#timeline` element's inner HTML with `set:html={timelineRows}`, and the `[data-pm-note]` element's text to `{progressNote}`.
 
-- [ ] **Step 6: Assert real dates and Event schema are served**
+- [ ] **Step 6: Assert real dates and Event schema are served, against a deterministic fixture**
 
 Append to the `describe('structured data', ...)` block in `worker/seo-artifacts.test.ts`:
 
@@ -579,10 +579,35 @@ it('puts real event dates in the calendar HTML, not just in JavaScript', async (
 });
 ```
 
+These assertions require non-empty, real-shaped event data to be baked into the build — that is
+what they exist to prove. Asserting that against the _live_ CMS would make `bun run test` (and
+therefore `just ci`) depend on `cms.macon170.com` being reachable and populated at build time,
+which a CodeRabbit review on the implementing PR correctly flagged: the build-time fetch is
+designed to tolerate a CMS outage (see Step 5's try/catch), but these assertions then required the
+opposite, so a real outage would fail the test step even though the build itself degraded
+correctly. `bun run test` does not hit the live CMS. It instead runs through
+`scripts/test-with-fixture-cms.ts`, which:
+
+1. starts a local HTTP server (`scripts/fixtures/calendar-events.json`, five synthetic events
+   shaped from the real CMS response contract but with fabricated content — not the pack's actual
+   data, so a committed fixture never carries a live family's details into git history),
+2. runs `bun run build` with `PUBLIC_CALENDAR_CMS_ORIGIN` pointed at that server (see
+   `src/lib/calendar-client.ts`'s `resolveCalendarApiBase`, which now honors that env var
+   unconditionally — including during `astro build`, not only `astro dev` — so the build fetch and
+   the dev fetch can both be redirected the same way; leaving it unset resolves exactly as before),
+3. runs `bun run test:unit` (`vitest run`) against that build,
+4. tears the fixture server down whether the build or the tests passed or failed.
+
+Live CMS behavior — whether `cms.macon170.com` itself is reachable and returns a well-formed
+response — is not covered by an automated gate today; it is exercised by hand and by the
+production build's own tolerant fallback. `bun run test:live` exists but currently covers Turnstile
+state recovery and redirects only, not the calendar.
+
 - [ ] **Step 7: Run the full suite**
 
 Run: `bun run build && bun run test && bun run check && bun run lint && bun run test:e2e`
-Expected: PASS. If the build logs a CMS fetch failure, the fallback worked but the assertions in Step 6 will fail — that is correct, and means the CMS was unreachable, not that the code is wrong. Re-run once reachable.
+Expected: PASS. `bun run test` builds and tests against the fixture CMS from Step 6, so this no
+longer depends on `cms.macon170.com` being reachable.
 
 - [ ] **Step 8: Commit**
 
