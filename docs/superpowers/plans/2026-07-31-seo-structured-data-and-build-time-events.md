@@ -105,7 +105,8 @@ describe('organizationSchema', () => {
   it('names the national organization as parent', () => {
     expect(organizationSchema().parentOrganization).toEqual({
       '@type': 'Organization',
-      name: 'Boy Scouts of America',
+      name: 'Scouting America',
+      alternateName: 'Boy Scouts of America',
     });
   });
 });
@@ -143,7 +144,14 @@ export function organizationSchema(): Record<string, unknown> {
       containedInPlace: { '@type': 'State', name: 'Georgia' },
     },
     // No `address`: the pack meets at a chartered organization's building it does not own.
-    parentOrganization: { '@type': 'Organization', name: 'Boy Scouts of America' },
+    // `name` is the current brand (rebranded from "Boy Scouts of America" in 2024); that former
+    // name is kept as `alternateName` since it is still the registered corporate name and
+    // appears throughout older material, so search consumers can match both forms to one entity.
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Scouting America',
+      alternateName: 'Boy Scouts of America',
+    },
   };
 }
 ```
