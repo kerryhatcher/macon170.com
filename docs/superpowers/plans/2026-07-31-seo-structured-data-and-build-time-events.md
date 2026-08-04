@@ -165,13 +165,13 @@ Expected: PASS, 4 tests.
 
 In `src/layouts/BaseLayout.astro`, add to the frontmatter imports:
 
-```
+```typescript
 import { organizationSchema } from '../lib/event-schema';
 ```
 
 Change the props block to:
 
-```
+```typescript
 type Props = {
   title: string;
   description: string;
@@ -186,7 +186,7 @@ const schemas = [organizationSchema(), ...pageSchemas];
 
 Then immediately before `</head>`, add:
 
-```
+```astro
 {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
 ```
 
@@ -533,7 +533,7 @@ Expected: PASS, 11 tests total.
 
 In `src/pages/calendar/index.astro` frontmatter, add below the existing imports:
 
-```
+```typescript
 import { getCalendarEvents, type CalendarEvent } from '../../lib/calendar-client';
 import { renderTimelineRows, milestoneProgressNote } from '../../lib/calendar-render';
 import { eventSchema } from '../../lib/event-schema';
@@ -552,7 +552,7 @@ const eventSchemas = events.map(eventSchema);
 
 Pass the schema to the layout by changing the opening tag to:
 
-```
+```text
 <BaseLayout
   title="Pack calendar"
   description="See what is next for Cub Scout Pack 170 and plan around the whole program year."
@@ -675,7 +675,7 @@ Expected: FAIL — the placeholder is present.
 
 In `src/layouts/BaseLayout.astro` frontmatter, add:
 
-```
+```typescript
 import { getCalendarEvents, type CalendarEvent } from '../lib/calendar-client';
 
 let nextEvent: CalendarEvent | null = null;
@@ -694,7 +694,7 @@ Pass it down: `<PackStrip nextEvent={nextEvent} />`.
 
 In `src/components/PackStrip.astro`, add to the frontmatter:
 
-```
+```typescript
 import type { CalendarEvent } from '../lib/calendar-client';
 
 type Props = { nextEvent?: CalendarEvent | null };
@@ -795,7 +795,7 @@ export function breadcrumbSchema(trail: Array<{ name: string; path: string }>): 
 
 In `src/pages/dens/index.astro`, import `breadcrumbSchema` and pass:
 
-```
+```text
 jsonLd={breadcrumbSchema([
   { name: 'Home', path: '/' },
   { name: 'Dens', path: '/dens/' },
@@ -804,7 +804,7 @@ jsonLd={breadcrumbSchema([
 
 In `src/pages/dens/[den].astro`, import `breadcrumbSchema` and `denSlug` (already imported) and pass:
 
-```
+```text
 jsonLd={breadcrumbSchema([
   { name: 'Home', path: '/' },
   { name: 'Dens', path: '/dens/' },
