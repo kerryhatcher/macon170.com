@@ -100,7 +100,9 @@ Replaces the asset handler's 307 with a permanent 308.
 ```text
 Expression:            (http.host eq "www.macon170.com"
                         and not ends_with(http.request.uri.path, "/")
-                        and not http.request.uri.path contains ".")
+                        and not http.request.uri.path contains "."
+                        and http.request.uri.path ne "/api"
+                        and not starts_with(http.request.uri.path, "/api/"))
 Type:                  Dynamic
 Target:                concat("https://www.macon170.com", http.request.uri.path, "/")
 Status:                308
@@ -110,6 +112,13 @@ Preserve query string: ON
 The `contains "."` guard keeps static assets (`/favicon.svg`, `/_astro/*.css`, `/logo/*.png`) from
 acquiring a trailing slash. Preserve-query-string is ON here because the target rebuilds from
 `http.request.uri.path`, which omits the query.
+
+The `/api` and `/api/` exclusions keep this rule from shadowing paths the Worker already owns.
+`worker/index.ts` returns a direct `404` with `Cache-Control: no-store` for `/api` and any
+`/api/*` path (there is no `/api` route on the public site — see `worker/index.test.ts`), but
+`/api` and `/api/contact` both satisfy the other three predicates (no trailing slash, no `.`), so
+without this exclusion Cloudflare would 308 them to `/api/` and `/api/contact/` before the request
+ever reached the Worker, replacing its intended 404 with a redirect.
 
 ### Rule 3 — HTTP to HTTPS (order: last)
 
@@ -147,6 +156,8 @@ curl -sIL http://macon170.com/join -o /dev/null -w '%{num_redirects} %{url_effec
 curl -sIL "http://macon170.com/join?a=1" -o /dev/null -w '%{url_effective}\n'
 # assets must not redirect
 curl -sI https://www.macon170.com/favicon.svg -o /dev/null -w '%{http_code}\n'
+# /api is Worker-owned and must not redirect either — expect 404, not 308
+curl -sI https://www.macon170.com/api -o /dev/null -w '%{http_code}\n'
 # CMS: upgraded to https, host preserved, never rewritten onto www
 curl -sI http://cms.macon170.com/api/calendar/v1/events | grep -i location
 curl -sI https://cms.macon170.com/api/calendar/v1/events | grep -iE '^HTTP/'

@@ -43,6 +43,16 @@ test('leaves static assets untouched by the trailing-slash rule', async () => {
   await context.dispose();
 });
 
+test('leaves the Worker-owned /api path untouched by the trailing-slash rule', async () => {
+  const context = await request.newContext();
+  const response = await context.get('https://www.macon170.com/api', { maxRedirects: 0 });
+
+  // worker/index.ts returns a direct 404 for /api and /api/*; a 308 here would mean the
+  // trailing-slash rule redirected the request before the Worker ever saw it.
+  expect(response.status()).toBe(404);
+  await context.dispose();
+});
+
 test('preserves the query string exactly once across the full chain', async () => {
   const context = await request.newContext();
   const response = await context.get('http://macon170.com/join?utm_source=plan&a=1');
