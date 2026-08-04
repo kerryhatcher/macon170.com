@@ -153,6 +153,9 @@ new third-party script could silently violate a policy nothing in CI checks.
 - `script-src`: `'self'`, `https://challenges.cloudflare.com` (Turnstile)
 - `frame-src`: `https://challenges.cloudflare.com`
 - `connect-src`: `'self'`, `https://cms.macon170.com`
+- `form-action`: `'self'`, `https://cms.macon170.com` — the contact form posts directly to the
+  CMS rather than through this Worker, so an allowlist restricted to `'self'` would block
+  submissions
 - `img-src`: `'self'`, `data:`
 - `font-src`: `'self'`
 - `default-src`: `'self'`
