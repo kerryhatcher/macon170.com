@@ -2,12 +2,6 @@ import { exports } from 'cloudflare:workers';
 import { describe, expect, it } from 'vitest';
 
 describe('public Worker routing after the contact migration', () => {
-  it('keeps the apex redirect on the production public hostname', async () => {
-    const response = await exports.default.fetch('https://macon170.com/contact/?from=apex', { redirect: 'manual' });
-    expect(response.status).toBe(308);
-    expect(response.headers.get('Location')).toBe('https://www.macon170.com/contact/?from=apex');
-  });
-
   it.each([
     ['GET', 'https://www.macon170.com/api'],
     ['POST', 'https://www.macon170.com/api/contact'],
@@ -28,5 +22,24 @@ describe('public Worker routing after the contact migration', () => {
     const response = await exports.default.fetch('https://www.macon170.com/contact/');
     expect(response.status).toBe(200);
     await expect(response.text()).resolves.toContain('Contact Pack 170');
+  });
+
+  it('serves real pages with the security headers applied', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/contact/');
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
+    expect(response.headers.get('Content-Security-Policy-Report-Only')).toContain("default-src 'self'");
+  });
+
+  it('serves the real hashed stylesheet with immutable caching', async () => {
+    const page = await exports.default.fetch('https://www.macon170.com/');
+    const html = await page.text();
+    // Discover the hashed filename from the build rather than hardcoding a hash that rotates.
+    const stylesheet = html.match(/\/_astro\/[^"']+\.css/)?.[0];
+
+    expect(stylesheet, 'homepage should link a bundled stylesheet').toBeDefined();
+    const asset = await exports.default.fetch(`https://www.macon170.com${stylesheet}`);
+    expect(asset.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
   });
 });

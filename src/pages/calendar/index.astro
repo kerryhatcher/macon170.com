@@ -2,12 +2,32 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChapterHero from '../../components/ChapterHero.astro';
 import { pack, annualProgram } from '../../data/pack';
-import { CALENDAR_SUBSCRIPTION_URL } from '../../lib/calendar-client';
+import { CALENDAR_SUBSCRIPTION_URL, getCalendarEvents, type CalendarEvent } from '../../lib/calendar-client';
+import { renderTimelineRows, milestoneProgressNote } from '../../lib/calendar-render';
+import { eventSchema } from '../../lib/event-schema';
 
 const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
+
+let events: CalendarEvent[] = [];
+try {
+  events = await getCalendarEvents();
+} catch (error) {
+  // Degrade, never fail: a CMS outage must not block an unrelated deploy. But this also
+  // fires when a SINGLE event fails validation, because getCalendarEvents validates the
+  // whole list and rejects all of it — a far likelier trigger than an outage. Log loudly so
+  // a silently empty calendar is visible in CI rather than looking like a healthy build.
+  console.warn('[calendar] build-time event fetch failed; shipping the milestone spine with no dates:', error);
+}
+const timelineRows = renderTimelineRows(annualProgram, events);
+const progressNote = milestoneProgressNote(annualProgram, events);
+const eventSchemas = events.map(eventSchema);
 ---
 
-<BaseLayout title="Pack calendar" description="See what is next for Cub Scout Pack 170 and plan around the whole program year.">
+<BaseLayout
+  title="Pack calendar"
+  description="See what is next for Cub Scout Pack 170 and plan around the whole program year."
+  jsonLd={eventSchemas}
+>
   <ChapterHero
     chapter="Family planner"
     title="What’s next for"
@@ -35,23 +55,12 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
       </div>
 
       {
-        /* Server-rendered so the year is on the page before any fetch: a failed API leaves the spine
-      standing rather than an empty column. The client merges published dates into this list. */
+        /* Server-rendered at build time from the CMS feed, so a crawler that runs no JS still sees
+      real dates. A CMS outage degrades to the milestone spine rather than an empty column. The
+      client script refreshes this after load so a stale build self-corrects in the browser. */
       }
-      <ol class="timeline" id="timeline" data-pm-list>
-        {
-          annualProgram.map((item) => (
-            <li class="timeline__row timeline__row--milestone" data-pm-row={item.key} data-season={item.season}>
-              <span class="timeline__season">{item.season}</span>
-              <strong class="timeline__title">{item.title}</strong>
-              <small class="timeline__when" data-pm-when>
-                {item.state}
-              </small>
-            </li>
-          ))
-        }
-      </ol>
-      <p class="timeline__note" data-pm-note>Checking the pack calendar for confirmed dates…</p>
+      <ol class="timeline" id="timeline" data-pm-list set:html={timelineRows} />
+      <p class="timeline__note" data-pm-note>{progressNote}</p>
       <div id="calendar-status" class="calendar-status" role="status" aria-live="polite"></div><div
         id="calendar-notice"
         class="calendar-notice"
@@ -126,7 +135,8 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
 <script>
   import { getCalendarEvents } from '../../lib/calendar-client';
   import { annualProgram } from '../../data/pack';
-  import { buildTimeline, monthKey, monthLabel, milestoneProgress, type SpineEvent } from '../../lib/pack-year';
+  import type { SpineEvent } from '../../lib/pack-year';
+  import { renderTimelineRows, milestoneProgressNote } from '../../lib/calendar-render';
 
   const timeline = document.querySelector<HTMLElement>('#timeline');
   const status = document.querySelector<HTMLElement>('#calendar-status');
@@ -135,74 +145,10 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
   const copyButton = document.querySelector<HTMLButtonElement>('[data-copy-calendar]');
   const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]');
 
-  const escapeHtml = (value: string) =>
-    value.replace(
-      /[&<>"']/g,
-      (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[character] ?? character,
-    );
-  const dayLabel = (value: string) =>
-    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', month: 'short', day: 'numeric' }).format(
-      new Date(value),
-    );
-  const timeLabel = (value: string) =>
-    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeStyle: 'short' }).format(new Date(value));
-
-  function milestoneRow(entry: Extract<ReturnType<typeof buildTimeline>[number], { kind: 'milestone' }>): string {
-    const { milestone, event, done } = entry;
-    // No event yet: keep the honest placeholder the server already wrote rather than inventing a date.
-    const when = event ? `${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}` : milestone.state;
-    const where = event?.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
-    const state = done ? '<span class="timeline__state">Held this year</span>' : '';
-    const open = event ? `<a class="timeline__open" href="/events/?event=${encodeURIComponent(event.slug)}">Open event details</a>` : '';
-    const flags = [event ? 'data-confirmed' : '', done ? 'data-done' : ''].filter(Boolean).join(' ');
-    // The season is only a stand-in for a date we do not have yet. Once an event is associated the
-    // real date supersedes it, and keeping both contradicts itself: Pinewood Derby's season reads
-    // "Late January" while the pack actually holds it at Scout Sunday on February 7, which would
-    // print "LATE JANUARY" under a "February 2027" heading.
-    const season = event ? '' : `<span class="timeline__season">${escapeHtml(milestone.season)}</span>`;
-    return `<li class="timeline__row timeline__row--milestone" data-pm-row="${escapeHtml(milestone.key)}" ${flags}>
-      ${season}
-      <strong class="timeline__title">${escapeHtml(event ? event.title : milestone.title)}</strong>
-      <small class="timeline__when" data-pm-when>${escapeHtml(when)}</small>${where}${state}${open}
-    </li>`;
-  }
-
-  function eventRow(event: SpineEvent): string {
-    // Only a state that changes a family's plans earns a chip; "scheduled" is the silent default.
-    const flag =
-      (event.eventStatus ?? '').toLowerCase() === 'scheduled'
-        ? ''
-        : `<span class="event-status">${escapeHtml(event.eventStatus ?? '')}</span>`;
-    const where = event.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
-    return `<li class="timeline__row timeline__row--event" data-category="${escapeHtml(event.category ?? 'pack')}">
-      <span class="timeline__day">${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}</span>
-      <a class="timeline__title" href="/events/?event=${encodeURIComponent(event.slug)}">${escapeHtml(event.title)}</a>
-      <span class="event-cat">${escapeHtml(event.category ?? 'pack')}</span>${flag}${where}
-    </li>`;
-  }
-
   function render(events: SpineEvent[]) {
     if (!timeline) return;
-    const entries = buildTimeline(annualProgram, events);
-    let month = '';
-    const rows: string[] = [];
-    for (const entry of entries) {
-      const key = monthKey(entry.at);
-      if (key !== month) {
-        month = key;
-        // An undated milestone sits in its nominal month, so the heading is a season marker for it.
-        rows.push(`<li class="timeline__month"><h3>${escapeHtml(monthLabel(entry.at))}</h3></li>`);
-      }
-      rows.push(entry.kind === 'milestone' ? milestoneRow(entry) : eventRow(entry.event));
-    }
-    timeline.innerHTML = rows.join('');
-
-    const progress = milestoneProgress(annualProgram, events);
-    if (note)
-      note.textContent = progress.confirmed
-        ? `${progress.confirmed} of ${progress.total} milestones have a published date. The other ${progress.total - progress.confirmed} are still being scheduled by pack volunteers.`
-        : 'No milestone dates are published yet. Pack volunteers are still scheduling the year.';
-
+    timeline.innerHTML = renderTimelineRows(annualProgram, events);
+    if (note) note.textContent = milestoneProgressNote(annualProgram, events);
     const count = events.length;
     if (status)
       status.textContent = count

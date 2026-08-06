@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { CalendarClientError, getCalendarEvent, getCalendarEvents } from './calendar-client';
+import { CalendarClientError, getCalendarEvent, getCalendarEvents, resetCalendarEventsCacheForTests } from './calendar-client';
 
 const event = {
   id: '6c62096e-4144-49d0-a3c2-7d314e79aa71',
@@ -29,6 +29,9 @@ const event = {
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.useRealTimers();
+  // getCalendarEvents() memoizes its promise at module scope; without this, one test's cached
+  // result or rejection would leak into the next test's fresh fetch mock.
+  resetCalendarEventsCacheForTests();
 });
 
 describe('calendar client', () => {
@@ -76,5 +79,34 @@ describe('calendar client', () => {
     const assertion = expect(getCalendarEvents()).rejects.toThrow('timed out');
     await vi.advanceTimersByTimeAsync(8_000);
     await assertion;
+  });
+
+  it('dedupes two concurrent calls into a single request', async () => {
+    // PackStrip and the calendar page both call getCalendarEvents() on the same page load; this
+    // is the scenario the memoization exists for.
+    const fetchMock = vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [event] }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const [first, second] = await Promise.all([getCalendarEvents(), getCalendarEvents()]);
+
+    expect(first).toEqual([event]);
+    expect(second).toEqual([event]);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not retry a failed fetch on a second call within the same cache lifetime', async () => {
+    const fetchMock = vi.fn().mockRejectedValue(new TypeError('network down'));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(getCalendarEvents()).rejects.toThrow('unavailable');
+    await expect(getCalendarEvents()).rejects.toThrow('unavailable');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('resets between test cases so a later call is not poisoned by an earlier rejection', async () => {
+    // Regression guard for the memoization itself: proves resetCalendarEventsCacheForTests()
+    // actually clears state, since every test in this file depends on that being true.
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [event] })));
+    await expect(getCalendarEvents()).resolves.toEqual([event]);
   });
 });

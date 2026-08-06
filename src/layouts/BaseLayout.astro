@@ -18,10 +18,33 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { organizationSchema, serializeJsonLd } from '../lib/event-schema';
+import { getCalendarEvents, type CalendarEvent } from '../lib/calendar-client';
 
-type Props = { title: string; description: string; showStrip?: boolean };
-const { title, description, showStrip = true } = Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  showStrip?: boolean;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+const { title, description, showStrip = true, noindex = false, jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const schemas = [organizationSchema(), ...pageSchemas];
+
+let nextEvent: CalendarEvent | null = null;
+if (showStrip) {
+  try {
+    nextEvent = (await getCalendarEvents())[0] ?? null;
+  } catch (error) {
+    // Degrade, never fail: a CMS outage must not block an unrelated deploy. This also fires
+    // when a SINGLE event fails validation, because getCalendarEvents validates the whole list
+    // and rejects all of it — a likelier trigger than an outage. Log loudly so a silently
+    // placeholder-only build is visible in CI instead of looking healthy.
+    console.warn('[pack-strip] build-time next-event fetch failed; keeping the placeholder:', error);
+  }
+}
 ---
 
 <!doctype html>
@@ -32,6 +55,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
          sitting in a letterbox; the safe-area insets in global.css keep content clear of it. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#003f87" />
     <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin /><link
       rel="preload"
@@ -47,11 +71,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title} | Cub Scout Pack 170</title>
+    {schemas.map((schema) => <script type="application/ld+json" set:html={serializeJsonLd(schema)} />)}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
-    {showStrip && <PackStrip />}
+    {showStrip && <PackStrip nextEvent={nextEvent} />}
     <main id="main"><slot /></main>
     <SiteFooter />
   </body>

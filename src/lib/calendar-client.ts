@@ -28,12 +28,21 @@ export type CalendarEvent = {
 };
 
 const PRODUCTION_CALENDAR_API = 'https://cms.macon170.com/api/calendar/v1';
-const DEVELOPMENT_CALENDAR_API = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN
-  ? `${import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN.replace(/\/$/, '')}/api/calendar/v1`
-  : 'http://localhost:41772/api/calendar/v1';
+const LOCAL_DEV_CALENDAR_API = 'http://localhost:41772/api/calendar/v1';
 const isLocalPage = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
-export const CALENDAR_API_BASE = import.meta.env.DEV || isLocalPage ? DEVELOPMENT_CALENDAR_API : PRODUCTION_CALENDAR_API;
+// PUBLIC_CALENDAR_CMS_ORIGIN wins unconditionally, including during `astro build`, not just in
+// `astro dev`. That is what lets the build-time fetch in src/pages/calendar/index.astro (and the
+// PackStrip "next event" fetch in BaseLayout.astro) be pointed at a fixture server instead of the
+// real CMS for `bun run test` — see scripts/test-with-fixture-cms.ts. Leaving it unset resolves
+// exactly as before: localhost in dev, the real CMS otherwise.
+function resolveCalendarApiBase(): string {
+  const override = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN;
+  if (override) return `${override.replace(/\/$/, '')}/api/calendar/v1`;
+  return import.meta.env.DEV || isLocalPage ? LOCAL_DEV_CALENDAR_API : PRODUCTION_CALENDAR_API;
+}
+
+export const CALENDAR_API_BASE = resolveCalendarApiBase();
 export const CALENDAR_SUBSCRIPTION_URL = `${PRODUCTION_CALENDAR_API}/calendar.ics`;
 
 const statuses = new Set<CalendarEventStatus>(['scheduled', 'tentative', 'cancelled']);
@@ -49,7 +58,26 @@ export class CalendarClientError extends Error {
   }
 }
 
-export async function getCalendarEvents(): Promise<CalendarEvent[]> {
+let eventsPromise: Promise<CalendarEvent[]> | null = null;
+
+export function getCalendarEvents(): Promise<CalendarEvent[]> {
+  // Deduped per module instance, which covers both lifetimes that matter: in the browser the
+  // strip and the calendar page share one bundled copy of this module, so /calendar/ makes one
+  // request instead of two; during `astro build` the module persists across page renders, so a
+  // full build makes one request instead of one per page. A rejected promise stays cached too —
+  // a failed fetch is not retried within the same page load or build, which matches how the
+  // existing callers behave: each tries once and falls back. Do not add a retry loop here
+  // expecting a second call to try again; reset the cache instead.
+  eventsPromise ??= fetchCalendarEvents();
+  return eventsPromise;
+}
+
+/** Test-only: clears the memoized events promise so each test starts with a fresh fetch. */
+export function resetCalendarEventsCacheForTests(): void {
+  eventsPromise = null;
+}
+
+async function fetchCalendarEvents(): Promise<CalendarEvent[]> {
   const body = await calendarRequest(`${CALENDAR_API_BASE}/events`);
   if (!isRecord(body) || body.version !== 'v1' || !Array.isArray(body.events)) {
     throw new CalendarClientError('The calendar returned an invalid event list.');

@@ -7,6 +7,7 @@ import { adventures } from '../../data/adventures';
 import { denSlug } from '../../lib/den-slug';
 import { officialImage } from '../../lib/official-image';
 import { externalLink } from '../../lib/external-link';
+import { breadcrumbSchema } from '../../lib/event-schema';
 
 export function getStaticPaths() {
   return ranks.map((rank, index) => ({
@@ -22,6 +23,11 @@ const program = adventures.find((entry) => entry.rank === rank.name);
 <BaseLayout
   title={`${rank.name} den`}
   description={`What the ${rank.name} den (${rank.grade}) works on in Cub Scout Pack 170: required adventures, electives, and how the year runs.`}
+  jsonLd={breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Dens', path: '/dens/' },
+    { name: `${rank.name} den`, path: `/dens/${denSlug(rank.name)}/` },
+  ])}
 >
   <ChapterHero
     chapter={`${rank.name} den`}

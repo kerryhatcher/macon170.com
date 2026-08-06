@@ -21,3 +21,6 @@ playwright-report
 .codex
 # Machine-local settings, gitignored globally; prettier does not read git ignores.
 .claude/settings.local.json
+# Agent orchestration scratch (ledgers, task briefs, review packages). Gitignored, never
+# authored by hand, and full of pasted code fences that prettier tries to parse and reject.
+.superpowers
