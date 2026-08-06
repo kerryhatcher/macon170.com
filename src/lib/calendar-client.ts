@@ -28,9 +28,17 @@ export type CalendarEvent = {
 };
 
 const PRODUCTION_CALENDAR_API = 'https://cms.macon170.com/api/calendar/v1';
+// Falls back to the real prod CMS, not a local CMS dev server, so `bun run dev` shows live data
+// without anyone having to stand up the CMS locally first. Set PUBLIC_CALENDAR_CMS_ORIGIN to point
+// at a local CMS instance instead when actually working on the CMS integration itself.
+//
+// Note: the prod CMS Worker's CORS policy does not currently allowlist localhost origins, so a
+// browser running against `bun run dev` will still see the fetch blocked (CORS instead of
+// connection-refused) and fall back to placeholder text - this only helps SSR/non-browser fetches
+// until the CMS Worker's CORS config is updated separately.
 const DEVELOPMENT_CALENDAR_API = import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN
   ? `${import.meta.env.PUBLIC_CALENDAR_CMS_ORIGIN.replace(/\/$/, '')}/api/calendar/v1`
-  : 'http://localhost:41772/api/calendar/v1';
+  : PRODUCTION_CALENDAR_API;
 const isLocalPage = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
 export const CALENDAR_API_BASE = import.meta.env.DEV || isLocalPage ? DEVELOPMENT_CALENDAR_API : PRODUCTION_CALENDAR_API;
