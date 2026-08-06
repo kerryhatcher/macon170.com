@@ -18,11 +18,18 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
     src: blueGoldCrossover,
     alt: 'A Pack 170 Scout crosses the bridge into Scouts BSA at the Arrow of Light Ceremony, beside the American flag.',
   },
-  camping: {
+  'fall-camp': {
     src: outdoorTrail,
     alt: 'Pack 170 families in gold pack shirts walking a shaded, pine-lined trail together, a parent holding a child by the hand.',
     // Landscape, unlike the portrait crossover shot, so the blob has to widen for it.
     ratio: '4 / 3',
+  },
+  // No spring campout photo exists yet — this one is from the fall outing (same shoot as
+  // fall-camp above) and stands in until the pack has one from an actual spring trip.
+  'spring-camp': {
+    src: localOuting,
+    alt: 'Two Pack 170 Cub Scouts lean on a log rail, watching a camel graze across the fence on a pack outing.',
+    ratio: '3 / 2',
   },
 };
 ---
@@ -76,10 +83,6 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
                   <span class="chapter-tab">{activity.shortTitle}</span>
                   <h2>{activity.title}</h2>
                   <p class="lead">{activity.description}</p>
-                  <p>
-                    Pack 170’s exact date, logistics, and current-year participation details will appear on the Calendar after leadership
-                    confirms them.
-                  </p>
                   <a href="/calendar/">Look for it in the program year →</a>
                 </>
               </div>
@@ -96,15 +99,6 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
           Our neighborhood sits near parks, trails, waterways, history, and a community worth serving. Pack-specific destinations will only
           be named when they are confirmed for a real event.
         </p>
-      </div><div class="local-map">
-        <Image
-          src={localOuting}
-          alt="Two Pack 170 Cub Scouts lean on a log rail, watching a camel graze across the fence on a pack outing."
-          widths={[480, 960]}
-          width={960}
-          sizes="(max-width: 760px) 100vw, 40vw"
-          loading="lazy"
-        />
       </div>
     </div>
   </section>
@@ -204,30 +198,15 @@ const photos: Record<string, { src: ImageMetadata; alt: string; ratio?: string }
     background: var(--green-deep);
     color: white;
   }
+  /* Single column now that its photo lives on the spring-camp activity card instead — see the
+     photos map above. Capped width keeps the short copy readable instead of stretching edge to
+     edge now that there is no image to balance it against. */
   .local-field__grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  /* Keeps the hand-cut frame the illustrated Macon map used, now around a real outing photo. */
-  .local-map {
-    position: relative;
-    aspect-ratio: 3 / 2;
-    border: 4px solid white;
-    border-radius: 8px 30px 10px 22px;
-    overflow: hidden;
-  }
-  .local-map img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 640px;
   }
   @media (max-width: 760px) {
-    .activity-chapter,
-    .local-field__grid {
+    .activity-chapter {
       grid-template-columns: 1fr;
     }
     .activity-chapter--reverse .activity-picture {

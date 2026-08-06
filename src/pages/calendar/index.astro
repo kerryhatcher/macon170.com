@@ -28,8 +28,8 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
   <section class="section next-section" id="program-year">
     <div class="container">
       <div class="section-heading">
-        <span class="chapter-tab">The pack year</span><h2>Four milestones, and everything in between.</h2><p>
-          The four milestones below are the shape of every Pack 170 year. Published dates fill in as volunteers schedule them, and other
+        <span class="chapter-tab">The pack year</span><h2>Five milestones, and everything in between.</h2><p>
+          The five milestones below are the shape of every Pack 170 year. Published dates fill in as volunteers schedule them, and other
           pack, den, and family dates land between them.
         </p>
       </div>
@@ -216,12 +216,12 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
       render(events);
       if (!events.length && notice)
         notice.innerHTML =
-          '<div class="notice"><span class="notice__pin">i</span><div><h3>No dates are published yet</h3><p>Pack volunteers are still scheduling the year. The four milestones above are the shape it will take. <a href="/contact/">Ask a pack adult</a> before making a special trip.</p></div></div>';
+          '<div class="notice"><span class="notice__pin">i</span><div><h3>No dates are published yet</h3><p>Pack volunteers are still scheduling the year. The five milestones above are the shape it will take. <a href="/contact/">Ask a pack adult</a> before making a special trip.</p></div></div>';
     } catch {
       // The spine is already on the page, so a failed fetch loses the dates, not the year.
       if (notice)
         notice.innerHTML =
-          '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>We could not load live dates</h3><p>The four milestones above still show the shape of the year. Please try again, or <a href="/contact/">ask a pack adult</a> for the next confirmed date.</p></div></div>';
+          '<div class="notice notice--editor"><span class="notice__pin">!</span><div><h3>We could not load live dates</h3><p>The five milestones above still show the shape of the year. Please try again, or <a href="/contact/">ask a pack adult</a> for the next confirmed date.</p></div></div>';
     }
   }
 

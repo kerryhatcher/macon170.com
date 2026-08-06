@@ -1,6 +1,6 @@
 export type CalendarEventStatus = 'scheduled' | 'tentative' | 'cancelled';
 export type CalendarEventCategory = 'pack' | 'den' | 'family';
-export type CalendarMilestone = 'lego-derby' | 'fall-camp' | 'pinewood-derby' | 'blue-gold';
+export type CalendarMilestone = 'lego-derby' | 'fall-camp' | 'pinewood-derby' | 'blue-gold' | 'spring-camp';
 
 export type CalendarEvent = {
   id: string;
@@ -38,7 +38,7 @@ export const CALENDAR_SUBSCRIPTION_URL = `${PRODUCTION_CALENDAR_API}/calendar.ic
 
 const statuses = new Set<CalendarEventStatus>(['scheduled', 'tentative', 'cancelled']);
 const categories = new Set<CalendarEventCategory>(['pack', 'den', 'family']);
-const milestones = new Set<CalendarMilestone>(['lego-derby', 'fall-camp', 'pinewood-derby', 'blue-gold']);
+const milestones = new Set<CalendarMilestone>(['lego-derby', 'fall-camp', 'pinewood-derby', 'blue-gold', 'spring-camp']);
 
 export class CalendarClientError extends Error {
   constructor(

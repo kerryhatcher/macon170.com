@@ -125,8 +125,8 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
         <span class="chapter-tab">What we do</span>
         <h2>Small hands. Big adventures.</h2>
         <p class="lead">
-          Race a Pinewood Derby car. Spend a night under Georgia pines. Celebrate at Blue & Gold. Help the neighborhood. Every chapter gives
-          kids a new way to say, “I did it.”
+          Build a Lego Pinewood Derby car. Camp under Georgia pines each fall and spring. Celebrate at Blue & Gold. Every chapter gives kids
+          a new way to say, “I did it.”
         </p>
         <a class="button button--gold" href="/activities/">Open the adventure chapters</a>
       </div>
@@ -137,7 +137,7 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
     <div class="container">
       <div class="section-heading">
         <span class="chapter-tab">The pack year</span>
-        <h2>Four milestones, one program year.</h2>
+        <h2>Five milestones, one program year.</h2>
         <p>
           Each card is a milestone in the order it arrives. A solid, lifted card means the date is published on the pack calendar; a dashed
           one is still being scheduled.
@@ -498,15 +498,16 @@ import mudProject from '../../assets/packphotos/15-576A9185.jpg';
   /* Pack-year milestones. State is carried by stroke style and depth rather than a
      coloured side-tab: a published date reads as a real lifted sheet, a pending one as
      a provisional dashed note. */
-  /* Four columns for four milestones. This was repeat(6, …) from when the program year was
-     described as six generic milestones, which left the four real ones at ~130px and wrapping
-     their titles onto two ragged lines. */
+  /* Five columns for five milestones. This was repeat(6, …) from when the program year was
+     described as six generic milestones, which left the real ones wrapping their titles onto two
+     ragged lines at that width — watch for the same problem now that a fifth column narrows things
+     again. */
   .pm-strip {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.75rem;
   }
   .pm-cell {

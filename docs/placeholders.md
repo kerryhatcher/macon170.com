@@ -82,6 +82,11 @@ keywords moved onto Blue & Gold; the homepage heading went from "Six milestones"
 The popcorn fundraiser was removed 2026-07-28 as well: Pack 170 does not sell popcorn (Cubmaster).
 The homepage heading is now "Four milestones".
 
+A fifth milestone, `spring-camp`, was added 2026-08-06 per pack editor direction. `docs/calendar.md`
+had long listed a Spring Campout, but marked "DISCUSS - TBD" rather than confirmed like the other
+four. PRODUCT.md's "four milestones, not the generic six" fact predates this addition and needs a
+matching update. The homepage and `/calendar/` headings are now "Five milestones".
+
 ## Placeholder graphics
 
 Resolved 2026-07-27. The rank grids on `/`, `/join/`, and `/dens/` showed a letter in a hand-drawn

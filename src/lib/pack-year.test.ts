@@ -53,12 +53,13 @@ describe('nominalMilestoneDate', () => {
   it('places spring milestones in the following calendar year', () => {
     expect(at('lego-derby').getUTCFullYear()).toBe(2026);
     expect(at('fall-camp').getUTCFullYear()).toBe(2026);
-    // Late January and February belong to 2027 within the 2026-27 year.
+    // Late January, February, and spring all belong to 2027 within the 2026-27 year.
     expect(at('pinewood-derby').getUTCFullYear()).toBe(2027);
     expect(at('blue-gold').getUTCFullYear()).toBe(2027);
+    expect(at('spring-camp').getUTCFullYear()).toBe(2027);
   });
 
-  it('keeps the four milestones in program-year order', () => {
+  it('keeps the five milestones in program-year order', () => {
     const order = annualProgram.map((m) => nominalMilestoneDate(m as Milestone, now).getTime());
     expect([...order]).toEqual([...order].sort((a, b) => a - b));
   });
@@ -89,7 +90,7 @@ describe('buildTimeline', () => {
     ];
     const entries = buildTimeline(annualProgram, events, now);
     const milestones = entries.filter((e) => e.kind === 'milestone');
-    expect(milestones).toHaveLength(4);
+    expect(milestones).toHaveLength(5);
     expect(milestones.every((m) => m.kind === 'milestone' && m.event === null)).toBe(true);
     expect(entries.filter((e) => e.kind === 'event')).toHaveLength(3);
     // Sorted ascending overall.
@@ -131,15 +132,15 @@ describe('buildTimeline', () => {
 
 describe('milestoneProgress', () => {
   it('counts only milestones that actually have an associated event', () => {
-    expect(milestoneProgress(annualProgram, [])).toEqual({ confirmed: 0, total: 4 });
+    expect(milestoneProgress(annualProgram, [])).toEqual({ confirmed: 0, total: 5 });
     expect(milestoneProgress(annualProgram, [event('lego', '2026-08-23T20:00:00.000Z', { milestone: 'lego-derby' })])).toEqual({
       confirmed: 1,
-      total: 4,
+      total: 5,
     });
     // An unknown key cannot inflate the count.
     expect(milestoneProgress(annualProgram, [event('x', '2026-08-23T20:00:00.000Z', { milestone: 'not-a-milestone' })])).toEqual({
       confirmed: 0,
-      total: 4,
+      total: 5,
     });
   });
 });

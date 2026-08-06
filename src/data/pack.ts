@@ -118,26 +118,35 @@ export const annualProgram = [
   // matches Scouting America's guidance — see docs/research/cub-scouting.md:70. The strip has room
   // for one short title, so the ceremony is named on /activities/ instead.
   { key: 'blue-gold', season: 'February', title: 'Blue & Gold Banquet', state: 'Date to be added', sortMonth: 2 },
+  // Added 2026-08-06 per pack editor direction: a fifth annual milestone alongside the four
+  // Cubmaster-confirmed ones above. docs/calendar.md lists a Spring Campout that was previously
+  // "DISCUSS - TBD"; PRODUCT.md's "four milestones, not the generic six" fact predates this and
+  // needs a matching update.
+  { key: 'spring-camp', season: 'Spring', title: 'Spring campout', state: 'Dates to be added', sortMonth: 4 },
 ] as const;
 
 export const events: PackEvent[] = [];
 
 export const activities = [
   {
-    slug: 'pinewood-derby',
-    title: 'Build it. Race it. Cheer together.',
-    shortTitle: 'Pinewood Derby',
-    season: 'Late January',
+    slug: 'lego-derby',
+    title: 'Build with Lego. Race on the real track.',
+    shortTitle: 'Lego Pinewood Derby',
+    season: 'August',
     illustration: 'car',
-    description: 'A signature Cub Scouting tradition centered on designing, building, and racing a small wooden car with family support.',
+    // The pack's recruiting event in practice: a family that just heard of the pack can join the
+    // build on the spot instead of needing a wooden car finished at home. Same track, setup, and
+    // tournament rules as the January derby. Confirmed by the Cubmaster, 2026-07-28.
+    description:
+      'A free, family-friendly dry run of the January Pinewood Derby: cars are built from Lego right at the event, then raced on the same track under the same rules. It is how new and prospective Scouts jump in without anything built at home first.',
   },
   {
-    slug: 'camping',
+    slug: 'fall-camp',
     title: 'Wake up under Georgia pines.',
-    shortTitle: 'Camping & outdoors',
-    season: 'Fall & spring',
+    shortTitle: 'Fall Campout',
+    season: 'Fall',
     illustration: 'tent',
-    description: 'Age-appropriate outdoor experiences where families learn, explore, and spend time together.',
+    description: 'A weekend outdoors together each fall — the kind of age-appropriate camping experience where families learn, explore, and spend real time side by side.',
   },
   {
     slug: 'blue-gold',
@@ -151,12 +160,12 @@ export const activities = [
       'The pack’s annual celebration of Cub Scouting, shared accomplishments, and community. It is also where the Arrow of Light Ceremony happens: our fifth graders cross the bridge into a Scouts BSA troop.',
   },
   {
-    slug: 'service',
-    title: 'Help the neighborhood we call home.',
-    shortTitle: 'Service',
-    season: 'Throughout the year',
-    illustration: 'hands',
-    description: 'Practical, family-friendly opportunities to care for our community and learn responsibility together.',
+    slug: 'spring-camp',
+    title: 'One more night outdoors before summer.',
+    shortTitle: 'Spring Campout',
+    season: 'Spring',
+    illustration: 'tent',
+    description: 'A second family camping weekend each spring, rounding out the program year with more time outdoors together.',
   },
 ] as const;
 
