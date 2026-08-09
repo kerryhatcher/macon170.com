@@ -102,20 +102,24 @@ async function signupRequest(url: string, init?: RequestInit): Promise<Record<st
       signal: controller.signal,
     });
   } catch (error) {
+    globalThis.clearTimeout(timeout);
     throw new SignupClientError(
       error instanceof DOMException && error.name === 'AbortError'
         ? 'The signup service took too long to answer.'
         : 'The signup service is unavailable.',
     );
-  } finally {
-    globalThis.clearTimeout(timeout);
   }
 
+  // The timeout has to outlive the header round trip. `fetch` resolves as soon as the headers
+  // arrive, so clearing it here rather than in a `finally` above is what keeps a server that
+  // stalls part-way through the body from leaving the page pending forever.
   let body: unknown;
   try {
     body = await response.json();
   } catch {
     body = null;
+  } finally {
+    globalThis.clearTimeout(timeout);
   }
   if (!isRecord(body) || body.version !== 'v1') {
     throw new SignupClientError('The signup service returned an unexpected answer.', response.status);

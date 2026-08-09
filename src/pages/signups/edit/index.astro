@@ -180,6 +180,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   };
 
   let currentForm: PublicSignupForm | null = null;
+  // The family's own claim is counted inside the form's quantityClaimed, so reconciling after a
+  // 409 needs the response to avoid mistaking the family's own quantity for another family's.
+  let currentResponse: SignupResponseDetail | null = null;
   let rows: ClaimRow[] = [];
 
   function renderClaimRows() {
@@ -219,6 +222,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   }
 
   function populateForm(response: SignupResponseDetail, formData: PublicSignupForm) {
+    currentResponse = response;
     if (familyNameInput) familyNameInput.value = response.familyName;
     if (emailText) emailText.textContent = response.email;
     if (dietaryNotesTextarea) dietaryNotesTextarea.value = response.dietaryNotes ?? '';
@@ -311,7 +315,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       } catch (error) {
         if (error instanceof SignupClientError && error.status === 409 && error.form) {
           currentForm = error.form;
-          rows = reconcileClaimRows(rows, error.form);
+          rows = reconcileClaimRows(rows, error.form, currentResponse);
           renderClaimRows();
           showError(errors.slot_full);
           saveButton.disabled = false;
@@ -324,11 +328,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       }
     });
 
+    // The confirmation panel sits before the withdraw button in DOM order, so a keyboard user
+    // tabbing on from the button would skip straight past it. Move focus in on open and hand it
+    // back on cancel.
     withdrawButton?.addEventListener('click', () => {
       withdrawConfirm?.removeAttribute('hidden');
+      withdrawYesButton?.focus();
     });
     withdrawCancelButton?.addEventListener('click', () => {
       withdrawConfirm?.setAttribute('hidden', '');
+      withdrawButton?.focus();
     });
     withdrawYesButton?.addEventListener('click', async () => {
       if (!token || !withdrawYesButton) return;

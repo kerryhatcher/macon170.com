@@ -112,6 +112,25 @@ describe('reconcileClaimRows', () => {
     expect(reconcileClaimRows(chosen, refreshed).map((row) => row.slotId)).toEqual(['chips']);
   });
 
+  it('still credits the family its own server-side claim when given the existing response', () => {
+    // The edit page's family already holds 1 of the 3 buns, and the CMS counts that inside
+    // quantityClaimed. Reconciling without the response would treat all 3 as other families' and
+    // forbid the family from keeping what it already has.
+    const chosen = setClaimQuantity(buildClaimRows(form, existing), 'buns', 3);
+    const refreshed: PublicSignupForm = {
+      ...form,
+      slots: [{ ...form.slots[0], quantityClaimed: 2, quantityRemaining: 1 }, form.slots[1]],
+    };
+    const rows = reconcileClaimRows(chosen, refreshed, existing);
+    expect(rows[0]).toMatchObject({ claimedByOthers: 1, max: 2, quantity: 2 });
+  });
+
+  it('treats every claim as another family when no response is given', () => {
+    const chosen = setClaimQuantity(buildClaimRows(form), 'buns', 2);
+    const rows = reconcileClaimRows(chosen, form);
+    expect(rows[0]).toMatchObject({ claimedByOthers: 1, max: 2 });
+  });
+
   it('does not mutate the rows it was given', () => {
     const chosen = setClaimQuantity(buildClaimRows(form), 'buns', 2);
     const refreshed: PublicSignupForm = {

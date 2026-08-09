@@ -6,6 +6,7 @@ import {
   submitSignupResponse,
   updateSignupResponse,
   withdrawSignupResponse,
+  type SignupResponseUpdate,
   type SignupSubmission,
 } from './signup-client';
 
@@ -33,6 +34,16 @@ const detail = {
   dietaryNotes: null,
   status: 'confirmed',
   claims: [{ slotId: 'slot-1', label: 'Hot dogs', quantity: 1 }],
+};
+
+// Exactly what a PATCH accepts: no email, no honeypot, no Turnstile token.
+const update: SignupResponseUpdate = {
+  familyName: 'Hatcher',
+  attending: true,
+  adults: 2,
+  children: 1,
+  dietaryNotes: null,
+  claims: [{ slotId: 'slot-1', quantity: 1 }],
 };
 
 const submission: SignupSubmission = {
@@ -154,9 +165,17 @@ describe('token routes', () => {
     expect(String(fetchStub.mock.calls[0][0])).toContain('/responses/a%2Fb');
   });
 
-  it('returns the updated response from a PATCH', async () => {
-    vi.stubGlobal('fetch', stub({ version: 'v1', response: { ...detail, adults: 3 } }));
-    await expect(updateSignupResponse('tok', submission)).resolves.toMatchObject({ adults: 3 });
+  it('returns the updated response from a PATCH, and sends no email or Turnstile token', async () => {
+    const fetchStub = stub({ version: 'v1', response: { ...detail, adults: 3 } });
+    vi.stubGlobal('fetch', fetchStub);
+    await expect(updateSignupResponse('tok', update)).resolves.toMatchObject({ adults: 3 });
+
+    // A PATCH carries only what a family may change. The CMS overwrites any email with the row's
+    // own address, and the token in the path is the credential, so neither belongs in the body.
+    const sent = JSON.parse(fetchStub.mock.calls[0][1]!.body as string);
+    expect(sent).not.toHaveProperty('email');
+    expect(sent).not.toHaveProperty('website');
+    expect(sent).not.toHaveProperty('cf-turnstile-response');
   });
 
   it('resolves a withdrawal', async () => {

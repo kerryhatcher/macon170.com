@@ -27,10 +27,17 @@ export function setClaimQuantity(rows: ClaimRow[], slotId: string, quantity: num
  * Rebuilds the rows from a refreshed form, keeping each family choice only as far as the new
  * remaining counts allow. Used after a 409 slot_full, where the server's counts are authoritative
  * and the family's half-finished selection should survive wherever it still fits.
+ *
+ * Pass `existing` on the edit page. That family's claim is already counted inside the refreshed
+ * form's `quantityClaimed`, so omitting it would treat the family's own quantity as another
+ * family's and refuse to let them keep what they already hold.
  */
-export function reconcileClaimRows(rows: ClaimRow[], form: PublicSignupForm): ClaimRow[] {
+export function reconcileClaimRows(rows: ClaimRow[], form: PublicSignupForm, existing?: SignupResponseDetail | null): ClaimRow[] {
   const chosen = new Map(rows.map((current) => [current.slotId, current.quantity]));
-  return buildClaimRows(form).map((current) => ({ ...current, quantity: clamp(chosen.get(current.slotId) ?? 0, current.max) }));
+  return buildClaimRows(form, existing).map((current) => ({
+    ...current,
+    quantity: clamp(chosen.get(current.slotId) ?? 0, current.max),
+  }));
 }
 
 export function toClaimPayload(rows: ClaimRow[]): Array<{ slotId: string; quantity: number }> {

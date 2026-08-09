@@ -124,6 +124,12 @@ test('withdraws only after an explicit in-page confirmation', async ({ page }) =
 
   await expect(page.locator('#withdraw-confirm')).toBeHidden();
   await page.click('#edit-withdraw');
+  // The panel precedes the trigger in DOM order, so opening it must move focus in or a keyboard
+  // user tabs straight past the confirmation.
+  await expect(page.locator('#withdraw-confirm-yes')).toBeFocused();
+  await page.click('#withdraw-confirm-cancel');
+  await expect(page.locator('#edit-withdraw')).toBeFocused();
+  await page.click('#edit-withdraw');
   await expect(page.locator('#withdraw-confirm')).toBeVisible();
   expect(withdrawn).toBe(false);
 
