@@ -58,10 +58,18 @@ test('loads the family own response and pre-fills its claim', async ({ page }) =
 test('asks not to be indexed and sends no referrer', async ({ page }) => {
   await stubResponse(page);
   await stubForm(page);
-  await page.goto(`/signups/edit/?token=${token}`);
+  const navigation = await page.goto(`/signups/edit/?token=${token}`);
 
   await expect(page.locator('meta[name="referrer"]')).toHaveAttribute('content', 'no-referrer');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+
+  // The response headers are the half a crawler or shared cache actually obeys, and only the real
+  // Worker sets them — the unit test in worker/index.test.ts cannot prove they survive the asset
+  // fetch and reach a browser.
+  const headers = navigation?.headers() ?? {};
+  expect(headers['referrer-policy']).toBe('no-referrer');
+  expect(headers['x-robots-tag']).toBe('noindex, nofollow');
+  expect(headers['cache-control']).toBe('no-store');
 });
 
 test('never leaks the token into the title or a link', async ({ page }) => {

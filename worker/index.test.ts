@@ -30,3 +30,36 @@ describe('public Worker routing after the contact migration', () => {
     await expect(response.text()).resolves.toContain('Contact Pack 170');
   });
 });
+
+describe('the magic-link signup edit page', () => {
+  // The token rides in this page's query string, so the response must not sit in a shared cache,
+  // be indexed, or hand the token to an outbound link through the Referer header.
+  it.each(['https://www.macon170.com/signups/edit/?token=secret-token', 'https://www.macon170.com/signups/edit?token=secret-token'])(
+    'never leaks the token through a referrer, a cache, or a crawler: %s',
+    async (url) => {
+      const response = await exports.default.fetch(url);
+      expect(response.headers.get('Referrer-Policy')).toBe('no-referrer');
+      expect(response.headers.get('X-Robots-Tag')).toBe('noindex, nofollow');
+      expect(response.headers.get('Cache-Control')).toBe('no-store');
+    },
+  );
+
+  it('serves the edit page itself, not a 404', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/signups/edit/?token=secret-token');
+    expect(response.status).toBe(200);
+    await expect(response.text()).resolves.toContain('Your signup');
+  });
+
+  it('leaves the ordinary signup page cacheable and indexable', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/signups/?form=lego-derby-food');
+    expect(response.status).toBe(200);
+    expect(response.headers.get('X-Robots-Tag')).toBeNull();
+  });
+
+  // A path that merely starts with the same characters must not pick up the exemption or the
+  // headers, so /signups/editorial/ stays an ordinary page.
+  it('does not treat a lookalike path as the edit page', async () => {
+    const response = await exports.default.fetch('https://www.macon170.com/signups/editorial/');
+    expect(response.headers.get('X-Robots-Tag')).toBeNull();
+  });
+});
