@@ -1,0 +1,79 @@
+---
+// The same widget, action string, and implicit-render bridge the contact form uses. The action
+// must stay 'turnstile-spin-v2': the CMS compares it against TURNSTILE_EXPECTED_ACTION and fails
+// closed when the siteverify response is missing the action or the hostname.
+//
+// The globals below are shared with src/pages/contact.astro by name. That is safe because no page
+// renders both, and keeping the names identical means src/lib/contact-turnstile.ts drives either
+// page without a second protocol to remember.
+const turnstileSiteKey = '0x4AAAAAAD-sr-Bk7AntxyZ7';
+---
+
+<div
+  class="cf-turnstile"
+  data-sitekey={turnstileSiteKey}
+  data-action="turnstile-spin-v2"
+  data-size="flexible"
+  data-theme="light"
+  data-callback="onTurnstileSuccess"
+  data-error-callback="onTurnstileError"
+  data-expired-callback="onTurnstileExpired"
+  data-timeout-callback="onTurnstileTimeout"
+  data-retry="auto"
+  data-retry-interval="5000"
+  data-refresh-expired="auto"
+>
+</div>
+<p class="turnstile-status" id="turnstile-status" role="status" hidden></p>
+<div class="notice notice--editor" id="turnstile-notice" role="alert" hidden>
+  <span class="notice__pin" aria-hidden="true">!</span><div>
+    <h3>Security check is temporarily unavailable</h3><p>
+      Automatic retries did not restore the security check, so this signup cannot be sent right now. Reload the page to try again, or <a
+        href="/contact/">send a note to Pack 170 adults</a
+      > and a volunteer will add your family by hand.
+    </p>
+  </div>
+</div>
+
+<script is:inline>
+  // Turnstile's implicit renderer retains these function references. Keep them stable for the
+  // lifetime of the page and delegate once the controller exists.
+  window.__pack170TurnstileEvents = [];
+  const dispatchPack170TurnstileEvent = (event, token) => {
+    if (window.__pack170TurnstileHandler) {
+      return window.__pack170TurnstileHandler(event, token);
+    }
+
+    window.__pack170TurnstileEvents.push([event, token]);
+    return event === 'error' ? false : undefined;
+  };
+  window.onTurnstileSuccess = (token) => dispatchPack170TurnstileEvent('success', token);
+  window.onTurnstileError = (errorCode) => dispatchPack170TurnstileEvent('error', errorCode);
+  window.onTurnstileExpired = () => dispatchPack170TurnstileEvent('expired');
+  window.onTurnstileTimeout = () => dispatchPack170TurnstileEvent('error');
+</script>
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<style>
+  .turnstile-status {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: -0.5rem 0 1rem;
+  }
+  .cf-turnstile {
+    margin: 1.25rem 0;
+    min-height: 65px;
+  }
+  /* Turnstile draws a fixed 300px-wide widget, which does not fit inside a 320px screen once the
+     container gutter, sheet padding, and border are paid for. Scaling from the left edge keeps the
+     whole challenge visible on the narrowest phones. Mirrors contact.astro. */
+  @media (max-width: 400px) {
+    .cf-turnstile {
+      width: 300px;
+      transform: scale(0.82);
+      transform-origin: left top;
+      min-height: 0;
+      height: 54px;
+    }
+  }
+</style>

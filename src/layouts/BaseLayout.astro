@@ -19,8 +19,13 @@ import SiteHeader from '../components/SiteHeader.astro';
 import PackStrip from '../components/PackStrip.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
-type Props = { title: string; description: string; showStrip?: boolean };
-const { title, description, showStrip = true } = Astro.props;
+// `sensitive` is for a page whose URL itself carries a credential — currently only
+// /signups/edit/?token=…, where the token lets whoever holds it read and change one family's
+// response. It keeps the page out of search results and stops the token leaking through the
+// Referer header of any outbound link. The Worker sets the matching response headers, which are the
+// real enforcement; these tags are the in-document half.
+type Props = { title: string; description: string; showStrip?: boolean; sensitive?: boolean };
+const { title, description, showStrip = true, sensitive = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -32,6 +37,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
          sitting in a letterbox; the safe-area insets in global.css keep content clear of it. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    {
+      sensitive && (
+        <>
+          <meta name="referrer" content="no-referrer" />
+          <meta name="robots" content="noindex, nofollow" />
+        </>
+      )
+    }
     <meta name="theme-color" content="#003f87" />
     <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin /><link
       rel="preload"

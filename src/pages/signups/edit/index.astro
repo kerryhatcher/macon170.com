@@ -1,0 +1,504 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Your signup" description="Change or cancel a Pack 170 event signup." sensitive>
+  <section class="signup-hero">
+    <div class="container">
+      <span class="chapter-tab">Pack 170 signup</span><h1 id="edit-title">Your signup</h1><p class="lead" id="edit-summary">
+        Loading your signup…
+      </p>
+    </div>
+  </section>
+  <section class="signup-detail-section">
+    <div class="container">
+      <article class="signup-sheet" id="edit-detail">
+        <div class="loading" role="status">Loading your signup…</div>
+        <noscript
+          ><style>
+            .loading {
+              display: none;
+            }
+          </style><h2>JavaScript is needed to edit a signup</h2><p>
+            This page loads and saves your signup from your browser. Please contact Pack 170 adults to change or cancel it without
+            JavaScript.
+          </p><a href="/contact/">Ask the pack</a></noscript
+        >
+        <div class="notice notice--editor" id="edit-confirmed-note" role="status" hidden>
+          <span class="notice__pin" aria-hidden="true">✓</span><div>
+            <h3>This signup is now confirmed</h3><p>Opening this link confirmed your signup. You can still change or cancel it below.</p>
+          </div>
+        </div>
+        <div class="notice notice--success" id="edit-saved" role="status" tabindex="-1" hidden>
+          <span class="notice__pin" aria-hidden="true">✓</span><div>
+            <h3>Saved</h3><p>Your changes were saved.</p>
+          </div>
+        </div>
+        <div class="notice notice--success" id="edit-withdrawn" role="status" tabindex="-1" hidden>
+          <span class="notice__pin" aria-hidden="true">✓</span><div>
+            <h3>Signup withdrawn</h3><p>This signup was withdrawn. This link no longer confirms anything.</p>
+          </div>
+        </div>
+        <div class="notice notice--editor" id="edit-error" role="alert" tabindex="-1" hidden>
+          <span class="notice__pin" aria-hidden="true">!</span><div>
+            <h3 id="edit-error-title"></h3>
+            <p id="edit-error-message"></p>
+          </div>
+        </div>
+        <div class="notice notice--editor" id="withdraw-confirm" hidden>
+          <span class="notice__pin" aria-hidden="true">!</span><div>
+            <h3>Withdraw this signup?</h3><p>This cancels the signup and frees up anything claimed. It cannot be undone from this page.</p>
+            <div class="confirm-actions">
+              <button class="button button--paper" type="button" id="withdraw-confirm-cancel">Never mind</button><button
+                class="button button--blue"
+                type="button"
+                id="withdraw-confirm-yes">Yes, withdraw it</button
+              >
+            </div>
+          </div>
+        </div>
+        <form id="edit-form" hidden>
+          <div class="field-row">
+            <label for="edit-family-name">Family name</label><input
+              id="edit-family-name"
+              name="familyName"
+              required
+              minlength="2"
+              maxlength="120"
+              autocomplete="family-name"
+            />
+          </div>
+          <div class="field-row">
+            <span class="field-row__static-label">Your email</span>
+            <p class="field-row__static" id="edit-email"></p>
+          </div>
+          <fieldset id="edit-rsvp-fields" class="field-row" hidden>
+            <label class="checkbox-row"><input id="edit-attending" type="checkbox" checked /> We plan to attend</label>
+            <div class="rsvp-counts">
+              <label for="edit-adults">Adults</label><input
+                id="edit-adults"
+                type="number"
+                inputmode="numeric"
+                min="0"
+                max="20"
+                value="0"
+              /><label for="edit-children">Children</label><input
+                id="edit-children"
+                type="number"
+                inputmode="numeric"
+                min="0"
+                max="20"
+                value="0"
+              />
+            </div>
+          </fieldset>
+          <div class="field-row" id="edit-claim-fields" hidden>
+            <ul id="claim-rows"></ul>
+          </div>
+          <div class="field-row">
+            <label for="edit-dietary-notes">Allergies or dietary needs (optional)</label><textarea id="edit-dietary-notes" maxlength="500"
+            ></textarea><small>Shared only with the volunteers organizing this event. It is never shown on this page.</small>
+          </div>
+          <div class="edit-actions">
+            <button class="button button--blue" type="submit" id="edit-save">Save changes</button><button
+              class="button button--paper"
+              type="button"
+              id="edit-withdraw">Withdraw this signup</button
+            >
+          </div>
+        </form>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  import {
+    getSignupResponse,
+    getSignupForm,
+    updateSignupResponse,
+    withdrawSignupResponse,
+    SignupClientError,
+    type PublicSignupForm,
+    type SignupResponseDetail,
+    type SignupResponseUpdate,
+  } from '../../../lib/signup-client';
+  import { buildClaimRows, setClaimQuantity, reconcileClaimRows, toClaimPayload, type ClaimRow } from '../../../lib/signup-claims';
+
+  const esc = (value: string) =>
+    value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
+
+  const errors: Record<string, { title: string; message: string }> = {
+    slot_full: {
+      title: 'Someone claimed the last one first.',
+      message: 'The counts below are up to date. Adjust what you can bring and save again.',
+    },
+    rate_limit: { title: 'Please wait a minute.', message: 'Several changes were sent recently. Wait a moment, then try again.' },
+    validation: { title: 'Check the form and try again.', message: 'One or more answers were missing or invalid.' },
+    temporary: {
+      title: 'The signup service is temporarily unavailable.',
+      message: 'Your change was not saved. Try again in a few minutes.',
+    },
+  };
+
+  const detail = document.querySelector<HTMLElement>('#edit-detail');
+  const form = document.querySelector<HTMLFormElement>('#edit-form');
+  const confirmedNote = document.querySelector<HTMLElement>('#edit-confirmed-note');
+  const savedNotice = document.querySelector<HTMLElement>('#edit-saved');
+  const withdrawnNotice = document.querySelector<HTMLElement>('#edit-withdrawn');
+  const errorNotice = document.querySelector<HTMLElement>('#edit-error');
+  const errorTitle = document.querySelector<HTMLElement>('#edit-error-title');
+  const errorMessage = document.querySelector<HTMLElement>('#edit-error-message');
+  const withdrawConfirm = document.querySelector<HTMLElement>('#withdraw-confirm');
+  const withdrawButton = document.querySelector<HTMLButtonElement>('#edit-withdraw');
+  const withdrawYesButton = document.querySelector<HTMLButtonElement>('#withdraw-confirm-yes');
+  const withdrawCancelButton = document.querySelector<HTMLButtonElement>('#withdraw-confirm-cancel');
+  const saveButton = document.querySelector<HTMLButtonElement>('#edit-save');
+  const familyNameInput = document.querySelector<HTMLInputElement>('#edit-family-name');
+  const emailText = document.querySelector<HTMLElement>('#edit-email');
+  const rsvpFields = document.querySelector<HTMLElement>('#edit-rsvp-fields');
+  const attendingCheckbox = document.querySelector<HTMLInputElement>('#edit-attending');
+  const adultsInput = document.querySelector<HTMLInputElement>('#edit-adults');
+  const childrenInput = document.querySelector<HTMLInputElement>('#edit-children');
+  const dietaryNotesTextarea = document.querySelector<HTMLTextAreaElement>('#edit-dietary-notes');
+  const claimFields = document.querySelector<HTMLElement>('#edit-claim-fields');
+  const claimRowsList = document.querySelector<HTMLUListElement>('#claim-rows');
+
+  // The magic-link token is the bearer credential for this family's response. It must never reach
+  // document.title, an href, a console call, an analytics call, history state, or a shown error.
+  const token = new URLSearchParams(location.search).get('token');
+  const tokenPattern = /^[A-Za-z0-9_-]{20,64}$/;
+
+  const invalidLink = () => {
+    if (detail)
+      detail.innerHTML =
+        '<h2>That link is no longer valid</h2><p>Signup links stop working once a signup is withdrawn, and unconfirmed signups are removed after 24 hours. Ask a volunteer through the contact form and they will send a new one.</p><a class="button button--blue" href="/contact/">Ask the pack</a>';
+  };
+  const trouble = () => {
+    if (detail)
+      detail.innerHTML =
+        '<h2>We could not load your signup</h2><p>The connection to the Pack 170 CMS failed. Please try again in a moment, or contact Pack 170 adults.</p><a class="button button--blue" href="/contact/">Ask the pack</a>';
+  };
+
+  let currentForm: PublicSignupForm | null = null;
+  // The family's own claim is counted inside the form's quantityClaimed, so reconciling after a
+  // 409 needs the response to avoid mistaking the family's own quantity for another family's.
+  let currentResponse: SignupResponseDetail | null = null;
+  let rows: ClaimRow[] = [];
+
+  function renderClaimRows() {
+    if (!claimRowsList) return;
+    claimRowsList.innerHTML = rows
+      .map(
+        (row) =>
+          `<li data-slot="${esc(row.slotId)}">` +
+          `<div class="claim-row__head"><span class="claim-row__label">${esc(row.label)}</span>` +
+          (row.notes ? `<span class="claim-row__notes">${esc(row.notes)}</span>` : '') +
+          `</div>` +
+          `<p class="claim-row__summary">${esc(row.summary)}</p>` +
+          `<input type="number" inputmode="numeric" min="0" max="${row.max}" value="${row.quantity}" aria-label="Quantity of ${esc(
+            row.label,
+          )} to bring"${row.max === 0 ? ' disabled' : ''} />` +
+          `</li>`,
+      )
+      .join('');
+  }
+
+  claimRowsList?.addEventListener('input', (event) => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) return;
+    const li = input.closest<HTMLElement>('li[data-slot]');
+    const slotId = li?.getAttribute('data-slot');
+    if (!slotId) return;
+    rows = setClaimQuantity(rows, slotId, Number(input.value));
+    const updated = rows.find((row) => row.slotId === slotId);
+    if (updated) input.value = String(updated.quantity);
+  });
+
+  function showError(info: { title: string; message: string }) {
+    if (errorTitle) errorTitle.textContent = info.title;
+    if (errorMessage) errorMessage.textContent = info.message;
+    errorNotice?.removeAttribute('hidden');
+    errorNotice?.focus();
+  }
+
+  function populateForm(response: SignupResponseDetail, formData: PublicSignupForm) {
+    currentResponse = response;
+    if (familyNameInput) familyNameInput.value = response.familyName;
+    if (emailText) emailText.textContent = response.email;
+    if (dietaryNotesTextarea) dietaryNotesTextarea.value = response.dietaryNotes ?? '';
+
+    if (formData.formType === 'rsvp') {
+      rsvpFields?.removeAttribute('hidden');
+      if (attendingCheckbox) attendingCheckbox.checked = response.attending;
+      if (adultsInput) adultsInput.value = String(response.adults);
+      if (childrenInput) childrenInput.value = String(response.children);
+    } else {
+      rsvpFields?.setAttribute('hidden', '');
+    }
+
+    if (formData.formType === 'items') {
+      claimFields?.removeAttribute('hidden');
+      rows = buildClaimRows(formData, response);
+      renderClaimRows();
+    } else {
+      claimFields?.setAttribute('hidden', '');
+    }
+
+    confirmedNote?.toggleAttribute('hidden', response.status !== 'unconfirmed');
+  }
+
+  async function load() {
+    if (!token || !tokenPattern.test(token)) {
+      invalidLink();
+      return;
+    }
+
+    let response: SignupResponseDetail;
+    try {
+      response = await getSignupResponse(token);
+    } catch (error) {
+      if (error instanceof SignupClientError && error.status === 404) {
+        invalidLink();
+        return;
+      }
+      throw error;
+    }
+
+    let signupForm: PublicSignupForm;
+    try {
+      signupForm = await getSignupForm(response.formSlug);
+    } catch (error) {
+      if (error instanceof SignupClientError && error.status === 404) {
+        invalidLink();
+        return;
+      }
+      throw error;
+    }
+
+    currentForm = signupForm;
+    if (document.querySelector('#edit-summary'))
+      document.querySelector<HTMLElement>('#edit-summary')!.textContent = `Change or cancel your signup for “${signupForm.title}”.`;
+    populateForm(response, signupForm);
+    form?.removeAttribute('hidden');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!currentForm || !token || !saveButton) return;
+      saveButton.disabled = true;
+      errorNotice?.setAttribute('hidden', '');
+      savedNotice?.setAttribute('hidden', '');
+
+      const familyName = (familyNameInput?.value ?? '').trim();
+      const attending = attendingCheckbox?.checked ?? true;
+      const adults = Number(adultsInput?.value ?? 0);
+      const children = Number(childrenInput?.value ?? 0);
+      const dietaryNotes = (dietaryNotesTextarea?.value ?? '').trim();
+      const claims = toClaimPayload(rows);
+
+      // SignupResponseUpdate is exactly the shape a PATCH accepts: no email (the CMS overwrites it
+      // with the row's own address), no honeypot, no Turnstile token.
+      const body: SignupResponseUpdate = {
+        familyName,
+        attending,
+        adults,
+        children,
+        dietaryNotes: dietaryNotes || null,
+        claims,
+      };
+
+      try {
+        const updated = await updateSignupResponse(token, body);
+        populateForm(updated, currentForm);
+        savedNotice?.removeAttribute('hidden');
+        savedNotice?.focus();
+        saveButton.disabled = false;
+      } catch (error) {
+        if (error instanceof SignupClientError && error.status === 409 && error.form) {
+          currentForm = error.form;
+          rows = reconcileClaimRows(rows, error.form, currentResponse);
+          renderClaimRows();
+          showError(errors.slot_full);
+          saveButton.disabled = false;
+          return;
+        }
+        const code = error instanceof SignupClientError ? error.code : undefined;
+        const key = code && errors[code] ? code : 'temporary';
+        showError(errors[key]);
+        saveButton.disabled = false;
+      }
+    });
+
+    // The confirmation panel sits before the withdraw button in DOM order, so a keyboard user
+    // tabbing on from the button would skip straight past it. Move focus in on open and hand it
+    // back on cancel.
+    withdrawButton?.addEventListener('click', () => {
+      withdrawConfirm?.removeAttribute('hidden');
+      withdrawYesButton?.focus();
+    });
+    withdrawCancelButton?.addEventListener('click', () => {
+      withdrawConfirm?.setAttribute('hidden', '');
+      withdrawButton?.focus();
+    });
+    withdrawYesButton?.addEventListener('click', async () => {
+      if (!token || !withdrawYesButton) return;
+      withdrawYesButton.disabled = true;
+      try {
+        await withdrawSignupResponse(token);
+        withdrawConfirm?.setAttribute('hidden', '');
+        form?.setAttribute('hidden', '');
+        withdrawnNotice?.removeAttribute('hidden');
+        withdrawnNotice?.focus();
+      } catch {
+        withdrawYesButton.disabled = false;
+        showError(errors.temporary);
+      }
+    });
+  }
+
+  load().catch(() => {
+    trouble();
+  });
+</script>
+<style>
+  .signup-hero {
+    padding: clamp(4rem, 9vw, 7rem) 0;
+    background: var(--blue);
+    color: white;
+    border-bottom: 8px solid var(--gold);
+  }
+  .signup-hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5rem);
+  }
+  .signup-hero .lead {
+    color: var(--blue-soft);
+  }
+  .signup-detail-section {
+    padding: clamp(3rem, 7vw, 5.5rem) 0;
+  }
+  .signup-sheet {
+    background: var(--page);
+    color: var(--ink);
+    border-radius: 6px 22px 12px 8px;
+    box-shadow: var(--shadow-paper);
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .loading {
+    color: var(--muted);
+  }
+  .field-row {
+    display: grid;
+    gap: 0.4rem;
+    margin: 1.2rem 0;
+  }
+  .field-row label,
+  .field-row__static-label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue-deep);
+  }
+  .field-row__static {
+    margin: 0;
+    color: var(--ink);
+  }
+  input,
+  textarea {
+    width: 100%;
+    min-width: 0;
+    border: 2px solid var(--field-stroke);
+    border-radius: 7px 12px 6px 7px;
+    background: white;
+    color: var(--ink);
+    padding: 0.75rem;
+  }
+  textarea {
+    resize: vertical;
+  }
+  input:focus-visible,
+  textarea:focus-visible {
+    border-color: var(--blue);
+    outline: 3px solid var(--blue-deep);
+    outline-offset: 0;
+    box-shadow: var(--ring-focus);
+  }
+  .field-row small {
+    color: var(--muted);
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue-deep);
+  }
+  .checkbox-row input {
+    width: auto;
+  }
+  .rsvp-counts {
+    display: grid;
+    grid-template-columns: auto 5.5rem auto 5.5rem;
+    gap: 0.6rem;
+    align-items: center;
+    margin-top: 0.75rem;
+  }
+  #claim-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  #claim-rows li {
+    border: 1px solid var(--rule);
+    border-radius: 6px 14px 7px 6px;
+    padding: 0.9rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .claim-row__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .claim-row__label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--blue-deep);
+  }
+  .claim-row__notes {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .claim-row__summary {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  #claim-rows input {
+    width: 6rem;
+  }
+  .edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .confirm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  @media (max-width: 400px) {
+    .rsvp-counts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
