@@ -1,13 +1,17 @@
 name: Deploy to Cloudflare Workers
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
 
+# A pull request gets its own group keyed by ref, so a validate run never queues in front of a
+# production deploy and a new push supersedes its own earlier run. Production deploys keep the
+# single shared group and are never cancelled mid-flight.
 concurrency:
-  group: production-deploy
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pr-validate-{0}', github.ref) || 'production-deploy' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -32,6 +36,9 @@ jobs:
       - run: bunx wrangler deploy --dry-run
 
   deploy:
+    # Without this guard, adding the pull_request trigger above would deploy every pull request
+    # straight to production.
+    if: github.event_name != 'pull_request'
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 20
