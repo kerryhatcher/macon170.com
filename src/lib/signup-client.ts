@@ -36,14 +36,23 @@ export type SignupResponseDetail = {
   claims: Array<{ slotId: string; label: string; quantity: number }>;
 };
 
-export type SignupSubmission = {
-  email: string;
+/**
+ * What a family changes about its own response. The edit page sends exactly this and nothing more:
+ * the CMS overwrites any `email` in a PATCH body with the row's own address, and the token is the
+ * credential there, so neither an address nor a Turnstile token belongs in an update.
+ */
+export type SignupResponseUpdate = {
   familyName: string;
   attending: boolean;
   adults: number;
   children: number;
   dietaryNotes: string | null;
   claims: Array<{ slotId: string; quantity: number }>;
+};
+
+/** A first submission: an update plus the identity and the anti-abuse fields. */
+export type SignupSubmission = SignupResponseUpdate & {
+  email: string;
   website?: string;
   'cf-turnstile-response'?: string;
 };
@@ -140,7 +149,7 @@ export async function getSignupResponse(token: string): Promise<SignupResponseDe
   return validateResponse(body.response);
 }
 
-export async function updateSignupResponse(token: string, body: SignupSubmission): Promise<SignupResponseDetail> {
+export async function updateSignupResponse(token: string, body: SignupResponseUpdate): Promise<SignupResponseDetail> {
   const result = await signupRequest(`${SIGNUP_API_BASE}/responses/${encodeURIComponent(token)}`, {
     method: 'PATCH',
     body: JSON.stringify(body),
