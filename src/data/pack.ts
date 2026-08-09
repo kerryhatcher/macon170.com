@@ -146,7 +146,8 @@ export const activities = [
     shortTitle: 'Fall Campout',
     season: 'Fall',
     illustration: 'tent',
-    description: 'A weekend outdoors together each fall — the kind of age-appropriate camping experience where families learn, explore, and spend real time side by side.',
+    description:
+      'A weekend outdoors together each fall — the kind of age-appropriate camping experience where families learn, explore, and spend real time side by side.',
   },
   {
     slug: 'blue-gold',
