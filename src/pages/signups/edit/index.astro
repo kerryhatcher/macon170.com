@@ -13,7 +13,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   <section class="signup-detail-section">
     <div class="container">
       <article class="signup-sheet" id="edit-detail">
-        <div class="loading" role="status">Loading your signup…</div>
+        <div class="loading" role="status" id="edit-loading">Loading your signup…</div>
         <noscript
           ><style>
             .loading {
@@ -141,6 +141,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   };
 
   const detail = document.querySelector<HTMLElement>('#edit-detail');
+  const loadingIndicator = document.querySelector<HTMLElement>('#edit-loading');
   const form = document.querySelector<HTMLFormElement>('#edit-form');
   const confirmedNote = document.querySelector<HTMLElement>('#edit-confirmed-note');
   const savedNotice = document.querySelector<HTMLElement>('#edit-saved');
@@ -278,6 +279,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     currentForm = signupForm;
     if (document.querySelector('#edit-summary'))
       document.querySelector<HTMLElement>('#edit-summary')!.textContent = `Change or cancel your signup for “${signupForm.title}”.`;
+    loadingIndicator?.setAttribute('hidden', '');
     populateForm(response, signupForm);
     form?.removeAttribute('hidden');
 

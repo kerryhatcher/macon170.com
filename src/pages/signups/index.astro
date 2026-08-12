@@ -14,7 +14,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
   <section class="signup-detail-section">
     <div class="container">
       <article class="signup-sheet" id="signup-detail">
-        <div class="loading" role="status">Loading signup…</div>
+        <div class="loading" role="status" id="signup-loading">Loading signup…</div>
         <noscript
           ><style>
             .loading {
@@ -133,6 +133,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
 
   const slug = new URLSearchParams(location.search).get('form');
   const detail = document.querySelector<HTMLElement>('#signup-detail');
+  const loadingIndicator = document.querySelector<HTMLElement>('#signup-loading');
   const title = document.querySelector<HTMLElement>('#signup-title');
   const summary = document.querySelector<HTMLElement>('#signup-summary');
   const closedNotice = document.querySelector<HTMLElement>('#signup-closed');
@@ -217,6 +218,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
     document.title = f.title + ' | Cub Scout Pack 170';
     if (title) title.textContent = f.title;
     if (summary) summary.textContent = `Help the pack with “${f.event.title}” on ${part(f.event.startsAt, { dateStyle: 'long' })}.`;
+    loadingIndicator?.setAttribute('hidden', '');
 
     if (f.closed) {
       closedNotice?.removeAttribute('hidden');
