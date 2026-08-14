@@ -28,6 +28,7 @@ const detail = {
   formType: 'items',
   email: 'parent@example.com',
   familyName: 'Hatcher',
+  phone: '478-555-0123',
   attending: true,
   adults: 2,
   children: 1,
@@ -39,6 +40,7 @@ const detail = {
 // Exactly what a PATCH accepts: no email, no honeypot, no Turnstile token.
 const update: SignupResponseUpdate = {
   familyName: 'Hatcher',
+  phone: '478-555-0123',
   attending: true,
   adults: 2,
   children: 1,
@@ -49,6 +51,7 @@ const update: SignupResponseUpdate = {
 const submission: SignupSubmission = {
   email: 'parent@example.com',
   familyName: 'Hatcher',
+  phone: '478-555-0123',
   attending: true,
   adults: 2,
   children: 1,
@@ -118,6 +121,7 @@ describe('submitSignupResponse', () => {
     expect((init.headers as Record<string, string>)['Content-Type']).toBe('application/json');
     expect(JSON.parse(init.body as string)).toMatchObject({
       email: 'parent@example.com',
+      phone: '478-555-0123',
       claims: [{ slotId: 'slot-1', quantity: 1 }],
       website: '',
       'cf-turnstile-response': 'tok',
@@ -163,6 +167,11 @@ describe('token routes', () => {
     vi.stubGlobal('fetch', fetchStub);
     await expect(getSignupResponse('a/b')).resolves.toMatchObject({ familyName: 'Hatcher' });
     expect(String(fetchStub.mock.calls[0][0])).toContain('/responses/a%2Fb');
+  });
+
+  it('accepts a legacy response whose private phone is null', async () => {
+    vi.stubGlobal('fetch', stub({ version: 'v1', response: { ...detail, phone: null } }));
+    await expect(getSignupResponse('legacy')).resolves.toMatchObject({ phone: null });
   });
 
   it('returns the updated response from a PATCH, and sends no email or Turnstile token', async () => {

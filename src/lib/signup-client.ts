@@ -28,6 +28,7 @@ export type SignupResponseDetail = {
   formType: SignupFormType;
   email: string;
   familyName: string;
+  phone: string | null;
   attending: boolean;
   adults: number;
   children: number;
@@ -43,6 +44,7 @@ export type SignupResponseDetail = {
  */
 export type SignupResponseUpdate = {
   familyName: string;
+  phone: string;
   attending: boolean;
   adults: number;
   children: number;
@@ -218,6 +220,7 @@ function validateResponse(value: unknown): SignupResponseDetail {
     formType: formType as SignupFormType,
     email: requiredString(value, 'email'),
     familyName: requiredString(value, 'familyName'),
+    phone: nullableString(value, 'phone'),
     attending: value.attending === true,
     adults: count(value, 'adults'),
     children: count(value, 'children'),
