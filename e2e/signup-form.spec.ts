@@ -8,7 +8,8 @@ const baseForm = {
   slug,
   formType: 'items' as const,
   title: 'Lego Derby snacks',
-  instructions: '',
+  instructions:
+    'Ready to build, race, and eat? Tell us who’s coming so we can plan enough food. Registration is only for the event—it is not a commitment to join Pack 170, and you do not need to bring anything.',
   closed: false,
   closesAt: null,
   event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z' },
@@ -42,12 +43,18 @@ test('renders the form, its counts, and no personal data', async ({ page }) => {
   await expect(page.locator('#signup-title')).toHaveText('Lego Derby snacks');
   await expect(page.locator('#signup-summary')).toContainText('Lego Derby');
   await expect(page.locator('#signup-summary')).toContainText('September 12, 2026');
+  await expect(page.locator('#signup-instructions')).toContainText('not a commitment to join Pack 170');
+  await expect(page.locator('#signup-instructions')).toContainText('do not need to bring anything');
   await expect(page.locator('[data-slot="drinks"] input')).toHaveAttribute('max', '0');
   await expect(page.locator('[data-slot="buns"] input')).toHaveAttribute('max', '2');
 
   // No family-identifying data ships in the static HTML before a family fills anything in.
   await expect(page.locator('#family-name')).toHaveValue('');
   await expect(page.locator('#email')).toHaveValue('');
+  await expect(page.getByLabel('Your Name')).toHaveAttribute('required', '');
+  await expect(page.getByLabel('Phone number')).toHaveAttribute('type', 'tel');
+  await expect(page.getByLabel('Phone number')).toHaveAttribute('required', '');
+  await expect(page.locator('#phone')).toHaveValue('');
 });
 
 test('submits JSON with the honeypot and Turnstile token, then says check your email', async ({ page }) => {
@@ -62,6 +69,7 @@ test('submits JSON with the honeypot and Turnstile token, then says check your e
 
   await page.fill('#family-name', 'The Hatchers');
   await page.fill('#email', 'family@example.com');
+  await page.fill('#phone', '478-555-0123');
   await page.fill('[data-slot="buns"] input', '2');
   await expect(page.locator('#signup-submit')).toBeEnabled();
   await page.click('#signup-submit');
@@ -72,6 +80,7 @@ test('submits JSON with the honeypot and Turnstile token, then says check your e
   expect(posted).toMatchObject({
     familyName: 'The Hatchers',
     email: 'family@example.com',
+    phone: '478-555-0123',
     claims: [{ slotId: 'buns', quantity: 2 }],
     website: '',
     'cf-turnstile-response': 'test-token',
@@ -103,6 +112,7 @@ test('re-renders refreshed counts instead of erroring when a slot fills first', 
 
   await page.fill('#family-name', 'The Hatchers');
   await page.fill('#email', 'family@example.com');
+  await page.fill('#phone', '478-555-0123');
   await page.fill('[data-slot="buns"] input', '2');
   await page.click('#signup-submit');
 

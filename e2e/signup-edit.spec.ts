@@ -21,6 +21,7 @@ const baseResponse = {
   formType: 'items' as const,
   email: 'parent@example.com',
   familyName: 'Hatcher',
+  phone: '478-555-0123',
   attending: true,
   adults: 2,
   children: 1,
@@ -50,6 +51,10 @@ test('loads the family own response and pre-fills its claim', async ({ page }) =
   await page.goto(`/signups/edit/?token=${token}`);
 
   await expect(page.locator('#edit-family-name')).toHaveValue('Hatcher');
+  await expect(page.getByLabel('Your Name')).toHaveAttribute('required', '');
+  await expect(page.getByLabel('Phone number')).toHaveAttribute('type', 'tel');
+  await expect(page.getByLabel('Phone number')).toHaveAttribute('required', '');
+  await expect(page.locator('#edit-phone')).toHaveValue('478-555-0123');
   await expect(page.locator('#edit-dietary-notes')).toHaveValue('no peanuts');
   await expect(page.locator('[data-slot="buns"] input')).toHaveValue('1');
   await expect(page.locator('[data-slot="buns"] input')).toHaveAttribute('max', '3');
@@ -107,7 +112,17 @@ test('PATCHes a changed claim and confirms in place', async ({ page }) => {
 
   await expect(page.locator('#edit-saved')).toBeVisible();
   expect(patched).toMatchObject({ claims: [{ slotId: 'buns', quantity: 3 }] });
+  expect(patched).toMatchObject({ phone: '478-555-0123' });
   expect(patched).not.toHaveProperty('email');
+});
+
+test('loads a legacy response with an empty required phone field', async ({ page }) => {
+  await stubResponse(page, { ...baseResponse, phone: null });
+  await stubForm(page);
+  await page.goto(`/signups/edit/?token=${token}`);
+
+  await expect(page.locator('#edit-phone')).toHaveValue('');
+  await expect(page.locator('#edit-phone')).toHaveAttribute('required', '');
 });
 
 test('withdraws only after an explicit in-page confirmation', async ({ page }) => {

@@ -59,13 +59,23 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         </div>
         <form id="edit-form" hidden>
           <div class="field-row">
-            <label for="edit-family-name">Family name</label><input
+            <label for="edit-family-name">Your Name</label><input
               id="edit-family-name"
               name="familyName"
               required
               minlength="2"
               maxlength="120"
-              autocomplete="family-name"
+              autocomplete="name"
+            />
+          </div>
+          <div class="field-row">
+            <label for="edit-phone">Phone number</label><input
+              id="edit-phone"
+              name="phone"
+              type="tel"
+              required
+              maxlength="40"
+              autocomplete="tel"
             />
           </div>
           <div class="field-row">
@@ -156,6 +166,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   const saveButton = document.querySelector<HTMLButtonElement>('#edit-save');
   const familyNameInput = document.querySelector<HTMLInputElement>('#edit-family-name');
   const emailText = document.querySelector<HTMLElement>('#edit-email');
+  const phoneInput = document.querySelector<HTMLInputElement>('#edit-phone');
   const rsvpFields = document.querySelector<HTMLElement>('#edit-rsvp-fields');
   const attendingCheckbox = document.querySelector<HTMLInputElement>('#edit-attending');
   const adultsInput = document.querySelector<HTMLInputElement>('#edit-adults');
@@ -226,6 +237,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     currentResponse = response;
     if (familyNameInput) familyNameInput.value = response.familyName;
     if (emailText) emailText.textContent = response.email;
+    if (phoneInput) phoneInput.value = response.phone ?? '';
     if (dietaryNotesTextarea) dietaryNotesTextarea.value = response.dietaryNotes ?? '';
 
     if (formData.formType === 'rsvp') {
@@ -291,6 +303,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       savedNotice?.setAttribute('hidden', '');
 
       const familyName = (familyNameInput?.value ?? '').trim();
+      const phone = (phoneInput?.value ?? '').trim();
       const attending = attendingCheckbox?.checked ?? true;
       const adults = Number(adultsInput?.value ?? 0);
       const children = Number(childrenInput?.value ?? 0);
@@ -301,6 +314,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       // with the row's own address), no honeypot, no Turnstile token.
       const body: SignupResponseUpdate = {
         familyName,
+        phone,
         attending,
         adults,
         children,

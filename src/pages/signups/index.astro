@@ -45,15 +45,19 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
           </div>
         </div>
         <form id="signup-form" hidden>
+          <p class="signup-instructions" id="signup-instructions" hidden></p>
           <div class="field-row">
-            <label for="family-name">Family name</label><input
+            <label for="family-name">Your Name</label><input
               id="family-name"
               name="familyName"
               required
               minlength="2"
               maxlength="120"
-              autocomplete="family-name"
+              autocomplete="name"
             />
+          </div>
+          <div class="field-row">
+            <label for="phone">Phone number</label><input id="phone" name="phone" type="tel" required maxlength="40" autocomplete="tel" />
           </div>
           <div class="field-row">
             <label for="email">Your email</label><input
@@ -147,6 +151,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
   const claimRowsList = document.querySelector<HTMLUListElement>('#claim-rows');
   const claimHint = document.querySelector<HTMLElement>('#claim-hint');
   const submitButton = document.querySelector<HTMLButtonElement>('#signup-submit');
+  const instructions = document.querySelector<HTMLElement>('#signup-instructions');
 
   const notFound = () => {
     if (detail)
@@ -219,6 +224,10 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
     if (title) title.textContent = f.title;
     if (summary) summary.textContent = `Help the pack with “${f.event.title}” on ${part(f.event.startsAt, { dateStyle: 'long' })}.`;
     loadingIndicator?.setAttribute('hidden', '');
+    if (f.instructions && instructions) {
+      instructions.textContent = f.instructions;
+      instructions.removeAttribute('hidden');
+    }
 
     if (f.closed) {
       closedNotice?.removeAttribute('hidden');
@@ -285,6 +294,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
 
       const familyName = (document.querySelector<HTMLInputElement>('#family-name')?.value ?? '').trim();
       const email = (document.querySelector<HTMLInputElement>('#email')?.value ?? '').trim();
+      const phone = (document.querySelector<HTMLInputElement>('#phone')?.value ?? '').trim();
       const attending = document.querySelector<HTMLInputElement>('#attending')?.checked ?? true;
       const adults = Number(document.querySelector<HTMLInputElement>('#adults')?.value ?? 0);
       const children = Number(document.querySelector<HTMLInputElement>('#children')?.value ?? 0);
@@ -295,6 +305,7 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
         await submitSignupResponse(slug, {
           email,
           familyName,
+          phone,
           attending,
           adults,
           children,
@@ -356,6 +367,10 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
   }
   .loading {
     color: var(--muted);
+  }
+  .signup-instructions {
+    margin: 0 0 1.5rem;
+    white-space: pre-line;
   }
   .field-row {
     display: grid;
