@@ -13,7 +13,7 @@ import ChapterHero from '../components/ChapterHero.astro';
     accent="Pack 170 families"
     intro="This policy applies to macon170.com, a local unit website. It is separate from Scouting America’s and the Central Georgia Council’s privacy policies."
     noteTitle="Policy status"
-    noteBody="In effect"><p slot="note">Last reviewed: July 2026.</p></ChapterHero
+    noteBody="In effect"><p slot="note">Last reviewed: August 2026.</p></ChapterHero
   >
   <section class="section">
     <article class="container paper-sheet policy">
@@ -22,8 +22,9 @@ import ChapterHero from '../components/ChapterHero.astro';
         purpose of collecting personal information. A parent or guardian should submit every inquiry.
       </p><h2>Information a parent provides</h2><p>
         The contact form collects a parent or guardian’s name, email address, selected topic, and message. A parent may optionally provide
-        their phone number and their child’s grade. Do not submit a child’s name, home address, school, phone number, medical information,
-        or other sensitive details.
+        their phone number and their child’s grade. Event registration collects the registering adult’s name, email address, and phone
+        number, along with attendance counts, optional dietary notes, and any selected items. Do not submit a child’s name, home address,
+        school, phone number, medical information, or other sensitive details.
       </p><h2>How inquiries are handled</h2><p>
         Parent inquiries should route to multiple authorized adult pack volunteers. The site does not create direct or private adult–youth
         messaging. Information is used to respond to the inquiry and support the family’s participation in the pack.
@@ -35,18 +36,20 @@ import ChapterHero from '../components/ChapterHero.astro';
         Everything on this website is public. The site does not provide a members-only area, private group, direct messaging, or youth
         account.
       </p><h2>Storage, security, and service providers</h2><p>
-        Contact submissions are stored in the Pack’s SonicJS CMS on Cloudflare D1. Cloudflare Turnstile checks whether a submission appears
-        automated, and the CMS authenticates authorized adult administrators before they can open the volunteer queue. Restricted security
-        metadata may include submission time, IP address, browser user-agent, referring page, and country code. The Turnstile response token
-        is verified by the CMS and is never stored.
+        Contact submissions and event registrations are stored in the Pack’s SonicJS CMS on Cloudflare D1. Cloudflare Turnstile checks
+        whether a submission appears automated, and the CMS authenticates authorized adult administrators before they can view private
+        registration or contact details. Mailgun delivers event registration confirmation and edit-link emails. Restricted security metadata
+        may include submission time, IP address, browser user-agent, referring page, and country code. The Turnstile response token is
+        verified by the CMS and is never stored.
       </p><h2>Third-party links</h2><p>
         The site may link to BeAScout, the Central Georgia Council, Highland Hills Baptist Church, and other services selected by Pack 170
         adults. Those services have their own privacy practices. No analytics service is currently configured; this policy must be updated
         before one is enabled.
       </p><h2>Retention and deletion</h2><p>
-        Contact submissions and their volunteer audit records are automatically deleted after 365 days. Pack leadership may delete
-        information sooner when it is no longer needed for the inquiry, pack administration, safety, or applicable recordkeeping. A parent
-        may request review or deletion through the <a href="/contact/">contact form</a>.
+        Contact submissions and their volunteer audit records are automatically deleted after 365 days. Event registration responses are
+        automatically deleted after 90 days, and their audit records after 365 days. Pack leadership may delete information sooner when it
+        is no longer needed for the inquiry, event, pack administration, safety, or applicable recordkeeping. A parent may request review or
+        deletion through the <a href="/contact/">contact form</a>.
       </p><h2>Changes</h2><p>
         The effective or review date shown above will change when this policy materially changes. Pack 170 adults should review this policy
         whenever forms, analytics, photography practices, or administrators change.
