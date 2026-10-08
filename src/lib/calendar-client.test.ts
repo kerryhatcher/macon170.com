@@ -4,6 +4,7 @@ import { CalendarClientError, getCalendarEvent, getCalendarEvents } from './cale
 const event = {
   id: '6c62096e-4144-49d0-a3c2-7d314e79aa71',
   revision: 2,
+  allDay: false,
   slug: 'pack-meeting',
   publicationState: 'published',
   eventStatus: 'scheduled',
@@ -32,6 +33,14 @@ afterEach(() => {
 });
 
 describe('calendar client', () => {
+  it('accepts all-day events and defaults older CMS responses to timed', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', event: { ...event, allDay: true } })));
+    expect((await getCalendarEvent('pack-meeting')).allDay).toBe(true);
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', event: { ...event, allDay: undefined } })));
+    expect((await getCalendarEvent('pack-meeting')).allDay).toBe(false);
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', event: { ...event, allDay: 'true' } })));
+    await expect(getCalendarEvent('pack-meeting')).rejects.toThrow('invalid allDay');
+  });
   it('returns the canonical camelCase event list without translating fields', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [event] })));
     await expect(getCalendarEvents()).resolves.toEqual([event]);

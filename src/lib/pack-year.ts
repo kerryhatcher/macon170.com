@@ -1,3 +1,4 @@
+import { allDayDateRange } from './calendar-dates';
 // Shared program-year logic for the two surfaces that render the milestone spine: the homepage
 // strip and the /calendar/ timeline. The fragile part is not the markup, it is deciding which
 // published event owns which milestone and where an undated milestone sorts, so that lives here
@@ -11,6 +12,7 @@ export type SpineEvent = {
   title: string;
   startsAt: string;
   endsAt?: string | null;
+  allDay?: boolean;
   category?: string;
   eventStatus?: string;
   locationName?: string | null;
@@ -153,7 +155,7 @@ export function paintSpine(root: Element | null, events: SpineEvent[], now: Date
       if (!when) continue;
       cell.setAttribute('data-confirmed', '');
       if (Date.parse(event.endsAt || event.startsAt) < now.getTime()) cell.setAttribute('data-done', '');
-      when.textContent = format(event.startsAt);
+      when.textContent = event.allDay ? allDayDateRange(event) : format(event.startsAt);
     }
   }
 

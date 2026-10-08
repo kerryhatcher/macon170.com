@@ -124,6 +124,7 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
   </section>
 </BaseLayout>
 <script>
+  import { allDayDateRange } from '../../lib/calendar-dates';
   import { getCalendarEvents } from '../../lib/calendar-client';
   import { annualProgram } from '../../data/pack';
   import { buildTimeline, monthKey, monthLabel, milestoneProgress, type SpineEvent } from '../../lib/pack-year';
@@ -147,10 +148,13 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
   const timeLabel = (value: string) =>
     new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeStyle: 'short' }).format(new Date(value));
 
+  const eventWhen = (event: SpineEvent) =>
+    event.allDay ? allDayDateRange(event) : `${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}`;
+
   function milestoneRow(entry: Extract<ReturnType<typeof buildTimeline>[number], { kind: 'milestone' }>): string {
     const { milestone, event, done } = entry;
     // No event yet: keep the honest placeholder the server already wrote rather than inventing a date.
-    const when = event ? `${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}` : milestone.state;
+    const when = event ? eventWhen(event) : milestone.state;
     const where = event?.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
     const state = done ? '<span class="timeline__state">Held this year</span>' : '';
     const open = event ? `<a class="timeline__open" href="/events/?event=${encodeURIComponent(event.slug)}">Open event details</a>` : '';
@@ -175,7 +179,7 @@ const calendarSubscriptionUrl = CALENDAR_SUBSCRIPTION_URL;
         : `<span class="event-status">${escapeHtml(event.eventStatus ?? '')}</span>`;
     const where = event.locationName ? `<span class="timeline__where">${escapeHtml(event.locationName)}</span>` : '';
     return `<li class="timeline__row timeline__row--event" data-category="${escapeHtml(event.category ?? 'pack')}">
-      <span class="timeline__day">${dayLabel(event.startsAt)} · ${timeLabel(event.startsAt)}</span>
+      <span class="timeline__day">${escapeHtml(eventWhen(event))}</span>
       <a class="timeline__title" href="/events/?event=${encodeURIComponent(event.slug)}">${escapeHtml(event.title)}</a>
       <span class="event-cat">${escapeHtml(event.category ?? 'pack')}</span>${flag}${where}
     </li>`;

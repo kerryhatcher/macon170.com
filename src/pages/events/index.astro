@@ -35,6 +35,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 <script>
   import { CalendarClientError, getCalendarEvent } from '../../lib/calendar-client';
+  import { allDayDateRange } from '../../lib/calendar-dates';
+  import { renderLinkedText } from '../../lib/linked-text';
   const esc = (value: string) =>
     value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[c] ?? c);
   const part = (value: string, options: Intl.DateTimeFormatOptions) =>
@@ -70,16 +72,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     const title = document.querySelector('#event-title'),
       summary = document.querySelector('#event-summary');
     if (title) title.textContent = e.title;
-    if (summary) summary.textContent = e.summary;
+    if (summary) summary.innerHTML = renderLinkedText(e.summary);
     const registration = e.registrationUrl ? webUrl(e.registrationUrl) : null;
     // The date pin carries the start date, so an end time only reads as a range on a
     // single-day event; a multi-day event has to restate the end date.
     const sameDay = e.endsAt ? part(e.startsAt, { dateStyle: 'short' }) === part(e.endsAt, { dateStyle: 'short' }) : false;
-    const whenRange = e.endsAt
-      ? timeOf(e.startsAt) +
-        ' – ' +
-        (sameDay ? timeOf(e.endsAt) : part(e.endsAt, { month: 'short', day: 'numeric' }) + ', ' + timeOf(e.endsAt))
-      : timeOf(e.startsAt);
+    const whenRange = e.allDay
+      ? allDayDateRange(e)
+      : e.endsAt
+        ? timeOf(e.startsAt) +
+          ' – ' +
+          (sameDay ? timeOf(e.endsAt) : part(e.endsAt, { month: 'short', day: 'numeric' }) + ', ' + timeOf(e.endsAt))
+        : timeOf(e.startsAt);
     // A fact row appears only for a detail the desk actually published. Everything still
     // unpublished is named once, plainly, instead of sitting in the list as a fake row.
     const facts: [string, string][] = [['Who', e.audience]];
@@ -98,14 +102,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         '<span class="event-datepin__mon">' + esc(part(e.startsAt, { month: 'short', year: 'numeric' })) + '</span>',
         '</div><div>',
         '<h2 class="event-when__time">' + esc(whenRange) + '</h2>',
-        '<p class="event-when__place">' + esc(e.locationName || 'Location being confirmed') + '</p>',
-        e.address ? '<p class="event-when__addr">' + esc(e.address) + '</p>' : '',
+        '<p class="event-when__place">' + renderLinkedText(e.locationName || 'Location being confirmed') + '</p>',
+        e.address ? '<p class="event-when__addr">' + renderLinkedText(e.address) + '</p>' : '',
         '<p class="event-chips"><span class="event-chip">' + esc(e.category) + ' event</span>',
         '<span class="event-chip event-chip--status">' + esc(e.eventStatus) + '</span></p>',
         '</div></div>',
-        '<p class="event-lead">' + esc(e.description).replace(/\n/g, '<br>') + '</p>',
+        '<p class="event-lead">' + renderLinkedText(e.description) + '</p>',
         '<ul class="event-facts">',
-        facts.map(([label, value]) => '<li><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong></li>').join(''),
+        facts.map(([label, value]) => '<li><span>' + esc(label) + '</span><strong>' + renderLinkedText(value) + '</strong></li>').join(''),
         '</ul>',
         registration
           ? '<p class="event-action"><a class="button button--blue" href="' + esc(registration) + '">Open registration</a></p>'
@@ -248,6 +252,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     font-size: 1.1rem;
     line-height: 1.65;
     margin: 1.75rem 0 0;
+  }
+  .event-sheet :global(a:not(.button)),
+  #event-summary :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    overflow-wrap: anywhere;
   }
   .event-sheet :global(.event-facts) {
     list-style: none;
