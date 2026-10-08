@@ -4,7 +4,7 @@ Thanks for helping with the Pack 170 website. This is a small, volunteer-maintai
 
 ## Development setup
 
-**Prerequisites:** [Bun](https://bun.sh) and a [Cloudflare account](https://dash.cloudflare.com) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/) authenticated locally (`bunx wrangler login`) if you need the full Worker.
+**Prerequisites:** [Bun 1.4.2 or newer](https://bun.sh) and a [Cloudflare account](https://dash.cloudflare.com) with [Wrangler](https://developers.cloudflare.com/workers/wrangler/) authenticated locally (`bunx wrangler login`) if you need the full Worker.
 
 ```bash
 git clone https://github.com/kerryhatcher/macon170.com.git
