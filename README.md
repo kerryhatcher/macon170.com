@@ -97,7 +97,7 @@ change.
 
 ## 📦 Installation
 
-**Prerequisites:** [Bun](https://bun.sh) and a
+**Prerequisites:** [Bun 1.4.2 or newer](https://bun.sh) and a
 [Cloudflare account](https://dash.cloudflare.com) with
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 authenticated (`bunx wrangler login`).

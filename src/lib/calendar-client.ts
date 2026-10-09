@@ -14,6 +14,7 @@ export type CalendarEvent = {
   description: string;
   startsAt: string;
   endsAt: string | null;
+  allDay: boolean;
   timezone: 'America/New_York';
   locationName: string | null;
   address: string | null;
@@ -103,6 +104,8 @@ function validateCalendarEvent(value: unknown): CalendarEvent {
   const milestone = nullableString(value, 'milestone');
   const startsAt = requiredInstant(value, 'startsAt');
   const endsAt = nullableInstant(value, 'endsAt');
+  if (value.allDay !== undefined && typeof value.allDay !== 'boolean')
+    throw new CalendarClientError('The calendar returned an invalid allDay.');
   const createdAt = requiredInstant(value, 'createdAt');
   const updatedAt = requiredInstant(value, 'updatedAt');
   const publishedAt = requiredInstant(value, 'publishedAt');
@@ -132,6 +135,7 @@ function validateCalendarEvent(value: unknown): CalendarEvent {
     description: requiredString(value, 'description'),
     startsAt,
     endsAt,
+    allDay: value.allDay === true,
     timezone: 'America/New_York',
     locationName: nullableString(value, 'locationName'),
     address: nullableString(value, 'address'),

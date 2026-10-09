@@ -24,7 +24,7 @@ repos:
         files: "^(src|worker|tests?|e2e)/|^(package\\.json|tsconfig.*\\.json)$"
       - id: trivy
         name: Trivy vulnerability, misconfiguration, and secret scan
-        entry: trivy fs --skip-dirs node_modules --scanners vuln,misconfig,secret --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 .
+        entry: trivy fs --skip-dirs node_modules --include-dev-deps --scanners vuln,misconfig,secret --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 .
         language: system
         pass_filenames: false
         always_run: true

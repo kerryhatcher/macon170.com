@@ -1,3 +1,4 @@
+import { allDayDateRange } from './calendar-dates';
 // Shared program-year logic for the two surfaces that render the milestone spine: the homepage
 // strip and the /calendar/ timeline. The fragile part is not the markup, it is deciding which
 // published event owns which milestone and where an undated milestone sorts, so that lives here
@@ -11,6 +12,7 @@ export type SpineEvent = {
   title: string;
   startsAt: string;
   endsAt?: string | null;
+  allDay?: boolean;
   category?: string;
   eventStatus?: string;
   locationName?: string | null;
@@ -86,6 +88,17 @@ export type TimelineEntry =
   | { kind: 'milestone'; at: Date; milestone: Milestone; event: SpineEvent | null; done: boolean }
   | { kind: 'event'; at: Date; event: SpineEvent };
 
+/** All-day milestones stay active through their inclusive final date in Macon. */
+function eventFinished(event: SpineEvent, now: Date): boolean {
+  const end = event.endsAt || event.startsAt;
+  if (!event.allDay) return Date.parse(end) < now.getTime();
+  const calendarDay = (iso: string) => {
+    const { year, month, day } = zonedParts(iso);
+    return year * 10000 + month * 100 + day;
+  };
+  return calendarDay(end) < calendarDay(now.toISOString());
+}
+
 /**
  * Merge the four milestone anchors and every ordinary event into one date-ordered stream.
  *
@@ -104,7 +117,7 @@ export function buildTimeline(milestones: readonly Milestone[], events: SpineEve
       at: event ? new Date(event.startsAt) : nominalMilestoneDate(milestone, now),
       milestone,
       event,
-      done: event ? Date.parse(event.endsAt || event.startsAt) < now.getTime() : false,
+      done: event ? eventFinished(event, now) : false,
     };
   });
 
@@ -152,8 +165,8 @@ export function paintSpine(root: Element | null, events: SpineEvent[], now: Date
       const when = cell.querySelector('[data-pm-when]');
       if (!when) continue;
       cell.setAttribute('data-confirmed', '');
-      if (Date.parse(event.endsAt || event.startsAt) < now.getTime()) cell.setAttribute('data-done', '');
-      when.textContent = format(event.startsAt);
+      if (eventFinished(event, now)) cell.setAttribute('data-done', '');
+      when.textContent = event.allDay ? allDayDateRange(event) : format(event.startsAt);
     }
   }
 

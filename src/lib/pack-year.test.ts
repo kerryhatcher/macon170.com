@@ -122,6 +122,21 @@ describe('buildTimeline', () => {
     expect(lego?.kind === 'milestone' && lego.done).toBe(true);
   });
 
+  it.each([
+    ['2026-10-24T16:00:00Z', '2026-10-25T16:00:00Z', '2026-10-26T03:59:59Z', false],
+    ['2026-10-24T16:00:00Z', '2026-10-25T16:00:00Z', '2026-10-26T04:00:00Z', true],
+    ['2026-11-01T04:00:00Z', null, '2026-11-02T04:59:59Z', false],
+    ['2026-11-01T04:00:00Z', null, '2026-11-02T05:00:00Z', true],
+  ])('keeps all-day milestones active through the final local date (%s, %s, %s)', (startsAt, endsAt, current, done) => {
+    const entries = buildTimeline(
+      annualProgram,
+      [event('camp', startsAt, { endsAt, allDay: true, milestone: 'fall-camp' })],
+      new Date(current),
+    );
+    const camp = entries.find((entry) => entry.kind === 'milestone' && entry.milestone.key === 'fall-camp');
+    expect(camp?.kind === 'milestone' && camp.done).toBe(done);
+  });
+
   it('groups consecutive entries into months without collapsing distinct months', () => {
     const entries = buildTimeline(annualProgram, [event('a', '2026-09-15T22:30:00.000Z'), event('b', '2026-09-20T22:30:00.000Z')], now);
     const septs = entries.filter((e) => monthKey(e.at) === '2026-09');
