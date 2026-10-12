@@ -70,3 +70,35 @@ test('timed events retain their hours', async ({ page }) => {
   await page.goto('/events/?event=fall-campout');
   await expect(page.locator('.event-when__time')).toHaveText('12:00 PM – Oct 25, 12:00 PM');
 });
+
+const paymentUrl = 'https://buy.stripe.com/9B68wOdMpef0c9rfKpdjO00';
+
+async function openEvent(page: import('@playwright/test').Page, overrides: Record<string, unknown>) {
+  await page.route('https://cms.macon170.com/api/calendar/v1/events**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ version: 'v1', event: { ...event, ...overrides } }),
+    }),
+  );
+  await page.goto('/events/?event=fall-campout');
+}
+
+test('shows a Pay now link when the event has a payment URL', async ({ page }) => {
+  await openEvent(page, { paymentUrl });
+  const pay = page.getByRole('link', { name: 'Pay now' });
+  await expect(pay).toHaveAttribute('href', paymentUrl);
+  await expect(page.getByRole('link', { name: 'Open registration' })).toHaveCount(0);
+});
+
+test('shows Pay now beside registration when both are set', async ({ page }) => {
+  await openEvent(page, { paymentUrl, registrationUrl: 'https://www.macon170.com/signups/?form=fall-campout' });
+  await expect(page.getByRole('link', { name: 'Open registration' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Pay now' })).toHaveAttribute('href', paymentUrl);
+});
+
+test('shows no payment control when the event has no payment URL, and does not call it pending', async ({ page }) => {
+  await openEvent(page, { paymentUrl: null });
+  await expect(page.getByRole('link', { name: 'Pay now' })).toHaveCount(0);
+  await expect(page.locator('.event-pending')).not.toContainText('payment');
+});

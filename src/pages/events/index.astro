@@ -74,6 +74,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     if (title) title.textContent = e.title;
     if (summary) summary.innerHTML = renderLinkedText(e.summary);
     const registration = e.registrationUrl ? webUrl(e.registrationUrl) : null;
+    const payment = e.paymentUrl ? webUrl(e.paymentUrl) : null;
     // The date pin carries the start date, so an end time only reads as a range on a
     // single-day event; a multi-day event has to restate the end date.
     const sameDay = e.endsAt ? part(e.startsAt, { dateStyle: 'short' }) === part(e.endsAt, { dateStyle: 'short' }) : false;
@@ -115,6 +116,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           ? '<p class="event-action"><a class="button button--blue" href="' + esc(registration) + '">Open registration</a></p>'
           : e.registrationUrl
             ? '<p class="event-action event-action--broken">The registration link on file could not be opened. Ask the pack for a working link.</p>'
+            : '',
+        payment
+          ? '<p class="event-action"><a class="button button--blue" href="' + esc(payment) + '">Pay now</a></p>'
+          : e.paymentUrl
+            ? '<p class="event-action event-action--broken">The payment link on file could not be opened. Ask the pack for a working link.</p>'
             : '',
         pending.length
           ? '<div class="event-pending"><h3>Still being confirmed</h3><p>Pack 170 has not published ' +
