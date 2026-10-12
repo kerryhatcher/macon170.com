@@ -12,7 +12,7 @@ const baseForm = {
     'Ready to build, race, and eat? Tell us who’s coming so we can plan enough food. Registration is only for the event—it is not a commitment to join Pack 170, and you do not need to bring anything.',
   closed: false,
   closesAt: null,
-  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z' },
+  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z', paymentUrl: null },
   slots: [
     { id: 'buns', label: 'Buns', notes: '8-packs', quantityNeeded: 3, quantityClaimed: 1, quantityRemaining: 2 },
     { id: 'drinks', label: 'Drinks', notes: null, quantityNeeded: 2, quantityClaimed: 2, quantityRemaining: 0 },
@@ -85,6 +85,35 @@ test('submits JSON with the honeypot and Turnstile token, then says check your e
     website: '',
     'cf-turnstile-response': 'test-token',
   });
+});
+
+async function submitFamily(page: Page) {
+  await page.route(`${apiBase}/forms/${slug}/responses`, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ version: 'v1' }) }),
+  );
+  await page.goto(`/signups/?form=${slug}`);
+  await page.fill('#family-name', 'The Hatchers');
+  await page.fill('#email', 'family@example.com');
+  await page.fill('#phone', '478-555-0123');
+  await page.fill('[data-slot="buns"] input', '1');
+  await page.click('#signup-submit');
+  await expect(page.locator('#signup-success')).toBeVisible();
+}
+
+test('the success notice links to payment when the event has a payment URL', async ({ page }) => {
+  const paymentUrl = 'https://buy.stripe.com/9B68wOdMpef0c9rfKpdjO00';
+  await stubTurnstile(page);
+  await stubForm(page, { ...baseForm, event: { ...baseForm.event, paymentUrl } });
+  await submitFamily(page);
+  await expect(page.locator('#signup-pay')).toBeVisible();
+  await expect(page.locator('#signup-pay')).toHaveAttribute('href', paymentUrl);
+});
+
+test('the success notice has no payment link without a payment URL', async ({ page }) => {
+  await stubTurnstile(page);
+  await stubForm(page);
+  await submitFamily(page);
+  await expect(page.locator('#signup-pay')).toBeHidden();
 });
 
 test('re-renders refreshed counts instead of erroring when a slot fills first', async ({ page }) => {

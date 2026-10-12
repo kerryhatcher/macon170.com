@@ -9,7 +9,7 @@ const form: PublicSignupForm = {
   instructions: '',
   closed: false,
   closesAt: null,
-  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z' },
+  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z', paymentUrl: null },
   slots: [
     { id: 'buns', label: 'Buns', notes: '8-packs', quantityNeeded: 3, quantityClaimed: 1, quantityRemaining: 2 },
     { id: 'drinks', label: 'Drinks', notes: null, quantityNeeded: 2, quantityClaimed: 2, quantityRemaining: 0 },

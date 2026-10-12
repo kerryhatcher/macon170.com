@@ -36,6 +36,9 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
             <h3>Check your email</h3><p>
               We sent a link to your email. It confirms this signup and is also how you come back later to change or cancel it.
             </p>
+            <p id="signup-pay-line" hidden>
+              Payment for this event is separate. <a id="signup-pay" class="button button--blue" rel="noopener" href="#">Pay now</a>
+            </p>
           </div>
         </div>
         <div class="notice notice--editor" id="signup-error" role="alert" tabindex="-1" hidden>
@@ -143,6 +146,8 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
   const closedNotice = document.querySelector<HTMLElement>('#signup-closed');
   const form = document.querySelector<HTMLFormElement>('#signup-form');
   const success = document.querySelector<HTMLElement>('#signup-success');
+  const payLine = document.querySelector<HTMLElement>('#signup-pay-line');
+  const payLink = document.querySelector<HTMLAnchorElement>('#signup-pay');
   const errorNotice = document.querySelector<HTMLElement>('#signup-error');
   const errorTitle = document.querySelector<HTMLElement>('#signup-error-title');
   const errorMessage = document.querySelector<HTMLElement>('#signup-error-message');
@@ -220,6 +225,10 @@ import SignupTurnstile from '../../components/SignupTurnstile.astro';
       throw error;
     }
     const f = currentForm;
+    if (f.event.paymentUrl && payLink && payLine) {
+      payLink.href = f.event.paymentUrl;
+      payLine.removeAttribute('hidden');
+    }
     document.title = f.title + ' | Cub Scout Pack 170';
     if (title) title.textContent = f.title;
     if (summary) summary.textContent = `Help the pack with “${f.event.title}” on ${part(f.event.startsAt, { dateStyle: 'long' })}.`;

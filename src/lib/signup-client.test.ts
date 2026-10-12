@@ -17,7 +17,7 @@ const form = {
   instructions: 'Claim what you can bring.',
   closed: false,
   closesAt: null,
-  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z' },
+  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z', paymentUrl: null },
   slots: [{ id: 'slot-1', label: 'Hot dogs', notes: null, quantityNeeded: 3, quantityClaimed: 1, quantityRemaining: 2 }],
 };
 
@@ -73,6 +73,24 @@ const stub = (body: unknown, status = 200) =>
 afterEach(() => vi.unstubAllGlobals());
 
 describe('getSignupForm', () => {
+  it('parses the event payment URL and rejects an unsafe one', async () => {
+    const paymentUrl = 'https://buy.stripe.com/9B68wOdMpef0c9rfKpdjO00';
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(Response.json({ version: 'v1', form: { ...form, event: { ...form.event, paymentUrl } } })),
+    );
+    expect((await getSignupForm('lego-derby-food')).event.paymentUrl).toBe(paymentUrl);
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          Response.json({ version: 'v1', form: { ...form, event: { ...form.event, paymentUrl: 'javascript:alert(1)' } } }),
+        ),
+    );
+    await expect(getSignupForm('lego-derby-food')).rejects.toBeInstanceOf(SignupClientError);
+  });
+
   it('returns a validated form', async () => {
     vi.stubGlobal('fetch', stub({ version: 'v1', form }));
     await expect(getSignupForm('lego-derby-food')).resolves.toMatchObject({ slug: 'lego-derby-food', formType: 'items' });

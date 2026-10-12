@@ -10,7 +10,7 @@ const baseForm = {
   instructions: '',
   closed: false,
   closesAt: null,
-  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z' },
+  event: { slug: 'lego-derby', title: 'Lego Derby', startsAt: '2026-09-12T22:00:00.000Z', paymentUrl: null },
   slots: [{ id: 'buns', label: 'Buns', notes: null, quantityNeeded: 3, quantityClaimed: 1, quantityRemaining: 2 }],
 };
 
