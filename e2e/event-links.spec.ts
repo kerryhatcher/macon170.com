@@ -21,6 +21,7 @@ const event = {
   whatToBring: 'Tent and sleeping gear',
   cost: '$40',
   registrationUrl: null,
+  paymentUrl: null,
   milestone: 'fall-camp',
   createdAt: '2026-08-01T12:00:00.000Z',
   updatedAt: '2026-10-08T12:00:00.000Z',

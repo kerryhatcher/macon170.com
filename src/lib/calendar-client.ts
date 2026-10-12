@@ -22,6 +22,7 @@ export type CalendarEvent = {
   whatToBring: string | null;
   cost: string | null;
   registrationUrl: string | null;
+  paymentUrl: string | null;
   milestone: CalendarMilestone | null;
   createdAt: string;
   updatedAt: string;
@@ -143,6 +144,7 @@ function validateCalendarEvent(value: unknown): CalendarEvent {
     whatToBring: nullableString(value, 'whatToBring'),
     cost: nullableString(value, 'cost'),
     registrationUrl: nullableWebUrl(value, 'registrationUrl'),
+    paymentUrl: nullableWebUrl(value, 'paymentUrl'),
     milestone: milestone as CalendarMilestone | null,
     createdAt,
     updatedAt,

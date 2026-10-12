@@ -21,6 +21,7 @@ const event = {
   whatToBring: null,
   cost: null,
   registrationUrl: 'https://example.com/register',
+  paymentUrl: null,
   milestone: null,
   createdAt: '2026-08-01T12:00:00.000Z',
   updatedAt: '2026-08-02T12:00:00.000Z',
@@ -69,6 +70,21 @@ describe('calendar client', () => {
       vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [{ ...event, registrationUrl: 'javascript:alert(1)' }] })),
     );
     await expect(getCalendarEvents()).rejects.toThrow('invalid registrationUrl');
+  });
+
+  it('returns the payment URL and accepts null', async () => {
+    const paymentUrl = 'https://buy.stripe.com/9B68wOdMpef0c9rfKpdjO00';
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', event: { ...event, paymentUrl } })));
+    expect((await getCalendarEvent('pack-meeting')).paymentUrl).toBe(paymentUrl);
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', event })));
+    expect((await getCalendarEvent('pack-meeting')).paymentUrl).toBeNull();
+  });
+
+  it('rejects unsafe or malformed payment URLs', async () => {
+    for (const paymentUrl of ['javascript:alert(1)', 'not a url', 42]) {
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [{ ...event, paymentUrl }] })));
+      await expect(getCalendarEvents()).rejects.toThrow('invalid paymentUrl');
+    }
   });
 
   it('times out a CMS request that does not complete', async () => {
