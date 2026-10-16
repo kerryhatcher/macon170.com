@@ -100,5 +100,6 @@ test('shows Pay now beside registration when both are set', async ({ page }) => 
 test('shows no payment control when the event has no payment URL, and does not call it pending', async ({ page }) => {
   await openEvent(page, { paymentUrl: null });
   await expect(page.getByRole('link', { name: 'Pay now' })).toHaveCount(0);
+  await expect(page.locator('.event-pending')).toBeVisible();
   await expect(page.locator('.event-pending')).not.toContainText('payment');
 });

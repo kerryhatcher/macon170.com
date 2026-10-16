@@ -80,8 +80,15 @@ describe('calendar client', () => {
     expect((await getCalendarEvent('pack-meeting')).paymentUrl).toBeNull();
   });
 
+  it('treats a missing paymentUrl as null so an older CMS response still loads', async () => {
+    const withoutPayment: Partial<typeof event> = { ...event };
+    delete withoutPayment.paymentUrl;
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [withoutPayment] })));
+    expect((await getCalendarEvents())[0].paymentUrl).toBeNull();
+  });
+
   it('rejects unsafe or malformed payment URLs', async () => {
-    for (const paymentUrl of ['javascript:alert(1)', 'not a url', 42]) {
+    for (const paymentUrl of ['javascript:alert(1)', 'not a url', 'http://buy.stripe.com/x', 42]) {
       vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.json({ version: 'v1', events: [{ ...event, paymentUrl }] })));
       await expect(getCalendarEvents()).rejects.toThrow('invalid paymentUrl');
     }

@@ -89,6 +89,22 @@ describe('getSignupForm', () => {
         ),
     );
     await expect(getSignupForm('lego-derby-food')).rejects.toBeInstanceOf(SignupClientError);
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          Response.json({ version: 'v1', form: { ...form, event: { ...form.event, paymentUrl: 'http://buy.stripe.com/x' } } }),
+        ),
+    );
+    await expect(getSignupForm('lego-derby-food')).rejects.toBeInstanceOf(SignupClientError);
+  });
+
+  it('treats a missing event paymentUrl as null', async () => {
+    const eventWithoutPayment: Partial<typeof form.event> = { ...form.event };
+    delete eventWithoutPayment.paymentUrl;
+    vi.stubGlobal('fetch', stub({ version: 'v1', form: { ...form, event: eventWithoutPayment } }));
+    expect((await getSignupForm('lego-derby-food')).event.paymentUrl).toBeNull();
   });
 
   it('returns a validated form', async () => {

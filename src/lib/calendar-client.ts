@@ -144,7 +144,7 @@ function validateCalendarEvent(value: unknown): CalendarEvent {
     whatToBring: nullableString(value, 'whatToBring'),
     cost: nullableString(value, 'cost'),
     registrationUrl: nullableWebUrl(value, 'registrationUrl'),
-    paymentUrl: nullableWebUrl(value, 'paymentUrl'),
+    paymentUrl: optionalHttpsUrl(value, 'paymentUrl'),
     milestone: milestone as CalendarMilestone | null,
     createdAt,
     updatedAt,
@@ -175,6 +175,18 @@ function requiredInstant(value: Record<string, unknown>, key: string): string {
 
 function nullableInstant(value: Record<string, unknown>, key: string): string | null {
   return value[key] === null ? null : requiredInstant(value, key);
+}
+
+// Absent counts as null so the calendar still loads while the CMS predates this field (or is rolled back).
+function optionalHttpsUrl(value: Record<string, unknown>, key: string): string | null {
+  const item = value[key];
+  if (item === null || item === undefined) return null;
+  try {
+    if (typeof item !== 'string' || new URL(item).protocol !== 'https:') throw new Error('unsupported value');
+    return item;
+  } catch {
+    throw new CalendarClientError(`The calendar returned an invalid ${key}.`);
+  }
 }
 
 function nullableWebUrl(value: Record<string, unknown>, key: string): string | null {
