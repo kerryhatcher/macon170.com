@@ -17,7 +17,7 @@ export type PublicSignupForm = {
   instructions: string;
   closed: boolean;
   closesAt: string | null;
-  event: { slug: string; title: string; startsAt: string };
+  event: { slug: string; title: string; startsAt: string; paymentUrl: string | null };
   slots: PublicSignupSlot[];
 };
 
@@ -187,6 +187,7 @@ function validateForm(value: unknown): PublicSignupForm {
       slug: requiredString(event, 'slug'),
       title: requiredString(event, 'title'),
       startsAt: requiredString(event, 'startsAt'),
+      paymentUrl: nullableHttpsUrl(event, 'paymentUrl'),
     },
     slots: value.slots.map(validateSlot),
   };
@@ -241,6 +242,17 @@ function requiredString(value: Record<string, unknown>, key: string): string {
   const item = value[key];
   if (typeof item !== 'string' || item.length === 0) throw new SignupClientError(`The signup service returned an invalid ${key}.`);
   return item;
+}
+
+function nullableHttpsUrl(value: Record<string, unknown>, key: string): string | null {
+  const item = nullableString(value, key);
+  if (item === null) return null;
+  try {
+    if (new URL(item).protocol !== 'https:') throw new Error('unsupported protocol');
+    return item;
+  } catch {
+    throw new SignupClientError(`The signup service returned an invalid ${key}.`);
+  }
 }
 
 function nullableString(value: Record<string, unknown>, key: string): string | null {
